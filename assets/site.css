@@ -189,3 +189,21 @@ button.hd{cursor:pointer;color:#0b0b0e}button.hd:hover{outline:2px solid #fff}
 /* ---------- static links shown before the app loads (and to crawlers) ---------- */
 .static-ed{display:block;padding:16px;border:1px solid var(--line2);border-radius:16px;color:var(--ink);text-decoration:none;font:15px/1.4 var(--sans)}
 .static-ed b{display:block;color:var(--mut);font:700 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+/* ---------- next-edition countdown (top bar) ---------- */
+.cd{--c:var(--amber);display:inline-flex;align-items:center;gap:7px;min-width:0;max-width:100%;padding:6px 12px 6px 10px;border:1px solid var(--line2);border-radius:999px;
+background:rgba(255,255,255,.03);font:500 12px/1.2 var(--sans);letter-spacing:.01em;text-transform:none;color:var(--mut);white-space:nowrap}
+.cd[hidden]{display:none}
+.cd-dot{width:7px;height:7px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c);flex:none;animation:cdpulse 2.4s ease-in-out infinite}
+.cd-k{font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.cd-n{color:var(--c);font-weight:700;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.cd-s{color:var(--dim)}
+.cd-t{color:#d5d1c8}
+.cd-c{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.cd.arriving{border-color:var(--c)}.cd.arriving .cd-c{color:var(--c)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.has-cd .slotbar{display:none}
+.has-cd .topline{padding:7.5px 0}
+@keyframes cdpulse{0%,100%{opacity:1}50%{opacity:.45}}
+@media (prefers-reduced-motion:reduce){.cd-dot{animation:none}}
+@media (max-width:640px){.has-cd .topline>span:first-child{display:none}.has-cd .topline{justify-content:center}.cd{font-size:11.5px;gap:6px;padding:6px 10px}}
+@media (max-width:380px){.cd-k{display:none}}
