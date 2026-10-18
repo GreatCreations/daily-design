@@ -163,6 +163,10 @@ function render(fromShard){
   $("#status-title").textContent=act?(state.q?"Results for “"+state.q+"”":"Filtered view"):filtered()?"Filtered archive":"Browse";
   $("#status-line").innerHTML=act?"<b>"+n(res.length)+"</b> link"+(res.length==1?"":"s")+(partial?" so far · searching "+loadedN+" of "+need.length+" months":" · all "+need.length+" month"+(need.length==1?"":"s")+" searched")+" · share this view by copying the URL"
     :(filtered()?rangeText()+" · ":"")+"<b>"+n(D.totals.editions)+"</b> editions · <b>"+n(D.totals.items)+"</b> links";
+  // browsing: archive sits right under Latest; searching: results first, archive below
+  var ab=$("#archive-block"), ib=$("#items-block");
+  if(!act&&ab.nextElementSibling!==ib)ib.parentNode.insertBefore(ab,ib);
+  else if(act&&ib.nextElementSibling!==ab)ib.parentNode.insertBefore(ab,ib.nextElementSibling);
   renderArchive(); writeHash(); syncReader();
 }
 function rangeText(){if(state.from&&state.to&&state.from===state.to)return niceDate(state.from);if(state.from||state.to)return (state.from?niceDate(state.from):"start")+" → "+(state.to?niceDate(state.to):"latest");return ""}
