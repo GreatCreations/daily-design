@@ -32,6 +32,7 @@ The 7 AM and noon pages have a fixed **Back to index** bar, previous/next links 
 ```
 index.html                         the index (vanilla JS, no build step, no CDNs)
 assets/site.css, assets/app.js     styles and app
+assets/favicon.svg (+ .ico, PNGs)  "DD" site icon; icon.svg is the large-size artwork; site.webmanifest
 assets/tts.js                      read-aloud button (browser speech, used by the reader and the edition pages)
 assets/vendor/marked.min.js        Markdown renderer for the report reader (MIT, see marked.LICENSE.md)
 data/index.json                    editions, calendar, facets, totals and the item shard manifest

@@ -21,7 +21,7 @@ SITE_URL = "https://greatcreations.github.io/daily-design/"
 REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
 REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
 TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
-NAV_VERSION = 2   # bump to force nav re-injection on every HTML edition
+NAV_VERSION = 3   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -241,6 +241,17 @@ def parse_items(md):
 NAV_START, NAV_END = "<!--dd-nav:start-->", "<!--dd-nav:end-->"
 FOOT_START, FOOT_END = "<!--dd-foot:start-->", "<!--dd-foot:end-->"
 STYLE_START, STYLE_END = "<!--dd-style:start-->", "<!--dd-style:end-->"
+ICON_START, ICON_END = "<!--dd-icon:start-->", "<!--dd-icon:end-->"
+
+
+def icon_links(prefix):
+    """Favicon + touch icon + manifest links. prefix is the path back to the site root ("" or "../../")."""
+    a = prefix + "assets/"
+    return ('%s<link rel="icon" href="%sfavicon.ico" sizes="32x32">'
+            '<link rel="icon" href="%sfavicon.svg" type="image/svg+xml">'
+            '<link rel="icon" href="%sfavicon-32.png" type="image/png" sizes="32x32">'
+            '<link rel="apple-touch-icon" href="%sapple-touch-icon.png">'
+            '<link rel="manifest" href="%ssite.webmanifest">%s') % (ICON_START, a, a, a, a, a, ICON_END)
 NAV_H = 46
 
 
@@ -296,7 +307,7 @@ def nav_link(ed, cls, label, arrow_first):
 
 
 def inject_nav(doc, ed, prev, nxt):
-    for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END)):
+    for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END), (ICON_START, ICON_END)):
         doc = re.sub(re.escape(a) + ".*?" + re.escape(b) + r"\n?", "", doc, flags=re.S)
     s = SLOTS[ed["slot"]]
     bar = ('%s<nav id="dd-nav" aria-label="Daily Design"><a class="dd-home" href="../../index.html">← <span class="dd-t">Back to </span>index</a>'
@@ -307,7 +318,7 @@ def inject_nav(doc, ed, prev, nxt):
     foot = ('%s<div id="dd-foot">%s<a class="dd-home" href="../../index.html">← Back to the Daily Design index</a>%s</div>%s\n') % (
         FOOT_START, nav_link(prev, "dd-prev", "‹ Previous edition", True),
         nav_link(nxt, "dd-next", "Next edition ›", False), FOOT_END)
-    doc = re.sub(r"</head>", lambda m: nav_css(s["color"]) + "\n</head>", doc, count=1, flags=re.I)
+    doc = re.sub(r"</head>", lambda m: icon_links("../../") + "\n" + nav_css(s["color"]) + "\n</head>", doc, count=1, flags=re.I)
     doc = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + "\n" + bar, doc, count=1, flags=re.I)
     idx = doc.lower().rfind("</body>")
     doc = doc[:idx] + foot + doc[idx:] if idx >= 0 else doc + foot
