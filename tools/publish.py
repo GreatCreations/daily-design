@@ -587,7 +587,7 @@ def main():
     tagset = sorted({t for r in recs for it in r["items"] for t in it["tags"]} | {t for e in editions for t in e["tags"]})
     total_items = sum(len(v) for v in shards.values())
     data = dict(
-        version=2, generated=dt.datetime.now().astimezone().isoformat(timespec="seconds"),
+        version=2,
         site=dict(name="Daily Design", url=SITE_URL, repo_blob=REPO_BLOB),
         totals=dict(editions=len(editions), items=total_items, tags=len(tagset), days=len(days),
                     months=len(shards), first=min(days), last=max(days)),
