@@ -1,2150 +1,30 @@
-window.DD_DATA={
- "site": {
-  "name": "Daily Design",
-  "url": "https://greatcreations.github.io/daily-design/"
- },
- "totals": {
-  "editions": 2,
-  "items": 181,
-  "tags": 34,
-  "days": 1
- },
- "facets": {
-  "medium": [
-   {
-    "key": "image",
-    "label": "Image"
-   },
-   {
-    "key": "video",
-    "label": "Video"
-   },
-   {
-    "key": "3d",
-    "label": "3D"
-   },
-   {
-    "key": "code",
-    "label": "Code/UI"
-   },
-   {
-    "key": "sound",
-    "label": "Sound"
-   },
-   {
-    "key": "games",
-    "label": "Games"
-   },
-   {
-    "key": "mashups",
-    "label": "Mashups"
-   }
-  ],
-  "type": [
-   "tutorial",
-   "repo/tool",
-   "showcase",
-   "news",
-   "update",
-   "buzz",
-   "case study",
-   "breakdown",
-   "workflow",
-   "result"
-  ],
-  "slot": [
-   {
-    "key": "morning",
-    "label": "7 AM · AI Design Daily",
-    "color": "#f5a524"
-   },
-   {
-    "key": "noon",
-    "label": "Noon · AI Design in Use",
-    "color": "#22e0cf"
-   },
-   {
-    "key": "best",
-    "label": "6 PM · Best of the Day",
-    "color": "#9b6bff"
-   },
-   {
-    "key": "hottest",
-    "label": "8 PM · Hottest Right Now",
-    "color": "#ff5a2e"
-   }
-  ],
-  "date": [
-   "2026-10-17"
+{
+ "edition": {
+  "date": "2026-10-17",
+  "slot": "noon",
+  "time": "Noon",
+  "title": "AI Design in Use",
+  "kind": "page",
+  "headline": "How people actually used AI design tools this week: 94 real uses",
+  "summary": "A solo developer shipping a Steam fishing game didn't model anything by hand: one Claude Code session wrote and ran Blender scripts for every crab, gull and palm. A crab went from a four-sentence brief to animated on the beach in 53 minutes. That's this edition's pattern: the people getting real results use AI as a scriptable crew they direct, check and correct, not as a slot machine.",
+  "path": "editions/2026-10-17/noon.html",
+  "url": "editions/2026-10-17/noon.html",
+  "header": "editions/2026-10-17/noon-header.png",
+  "thumb": "editions/2026-10-17/noon-thumb.jpg",
+  "item_count": 94,
+  "tags": [
+   "noon",
+   "2026-10-17",
+   "3d",
+   "code",
+   "games",
+   "image",
+   "mashups",
+   "sound",
+   "video"
   ]
  },
- "editions": [
-  {
-   "date": "2026-10-17",
-   "slot": "noon",
-   "time": "Noon",
-   "title": "AI Design in Use",
-   "headline": "How people actually used AI design tools this week: 94 real uses",
-   "summary": "A solo developer shipping a Steam fishing game didn't model anything by hand: one Claude Code session wrote and ran Blender scripts for every crab, gull and palm. A crab went from a four-sentence brief to animated on the beach in 53 minutes. That's this edition's pattern: the people getting real results use AI as a scriptable crew they direct, check and correct, not as a slot machine.",
-   "path": "editions/2026-10-17/noon.html",
-   "header": "editions/2026-10-17/noon-header.png",
-   "thumb": "editions/2026-10-17/noon-thumb.jpg",
-   "item_count": 94,
-   "tags": [
-    "noon",
-    "2026-10-17",
-    "3d",
-    "code",
-    "games",
-    "image",
-    "mashups",
-    "sound",
-    "video"
-   ]
-  },
-  {
-   "date": "2026-10-17",
-   "slot": "morning",
-   "time": "7 AM",
-   "title": "AI Design Daily",
-   "headline": "Open image models had the week, and agents learned to drive Blender",
-   "summary": "FLUX 3 Klein, Krea 3 and MOSS-Image all landed within about 24 hours, Kling 4.0 went global, and the most-bookmarked creative technique of the week was Claude Opus 5.5 building 3D models through Blender MCP. 87 verified items from Oct 10–17.",
-   "path": "editions/2026-10-17/morning.html",
-   "header": "editions/2026-10-17/morning-header.png",
-   "thumb": "editions/2026-10-17/morning-thumb.jpg",
-   "item_count": 87,
-   "tags": [
-    "morning",
-    "2026-10-17",
-    "3d",
-    "code",
-    "games",
-    "image",
-    "mashups",
-    "sound",
-    "video"
-   ]
-  }
- ],
  "items": [
-  {
-   "id": "2026-10-17-morning-1",
-   "title": "Blender blockout → Seedance 2.5 horror short (ComfyUI)",
-   "url": "https://x.com/ComfyUI/status/2111110239714165176",
-   "note": "you build a rough 3D blockout in Blender to set the camera, action, and timing, then Seedance 2.5 renders the final video. That gives you real directing control instead of hoping a prompt lands. Start: grab the workflow and prompt from the link in the post, and block out a 3-shot scene with plain cubes.",
-   "medium": "",
-   "type": "tutorial",
-   "kind": "",
-   "tags": [
-    "tutorial",
-    "morning",
-    "2026-10-17",
-    "try today"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-2",
-   "title": "Make game models with Claude Opus 5.5 + Blender MCP",
-   "url": "https://x.com/rewind02/status/2111393368097849615",
-   "note": "Opus writes Python and builds each model part by part in Blender. \"Treat every model as code.\" Start: install mcp-for-blender (uvx mcp-for-blender@latest), connect it to Claude, and ask for one prop.",
-   "medium": "",
-   "type": "tutorial",
-   "kind": "",
-   "tags": [
-    "tutorial",
-    "morning",
-    "2026-10-17",
-    "try today"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [
-    {
-     "label": "mcp-for-blender",
-     "url": "https://www.mcp-for-blender.com/docs/reference/changelog"
-    }
-   ],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-3",
-   "title": "Turn any repo into a 45-second explainer video (HyperFrames + diagram-design)",
-   "url": "https://x.com/RoundtableSpace/status/2110683351489409207",
-   "note": "these are two of this week's fastest-growing GitHub repos, chained inside Claude Code. Start: claude plugin marketplace add heygen-com/hyperframes, then claude plugin install hyperframes@hyperframes, then npx skills add cathrynlavery/diagram-design, then paste the prompt from the post.",
-   "medium": "",
-   "type": "tutorial",
-   "kind": "",
-   "tags": [
-    "tutorial",
-    "morning",
-    "2026-10-17",
-    "try today"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-4",
-   "title": "FLUX 3 Image Klein announcement (BFL)",
-   "url": "https://bfl.ai/blog/flux-3-image-klein",
-   "note": "A 5.6B open-weights model released Oct 15: native 4K, editing with up to 10 references, bounding-box layout control, and a build that runs on 8 GB of VRAM. Free commercial use under $5M revenue.",
-   "medium": "image",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "image",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "bfl.ai",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-5",
-   "title": "FLUX.3 Image Klein in Diffusers (Hugging Face)",
-   "url": "https://huggingface.co/blog/flux-3",
-   "note": "Code to get started, quantized loading, LoRA training scripts, and layout control written right into the prompt.",
-   "medium": "image",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "image",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Hugging Face",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-6",
-   "title": "FLUX 3 Klein day-one ComfyUI templates",
-   "url": "https://comfyui-wiki.com/en/news/2026-10-15-flux-3-image-klein",
-   "note": "Four official workflows (text-to-image and edit, each in base and distilled), plus which file goes in which folder.",
-   "medium": "image",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "image",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "comfyui-wiki.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-7",
-   "title": "Krea 3",
-   "url": "https://www.krea.ai/blog/introducing-krea-3",
-   "note": "Krea's new editing model (Oct 15): most edits come back in under 8 seconds at native 2K, with up to 6 references. On krea.ai, fal, Replicate and more.",
-   "medium": "image",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "image",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "krea.ai",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-8",
-   "title": "MOSS-Image (OpenMOSS)",
-   "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT",
-   "note": "An open 5B image model (weights Oct 16) with layout control and strong text rendering. Apache-2.0, with a ComfyUI plugin.",
-   "medium": "image",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "image",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Hugging Face",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-9",
-   "title": "Adobe Express AI Assistant inside Acrobat",
-   "url": "https://community.adobe.com/announcements-8/create-designs-from-your-documents-with-adobe-express-ai-assistant-in-adobe-acrobat-1651113",
-   "note": "Turns a PDF into a flyer, social post, or newsletter design you can keep editing in Express (Oct 14).",
-   "medium": "image",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "image",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "community.adobe.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-10",
-   "title": "Prompt Mastery: \"I Tested Flux3 Image Klein So You Don't Have To\" (YouTube)",
-   "url": "https://www.youtube.com/watch?v=Ur0wWSkOC2w",
-   "note": "A hands-on stress test of the new model.",
-   "medium": "image",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "image",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-11",
-   "title": "REBEL AI: FLUX 3 Klein GGUFs + low-VRAM workflow (YouTube)",
-   "url": "https://www.youtube.com/watch?v=lBrVaaIag4A",
-   "note": "Quantized builds and a ComfyUI workflow for small GPUs.",
-   "medium": "image",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "image",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-12",
-   "title": "Theoretically Media: ByteDance world model, Krea 3 and more (YouTube)",
-   "url": "https://www.youtube.com/watch?v=VTrc346ea30",
-   "note": "A weekly roundup of creative-AI news.",
-   "medium": "image",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "image",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-13",
-   "title": "Kling 4.0 launches globally (press release)",
-   "url": "https://www.globenewswire.com/news-release/2026/10/16/3382484/0/en/kling-ai-launches-kling-4-0-globally-with-professional-grade-output-stable-motion-and-multimodal-control.html",
-   "note": "Global launch on Oct 16, with Adobe Firefly integration announced.",
-   "medium": "video",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "video",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "globenewswire.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-14",
-   "title": "Kling 4.0 feature breakdown (official blog)",
-   "url": "https://kling.ai/blog/kling40-kling-visual-realism-creative-control-introducing-storytelling",
-   "note": "Targeted video edits, \"creative recreation\" of existing ads, and a new node canvas with an agent.",
-   "medium": "video",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "video",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "kling.ai",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-15",
-   "title": "BACH 1.0 Pro: 12-reference video model",
-   "url": "https://runtimewire.com/article/video-rebirth-bach-1-pro-production-video",
-   "note": "Video Rebirth's production model (Oct 15), built for keeping characters and products consistent across shots.",
-   "medium": "video",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "video",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "runtimewire.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-16",
-   "title": "FastH3-Omni preview (MiniMax H3, accelerated)",
-   "url": "https://nuvalab.ai/blog/fasth3-omni-minimax-h3-reference-audio-video/",
-   "note": "Image and audio references plus first and last keyframes. Open weights are due Oct 20.",
-   "medium": "video",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "video",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "nuvalab.ai",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-17",
-   "title": "Luma Shot Coverage",
-   "url": "https://thegenerated.com/notes/luma-ships-shot-coverage-turn-one-video-take-into-20261016",
-   "note": "Re-shoots one take from new camera angles, running on Seedance (Oct 15–16).",
-   "medium": "video",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "video",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "thegenerated.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-18",
-   "title": "Vidu Q4 preview",
-   "url": "https://cuddler.ai/blog/introducing-vidu-q4",
-   "note": "One image becomes a dialogue shot (Oct 14). Also new as a ComfyUI partner node.",
-   "medium": "video",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "video",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "cuddler.ai",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-19",
-   "title": "ByteDance's unreleased world model re-shoots real film footage",
-   "url": "https://www.mindstudio.ai/blog/bytedance-world-model-reshoot",
-   "note": "A demo that renders new camera paths through a filmed scene. Not released yet.",
-   "medium": "video",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "video",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "mindstudio.ai",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-20",
-   "title": "Higgsfield pushes AI video past 10 minutes (OpenAI case study)",
-   "url": "https://openai.com/index/higgsfield-longer-videos-voice/",
-   "note": "GPT-6 Astra agents keep long videos consistent (Oct 13).",
-   "medium": "video",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "video",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "openai.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-21",
-   "title": "Six AI video tools to try this week + the Veo 3.1 preview shutdown",
-   "url": "https://sloptvnews.com/what-to-try-this-week-ai-video-six-picks-october-16-2026/",
-   "note": "The Veo 3.1 preview models retire Oct 22. Switch pipelines to gemini-omni-1.1-flash.",
-   "medium": "video",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "video",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "sloptvnews.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-22",
-   "title": "Dan Kieft: Seedance 2.5 full guide (YouTube)",
-   "url": "https://www.youtube.com/watch?v=2hJsvDSPWYM",
-   "note": "How he makes realistic AI videos with Seedance 2.5.",
-   "medium": "video",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "video",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-23",
-   "title": "Youri van Hofwegen: Master Kling 4.0 (YouTube)",
-   "url": "https://www.youtube.com/watch?v=PaDFM23THsM",
-   "note": "Workflow tips for the new model.",
-   "medium": "video",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "video",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-24",
-   "title": "Kingy AI: Kling 4.0 tested (YouTube)",
-   "url": "https://www.youtube.com/watch?v=ozoBaxEb7wk",
-   "note": "Hands-on tests of the 30-second generations.",
-   "medium": "video",
-   "type": "showcase",
-   "kind": "showcase",
-   "tags": [
-    "video",
-    "showcase",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-25",
-   "title": "\"Image models are done\": AI characters with Seedance 2.5",
-   "url": "https://x.com/DavidRunsAds/status/2111405833355427843",
-   "note": "Generate characters with a video model so they don't get the \"perfect render\" look.",
-   "medium": "video",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "video",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-26",
-   "title": "GTA 6-style \"gameplay\" made with Seedance 2.5, workflow included",
-   "url": "https://x.com/YourAlphaMom/status/2111230935572049945",
-   "note": "Reference scenes plus a storyboard sketch from ChatGPT, then animated in Seedance 2.5.",
-   "medium": "video",
-   "type": "showcase",
-   "kind": "showcase",
-   "tags": [
-    "video",
-    "showcase",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-27",
-   "title": "CottonByte: MiniMax H3 4K video with less VRAM (YouTube)",
-   "url": "https://www.youtube.com/watch?v=t02ttse7Qhw",
-   "note": "A ComfyUI workflow for higher-resolution H3 on smaller GPUs.",
-   "medium": "video",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "video",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-28",
-   "title": "Claude Code + Blender MCP built a fishing game's assets",
-   "url": "https://x.com/RoundtableSpace/status/2111596870866780627",
-   "note": "One agent session ran both Blender and Unity.",
-   "medium": "3d",
-   "type": "showcase",
-   "kind": "showcase",
-   "tags": [
-    "3d",
-    "showcase",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-29",
-   "title": "Riley Brown: one-prompt video edit in Blender",
-   "url": "https://x.com/rileybrown/status/2111615921563308162",
-   "note": "Opus 5.5 plus a custom skill cut his raw footage inside a Blender scene.",
-   "medium": "3d",
-   "type": "showcase",
-   "kind": "showcase",
-   "tags": [
-    "3d",
-    "showcase",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-30",
-   "title": "Meshy Edit",
-   "url": "https://www.prnewswire.com/news-releases/meshy-debuts-new-in-house-ai-model-with-meshy-edit-letting-users-change-selected-parts-of-a-3d-model-with-one-prompt-302911259.html",
-   "note": "Change just a selected part of a 3D model from one prompt (Oct 16).",
-   "medium": "3d",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "3d",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "prnewswire.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-31",
-   "title": "text-to-cad",
-   "url": "https://github.com/earthtojake/text-to-cad",
-   "note": "An agent plugin that generates STEP, GLB, and STL CAD files. Trending on GitHub this week.",
-   "medium": "3d",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "3d",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "GitHub",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-32",
-   "title": "Scenario for Blender: open-source plugin with a local MCP",
-   "url": "https://artrealmai.com/article/scenario-blender-plugin-open-source-local-mcp",
-   "note": "AI generation inside the Blender viewport that Claude Code and Cursor can drive. Generation is paid through Scenario's API.",
-   "medium": "3d",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "3d",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "artrealmai.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-33",
-   "title": "Muska: Opus 5.5 + Blender MCP builds a mecha (YouTube)",
-   "url": "https://www.youtube.com/watch?v=EyA4NH1fTvA",
-   "note": "A timelapse of the agent modeling and animating.",
-   "medium": "3d",
-   "type": "showcase",
-   "kind": "showcase",
-   "tags": [
-    "3d",
-    "showcase",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-34",
-   "title": "Stefan 3D AI: Gemini 4 in Blender (YouTube)",
-   "url": "https://www.youtube.com/watch?v=2hqcDHnyJaY",
-   "note": "Is Gemini 4 finally good at 3D design?",
-   "medium": "3d",
-   "type": "showcase",
-   "kind": "showcase",
-   "tags": [
-    "3d",
-    "showcase",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-35",
-   "title": "Kamome Ashizawa: photoreal café with Opus 5.5 + Blender MCP (YouTube, Japanese)",
-   "url": "https://www.youtube.com/watch?v=XbgbaOIBUHA",
-   "note": "Step-by-step photoreal interior modeling.",
-   "medium": "3d",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "3d",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-36",
-   "title": "James Tech AI: Tripo P2.0 (YouTube)",
-   "url": "https://www.youtube.com/watch?v=sw4QbmMAajc",
-   "note": "One image to a game-ready quad-mesh character.",
-   "medium": "3d",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "3d",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-37",
-   "title": "Gorka Games: \"Opus 5.5 Just Took Over Blender\" (YouTube, Oct 6)",
-   "url": "https://www.youtube.com/watch?v=F0GadTErfxs",
-   "note": "A survival asset pack built in Blender and auto-imported into Unreal.",
-   "medium": "3d",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "3d",
-    "tutorial",
-    "morning",
-    "2026-10-17",
-    "older"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-38",
-   "title": "Figma \"Build by design\" launches",
-   "url": "https://www.figma.com/blog/build-by-design/",
-   "note": "Code layers in open beta, Specs on the canvas, design-system guidelines for agents, and more MCP partners (Oct 15).",
-   "medium": "code",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "code",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "figma.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-39",
-   "title": "diagram-design",
-   "url": "https://github.com/cathrynlavery/diagram-design",
-   "note": "Gives your agent 44 editorial diagram types as self-contained HTML and SVG.",
-   "medium": "code",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "code",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "GitHub",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-40",
-   "title": "Google DESIGN.md spec + linter",
-   "url": "https://github.com/google-labs-code/design.md",
-   "note": "Your design system as one file agents can read. npx @google/design.md lint DESIGN.md.",
-   "medium": "code",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "code",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "GitHub",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-41",
-   "title": "Anthropic frontend-design skill",
-   "url": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
-   "note": "Anti-\"AI slop\" UI guidance for coding agents.",
-   "medium": "code",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "code",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "GitHub",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-42",
-   "title": "FigCraft",
-   "url": "https://github.com/storytold/figcraft",
-   "note": "A clean-room, open-source Figma-style editor written in Rust. New Oct 9.",
-   "medium": "code",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "code",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "GitHub",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-43",
-   "title": "Doory",
-   "url": "https://github.com/shaongitbd/doory",
-   "note": "An open-source Canva alternative you can self-host. New Oct 10.",
-   "medium": "code",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "code",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "GitHub",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-44",
-   "title": "ArtCraft",
-   "url": "https://github.com/storytold/artcraft",
-   "note": "\"The IDE for artists.\" On GitHub's weekly trending list.",
-   "medium": "code",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "code",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "GitHub",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-45",
-   "title": "Maildun for Mac (Product Hunt)",
-   "url": "https://www.producthunt.com/products/maildun-for-mac",
-   "note": "Design on-brand emails by hand, with AI, or over MCP (Oct 10).",
-   "medium": "code",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "code",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Product Hunt",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-46",
-   "title": "ExcaliClaw (Product Hunt)",
-   "url": "https://www.producthunt.com/products/excaliclaw",
-   "note": "Hand-drawn diagrams your AI agent draws (Oct 12).",
-   "medium": "code",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "code",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Product Hunt",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-47",
-   "title": "PostNitro for Agents (Product Hunt)",
-   "url": "https://www.producthunt.com/products/postnitro",
-   "note": "Lets your agent design social carousels (Oct 13).",
-   "medium": "code",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "code",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Product Hunt",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-48",
-   "title": "Show HN: Opus 5.5 built a Figma clone",
-   "url": "https://news.ycombinator.com/item?id=50060311",
-   "note": "A collaborative vector editor built from a few prompts (Oct 12).",
-   "medium": "code",
-   "type": "showcase",
-   "kind": "showcase",
-   "tags": [
-    "code",
-    "showcase",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Hacker News",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-49",
-   "title": "Tristen O'Brien: Claude Motion walkthrough (YouTube)",
-   "url": "https://www.youtube.com/watch?v=yf2OwchM9nw",
-   "note": "A tour of the new prompt-to-animation tool.",
-   "medium": "code",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "code",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-50",
-   "title": "Dara Denney: $0 landing page with Claude Code (YouTube)",
-   "url": "https://www.youtube.com/watch?v=2HDkD7jSbzE",
-   "note": "A no-code walkthrough.",
-   "medium": "code",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "code",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-51",
-   "title": "02ui: Figma Agents real test (YouTube)",
-   "url": "https://www.youtube.com/watch?v=JNQbxzzkkgM",
-   "note": "Figma's agent tested on a real project.",
-   "medium": "code",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "code",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-52",
-   "title": "What AI design tools let an agent see (launch watch)",
-   "url": "https://design-agent.dev/blog/2026-10-13-ai-design-launch-watch/",
-   "note": "Compares this month's design-agent launches (Oct 13).",
-   "medium": "code",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "code",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "design-agent.dev",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-53",
-   "title": "ElevenLabs Instant Soundtracks",
-   "url": "https://elevenlabs.io/blog/introducing-instant-soundtracks",
-   "note": "Upload a video and get an original score plus sound effects timed to it (Oct 15).",
-   "medium": "sound",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "sound",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "elevenlabs.io",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-54",
-   "title": "Grok Voice 3.0 (xAI)",
-   "url": "https://x.ai/news/grok-voice-3",
-   "note": "A speech-to-speech voice model (Oct 14).",
-   "medium": "sound",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "sound",
-    "news",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "x.ai",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-55",
-   "title": "Fish Audio Drama 3 (Hugging Face)",
-   "url": "https://huggingface.co/fishaudio/drama-3",
-   "note": "Multi-speaker TTS with voice cloning and natural-language direction. Research license. On Product Hunt Oct 16.",
-   "medium": "sound",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "sound",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Hugging Face",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [
-    {
-     "label": "On Product Hunt Oct 16",
-     "url": "https://www.producthunt.com/products/fish-speech"
-    }
-   ],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-56",
-   "title": "Google Flow Music: vibe-code your own VST3/AU plugins (Oct 6)",
-   "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/create-music-production-plugins-google-flow/",
-   "note": "Describe an instrument or effect and export it into your DAW.",
-   "medium": "sound",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "sound",
-    "repo/tool",
-    "morning",
-    "2026-10-17",
-    "older"
-   ],
-   "source": "blog.google",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-57",
-   "title": "Matrix-Game (Skywork), open source",
-   "url": "https://github.com/SkyworkAI/Matrix-Game",
-   "note": "A real-time world model that re-renders game frames, with an agent that edits the rules.",
-   "medium": "games",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "games",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "GitHub",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-58",
-   "title": "Kyle Kukshtel: \"Your Game Is A Harness\"",
-   "url": "https://kylekukshtel.com/ai-harness-engineering-game-development-claude-code",
-   "note": "How to make a game readable to agents: seeded randomness, screenshot diffs, the command pattern (Oct 10).",
-   "medium": "games",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "games",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "kylekukshtel.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-59",
-   "title": "Stefan 3D AI: a game built only with AI in 11 weeks (YouTube)",
-   "url": "https://www.youtube.com/watch?v=6a5VLKPlJRo",
-   "note": "Plus his setup video, \"How I make games with AI\".",
-   "medium": "games",
-   "type": "showcase",
-   "kind": "showcase",
-   "tags": [
-    "games",
-    "showcase",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [
-    {
-     "label": "setup video, \"How I make games with AI\"",
-     "url": "https://www.youtube.com/watch?v=czsNiALTgWQ"
-    }
-   ],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-60",
-   "title": "Build your own game in Unity with Claude Opus 5.5 (full course)",
-   "url": "https://x.com/i/status/2110309991919853638",
-   "note": "An X article course.",
-   "medium": "games",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "games",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-61",
-   "title": "Google Playground: prompt-to-game platform (Oct 7)",
-   "url": "https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/",
-   "note": "Build and share browser games with no code (HN thread).",
-   "medium": "games",
-   "type": "news",
-   "kind": "news",
-   "tags": [
-    "games",
-    "news",
-    "morning",
-    "2026-10-17",
-    "older"
-   ],
-   "source": "blog.google",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [
-    {
-     "label": "HN thread",
-     "url": "https://news.ycombinator.com/item?id=49991823"
-    }
-   ],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-62",
-   "title": "How Roblox evaluates Build, its prompt-to-game tool (Oct 8)",
-   "url": "https://about.roblox.com/newsroom/2026/10/how-roblox-evaluates-build-game-creation",
-   "note": "How Roblox scores AI-built games.",
-   "medium": "games",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "games",
-    "tutorial",
-    "morning",
-    "2026-10-17",
-    "older"
-   ],
-   "source": "about.roblox.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-63",
-   "title": "HyperFrames (HeyGen)",
-   "url": "https://github.com/heygen-com/hyperframes",
-   "note": "Write HTML, render video. Built for agents.",
-   "medium": "mashups",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "mashups",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "GitHub",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-64",
-   "title": "8 open-source repos that turn your AI agent into a creative studio",
-   "url": "https://x.com/RoundtableSpace/status/2111234483139510507",
-   "note": "A heavily bookmarked list.",
-   "medium": "mashups",
-   "type": "buzz",
-   "kind": "buzz",
-   "tags": [
-    "mashups",
-    "buzz",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-65",
-   "title": "11 repos let Claude Code use Photoshop-style apps and more",
-   "url": "https://x.com/RoundtableSpace/status/2110675802077778242",
-   "note": "Open-source apps an agent can operate directly.",
-   "medium": "mashups",
-   "type": "buzz",
-   "kind": "buzz",
-   "tags": [
-    "mashups",
-    "buzz",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-66",
-   "title": "Takes for Mac (Product Hunt)",
-   "url": "https://www.producthunt.com/products/takes-for-mac",
-   "note": "Claude Code edits your talking-head videos (Oct 13).",
-   "medium": "mashups",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "mashups",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Product Hunt",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-67",
-   "title": "OpenScreen 2 (Product Hunt)",
-   "url": "https://www.producthunt.com/products/openscreen-2",
-   "note": "Record a demo and let your agent edit it (Oct 11).",
-   "medium": "mashups",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "mashups",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Product Hunt",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-68",
-   "title": "Specreel (Product Hunt)",
-   "url": "https://www.producthunt.com/products/specreel",
-   "note": "Product demo videos that update themselves (Oct 14).",
-   "medium": "mashups",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "mashups",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Product Hunt",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-69",
-   "title": "Reelbird (Product Hunt)",
-   "url": "https://www.producthunt.com/products/reelbird",
-   "note": "An open-source screen-recording studio for Mac (Oct 15).",
-   "medium": "mashups",
-   "type": "repo/tool",
-   "kind": "repo/tool",
-   "tags": [
-    "mashups",
-    "repo/tool",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Product Hunt",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-70",
-   "title": "pixaroma: 50 free ComfyUI automation workflows (YouTube)",
-   "url": "https://www.youtube.com/watch?v=av-xDOxS1rs",
-   "note": "A big free pack of ComfyUI automation graphs.",
-   "medium": "mashups",
-   "type": "tutorial",
-   "kind": "tutorial",
-   "tags": [
-    "mashups",
-    "tutorial",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-71",
-   "title": "BFL updated FLUX 3 Klein workflows",
-   "url": "https://x.com/bfl_ai/status/2111467996350652684",
-   "note": "Fixed ComfyUI workflows and an updated Hugging Face Space (Oct 17).",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-72",
-   "title": "ComfyUI v0.41.0",
-   "url": "https://artrealmai.com/article/comfyui-v0-41-0-release",
-   "note": "Native FLUX 3 Klein support and new nodes (Oct 15).",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "artrealmai.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-73",
-   "title": "ComfyUI v0.40.0",
-   "url": "https://freedom.tech/posts/2026-10-13-comfyui-0-40-0/",
-   "note": "3D export, camera nodes, and partner nodes for Nano Banana 2.1, Vidu Q4, and Kling try-on (Oct 13).",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "freedom.tech",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-74",
-   "title": "ComfyUI workflow templates releases",
-   "url": "https://github.com/Comfy-Org/workflow_templates/releases",
-   "note": "MOSS-Image templates added (Oct 17).",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "GitHub",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-75",
-   "title": "Runway API adds Kling models",
-   "url": "https://releasebot.io/updates/runwayai",
-   "note": "Kling models callable through Runway (Oct 13).",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "releasebot.io",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-76",
-   "title": "The Wrench Report: Runway vs Luma, plus this week's tool changes",
-   "url": "https://gapoz.com/the-wrench-report-10-14-runway-vs-luma/",
-   "note": "Includes Descript's Oct 12 update and Runway's weekly challenge (closes Oct 19).",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "gapoz.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-77",
-   "title": "Qwen-Image-2.1-Turbo",
-   "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo",
-   "note": "An 8-step fast version of Qwen-Image-2.1 (Oct 9). Research license.",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Hugging Face",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-78",
-   "title": "mcp-for-blender changelog",
-   "url": "https://www.mcp-for-blender.com/docs/reference/changelog",
-   "note": "Multi-angle self-checks, one-call 3D generation, and asset imports.",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17",
-    "older"
-   ],
-   "source": "mcp-for-blender.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-79",
-   "title": "Midjourney Thinking Mode + shared folders",
-   "url": "https://updates.midjourney.com/alpha-changelog-10-7-26/",
-   "note": "Rerun V8.2 jobs \"with thinking\" and share folders (Oct 8).",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17",
-    "older"
-   ],
-   "source": "updates.midjourney.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-80",
-   "title": "Claude Motion + Dashboards launch",
-   "url": "https://www.unite.ai/anthropic-launches-claude-dashboards-and-motion-takes-docs-out-of-beta/",
-   "note": "Prompt-to-animation as editable code.",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17",
-    "older"
-   ],
-   "source": "unite.ai",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-81",
-   "title": "Figma's design agent is generally available",
-   "url": "https://www.theverge.com/tech/1004953/figmas-ai-agent-for-product-design-is-now-generally-available",
-   "note": "Out of beta (Oct 6).",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17",
-    "older"
-   ],
-   "source": "theverge.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-82",
-   "title": "Tripo P2.0 ships native quad meshes",
-   "url": "https://3dprintingindustry.com/news/native-quad-meshes-arrive-in-ai-3d-generation-with-tripo-p2-0-255368/",
-   "note": "Quad-mesh 3D generation is now fully released (early Oct).",
-   "medium": "",
-   "type": "update",
-   "kind": "update",
-   "tags": [
-    "update",
-    "morning",
-    "2026-10-17",
-    "older"
-   ],
-   "source": "3dprintingindustry.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-83",
-   "title": "FLUX 3 Klein backlash on Hacker News",
-   "url": "https://news.ycombinator.com/item?id=50123580",
-   "note": "Testers report anatomy problems in text-to-image and say you need the prompt upsampler.",
-   "medium": "",
-   "type": "buzz",
-   "kind": "buzz",
-   "tags": [
-    "buzz",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Hacker News",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-84",
-   "title": "Hugging Face: \"Initial observations\" on Klein",
-   "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/discussions/20",
-   "note": "The community finding: use at least 6 steps and long, detailed prompts.",
-   "medium": "",
-   "type": "buzz",
-   "kind": "buzz",
-   "tags": [
-    "buzz",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "Hugging Face",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-85",
-   "title": "Reddit roundup on FLUX 3 Klein (AI SHOGUN, Japanese)",
-   "url": "https://ai-shogun.com/flux-3-image-klein-vs-flux-2/",
-   "note": "Sums up the r/StableDiffusion threads from Oct 15–16.",
-   "medium": "",
-   "type": "buzz",
-   "kind": "buzz",
-   "tags": [
-    "buzz",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "ai-shogun.com",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-86",
-   "title": "Seedance 2.5 vs Kling 4.0",
-   "url": "https://x.com/itsPolloAI/status/2111097887656726915",
-   "note": "This week's biggest video-model debate. Also see the YouTube comparison.",
-   "medium": "",
-   "type": "buzz",
-   "kind": "buzz",
-   "tags": [
-    "buzz",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "X",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [
-    {
-     "label": "YouTube comparison",
-     "url": "https://www.youtube.com/watch?v=jSZJyUmqVGI"
-    }
-   ],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
-  {
-   "id": "2026-10-17-morning-87",
-   "title": "Claude Motion vs a human motion designer (YouTube)",
-   "url": "https://www.youtube.com/watch?v=AsvN_feasyY",
-   "note": "Can code-based AI animation stand in for a motion designer?",
-   "medium": "",
-   "type": "buzz",
-   "kind": "buzz",
-   "tags": [
-    "buzz",
-    "morning",
-    "2026-10-17"
-   ],
-   "source": "YouTube",
-   "author": "",
-   "engagement": "",
-   "item_date": "",
-   "links": [],
-   "edition": "editions/2026-10-17/morning.html",
-   "date": "2026-10-17",
-   "slot": "morning"
-  },
   {
    "id": "2026-10-17-noon-1",
    "title": "I Just Wanted to Fish: every model scripted by Claude through Blender MCP",
@@ -2175,6 +55,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2204,6 +85,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2237,6 +119,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2266,6 +149,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2295,6 +179,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2318,6 +203,7 @@ window.DD_DATA={
    "item_date": "Oct 13",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2342,6 +228,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2366,6 +253,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2390,6 +278,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2414,6 +303,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2437,6 +327,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2460,6 +351,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2489,6 +381,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2518,6 +411,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2542,6 +436,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2566,6 +461,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2595,6 +491,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2624,6 +521,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2648,6 +546,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2671,6 +570,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2694,6 +594,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2718,6 +619,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2741,6 +643,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2765,6 +668,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2789,6 +693,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2812,6 +717,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2836,6 +742,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2860,6 +767,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2884,6 +792,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2908,6 +817,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2932,6 +842,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2956,6 +867,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -2980,6 +892,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3004,6 +917,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3028,6 +942,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3052,6 +967,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3076,6 +992,7 @@ window.DD_DATA={
    "item_date": "Oct 8",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3100,6 +1017,7 @@ window.DD_DATA={
    "item_date": "Oct 8",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3123,6 +1041,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3147,6 +1066,7 @@ window.DD_DATA={
    "item_date": "Oct 11",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3171,6 +1091,7 @@ window.DD_DATA={
    "item_date": "Sep 19",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3195,6 +1116,7 @@ window.DD_DATA={
    "item_date": "Oct 4",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3224,6 +1146,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3247,6 +1170,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3270,6 +1194,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3293,6 +1218,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3316,6 +1242,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3340,6 +1267,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3363,6 +1291,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3387,6 +1316,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3410,6 +1340,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3434,6 +1365,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3457,6 +1389,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3481,6 +1414,7 @@ window.DD_DATA={
    "item_date": "May 6",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3504,6 +1438,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3528,6 +1463,7 @@ window.DD_DATA={
    "item_date": "Oct 13",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3557,6 +1493,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3586,6 +1523,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3610,6 +1548,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3634,6 +1573,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3663,6 +1603,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3686,6 +1627,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3710,6 +1652,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3733,6 +1676,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3757,6 +1701,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3786,6 +1731,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3815,6 +1761,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3839,6 +1786,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3863,6 +1811,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3887,6 +1836,7 @@ window.DD_DATA={
    "item_date": "Oct 13",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3911,6 +1861,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3934,6 +1885,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3958,6 +1910,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -3982,6 +1935,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4005,6 +1959,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4029,6 +1984,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4053,6 +2009,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4077,6 +2034,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4101,6 +2059,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4124,6 +2083,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4157,6 +2117,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4180,6 +2141,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4213,6 +2175,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4237,6 +2200,7 @@ window.DD_DATA={
    "item_date": "Oct 13",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4260,6 +2224,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4284,6 +2249,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4308,6 +2274,7 @@ window.DD_DATA={
    "item_date": "Oct 16",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4332,6 +2299,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4355,6 +2323,7 @@ window.DD_DATA={
    "item_date": "Oct 17",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4379,6 +2348,7 @@ window.DD_DATA={
    "item_date": "Oct 15",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4403,6 +2373,7 @@ window.DD_DATA={
    "item_date": "Oct 14",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4436,6 +2407,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4465,6 +2437,7 @@ window.DD_DATA={
     }
    ],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   },
@@ -4489,8 +2462,19 @@ window.DD_DATA={
    "item_date": "Oct 12",
    "links": [],
    "edition": "editions/2026-10-17/noon.html",
+   "edition_kind": "page",
    "date": "2026-10-17",
    "slot": "noon"
   }
+ ],
+ "src_hash": {
+  "html": "a2fd6888e1781236dd83d3dfdaea3889a7ca6008",
+  "md": "43a6f031d7bcbcb01b571b21bb6328dd69a15d20"
+ },
+ "tool_version": 3,
+ "nav": [
+  "editions/2026-10-17/morning.html",
+  null,
+  1
  ]
-};
+}

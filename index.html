@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<a class="skip" href="#results">Skip to results</a>
+<a class="skip" href="#results">Skip to results</a><a class="skip" href="#archive-block">Skip to archive</a>
 <header class="masthead">
   <div class="wrap">
     <div class="topline"><span>Daily Design · The index</span><span class="slotbar" aria-hidden="true"><i style="background:var(--amber)"></i><i style="background:var(--aqua)"></i><i style="background:var(--violet)"></i><i style="background:var(--flame)"></i></span><span class="r" id="updated"></span></div>
@@ -43,14 +43,36 @@
 </div>
 
 <main class="wrap" id="results">
-  <div class="status"><h2 id="status-title">All editions</h2><p id="status-line"></p></div>
-  <section class="block" id="eds-block"><div class="eyebrow" id="eds-eyebrow">Editions</div><div class="grid" id="eds"></div></section>
-  <section class="block" id="items-block"><div class="eyebrow" id="items-eyebrow">Every link</div><div class="items" id="items"></div><div class="more"><button class="btn" id="more" hidden>Show more</button></div></section>
+  <section class="latest" id="latest-block" aria-labelledby="latest-h"><div class="eyebrow" id="latest-h">Latest</div><div class="daygrid big" id="latest"></div></section>
+
+  <section class="reader" id="reader" hidden aria-live="polite" aria-label="Report reader">
+    <div class="rd-bar"><div class="rd-kick" id="rd-kick"></div><div class="rd-acts"><a class="rd-gh" id="rd-gh" href="#" target="_blank" rel="noopener">View on GitHub ↗</a><button class="btn rd-close" id="rd-close" type="button" aria-label="Close report">✕ Close</button></div></div>
+    <article class="rd-body" id="rd-body"></article>
+    <div class="rd-foot"><button class="btn" id="rd-close2" type="button">✕ Close report</button></div>
+  </section>
+
+  <div class="status"><h2 id="status-title">Browse</h2><p id="status-line"></p></div>
+  <div class="progress" id="progress" hidden><span id="progress-bar"></span></div>
+
+  <section class="block" id="eds-block" hidden><div class="eyebrow" id="eds-eyebrow">Matching editions</div><div class="grid" id="eds"></div><div class="more"><button class="btn" id="eds-more" hidden>More editions</button></div></section>
+  <section class="block" id="items-block"><div class="eyebrow" id="items-eyebrow">Links</div><div class="items" id="items"></div><div class="more"><button class="btn" id="more" hidden>Show more</button></div></section>
+
+  <section class="block archive" id="archive-block" aria-labelledby="archive-h">
+    <div class="arch-head">
+      <h2 id="archive-h">Archive</h2>
+      <div class="arch-ctrl">
+        <label class="sel"><span>Jump to</span><select id="jump" aria-label="Jump to month"></select></label>
+        <div class="seg" role="group" aria-label="Sort order"><button type="button" class="segb" data-sort="new" aria-pressed="true">Newest first</button><button type="button" class="segb" data-sort="old" aria-pressed="false">Oldest first</button></div>
+      </div>
+    </div>
+    <p class="arch-note" id="arch-note"></p>
+    <div id="archive"></div>
+    <div class="more"><button class="btn" id="arch-more" hidden>Older months</button></div>
+  </section>
 </main>
 
 <footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources; engagement numbers were read when each edition was compiled and will have changed since. <a href="https://github.com/GreatCreations/daily-design">Source on GitHub</a>.</div></footer>
 <noscript><p style="padding:20px;text-align:center">Search needs JavaScript. You can still browse the <a href="data/index.json">raw index</a>.</p></noscript>
-<script src="data/index.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

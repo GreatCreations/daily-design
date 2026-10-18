@@ -3,11 +3,13 @@
 
 Usage:  python3 /workspace/daily-design/tools/publish.py [--no-push] [--src DIR]
 
-1. Copies every edition found in the source folder (default /workspace/ai-design-daily)
+1. Copies the 7 AM and noon HTML editions found in the source folder (default /workspace/ai-design-daily)
    into editions/<date>/<slot>.html (+ <slot>-header.<ext>, <slot>-thumb.jpg).
-2. Converts Markdown-only reports (6 PM "best", 8 PM "hottest") into styled HTML pages.
-3. Injects the site navigation bar / prev-next / footer into every edition (idempotent).
-4. Rebuilds data/index.json (+ data/index.js) from the edition Markdown sources.
+2. Copies the 6 PM "best" and 8 PM "hottest" reports as plain Markdown to reports/<date>/<slot>.md,
+   with their header image embedded at the top via a relative link.
+3. Injects the site navigation bar / prev-next / footer into the 7 AM and noon HTML editions (idempotent).
+4. Keeps per-edition metadata in data/meta/<date>/<slot>.json and rebuilds data/index.json
+   (editions, calendar, facets, totals) plus monthly item shards data/items/<YYYY-MM>.json.
 5. Runs a public-safety scan, then commits and pushes as GreatCreations.
 """
 import argparse, datetime as dt, html, json, os, re, shutil, subprocess, sys, unicodedata
@@ -16,6 +18,10 @@ from urllib.parse import urlparse, quote
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_SRC = "/workspace/ai-design-daily"
 SITE_URL = "https://greatcreations.github.io/daily-design/"
+REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
+REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
+TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
+NAV_VERSION = 1   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -125,99 +131,6 @@ def source_of(url):
         if host == d or host.endswith("." + d):
             return name
     return host
-
-
-# ---------------------------------------------------------------- Markdown → HTML
-def md_inline(s):
-    codes = []
-    def keep(m):
-        codes.append("<code>%s</code>" % esc(m.group(1)))
-        return "\x00%d\x00" % (len(codes) - 1)
-    s = re.sub(r"`([^`]+)`", keep, s)
-    s = esc(s)
-    s = re.sub(r"!\[([^\]]*)\]\(([^)\s]+)\)", r'<img src="\2" alt="\1" loading="lazy">', s)
-    s = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', s)
-    s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
-    s = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?!\*)", r"<em>\1</em>", s)
-    return re.sub(r"\x00(\d+)\x00", lambda m: codes[int(m.group(1))], s)
-
-
-def md_to_html(md, skip_images=()):
-    out, para, lst, quote_ = [], [], None, []
-    lines = md.replace("\r\n", "\n").split("\n")
-
-    def flush_para():
-        if para:
-            out.append("<p>%s</p>" % md_inline(" ".join(para)))
-            para.clear()
-
-    def flush_list():
-        nonlocal lst
-        if lst:
-            tag, items = lst
-            out.append("<%s>%s</%s>" % (tag, "".join("<li>%s</li>" % i for i in items), tag))
-            lst = None
-
-    def flush_quote():
-        if quote_:
-            out.append("<blockquote>%s</blockquote>" % md_inline(" ".join(quote_)))
-            quote_.clear()
-
-    def flush_all():
-        flush_para(); flush_list(); flush_quote()
-
-    i = 0
-    while i < len(lines):
-        raw = lines[i]; line = raw.rstrip()
-        if not line.strip():
-            flush_para(); flush_quote()
-            # keep list open across a blank line if the next line continues it
-            nxt = lines[i + 1] if i + 1 < len(lines) else ""
-            if lst and not re.match(r"^\s{0,3}([-*+]|\d+[.)])\s", nxt):
-                flush_list()
-            i += 1; continue
-        img = re.match(r"^\s*!\[[^\]]*\]\(([^)\s]+)\)\s*$", line)
-        if img and os.path.basename(img.group(1)) in skip_images:
-            i += 1; continue
-        h = re.match(r"^(#{1,6})\s+(.*)$", line)
-        if h:
-            flush_all()
-            lvl = len(h.group(1))
-            if lvl == 1:
-                i += 1; continue  # page title is rendered in the hero
-            txt = h.group(2).strip()
-            out.append('<h%d id="%s">%s</h%d>' % (lvl, slugify(strip_md(txt)), md_inline(txt), lvl))
-            i += 1; continue
-        if re.match(r"^\s*(-{3,}|\*{3,}|_{3,})\s*$", line):
-            flush_all(); out.append("<hr>"); i += 1; continue
-        if line.lstrip().startswith(">"):
-            flush_para(); flush_list()
-            quote_.append(line.lstrip()[1:].strip()); i += 1; continue
-        if "|" in line and i + 1 < len(lines) and re.match(r"^\s*\|?\s*:?-{3,}", lines[i + 1]):
-            flush_all()
-            cells = lambda l: [c.strip() for c in l.strip().strip("|").split("|")]
-            head = cells(line); i += 2; rows = []
-            while i < len(lines) and "|" in lines[i] and lines[i].strip():
-                rows.append(cells(lines[i])); i += 1
-            out.append('<div class="tbl"><table><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>' % (
-                "".join("<th>%s</th>" % md_inline(c) for c in head),
-                "".join("<tr>%s</tr>" % "".join("<td>%s</td>" % md_inline(c) for c in r) for r in rows)))
-            continue
-        m = re.match(r"^\s{0,3}([-*+]|\d+[.)])\s+(.*)$", line)
-        if m:
-            flush_para(); flush_quote()
-            tag = "ol" if m.group(1)[0].isdigit() else "ul"
-            if not lst or lst[0] != tag:
-                flush_list(); lst = (tag, [])
-            lst[1].append(md_inline(m.group(2)))
-            i += 1; continue
-        if lst and raw[:1] in (" ", "\t"):
-            sep = "<br>" if lst[1][-1].endswith("") and lines[i - 1].endswith("  ") else " "
-            lst[1][-1] += sep + md_inline(line.strip()); i += 1; continue
-        flush_list(); flush_quote()
-        para.append(line.strip()); i += 1
-    flush_all()
-    return "\n".join(out)
 
 
 # ---------------------------------------------------------------- item extraction
@@ -387,32 +300,27 @@ def inject_nav(doc, ed, prev, nxt):
     return doc
 
 
-# ---------------------------------------------------------------- report page template
-def report_page(ed, body_html, header_name):
-    s = SLOTS[ed["slot"]]
-    hdr = '<img class="r-hdr" src="%s" alt="%s header image">' % (esc(header_name), esc(s["name"])) if header_name else ""
-    return """<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>%(title)s · %(date)s · Daily Design</title>
-<meta name="description" content="%(summary)s">
-<link rel="stylesheet" href="../../assets/site.css">
-</head><body class="report" style="--acc:%(color)s">
-<main class="r-wrap">
-<header class="r-hero">%(hdr)s
-<div class="r-kick"><span class="dot"></span>%(time)s · %(name)s · %(nicedate)s</div>
-<h1>%(headline)s</h1>
-%(lead)s
-<div class="r-meta">%(count)d items</div>
-</header>
-<article class="r-body">
-%(body)s
-</article>
-</main>
-</body></html>
-""" % dict(title=esc(s["name"]), date=ed["date"], summary=esc(ed["summary"]), color=s["color"], hdr=hdr,
-           time=esc(s["time"]), name=esc(s["name"]), nicedate=esc(nice_date(ed["date"])),
-           headline=esc(ed["headline"]), lead=('<p class="r-lead">%s</p>' % esc(ed["summary"])) if ed["summary"] else "",
-           count=ed["item_count"], body=body_html)
+# ---------------------------------------------------------------- Markdown reports
+def report_markdown(md, date, slot, header_name):
+    """6 PM / 8 PM reports stay plain Markdown. Put the header image at the top with a
+    relative link (it sits next to the .md in reports/<date>/) and drop any older header ref."""
+    lines = md.replace("\r\n", "\n").split("\n")
+    hdr_re = re.compile(r"^\s*!\[[^\]]*\]\(([^)\s]+)\)\s*$")
+    keep = []
+    for l in lines:
+        m = hdr_re.match(l)
+        if m and ("-header" in os.path.basename(m.group(1)) or os.path.basename(m.group(1)) == header_name):
+            continue
+        keep.append(l)
+    if header_name:
+        img = "![%s header](%s)" % (SLOTS[slot]["name"], header_name)
+        h1 = next((i for i, l in enumerate(keep) if re.match(r"^#\s+", l)), None)
+        if h1 is None:
+            keep[0:0] = [img, ""]
+        else:
+            keep[h1 + 1:h1 + 1] = ["", img]
+    out = re.sub(r"\n{3,}", "\n\n", "\n".join(keep)).strip() + "\n"
+    return scrub(out)
 
 
 # ---------------------------------------------------------------- helpers
@@ -517,128 +425,215 @@ def ensure_credentials():
 
 
 # ---------------------------------------------------------------- main
+# Repo-side state: every published edition has a metadata record in
+#   data/meta/<YYYY-MM-DD>/<slot>.json   (edition fields + its parsed items + source hash + nav)
+# so the index is always rebuilt from what is in the repo, even after the source folder is
+# cleaned out. The browser loads data/index.json (editions, facets, calendar, totals) and
+# fetches items lazily from monthly shards data/items/<YYYY-MM>.json.
+
+def sha(path):
+    import hashlib
+    h = hashlib.sha1()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def write_if_changed(path, text):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    if os.path.exists(path) and open(path, encoding="utf-8").read() == text:
+        return False
+    open(path, "w", encoding="utf-8").write(text)
+    return True
+
+
+def jdump(obj, pretty=False):
+    if pretty:
+        return json.dumps(obj, ensure_ascii=False, indent=1) + "\n"
+    return json.dumps(obj, ensure_ascii=False, separators=(",", ":")) + "\n"
+
+
+def tag_item(it, date, slot, n, href, kind):
+    it.update(id="%s-%s-%d" % (date, slot, n), date=date, slot=slot, edition=href, edition_kind=kind)
+    tags = [t for t in [it["medium"], it["type"], slot, date] if t]
+    if it["kind"] and canon_type(it["kind"]) != it["kind"].lower():
+        tags.append(it["kind"].lower())
+    if it["older"]: tags.append("older")
+    if it["section"] and "try" in it["section"].lower(): tags.append("try today")
+    it["tags"] = tags
+    return {k: it[k] for k in ("id", "title", "url", "note", "medium", "type", "kind", "tags", "source", "author",
+                               "engagement", "item_date", "links", "edition", "edition_kind", "date", "slot")}
+
+
+def process_source(src, date, slot, files, deny_changed=False):
+    """Build one edition from the source folder. Returns its metadata record."""
+    md = open(files["md"], encoding="utf-8").read() if "md" in files else ""
+    is_page = "html" in files and slot not in REPORT_SLOTS
+    if not is_page and not md:
+        log("skipping %s %s: reports need a .md file" % (date, slot)); return None
+    sub = "editions" if is_page else "reports"
+    outdir = os.path.join(REPO, sub, date)
+    os.makedirs(outdir, exist_ok=True)
+    hdr_src = find_header(src, date, slot, md)
+    header_name = thumb_name = None
+    if hdr_src:
+        header_name = "%s-header%s" % (slot, os.path.splitext(hdr_src)[1].lower())
+        copy_if_changed(hdr_src, os.path.join(outdir, header_name))
+        thumb_name = "%s-thumb.jpg" % slot
+        if not make_thumb(hdr_src, os.path.join(outdir, thumb_name)):
+            thumb_name = header_name
+    items = parse_items(md) if md else []
+    if is_page:
+        doc = scrub(open(files["html"], encoding="utf-8").read())
+        headline, summary = html_meta(doc)
+        path = "editions/%s/%s.html" % (date, slot); href = path
+        # store the clean (nav-free) page; nav is injected in the nav pass
+        write_if_changed(os.path.join(REPO, path), doc)
+    else:
+        headline, summary = md_meta(md)
+        path = "reports/%s/%s.md" % (date, slot); href = REPO_BLOB + path
+        if write_if_changed(os.path.join(REPO, path), report_markdown(md, date, slot, header_name)):
+            log("wrote", path, "(%d items)" % len(items))
+    if not headline:
+        headline = md_meta(md)[0] if md else SLOTS[slot]["name"]
+    kind = "page" if is_page else "report"
+    ed = dict(date=date, slot=slot, time=SLOTS[slot]["time"], title=SLOTS[slot]["name"], kind=kind,
+              headline=headline, summary=summary, path=path, url=href,
+              header=("%s/%s/%s" % (sub, date, header_name)) if header_name else None,
+              thumb=("%s/%s/%s" % (sub, date, thumb_name)) if thumb_name else None,
+              item_count=len(items))
+    meds = sorted({it["medium"] for it in items if it["medium"]})
+    ed["tags"] = [slot, date] + meds + (["report"] if kind == "report" else [])
+    recs = [tag_item(it, date, slot, n, href, kind) for n, it in enumerate(items, 1)]
+    return dict(edition=ed, items=recs, src_hash={k: sha(v) for k, v in files.items()},
+                tool_version=TOOL_VERSION, nav=None)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", default=DEFAULT_SRC)
-    ap.add_argument("--no-push", action="store_true", help="build and commit nothing; just regenerate files")
+    ap.add_argument("--no-push", action="store_true", help="rebuild and scan, but do not commit or push")
+    ap.add_argument("--rebuild", action="store_true", help="reprocess every source edition even if unchanged")
     args = ap.parse_args()
     src = args.src
+    meta_dir = os.path.join(REPO, "data", "meta")
 
+    # 1. new or changed source editions -> repo + metadata
     found = {}
-    for fn in sorted(os.listdir(src)):
-        m = FILE_RE.match(fn)
-        if m:
-            found.setdefault((m.group(1), m.group(2)), {})[m.group(3)] = os.path.join(src, fn)
-    if not found:
-        log("no editions found in", src); return 1
-    eds = []
-    for (date, slot), files in found.items():
-        md = open(files["md"], encoding="utf-8").read() if "md" in files else ""
-        eds.append(dict(date=date, slot=slot, files=files, md=md))
-    eds.sort(key=lambda e: (e["date"], SLOTS[e["slot"]]["order"]))
+    if os.path.isdir(src):
+        for fn in sorted(os.listdir(src)):
+            m = FILE_RE.match(fn)
+            if m:
+                found.setdefault((m.group(1), m.group(2)), {})[m.group(3)] = os.path.join(src, fn)
+    for (date, slot), files in sorted(found.items()):
+        mpath = os.path.join(meta_dir, date, slot + ".json")
+        old = json.load(open(mpath, encoding="utf-8")) if os.path.exists(mpath) else None
+        hashes = {k: sha(v) for k, v in files.items()}
+        if old and not args.rebuild and old.get("src_hash") == hashes and old.get("tool_version") == TOOL_VERSION:
+            continue
+        rec = process_source(src, date, slot, files)
+        if not rec:
+            continue
+        if old and old["edition"]["kind"] != rec["edition"]["kind"]:  # slot changed format
+            stale = os.path.join(REPO, old["edition"]["path"])
+            if os.path.exists(stale): os.remove(stale)
+        write_if_changed(mpath, jdump(rec, pretty=True))
+        log("%s %s %s (%d items)" % ("updated" if old else "added", date, slot, rec["edition"]["item_count"]))
 
-    all_items = []
-    for e in eds:
-        date, slot, md = e["date"], e["slot"], e["md"]
-        outdir = os.path.join(REPO, "editions", date)
-        os.makedirs(outdir, exist_ok=True)
-        hdr_src = find_header(src, date, slot, md)
-        header_name = thumb_name = None
-        if hdr_src:
-            header_name = "%s-header%s" % (slot, os.path.splitext(hdr_src)[1].lower())
-            copy_if_changed(hdr_src, os.path.join(outdir, header_name))
-            thumb_name = "%s-thumb.jpg" % slot
-            if not make_thumb(hdr_src, os.path.join(outdir, thumb_name)):
-                thumb_name = header_name
-        items = parse_items(md) if md else []
-        if "html" in e["files"]:
-            doc = scrub(open(e["files"]["html"], encoding="utf-8").read())
-            headline, summary = html_meta(doc)
-        else:
-            doc = None
-            headline, summary = md_meta(md)
-        if not headline:
-            headline = md_meta(md)[0] if md else SLOTS[slot]["name"]
-        e.update(doc=doc, header=header_name, thumb=thumb_name, items=items, headline=headline,
-                 summary=summary, item_count=len(items), path="editions/%s/%s.html" % (date, slot))
-        for n, it in enumerate(items, 1):
-            it.update(id="%s-%s-%d" % (date, slot, n), date=date, slot=slot, edition=e["path"])
-            tags = [t for t in [it["medium"], it["type"], slot, date] if t]
-            if it["kind"] and canon_type(it["kind"]) != it["kind"].lower():
-                tags.append(it["kind"].lower())
-            if it["older"]: tags.append("older")
-            if it["section"] and "try" in it["section"].lower(): tags.append("try today")
-            it["tags"] = tags
-            all_items.append(it)
+    # 2. load every edition record in the repo
+    recs = []
+    if os.path.isdir(meta_dir):
+        for d in sorted(os.listdir(meta_dir)):
+            for f in sorted(os.listdir(os.path.join(meta_dir, d))):
+                if f.endswith(".json"):
+                    recs.append(json.load(open(os.path.join(meta_dir, d, f), encoding="utf-8")))
+    if not recs:
+        log("no editions yet"); return 1
+    recs.sort(key=lambda r: (r["edition"]["date"], SLOTS[r["edition"]["slot"]]["order"]))
 
-    # write pages with prev/next
-    for i, e in enumerate(eds):
-        prev = eds[i - 1] if i > 0 else None
-        nxt = eds[i + 1] if i + 1 < len(eds) else None
-        if e["doc"] is None:
-            md_body = e["md"]
-            q = re.search(r"^>\s*.+(?:\n>.*)*\n?", md_body, re.M)
-            if q and e["summary"] and strip_md(re.sub(r"^>\s?", "", q.group(0), flags=re.M)) == e["summary"]:
-                md_body = md_body[:q.start()] + md_body[q.end():]  # lead already shown in the hero
-            body = md_to_html(md_body, skip_images={os.path.basename(f) for f in os.listdir(src)
-                                                      if f.startswith("%s-%s-header" % (e["date"], e["slot"]))})
-            e["doc"] = scrub(report_page(e, body, e["header"]))
-        out = inject_nav(e["doc"], e, prev, nxt)
+    # 3. nav pass: only pages whose prev/next changed (or that were just rewritten) are touched
+    pages = [r for r in recs if r["edition"]["kind"] == "page"]
+    for i, r in enumerate(pages):
+        e = r["edition"]
+        prev = pages[i - 1]["edition"] if i > 0 else None
+        nxt = pages[i + 1]["edition"] if i + 1 < len(pages) else None
+        nav = [prev and prev["path"], nxt and nxt["path"], NAV_VERSION]
         dest = os.path.join(REPO, e["path"])
-        if not os.path.exists(dest) or open(dest, encoding="utf-8").read() != out:
-            open(dest, "w", encoding="utf-8").write(out)
-            log("wrote", e["path"], "(%d items)" % e["item_count"])
+        doc = open(dest, encoding="utf-8").read()
+        if r.get("nav") == nav and NAV_START in doc:
+            continue
+        if write_if_changed(dest, inject_nav(doc, e, prev, nxt)):
+            log("nav", e["path"])
+        r["nav"] = nav
+        write_if_changed(os.path.join(meta_dir, e["date"], e["slot"] + ".json"), jdump(r, pretty=True))
 
-    editions_json = []
-    for e in reversed(eds):
-        meds = sorted({it["medium"] for it in e["items"] if it["medium"]})
-        editions_json.append(dict(
-            date=e["date"], slot=e["slot"], time=SLOTS[e["slot"]]["time"], title=SLOTS[e["slot"]]["name"],
-            headline=e["headline"], summary=e["summary"], path=e["path"],
-            header=("editions/%s/%s" % (e["date"], e["header"])) if e["header"] else None,
-            thumb=("editions/%s/%s" % (e["date"], e["thumb"])) if e["thumb"] else None,
-            item_count=e["item_count"], tags=[e["slot"], e["date"]] + meds))
-    tagset = sorted({t for it in all_items for t in it["tags"]} | {t for ed in editions_json for t in ed["tags"]})
+    # 4. index.json + monthly item shards
+    editions = [r["edition"] for r in reversed(recs)]  # newest first
+    shards = {}
+    for r in recs:
+        shards.setdefault(r["edition"]["date"][:7], []).extend(r["items"])
+    items_dir = os.path.join(REPO, "data", "items")
+    os.makedirs(items_dir, exist_ok=True)
+    for month, its in shards.items():
+        its.sort(key=lambda it: (it["date"], SLOTS[it["slot"]]["order"]), reverse=True)
+        write_if_changed(os.path.join(items_dir, month + ".json"), jdump({"month": month, "items": its}))
+    for f in os.listdir(items_dir):
+        if f.endswith(".json") and f[:-5] not in shards:
+            os.remove(os.path.join(items_dir, f))
+    days = {}
+    for e in editions:
+        days.setdefault(e["date"], []).append(e["slot"])
+    tagset = sorted({t for r in recs for it in r["items"] for t in it["tags"]} | {t for e in editions for t in e["tags"]})
+    total_items = sum(len(v) for v in shards.values())
     data = dict(
-        site=dict(name="Daily Design", url=SITE_URL),
-        totals=dict(editions=len(editions_json), items=len(all_items), tags=len(tagset),
-                    days=len({e["date"] for e in eds})),
+        version=2, generated=dt.datetime.now().astimezone().isoformat(timespec="seconds"),
+        site=dict(name="Daily Design", url=SITE_URL, repo_blob=REPO_BLOB),
+        totals=dict(editions=len(editions), items=total_items, tags=len(tagset), days=len(days),
+                    months=len(shards), first=min(days), last=max(days)),
         facets=dict(
             medium=[dict(key=k, label=l) for k, l, _ in MEDIUMS],
             type=TYPES,
-            slot=[dict(key=k, label="%s · %s" % (v["time"], v["name"]), color=v["color"]) for k, v in SLOTS.items()],
-            date=sorted({e["date"] for e in eds}, reverse=True)),
-        editions=editions_json,
-        items=[{k: it[k] for k in ("id", "title", "url", "note", "medium", "type", "kind", "tags", "source",
-                                   "author", "engagement", "item_date", "links", "edition", "date", "slot")}
-               for it in all_items])
-    js = json.dumps(data, ensure_ascii=False, indent=1)
-    os.makedirs(os.path.join(REPO, "data"), exist_ok=True)
-    open(os.path.join(REPO, "data", "index.json"), "w", encoding="utf-8").write(js + "\n")
-    open(os.path.join(REPO, "data", "index.js"), "w", encoding="utf-8").write("window.DD_DATA=" + js + ";\n")
+            slot=[dict(key=k, label="%s · %s" % (v["time"], v["name"]), color=v["color"], order=v["order"])
+                  for k, v in SLOTS.items()]),
+        calendar=[dict(date=d, slots=sorted(v, key=lambda s: SLOTS[s]["order"])) for d, v in sorted(days.items(), reverse=True)],
+        shards=[dict(month=m, path="data/items/%s.json" % m, items=len(v),
+                     editions=sum(1 for e in editions if e["date"][:7] == m)) for m, v in sorted(shards.items(), reverse=True)],
+        editions=editions)
+    write_if_changed(os.path.join(REPO, "data", "index.json"), jdump(data))
+    for legacy in ("index.js",):
+        lp = os.path.join(REPO, "data", legacy)
+        if os.path.exists(lp): os.remove(lp)
     open(os.path.join(REPO, ".nojekyll"), "a").close()
-    log("index: %d editions, %d items, %d tags" % (len(editions_json), len(all_items), len(tagset)))
+    log("index: %d editions over %d days, %d items in %d monthly shards, %d tags" % (
+        len(editions), len(days), total_items, len(shards), len(tagset)))
 
-    # safety scan of everything that will be published
-    scan = []
-    for root, dirs, files in os.walk(REPO):
-        dirs[:] = [d for d in dirs if d != ".git"]
-        for f in files:
-            if f.endswith((".html", ".json", ".js", ".css", ".md", ".txt", ".py")):
-                scan.append(os.path.join(root, f))
+    # 5. safety scan of everything new or changed since the last commit
+    changed = None
+    if os.path.isdir(os.path.join(REPO, ".git")):
+        out = git("status", "--porcelain", "-uall", capture=True)
+        changed = [os.path.join(REPO, l[3:].strip().strip('"')) for l in out.splitlines() if l[:2].strip() != "D"]
+        changed = [p for p in changed if os.path.isfile(p)]
+    if changed is None:  # not a git checkout: scan everything
+        changed = []
+        for root, dirs, files in os.walk(REPO):
+            dirs[:] = [d for d in dirs if d != ".git"]
+            changed += [os.path.join(root, f) for f in files]
+    scan = [p for p in changed if p.endswith((".html", ".json", ".js", ".css", ".md", ".txt", ".py"))]
     deny = load_denylist(src)
     tools_dir = os.sep + "tools" + os.sep
-    site_files = [p for p in scan if tools_dir not in p]
-    tool_files = [p for p in scan if tools_dir in p]
-    # the publisher source necessarily contains the generic patterns, so tools/ is
-    # checked against the private denylist only
-    bad = safety_scan(site_files, deny) + safety_scan(tool_files, deny, base=False)
+    vendor_dir = os.sep + "vendor" + os.sep
+    site_files = [p for p in scan if tools_dir not in p and vendor_dir not in p]
+    other = [p for p in scan if tools_dir in p or vendor_dir in p]
+    # the publisher source and vendored libraries contain generic patterns (regexes, licence
+    # e-mails), so they are checked against the private denylist only
+    bad = safety_scan(site_files, deny) + safety_scan(other, deny, base=False)
     if bad:
         log("SAFETY SCAN FAILED; nothing committed:")
         for b in bad[:40]:
             log("  ", b)
         return 2
-    log("safety scan clean (%d files)" % len(scan))
+    log("safety scan clean (%d changed files)" % len(scan))
 
     if args.no_push:
         return 0
@@ -647,7 +642,7 @@ def main():
     if not git("status", "--porcelain", capture=True).strip():
         log("nothing new to publish"); return 0
     stamp = dt.datetime.now().strftime("%Y-%m-%d %H:%M %Z").strip()
-    latest = eds[-1]
+    latest = recs[-1]["edition"]
     git("commit", "-q", "-m", "Publish editions through %s %s (%s)" % (latest["date"], latest["slot"], stamp))
     git("push", "-q", "origin", "HEAD:main")
     log("pushed. Live in ~1 min at", SITE_URL)
