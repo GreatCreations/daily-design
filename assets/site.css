@@ -186,3 +186,6 @@ button.hd{cursor:pointer;color:#0b0b0e}button.hd:hover{outline:2px solid #fff}
 @media (max-width:640px){.day{flex-direction:column;gap:8px}.dl{flex-direction:row;gap:8px;align-items:baseline;padding:0}.dl b{font-size:22px}
 .month>summary{padding:14px}.days{padding:0 12px 10px}.heat .hw,.heat .hg{grid-template-columns:repeat(7,19px)}.hd{width:19px;height:19px}
 .daygrid.big{grid-template-columns:repeat(2,minmax(0,1fr))}.daygrid.big .cell .ch{font-size:16px}.cell .ch{font-size:15px}.dates .dt{width:auto}}
+/* ---------- static links shown before the app loads (and to crawlers) ---------- */
+.static-ed{display:block;padding:16px;border:1px solid var(--line2);border-radius:16px;color:var(--ink);text-decoration:none;font:15px/1.4 var(--sans)}
+.static-ed b{display:block;color:var(--mut);font:700 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}

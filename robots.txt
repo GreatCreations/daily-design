@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://studios.greatcreations.art/daily-design/sitemap.xml

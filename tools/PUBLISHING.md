@@ -36,6 +36,11 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    Medium comes from the nearest heading (image, video, 3D, code/UI, sound, games, mashups). The item's own label is mapped onto tutorial,
    repo/tool, showcase, news, update, buzz, case study, breakdown, workflow or result, and the original label is kept as an extra tag.
    "Stories to read first" (duplicate picks) and "Method & caveats" sections are skipped.
+7b. **SEO** (every run): edition pages get title, description, canonical, Open Graph/Twitter and NewsArticle JSON-LD in their head
+   (between `<!--dd-seo:start-->`/`<!--dd-seo:end-->`; the page's own title/description tags are replaced). Each report gets a static
+   page `reports/<date>/<slot>.html` rendered from its Markdown in plain report styling (with Listen, favicon and a back link).
+   `index.html` gets its SEO block, plain links to the latest day (`<!--dd-latest-->`) and a no-JS list of editions (`<!--dd-static-->`).
+   `sitemap.xml`, `robots.txt` and `feed.xml` are rewritten. The canonical base is `SITE_URL` in `publish.py`.
 8. **Safety scan**: every new or changed file is checked for local paths, tokens, email addresses and private Slack/Drive links, plus the patterns
    in an optional private denylist kept outside the repo (`<src>/.publish-denylist`, one regex per line). If anything matches, nothing is committed.
 9. **Commit and push** to `main` as GreatCreations. The repo's local git credential helper asks `gh auth token -u GreatCreations` for the token,
@@ -48,4 +53,4 @@ Re-running with nothing new prints `nothing new to publish`.
 - 7 AM / noon: write `YYYY-MM-DD-<slot>.html`, `YYYY-MM-DD-<slot>.md` and `YYYY-MM-DD-<slot>-header.png` into the source folder.
 - 6 PM / 8 PM: write `YYYY-MM-DD-best.md` / `YYYY-MM-DD-hottest.md` and the matching `-header.png`.
 - Run `python3 /workspace/daily-design/tools/publish.py`.
-- Pages: `https://greatcreations.github.io/daily-design/editions/<date>/<slot>.html`. Reports: `https://greatcreations.github.io/daily-design/#report=<date>/<slot>`.
+- Pages: `https://studios.greatcreations.art/daily-design/editions/<date>/<slot>.html`. Reports: `https://studios.greatcreations.art/daily-design/#report=<date>/<slot>` (inline reader) or `.../reports/<date>/<slot>.html` (static page).

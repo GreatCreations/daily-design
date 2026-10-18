@@ -17,11 +17,11 @@ from urllib.parse import urlparse, quote
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_SRC = "/workspace/ai-design-daily"
-SITE_URL = "https://greatcreations.github.io/daily-design/"
+SITE_URL = "https://studios.greatcreations.art/daily-design/"  # canonical base
 REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
 REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
 TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
-NAV_VERSION = 3   # bump to force nav re-injection on every HTML edition
+NAV_VERSION = 4   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -306,7 +306,7 @@ def nav_link(ed, cls, label, arrow_first):
     return '<a class="%s" href="%s" title="%s">%s</a>' % (cls, href, esc(tip), label)
 
 
-def inject_nav(doc, ed, prev, nxt):
+def inject_nav(doc, ed, prev, nxt, items=()):
     for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END), (ICON_START, ICON_END)):
         doc = re.sub(re.escape(a) + ".*?" + re.escape(b) + r"\n?", "", doc, flags=re.S)
     s = SLOTS[ed["slot"]]
@@ -318,6 +318,10 @@ def inject_nav(doc, ed, prev, nxt):
     foot = ('%s<div id="dd-foot">%s<a class="dd-home" href="../../index.html">← Back to the Daily Design index</a>%s</div>%s\n') % (
         FOOT_START, nav_link(prev, "dd-prev", "‹ Previous edition", True),
         nav_link(nxt, "dd-next", "Next edition ›", False), FOOT_END)
+    doc = ensure_lang(strip_head_seo(doc))
+    doc = re.sub(r"(<meta[^>]*charset[^>]*>)", lambda m: m.group(1) + "\n" + seo_block(ed, items), doc, count=1, flags=re.I)
+    if SEO_START not in doc:
+        doc = re.sub(r"(<head[^>]*>)", lambda m: m.group(1) + "\n" + seo_block(ed, items), doc, count=1, flags=re.I)
     doc = re.sub(r"</head>", lambda m: icon_links("../../") + "\n" + nav_css(s["color"]) + "\n</head>", doc, count=1, flags=re.I)
     doc = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + "\n" + bar, doc, count=1, flags=re.I)
     idx = doc.lower().rfind("</body>")
@@ -447,6 +451,372 @@ def ensure_credentials():
         subprocess.run(["git", "-C", REPO, "config", "--local", "--unset-all", key], capture_output=True)
         git("config", "--local", key, "")
         git("config", "--local", "--add", key, helper)
+
+
+# ---------------------------------------------------------------- SEO, static report pages, sitemap, feed
+SEO_START, SEO_END = "<!--dd-seo:start-->", "<!--dd-seo:end-->"
+LATEST_START, LATEST_END = "<!--dd-latest:start-->", "<!--dd-latest:end-->"
+STATIC_START, STATIC_END = "<!--dd-static:start-->", "<!--dd-static:end-->"
+SITE_NAME = "Daily Design"
+SITE_DESC = ("Four editions a day on how AI is changing creative work: image, video, 3D, code/UI, sound, games "
+             "and mashups. Every edition and every link, searchable and tagged.")
+SLOT_HOUR = {"morning": 7, "noon": 12, "best": 18, "hottest": 20}
+MEDIUM_LABEL = {k: l for k, l, _ in MEDIUMS}
+
+
+def abs_url(path):
+    return SITE_URL + path.lstrip("/")
+
+
+def clip(s, n):
+    s = re.sub(r"\s+", " ", s or "").strip()
+    if len(s) <= n:
+        return s
+    cut = s[:n - 1].rsplit(" ", 1)[0].rstrip(",;:·-—")
+    return cut + "…"
+
+
+def published_iso(ed):
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.datetime(*map(int, ed["date"].split("-")), SLOT_HOUR[ed["slot"]],
+                           tzinfo=ZoneInfo("America/Vancouver")).isoformat()
+    except Exception:
+        return ed["date"]
+
+
+def public_path(ed):
+    """The crawlable URL path of an edition: the HTML page, or the static page of a report."""
+    return ed["path"] if ed["kind"] == "page" else "reports/%s/%s.html" % (ed["date"], ed["slot"])
+
+
+def report_story(md):
+    """First H2 of a report (its real headline), skipping section labels like 'Pick of the day'."""
+    for m in re.finditer(r"^##\s+(.+)$", md, re.M):
+        t = strip_md(m.group(1))
+        t = re.sub(r"^[^\w\"'“]+", "", t).strip()
+        if t and not re.match(r"(?i)(pick of the day|the ranked picks|blew up today|hottest this|method)", t):
+            return t
+    return ""
+
+
+def seo_fields(ed, items=(), story=""):
+    s = SLOTS[ed["slot"]]
+    day = dt.date.fromisoformat(ed["date"]).strftime("%b %-d, %Y")
+    if not story and ed["kind"] == "report":
+        mdp = os.path.join(REPO, ed["path"])
+        story = report_story(open(mdp, encoding="utf-8").read()) if os.path.exists(mdp) else ""
+    lead = story or (ed["headline"] if ed["kind"] == "page" else "")
+    title = ("%s · %s, %s · %s" % (lead, s["name"], day, SITE_NAME)) if lead else \
+            ("%s · %s · %s" % (s["name"], day, SITE_NAME))
+    desc = ed.get("summary") or ""
+    if not desc:
+        desc = "%s %s for %s: %d linked items on how AI is changing creative work." % (
+            s["time"], s["name"], day, ed.get("item_count", 0))
+    meds = [MEDIUM_LABEL[t] for t in ed.get("tags", []) if t in MEDIUM_LABEL]
+    types = []
+    for it in items:
+        if it.get("type") and it["type"] not in types:
+            types.append(it["type"])
+    keywords = ["AI design", "generative AI", s["name"]] + meds + types[:6]
+    return dict(title=title, desc=clip(desc, 158), headline=clip(lead or ed["headline"], 110),
+                keywords=keywords, url=abs_url(public_path(ed)),
+                image=abs_url(ed["header"]) if ed.get("header") else abs_url("assets/favicon-512.png"),
+                published=published_iso(ed), section=s["name"])
+
+
+def ld_json(obj):
+    return ('<script type="application/ld+json">%s</script>' %
+            json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"))
+
+
+def publisher_ld():
+    return {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL,
+            "logo": {"@type": "ImageObject", "url": abs_url("assets/favicon-512.png"), "width": 512, "height": 512}}
+
+
+def seo_block(ed, items=(), story=""):
+    f = seo_fields(ed, items, story)
+    art = {"@context": "https://schema.org", "@type": "NewsArticle", "headline": f["headline"],
+           "description": f["desc"], "datePublished": f["published"], "dateModified": f["published"],
+           "image": [f["image"]], "url": f["url"], "mainEntityOfPage": {"@type": "WebPage", "@id": f["url"]},
+           "author": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL},
+           "publisher": publisher_ld(), "articleSection": f["section"], "keywords": ", ".join(f["keywords"]),
+           "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": SITE_URL}}
+    tags = [
+        '<title>%s</title>' % esc(f["title"]),
+        '<meta name="description" content="%s">' % esc(f["desc"]),
+        '<meta name="keywords" content="%s">' % esc(", ".join(f["keywords"])),
+        '<link rel="canonical" href="%s">' % esc(f["url"]),
+        '<meta name="robots" content="index,follow,max-image-preview:large">',
+        '<meta property="og:type" content="article">',
+        '<meta property="og:site_name" content="%s">' % SITE_NAME,
+        '<meta property="og:title" content="%s">' % esc(f["title"]),
+        '<meta property="og:description" content="%s">' % esc(f["desc"]),
+        '<meta property="og:url" content="%s">' % esc(f["url"]),
+        '<meta property="og:image" content="%s">' % esc(f["image"]),
+        '<meta property="og:image:alt" content="%s header chart">' % esc(f["section"]),
+        '<meta property="og:locale" content="en_US">',
+        '<meta property="article:published_time" content="%s">' % f["published"],
+        '<meta property="article:section" content="%s">' % esc(f["section"]),
+        '<meta name="twitter:card" content="summary_large_image">',
+        '<meta name="twitter:title" content="%s">' % esc(f["title"]),
+        '<meta name="twitter:description" content="%s">' % esc(f["desc"]),
+        '<meta name="twitter:image" content="%s">' % esc(f["image"]),
+        '<link rel="alternate" type="application/atom+xml" title="%s feed" href="%s">' % (SITE_NAME, abs_url("feed.xml")),
+        ld_json(art)]
+    return SEO_START + "".join(tags) + SEO_END
+
+
+def strip_head_seo(doc):
+    """Remove the page's own title/description/social/canonical tags so ours are the only ones."""
+    doc = re.sub(re.escape(SEO_START) + ".*?" + re.escape(SEO_END) + r"\n?", "", doc, flags=re.S)
+    doc = re.sub(r"<title[^>]*>.*?</title>\s*", "", doc, flags=re.S | re.I)
+    doc = re.sub(r"<meta\s+(?:name|property)=\"(?:description|keywords|robots|og:[^\"]*|twitter:[^\"]*|article:[^\"]*)\"[^>]*>\s*",
+                 "", doc, flags=re.I)
+    doc = re.sub(r"<link\s+rel=\"canonical\"[^>]*>\s*", "", doc, flags=re.I)
+    return doc
+
+
+def ensure_lang(doc):
+    if re.search(r"<html\b[^>]*\blang=", doc, re.I):
+        return doc
+    return re.sub(r"<html\b", '<html lang="en"', doc, count=1, flags=re.I)
+
+
+# ---- a small Markdown renderer for the static report pages (reports use plain, simple Markdown)
+def md_inline(t):
+    codes = []
+    t = re.sub(r"`([^`]+)`", lambda m: codes.append(m.group(1)) or "\x00%d\x00" % (len(codes) - 1), t)
+    t = esc(t).replace("&#x27;", "'")
+    t = re.sub(r"!\[([^\]]*)\]\(([^)\s]+)\)", lambda m: '<img src="%s" alt="%s" loading="lazy">' % (m.group(2), m.group(1)), t)
+
+    def link(m):
+        url = m.group(2)
+        if re.match(r"(?i)\s*(javascript|vbscript|data):", html.unescape(url)):
+            return m.group(1)
+        ext = ' rel="noopener"' if re.match(r"https?:", url) else ""
+        return '<a href="%s"%s>%s</a>' % (url, ext, m.group(1))
+    t = re.sub(r"\[([^\]]+)\]\(([^)\s]+(?:\([^)\s]*\)[^)\s]*)*)\)", link, t)
+    t = re.sub(r"\*\*(.+?)\*\*|__(.+?)__", lambda m: "<strong>%s</strong>" % (m.group(1) or m.group(2)), t)
+    t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?!\w)", r"<em>\1</em>", t)
+    t = re.sub(r"(?<![\w_])_(?!\s)(.+?)(?<!\s)_(?!\w)", r"<em>\1</em>", t)
+    return re.sub(r"\x00(\d+)\x00", lambda m: "<code>%s</code>" % esc(codes[int(m.group(1))]), t)
+
+
+def md_to_html(md):
+    lines = md.replace("\r\n", "\n").split("\n")
+    out, para, i = [], [], 0
+
+    def flush():
+        if para:
+            out.append("<p>%s</p>" % md_inline(" ".join(x.strip() for x in para)))
+            para.clear()
+    while i < len(lines):
+        l = lines[i]
+        if not l.strip():
+            flush(); i += 1; continue
+        m = re.match(r"^(#{1,6})\s+(.*?)\s*#*\s*$", l)
+        if m:
+            flush(); n = len(m.group(1))
+            out.append("<h%d>%s</h%d>" % (n, md_inline(m.group(2)), n)); i += 1; continue
+        if re.match(r"^\s{0,3}([-*_])(\s*\1){2,}\s*$", l):
+            flush(); out.append("<hr>"); i += 1; continue
+        if l.lstrip().startswith(">"):
+            flush(); q = []
+            while i < len(lines) and lines[i].lstrip().startswith(">"):
+                q.append(re.sub(r"^\s*>\s?", "", lines[i])); i += 1
+            out.append("<blockquote>%s</blockquote>" % md_to_html("\n".join(q))); continue
+        if l.lstrip().startswith("|") and i + 1 < len(lines) and re.match(r"^\s*\|?[\s:|-]+\|[\s:|-]*$", lines[i + 1]):
+            flush(); rows = []
+            while i < len(lines) and lines[i].lstrip().startswith("|"):
+                rows.append([c.strip() for c in lines[i].strip().strip("|").split("|")]); i += 1
+            head, body = rows[0], rows[2:]
+            out.append("<table><thead><tr>%s</tr></thead><tbody>%s</tbody></table>" % (
+                "".join("<th>%s</th>" % md_inline(c) for c in head),
+                "".join("<tr>%s</tr>" % "".join("<td>%s</td>" % md_inline(c) for c in r) for r in body)))
+            continue
+        m = re.match(r"^(\s*)([-*+]|\d+[.)])\s+(.*)$", l)
+        if m:
+            flush(); ordered = m.group(2)[0].isdigit(); items = []
+            while i < len(lines):
+                mm = re.match(r"^(\s*)([-*+]|\d+[.)])\s+(.*)$", lines[i])
+                if mm and len(mm.group(1)) <= len(m.group(1)) + 1:
+                    items.append(mm.group(3)); i += 1
+                elif lines[i].strip() and (lines[i].startswith((" ", "\t")) or mm):
+                    items[-1] += " " + lines[i].strip().lstrip("-*+ ").strip(); i += 1
+                else:
+                    break
+            tag = "ol" if ordered else "ul"
+            out.append("<%s>%s</%s>" % (tag, "".join("<li>%s</li>" % md_inline(x) for x in items), tag))
+            continue
+        para.append(l); i += 1
+    flush()
+    return "\n".join(out)
+
+
+REPORT_CSS = """<style>
+.rp{max-width:980px;margin:0 auto;padding:18px 14px 40px}
+.rp-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:0 0 16px}
+.rp-top a{color:var(--mut);font:600 13px var(--sans);text-decoration:none}.rp-top a:hover{color:#fff}
+.rp-top a.btn{color:var(--ink)}
+.rp .reader{margin:0}
+</style>"""
+
+
+def report_page(ed, md, items):
+    s = SLOTS[ed["slot"]]
+    body = md_to_html(md)
+    gh = REPO_BLOB + ed["path"]
+    key = "%s/%s" % (ed["date"], ed["slot"])
+    return ("""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09090c">
+%s
+%s
+<link rel="stylesheet" href="../../assets/site.css">
+%s
+</head>
+<body>
+<main class="rp">
+<nav class="rp-top" aria-label="Daily Design"><a class="btn" href="../../index.html">← Daily Design index</a><a href="../../#report=%s">Open in the index reader</a></nav>
+<section class="reader" style="--c:%s" aria-label="Report">
+<div class="rd-bar"><div class="rd-kick"><span class="dot"></span>%s · %s · %s <b>Report</b></div><div class="rd-acts">%s<a class="rd-gh" href="%s" rel="noopener">View on GitHub ↗</a></div></div>
+<article class="rd-body" data-tts-root>
+%s
+</article>
+<div class="rd-foot"><a class="btn" href="../../index.html">← Back to the Daily Design index</a></div>
+</section>
+</main>
+<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources; engagement numbers were read when each edition was compiled and will have changed since.</div></footer>
+<script src="../../assets/tts.js" defer></script>
+</body>
+</html>
+""") % (seo_block(ed, items, report_story(md)), icon_links("../../"), REPORT_CSS, key, s["color"],
+        esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body)
+
+
+REPORT_TTS = ('<button class="btn rd-tts" id="dd-tts-play" type="button" hidden aria-label="Listen: read this page aloud" aria-pressed="false">'
+              '<span class="tts-i" aria-hidden="true">▶</span> <span class="tts-l">Listen</span></button>'
+              '<button class="btn rd-tts" id="dd-tts-stop" type="button" hidden aria-label="Stop reading"><span aria-hidden="true">■</span> Stop</button>')
+
+
+def build_report_pages(recs):
+    pages = []
+    for r in recs:
+        e = r["edition"]
+        if e["kind"] != "report":
+            continue
+        mdp = os.path.join(REPO, e["path"])
+        if not os.path.exists(mdp):
+            continue
+        dest = os.path.join(REPO, public_path(e))
+        if write_if_changed(dest, report_page(e, open(mdp, encoding="utf-8").read(), r["items"])):
+            log("report page", public_path(e))
+        pages.append(public_path(e))
+    return pages
+
+
+def build_index_seo(editions):
+    """Head tags, JSON-LD and crawlable static links in index.html (between markers)."""
+    p = os.path.join(REPO, "index.html")
+    doc = open(p, encoding="utf-8").read()
+    latest = editions[0] if editions else None
+    img = abs_url(latest["header"]) if latest and latest.get("header") else abs_url("assets/favicon-512.png")
+    parts = []
+    for n, e in enumerate(editions[:30], 1):
+        f = seo_fields(e)
+        parts.append({"@type": "ListItem", "position": n, "url": f["url"], "name": f["title"].rsplit(" · ", 1)[0]})
+    ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": SITE_URL,
+           "description": SITE_DESC, "inLanguage": "en", "publisher": publisher_ld(),
+           "potentialAction": {"@type": "SearchAction", "target": SITE_URL + "#q={search_term_string}",
+                               "query-input": "required name=search_term_string"}},
+          {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Daily Design: the index",
+           "url": SITE_URL, "description": SITE_DESC, "inLanguage": "en",
+           "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": SITE_URL},
+           "dateModified": published_iso(latest) if latest else None,
+           "mainEntity": {"@type": "ItemList", "numberOfItems": len(editions), "itemListElement": parts}}]
+    title = "Daily Design · AI design research digests, searchable"
+    head = SEO_START + "".join([
+        '<title>%s</title>' % title,
+        '<meta name="description" content="%s">' % esc(SITE_DESC),
+        '<link rel="canonical" href="%s">' % SITE_URL,
+        '<meta name="robots" content="index,follow,max-image-preview:large">',
+        '<meta property="og:type" content="website">',
+        '<meta property="og:site_name" content="%s">' % SITE_NAME,
+        '<meta property="og:title" content="%s">' % esc(title),
+        '<meta property="og:description" content="%s">' % esc(SITE_DESC),
+        '<meta property="og:url" content="%s">' % SITE_URL,
+        '<meta property="og:image" content="%s">' % esc(img),
+        '<meta property="og:locale" content="en_US">',
+        '<meta name="twitter:card" content="summary_large_image">',
+        '<meta name="twitter:title" content="%s">' % esc(title),
+        '<meta name="twitter:description" content="%s">' % esc(SITE_DESC),
+        '<meta name="twitter:image" content="%s">' % esc(img),
+        '<link rel="alternate" type="application/atom+xml" title="Daily Design feed" href="%s">' % abs_url("feed.xml"),
+        "".join(ld_json(x) for x in ld)]) + SEO_END
+    doc = strip_head_seo(doc)
+    doc = re.sub(r"(<meta name=\"viewport\"[^>]*>)", lambda m: m.group(1) + "\n" + head, doc, count=1)
+    # latest day: plain links inside #latest (the app replaces them once it loads)
+    day = latest["date"] if latest else ""
+    cards = "".join('<a class="static-ed" href="%s"><b>%s · %s</b> %s</a>' % (
+        esc(public_path(e)), esc(e["time"]), esc(e["title"]), esc(seo_fields(e)["headline"]))
+        for e in editions if e["date"] == day)
+    doc = re.sub(re.escape(LATEST_START) + ".*?" + re.escape(LATEST_END), lambda m: LATEST_START + cards + LATEST_END, doc, flags=re.S)
+    if LATEST_START not in doc:
+        doc = doc.replace('<div class="daygrid big" id="latest">', '<div class="daygrid big" id="latest">' + LATEST_START + cards + LATEST_END, 1)
+    lis = "".join('<li><a href="%s">%s</a></li>' % (esc(public_path(e)), esc(seo_fields(e)["title"].rsplit(" · ", 1)[0]))
+                  for e in editions[:200])
+    static = (STATIC_START + '<noscript><section class="wrap block"><h2>All editions</h2><ul>%s</ul>'
+              '<p><a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">Sitemap</a></p></section></noscript>' + STATIC_END) % lis
+    doc = re.sub(re.escape(STATIC_START) + ".*?" + re.escape(STATIC_END), lambda m: static, doc, flags=re.S)
+    if STATIC_START not in doc:
+        doc = doc.replace('<footer class="site">', static + "\n" + '<footer class="site">', 1)
+    if write_if_changed(p, doc):
+        log("index.html SEO updated")
+
+
+def xml_esc(s):
+    return html.escape(s or "", quote=True)
+
+
+def build_sitemap_feed(editions):
+    last = max(e["date"] for e in editions)
+    urls = [(SITE_URL, last, "daily", "1.0")]
+    urls += [(abs_url(public_path(e)), e["date"], "monthly", "0.8") for e in editions]
+    sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
+    by_url = {abs_url(public_path(e)): e for e in editions}
+    for u, lm, cf, pr in urls:
+        e = by_url.get(u)
+        img = ("<image:image><image:loc>%s</image:loc></image:image>" % xml_esc(abs_url(e["header"]))) if e and e.get("header") else ""
+        sm.append("<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority>%s</url>" % (
+            xml_esc(u), lm, cf, pr, img))
+    sm.append("</urlset>")
+    write_if_changed(os.path.join(REPO, "sitemap.xml"), "\n".join(sm) + "\n")
+    write_if_changed(os.path.join(REPO, "robots.txt"),
+                     "User-agent: *\nAllow: /\n\nSitemap: %s\n" % abs_url("sitemap.xml"))
+    entries = []
+    for e in editions[:60]:
+        f = seo_fields(e)
+        entries.append("""<entry><title>%s</title><link rel="alternate" type="text/html" href="%s"/><id>%s</id>
+<published>%s</published><updated>%s</updated><summary>%s</summary><category term="%s"/></entry>""" % (
+            xml_esc(f["title"].rsplit(" · ", 1)[0]), xml_esc(f["url"]), xml_esc(f["url"]),
+            f["published"], f["published"], xml_esc(f["desc"]), xml_esc(f["section"])))
+    feed = """<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Daily Design</title><subtitle>%s</subtitle>
+<link rel="self" type="application/atom+xml" href="%s"/><link rel="alternate" type="text/html" href="%s"/>
+<id>%s</id><updated>%s</updated><author><name>Daily Design</name></author>
+<icon>%s</icon>
+%s
+</feed>
+""" % (xml_esc(SITE_DESC), abs_url("feed.xml"), SITE_URL, SITE_URL, published_iso(editions[0]),
+       abs_url("assets/favicon-192.png"), "\n".join(entries))
+    write_if_changed(os.path.join(REPO, "feed.xml"), feed)
 
 
 # ---------------------------------------------------------------- main
@@ -588,10 +958,13 @@ def main():
         doc = open(dest, encoding="utf-8").read()
         if r.get("nav") == nav and NAV_START in doc:
             continue
-        if write_if_changed(dest, inject_nav(doc, e, prev, nxt)):
+        if write_if_changed(dest, inject_nav(doc, e, prev, nxt, r["items"])):
             log("nav", e["path"])
         r["nav"] = nav
         write_if_changed(os.path.join(meta_dir, e["date"], e["slot"] + ".json"), jdump(r, pretty=True))
+
+    # 3b. crawlable static pages for the 6 PM / 8 PM reports (plain report styling)
+    build_report_pages(recs)
 
     # 4. index.json + monthly item shards
     editions = [r["edition"] for r in reversed(recs)]  # newest first
@@ -626,6 +999,9 @@ def main():
                      editions=sum(1 for e in editions if e["date"][:7] == m)) for m, v in sorted(shards.items(), reverse=True)],
         editions=editions)
     write_if_changed(os.path.join(REPO, "data", "index.json"), jdump(data))
+    # 4b. SEO: index head/static links, sitemap.xml, robots.txt, feed.xml
+    build_index_seo(editions)
+    build_sitemap_feed(editions)
     for legacy in ("index.js",):
         lp = os.path.join(REPO, "data", legacy)
         if os.path.exists(lp): os.remove(lp)
@@ -644,7 +1020,7 @@ def main():
         for root, dirs, files in os.walk(REPO):
             dirs[:] = [d for d in dirs if d != ".git"]
             changed += [os.path.join(root, f) for f in files]
-    scan = [p for p in changed if p.endswith((".html", ".json", ".js", ".css", ".md", ".txt", ".py"))]
+    scan = [p for p in changed if p.endswith((".html", ".json", ".js", ".css", ".md", ".txt", ".py", ".xml", ".webmanifest"))]
     deny = load_denylist(src)
     tools_dir = os.sep + "tools" + os.sep
     vendor_dir = os.sep + "vendor" + os.sep

@@ -119,6 +119,6 @@ if(OK)window.addEventListener("pagehide",api.stop);
 
 /* edition pages: auto-wire the button in the Daily Design nav bar */
 function auto(){var p=document.getElementById("dd-tts-play"),s=document.getElementById("dd-tts-stop");
-  if(p&&s)api.attach(p,s,function(){return document.body})}
+  if(p&&s)api.attach(p,s,function(){return document.querySelector("[data-tts-root]")||document.body})}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",auto);else auto();
 })();

@@ -1,6 +1,6 @@
 # Daily Design
 
-**Live site: https://greatcreations.github.io/daily-design/**
+**Live site: https://studios.greatcreations.art/daily-design/**
 
 A public, searchable archive of daily AI design research digests: how people are using AI across image, video, 3D, code/UI, sound, games and mashups.
 
@@ -15,7 +15,7 @@ There are up to four editions a day:
 
 ## The index
 
-The [home page](https://greatcreations.github.io/daily-design/) covers every edition and **every individual link** in them:
+The [home page](https://studios.greatcreations.art/daily-design/) covers every edition and **every individual link** in them:
 
 - **Latest** at the top always shows the most recent day's four slots, and marks any slot that hasn't been published yet.
 - **Search** runs instantly across edition headlines and summaries, plus every item's title, note, source, medium and tags.
@@ -26,6 +26,10 @@ The [home page](https://greatcreations.github.io/daily-design/) covers every edi
 The 7 AM and noon pages have a fixed **Back to index** bar, previous/next links and a footer link back to the index.
 
 **Listen (read aloud):** every report in the reader and every 7 AM / noon page has a **▶ Listen** button (Pause/Resume and Stop while reading). It uses the browser's built-in speech (Web Speech API), so there is no outside service, key or tracking. It reads the headline and article text in short pieces, skipping navigation, buttons, charts, images and code, and says link text rather than URLs. It prefers a well-known female English voice when the device has one (for example Google UK English Female, Microsoft Aria/Jenny/Sonia Natural, Samantha, Karen, Moira, Zira) and otherwise uses the first English voice. Voices and quality depend on the device and browser; the button is hidden where speech isn't supported.
+
+## Search engines and sharing
+
+Every page carries a unique title and description, a canonical URL (base `https://studios.greatcreations.art/daily-design/`), Open Graph and Twitter card tags with the edition's header image, and NewsArticle structured data (JSON-LD). Because the index opens reports through a URL hash, each 6 PM / 8 PM report also gets a plain, lightweight static page (`reports/<date>/<slot>.html`, same styling as the reader) that search engines can index; canonical links and the sitemap point there. The index has WebSite + CollectionPage structured data and plain links to the latest editions in the HTML. `sitemap.xml`, `robots.txt` and an Atom feed (`feed.xml`) are regenerated on every publish. Note: crawlers only read `robots.txt` at a domain root, so submit `sitemap.xml` in Google Search Console.
 
 ## Layout
 
@@ -40,6 +44,8 @@ data/items/<YYYY-MM>.json          every item for that month (loaded on demand)
 data/meta/<YYYY-MM-DD>/<slot>.json per-edition record used to rebuild the index
 editions/<YYYY-MM-DD>/<slot>.html  7 AM / noon pages, with <slot>-header.png and <slot>-thumb.jpg
 reports/<YYYY-MM-DD>/<slot>.md     6 PM / 8 PM reports, with <slot>-header.png and <slot>-thumb.jpg
+reports/<YYYY-MM-DD>/<slot>.html   plain static copy of each report (for search engines and sharing)
+sitemap.xml, robots.txt, feed.xml  generated on every publish
 tools/publish.py                   the publisher (see tools/PUBLISHING.md)
 ```
 
