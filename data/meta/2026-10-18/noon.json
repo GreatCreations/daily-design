@@ -1,0 +1,1875 @@
+{
+ "edition": {
+  "date": "2026-10-18",
+  "slot": "noon",
+  "time": "Noon",
+  "title": "AI Design in Use",
+  "kind": "page",
+  "headline": "A car that didn't exist, a house no one opened in Blender, and 102 clips that all passed QA",
+  "summary": "Standard Chartered is an official F1 partner with no F1 team, so the 2026 car in its new film 'Move Ahead' never existed. Co-director Marcello Costa drew it by hand, had AI turn the sketch into 3D and extrapolate the angles, and placed every decal with the agency. He calls single-detail edits 'like 50-50' and says full AI isn't automatically cheaper. That's this edition's pattern: the work that holds up starts with a human draft, locks references, and checks the output, whether it's a bank ad, an archviz set or a dragon boss.",
+  "path": "editions/2026-10-18/noon.html",
+  "url": "editions/2026-10-18/noon.html",
+  "header": "editions/2026-10-18/noon-header.png",
+  "thumb": "editions/2026-10-18/noon-thumb.jpg",
+  "item_count": 71,
+  "tags": [
+   "noon",
+   "2026-10-18",
+   "3d",
+   "code",
+   "games",
+   "image",
+   "mashups",
+   "sound",
+   "video"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-18-noon-1",
+   "title": "MOSS-Image locally: 9 images at about 15 s each, including a magazine cover with a real masthead",
+   "url": "https://x.com/ivanfioravanti/status/2111786227640713651",
+   "note": "What stood out to the tester wasn't beauty but prompt-following, which matters for layout and type work like covers. Tools: MOSS-Image (5B open weights)",
+   "medium": "image",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "image",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@ivanfioravanti",
+   "engagement": "♥ 65 · 3,743 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-2",
+   "title": "Tracing MOSS-Image's vertical banding to layers 37–41, then fixing it with a LoRA",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1x8jn4o/vertical_banding_in_mossimage_experiments/",
+   "note": "He compared SFT and Base block by block and found most of the banding in layers 37–41. The fix reverts just those layers to Base, with an optional patch for 32–36. Tools: MOSS-Image SFT and Base, layer-swap LoRA",
+   "medium": "image",
+   "type": "breakdown",
+   "kind": "Breakdown",
+   "tags": [
+    "image",
+    "breakdown",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/StableDiffusion",
+   "author": "u/MatlowAI",
+   "engagement": "",
+   "item_date": "Oct 17",
+   "links": [
+    {
+     "label": "DeBand LoRA",
+     "url": "https://huggingface.co/MATLOWAI/MOSS-Image-SFT-DeBand"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-3",
+   "title": "MOSS vs Krea 2 on complex poses, same prompt and seed: 'generally worse than Krea'",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1x8wc5i/moss_and_krea2_with_complex_poses/",
+   "note": "A counterweight to the week's MOSS hype: better on some seeds, worse overall on hard poses. Tools: MOSS-Image, Krea 2",
+   "medium": "image",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "image",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/StableDiffusion",
+   "author": "u/CutLongjumping8",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-4",
+   "title": "Anime scenes, same booru tags: SDXL (WAI-Illustrious v17) vs Krea 2 Turbo vs MOSS-Image-SFT",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1x8zogd/same_prompt_3_models_sdxl_waiillustrious_v17_vs/",
+   "note": "4 scenes × 2 seeds at 1024², with no LoRAs, style prefixes or negatives. A fair setup that shows how an old SDXL finetune still holds up for anime. Tools: SDXL WAI-Illustrious v17, Krea 2 Turbo, MOSS-Image-SFT",
+   "medium": "image",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "image",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/StableDiffusion",
+   "author": "u/lajonquillebleu",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-5",
+   "title": "First time in ComfyUI: ChatGPT wrote the workflow JSON, MOSS made anime-in-photo composites",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1x8wm25/first_time_using_comfyui_tried_moss/",
+   "note": "A complete beginner got usable results. The honest issues were distorted background text and odd character interactions. Tools: ChatGPT (workflow .json), ComfyUI, MOSS-Image SFT BF16",
+   "medium": "image",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "image",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/StableDiffusion",
+   "author": "u/Roorem10",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-6",
+   "title": "Old SDXL images upscaled from ~2.4 to ~9.5 megapixels with Flux 3 Klein Distilled",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1x8jo5s/upscaling_old_sdxl_highresfix_gens_from_24/",
+   "note": "New use for an old archive. A long 'faithfully upscale reference image 1…' prompt keeps composition, character design and palette while removing artifacts. Tools: Flux 3 Klein Distilled (reference-image prompt), SDXL archive",
+   "medium": "image",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "image",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/StableDiffusion",
+   "author": "u/ZootAllures9111",
+   "engagement": "",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-7",
+   "title": "A Krea 2 prompting skill for agents: 30 pose blocks, 289 style names, the 'CFG 1.0 trap'",
+   "url": "https://www.reddit.com/r/comfyui/comments/1x8z6x3/krea_2_prompting_skill_with_huge_references_library/",
+   "note": "Covers photoreal camera and lens language, an 11-field pose schema and troubleshooting, packaged so an agent can write the prompts. Tools: Krea 2 (Turbo), ComfyUI, agent SKILL.md",
+   "medium": "image",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "image",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/comfyui",
+   "author": "u/Effective-Giraffe655",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Repo",
+     "url": "https://github.com/rakshazi/krea2-prompting"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-8",
+   "title": "Making AI characters look less 'too perfect' by pulling stills from Seedance 2.5",
+   "url": "https://x.com/sixugc/status/2111831991385780492",
+   "note": "The creator argues image models have a polished tell, and video-model frames read as more natural. Tools: Seedance 2.5, GPT Images, Nano Banana (for contrast)",
+   "medium": "image",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "image",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@sixugc",
+   "engagement": "♥ 6 · 377 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-9",
+   "title": "Standard Chartered's 'Move Ahead' F1 film: the car started as a pencil sketch",
+   "url": "https://www.thedrum.com/news/the-pencil-sketch-behind-standard-chartered-s-ai-formula-1-film",
+   "note": "The bank is an F1 partner without a team, so the 2026 car didn't exist. Costa sketched it by hand, had AI render the sketch in 3D and Magnific extrapolate angles, and placed the livery by hand. He refused to feed in photos of real cars. Lead performers were cast, photographed and licensed as digital twins. His honest numbers: single-detail edits work 'like 50-50', and full AI 'can break even, or… even be more expensive' than a hybrid shoot. Tools: Seedance 2.0 (mostly), Magnific, Photoshop, licensed digital twins of cast performers",
+   "medium": "video",
+   "type": "case study",
+   "kind": "Case study",
+   "tags": [
+    "video",
+    "case study",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Blog",
+   "author": "Marcello Costa (Misideal) via The Drum",
+   "engagement": "",
+   "item_date": "Oct 15",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-10",
+   "title": "A 15-second AI TV spot that aired: MAF Fire and Safety on Media One",
+   "url": "https://jrhqae.com/blog/ai-generated-tv-commercial-how-it-was-made",
+   "note": "Seven shots in fifteen seconds. The studio's process was a six-panel storyboard, a script timed to the second, the client's real products locked in as reference images, 1080p drafts for client review, then a native 4K broadcast master. Their lesson: 'Product consistency across shots is what separates an advert from a demo.' Any shot that drifted was rejected. Tools: Generative video (models not named), storyboard + shot script, product reference locking, 4K master",
+   "medium": "video",
+   "type": "case study",
+   "kind": "Case study",
+   "tags": [
+    "video",
+    "case study",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Blog",
+   "author": "JR HQ",
+   "engagement": "",
+   "item_date": "Oct 12",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-11",
+   "title": "Arturos 'The peace offering': a :30 restaurant spot that turns into a monster film",
+   "url": "https://aicreativelead.com/work/arturos",
+   "note": "A concept commercial, not an aired client buy. The method is the useful part: design and lock a three-person cast before production, generate every shot against it, and review continuity shot by shot before the edit. The studio also notes the EU AI Act disclosure requirement for AI video in ads. Tools: Generative AI video (models not named), locked cast",
+   "medium": "video",
+   "type": "case study",
+   "kind": "Case study",
+   "tags": [
+    "video",
+    "case study",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Blog",
+   "author": "AI Creative Lead",
+   "engagement": "",
+   "item_date": "Oct 8",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-12",
+   "title": "RaveBae: 30 AI static ad angles, 10+ AI avatar variants, 700+ waitlist sign-ups in about 3 days",
+   "url": "https://loopagency.io/case-studies/ravebae-ai-creative-testing",
+   "note": "Real paid media on Meta and TikTok. AI statics tested angles first, winners moved to AI video, and human UGC was only shot for concepts that had already proven themselves. The agency reports the numbers, and all outputs were human-reviewed. Tools: GPT-5 (ChatGPT), OpenAI image generation, Google Veo, HeyGen, Gemini",
+   "medium": "video",
+   "type": "case study",
+   "kind": "Case study",
+   "tags": [
+    "video",
+    "case study",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Blog",
+   "author": "Loop",
+   "engagement": "",
+   "item_date": "Oct 8",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-13",
+   "title": "'Good-byes': Claude blocks out a samurai farewell in Blender, Seedance 2.5 renders nine chained clips",
+   "url": "https://gensofx.substack.com/p/good-byes-my-second-attempt-at-a",
+   "note": "Claude built the models and camera moves in Blender and rendered blockouts into the project folder. Four ID sheets (samurai, wife, location, horse) were wired into every Seedance node, and each clip extended the previous one. Honest note: Seedance copies blockout motion 'to a T', so characters moved too fast until he slowed them. Older (Oct 7) but the clearest written version of this week's blockout trend. Tools: Claude + Blender MCP, Midjourney, GPT Image 2.5, Runway workflow, Seedance 2.5 (extend mode), Premiere Pro",
+   "medium": "video",
+   "type": "breakdown",
+   "kind": "Breakdown",
+   "tags": [
+    "video",
+    "breakdown",
+    "noon",
+    "2026-10-18",
+    "older"
+   ],
+   "source": "Substack",
+   "author": "gensōFX",
+   "engagement": "",
+   "item_date": "Oct 7",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-14",
+   "title": "'TARU': a dialogue-free sci-fi fantasy short",
+   "url": "https://www.youtube.com/watch?v=rz_sShKmcyw",
+   "note": "The most-viewed short film in our YouTube sweep. The creator credits story, characters and direction to people, with AI as the production tool. The edit was done by hand and the sound design was mixed in Cubase. Tools: Seedance 2.5 via Dreamina, Google Flow with Veo 3.1, Nano Banana Pro, Cubase",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "Crazy Taco Man",
+   "engagement": "82,306 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-15",
+   "title": "'IndyKid and the AI Crusade' in 2 days: a full traditional-VFX + AI pipeline",
+   "url": "https://www.youtube.com/watch?v=Df6XgVyBxhg",
+   "note": "One person goes from a ComfyUI character sheet to a rough Tripo mesh, then rebuilds it on clean, rigged topology before AI Studio turns the 3D into consistent AI actors. He shows every step, mistakes included, and argues that it 'does not replace a studio'. Tools: ComfyUI, Tripo, Headshot 3, Character Creator, ZBrush, Substance, AccuFACE, iClone, Maya MCP + Claude Code, Premiere",
+   "medium": "video",
+   "type": "breakdown",
+   "kind": "Breakdown",
+   "tags": [
+    "video",
+    "breakdown",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "PXLmentor by Cristian Spagnuolo",
+   "engagement": "39 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-16",
+   "title": "A paper-cut Guerlain fragrance ad built layer by layer, with the prompts and sound design",
+   "url": "https://x.com/AvaSmith771/status/2111765204589797865",
+   "note": "A spec ad (not a client job) in the paper-cut style brands are paying for. The thread starts from the final frame: design the miniature world, layers and lighting before animating anything. Tools: Seedance 2.5",
+   "medium": "video",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "video",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@AvaSmith771",
+   "engagement": "♥ 179 · 30,858 views",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Step 1 of the thread",
+     "url": "https://x.com/AvaSmith771/status/2111765210088505558"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-17",
+   "title": "A Rambo II scene redone as a 1980s Saturday-morning cartoon, about 115 generations in one night",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1x8wzcb/rambo_first_blood_part_ii_rambo_and_co_animated/",
+   "note": "Everything ran locally on one RTX 5080. Krea 2 cleaned up an establishing frame, H3 animated the shots, and the takes were sequenced in ArtCraft's vibe-coded After Effects alternative. The creator says it took 'around 115' generations to get all the shots right. Tools: ComfyUI, Krea 2 (image-to-image), MiniMax H3, ArtCraft EffectCraft",
+   "medium": "video",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "video",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/StableDiffusion",
+   "author": "u/Digital-Goober",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Watch on YouTube",
+     "url": "https://www.youtube.com/watch?v=8-TUi8-fNNc"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-18",
+   "title": "'Terms and Conditions': a 1960s-TV satire on one RTX 3090, 'still fighting character consistency'",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1x8m4mu/another_narrative_short_with_wan2gp_minimax_h3/",
+   "note": "A recurring-character narrative short where a man's fridge, toilet and marriage become subscriptions. About 30 minutes per clip on a single 24 GB card. The title says it straight: consistency is still the fight. Tools: Wan2GP, MiniMax H3 Ref2VA Pruned 20B (720p, 20 steps)",
+   "medium": "video",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "video",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/StableDiffusion",
+   "author": "u/Inevitable_Emu2722",
+   "engagement": "",
+   "item_date": "Oct 17",
+   "links": [
+    {
+     "label": "Watch on YouTube",
+     "url": "https://www.youtube.com/watch?v=OoMURYRk9yI"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-19",
+   "title": "'All 102 clips passed per-clip QA.' Fixing an agent-made film after Reddit found the flaws",
+   "url": "https://www.reddit.com/r/comfyui/comments/1x8v6dd/followup_you_said_my_14agent_rtx_5090_film_had/",
+   "note": "Commenters spotted one voice for every character, a clock showing a different time one cut later, and a dissolve inside every cut. Every flaw sat between clips or between voices, where the pipeline measured nothing. The follow-up adds cross-clip checks, and the pipeline is open source. Tools: 14-agent pipeline (DeepSeek harness agents) on one RTX 5090",
+   "medium": "video",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "video",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/comfyui",
+   "author": "u/developervkmp",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Pipeline repo",
+     "url": "https://github.com/chaoszero6/production-pack"
+    },
+    {
+     "label": "Original post",
+     "url": "https://www.reddit.com/r/comfyui/comments/1wxixza/i_built_a_14agent_pipeline_on_a_single_rtx_5090/"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-20",
+   "title": "An e-commerce team's product-video pipeline with human review, asking how to raise usable output per hour",
+   "url": "https://www.reddit.com/r/comfyui/comments/1x8itkz/running_a_comfyui_video_pipeline_with_human/",
+   "note": "A content manager, not an engineer, built the pipeline with AI help: product photos plus reviewed scripts go to generation, then captions, then human approve/reject with reasons logged. That's real in-house production, and the open question is throughput, not quality. Tools: ComfyUI, parallel GPU generation, upscaling, speech transcription + captions, browser review tool",
+   "medium": "video",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "video",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/comfyui",
+   "author": "u/EasyStand7162",
+   "engagement": "",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-21",
+   "title": "Same 16-second, 15-shot samurai duel: Vidu Q4 Preview vs Seedance 2.0",
+   "url": "https://x.com/EnzoSanchezIA/status/2111506650745942105",
+   "note": "Drone descent, extreme close-ups, an overhead orbit, slow motion: a dense shot list that stress-tests camera direction. One of the most-bookmarked comparisons of the day. Tools: Vidu Q4 Preview (4 reference images), Seedance 2.0",
+   "medium": "video",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "video",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@EnzoSanchezIA",
+   "engagement": "♥ 182 · 75,923 views",
+   "item_date": "Oct 17",
+   "links": [
+    {
+     "label": "Setup post",
+     "url": "https://x.com/EnzoSanchezIA/status/2111506747621888224"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-22",
+   "title": "Vidu Q4 Preview vs Seedance 2.5: holding quality once the camera moves and characters interact",
+   "url": "https://x.com/base10_/status/2111494614935072873",
+   "note": "A side-by-side test aimed at the hard part of AI video, continuity under motion rather than single pretty shots. Tools: Vidu Q4 Preview, Seedance 2.5",
+   "medium": "video",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "video",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@base10_",
+   "engagement": "♥ 221 · 74,881 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-23",
+   "title": "Kling 4.0 vs Kling 4.0 Flash: a third cheaper, nearly the same on simple shots",
+   "url": "https://x.com/HBCoop_/status/2111547077050372466",
+   "note": "With identical Omni-Ref elements, the bigger difference was how literally each model copies your reference images. Tools: Kling 4.0, Kling 4.0 Flash, Omni-Ref",
+   "medium": "video",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "video",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@HBCoop_",
+   "engagement": "♥ 38 · 2,371 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-24",
+   "title": "Kling 4.0 video editing: swap a subject, season or outfit while cuts and dialogue stay put",
+   "url": "https://x.com/shikoba_86/status/2111760132535099777",
+   "note": "A guide built on one base clip edited several ways. It's useful if you already have footage and want variants rather than new generations. Tools: Kling 4.0",
+   "medium": "video",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "video",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@shikoba_86",
+   "engagement": "♥ 37 · 2,167 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-25",
+   "title": "'The cheaper generation isn't always the cheaper workflow': MiniMax H3 vs Seedance 2.5 on cost per usable result",
+   "url": "https://x.com/ImaStudio_ai/status/2111666580283154524",
+   "note": "The right metric: credits per generation, rerolls, and time fixing failed shots. 'If one model costs less but needs 4–5 retries, the savings disappear.' Posted by a platform that sells both models. Tools: MiniMax H3, Seedance 2.5 (via Ima Studio)",
+   "medium": "video",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "video",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@ImaStudio_ai",
+   "engagement": "♥ 31 · 6,793 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-26",
+   "title": "A product-photo suite and 5-scene ad on one canvas: Artlist AI Flows + Seedance 2.5",
+   "url": "https://www.youtube.com/watch?v=e1CuUS8MiMQ",
+   "note": "A full behind-the-scenes build of an e-commerce ad, with stills, motion and sound direction all in one node canvas. Tools: Artlist AI Flows, ChatGPT 2.5, SeaDream 5.0 Pro, Nano Banana Pro, Seedance 2.5, Gemini Argon, CapCut",
+   "medium": "video",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "video",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "Ylari Studio",
+   "engagement": "32 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-27",
+   "title": "A creator of 2D anime shorts built a storyboard-to-prompt tool, then checked the Japanese dialogue himself",
+   "url": "https://www.reddit.com/r/comfyui/comments/1x8u2gl/i_made_a_storyboard_and_video_prompt_tool_for/",
+   "note": "Enter personalities, speech styles and the scene. Get an editable text storyboard with camera directions, then send chosen clips to ComfyUI as nodes. The demo short was made with it. Tools: MiniMax H3, ComfyUI-Storyboard-Generator",
+   "medium": "video",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "video",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/comfyui",
+   "author": "u/Resident-Gain-5424",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Repo",
+     "url": "https://github.com/impacifist/ComfyUI-Storyboard-Generator"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-28",
+   "title": "'Why is my ComfyUI output so much worse than hosted apps?' MiniMax H3 identity loss on a 96 GB GPU",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1x8l7ll/minimax_h3_i2v_why_is_my_comfyui_output_so_much/",
+   "note": "Even a small head turn breaks the faces from the reference photos. A useful reminder that local setups don't automatically match tuned hosted pipelines. Tools: MiniMax H3 I2V, 8-step Turbo LoRA, motion-context LoRA, Vast.ai RTX PRO 6000",
+   "medium": "video",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "video",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/StableDiffusion",
+   "author": "u/Full_Musician_6315",
+   "engagement": "",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-29",
+   "title": "♫²: an audio-visual piece made in the artist's own studio app",
+   "url": "https://www.reddit.com/r/comfyui/comments/1x95nxw/²/",
+   "note": "A known audio-reactive artist building pieces in his own front end over open models. Tools: Uisato Studio (Image Studio, Motion Control), MiniMax H3 + LoRAs",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/comfyui",
+   "author": "u/uisato",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Uisato Studio",
+     "url": "https://uisato.studio/"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-30",
+   "title": "From blueprint to seven magazine-style archviz renders in headless Blender, all written by Claude",
+   "url": "https://www.lumiverse.hr/blog/blueprint-to-archviz",
+   "note": "One blueprint, one brief, about 7 hours. The result was seven 2400×1600 renders, roughly 450 objects, 23 light fixtures, ~640,000 grass strands, three cloth sims and a walkable web model. Nobody opened Blender, and Claude only 'saw' by rendering frames. Lessons: render small previews often (10–13 s), reason before rendering, probe the API instead of guessing, and keep a log, which records the flaws that remain. Tools: Claude + MCP, Blender 4.2 headless (CPU), studio image models for artworks",
+   "medium": "3d",
+   "type": "case study",
+   "kind": "Case study",
+   "tags": [
+    "3d",
+    "case study",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Blog",
+   "author": "Tihomir Jauk (LumiVerse)",
+   "engagement": "",
+   "item_date": "Oct 11",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-31",
+   "title": "A game-ready room built in Blender and ported to Unreal Engine 5 by Opus 5.5",
+   "url": "https://x.com/rewind02/status/2111849852350894319",
+   "note": "Eight steps. The trick is letting the agent decide per object: simple pieces get modeled directly, complex props go reference image → Tripo, then cleanup, lighting, and a port to UE5. Tools: Claude Opus 5.5, Blender MCP, Tripo, Unreal Engine 5",
+   "medium": "3d",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "3d",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@rewind02",
+   "engagement": "♥ 45 · 1,942 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-32",
+   "title": "'My very first vibe modeled asset' with Grok 4.7 and Blender MCP",
+   "url": "https://x.com/graykevinb/status/2111546360868827303",
+   "note": "A small first result, and evidence the Blender-MCP habit is spreading beyond one model family. Tools: Grok 4.7, omp, Blender MCP",
+   "medium": "3d",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "3d",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@graykevinb",
+   "engagement": "♥ 24 · 484 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-33",
+   "title": "Start with one crate, not a world: a scoped Blender-MCP brief with checks",
+   "url": "https://x.com/BkashJosi/status/2111494986210656544",
+   "note": "A copyable brief: one low-poly crate, separate lid, named parts, reported dimensions, existing objects untouched. Then check the scale, naming and engine import. It also warns that the plugin runs Python with your permissions. Tools: Hermes (Nous) Blender plugin, Blender Lab MCP server",
+   "medium": "3d",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "3d",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@BkashJosi",
+   "engagement": "♥ 10 · 548 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-34",
+   "title": "Tripothon SF Demo Day: AI-generated 3D in playable games, VR, worlds and 3D prints",
+   "url": "https://x.com/MayorKingAI/status/2111472387971826070",
+   "note": "A hackathon showcase of generated meshes put to real use. Reported by an attendee. Tools: Tripo",
+   "medium": "3d",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "3d",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@MayorKingAI",
+   "engagement": "♥ 19 · 4,621 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-35",
+   "title": "'Find me a phone stand': Claude searches Printables, slices in OrcaSlicer and prints, after you confirm",
+   "url": "https://www.reddit.com/r/ClaudeAI/comments/1x8xz3l/i_let_claude_handle_the_software_side_of_my_new/",
+   "note": "Claude even picked the printer because its API was scriptable. It shows time, grams and cost, and nothing starts or cancels without confirmation. Posted to r/ClaudeAI because 'I'd just get AI hate on the printing subs.' Tools: Claude, self-hosted 'printhub' server, Klipper/Moonraker API, OrcaSlicer, QIDI Q2",
+   "medium": "3d",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "3d",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/ClaudeAI",
+   "author": "u/Greedy-Duck",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-36",
+   "title": "'I can't draw': a year of making game art and 3D assets with AI, mostly Claude Code",
+   "url": "https://www.youtube.com/watch?v=YW1P8j3ZuPA",
+   "note": "Emoji maps and simple shapes, 3D racing craft, pre-rendered village sprites and a voxel city. He compares two routes, generating images or having Claude build the art in code. Tools: Claude Code (art as code), ChatGPT and Gemini images",
+   "medium": "3d",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "3d",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "Edward Thomson",
+   "engagement": "57 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-37",
+   "title": "Show HN: BricksChat turns images (or meshes) into buildable LEGO models, Technic included",
+   "url": "https://news.ycombinator.com/item?id=50141798",
+   "note": "Handles constrained inventory, so you can build from the bricks you actually own. Early (2 points on HN when checked). Tools: Generative LEGO assembly models",
+   "medium": "3d",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "3d",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "HN",
+   "author": "mireklzicar",
+   "engagement": "2 points",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "BricksChat",
+     "url": "https://brickschat.com/"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-38",
+   "title": "Designing on the running product: tldraw desktop wired to a dev server by Claude Code",
+   "url": "https://x.com/HarshitKhemani/status/2111747149725831646",
+   "note": "Annotate a board to steer the agent, swap the whole design system live, and edit screens connected to the real app. 'Most design tools give you a mockup. This lets you work directly on the running product.' Tools: tldraw (offline), Claude Code, Emil Kowalski's skills, .DESIGN",
+   "medium": "code",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "code",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@HarshitKhemani",
+   "engagement": "♥ 12 · 1,556 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-39",
+   "title": "A Claude Code skill that turns a landing page into a live product demo with a scripted cursor and camera",
+   "url": "https://x.com/diip3sh/status/2111521060097233128",
+   "note": "Recorded video on the left, live UI on the right. Switch the theme or open it on a phone, and 'only one keeps up'. Tools: Claude Code skill",
+   "medium": "code",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "code",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@diip3sh",
+   "engagement": "♥ 75 · 2,668 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-40",
+   "title": "Client call decks built by a skill: discovery notes, SEO rankings, matching case studies, on brand",
+   "url": "https://x.com/johndsaunders/status/2111852968341348667",
+   "note": "Agency client work that 'used to take me 2-3 hours'. It's small but real: a repeatable branded deliverable. Tools: Claude Design System, DataforSEO, Sanity connector",
+   "medium": "code",
+   "type": "case study",
+   "kind": "Case study",
+   "tags": [
+    "code",
+    "case study",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@johndsaunders",
+   "engagement": "♥ 6 · 368 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-41",
+   "title": "Solid Glass: an open-source material layer for AI-app UIs on top of shadcn/ui",
+   "url": "https://x.com/DanKornas/status/2111830654941807059",
+   "note": "One stylesheet that targets data-slot attributes, with pieces for agent status, tool steps, diffs and composers. A design system for the interfaces agents live in. Tools: shadcn/ui, React 19, Tailwind 4",
+   "medium": "code",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "code",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@DanKornas",
+   "engagement": "♥ 4 · 817 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-42",
+   "title": "A rainy neon city in one 52 KB WebGPU file: 2/10 to 'moody' after three critic rounds",
+   "url": "https://x.com/SKatalystAI/status/2111809289442435225",
+   "note": "40 minutes, one prompt. Claude screenshots its own work and a fresh critic agent roasts it, the same self-review loop as this week's other single-file scenes. Tools: Claude Code + Opus 5.5, WebGPU",
+   "medium": "code",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "code",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@SKatalystAI",
+   "engagement": "♥ 27 · 709 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-43",
+   "title": "Same motion-showreel prompt, two ideas: Opus 5.5 writes sheet music, DeepSeek V4.1 Flash builds 3D wind-bent type",
+   "url": "https://x.com/CodeByNZ/status/2111859521555665041",
+   "note": "A creative-direction comparison, not a benchmark. The poster preferred the DeepSeek take. Tools: Claude Opus 5.5, DeepSeek V4.1 Flash-1017",
+   "medium": "code",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "code",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@CodeByNZ",
+   "engagement": "♥ 29 · 515 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-44",
+   "title": "Studiolo: a free Mac design canvas that you and Claude Code edit together, with shared undo",
+   "url": "https://www.reddit.com/r/ClaudeAI/comments/1x8jfve/i_built_studiolo_with_claude_code_a_free_mac/",
+   "note": "Describe a screen and it appears as real editable layers: frames, auto layout, components, light/dark tokens. Edit by hand, ask for the next change, and export a project. Tools: Claude Code over MCP, Vite + React + TypeScript export",
+   "medium": "code",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "code",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/ClaudeAI",
+   "author": "u/Public-Address-3669",
+   "engagement": "",
+   "item_date": "Oct 17",
+   "links": [
+    {
+     "label": "studiolo.dev",
+     "url": "https://studiolo.dev"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-45",
+   "title": "OpenScreen in use: ask for 'a kawaii effect when I click' and Claude writes it as a GPU shader",
+   "url": "https://www.reddit.com/r/ClaudeAI/comments/1x8oes9/i_asked_claude_for_a_kawaii_effect_when_i_click/",
+   "note": "We listed OpenScreen as a tool on Oct 17. Since 2.1 there's no effects catalog: Claude Code writes each effect through OpenScreen's MCP server and it lands on the timeline as a clip, with the same pixels in preview and export. Claude built most of the feature, then used it. Tools: OpenScreen (MIT), Claude Code, MCP",
+   "medium": "code",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "code",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/ClaudeAI",
+   "author": "u/Fresh-Daikon-9408",
+   "engagement": "",
+   "item_date": "Oct 17",
+   "links": [
+    {
+     "label": "Repo",
+     "url": "https://github.com/getopenscreen/openscreen"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-46",
+   "title": "A Kerr black hole ray-traced in raw WebGPU at 60 fps, and Claude checked its own physics",
+   "url": "https://www.reddit.com/r/ClaudeAI/comments/1x8sysh/claude_code_built_a_physically_accurate_black/",
+   "note": "It wrote a double-precision copy of its shader math plus an independent integrator. Rays agree to about 0.01° and the shadow matches the published formula to about 0.02%, per the creator. Tools: Claude Code (Opus 5.5), WebGPU, headless Chrome",
+   "medium": "code",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "code",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/ClaudeAI",
+   "author": "u/Optimal-Yak-9811",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Try it",
+     "url": "https://kerr-black-hole-roan.vercel.app"
+    },
+    {
+     "label": "Repo",
+     "url": "https://github.com/SkyWalkerPS/kerr-black-hole"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-47",
+   "title": "'Floor Four and a Half': an AI collaborator writes the song, trims the stems and edits the video",
+   "url": "https://x.com/UnityEagle/status/2111505509136105835",
+   "note": "A daily song ritual. The 4:14 track was cut to a 3:08 edit from its stems, the AI wrote a 25-shot storyboard, the human ran the Magnific production, and the AI made the final edit with no human sequencing. Tools: ChatGPT (as 'Charlie'), Treblo (song + stems), Magnific, Seedance 2.0 Fast",
+   "medium": "sound",
+   "type": "breakdown",
+   "kind": "Breakdown",
+   "tags": [
+    "sound",
+    "breakdown",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@UnityEagle",
+   "engagement": "♥ 11 · 283 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-48",
+   "title": "A Discord bot named Roy writes a song about being the one nobody knows",
+   "url": "https://www.reddit.com/r/ClaudeAI/comments/1x8x8o1/no_one_knows_who_i_am_but_you_do/",
+   "note": "Six months of in-jokes, 170 voice lines, then a song with 'no theme, no brief, no steering', posted unedited. Charming, and a little uncomfortable for its maker. Tools: Claude-based Discord bot, AI song generation",
+   "medium": "sound",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "sound",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/ClaudeAI",
+   "author": "u/kingoftheparsnips",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Listen on YouTube",
+     "url": "https://www.youtube.com/watch?v=NHRV9dgIybM"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-49",
+   "title": "'Almost': transhumanist Eurodance about upgrading, an AI music video",
+   "url": "https://x.com/anderssandberg/status/2111623071782101211",
+   "note": "A philosopher-futurist making genre pieces about his own subject. Tools: AI music + video (tools not named)",
+   "medium": "sound",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "sound",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@anderssandberg",
+   "engagement": "♥ 10 · 3,180 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-50",
+   "title": "A coastal-noir music video teaser for the artist's own song 'No Rehearsals'",
+   "url": "https://www.reddit.com/r/comfyui/comments/1x8rctu/made_a_cinematic_music_video_teaser_with_krea_2/",
+   "note": "Front, back and close-up sheets kept the wardrobe consistent. First and last frames controlled specific beats like a lighter igniting to reveal both faces. Workflows are shared. Tools: Krea 2 (character sheets), MiniMax H3 (ref-to-video, I2V, first+last frame), ComfyUI",
+   "medium": "sound",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "sound",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/comfyui",
+   "author": "u/Time-Ad-7720",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-51",
+   "title": "The #MVLANDHalloween wave: AI songs + music videos pulling up to ~1M views",
+   "url": "https://x.com/PariAI10/status/2111825503745364064",
+   "note": "Several of the day's most-viewed AI music videos are MVLAND posts with near-identical wording and a campaign hashtag, so read the reach as a promotion, not organic demand. We list it so the numbers aren't mistaken for a grassroots trend. Tools: MVLAND Music to Video (Studio Mode), AI music",
+   "medium": "sound",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "sound",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@PariAI10",
+   "engagement": "♥ 1,104 · 999,264 views",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "@Ddotai20 'Live From the Grave'",
+     "url": "https://x.com/Ddotai20/status/2111770374002360447"
+    },
+    {
+     "label": "@alizagori1",
+     "url": "https://x.com/alizagori1/status/2111722573264289937"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-52",
+   "title": "A complete AI music video from song to edit: Claude, Suno v6, GPT Image 2.5, Seedance 2.5",
+   "url": "https://www.youtube.com/watch?v=3Cc9PiL263o",
+   "note": "Covers writing the song, consistent characters and locations, lip-synced singing shots and a horse-to-car match cut. The channel promotes affiliate links. Tools: Claude, Suno v6, OpenArt, GPT Image 2.5, Seedance 2.5, CapCut",
+   "medium": "sound",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "sound",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "Roboverse",
+   "engagement": "8,477 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-53",
+   "title": "A first music video with an agent: 'a longer process than I'm used to' for a 4:19 track",
+   "url": "https://x.com/GrimnirThe/status/2111488863864566189",
+   "note": "A small, honest work-in-progress note on 'Outrun Protocol'. Tools: invideo Agent Two",
+   "medium": "sound",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "sound",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@GrimnirThe",
+   "engagement": "♥ 9 · 86 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-54",
+   "title": "A Midtown Madness-style Chicago driving game for his daughter, built from open map data",
+   "url": "https://x.com/MrV_777/status/2111602329518494008",
+   "note": "Multi-level streets (Lower Wacker, ramps, drawbridges) from OpenStreetMap, USGS LiDAR heights and city floor counts, checked against aerial and Street View imagery. Tuned to run on a $200 Chromebook. 'It's not 100% glitch-free or accurate, but it's close, and my kids are happy with it.' Tools: Claude (frontend, design), ChatGPT (backend, multiplayer), ElevenLabs (music, SFX), Tripo (cars)",
+   "medium": "games",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "games",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@MrV_777",
+   "engagement": "♥ 9 · 439 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-55",
+   "title": "72 hours to a playable dragon boss: every fix has a number from the production logs",
+   "url": "https://www.youtube.com/watch?v=XqdsTzIUyoE",
+   "note": "The auto-rigged tail was one bone (split into 7). There was no jaw (built one with a 30–40° opening). The first walk sank paws 13 cm and slid 9.8%, fixed to ≤0.5% with IK. Still open: a claw tip off by 3.8 cm. Final test: boss down in 59 s. Tools: Claude Code, Codex (Astra), Gemini Argon, Tripo Studio (mesh + auto-rig), Google Flow",
+   "medium": "games",
+   "type": "breakdown",
+   "kind": "Breakdown",
+   "tags": [
+    "games",
+    "breakdown",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "Outlier Ideas",
+   "engagement": "54 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-56",
+   "title": "'Carry Him Home': can AI make a whole Roblox horror game? Episode 4",
+   "url": "https://www.youtube.com/watch?v=3zTF8hQWrpk",
+   "note": "The first monster 'wasn't scary at all', a bug meant it never hunted anyone, and the camera moved to first person. A new cutscene skill produced three cutscenes, including the jumpscare. Tools: Claude Code (Opus 5.5) + custom skills, Roblox Studio",
+   "medium": "games",
+   "type": "breakdown",
+   "kind": "Breakdown",
+   "tags": [
+    "games",
+    "breakdown",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "SyphoDev",
+   "engagement": "281 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-57",
+   "title": "'Khitin': a Godot 3D game designed and coded by Opus 5.5 in 9 h 10 min, free on itch.io",
+   "url": "https://www.youtube.com/watch?v=XPjS3L6Tk6Q",
+   "note": "A nymph defeats insects and takes their body parts. The creator only set tasks in plain language, played and nitpicked (Russian-language video). Tools: Claude Code (Opus 5.5), Godot",
+   "medium": "games",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "games",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "ArteMakes Games",
+   "engagement": "2,073 views",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Play on itch.io",
+     "url": "https://krolicheg.itch.io/khitin"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-58",
+   "title": "24 days, 181 commits, $0.03: an honest devlog of a mobile archery game",
+   "url": "https://www.youtube.com/watch?v=fVOpcHLCXms",
+   "note": "The aim line that lied, the fruit that cheated, a world 'too pretty for its own good', and a budget phone with opinions. Old builds are rebuilt from git history and shown side by side. Tools: Godot 4, ElevenLabs (narration)",
+   "medium": "games",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "games",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "Akkaris Studio",
+   "engagement": "11 views",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Fruit Quest on Google Play",
+     "url": "https://play.google.com/store/apps/details?id=site.akkaris.fruitquest"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-59",
+   "title": "'Death Leaves a Trace': a solo isometric MMORPG, with cities built by Claude through Blender MCP",
+   "url": "https://www.reddit.com/r/ClaudeAI/comments/1x8j8k5/im_building_a_full_mmorpg_solo_with_claude_code/",
+   "note": "A 25-year dream project. Bought asset packs set the style, then Claude-driven Blender builds cities with their own architecture, and helps with quests, item balance and drop tables. There's a public alpha. Tools: Claude Code, Blender MCP, Unity 6, Mirror",
+   "medium": "games",
+   "type": "case study",
+   "kind": "Case study",
+   "tags": [
+    "games",
+    "case study",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/ClaudeAI",
+   "author": "u/khyrichan",
+   "engagement": "",
+   "item_date": "Oct 17",
+   "links": [
+    {
+     "label": "Game site",
+     "url": "https://deathleavesatrace.com/"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-60",
+   "title": "One Witcher 3 screenshot to 'The Vale', a playable Three.js environment",
+   "url": "https://www.youtube.com/watch?v=GVFSFgaQQzY",
+   "note": "Claude found and used the creator's 3D AI Studio MCP server on its own. Some solutions 'worked surprisingly well', others needed hands-on fixes in Blender. Tools: Claude Opus 5.5, Three.js, 3D AI Studio MCP, Blender",
+   "medium": "games",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "games",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "Building Aeon",
+   "engagement": "273 views",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Play The Vale",
+     "url": "https://aeon-vale.vercel.app"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-61",
+   "title": "A high-school cyberpunk world turned into a pixel-art game, every asset forced onto one 76-colour palette",
+   "url": "https://x.com/FranciAnjinho/status/2111525216497111171",
+   "note": "The fix for mismatched AI assets is old-school: remap everything to a master palette and repaint by hand. Tools: PixelLab (characters, animation), GPT image models (facades, signs), manual rework",
+   "medium": "games",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "games",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@FranciAnjinho",
+   "engagement": "♥ 4 · 199 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-62",
+   "title": "A 3D game built in one continuous Claude Code chat with Three.js, 'no Blender'",
+   "url": "https://x.com/DeepStarts/status/2111766357100700026",
+   "note": "Everything in code, from models to gameplay. Tools: Claude Code (Opus 5.5), Three.js",
+   "medium": "games",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "games",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@DeepStarts",
+   "engagement": "♥ 21 · 669 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-63",
+   "title": "Unity's own MCP plus 8 repos for a solo cozy farm game",
+   "url": "https://x.com/Mnilax/status/2111807938914361770",
+   "note": "A stack list from a builder already using it: WFC for island layouts, ACE-Step for a local soundtrack, YarnSpinner (the tool behind A Short Hike and Dredge) for dialogue. Tools: Unity MCP, Opus 5.5, WaveFunctionCollapse, ACE-Step 1.5, NavMeshPlus, YarnSpinner, UniTask, PrimeTween",
+   "medium": "games",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "games",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@Mnilax",
+   "engagement": "♥ 110 · 5,173 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-64",
+   "title": "Epic's official Unreal Engine plugin for Claude Code (Unreal MCP) is getting picked up",
+   "url": "https://github.com/EpicGames/unreal-engine-skills-for-claude-code-plugin",
+   "note": "Hundreds of tools across 30+ toolsets: actors, blueprints, materials, Niagara, Sequencer, Control Rig. Epic's docs call it Experimental. It went around on X on Oct 18. The repo was created in June, so this is new attention rather than a new release. Tools: Unreal Editor 5.8 Unreal MCP + AllToolsets, Claude Code",
+   "medium": "games",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "games",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "GitHub",
+   "author": "Epic Games",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Epic docs",
+     "url": "https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor?lang=en-US"
+    },
+    {
+     "label": "@PenguinWeb3 post",
+     "url": "https://x.com/PenguinWeb3/status/2111804455851086244"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-65",
+   "title": "An MCP that lets Claude Code one-shot Wii Sports-style games you play with your body via webcam",
+   "url": "https://www.reddit.com/r/ClaudeAI/comments/1x8vqa3/i_vibecoded_this_mcp_that_lets_claude_code_build/",
+   "note": "Hosted multiplayer, hands, arms, face and mic as controllers, with tracking run locally. Tools: Claude Code, Oneshot Gems MCP, local hand/body/face tracking",
+   "medium": "games",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "games",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/ClaudeAI",
+   "author": "u/singing_coach_ai",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "MCP",
+     "url": "https://oneshotgems.ai/developers/mcp"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-66",
+   "title": "The backlash: Opus 5.5 makes decompile-and-port easy, and publishers file DMCA takedowns",
+   "url": "https://x.com/Pirat_Nation/status/2111593348293128535",
+   "note": "Summarizes Kotaku's reporting, with quotes from a former Take-Two AI chief and Godot's executive director, who argues 'the burden should fall onto the platform'. The day's most-liked game-dev post in our sweep. On r/gamedev, an indie asks how to protect against AI clones. Tools: Claude Opus 5.5 (as reported)",
+   "medium": "games",
+   "type": "result",
+   "kind": "Result",
+   "tags": [
+    "games",
+    "result",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@Pirat_Nation",
+   "engagement": "♥ 5,551 · 312,638 views",
+   "item_date": "Oct 17",
+   "links": [
+    {
+     "label": "r/gamedev thread",
+     "url": "https://www.reddit.com/r/gamedev/comments/1x8hvgn/how_to_best_protect_against_the_new_wave_of_ai/"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-67",
+   "title": "A two-person creative business now run by agent teams: clips, thumbnails, publishing, client workflows",
+   "url": "https://www.youtube.com/watch?v=EgdtWQP3Elg",
+   "note": "Six months ago they were planning hires. Now an agent system handles production, freeing one host to build a squirrel game with his dad. Podcast discussion, so the claims are self-reported. Tools: Claude skills, MCP, Riverside, Cloudflare, Blender, Magnific, Runway, Higgsfield, Figma",
+   "medium": "mashups",
+   "type": "case study",
+   "kind": "Case study",
+   "tags": [
+    "mashups",
+    "case study",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "YouTube",
+   "author": "Fast Hours",
+   "engagement": "285 views",
+   "item_date": "Oct 18",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-68",
+   "title": "Soran't: a self-hosted 'Sora-style' studio for video and music on your own ComfyUI",
+   "url": "https://www.reddit.com/r/comfyui/comments/1x9315m/sorant_local_comfyui_powered_minimax_h3_video/",
+   "note": "A web front end so non-node people can make clips and tracks on local hardware. Tools: ComfyUI, MiniMax H3, Music 3, SeedVR2 upscaling",
+   "medium": "mashups",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "mashups",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "Reddit r/comfyui",
+   "author": "u/pwillia7",
+   "engagement": "",
+   "item_date": "Oct 18",
+   "links": [
+    {
+     "label": "Repo",
+     "url": "https://github.com/pwillia7/sorant"
+    }
+   ],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-69",
+   "title": "A 44-second promo from one character sheet, including the creator's own AI voice",
+   "url": "https://x.com/MaAyyoub/status/2111493140255228378",
+   "note": "'No camera. No studio. No actors.' The character sheet locks the face across every shot, then the studio shots are generated over MCP. Tools: Higgsfield MCP, GPT Image 2.5",
+   "medium": "mashups",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "mashups",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@MaAyyoub",
+   "engagement": "♥ 9 · 379 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-70",
+   "title": "A fireplace-and-lake scene: three Nano Banana images in ComfyUI, day turned to night by Claude, plus a quick tune",
+   "url": "https://x.com/DataJuggler007/status/2111559495025336354",
+   "note": "A tiny hobby piece showing how casually people now chain image, agent and music tools. Tools: Nano Banana 2.1, ComfyUI, Claude, AI music",
+   "medium": "mashups",
+   "type": "showcase",
+   "kind": "Showcase",
+   "tags": [
+    "mashups",
+    "showcase",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@DataJuggler007",
+   "engagement": "♥ 6 · 132 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  },
+  {
+   "id": "2026-10-18-noon-71",
+   "title": "10 open-source repos for an 'AI content factory', from scripts to voiceover to video",
+   "url": "https://x.com/He1s_Sammy/status/2111479837785313415",
+   "note": "A heavily bookmarked stack list (more bookmarks than likes). It's a reading list, not a finished project. Tools: OpenCreator, Codex and others",
+   "medium": "mashups",
+   "type": "workflow",
+   "kind": "Workflow",
+   "tags": [
+    "mashups",
+    "workflow",
+    "noon",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "@He1s_Sammy",
+   "engagement": "♥ 1,108 · 55,553 views",
+   "item_date": "Oct 17",
+   "links": [],
+   "edition": "editions/2026-10-18/noon.html",
+   "edition_kind": "page",
+   "date": "2026-10-18",
+   "slot": "noon"
+  }
+ ],
+ "src_hash": {
+  "html": "2fc56cdcad3bb7450f95fc2442c1ac628b80cc9a",
+  "md": "5af05167b3849e208dbdbd23c700919b291e47c8"
+ },
+ "tool_version": 3,
+ "nav": [
+  "editions/2026-10-18/morning.html",
+  null,
+  5
+ ]
+}
