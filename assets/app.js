@@ -276,7 +276,8 @@ var markedP=null;
 function loadMarked(){if(window.marked)return Promise.resolve(window.marked);if(markedP)return markedP;
   markedP=new Promise(function(res,rej){var s=document.createElement("script");s.src="assets/vendor/marked.min.js";s.onload=function(){res(window.marked)};s.onerror=function(){markedP=null;rej()};document.head.appendChild(s)});return markedP}
 function openFromClick(key){state.report=key;openKey=null;writeHash();syncReader(true)}
-function closeReport(){$("#reader").hidden=true;openKey=null;state.report="";writeHash()}
+function ttsStop(){if(window.DDTTS)window.DDTTS.stop()}
+function closeReport(){ttsStop();$("#reader").hidden=true;openKey=null;state.report="";writeHash()}
 function clean(root,base){
   root.querySelectorAll("script,iframe,object,embed,style,link,meta,form,input,button").forEach(function(x){x.remove()});
   root.querySelectorAll("*").forEach(function(x){[].slice.call(x.attributes).forEach(function(a){
@@ -286,9 +287,9 @@ function clean(root,base){
 }
 function syncReader(scroll){
   var r=$("#reader");
-  if(!state.report){if(!r.hidden){r.hidden=true;openKey=null}return}
+  if(!state.report){if(!r.hidden){ttsStop();r.hidden=true;openKey=null}return}
   if(openKey===state.report)return;
-  var e=EDBY[state.report]; openKey=state.report; r.hidden=false;
+  ttsStop();var e=EDBY[state.report]; openKey=state.report; r.hidden=false;
   if(!e||e.kind!=="report"){$("#rd-kick").textContent="Report";$("#rd-gh").removeAttribute("href");$("#rd-body").innerHTML='<div class="empty"><b>Report not found</b>It may not be published yet.</div>';return}
   r.style.setProperty("--c",SLOTCOL[e.slot]);
   $("#rd-kick").innerHTML='<span class="dot"></span>'+esc(e.time)+" · "+esc(e.title)+" · "+esc(niceDate(e.date))+' <b>Report</b>';
@@ -325,6 +326,7 @@ function bind(){
     var box=d.querySelector(".days");if(d.open&&!box.innerHTML)box.innerHTML=daysHtml(ARCH_BY[d.dataset.m]||[])},true);
   $("#jump").addEventListener("change",function(e){if(e.target.value)jumpTo(e.target.value);e.target.value=""});
   $("#arch-more").addEventListener("click",function(){mshown+=MPAGE;renderArchive()});
+  if(window.DDTTS)window.DDTTS.attach($("#rd-tts-play"),$("#rd-tts-stop"),function(){var b=$("#rd-body");return b.querySelector(".empty")?null:b});
   $("#rd-close").addEventListener("click",closeReport);$("#rd-close2").addEventListener("click",closeReport);
   $("#clear").addEventListener("click",function(){var keep=state.report,srt=state.sort;state=blank();state.report=keep;state.sort=srt;$("#q").value="";$("#from").value="";$("#to").value="";reset();render()});
   $("#more").addEventListener("click",function(){shown+=PAGE;render()});

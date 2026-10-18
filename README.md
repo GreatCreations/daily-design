@@ -25,11 +25,14 @@ The [home page](https://greatcreations.github.io/daily-design/) covers every edi
 
 The 7 AM and noon pages have a fixed **Back to index** bar, previous/next links and a footer link back to the index.
 
+**Listen (read aloud):** every report in the reader and every 7 AM / noon page has a **▶ Listen** button (Pause/Resume and Stop while reading). It uses the browser's built-in speech (Web Speech API), so there is no outside service, key or tracking. It reads the headline and article text in short pieces, skipping navigation, buttons, charts, images and code, and says link text rather than URLs. It prefers a well-known female English voice when the device has one (for example Google UK English Female, Microsoft Aria/Jenny/Sonia Natural, Samantha, Karen, Moira, Zira) and otherwise uses the first English voice. Voices and quality depend on the device and browser; the button is hidden where speech isn't supported.
+
 ## Layout
 
 ```
 index.html                         the index (vanilla JS, no build step, no CDNs)
 assets/site.css, assets/app.js     styles and app
+assets/tts.js                      read-aloud button (browser speech, used by the reader and the edition pages)
 assets/vendor/marked.min.js        Markdown renderer for the report reader (MIT, see marked.LICENSE.md)
 data/index.json                    editions, calendar, facets, totals and the item shard manifest
 data/items/<YYYY-MM>.json          every item for that month (loaded on demand)

@@ -21,7 +21,7 @@ SITE_URL = "https://greatcreations.github.io/daily-design/"
 REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
 REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
 TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
-NAV_VERSION = 1   # bump to force nav re-injection on every HTML edition
+NAV_VERSION = 2   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -260,17 +260,31 @@ border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);white-sp
 #dd-nav .dd-lab{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#b9b6ae;font-weight:500}
 #dd-nav .dd-lab b{color:var(--dd-accent);font-weight:800;margin-right:6px}
 #dd-nav .dd-off,#dd-foot .dd-off{opacity:.35;pointer-events:none}
+#dd-nav button.dd-tts{appearance:none;cursor:pointer;font:inherit;color:#ecebe8;display:inline-flex;align-items:center;gap:6px;padding:7px 11px;min-height:32px;
+border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);white-space:nowrap;font-weight:600}
+#dd-nav button.dd-tts[hidden]{display:none}
+#dd-nav button.dd-tts:hover,#dd-nav button.dd-tts.on{border-color:var(--dd-accent);background:rgba(255,255,255,.08)}
+#dd-nav button.dd-tts:focus-visible,#dd-nav a:focus-visible{outline:2px solid var(--dd-accent);outline-offset:2px}
+#dd-nav .tts-i{color:var(--dd-accent);font-size:10px}
 #dd-foot{clear:both;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;padding:28px 16px 90px;
 background:#09090c;border-top:2px solid var(--dd-accent);font:600 14px/1.3 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 #dd-foot a{color:#ecebe8!important;text-decoration:none!important;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
 #dd-foot a.dd-home{background:var(--dd-accent);color:#0b0b0e!important;border-color:transparent;font-weight:800}
-@media (max-width:620px){#dd-nav{gap:6px;padding:0 8px}#dd-nav .dd-lab{font-size:12px}#dd-nav .dd-t{display:none}#dd-nav a{padding:7px 9px}}
+@media (max-width:620px){#dd-nav{gap:6px;padding:0 8px}#dd-nav .dd-lab{font-size:12px}#dd-nav .dd-t,#dd-nav .tts-l{display:none}#dd-nav a,#dd-nav button.dd-tts{padding:7px 9px}}
 </style>
 <script>(function(){function fix(){var h=document.getElementById('dd-nav');if(!h)return;var H=h.offsetHeight;
 var els=document.body.getElementsByTagName('*');for(var i=0;i<els.length;i++){var e=els[i];if(e.closest('#dd-nav'))continue;
 var cs=getComputedStyle(e);if((cs.position==='sticky'||cs.position==='fixed')&&cs.top==='0px'&&cs.bottom!=='0px'){e.style.top=H+'px';}}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fix);else fix();})();</script>%s""" % (
         STYLE_START, color, NAV_H + 64, NAV_H, NAV_H, STYLE_END)
+
+
+# read-aloud control (browser speech, assets/tts.js); hidden until the script confirms support
+TTS_BUTTONS = ('<button class="dd-tts" id="dd-tts-play" type="button" hidden aria-label="Listen: read this page aloud" aria-pressed="false">'
+               '<span class="tts-i" aria-hidden="true">▶</span><span class="tts-l">Listen</span></button>'
+               '<button class="dd-tts" id="dd-tts-stop" type="button" hidden aria-label="Stop reading">'
+               '<span aria-hidden="true">■</span><span class="tts-l">Stop</span></button>'
+               '<script src="../../assets/tts.js" defer></script>')
 
 
 def nav_link(ed, cls, label, arrow_first):
@@ -286,8 +300,8 @@ def inject_nav(doc, ed, prev, nxt):
         doc = re.sub(re.escape(a) + ".*?" + re.escape(b) + r"\n?", "", doc, flags=re.S)
     s = SLOTS[ed["slot"]]
     bar = ('%s<nav id="dd-nav" aria-label="Daily Design"><a class="dd-home" href="../../index.html">← <span class="dd-t">Back to </span>index</a>'
-           '<span class="dd-lab"><b>%s</b>%s · %s</span>%s%s</nav>%s\n') % (
-        NAV_START, esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])),
+           '<span class="dd-lab"><b>%s</b>%s · %s</span>%s%s%s</nav>%s\n') % (
+        NAV_START, esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])), TTS_BUTTONS,
         nav_link(prev, "dd-prev", '‹ <span class="dd-t">Prev</span>', True),
         nav_link(nxt, "dd-next", '<span class="dd-t">Next</span> ›', False), NAV_END)
     foot = ('%s<div id="dd-foot">%s<a class="dd-home" href="../../index.html">← Back to the Daily Design index</a>%s</div>%s\n') % (

@@ -20,6 +20,8 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
 4. **Navigation** goes into the HTML editions only: a fixed "Back to index" bar with previous/next links (stepping through HTML editions) and a footer.
    It sits between `<!--dd-nav:start-->`/`<!--dd-nav:end-->` markers (plus style and footer markers), so re-running replaces it instead of duplicating it.
    Only pages whose previous/next neighbours changed are rewritten. Page elements that were sticky at `top:0` are moved below the bar automatically.
+   The bar also carries the **Listen** read-aloud buttons and loads `assets/tts.js`, so every new or rebuilt page gets them. When the nav markup
+   changes, bump `NAV_VERSION` in `publish.py` and every existing page is re-injected on the next run. Reports get the same button from the index reader.
 5. **Metadata**: each edition gets `data/meta/<date>/<slot>.json` (edition fields + parsed items). The index is always rebuilt from these records,
    so old editions stay indexed even after the source folder is cleaned out.
 6. **Index data**: `data/index.json` holds the editions (newest first), the calendar of published days and slots, facets, totals and the shard

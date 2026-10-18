@@ -112,6 +112,11 @@ footer.site a{color:var(--mut)}
 .rd-acts{display:flex;gap:10px;align-items:center}
 .rd-gh{font:600 12.5px var(--sans);color:var(--mut)}.rd-gh:hover{color:#fff}
 .rd-close{padding:9px 12px}
+.rd-acts{flex-wrap:wrap}
+.rd-tts{padding:9px 12px;display:inline-flex;align-items:center;gap:6px;min-height:40px}
+.rd-tts.on{border-color:var(--c);color:#fff;background:rgba(255,255,255,.05)}
+.rd-tts:focus-visible,.rd-close:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.rd-tts .tts-i{color:var(--c);font-size:11px}
 .rd-body{max-width:760px;margin:0 auto;padding:26px 22px 10px;font:18px/1.72 var(--serif);color:#e4e1d9}
 .rd-body .rd-hdr{width:100%;border-radius:14px;border:1px solid var(--line);margin:0 0 26px}
 .rd-body h1{font:400 clamp(32px,4.6vw,50px)/1.05 var(--serif);letter-spacing:-.022em;color:#fff;margin:0 0 18px}
