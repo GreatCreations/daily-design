@@ -21,7 +21,7 @@ SITE_URL = "https://studios.greatcreations.art/daily-design/"  # canonical base
 REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
 REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
 TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
-NAV_VERSION = 4   # bump to force nav re-injection on every HTML edition
+NAV_VERSION = 5   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -242,6 +242,28 @@ NAV_START, NAV_END = "<!--dd-nav:start-->", "<!--dd-nav:end-->"
 FOOT_START, FOOT_END = "<!--dd-foot:start-->", "<!--dd-foot:end-->"
 STYLE_START, STYLE_END = "<!--dd-style:start-->", "<!--dd-style:end-->"
 ICON_START, ICON_END = "<!--dd-icon:start-->", "<!--dd-icon:end-->"
+CREDIT_START, CREDIT_END = "<!--dd-credit:start-->", "<!--dd-credit:end-->"
+STUDIO_NAME = "Great Creation Studios"
+STUDIO_URL = "https://greatcreationstudios.greatcreations.art"
+
+
+def credit_html(prefix="", cls="dd-credit"):
+    """Footer credit line (skipped by the Listen button via .dd-credit). prefix = path back to the site root.
+    The studio's icon is a vendored copy of its own favicon (assets/gcs-icon.png), decorative (alt="")."""
+    return ('%s<p class="%s">Daily Design is created and brought to you by '
+            '<a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" alt="" width="16" height="16">%s</a>.</p>%s') % (
+        CREDIT_START, cls, STUDIO_URL, prefix, STUDIO_NAME, CREDIT_END)
+
+
+def ensure_credit(doc):
+    """Put exactly one credit inside <footer class="site"> (index and report pages)."""
+    doc = re.sub(re.escape(CREDIT_START) + ".*?" + re.escape(CREDIT_END), "", doc, flags=re.S)
+    m = re.search(r'(<footer class="site"><div class="wrap">.*?)(</div></footer>)', doc, re.S)
+    if m:
+        return doc[:m.end(1)] + credit_html() + doc[m.end(1):]
+    idx = doc.lower().rfind("</body>")
+    slim = '<footer class="site">' + '<div class="wrap">' + credit_html() + "</div></footer>\n"
+    return doc[:idx] + slim + doc[idx:] if idx >= 0 else doc + slim
 
 
 def icon_links(prefix):
@@ -281,6 +303,9 @@ border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,2
 background:#09090c;border-top:2px solid var(--dd-accent);font:600 14px/1.3 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 #dd-foot a{color:#ecebe8!important;text-decoration:none!important;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
 #dd-foot a.dd-home{background:var(--dd-accent);color:#0b0b0e!important;border-color:transparent;font-weight:800}
+#dd-foot .dd-credit{flex-basis:100%%;margin-top:14px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
+#dd-foot .dd-credit-ic{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin:0 5px 0 1px;border-radius:3px}
+#dd-foot .dd-credit a{display:inline;white-space:nowrap;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
 @media (max-width:620px){#dd-nav{gap:6px;padding:0 8px}#dd-nav .dd-lab{font-size:12px}#dd-nav .dd-t,#dd-nav .tts-l{display:none}#dd-nav a,#dd-nav button.dd-tts{padding:7px 9px}}
 </style>
 <script>(function(){function fix(){var h=document.getElementById('dd-nav');if(!h)return;var H=h.offsetHeight;
@@ -307,7 +332,7 @@ def nav_link(ed, cls, label, arrow_first):
 
 
 def inject_nav(doc, ed, prev, nxt, items=()):
-    for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END), (ICON_START, ICON_END)):
+    for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END), (ICON_START, ICON_END), (CREDIT_START, CREDIT_END)):
         doc = re.sub(re.escape(a) + ".*?" + re.escape(b) + r"\n?", "", doc, flags=re.S)
     s = SLOTS[ed["slot"]]
     bar = ('%s<nav id="dd-nav" aria-label="Daily Design"><a class="dd-home" href="../../index.html">← <span class="dd-t">Back to </span>index</a>'
@@ -315,9 +340,9 @@ def inject_nav(doc, ed, prev, nxt, items=()):
         NAV_START, esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])), TTS_BUTTONS,
         nav_link(prev, "dd-prev", '‹ <span class="dd-t">Prev</span>', True),
         nav_link(nxt, "dd-next", '<span class="dd-t">Next</span> ›', False), NAV_END)
-    foot = ('%s<div id="dd-foot">%s<a class="dd-home" href="../../index.html">← Back to the Daily Design index</a>%s</div>%s\n') % (
+    foot = ('%s<div id="dd-foot">%s<a class="dd-home" href="../../index.html">← Back to the Daily Design index</a>%s%s</div>%s\n') % (
         FOOT_START, nav_link(prev, "dd-prev", "‹ Previous edition", True),
-        nav_link(nxt, "dd-next", "Next edition ›", False), FOOT_END)
+        nav_link(nxt, "dd-next", "Next edition ›", False), credit_html("../../"), FOOT_END)
     doc = ensure_lang(strip_head_seo(doc))
     doc = re.sub(r"(<meta[^>]*charset[^>]*>)", lambda m: m.group(1) + "\n" + seo_block(ed, items), doc, count=1, flags=re.I)
     if SEO_START not in doc:
@@ -530,8 +555,12 @@ def ld_json(obj):
             json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"))
 
 
+def studio_ld():
+    return {"@type": "Organization", "name": STUDIO_NAME, "url": STUDIO_URL}
+
+
 def publisher_ld():
-    return {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL,
+    return {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL, "parentOrganization": studio_ld(),
             "logo": {"@type": "ImageObject", "url": abs_url("assets/favicon-512.png"), "width": 512, "height": 512}}
 
 
@@ -541,7 +570,7 @@ def seo_block(ed, items=(), story=""):
            "description": f["desc"], "datePublished": f["published"], "dateModified": f["published"],
            "image": [f["image"]], "url": f["url"], "mainEntityOfPage": {"@type": "WebPage", "@id": f["url"]},
            "author": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL},
-           "publisher": publisher_ld(), "articleSection": f["section"], "keywords": ", ".join(f["keywords"]),
+           "creator": studio_ld(), "copyrightHolder": studio_ld(), "publisher": publisher_ld(), "articleSection": f["section"], "keywords": ", ".join(f["keywords"]),
            "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": SITE_URL}}
     tags = [
         '<title>%s</title>' % esc(f["title"]),
@@ -691,12 +720,12 @@ def report_page(ed, md, items):
 <div class="rd-foot"><a class="btn" href="../../index.html">← Back to the Daily Design index</a></div>
 </section>
 </main>
-<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources; engagement numbers were read when each edition was compiled and will have changed since.</div></footer>
+<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources; engagement numbers were read when each edition was compiled and will have changed since.%s</div></footer>
 <script src="../../assets/tts.js" defer></script>
 </body>
 </html>
 """) % (seo_block(ed, items, report_story(md)), icon_links("../../"), REPORT_CSS, key, s["color"],
-        esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body)
+        esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../"))
 
 
 REPORT_TTS = ('<button class="btn rd-tts" id="dd-tts-play" type="button" hidden aria-label="Listen: read this page aloud" aria-pressed="false">'
@@ -731,7 +760,7 @@ def build_index_seo(editions):
         f = seo_fields(e)
         parts.append({"@type": "ListItem", "position": n, "url": f["url"], "name": f["title"].rsplit(" · ", 1)[0]})
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": SITE_URL,
-           "description": SITE_DESC, "inLanguage": "en", "publisher": publisher_ld(),
+           "description": SITE_DESC, "inLanguage": "en", "publisher": publisher_ld(), "creator": studio_ld(),
            "potentialAction": {"@type": "SearchAction", "target": SITE_URL + "#q={search_term_string}",
                                "query-input": "required name=search_term_string"}},
           {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Daily Design: the index",
@@ -775,6 +804,7 @@ def build_index_seo(editions):
     doc = re.sub(re.escape(STATIC_START) + ".*?" + re.escape(STATIC_END), lambda m: static, doc, flags=re.S)
     if STATIC_START not in doc:
         doc = doc.replace('<footer class="site">', static + "\n" + '<footer class="site">', 1)
+    doc = ensure_credit(doc)
     if write_if_changed(p, doc):
         log("index.html SEO updated")
 
@@ -810,11 +840,11 @@ def build_sitemap_feed(editions):
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>Daily Design</title><subtitle>%s</subtitle>
 <link rel="self" type="application/atom+xml" href="%s"/><link rel="alternate" type="text/html" href="%s"/>
-<id>%s</id><updated>%s</updated><author><name>Daily Design</name></author>
+<id>%s</id><updated>%s</updated><author><name>Daily Design</name></author><author><name>%s</name><uri>%s</uri></author>
 <icon>%s</icon>
 %s
 </feed>
-""" % (xml_esc(SITE_DESC), abs_url("feed.xml"), SITE_URL, SITE_URL, published_iso(editions[0]),
+""" % (xml_esc(SITE_DESC), abs_url("feed.xml"), SITE_URL, SITE_URL, published_iso(editions[0]), STUDIO_NAME, STUDIO_URL,
        abs_url("assets/favicon-192.png"), "\n".join(entries))
     write_if_changed(os.path.join(REPO, "feed.xml"), feed)
 

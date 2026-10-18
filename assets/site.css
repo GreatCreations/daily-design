@@ -207,3 +207,8 @@ background:rgba(255,255,255,.03);font:500 12px/1.2 var(--sans);letter-spacing:.0
 @media (prefers-reduced-motion:reduce){.cd-dot{animation:none}}
 @media (max-width:640px){.has-cd .topline>span:first-child{display:none}.has-cd .topline{justify-content:center}.cd{font-size:11.5px;gap:6px;padding:6px 10px}}
 @media (max-width:380px){.cd-k{display:none}}
+/* ---------- footer credit ---------- */
+footer.site .dd-credit{margin:14px 0 0;padding-top:14px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+footer.site .dd-credit a{white-space:nowrap;color:var(--ink);text-decoration-color:var(--amber);text-underline-offset:3px}
+footer.site .dd-credit a:hover{color:#fff}
+footer.site .dd-credit-ic{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin:0 5px 0 1px;border-radius:3px}

@@ -32,6 +32,8 @@ The 7 AM and noon pages have a fixed **Back to index** bar, previous/next links 
 
 Every page carries a unique title and description, a canonical URL (base `https://studios.greatcreations.art/daily-design/`), Open Graph and Twitter card tags with the edition's header image, and NewsArticle structured data (JSON-LD). Because the index opens reports through a URL hash, each 6 PM / 8 PM report also gets a plain, lightweight static page (`reports/<date>/<slot>.html`, same styling as the reader) that search engines can index; canonical links and the sitemap point there. The index has WebSite + CollectionPage structured data and plain links to the latest editions in the HTML. `sitemap.xml`, `robots.txt` and an Atom feed (`feed.xml`) are regenerated on every publish. Note: crawlers only read `robots.txt` at a domain root, so submit `sitemap.xml` in Google Search Console.
 
+Every page ends with a credit: "Daily Design is created and brought to you by Great Creation Studios", linking to https://greatcreationstudios.greatcreations.art. Its small icon is a copy of that site's favicon (`assets/gcs-icon.png`). The Listen button doesn't read it.
+
 ## Layout
 
 ```
