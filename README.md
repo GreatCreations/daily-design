@@ -18,6 +18,7 @@ There are up to four editions a day:
 The [home page](https://studios.greatcreations.art/daily-design/) covers every edition and **every individual link** in them:
 
 - **Next-edition countdown** in the top bar: the next scheduled slot (7 AM, noon, 6 PM, 8 PM Vancouver time, computed with Intl) in its slot colour, the due time in the visitor's own time zone, and a live hh:mm:ss countdown. It shows "arriving now" for 10 minutes after each scheduled time, then rolls on. It's the schedule, not a publish confirmation (`assets/countdown.js`).
+- **3D logo**: the DD mark as a CSS-3D extruded tile (no libraries) idles above the stats, flies with theme-colour trails into the slot beside the sticky search bar when you scroll past the hero, and flies back when you scroll up (`assets/logo3d.js`). Lighter trails on phones; reduced-motion users get a simple fade; it pauses when the tab is hidden.
 - **Latest** at the top always shows the most recent day's four slots, and marks any slot that hasn't been published yet.
 - **Search** runs instantly across edition headlines and summaries, plus every item's title, note, source, medium and tags.
 - **Filters** cover edition slot, medium and item type, plus a date range (from/to, latest day, last 7 or 30 days, this month). Search, tags and dates all combine, and the URL hash keeps the view so it can be shared (for example `#q=blender&medium=3d&from=2026-10-01`).

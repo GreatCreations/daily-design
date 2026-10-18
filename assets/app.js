@@ -299,10 +299,11 @@ function syncReader(scroll){
   setTimeout(function(){r.scrollIntoView({behavior:"smooth",block:"start"})},30);
   Promise.all([loadMarked(),fetch(e.path).then(function(x){if(!x.ok)throw new Error(x.status);return x.text()})]).then(function(v){
     if(openKey!==e.date+"/"+e.slot)return;
-    var tmp=document.createElement("div");tmp.innerHTML=v[0].parse(v[1],{gfm:true});
+    var tpl=document.createElement("template");tpl.innerHTML=v[0].parse(v[1],{gfm:true});var tmp=tpl.content;  // inert: images don't load before paths are fixed
     if(hdrName)tmp.querySelectorAll("img").forEach(function(i){if((i.getAttribute("src")||"").split("/").pop()===hdrName){var p=i.parentNode;i.remove();if(p&&p.tagName==="P"&&!p.textContent.trim())p.remove()}});
     clean(tmp,base);
-    body.innerHTML=(e.header?'<img class="rd-hdr" src="'+esc(e.header)+'" alt="'+esc(e.title)+' header image">':'')+tmp.innerHTML;
+    var box=document.createElement("div");box.appendChild(tmp);
+    body.innerHTML=(e.header?'<img class="rd-hdr" src="'+esc(e.header)+'" alt="'+esc(e.title)+' header image">':'')+box.innerHTML;
   }).catch(function(){body.innerHTML='<div class="empty"><b>Could not load this report here</b><a href="'+esc(e.url)+'" target="_blank" rel="noopener">Read it on GitHub ↗</a></div>'});
 }
 
