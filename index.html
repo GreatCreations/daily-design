@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily Design · AI design research digests, searchable</title>
+<meta name="description" content="A searchable, tagged index of daily AI design research digests: image, video, 3D, code/UI, sound, games and mashups.">
+<meta name="theme-color" content="#09090c">
+<meta property="og:title" content="Daily Design · AI design research digests">
+<meta property="og:description" content="Every edition and every link from the daily AI design digests, searchable and tagged.">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#results">Skip to results</a>
+<header class="masthead">
+  <div class="wrap">
+    <div class="topline"><span>Daily Design · The index</span><span class="slotbar" aria-hidden="true"><i style="background:var(--amber)"></i><i style="background:var(--aqua)"></i><i style="background:var(--violet)"></i><i style="background:var(--flame)"></i></span><span class="r" id="updated"></span></div>
+    <div class="hero">
+      <div>
+        <h1>Daily <em>Design</em></h1>
+        <p class="dek">Four editions a day on how AI is changing creative work: the 7 AM briefing, the noon field report, the 6 PM best-of and the 8 PM hot list. Every edition and every link is searchable here.</p>
+      </div>
+      <div class="totals" id="totals" aria-live="polite">
+        <div><b data-k="editions">–</b><span>Editions</span></div>
+        <div><b data-k="items">–</b><span>Linked items</span></div>
+        <div><b data-k="tags">–</b><span>Tags</span></div>
+        <small id="totals-note">Counted live from the index data.</small>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="searchbox" role="search">
+  <div class="wrap">
+    <div class="searchrow">
+      <label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search every edition and link: Blender, FLUX, Seedance, Figma…" autocomplete="off" spellcheck="false" aria-label="Search editions and items"><kbd>/</kbd></label>
+      <button class="btn filtertoggle" id="ftoggle" aria-expanded="false" aria-controls="filters">Filters</button>
+      <button class="btn" id="clear" hidden>Clear</button>
+    </div>
+    <div class="filters" id="filters"></div>
+  </div>
+</div>
+
+<main class="wrap" id="results">
+  <div class="status"><h2 id="status-title">All editions</h2><p id="status-line"></p></div>
+  <section class="block" id="eds-block"><div class="eyebrow" id="eds-eyebrow">Editions</div><div class="grid" id="eds"></div></section>
+  <section class="block" id="items-block"><div class="eyebrow" id="items-eyebrow">Every link</div><div class="items" id="items"></div><div class="more"><button class="btn" id="more" hidden>Show more</button></div></section>
+</main>
+
+<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources; engagement numbers were read when each edition was compiled and will have changed since. <a href="https://github.com/GreatCreations/daily-design">Source on GitHub</a>.</div></footer>
+<noscript><p style="padding:20px;text-align:center">Search needs JavaScript. You can still browse the <a href="data/index.json">raw index</a>.</p></noscript>
+<script src="data/index.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
