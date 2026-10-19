@@ -1,0 +1,389 @@
+{
+ "edition": {
+  "date": "2026-10-18",
+  "slot": "best",
+  "time": "6 PM",
+  "title": "Best of the Day",
+  "kind": "report",
+  "headline": "AI Design Best of the Day · Sunday, Oct 18, 2026",
+  "summary": "The loudest design story of the weekend is DeepSeek-V4.1-Flash-1017, an MIT-licensed open-weights update that creators spent two days pitting against Claude Opus 5.5 on code-built motion graphics, 3D scenes and frontends. The announcement is the most-engaged AI post in today's sweep by a wide margin, the model sits at the top of Hugging Face's trending list, and one of the big AI video platforms called it \"the new SOTA for motion design\" after running its own tests. It matters because the hottest design technique of the month, motion and 3D written as code instead of rendered by a video model, has so far meant paying for a frontier model. If a free, open model holds up, that whole way of working gets much cheaper and can run on your own hardware. The verdict isn't settled, though: side-by-side tests are mixed, and a few came out with blown-out colours.",
+  "path": "reports/2026-10-18/best.md",
+  "url": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+  "header": "reports/2026-10-18/best-header.png",
+  "thumb": "reports/2026-10-18/best-thumb.jpg",
+  "item_count": 13,
+  "tags": [
+   "best",
+   "2026-10-18",
+   "3d",
+   "games",
+   "image",
+   "mashups",
+   "sound",
+   "video",
+   "report"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-18-best-1",
+   "title": "DeepSeek-V4.1-Flash-1017, open weights (Hugging Face)",
+   "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+   "note": "model. DeepSeek's Oct 17 update to V4.1 Flash: stronger benchmarks, faster task completion and shorter outputs, live on web, app and API with MIT weights. Why people are losing it: the announcement has 35,587 likes, 6,794 bookmarks and about 6.6M views; the model is #1 on Hugging Face's trending list (1,334 likes); Higgsfield's \"looks like the new SOTA for motion design\" test reached 2,020 likes and 1,062 bookmarks; and a YouTube head-to-head, Opus 5.5 vs DeepSeek V4.1 Flash: Which One Actually Wins?, passed 11,500 views in about 14 hours. How to try it: take one motion-graphics or landing-page prompt you've already run on your usual model, run it free at chat.deepseek.com, and compare the two side by side before deciding which one to pay for.",
+   "medium": "video",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "video",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "announcement",
+     "url": "https://x.com/deepseek_ai/status/2111375640717033777"
+    },
+    {
+     "label": "Higgsfield's \"looks like the new SOTA for motion design\" test",
+     "url": "https://x.com/higgsfield_ai/status/2111499195257700857"
+    },
+    {
+     "label": "Opus 5.5 vs DeepSeek V4.1 Flash: Which One Actually Wins?",
+     "url": "https://www.youtube.com/watch?v=EixR4FdOG0Y"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-2",
+   "title": "“This Opus 5.5 prompt is literally a $400/hr motion graphics designer” (@minchoi)",
+   "url": "https://x.com/minchoi/status/2111306174259691669",
+   "note": "A motion-graphics prompt for Claude Opus 5.5 with a demo. Why people are losing it: the most-saved design post in today's sweep, with 8,406 bookmarks against 4,243 likes (about 240K views), so people are keeping it to use, not just reacting. How to try it: run the prompt on one of your own product shots or logos and change only the colours and copy.",
+   "medium": "video",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "video",
+    "tutorial",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-3",
+   "title": "awesome-opus5-5-videos: 475 viral Opus 5.5 videos with their prompts (GitHub)",
+   "url": "https://github.com/yihui-dev/awesome-opus5-5-videos",
+   "note": "A collection of motion graphics, explainers, 3D scenes and games made with HTML, Canvas, SVG and Three.js, each with its original prompt and source post. Why people are losing it: 6,247 stars, and the post sharing it (@HurricaneCrypt0) has 1,955 likes and 2,912 bookmarks. How to try it: pick the demo closest to something you need, copy its prompt, and remake it with your own brand.",
+   "medium": "video",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "video",
+    "repo/tool",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "the post sharing it (@HurricaneCrypt0)",
+     "url": "https://x.com/HurricaneCrypt0/status/2111531584037785970"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-4",
+   "title": "“Gus & Spark”, a 25-minute anime episode written entirely as code by Claude (@ziwenxu_)",
+   "url": "https://x.com/ziwenxu_/status/2111212505947357651",
+   "note": "No AI video model at all: the creator says Opus 5.5 worked for over 15 hours and wrote 34K lines of code, using 986M tokens (about $370 at API prices). Why people are losing it: 2,066 likes, 1,626 bookmarks and about 300K views, and episode 2 followed on Oct 17. How to use it: a reference for how far code-built animation can be pushed, and a realistic idea of the cost.",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "episode 2 followed on Oct 17",
+     "url": "https://x.com/ziwenxu_/status/2111563277079912473"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-5",
+   "title": "Build a game-ready room in Blender and move it into Unreal Engine 5 with Opus 5.5 (@rewind02)",
+   "url": "https://x.com/rewind02/status/2111849852350894319",
+   "note": "An eight-step setup: Opus models simple objects directly in Blender through Blender MCP, sends complex props to Tripo from a reference image, cleans them up, lights the scene, then ports the whole room to Unreal. Why people are losing it: 255 likes and 347 bookmarks in its first hours (about 11.3K views), from the creator whose \"treat every model as code\" thread was yesterday's pick; his motion-video-to-3D-animation follow-up is spreading too. How to try it: start with one reference image of a small room and let the agent decide which props to model and which to send to Tripo.",
+   "medium": "3d",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "3d",
+    "tutorial",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "his motion-video-to-3D-animation follow-up",
+     "url": "https://x.com/rewind02/status/2111759900317520294"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-6",
+   "title": "Opus 5.5 drew a 92 m² apartment from a single grid line, then built it in 3D (@Solvaix)",
+   "url": "https://x.com/Solvaix/status/2111880621954081240",
+   "note": "The CAD screen, every command and the 3D model are one HTML file the model wrote, following the order a real drafter would, grid first. Why people are talking: posted around 11 AM PT, it had 98 likes and 97 bookmarks within hours, almost one save per like. How to use it: a template for architecture or interior pitches where the plan and the walkthrough come from one file.",
+   "medium": "3d",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "3d",
+    "showcase",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-7",
+   "title": "10 skills and repos that turn Opus 5.5 into a motion studio (@0xMovez)",
+   "url": "https://x.com/0xMovez/status/2111841847408517282",
+   "note": "Explainer figures, exploded product views, 3D, physics, motion and sound, all as installable skills. Why people are losing it: 263 likes and 454 bookmarks (about 15K views), nearly two saves per like. A 20-repo version (@N01ennn) built on LottieFiles' motion-design-skill (2,306 stars) is climbing the same way. How to try it: install just one skill, such as the product-reveal one, and give it one real product.",
+   "medium": "mashups",
+   "type": "buzz",
+   "kind": "buzz",
+   "tags": [
+    "mashups",
+    "buzz",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "20-repo version (@N01ennn)",
+     "url": "https://x.com/N01ennn/status/2111888466829303973"
+    },
+    {
+     "label": "LottieFiles' motion-design-skill",
+     "url": "https://github.com/LottieFiles/motion-design-skill"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-8",
+   "title": "A melancholic music video made entirely on one RTX 3090 (@superalesha)",
+   "url": "https://x.com/superalesha/status/2111726450848272429",
+   "note": "Song, pictures, video and upscale, with no cloud model: MiniMax H3 and its latent upscaler for video, and Qwen Image 2.1, MOSS-Image and FLUX 3 for stills, in about 11 hours of generation. Why people are losing it: 300 likes and 205 bookmarks (about 15.2K views). How to use it: proof that a full local music-video pipeline fits on a consumer GPU if you're willing to wait.",
+   "medium": "mashups",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "mashups",
+    "showcase",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-9",
+   "title": "A local fishing game built with Opus 5.5 and Unity 6, and the one rule behind it (@sorenxet)",
+   "url": "https://x.com/sorenxet/status/2111583999294398792",
+   "note": "Build one system, play it, then move on, with Tripo making the models and Opus writing scripts and running playtests. Why people are losing it: 435 likes and 446 bookmarks (about 33K views), more saves than likes. How to try it: follow the rule on a single mechanic before touching any art.",
+   "medium": "games",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "games",
+    "tutorial",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-10",
+   "title": "MOSS-Image in 8 steps: community distillation LoRA (Hugging Face)",
+   "url": "https://huggingface.co/lodestones/MOSS-Image-SFT-8-steps-dmd",
+   "note": "A work-in-progress LoRA that cuts MOSS-Image-SFT from 50 steps to 8 with no CFG. Why people are losing it: 30,751 downloads in two days, and it's on Hugging Face's trending list next to MOSS-Image-SFT itself; creators are posting local results like 9 images at about 15 seconds each, including a magazine cover with a real masthead (@ivanfioravanti). How to try it: load the LoRA at strength 1 in ComfyUI on top of MOSS-Image-SFT and test it on a layout with text.",
+   "medium": "image",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "image",
+    "repo/tool",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "MOSS-Image-SFT itself",
+     "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
+    },
+    {
+     "label": "9 images at about 15 seconds each, including a magazine cover with a real masthead (@ivanfioravanti)",
+     "url": "https://x.com/ivanfioravanti/status/2111786227640713651"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-11",
+   "title": "VoiceStudio, a fully local ElevenLabs alternative (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "note": "Open-source voice cloning, voice design, video dubbing and dictation that runs on your own machine. Why people are losing it: 2,082 stars today, the top creative tool on GitHub's daily trending list for a second day, now at 75,350 stars. How to try it: dub one short clip in your own voice and compare it with a cloud voice before paying for credits.",
+   "medium": "sound",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "sound",
+    "repo/tool",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-12",
+   "title": "“Vibe coding” is starting to create a serious problem for the game industry (@Pirat_Nation)",
+   "url": "https://x.com/Pirat_Nation/status/2111593348293128535",
+   "note": "A summary of Kotaku's report that Opus 5.5 has made decompiling and recompiling games much easier, leading to unofficial ports, mods and clones, DMCA takedowns, and calls for platforms like Steam to carry more of the burden. Why it's here: the single most-engaged design post in today's sweep after the DeepSeek launch, at 5,930 likes and about 346K views. What it means: anything you ship can now be taken apart faster, so plan your protection and licensing early.",
+   "medium": "",
+   "type": "buzz",
+   "kind": "buzz",
+   "tags": [
+    "buzz",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-18-best-13",
+   "title": "“Make sure your game is fun without a bunch of fancy art” (@pvncher)",
+   "url": "https://x.com/pvncher/status/2111613394143027269",
+   "note": "The argument that LLMs make it too easy to build visually rich levels with no real gameplay. Why it's here: 5,278 likes and about 147K views, the most-liked craft advice of the day. What it means: with art now cheap, the gameplay loop is the part that sets a game apart.",
+   "medium": "",
+   "type": "buzz",
+   "kind": "buzz",
+   "tags": [
+    "buzz",
+    "best",
+    "2026-10-18"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-18/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-18",
+   "slot": "best"
+  }
+ ],
+ "src_hash": {
+  "md": "386eea6e71497c80304d03074578b9c9df68ee0e"
+ },
+ "tool_version": 3,
+ "nav": null
+}
