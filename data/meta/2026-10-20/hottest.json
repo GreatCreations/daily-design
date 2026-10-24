@@ -1,0 +1,779 @@
+{
+ "edition": {
+  "date": "2026-10-20",
+  "slot": "hottest",
+  "time": "8 PM",
+  "title": "Hottest Right Now",
+  "kind": "report",
+  "headline": "AI Design Hottest Right Now · Tuesday, Oct 20, 2026",
+  "summary": "Gemini 4 Argon was the loudest AI launch of the week. Sundar Pichai's launch post on Oct 13 has more than 28,000 likes, and Google's own demo videos, a webcam you play like a synthesizer and a 3D pagoda built in Blender from one prompt, have racked up about 17.6 million and 8.3 million YouTube views. On Oct 20 itself, Argon came back with a 3D periodic table that animates in time with Tom Lehrer's \"The Elements\". But when people decide what to keep, they keep Claude. Over the past month, Claude Opus 5.5 and Claude Motion are still the most-liked and most-saved design launches by far. This week's most-bookmarked creative post was a single Opus 5.5 prompt billed as a \"$400/hr motion graphics designer\", and creators shipped a 475-demo gallery and a 25-minute anime written entirely in code. The backlash grew alongside the hype. Kotaku's report on vibe-coded game decompiles and ports spread widely, and a widely shared reminder told newcomers that an AI game needs to be fun before it needs fancy art. What it means: views follow the big labs' demos, but saves follow prompts and repos you can reuse tomorrow.",
+  "path": "reports/2026-10-20/hottest.md",
+  "url": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+  "header": "reports/2026-10-20/hottest-header.png",
+  "thumb": "reports/2026-10-20/hottest-thumb.jpg",
+  "item_count": 30,
+  "tags": [
+   "hottest",
+   "2026-10-20",
+   "report"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-20-hottest-1",
+   "title": "Gemini 4 Argon builds a 3D periodic table synced to Tom Lehrer's \"The Elements\" (Google DeepMind)",
+   "url": "https://x.com/GoogleDeepMind/status/2112557925264752930",
+   "note": "3D/code showcase. Made in Antigravity, it animates orbiting electrons, atomic data and light spectra along with the song. The signal: 4,692 likes, 1,472 bookmarks and about 572K views, and Sundar Pichai's \"Sound on!\" quote-post added 6,719 likes and about 483K views. It's a vendor demo, and no project files were shared. Try it: hand an agent a song or voiceover with a clear structure and ask for an interactive 3D explainer that hits each beat.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Sundar Pichai's \"Sound on!\" quote-post",
+     "url": "https://x.com/sundarpichai/status/2112648189656616999"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-2",
+   "title": "Vyb, Coco Labs' first design model, which builds editable layered designs from your brand (Coco Labs)",
+   "url": "https://cocolabs.ai/blog/introducing-vyb",
+   "note": "design model. It starts from your logo, fonts, colors and photos and builds the design layer by layer, so text stays text, graphics stay vectors and photos aren't redrawn, and the result exports to Figma. The signal: the launch post has 1,976 likes, 1,642 bookmarks and about 3.66M views, the biggest view count of the day. Coco Labs reports a 90.3% font shape match in its own test (self-reported), and access is through a waitlist. Use it: join the waitlist if client work means brand-locked social and ad layouts you'd otherwise rebuild by hand.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "cocolabs.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "launch post",
+     "url": "https://x.com/anurahk/status/2112581900779012503"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-3",
+   "title": "Did Google just dethrone OpenAI and Anthropic? (Fireship, YouTube)",
+   "url": "https://www.youtube.com/watch?v=b2tjnxX8IHU",
+   "note": "video review. Fireship puts Google's new model up against GPT-6 and Opus 5.5 in a hands-on test drive. The signal: about 1.85M views since it went up on the morning of Oct 20. Use it: a fast way to see where Argon actually beats the other two before you switch tools.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-4",
+   "title": "Voxtral 3, Mistral's new speech-to-text and text-to-speech models (Mistral)",
+   "url": "https://mistral.ai/news/voxtral-3/",
+   "note": "voice model. The models power Mistral's new voice-agents API. The signal: the launch post has 3,263 likes, 947 bookmarks and about 269K views, plus 769 points on Hacker News. Try it: a candidate voice for game characters or narrated explainers. Test one line in two languages first.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "mistral.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "launch post",
+     "url": "https://x.com/MistralAI/status/2112574615318876178"
+    },
+    {
+     "label": "769 points on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50168396"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-5",
+   "title": "Krea 3 reaches the top of the image arenas (Krea)",
+   "url": "https://x.com/krea_ai/status/2112567020353102324",
+   "note": "image model. Krea says \"Fast\" pushes the speed-and-quality curve and \"Ultra\" ranks top-4, behind only OpenAI's models (Krea's claim). The signal: 1,665 likes, 1,175 bookmarks and about 1.31M views. Use it: worth a side-by-side with your usual model on edit-heavy jobs.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-6",
+   "title": "FastH3 Omni, open-sourced with training code (FastVideo, Hugging Face)",
+   "url": "https://huggingface.co/FastVideo/FastH3-Omni-Comfy",
+   "note": "open video model. FastVideo open-sourced MiniMax's FastH3 Omni with ComfyUI support from day one and says it generates in real time, 12x faster on NVIDIA Blackwell (self-reported). The signal: the announcement has 797 likes and 862 bookmarks, and the ComfyUI build shows about 154K downloads on Hugging Face. Try it: if you run ComfyUI locally, it's a free way to test fast video drafts.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "announcement",
+     "url": "https://x.com/haoailab/status/2112625528805208257"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-7",
+   "title": "Gemini 4 Argon is here (Sundar Pichai)",
+   "url": "https://x.com/sundarpichai/status/2110038898009407584",
+   "note": "Out Oct 13 in the Gemini API, Antigravity, the Gemini app and Search. The signal: 28,456 likes and about 5.96M views. Google's demo Turn Your Webcam Into a Playable Synthesizer shows about 17.6M views, and 3D World in Blender about 8.3M. View counts on official brand channels can include paid promotion, so read them as reach rather than buzz. Try it: the webcam synth is a ready-made idea for an interactive installation or a music visual.",
+   "medium": "",
+   "type": "news",
+   "kind": "model launch",
+   "tags": [
+    "news",
+    "hottest",
+    "2026-10-20",
+    "model launch"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Turn Your Webcam Into a Playable Synthesizer",
+     "url": "https://www.youtube.com/watch?v=KSTOF3s-r4E"
+    },
+    {
+     "label": "3D World in Blender",
+     "url": "https://www.youtube.com/watch?v=1dAcJEIlQM8"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-8",
+   "title": "Portal jumping through gaussian splat worlds with WebGPU (@XRarchitect)",
+   "url": "https://x.com/XRarchitect/status/2112207444101541962",
+   "note": "3D/real-time. Real-time portal jumps between captured splat scenes in the browser. The signal: 9,791 likes, 4,462 bookmarks and about 421K views, the most-liked creative post we found this week. Use it: splat captures plus portal transitions make a strong format for spatial portfolios or venue walkthroughs.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-9",
+   "title": "Vibe coding is creating a serious problem for the video game industry (@Pirat_Nation, via Kotaku)",
+   "url": "https://x.com/Pirat_Nation/status/2111593348293128535",
+   "note": "industry talk. A summary of Kotaku's report that Opus 5.5 has made decompiling and recompiling games easier, which has led to a wave of unofficial ports, mods and clones and to DMCA takedowns. The signal: 6,182 likes, 1,637 bookmarks and about 384K views. On Hacker News, Steam Client is now faster than Epic's new vibe coded launcher took 350 points. Use it: if you build games or game art, keep your own work's source and licenses tidy, because this fight is just starting.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Steam Client is now faster than Epic's new vibe coded launcher",
+     "url": "https://news.ycombinator.com/item?id=50105635"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-10",
+   "title": "Make sure your game is fun without a bunch of fancy art (@pvncher)",
+   "url": "https://x.com/pvncher/status/2111613394143027269",
+   "note": "craft talk. The argument: LLMs make it too easy to build visually rich levels with no real gameplay, and that's backwards. The signal: 5,707 likes and about 164K views. Use it: block out the gameplay in grey boxes before you generate a single texture.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-11",
+   "title": "\"This Opus 5.5 prompt is literally a $400/hr motion graphics designer\" (@minchoi)",
+   "url": "https://x.com/minchoi/status/2111306174259691669",
+   "note": "prompt. A shared prompt for getting motion-graphics work out of Opus 5.5. The signal: 4,396 likes and 8,745 bookmarks (about two saves for every like), the most-saved creative post we found this week. The price tag is the poster's framing. Try it: run it on one of your own briefs and judge the timing and easing yourself.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-12",
+   "title": "Paris City Tours, now 50% off, an AI satire (@Wytsekoetse)",
+   "url": "https://x.com/Wytsekoetse/status/2112211697008075021",
+   "note": "video short. A fake tourism ad, with the full toolchain listed: ChatGPT for prompts, GPT Image 2.5 and Nano Banana 2.1 for images, Seedance 2.5 for video, Suno v6 for music and Adobe Creative Cloud for the edit. The signal: 3,722 likes, 1,092 reposts and about 4.03M views, the most-viewed creative post we found this week. Use it: the toolchain list is a working recipe for a one-person comedy spot.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-13",
+   "title": "475 video demos built with Claude Opus 5.5 in one GitHub repo (@hurricodes)",
+   "url": "https://x.com/hurricodes/status/2111531584037785970",
+   "note": "resource. Motion graphics, explainers, 3D scenes and games made with HTML, Canvas, SVG and Three.js, each with its original prompt and source post. The signal: 2,553 likes, 3,775 bookmarks and about 323K views. The repo link sits in the replies. Try it: pick one demo near your style and remake it from its prompt.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-14",
+   "title": "Gus & Spark, billed as the first Claude-made anime (@ziwenxu_)",
+   "url": "https://x.com/ziwenxu_/status/2111212505947357651",
+   "note": "animation. A 25-minute episode the creator says Opus 5.5 wrote in code over more than 15 hours, with no AI-generated video: 34K lines of code and 986M tokens, about $370 at API prices (all self-reported). The signal: 2,136 likes, 1,678 bookmarks and about 356K views. Use it: proof that code-drawn animation can run long, which is useful when you need consistent characters.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-15",
+   "title": "DeepSeek V4.1 Flash as \"the new SOTA for motion design\" (Higgsfield)",
+   "url": "https://x.com/higgsfield_ai/status/2111499195257700857",
+   "note": "model demo. Higgsfield shows 3D detail and UI transitions made with DeepSeek-V4.1-Flash-1017, which was the week's biggest launch post (37,127 likes, about 8.0M views). The signal: Higgsfield's demo has 2,144 likes and 1,157 bookmarks. \"SOTA\" is Higgsfield's claim. Try it: a cheaper model to test for code-built motion pieces.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "DeepSeek-V4.1-Flash-1017",
+     "url": "https://x.com/deepseek_ai/status/2111375640717033777"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-16",
+   "title": "FLUX 3 Image Klein, ComfyUI build (Black Forest Labs, Hugging Face)",
+   "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+   "note": "open image model. Released Oct 14. The signal: 1,479 likes and about 591K downloads on Hugging Face. Late in the week fal launched FLUX 3 Max, a video model built with Black Forest Labs, at 75% off for three weeks (1,429 likes, about 442K views). Use it: Klein is the open option to keep in your local ComfyUI kit.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "FLUX 3 Max",
+     "url": "https://x.com/fal/status/2112251022047412492"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-17",
+   "title": "Mirelo SFX 2.0, sound design for AI video (Mirelo)",
+   "url": "https://x.com/MireloAI/status/2110360787780800611",
+   "note": "audio. It watches a clip, keeps the dialogue, cuts music you never asked for and builds synced sound design, through its API, Runway and fal. The signal: 3,839 likes, 4,326 bookmarks and about 1.89M views. Use it: run your silent AI shots through it before you hand-mix.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-18",
+   "title": "earshot, ears for coding agents (GitHub)",
+   "url": "https://github.com/Leonxlnx/earshot",
+   "note": "It lets an AI agent hear, review and make sound, on CPU only. The signal: about 2,600 stars since it was created Oct 15. Use it: lets an agent check its own audio when it builds sound for games or motion pieces.",
+   "medium": "",
+   "type": "repo/tool",
+   "kind": "open-source tool",
+   "tags": [
+    "repo/tool",
+    "hottest",
+    "2026-10-20",
+    "open-source tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-19",
+   "title": "Introducing Claude Opus 5.5 (Claude)",
+   "url": "https://x.com/claudeai/status/2102435511222890900",
+   "note": "Out Sept 22. The signal: 97,487 likes, 13,305 bookmarks and about 28.6M views, the most-liked post in this edition. The early-explorations thread, opening with a watermelon short story by @kevin_t_ngo, added 11,356 likes. Use it: the model behind most of the code-built video in this edition.",
+   "medium": "",
+   "type": "news",
+   "kind": "model launch",
+   "tags": [
+    "news",
+    "hottest",
+    "2026-10-20",
+    "model launch"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "early-explorations thread",
+     "url": "https://x.com/claudeai/status/2102471866635919731"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-20",
+   "title": "Claude Dashboards and Claude Motion are in beta (Claude)",
+   "url": "https://x.com/claudeai/status/2108271552991252810",
+   "note": "You ask, and Claude turns data into live dashboards and ideas into animated explainers. The signal: 60,550 likes and 39,790 bookmarks, the most-saved post of the month, plus about 1.31M views on the launch video. Use it: start explainer animatics here, then polish in your usual tools.",
+   "medium": "",
+   "type": "repo/tool",
+   "kind": "design tool",
+   "tags": [
+    "repo/tool",
+    "hottest",
+    "2026-10-20",
+    "design tool"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "launch video",
+     "url": "https://www.youtube.com/watch?v=en0GuyhieQk"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-21",
+   "title": "GPT-6 and Intelligent UI for everyone (OpenAI)",
+   "url": "https://x.com/OpenAI/status/2107894997538525580",
+   "note": "Intelligent UI makes ChatGPT answers more visual and interactive. The signal: 24,059 likes and about 6.9M views, plus 761 points on Hacker News. Use it: watch which answer layouts it picks. They hint at where interface design is heading.",
+   "medium": "",
+   "type": "news",
+   "kind": "product launch",
+   "tags": [
+    "news",
+    "hottest",
+    "2026-10-20",
+    "product launch"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "761 points on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=49996425"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-22",
+   "title": "Pros Try Fake AI Photoshop (Linus Tech Tips, YouTube)",
+   "url": "https://www.youtube.com/watch?v=fr0WIIZxvx0",
+   "note": "video. LTT has professionals try a free \"fake AI Photoshop\" and asks whether the wave of AI clones and decompiled games is piracy or a step toward AI-assisted open source. The signal: about 3.1M views since Oct 10. Use it: a fair read on whether these clones are good enough for real work yet.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-23",
+   "title": "LGTM (Looks Good to Me), a Claude Opus 5.5 music video (Degenerative Pixels, YouTube)",
+   "url": "https://www.youtube.com/watch?v=3TNpOD6bov8",
+   "note": "music video. A song made with Suno v6 and animation Opus 5.5 wrote in TypeScript and three.js, all satirizing unread code reviews. The signal: about 1.53M views since Oct 5. Use it: a strong example of code-drawn animation carrying a whole track.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-24",
+   "title": "awesome-opus5-5-videos (GitHub)",
+   "url": "https://github.com/yihui-dev/awesome-opus5-5-videos",
+   "note": "resource. A growing collection of viral Opus 5.5 videos and the prompts behind them, each shown next to a live remake. The signal: about 10,400 stars since Sept 27. Use it: a prompt library to browse before your next motion brief.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-25",
+   "title": "universal-modder, point Claude at any game (GitHub)",
+   "url": "https://github.com/rehan-remade/universal-modder",
+   "note": "Skills and tools that let Claude Code mod almost any PC game you own, including fal-generated art, 3D and audio. The signal: about 8,900 stars since Sept 30. Mod only games you own and respect each game's terms. Use it: a sandbox for testing generated textures and sounds inside a real engine.",
+   "medium": "",
+   "type": "repo/tool",
+   "kind": "tool",
+   "tags": [
+    "repo/tool",
+    "hottest",
+    "2026-10-20",
+    "tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-26",
+   "title": "lemo-opuscar, film styles made in code (GitHub)",
+   "url": "https://github.com/lemomo-ai/lemo-opuscar",
+   "note": "resource. A toolbox of 59 film styles for Claude Code, each with a style prompt and a demo film made in code by Opus 5.5 with no video model. The signal: about 6,600 stars since Sept 26. Try it: borrow a style prompt as the look for a title sequence.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-27",
+   "title": "How to Make Insane Motion Graphics With Opus 5.5 (Lukas Margerie, YouTube)",
+   "url": "https://www.youtube.com/watch?v=747ZnEtsRbg",
+   "note": "A walkthrough of making motion graphics with Opus 5.5. The signal: about 657K views since Sept 28. Use it: a quick start if you haven't tried code-built motion yet.",
+   "medium": "",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "tutorial",
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-28",
+   "title": "I gave Opus 5.5 one prompt and six hours to visualize Invisible Cities (Quesma)",
+   "url": "https://quesma.com/blog/invisible-cities-one-shot/",
+   "note": "experiment. A one-prompt, six-hour run at visualizing Calvino's book. The signal: 418 points on Hacker News. Use it: a model for long, unattended art runs. Write the brief well, then let it go.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "quesma.com",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "418 points on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50004790"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-29",
+   "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons (Nieman Lab)",
+   "url": "https://www.niemanlab.org/2026/10/chatgpt-is-adding-real-cartoonists-signatures-to-fake-new-yorker-cartoons/",
+   "note": "talk. The signal: 559 points on Hacker News, the month's most-upvoted AI-art ethics story. Use it: check generated images for stray signatures or marks before anything ships.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "niemanlab.org",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "559 points on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=49971846"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-20-hottest-30",
+   "title": "Qwen-Image-2.1-Turbo, open-weights images in 8 steps (Qwen)",
+   "url": "https://x.com/Alibaba_Qwen/status/2108549075218120949",
+   "note": "open image model. It creates and edits 2K images in 8 denoising steps. The signal: 5,317 likes and 4,019 bookmarks, plus 1,047 likes on Hugging Face. Try it: a fast local option for quick edits and drafts.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "hottest",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hugging Face",
+     "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "hottest"
+  }
+ ],
+ "src_hash": {
+  "md": "c35e6170ba38aa933a82ab9f5e03f90a225d2023"
+ },
+ "tool_version": 3,
+ "nav": null
+}
