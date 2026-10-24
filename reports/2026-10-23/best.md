@@ -48,6 +48,6 @@ The design story of the day is Canva Craft, the first image model Canva has buil
 - [Dessa, a speech model trained only on speech (Block)](https://block.xyz/dessa), research preview. A full-duplex model that listens and talks at the same time, so it handles interruptions, laughs and "yeah"s like a person. Why people are talking: [197 points on Hacker News](https://news.ycombinator.com/item?id=50213925). How to use it: one to watch for voice characters and interactive audio, since natural turn-taking is what most voice demos still get wrong.
 
 ---
-*Method:* a fresh evening check of X (launch accounts, search and trending stories), YouTube search, Hugging Face trending and Hacker News. Ranked by engagement and velocity, how many creators are copying it, and how new it is. Reddit and GitHub trending turned up nothing design-specific worth ranking tonight.
+*Method:* a fresh evening check of X (launch accounts, search and trending stories), YouTube search, Hugging Face trending and Hacker News. Ranked by engagement and velocity, how many creators are copying it, and how new it is. GitHub trending turned up nothing design-specific worth ranking tonight, and Reddit wasn't checked.
 
 Want a deeper dive on any of these, or more of one medium tomorrow? Say the word and the next edition will steer there.
