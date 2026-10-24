@@ -1,0 +1,1435 @@
+{
+ "edition": {
+  "date": "2026-10-23",
+  "slot": "morning",
+  "time": "7 AM",
+  "title": "AI Design Daily",
+  "kind": "page",
+  "headline": "The day design tools started taking orders from AI agents.",
+  "summary": "Anthropic gave the Agent Skills standard to the Linux Foundation, MiniMax opened its Design canvas to agents through MCP, and Google had Gemini 4 Argon build a cathedral in Blender through MCP. 55 verified items from about 7 AM PT on Oct 22 to 7 AM PT on Oct 23.",
+  "path": "editions/2026-10-23/morning.html",
+  "url": "editions/2026-10-23/morning.html",
+  "header": "editions/2026-10-23/morning-header.png",
+  "thumb": "editions/2026-10-23/morning-thumb.jpg",
+  "item_count": 55,
+  "tags": [
+   "morning",
+   "2026-10-23",
+   "3d",
+   "code",
+   "games",
+   "image",
+   "mashups",
+   "sound",
+   "video"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-23-morning-1",
+   "title": "3D Model Anything: scan a room on an iPhone, rebuild it as an editable Three.js scene (GitHub)",
+   "url": "https://github.com/wesbos/3d-model-anything",
+   "note": "Wes Bos's kit has three parts: an iPhone app that records LiDAR geometry and photos, a Three.js viewer, and a scan-to-threejs agent skill that walks a coding agent through measuring, modelling and comparing renders against the real photos. The README says plainly that it's an iterative reconstruction workflow, not a one-click converter, and that it focuses on rooms. Published on 21 October, it had more than 1,500 stars by 24 October. Start: walk through the finished office in the browser viewer, then open the repo in your agent and ask it to \"use scan-to-threejs\" on your own export. Scanning needs a LiDAR iPhone or iPad.",
+   "medium": "",
+   "type": "tutorial",
+   "kind": "",
+   "tags": [
+    "tutorial",
+    "morning",
+    "2026-10-23",
+    "older",
+    "try today"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "browser viewer",
+     "url": "https://wesbos.github.io/3d-model-anything/"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-2",
+   "title": "Awesome AI Motion: 637 motion techniques your agent can read (GitHub)",
+   "url": "https://github.com/gongnyang/awesome-ai-motion",
+   "note": "a motion field guide with 637 techniques, 128 rendered reference clips, 11 recipes and an agent skill for Claude Code and Codex. Each card gives a definition, tuned parameters, sources and prompts, so you can name the exact move instead of asking for \"cinematic\". It reached a much wider audience through @kocer_eth's post on 22 October (the repo link is in the reply). Start: browse the website, link the cloned folder into ~/.claude/skills/, and ask: \"Choose motion for a product reveal. Read the effect card and use its default parameters.\"",
+   "medium": "",
+   "type": "tutorial",
+   "kind": "",
+   "tags": [
+    "tutorial",
+    "morning",
+    "2026-10-23",
+    "try today"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "@kocer_eth's post",
+     "url": "https://x.com/kocer_eth/status/2113323504380658123"
+    },
+    {
+     "label": "website",
+     "url": "https://gongnyang.github.io/awesome-ai-motion/"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-3",
+   "title": "MOSS-Image Edit LoRA, now supported natively in ComfyUI (Hugging Face)",
+   "url": "https://huggingface.co/chinoll/Moss-Image-Edit",
+   "note": "an instruction-editing LoRA for the open MOSS-Image model that works with both the Base and SFT versions. It was posted early on 22 October, and ComfyUI merged native support for MOSS-Image edit LoRAs at 12:18 PM PT the same day. The poster of the r/StableDiffusion thread, who also built a native node set, calls the LoRA \"a bit rough\". Start: update ComfyUI, load the LoRA with a regular LoRA loader, feed your reference image into the new experimental Text Encode MOSS-Image Edit node, and set edit_format to Moss-Image-Edit. If you'd rather start from a ready-made graph, ComfyUI-Moss-Image-Edit ships example workflows.",
+   "medium": "",
+   "type": "tutorial",
+   "kind": "",
+   "tags": [
+    "tutorial",
+    "morning",
+    "2026-10-23",
+    "try today"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "merged native support for MOSS-Image edit LoRAs",
+     "url": "https://github.com/Comfy-Org/ComfyUI/pull/17296"
+    },
+    {
+     "label": "r/StableDiffusion thread",
+     "url": "https://www.reddit.com/r/StableDiffusion/comments/1xclgg2/mossimageedit_lora/"
+    },
+    {
+     "label": "ComfyUI-Moss-Image-Edit",
+     "url": "https://github.com/Chenkin-x/ComfyUI-Moss-Image-Edit"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-4",
+   "title": "PixText: a small model that fixes mangled text in generated images (GitHub)",
+   "url": "https://github.com/ATH-MaaS/PixText",
+   "note": "A text refiner of about 0.95B parameters that works in pixel space, with no text encoder or VAE, and refines text in 4 steps. It ships with a ComfyUI node and ready-made workflows. The details come from its author's r/StableDiffusion post.",
+   "medium": "image",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "image",
+    "repo/tool",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "r/StableDiffusion post",
+     "url": "https://www.reddit.com/r/StableDiffusion/comments/1xd9186/pixtext_a_small_fast_model_for_fixing_text_in/"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-5",
+   "title": "Plain prompt vs. layout JSON for a poster, a menu and a label, 8 seeds each (r/comfyui)",
+   "url": "https://www.reddit.com/r/comfyui/comments/1xcks9b/plain_prompt_vs_layout_json_for_a_poster_a_menu/",
+   "note": "A careful count with MOSS-Image: spelling was perfect both ways, but on a five-row price board, layout boxes kept all 88 text blocks in place against 67 for a well-written prose prompt. On the poster and the label the two methods were within one block of each other.",
+   "medium": "image",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "image",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Reddit",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-6",
+   "title": "Flux3 style transfer you can tune in one shot (r/StableDiffusion)",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1xcr36a/flux3_style_transfer_mastery/",
+   "note": "A shared workflow that adds a reference-latent node so you can dial how far the subject is reimagined in the target style instead of staying photoreal, which was the main complaint about the author's earlier attempt.",
+   "medium": "image",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "image",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Reddit",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-7",
+   "title": "A Claude Code skill that lays out articles as 3:4 Xiaohongshu carousels (GitHub)",
+   "url": "https://github.com/helloianneo/ian-xhs-carousel",
+   "note": "It turns an article, case study or notes into 1080×1440 slides using 20 master layouts in light and dark versions. It had 255 stars by 24 October.",
+   "medium": "image",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "image",
+    "repo/tool",
+    "morning",
+    "2026-10-23",
+    "older"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-8",
+   "title": "Opus 5.5 + Blender + Remotion as a character animation studio (@beamnxw)",
+   "url": "https://x.com/beamnxw/status/2113275303808160226",
+   "note": "A step-by-step thread that goes from a director's brief to an editable 3D scene to an animated film with tiny worlds and cinematic camera moves. Bookmarks (1,127) outnumber likes, the usual sign of a thread people plan to come back to.",
+   "medium": "video",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "video",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-9",
+   "title": "One reusable Remotion scene, six campaign videos (@beamnxw)",
+   "url": "https://x.com/beamnxw/status/2113565877765353983",
+   "note": "A follow-up: 2 hooks × 3 formats (square, vertical, widescreen), starting with npx skills add remotion-dev/skills in Claude Code.",
+   "medium": "video",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "video",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-10",
+   "title": "How to make a realistic AI short drama, every prompt included (Higgsfield, YouTube)",
+   "url": "https://www.youtube.com/watch?v=cBxKZcalwkM",
+   "note": "Higgsfield breaks down how it made a short drama it says passed 60M views (its own figure): story choice, consistent characters with SOUL 2.0, and shot-by-shot prompts, which it shares.",
+   "medium": "video",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "video",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-11",
+   "title": "Learn 90% of Claude video editing in under 20 minutes (Grow with Alex, YouTube)",
+   "url": "https://www.youtube.com/watch?v=03BNd8ygnq8",
+   "note": "Raw footage in, an edited reel out of Claude Opus 5.5, plus the base prompt, the rules and the feedback framework he uses.",
+   "medium": "video",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "video",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-12",
+   "title": "Character swapping with MiniMax H3 in ComfyUI: workflow, assets and steps (r/comfyui)",
+   "url": "https://www.reddit.com/r/comfyui/comments/1xcxdz5/i_tried_ai_character_swapping_with_minimax_h3_in/",
+   "note": "It replaces the person in existing footage with a generated character while keeping the original performance, running locally on an RTX 5070 Ti. The full guide is on the author's tutorial page.",
+   "medium": "video",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "video",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Reddit",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "author's tutorial page",
+     "url": "https://www.kaziahmed.net/kazitorials/minimax-character-swap"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-13",
+   "title": "Change the camera angle of any image with an H3 Ref2Vid trick (r/StableDiffusion)",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1xd0ter/h3_change_the_angle_of_any_image/",
+   "note": "Set the clip to exactly 22 frames, add a rough sketch of the new view, and save the decoded frame. The author says it takes some seed hunting, but it's handy for comic panels and visual-novel keyframes.",
+   "medium": "video",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "video",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Reddit",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-14",
+   "title": "The Fifth Element, remade with MiniMax H3 on an RTX 3060 (r/StableDiffusion)",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1xcjw1f/the_fifth_element_but_making_more_sense/",
+   "note": "Made with a two-pass workflow (low-res first, then latent upscaling), which the author says looks better and fixes smearing. The upscaler, turbo LoRA and nodes are all linked.",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Reddit",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-15",
+   "title": "Nexus 6: \"We spent $26,500 on this film to figure out a Blender workflow that cut our costs in half\" (r/aivideo)",
+   "url": "https://www.reddit.com/r/aivideo/comments/1xclika/we_spent_26500_on_this_film_to_figure_out_a/",
+   "note": "A short film whose makers say working out a Blender workflow cut their AI-film costs in half. The post is the video itself, and the budget and savings are the makers' own figures.",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Reddit",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-16",
+   "title": "A free open-source previz tool and a mystery video model in blind tests (Theoretically Media, YouTube)",
+   "url": "https://www.youtube.com/watch?v=qlSI_ZbRdEc",
+   "note": "Covers a way to lock the exact shot before you generate, a fix for stiff 3D-guided video, and an unclaimed model called \"Iron Goddess\" that turned up in Arena battle mode.",
+   "medium": "video",
+   "type": "news",
+   "kind": "news",
+   "tags": [
+    "video",
+    "news",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-17",
+   "title": "CutBay: an AI video agent you drive by chat (Product Hunt)",
+   "url": "https://www.producthunt.com/posts/cutbay",
+   "note": "It turns links, docs or ideas into videos through conversation. It finished #8 on the 22 October board with 142 points.",
+   "medium": "video",
+   "type": "news",
+   "kind": "news",
+   "tags": [
+    "video",
+    "news",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Product Hunt",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-18",
+   "title": "\"I vibe coded this motion design video. No MCP, no video generator\" (Devarf, YouTube)",
+   "url": "https://www.youtube.com/watch?v=G_Kg1ZYSB9I",
+   "note": "Every frame is three.js, Canvas 2D or Manim code written mostly by Claude Opus 5.5, with no image or video models and no stock footage.",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "morning",
+    "2026-10-23",
+    "older"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-19",
+   "title": "An open-source YouTube editing system: teleprompter to final export (GitHub)",
+   "url": "https://github.com/sirioberati/YouTube-AI-Video-Editing-System",
+   "note": "Seven steps from the creator's teleprompter to the final export: cutting takes with Claude Code, designing boards in Claude Design, and animating them to the voiceover. It was released with a walkthrough video that was edited by the system itself.",
+   "medium": "video",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "video",
+    "repo/tool",
+    "morning",
+    "2026-10-23",
+    "older"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "walkthrough video",
+     "url": "https://www.youtube.com/watch?v=dXz1qkLc9PQ"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-20",
+   "title": "Fingers that finally hit the right piano notes: a Magnific workflow (@techhalla)",
+   "url": "https://x.com/techhalla/status/2113385095260151857",
+   "note": "Hands landing on the right keys is a classic weak spot for AI video, and the thread shares the full workflow.",
+   "medium": "video",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "video",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-21",
+   "title": "Gemini 4 Argon drives Blender MCP from one image to a finished 3D cathedral (@Google)",
+   "url": "https://x.com/Google/status/2113353489938075794",
+   "note": "Starting from a single Nano Banana image, the agent sculpted Gothic architecture, set up camera grids and staged an audio-reactive scene in an autonomous loop in Antigravity. This is Google's original post. A creator's remake appeared in the 24 October noon edition.",
+   "medium": "3d",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "3d",
+    "showcase",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-22",
+   "title": "Tripo rebuilds Rigging & Animation for game-ready motion (@tripoai)",
+   "url": "https://x.com/tripoai/status/2113284253761106159",
+   "note": "Full-body and hand rigging, 5 engine-ready skeleton presets, text-to-motion for 1–10 second clips, and up to 5 motion segments chained together.",
+   "medium": "3d",
+   "type": "news",
+   "kind": "news",
+   "tags": [
+    "3d",
+    "news",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-23",
+   "title": "I rebuilt 3ds Max with AI (Jake Denham, YouTube)",
+   "url": "https://www.youtube.com/watch?v=74TsKdNWEaA",
+   "note": "An 18-year 3ds Max user spent a week vibe-coding a Max-style layer on top of Blender, with Max hotkeys, the quad menu and the modifier stack. He says it opens his real .max files (23 of 23 so far). It's a personal project, not a product.",
+   "medium": "3d",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "3d",
+    "showcase",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-24",
+   "title": "Lidar scan to Gaussian splat to a full building information model (@MovingAtomsLab)",
+   "url": "https://x.com/MovingAtomsLab/status/2113543323692519814",
+   "note": "A 54M-point laser scan becomes a photoreal splat, and then every pipe, valve and steel member is rebuilt as native BIM.",
+   "medium": "3d",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "3d",
+    "showcase",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-25",
+   "title": "video-to-blender: turn a reference into an editable procedural node system (GitHub)",
+   "url": "https://github.com/gokayfem/video-to-blender",
+   "note": "A coding-agent skill with a tested library of Geometry, Shader and compositor node groups, for when you want procedural Blender nodes rather than a baked mesh.",
+   "medium": "3d",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "3d",
+    "repo/tool",
+    "morning",
+    "2026-10-23",
+    "older"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-26",
+   "title": "Voxelo 3.0: phone video to a photoreal 3D scene in about an hour (Product Hunt)",
+   "url": "https://www.producthunt.com/posts/voxelo-3-0",
+   "note": "The \"in an hour\" claim is the maker's. It was #15 on the 22 October board with 95 points.",
+   "medium": "3d",
+   "type": "news",
+   "kind": "news",
+   "tags": [
+    "3d",
+    "news",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Product Hunt",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-27",
+   "title": "Hyper3D Rodin Agentic Mode turns a technical drawing into a 3D asset (Ai Ragger, YouTube)",
+   "url": "https://www.youtube.com/watch?v=czRxdvXWees",
+   "note": "A test of Rodin's agentic mode, turning a detailed technical drawing of an ice-cream cart into a 3D asset and then refining it. The description includes a Hyper3D sign-up link.",
+   "medium": "3d",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "3d",
+    "tutorial",
+    "morning",
+    "2026-10-23",
+    "older"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-28",
+   "title": "Anthropic donates Agent Skills to the Agentic AI Foundation (Anthropic)",
+   "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+   "note": "The SKILL.md standard behind most of the motion, design and Blender skills in this digest now has a neutral home under the Linux Foundation, maintained by engineers from Anthropic, Google, OpenAI and other companies. Anthropic says more than 70 agent platforms have integrated it, and that 1 million skills have been published and nearly 280 million installed. The Linux Foundation's announcement adds Open Responses, OpenEnv and OpenSandbox.",
+   "medium": "code",
+   "type": "news",
+   "kind": "news",
+   "tags": [
+    "code",
+    "news",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "anthropic.com",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Linux Foundation's announcement",
+     "url": "https://www.linuxfoundation.org/press/agentic-ai-foundation-announces-four-new-projects-agent-skills-open-responses-openenv-and-opensandbox"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-29",
+   "title": "MiniMax Design MCP is live: create from Codex and other agents (@Hailuo_AI)",
+   "url": "https://x.com/Hailuo_AI/status/2113518150440595501",
+   "note": "Whatever you make from an outside agent syncs back to the Design canvas automatically. MiniMax's how-to says to update Design to v4.0.3 and then turn on access for external agents.",
+   "medium": "code",
+   "type": "news",
+   "kind": "news",
+   "tags": [
+    "code",
+    "news",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-30",
+   "title": "Code Layers: turn a design layer into running code on the Figma canvas (@figma)",
+   "url": "https://x.com/figma/status/2113330876407054503",
+   "note": "Figma's 22 October push for a feature that has been in open beta since 15 October: turn a design layer into an interactive code layer, capture a live site with the Chrome extension, and duplicate a layer to compare directions side by side. Creating and editing code layers is free on paid plans through 4 November.",
+   "medium": "code",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "code",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "open beta since 15 October",
+     "url": "https://www.figma.com/blog/design-together-with-code-layers/"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-31",
+   "title": "How to make the most of the Figma agent (Figma, YouTube)",
+   "url": "https://www.youtube.com/watch?v=eeJ7d0V2ayU",
+   "note": "Figma's own guide to giving the agent context, using skills and generative plugins, and spending fewer AI credits.",
+   "medium": "code",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "code",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-32",
+   "title": "Ticket Tear: a 3D ticket you can bend, flip and tear off (GitHub)",
+   "url": "https://github.com/Sam1983Aing/ticket-tear",
+   "note": "Verlet paper physics, holographic GLSL foil and a rip sound made in code, built with Gemini 4 Argon. You can try it in the browser.",
+   "medium": "code",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "code",
+    "repo/tool",
+    "morning",
+    "2026-10-23",
+    "older"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "try it in the browser",
+     "url": "https://sam1983aing.github.io/ticket-tear/"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-33",
+   "title": "The new Apple Music liquid identity, recreated in WebGL with Opus 5.5 (GitHub)",
+   "url": "https://github.com/transitive-bullshit/apple-music-effect",
+   "note": "A study of a brand's motion identity rebuilt from scratch, with a live demo.",
+   "medium": "code",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "code",
+    "repo/tool",
+    "morning",
+    "2026-10-23",
+    "older"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "live demo",
+     "url": "https://apple-music-effect.transitivebullsh.it"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-34",
+   "title": "Prompt to web app to working site, right from Gemini (@GeminiApp)",
+   "url": "https://x.com/GeminiApp/status/2113290464623493373",
+   "note": "Gemini's quick how-to; with 616 bookmarks, people saved it for later.",
+   "medium": "code",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "code",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-35",
+   "title": "How to master web design in Claude Design, for complete beginners (Mikey Website, YouTube)",
+   "url": "https://www.youtube.com/watch?v=YZHah67xz6E",
+   "note": "Layout, type and visual hierarchy in a start-to-finish build.",
+   "medium": "code",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "code",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-36",
+   "title": "From Figma to Storybook: components AI can actually use (The Design Project, YouTube)",
+   "url": "https://www.youtube.com/watch?v=IFtq5aRG41M",
+   "note": "How to document your Figma components as code so a coding agent reuses them instead of inventing new ones. A free guide with prompts is linked.",
+   "medium": "code",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "code",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-37",
+   "title": "Show HN: UI micro-interaction prompts for AI (Hacker News)",
+   "url": "https://news.ycombinator.com/item?id=50199290",
+   "note": "A shared set of prompts for getting AI tools to build UI micro-interactions. It drew 80 points and 44 comments.",
+   "medium": "code",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "code",
+    "repo/tool",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Hacker News",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-38",
+   "title": "Let your video write its own soundtrack (@Google)",
+   "url": "https://x.com/Google/status/2113283068274540555",
+   "note": "Built with Canvas in the Gemini app: a tool that traces musical scale lines across live video and plays notes whenever motion crosses the screen. At 892K views, it was the most-watched creative demo of the window that we found.",
+   "medium": "sound",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "sound",
+    "showcase",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-39",
+   "title": "Turkish voice design with VoxCPM2 on a 4 GB GPU (GitHub)",
+   "url": "https://github.com/alexturkey/voxcpm2-turkce-ses-tasarimi",
+   "note": "Describe a voice, pick a variant and have it read Turkish text, using a patched audio.cpp, a local UI and 7 synthetic voices. It had 199 stars within two days.",
+   "medium": "sound",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "sound",
+    "repo/tool",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-40",
+   "title": "ElevenLabs Realtime Translation (Product Hunt)",
+   "url": "https://www.producthunt.com/posts/elevenlabs-realtime-translation",
+   "note": "It turns live speech into translated audio as people talk. It finished #13 on the 22 October board with 100 points.",
+   "medium": "sound",
+   "type": "news",
+   "kind": "news",
+   "tags": [
+    "sound",
+    "news",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Product Hunt",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-41",
+   "title": "Show HN: OnKey, a free singing trainer that shows where you're off-key (Hacker News)",
+   "url": "https://news.ycombinator.com/item?id=50195488",
+   "note": "An open-source Mac app that listens to the music you're playing. It drew 226 points and 91 comments. The code is on GitHub.",
+   "medium": "sound",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "sound",
+    "repo/tool",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Hacker News",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "on GitHub",
+     "url": "https://github.com/dsmurrell/onkey"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-42",
+   "title": "Best AI music video and lyric video generator for full-length songs (Jon Law, YouTube)",
+   "url": "https://www.youtube.com/watch?v=SwkF38k1hS4",
+   "note": "A song made in Suno becomes a one-click music video, a lyric video and a 60-second clip starring him, all in Freebeat. Freebeat sponsored the video, and the description uses an affiliate link.",
+   "medium": "sound",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "sound",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-43",
+   "title": "Building a viral Roblox game with AI, full process (tef, YouTube)",
+   "url": "https://www.youtube.com/watch?v=OfObWnrucRY",
+   "note": "Research, prompting, five playtests with cleanup between them, then game art and promotion, ending in a game you can play on Roblox.",
+   "medium": "games",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "games",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-44",
+   "title": "Tripo CLI plus GPT 6.1 Sol for building 3D Godot games (Letta Corporation, YouTube)",
+   "url": "https://www.youtube.com/watch?v=9BxuB2vg-Ek",
+   "note": "Tripo's command-line tool and GPT 6.1 Sol used together to build 3D games in Godot. The description carries Tripo referral links.",
+   "medium": "games",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "games",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-45",
+   "title": "37studio: Claude Code makes on-brand videos and posts them to 9 platforms (GitHub)",
+   "url": "https://github.com/Shaitrish/37studio",
+   "note": "A self-hosted, bring-your-own-keys alternative to scheduling and clipping tools that also drafts replies. It had 52 stars by 24 October.",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "kind": "repo/tool",
+   "tags": [
+    "mashups",
+    "repo/tool",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-46",
+   "title": "This free Claude skill makes AI videos from character sheets (Parker Prompts, YouTube)",
+   "url": "https://www.youtube.com/watch?v=hZkd4Iy-4lE",
+   "note": "Claude Opus 5.5 connected to Higgsfield with a \"SUPERVIDEO\" skill, building a one-minute short from consistent character sheets and several connected shots.",
+   "medium": "mashups",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "mashups",
+    "tutorial",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-47",
+   "title": "Ideogram Vector is now on fal too (@fal)",
+   "url": "https://x.com/fal/status/2113301781681754474",
+   "note": "Ideogram's new SVG model, covered in our 23 October editions, is also available on fal as an API: text to SVG, image to vector, and reference images. Ideogram's own overview video shows print-ready logos and stickers.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "tags": [
+    "update",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "overview video",
+     "url": "https://www.youtube.com/watch?v=jmQk4oa5EnM"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-48",
+   "title": "MiniMax H3 workflow update: Singularity v2 tested (Deno, YouTube)",
+   "url": "https://www.youtube.com/watch?v=C05yY2II-vc",
+   "note": "A Korean walkthrough of the v2 checkpoint, the 34 GB int8 release, compared with what he disliked in v1.3: white noise in the audio, oversaturation and oily-looking skin. Block Swap in ComfyUI keeps it runnable.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "tags": [
+    "update",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-49",
+   "title": "MOSS-Image news round-up for 22 October (r/comfyui)",
+   "url": "https://www.reddit.com/r/comfyui/comments/1xcm9wn/a_quick_mossimage_news_roundup_22nd_october_2026/",
+   "note": "ComfyUI-Spectrum-MOSS v0.8.1 updated its ER-SDE bridge and added new sampler settings, which the poster says gave about a 20% speed-up on a 3060 12 GB card. The round-up also covers other fixes and nodes from the day.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "tags": [
+    "update",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Reddit",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-50",
+   "title": "Canva Craft enters the DesignArena image leaderboard at #4 (@garlotic)",
+   "url": "https://x.com/garlotic/status/2113358877517599077",
+   "note": "An Elo of 1340, behind three GPT Image entries, with Reve, Grok, Nano Banana and Seedream below it. This is the first public benchmark for the model we covered on 23 October.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "tags": [
+    "update",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-51",
+   "title": "AI cloned your indie game. Now what? (DarkDax, YouTube)",
+   "url": "https://www.youtube.com/watch?v=46wQnmWV03A",
+   "note": "Devlogs and screenshots shared for marketing are now being used to make copies, and developers are asking how to protect their games.",
+   "medium": "",
+   "type": "buzz",
+   "kind": "buzz",
+   "tags": [
+    "buzz",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-52",
+   "title": "A bigger studio copied our game (r/gamedev)",
+   "url": "https://www.reddit.com/r/gamedev/comments/1xcm5f2/a_bigger_studio_copied_our_game/",
+   "note": "A small team lists the core loop, mini games and character style they say were copied by a game announced about a week after their 13 October launch. The thread doesn't claim AI was used, but it landed in the same conversation.",
+   "medium": "",
+   "type": "buzz",
+   "kind": "buzz",
+   "tags": [
+    "buzz",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Reddit",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-53",
+   "title": "An animator asks what industry to pivot to (r/gamedev)",
+   "url": "https://www.reddit.com/r/gamedev/comments/1xcs9qt/what_the_hell_kind_of_job_or_industry_can_i_an/",
+   "note": "A working games animator weighs leaving before the next round of cuts. The replies are a frank picture of how artists feel right now.",
+   "medium": "",
+   "type": "buzz",
+   "kind": "buzz",
+   "tags": [
+    "buzz",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "Reddit",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-54",
+   "title": "How to stand out in a world of AI designs (Y Combinator, YouTube)",
+   "url": "https://www.youtube.com/watch?v=2tZT2-pS_pI",
+   "note": "A Design Review episode with Magic Patterns, one of the first prompt-to-design tools, on what still sets good product design apart.",
+   "medium": "",
+   "type": "buzz",
+   "kind": "buzz",
+   "tags": [
+    "buzz",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  },
+  {
+   "id": "2026-10-23-morning-55",
+   "title": "Kling 4 is finally here: can it beat Seedance 2.5? (Jack Vs. AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=xIgdqAhc-nQ",
+   "note": "Head-to-head tests on action, performances, lip sync and text. Dani Builds' nine tests ask whether Seedance is worth five times the price.",
+   "medium": "",
+   "type": "buzz",
+   "kind": "buzz",
+   "tags": [
+    "buzz",
+    "morning",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Dani Builds' nine tests",
+     "url": "https://www.youtube.com/watch?v=sMADC2DYY_E"
+    }
+   ],
+   "edition": "editions/2026-10-23/morning.html",
+   "edition_kind": "page",
+   "date": "2026-10-23",
+   "slot": "morning"
+  }
+ ],
+ "src_hash": {
+  "html": "17e5bbcbd584b4e2da641e38cacaa0976fdf285b",
+  "md": "9e4b6479eec8126e129ea0862d50bf63a65089fb"
+ },
+ "tool_version": 3,
+ "nav": [
+  "editions/2026-10-20/noon.html",
+  "editions/2026-10-24/morning.html",
+  5
+ ]
+}
