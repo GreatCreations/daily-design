@@ -1,0 +1,418 @@
+{
+ "edition": {
+  "date": "2026-10-20",
+  "slot": "best",
+  "time": "6 PM",
+  "title": "Best of the Day",
+  "kind": "report",
+  "headline": "AI Design Best of the Day · Tuesday, Oct 20, 2026",
+  "summary": "The design story of Oct 20 is Vyb, the first model from Coco Labs. Co-founder Anusha Ramesh says she launched Google's first image and video generation models before spending two years building it in stealth. Vyb doesn't paint a flat picture. It builds a design in layers from your own logo, fonts, colors and product photos, so text stays text, graphics stay vectors and photos are never redrawn, and the result exports to Figma. The launch post reached about 3.66 million views, the biggest view count in this edition. It landed the same morning Krea said its in-house Krea 3 model had reached the top tier of the image-editing arenas, and Bria shipped Fibo 2.0 as an open-weights editing model. Taken together, Oct 20 was the day the pitch moved from prettier pictures to designs that keep your brand and stay editable. Treat the numbers carefully: Vyb's head-to-head scores are its own, access is through a waitlist, and nobody independent has tested it yet. The most-liked pick in this edition is something else: Google DeepMind's 3D periodic table built by Gemini 4 Argon and synced to Tom Lehrer's song \"The Elements\".",
+  "path": "reports/2026-10-20/best.md",
+  "url": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+  "header": "reports/2026-10-20/best-header.png",
+  "thumb": "reports/2026-10-20/best-thumb.jpg",
+  "item_count": 13,
+  "tags": [
+   "best",
+   "2026-10-20",
+   "3d",
+   "games",
+   "image",
+   "mashups",
+   "sound",
+   "video",
+   "report"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-20-best-1",
+   "title": "Vyb, Coco Labs' first design model, which builds editable layered designs from your brand (Coco Labs)",
+   "url": "https://cocolabs.ai/blog/introducing-vyb",
+   "note": "model. Vyb starts from your logo, fonts, colors and photos and builds the design one layer at a time: text stays text, graphics stay vectors, and your product photos go in at full resolution without being redrawn or retouched. Coco Labs says each layer is changed one at a time, so edits don't wreck the rest of the design. The model writes designs in its own design language, \"Cocolang\", which is what lets the layers export cleanly to Figma. Why people were losing it: the launch post has 1,976 likes, 1,642 bookmarks and about 3.66M views (a \"comment your website\" offer helped spread it). In the launch post's font test, Coco Labs reports a 90.3% shape match for Vyb against 76.0% for GPT Image 2.5, 50.9% for Muse and 46.2% for Recraft 4.1. That's a self-reported benchmark. How to try it: join the waitlist on Vyb's page, which currently comes with $10 in generation credits. Then give it your real brand and one product photo, change a headline, and check that nothing else shifts and the Figma export keeps its layers.",
+   "medium": "image",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "image",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "cocolabs.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "launch post",
+     "url": "https://x.com/anurahk/status/2112581900779012503"
+    },
+    {
+     "label": "Vyb's page",
+     "url": "https://cocolabs.ai/vyb"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-2",
+   "title": "Gemini 4 Argon builds a 3D periodic table synced to Tom Lehrer's \"The Elements\" (Google DeepMind)",
+   "url": "https://x.com/GoogleDeepMind/status/2112557925264752930",
+   "note": "Made in Antigravity, it animates orbiting electrons, atomic data and light spectra in time with the song. Why people were losing it: 4,692 likes, 1,472 bookmarks and about 572K views. Sundar Pichai's \"Sound on!\" quote-post added 6,719 likes and about 483K views on top of that. Google also posted a WebGL2 fur engine Argon coded in the browser (594 likes, about 244K views). These are vendor demos, and no project files were shared. How to use it: a pattern worth copying. Give an agent a song or voiceover with a known structure and ask for an interactive 3D explainer whose beats follow it.",
+   "medium": "3d",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "3d",
+    "showcase",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Sundar Pichai's \"Sound on!\" quote-post",
+     "url": "https://x.com/sundarpichai/status/2112648189656616999"
+    },
+    {
+     "label": "WebGL2 fur engine Argon coded in the browser",
+     "url": "https://x.com/Google/status/2112552114467602487"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-3",
+   "title": "Voxtral 3, Mistral's new speech-to-text and text-to-speech family with a voice-agent SDK (Mistral)",
+   "url": "https://mistral.ai/news/voxtral-3/",
+   "note": "model. The TTS model changes emotion, pace and emphasis to suit the conversation in 35+ languages and 50+ dialects, and \"Pro Voice\" adapts a specific speaker's voice from about 30 minutes of audio. It's available through Mistral's EU-hosted API or for self-deployment. Why people were talking: the launch post has 3,263 likes, 947 bookmarks and about 269K views, and it drew 769 points and 201 comments on Hacker News. How to use it: a candidate voice for game characters, narrated explainers or interactive installations. Test one line of dialogue in two languages before you commit.",
+   "medium": "sound",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "sound",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "mistral.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "launch post",
+     "url": "https://x.com/MistralAI/status/2112574615318876178"
+    },
+    {
+     "label": "769 points and 201 comments on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50168396"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-4",
+   "title": "Krea 3 reaches the top tier of image-editing arenas (Krea)",
+   "url": "https://x.com/krea_ai/status/2112567020353102324",
+   "note": "Krea says its in-house model comes in two versions: \"Fast\" pushes the speed-quality curve, and \"Ultra\" ranks in the top four, behind only OpenAI's models. TestingCatalog reports Ultra at #4 on Artificial Analysis's image-editing leaderboard with 1,151 points, one point behind Nano Banana 2.1, with prices starting at $0.03 per 1K image. Why people were losing it: 1,665 likes, 1,175 bookmarks and about 1.31M views, with LoRA training and style references promised next. How to try it: Krea 3's page. Use its regional, multi-turn edits on a product shot and check whether the logo and highlights hold.",
+   "medium": "image",
+   "type": "news",
+   "kind": "model news",
+   "tags": [
+    "image",
+    "news",
+    "best",
+    "2026-10-20",
+    "model news"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "TestingCatalog reports",
+     "url": "https://x.com/testingcatalog/status/2112570237874810918"
+    },
+    {
+     "label": "Krea 3's page",
+     "url": "https://www.krea.ai/krea-3"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-5",
+   "title": "Fibo 2.0, Bria's open-weights image-editing model trained on licensed data (Bria)",
+   "url": "https://x.com/bria_ai_/status/2112559473458045305",
+   "note": "model. Bria calls it the #1 open-weights image-editing model on Artificial Analysis, ahead of 33 closed models. That's Bria's claim. Why it's here: 255 likes on the launch post, and the dev weights on Hugging Face have 136 likes. How to try it: in Bria Create, or locally from the Hugging Face weights if licensed training data matters for your client work.",
+   "medium": "image",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "image",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "dev weights on Hugging Face",
+     "url": "https://huggingface.co/briaai/Fibo-2.0-dev"
+    },
+    {
+     "label": "Bria Create",
+     "url": "https://create.bria.ai/home"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-6",
+   "title": "Grok Imagine turns a snapshot into a studio photoshoot (@imagine)",
+   "url": "https://x.com/imagine/status/2112613486845120758",
+   "note": "feature. Take a phone photo and edit it into a styled studio shoot. Why people are talking: 633 likes and about 150K views on the product account's demo. How to try it: grok.com/imagine. Start from a plain photo of a product or person and ask for one specific lighting setup at a time.",
+   "medium": "image",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "image",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "grok.com/imagine",
+     "url": "https://grok.com/imagine"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-7",
+   "title": "11 broken images, 7 AI editors, one try each: a tier list (@VORTEX_Promos)",
+   "url": "https://x.com/VORTEX_Promos/status/2112657082998473013",
+   "note": "test. Extra hands, a third leg, duplicate people and typos were handed to Krea 3, GPT Image 2.5, Nano Banana 2, Seedream 5, Flux 3, Grok Imagine and Ideogram 4.5. His ranking: Ideogram 4.5 on top, then GPT Image 2.5 and Grok Imagine, with Krea 3 in the B tier, which pushes back on the day's arena headlines. Why it's here: 320 likes and about 75K views. It's one person's single-try test. How to use it: run your own repair test on the kind of image you actually fix.",
+   "medium": "image",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "image",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-8",
+   "title": "A practical guide to AI image generation, from diffusion to agents (Daniel Ball)",
+   "url": "https://danielball.com/notes/ai_image_generation.html",
+   "note": "How the models work, what you get from ChatGPT, and how to build image generation into your own code and agents, from weeks of API experiments. It also explains why per-image prices vary more than 100 times over, from a fraction of a cent to 15 cents or more. Why people are talking: 224 points on Hacker News. How to use it: read the section \"Describe the camera, not the view\", then rewrite one of your own prompts that way.",
+   "medium": "image",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "tags": [
+    "image",
+    "tutorial",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "danielball.com",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "224 points on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50171379"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-9",
+   "title": "FastH3 Omni goes open source, training code included (@haoailab)",
+   "url": "https://x.com/haoailab/status/2112625528805208257",
+   "note": "model. FastVideo's distilled MiniMax H3 does multi-reference video. The team says it runs in real time, 12× faster on NVIDIA Blackwell, with NVFP4 and FP8 builds for DGX Spark and RTX cards, and ComfyUI supported it on day 0. Why people are saving it: 797 likes, 862 bookmarks and about 129K views, and the ComfyUI weights show 154,490 downloads on Hugging Face. How to try it: load the ComfyUI build, feed it a character and a location reference, and time a short clip on your own card. The FastVideo repo has the code.",
+   "medium": "video",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "video",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "day 0",
+     "url": "https://x.com/ComfyUI/status/2112645504769413283"
+    },
+    {
+     "label": "ComfyUI weights",
+     "url": "https://huggingface.co/FastVideo/FastH3-Omni-Comfy"
+    },
+    {
+     "label": "FastVideo repo",
+     "url": "https://github.com/hao-ai-lab/FastVideo"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-10",
+   "title": "A short film about a paperclip and a sticky note, every frame drawn in code (@kevin_t_ngo)",
+   "url": "https://x.com/kevin_t_ngo/status/2112584730856366140",
+   "note": "The creator says Claude Opus 5.5 drew every frame in code. Why it's here: 265 likes and 108 bookmarks. How to use it: a reference for character animation made entirely as code, like the motion-design studio folder further down.",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-11",
+   "title": "A full 3D tower-defense game built with Claude Opus 5.5 (@MrTacticalX)",
+   "url": "https://x.com/MrTacticalX/status/2112708402367639740",
+   "note": "He lists 5 maps, 14 towers, boss fights, volcano eruptions and hordes of hundreds of enemies, with 60 seconds of real gameplay. Posted at 5:51 PM PT, right at the end of the day. Why people were losing it: 837 likes, 594 bookmarks and about 38K views. The feature list is his own. For a version with receipts, see @froessell's Mowtopia breakdown (125 likes, 143 bookmarks): about 7,010 Magnific credits paid for concepts, every 3D model, an icon sheet and audio, and he says Claude Code built most of the cozy Unity 6 game in two days from a 7-milestone PRD with 60 passing tests. How to use it: write your game as milestones in a PRD and have the agent clear one milestone at a time, with tests.",
+   "medium": "games",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "games",
+    "showcase",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "@froessell's Mowtopia breakdown",
+     "url": "https://x.com/froessell/status/2112629173441495320"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-12",
+   "title": "A full motion-design studio inside one Claude Code folder, on a weekly schedule (@thegreatest_sv)",
+   "url": "https://x.com/thegreatest_sv/status/2112609040962359354",
+   "note": "A STUDIO folder with a brand/ directory and a CLAUDE.md, plus HyperFrames, Remotion's skills, a GSAP skill, LottieFiles' motion-design skill and Blender. A /schedule routine turns last week's launches into three promo clips every Monday and waits for approval. Why people are saving it: 543 likes and 984 bookmarks (more saves than likes), about 38K views. How to use it: set up the brand/ folder first, since every later clip inherits it.",
+   "medium": "mashups",
+   "type": "workflow",
+   "kind": "workflow",
+   "tags": [
+    "mashups",
+    "workflow",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-20-best-13",
+   "title": "Steam players ask for a \"no AI\" filter as Next Fest fills with generated games (IGN)",
+   "url": "https://www.ign.com/articles/steam-fans-are-begging-for-a-no-ai-filter-as-steam-next-fest-is-filled-with-slop",
+   "note": "One Steam player quoted by IGN asks to filter out every game with AI-generated content, pointing out that Steam already requires developers to disclose it. Why people are talking: 183 points and 231 comments on Hacker News. What it means: on the same day agent-built games drew big numbers on X, players were asking for a way to opt out. If you ship one, disclose clearly.",
+   "medium": "",
+   "type": "news",
+   "kind": "news",
+   "tags": [
+    "news",
+    "best",
+    "2026-10-20"
+   ],
+   "source": "ign.com",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "183 points and 231 comments on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50168190"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-20/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-20",
+   "slot": "best"
+  }
+ ],
+ "src_hash": {
+  "md": "ed15bc2ee2ebea9b403f44717e9088669d16fc14"
+ },
+ "tool_version": 3,
+ "nav": null
+}
