@@ -1,0 +1,362 @@
+{
+ "edition": {
+  "date": "2026-10-23",
+  "slot": "best",
+  "time": "6 PM",
+  "title": "Best of the Day",
+  "kind": "report",
+  "headline": "AI Design Best of the Day · Friday, Oct 23, 2026",
+  "summary": "The design story of the day is Canva Craft, the first image model Canva has built itself. Canva says Craft plans the composition first and only then renders the picture, which is why it handles layouts and lettering better than models that go straight from prompt to pixels. It debuted at #4 on Design Arena's image leaderboard with an Elo score of 1,340, first of 87 models for portraits and first of 85 for landscapes, and the launch post passed 1.8 million views. It lands one day after Ideogram's first vector model, so in 48 hours two design companies shipped models aimed at finished, editable design work rather than pretty pictures. That matters because the gap between \"AI made an image\" and \"I can hand this to a client\" is mostly about text, layout and editability, and that's exactly what both launches go after. Treat the rankings as early: they come from the companies and one leaderboard, and nobody has run an independent test yet.",
+  "path": "reports/2026-10-23/best.md",
+  "url": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+  "header": "reports/2026-10-23/best-header.png",
+  "thumb": "reports/2026-10-23/best-thumb.jpg",
+  "item_count": 11,
+  "tags": [
+   "best",
+   "2026-10-23",
+   "3d",
+   "code",
+   "games",
+   "image",
+   "mashups",
+   "sound",
+   "video",
+   "report"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-23-best-1",
+   "title": "Canva Craft, Canva's first frontier image model built for design (Canva)",
+   "url": "https://www.canva.com/newsroom/news/canva-craft/",
+   "note": "model. A two-stage model that plans the layout before it draws, aimed at accurate text, precise composition and designs you can keep editing. Why people are losing it: the launch post has 3,035 likes, 1,531 bookmarks and about 1.81M views, and Design Arena confirmed the #4 spot, saying it wins most often on photorealistic product shots. How to try it: it's live for everyone in Canva Dream Lab and coming to Canva's public API, so give it a poster or thumbnail brief with real headline text and see whether the lettering survives.",
+   "medium": "image",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "image",
+    "best",
+    "2026-10-23"
+   ],
+   "source": "canva.com",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "launch post",
+     "url": "https://x.com/canva/status/2113348707223753165"
+    },
+    {
+     "label": "Design Arena confirmed the #4 spot",
+     "url": "https://x.com/DesignArena/status/2113349031762268476"
+    },
+    {
+     "label": "Canva Dream Lab",
+     "url": "https://www.canva.com/dream-lab/"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-23-best-2",
+   "title": "Odyssey Episode 1, a full episode made with Grok Imagine (@imagine)",
+   "url": "https://x.com/imagine/status/2113712964419063911",
+   "note": "A cinematic retelling of Homer made with Wonder Studios and director Dev Walker, following a September pilot. Why people are losing it: 2,366 likes, 959 bookmarks and about 99K views since it went up this afternoon, the most-liked creative post published today. How to use it: a reference for how far one team can push episodic storytelling with AI shots, and the post offers a full breakdown if enough people ask.",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "best",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-23-best-3",
+   "title": "Seedance 2.5 4K, ByteDance's native 4K video model for film work (BytePlus, YouTube)",
+   "url": "https://www.youtube.com/watch?v=5ymQgaSP03Q",
+   "note": "model. Native 4K with 10-bit colour, plus a Draft mode that lets you test ideas as cheap 480p previews before rendering the full shot. Why people are talking: TestingCatalog's summary has 189 likes and about 11.4K views, and Higgsfield is posting 4K skin-detail tests. How to try it: draft a shot at 480p, pick the take you like, then render only that one in 4K.",
+   "medium": "video",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "video",
+    "best",
+    "2026-10-23"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "TestingCatalog's summary",
+     "url": "https://x.com/testingcatalog/status/2113667822132027903"
+    },
+    {
+     "label": "4K skin-detail tests",
+     "url": "https://x.com/higgsfield_ai/status/2113788791660171378"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-23-best-4",
+   "title": "Ideogram Vector 1.0, text or image to clean, editable SVG (Ideogram)",
+   "url": "https://ideogram.ai/models/vector",
+   "note": "model. Logos, labels, lettering and illustrations come out as separate vector shapes you can open in Illustrator or Figma. Why people are losing it: the launch post has 1,700 likes, 1,177 bookmarks and about 304K views, and Higgsfield's 2,800% zoom test against Nano Banana Pro has 205 likes and about 23.8K views. How to try it: turn one of your raster logos into a vector, then recolour a single element to check the shapes really are separate.",
+   "medium": "image",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "image",
+    "best",
+    "2026-10-23"
+   ],
+   "source": "ideogram.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "launch post",
+     "url": "https://x.com/ideogram_ai/status/2113300317584720259"
+    },
+    {
+     "label": "Higgsfield's 2,800% zoom test against Nano Banana Pro",
+     "url": "https://x.com/higgsfield_ai/status/2113495393564852633"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-23-best-5",
+   "title": "FLUX 3 image klein, Black Forest Labs' small image-editing model (Hugging Face)",
+   "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein",
+   "note": "model. An open image-to-image model that's still near the top of Hugging Face's trending list ten days after release. Why it's here: 656 likes and 105,768 downloads, and the ComfyUI version has 1,406 likes. How to try it: load the ComfyUI version and run a local edit pass on a product shot without paying per image.",
+   "medium": "image",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "image",
+    "best",
+    "2026-10-23"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "ComfyUI version",
+     "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-23-best-6",
+   "title": "How does Fable 5.1 hide messages in images? (LessWrong)",
+   "url": "https://www.lesswrong.com/posts/WHEQps5PK8LrrcTAb/how-does-fable-5-1-hide-messages-in-images",
+   "note": "research. Researchers asked the model to draw ordinary-looking SVG pictures that secretly encode short phrases, and it invented its own tricks, such as varying the heights of stars or buildings; a separate session that saw only the rendered picture could read the messages back. Why people are talking: 193 points on Hacker News. What it means: code-drawn images can carry information you can't see, which is worth knowing before you ship AI-made SVGs.",
+   "medium": "image",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "image",
+    "best",
+    "2026-10-23"
+   ],
+   "source": "lesswrong.com",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "193 points on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50201445"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-23-best-7",
+   "title": "Kimi K3.1 Pro, Moonshot's open-weight model with strong coding and 3D modelling (Kimi)",
+   "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "note": "model. Moonshot calls it its most capable 3T-class open-weight model, with a 1M-token context, and Design Arena says it can build projects in Unreal, Unity and Godot and do parametric 3D in Blender and CAD. Why people are losing it: 686 points and 433 comments on Hacker News, and Arena's first-impressions video reached 22,245 views in about 7 hours. How to try it: give it the same landing-page or Blender script prompt you use with your usual model and compare.",
+   "medium": "code",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "code",
+    "best",
+    "2026-10-23"
+   ],
+   "source": "kimi.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Design Arena says",
+     "url": "https://x.com/DesignArena/status/2113684321479557197"
+    },
+    {
+     "label": "686 points and 433 comments on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50212065"
+    },
+    {
+     "label": "first-impressions video",
+     "url": "https://www.youtube.com/watch?v=rVuwIr4wiPw"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-23-best-8",
+   "title": "Krea now works inside Grok Bot (Krea)",
+   "url": "https://x.com/krea_ai/status/2113661958331494461",
+   "note": "Krea's connector lets you generate images and video with its model lineup from inside a chat. Why people are losing it: 1,460 likes, 756 bookmarks and about 110K views. How to try it: connect it from Krea's MCP page and ask for a moodboard and a first clip in the same conversation where you wrote the brief.",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "kind": "tool",
+   "tags": [
+    "mashups",
+    "repo/tool",
+    "best",
+    "2026-10-23",
+    "tool"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Krea's MCP page",
+     "url": "https://krea.ai/mcp"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-23-best-9",
+   "title": "Epic Games announces the AI MegaJam for Unreal (@Grummz)",
+   "url": "https://x.com/Grummz/status/2113359672657027527",
+   "note": "A game jam where, as the post puts it, small teams of humans can bring unlimited agents, with a $50K prize. Why people are talking: 791 likes and about 17.6K views, with plenty of pushback from players in the replies. How to use it: a low-stakes deadline to try building a playable prototype with agents in Unreal or UEFN.",
+   "medium": "games",
+   "type": "news",
+   "kind": "news",
+   "tags": [
+    "games",
+    "news",
+    "best",
+    "2026-10-23"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-23-best-10",
+   "title": "The PAL's Office, a walkable 3D office full of AI characters (Tavus)",
+   "url": "https://office.tavus.io",
+   "note": "Wander between eighteen desks and talk face to face with Tavus's video agents, play a handheld game or race a car. X's trending summary says it was built with Claude from a simple prompt, which Tavus hasn't spelled out. Why it's here: Tavus's post has 58 likes, and the office made X's trending stories. How to use it: a reference for a browser 3D space as a brand experience instead of a flat website.",
+   "medium": "3d",
+   "type": "showcase",
+   "kind": "showcase",
+   "tags": [
+    "3d",
+    "showcase",
+    "best",
+    "2026-10-23"
+   ],
+   "source": "office.tavus.io",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Tavus's post",
+     "url": "https://x.com/tavus/status/2113676623849636290"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-23-best-11",
+   "title": "Dessa, a speech model trained only on speech (Block)",
+   "url": "https://block.xyz/dessa",
+   "note": "research preview. A full-duplex model that listens and talks at the same time, so it handles interruptions, laughs and \"yeah\"s like a person. Why people are talking: 197 points on Hacker News. How to use it: one to watch for voice characters and interactive audio, since natural turn-taking is what most voice demos still get wrong.",
+   "medium": "sound",
+   "type": "",
+   "kind": "",
+   "tags": [
+    "sound",
+    "best",
+    "2026-10-23"
+   ],
+   "source": "block.xyz",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "197 points on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50213925"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-23/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-23",
+   "slot": "best"
+  }
+ ],
+ "src_hash": {
+  "md": "1ccb05acce6a7297dc1b94a04e95f143eb473a92"
+ },
+ "tool_version": 3,
+ "nav": null
+}
