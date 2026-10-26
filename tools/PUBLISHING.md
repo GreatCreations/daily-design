@@ -70,8 +70,16 @@ Re-running with nothing new prints `nothing new to publish`.
      logo, name and line. With no active sponsor it shows a placeholder template ("Your ad here · 1200 × 300 banner", labelled
      **Ad space**) linking to `contact.html#sponsor`. Sponsor links get `rel="sponsored noopener"` and open in a new tab.
   2. **The invite** below it: a short "Sponsor Daily Design" line and a "Get in touch" link to `contact.html#sponsor`.
+  **Placements** (`banner.placements`, a list; default `["top"]`, so older entries stay top-only):
+  - `"top"`: near the top of the index (under search), each report page and each edition (top strip), between
+    `<!--dd-sponsor:start-->`/`<!--dd-sponsor:end-->`.
+  - `"links"`: a second banner + invite combo on the index only, as the first thing inside the Recent links section
+    (`#items-block`), between `<!--dd-sponsor-links:start-->`/`<!--dd-sponsor-links:end-->`. It moves with that section when
+    the page reorders for search, so it always sits directly above the links list.
+  A sponsor can be in one or both (`["top", "links"]`). Each placement shows the first active sponsor listed for it; a placement with
+  no active sponsor shows the "Your ad here" placeholder. Same banner spec for both.
   Editing `sponsors.json` and re-running the publisher updates every page. Fields per sponsor: `name`, `line`, `url`, `logo`,
-  `active`, `start`, `end`, and `banner` = `{image, alt, url, active, start, end}` (`image` is an https URL or a repo path such as
+  `active`, `start`, `end`, and `banner` = `{placements, image, alt, url, active, start, end}` (`image` is an https URL or a repo path such as
   `assets/sponsors/acme-1200x300.webp`; `url` defaults to the sponsor `url`; `alt` should say what the ad says).
   The spot is display-only: nothing in it feeds item parsing, ranking or the index data.
 - **Banner spec** (what to ask sponsors for):

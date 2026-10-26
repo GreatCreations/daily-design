@@ -250,6 +250,8 @@ STUDIO_URL = "https://greatcreationstudios.greatcreations.art"
 CONTACT_EMAIL = "dailydesign@greatcreations.ca"  # public Daily Design address (shown on contact.html)
 CONTACT_PATH = "contact.html"
 SPON_START, SPON_END = "<!--dd-sponsor:start-->", "<!--dd-sponsor:end-->"
+SPON2_START, SPON2_END = "<!--dd-sponsor-links:start-->", "<!--dd-sponsor-links:end-->"  # index: above Recent links
+SPON_PLACEMENTS = ("top", "links")  # banner.placements; default ["top"]
 SPONSORS_FILE = "sponsors.json"  # repo root; see README. Sponsors never affect rankings.
 
 
@@ -307,6 +309,7 @@ text-decoration:none!important;font:600 13px/1.2 ui-sans-serif,system-ui,-apple-
 .dd-spon a.dd-spon-btn:hover,.dd-spon a.dd-spon-btn:focus-visible{background:rgba(255,255,255,.08);outline:none}
 .dd-spon-wrap{margin:18px 0 0}
 .dd-spon-wrap.dd-spon-rp{margin:0 0 16px}
+.dd-spon-wrap.dd-spon-lk{margin:0 0 22px}
 .dd-spon-strip{padding:12px 14px;background:#0b0b0e;border-bottom:1px solid rgba(255,255,255,.08)}
 .dd-spon-strip>.dd-spon-in{max-width:1100px;margin:0 auto}
 @media (max-width:620px){.dd-ban .dd-ban-box{border-radius:10px}.dd-spon{padding:9px 11px;gap:8px 10px;font-size:13.5px}.dd-spon a.dd-spon-btn{padding:7px 11px}}
@@ -317,8 +320,9 @@ def _in_dates(o, today):
     return not ((o.get("start") and today < o["start"]) or (o.get("end") and today > o["end"]))
 
 
-def load_sponsor():
-    """The first active sponsor in sponsors.json (inside its optional start/end dates), or None.
+def load_sponsor(slot="top"):
+    """The first active sponsor in sponsors.json (inside its optional start/end dates) whose
+    banner.placements (default ["top"]) includes slot ("top" or "links"), or None.
     The sponsor slot is display-only: nothing in it is read by item parsing or ranking."""
     p = os.path.join(REPO, SPONSORS_FILE)
     try:
@@ -332,6 +336,11 @@ def load_sponsor():
         if not _in_dates(sp, today):
             continue
         ban = sp.get("banner") or {}
+        places = ban.get("placements") or ["top"]
+        if isinstance(places, str):
+            places = [places]
+        if slot not in places:
+            continue
         sp = dict(sp, _banner=None)
         if ban.get("active") and ban.get("image") and _in_dates(ban, today):
             sp["_banner"] = ban
@@ -343,12 +352,12 @@ def _asset(src, prefix):
     return src if re.match(r"https?://", src) else prefix + src.lstrip("/")
 
 
-def sponsor_html(prefix="", wrap="dd-spon-wrap"):
+def sponsor_html(prefix="", wrap="dd-spon-wrap", slot="top"):
     """Sponsor block near the top of the index, report pages and editions (between markers):
     1) the 4:1 landscape sponsor banner (1200x300): the sponsor's banner image, a text card if it has none,
        or with no active sponsor a placeholder 'Your ad here' template linking to the contact page;
     2) below it, a short 'Sponsor Daily Design' invite linking to the contact page."""
-    sp = load_sponsor()
+    sp = load_sponsor(slot)
     if sp and sp.get("_banner"):
         ban = sp["_banner"]
         url = ban.get("url") if re.match(r"https?://", ban.get("url") or "") else sp["url"]
@@ -371,8 +380,9 @@ def sponsor_html(prefix="", wrap="dd-spon-wrap"):
               '<span class="dd-spon-txt"><b>Sponsor Daily Design.</b> Reach people who make things with AI. '
               'Sponsors never affect what we pick or how it ranks.</span>'
               '<a class="dd-spon-btn" href="%s%s#sponsor">Get in touch →</a></aside>') % (prefix, CONTACT_PATH)
+    start, end, css = (SPON2_START, SPON2_END, "") if slot == "links" else (SPON_START, SPON_END, SPONSOR_CSS)
     return ('%s%s<div class="%s"><div class="dd-spon-in">%s%s</div></div>%s') % (
-        SPON_START, SPONSOR_CSS, wrap, banner, invite, SPON_END)
+        start, css, wrap, banner, invite, end)
 
 
 def put_sponsor(doc, anchor_re, prefix="", wrap="dd-spon-wrap"):
@@ -926,6 +936,10 @@ def build_index_seo(editions):
     if STATIC_START not in doc:
         doc = doc.replace('<footer class="site">', static + "\n" + '<footer class="site">', 1)
     doc = put_sponsor(doc, r'<main class="wrap" id="results">')
+    # second combo: first thing inside the Recent links section, so it moves with it when app.js reorders the archive
+    doc = re.sub(re.escape(SPON2_START) + ".*?" + re.escape(SPON2_END), "", doc, flags=re.S)
+    doc = doc.replace('<section class="block" id="items-block">',
+                      '<section class="block" id="items-block">' + sponsor_html("", "dd-spon-wrap dd-spon-lk", "links"), 1)
     doc = ensure_credit(doc)
     if write_if_changed(p, doc):
         log("index.html SEO updated")
