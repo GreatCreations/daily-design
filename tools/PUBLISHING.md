@@ -56,3 +56,14 @@ Re-running with nothing new prints `nothing new to publish`.
 - 6 PM / 8 PM: write `YYYY-MM-DD-best.md` / `YYYY-MM-DD-hottest.md` and the matching `-header.png`.
 - Run `python3 /workspace/daily-design/tools/publish.py`.
 - Pages: `https://studios.greatcreations.art/daily-design/editions/<date>/<slot>.html`. Reports: `https://studios.greatcreations.art/daily-design/#report=<date>/<slot>` (inline reader) or `.../reports/<date>/<slot>.html` (static page).
+
+## Contact page and sponsor spot
+
+- **Contact**: `contact.html` is generated every run (`build_contact_page`) with the public address in `CONTACT_EMAIL`, a Copy button
+  (clipboard API, with a select-the-text fallback) and an "Email us" mailto link. Every footer (index, report pages, edition pages) gets a
+  Contact link through the credit block, so new editions pick it up automatically. The page is in `sitemap.xml`.
+- **Sponsor spot**: `sponsors.json` at the repo root. The first entry with `"active": true` (and today inside its optional `start`/`end`)
+  is shown near the top of the index, each report page and each edition, labelled **Sponsored**, with its logo, name, one line and link
+  (`rel="sponsored"`). With none active, a "Sponsor Daily Design" invite links to `contact.html#sponsor`. It sits between
+  `<!--dd-sponsor:start-->`/`<!--dd-sponsor:end-->`. Editing `sponsors.json` and re-running the publisher updates every page.
+  The spot is display-only: nothing in it feeds item parsing, ranking or the index data.

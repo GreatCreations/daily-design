@@ -27,7 +27,7 @@ function whenVoices(cb){
 if(OK){refreshVoice();if(S.addEventListener)S.addEventListener("voiceschanged",refreshVoice);else S.onvoiceschanged=refreshVoice}
 
 /* ---- text extraction ---- */
-var SKIP="script,style,noscript,template,svg,canvas,img,picture,video,audio,iframe,object,figure,pre,code,button,nav,select,input,textarea,label,kbd,footer,#dd-nav,#dd-foot,.dd-credit,.dd-tts,.rd-tts,[aria-hidden='true'],[hidden]";
+var SKIP="script,style,noscript,template,svg,canvas,img,picture,video,audio,iframe,object,figure,pre,code,button,nav,select,input,textarea,label,kbd,footer,#dd-nav,#dd-foot,.dd-credit,.dd-contactln,.dd-spon,.dd-tts,.rd-tts,[aria-hidden='true'],[hidden]";
 var BLOCK=/^(P|LI|H[1-6]|BLOCKQUOTE|DIV|SECTION|ARTICLE|HEADER|MAIN|ASIDE|UL|OL|DL|DT|DD|TABLE|TR|TD|TH|CAPTION|FIGCAPTION|HR|BR|SUMMARY|DETAILS)$/;
 var EMOJI=/[\u2190-\u21FF\u2300-\u23FF\u2460-\u27BF\u2B00-\u2BFF\uFE0F\u200D]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|\uD83E[\uDC00-\uDFFF]/g;
 function norm(t){

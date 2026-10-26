@@ -72,6 +72,8 @@ background:#09090c;border-top:2px solid var(--dd-accent);font:600 14px/1.3 ui-sa
 #dd-foot .dd-credit{flex-basis:100%;margin-top:14px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
 #dd-foot .dd-credit-ic{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin:0 5px 0 1px;border-radius:3px}
 #dd-foot .dd-credit a{display:inline;white-space:nowrap;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
+#dd-foot .dd-contactln{flex-basis:100%;margin-top:2px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
+#dd-foot .dd-contactln a{display:inline;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px;font-weight:700}
 @media (max-width:620px){#dd-nav{gap:6px;padding:0 8px}#dd-nav .dd-lab{font-size:12px}#dd-nav .dd-t,#dd-nav .tts-l{display:none}#dd-nav a,#dd-nav button.dd-tts{padding:7px 9px}}
 </style>
 <script>(function(){function fix(){var h=document.getElementById('dd-nav');if(!h)return;var H=h.offsetHeight;
@@ -80,6 +82,29 @@ var cs=getComputedStyle(e);if((cs.position==='sticky'||cs.position==='fixed')&&c
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fix);else fix();})();</script><!--dd-style:end-->
 </head><body>
 <!--dd-nav:start--><nav id="dd-nav" aria-label="Daily Design"><a class="dd-home" href="../../index.html">← <span class="dd-t">Back to </span>index</a><span class="dd-lab"><b>7 AM</b>AI Design Daily · Mon Oct 26, 2026</span><button class="dd-tts" id="dd-tts-play" type="button" hidden aria-label="Listen: read this page aloud" aria-pressed="false"><span class="tts-i" aria-hidden="true">▶</span><span class="tts-l">Listen</span></button><button class="dd-tts" id="dd-tts-stop" type="button" hidden aria-label="Stop reading"><span aria-hidden="true">■</span><span class="tts-l">Stop</span></button><script src="../../assets/tts.js" defer></script><a class="dd-prev" href="../2026-10-25/noon.html" title="Sun Oct 25, 2026 · Noon AI Design in Use">‹ <span class="dd-t">Prev</span></a><a class="dd-next" href="../2026-10-26/noon.html" title="Mon Oct 26, 2026 · Noon AI Design in Use"><span class="dd-t">Next</span> ›</a></nav><!--dd-nav:end-->
+<!--dd-sponsor:start--><style id="dd-spon-css">
+.dd-spon,.dd-spon *{box-sizing:border-box;margin:0;letter-spacing:normal;text-transform:none}
+.dd-spon{--sc:var(--dd-accent,#f5a524);display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;padding:10px 14px;border:1px dashed rgba(255,255,255,.18);border-radius:14px;
+background:rgba(255,255,255,.025);color:#b9b6ae;font:500 14px/1.4 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:left}
+.dd-spon .dd-spon-lab{flex:0 0 auto;font:700 10.5px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8d8a83;
+padding:5px 8px;border:1px solid rgba(255,255,255,.14);border-radius:999px}
+.dd-spon .dd-spon-txt{flex:1 1 220px;min-width:0;color:#d5d1c8}
+.dd-spon .dd-spon-txt b{color:#f1efe9;font-weight:700}
+.dd-spon a.dd-spon-btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;border:1px solid var(--sc);color:#f1efe9!important;
+text-decoration:none!important;font:600 13px/1.2 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;white-space:nowrap;background:transparent}
+.dd-spon a.dd-spon-btn:hover,.dd-spon a.dd-spon-btn:focus-visible{background:rgba(255,255,255,.08);outline:none}
+.dd-spon a.dd-spon-card{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:12px;color:#d5d1c8!important;text-decoration:none!important}
+.dd-spon a.dd-spon-card img{flex:0 0 auto;width:36px;height:36px;border-radius:8px;object-fit:contain;background:#fff}
+.dd-spon a.dd-spon-card:hover b{text-decoration:underline;text-decoration-color:var(--sc)}
+.dd-spon .dd-spon-note{flex:0 0 auto;font-size:12px;color:#76736c}
+.dd-spon-wrap{margin:18px 0 0}
+.dd-spon-strip{padding:10px 14px;background:#0b0b0e;border-bottom:1px solid rgba(255,255,255,.08)}
+.dd-spon-strip .dd-spon{max-width:1100px;margin:0 auto;border-radius:12px}
+@media (max-width:620px){.dd-spon{padding:9px 11px;gap:8px 10px;font-size:13.5px}.dd-spon .dd-spon-note{flex-basis:100%}}
+</style><div class="dd-spon-strip"><aside class="dd-spon" aria-label="Sponsor spot"><span class="dd-spon-lab">Sponsor spot</span><span class="dd-spon-txt"><b>Sponsor Daily Design.</b> Put your tool in front of people who make things with AI, in one clearly labelled spot that never touches the rankings.</span><a class="dd-spon-btn" href="../../contact.html#sponsor">Sponsor Daily Design →</a></aside></div><!--dd-sponsor:end-->
+
+
+
 
 
 <div class="top"><div class="kick">AI DESIGN DAILY · MORNING EDITION · MON OCT 26, 2026</div></div>
@@ -107,5 +132,5 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <p class="steer">Tell us what to dig into next: reply with a medium, a tool or a question and we'll steer tomorrow's sweep toward it.</p>
 </div>
 </section>
-</main><footer>AI Design Daily · public research digest · links open the original sources</footer><!--dd-foot:start--><div id="dd-foot"><a class="dd-prev" href="../2026-10-25/noon.html" title="Sun Oct 25, 2026 · Noon AI Design in Use">‹ Previous edition</a><a class="dd-home" href="../../index.html">← Back to the Daily Design index</a><a class="dd-next" href="../2026-10-26/noon.html" title="Mon Oct 26, 2026 · Noon AI Design in Use">Next edition ›</a><!--dd-credit:start--><p class="dd-credit">Daily Design is created and brought to you by <a href="https://greatcreationstudios.greatcreations.art" rel="noopener"><img class="dd-credit-ic" src="../../assets/gcs-icon.png" alt="" width="16" height="16">Great Creation Studios</a>.</p><!--dd-credit:end--></div><!--dd-foot:end-->
+</main><footer>AI Design Daily · public research digest · links open the original sources</footer><!--dd-foot:start--><div id="dd-foot"><a class="dd-prev" href="../2026-10-25/noon.html" title="Sun Oct 25, 2026 · Noon AI Design in Use">‹ Previous edition</a><a class="dd-home" href="../../index.html">← Back to the Daily Design index</a><a class="dd-next" href="../2026-10-26/noon.html" title="Mon Oct 26, 2026 · Noon AI Design in Use">Next edition ›</a><!--dd-credit:start--><p class="dd-credit">Daily Design is created and brought to you by <a href="https://greatcreationstudios.greatcreations.art" rel="noopener"><img class="dd-credit-ic" src="../../assets/gcs-icon.png" alt="" width="16" height="16">Great Creation Studios</a>.</p><p class="dd-contactln"><a href="../../contact.html">Contact</a> · questions, tips, corrections and sponsorship</p><!--dd-credit:end--></div><!--dd-foot:end-->
 </body></html>

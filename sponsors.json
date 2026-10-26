@@ -1,0 +1,6 @@
+{
+ "_readme": "Sponsor spot for Daily Design. The first entry with active=true (and today's date inside its optional start/end, YYYY-MM-DD) is shown near the top of the index, report pages and editions, labelled Sponsored. With none active, an invite to sponsor is shown instead. Fields: name, line (one short sentence), url (https), logo (an https URL or a path in this repo such as assets/sponsors/acme.png), active, start, end. Sponsors are display-only and never affect what is picked or how it ranks. Run tools/publish.py after editing.",
+ "sponsors": [
+  {"name": "Example Tool", "line": "One short line about the sponsor.", "url": "https://example.com/", "logo": "", "active": false, "start": "", "end": ""}
+ ]
+}

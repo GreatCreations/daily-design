@@ -21,7 +21,7 @@ SITE_URL = "https://studios.greatcreations.art/daily-design/"  # canonical base
 REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
 REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
 TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
-NAV_VERSION = 5   # bump to force nav re-injection on every HTML edition
+NAV_VERSION = 7   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -75,7 +75,7 @@ FORBIDDEN = [
     r"(?i)compiled by research|research for ",
     r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.(?:com|net|org|io|ai|co|dev|app)\b",
 ]
-ALLOW_EMAIL = re.compile(r"users\.noreply\.github\.com")
+ALLOW_EMAIL = re.compile(r"users\.noreply\.github\.com|^dailydesign@greatcreations\.ca$")
 
 
 def log(*a):
@@ -247,12 +247,23 @@ STUDIO_NAME = "Great Creation Studios"
 STUDIO_URL = "https://greatcreationstudios.greatcreations.art"
 
 
+CONTACT_EMAIL = "dailydesign@greatcreations.ca"  # public Daily Design address (shown on contact.html)
+CONTACT_PATH = "contact.html"
+SPON_START, SPON_END = "<!--dd-sponsor:start-->", "<!--dd-sponsor:end-->"
+SPONSORS_FILE = "sponsors.json"  # repo root; see README. Sponsors never affect rankings.
+
+
+def mailto(subject):
+    return "mailto:%s?subject=%s" % (CONTACT_EMAIL, quote(subject))
+
+
 def credit_html(prefix="", cls="dd-credit"):
     """Footer credit line (skipped by the Listen button via .dd-credit). prefix = path back to the site root.
     The studio's icon is a vendored copy of its own favicon (assets/gcs-icon.png), decorative (alt="")."""
     return ('%s<p class="%s">Daily Design is created and brought to you by '
-            '<a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" alt="" width="16" height="16">%s</a>.</p>%s') % (
-        CREDIT_START, cls, STUDIO_URL, prefix, STUDIO_NAME, CREDIT_END)
+            '<a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" alt="" width="16" height="16">%s</a>.</p>'
+            '<p class="dd-contactln"><a href="%s%s">Contact</a> · questions, tips, corrections and sponsorship</p>%s') % (
+        CREDIT_START, cls, STUDIO_URL, prefix, STUDIO_NAME, prefix, CONTACT_PATH, CREDIT_END)
 
 
 def ensure_credit(doc):
@@ -264,6 +275,73 @@ def ensure_credit(doc):
     idx = doc.lower().rfind("</body>")
     slim = '<footer class="site">' + '<div class="wrap">' + credit_html() + "</div></footer>\n"
     return doc[:idx] + slim + doc[idx:] if idx >= 0 else doc + slim
+
+
+SPONSOR_CSS = """<style id="dd-spon-css">
+.dd-spon,.dd-spon *{box-sizing:border-box;margin:0;letter-spacing:normal;text-transform:none}
+.dd-spon{--sc:var(--dd-accent,#f5a524);display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;padding:10px 14px;border:1px dashed rgba(255,255,255,.18);border-radius:14px;
+background:rgba(255,255,255,.025);color:#b9b6ae;font:500 14px/1.4 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:left}
+.dd-spon .dd-spon-lab{flex:0 0 auto;font:700 10.5px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8d8a83;
+padding:5px 8px;border:1px solid rgba(255,255,255,.14);border-radius:999px}
+.dd-spon .dd-spon-txt{flex:1 1 220px;min-width:0;color:#d5d1c8}
+.dd-spon .dd-spon-txt b{color:#f1efe9;font-weight:700}
+.dd-spon a.dd-spon-btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;border:1px solid var(--sc);color:#f1efe9!important;
+text-decoration:none!important;font:600 13px/1.2 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;white-space:nowrap;background:transparent}
+.dd-spon a.dd-spon-btn:hover,.dd-spon a.dd-spon-btn:focus-visible{background:rgba(255,255,255,.08);outline:none}
+.dd-spon a.dd-spon-card{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:12px;color:#d5d1c8!important;text-decoration:none!important}
+.dd-spon a.dd-spon-card img{flex:0 0 auto;width:36px;height:36px;border-radius:8px;object-fit:contain;background:#fff}
+.dd-spon a.dd-spon-card:hover b{text-decoration:underline;text-decoration-color:var(--sc)}
+.dd-spon .dd-spon-note{flex:0 0 auto;font-size:12px;color:#76736c}
+.dd-spon-wrap{margin:18px 0 0}
+.dd-spon-strip{padding:10px 14px;background:#0b0b0e;border-bottom:1px solid rgba(255,255,255,.08)}
+.dd-spon-strip .dd-spon{max-width:1100px;margin:0 auto;border-radius:12px}
+@media (max-width:620px){.dd-spon{padding:9px 11px;gap:8px 10px;font-size:13.5px}.dd-spon .dd-spon-note{flex-basis:100%}}
+</style>"""
+
+
+def load_sponsor():
+    """The first active sponsor in sponsors.json (inside its optional start/end dates), or None.
+    The sponsor slot is display-only: nothing in it is read by item parsing or ranking."""
+    p = os.path.join(REPO, SPONSORS_FILE)
+    try:
+        data = json.load(open(p, encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    today = dt.date.today().isoformat()
+    for sp in data.get("sponsors", []):
+        if not sp.get("active") or not sp.get("name") or not re.match(r"https?://", sp.get("url", "")):
+            continue
+        if (sp.get("start") and today < sp["start"]) or (sp.get("end") and today > sp["end"]):
+            continue
+        return sp
+    return None
+
+
+def sponsor_html(prefix="", wrap="dd-spon-wrap"):
+    """Sponsor spot shown near the top of the index, report pages and editions (between markers).
+    With no active sponsor it shows an invite that links to the contact page."""
+    sp = load_sponsor()
+    if sp:
+        logo = sp.get("logo") or ""
+        if logo and not re.match(r"https?://", logo):
+            logo = prefix + logo.lstrip("/")
+        img = ('<img src="%s" alt="" width="36" height="36" loading="lazy">' % esc(logo)) if logo else ""
+        inner = ('<span class="dd-spon-lab">Sponsored</span>'
+                 '<a class="dd-spon-card" href="%s" rel="sponsored noopener" target="_blank">%s<span class="dd-spon-txt"><b>%s</b>%s</span></a>'
+                 '<span class="dd-spon-note">Sponsors never affect what we pick or how it ranks.</span>') % (
+            esc(sp["url"]), img, esc(sp["name"]), (" · " + esc(sp["line"])) if sp.get("line") else "")
+    else:
+        inner = ('<span class="dd-spon-lab">Sponsor spot</span>'
+                 '<span class="dd-spon-txt"><b>Sponsor Daily Design.</b> Put your tool in front of people who make things with AI, '
+                 'in one clearly labelled spot that never touches the rankings.</span>'
+                 '<a class="dd-spon-btn" href="%s%s#sponsor">Sponsor Daily Design →</a>') % (prefix, CONTACT_PATH)
+    return ('%s%s<div class="%s"><aside class="dd-spon" aria-label="%s">%s</aside></div>%s') % (
+        SPON_START, SPONSOR_CSS, wrap, "Sponsor" if sp else "Sponsor spot", inner, SPON_END)
+
+
+def put_sponsor(doc, anchor_re, prefix="", wrap="dd-spon-wrap"):
+    doc = re.sub(r"\n?" + re.escape(SPON_START) + ".*?" + re.escape(SPON_END) + r"\n?", "", doc, flags=re.S)
+    return re.sub(anchor_re, lambda m: m.group(0) + "\n" + sponsor_html(prefix, wrap) + "\n", doc, count=1)
 
 
 def icon_links(prefix):
@@ -306,6 +384,8 @@ background:#09090c;border-top:2px solid var(--dd-accent);font:600 14px/1.3 ui-sa
 #dd-foot .dd-credit{flex-basis:100%%;margin-top:14px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
 #dd-foot .dd-credit-ic{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin:0 5px 0 1px;border-radius:3px}
 #dd-foot .dd-credit a{display:inline;white-space:nowrap;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
+#dd-foot .dd-contactln{flex-basis:100%%;margin-top:2px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
+#dd-foot .dd-contactln a{display:inline;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px;font-weight:700}
 @media (max-width:620px){#dd-nav{gap:6px;padding:0 8px}#dd-nav .dd-lab{font-size:12px}#dd-nav .dd-t,#dd-nav .tts-l{display:none}#dd-nav a,#dd-nav button.dd-tts{padding:7px 9px}}
 </style>
 <script>(function(){function fix(){var h=document.getElementById('dd-nav');if(!h)return;var H=h.offsetHeight;
@@ -332,7 +412,7 @@ def nav_link(ed, cls, label, arrow_first):
 
 
 def inject_nav(doc, ed, prev, nxt, items=()):
-    for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END), (ICON_START, ICON_END), (CREDIT_START, CREDIT_END)):
+    for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END), (ICON_START, ICON_END), (CREDIT_START, CREDIT_END), (SPON_START, SPON_END)):
         doc = re.sub(re.escape(a) + ".*?" + re.escape(b) + r"\n?", "", doc, flags=re.S)
     s = SLOTS[ed["slot"]]
     bar = ('%s<nav id="dd-nav" aria-label="Daily Design"><a class="dd-home" href="../../index.html">← <span class="dd-t">Back to </span>index</a>'
@@ -343,12 +423,15 @@ def inject_nav(doc, ed, prev, nxt, items=()):
     foot = ('%s<div id="dd-foot">%s<a class="dd-home" href="../../index.html">← Back to the Daily Design index</a>%s%s</div>%s\n') % (
         FOOT_START, nav_link(prev, "dd-prev", "‹ Previous edition", True),
         nav_link(nxt, "dd-next", "Next edition ›", False), credit_html("../../"), FOOT_END)
+    if ed.get("header"):  # the page may point at the source file name (<date>-<slot>-header.png); the repo copy is <slot>-header.png
+        hb = os.path.basename(ed["header"])
+        doc = doc.replace('src="%s-%s"' % (ed["date"], hb), 'src="%s"' % hb)
     doc = ensure_lang(strip_head_seo(doc))
     doc = re.sub(r"(<meta[^>]*charset[^>]*>)", lambda m: m.group(1) + "\n" + seo_block(ed, items), doc, count=1, flags=re.I)
     if SEO_START not in doc:
         doc = re.sub(r"(<head[^>]*>)", lambda m: m.group(1) + "\n" + seo_block(ed, items), doc, count=1, flags=re.I)
     doc = re.sub(r"</head>", lambda m: icon_links("../../") + "\n" + nav_css(s["color"]) + "\n</head>", doc, count=1, flags=re.I)
-    doc = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + "\n" + bar, doc, count=1, flags=re.I)
+    doc = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + "\n" + bar + sponsor_html("../../", "dd-spon-strip") + "\n", doc, count=1, flags=re.I)
     idx = doc.lower().rfind("</body>")
     doc = doc[:idx] + foot + doc[idx:] if idx >= 0 else doc + foot
     return doc
@@ -712,6 +795,7 @@ def report_page(ed, md, items):
 <body>
 <main class="rp">
 <nav class="rp-top" aria-label="Daily Design"><a class="btn" href="../../index.html">← Daily Design index</a><a href="../../#report=%s">Open in the index reader</a></nav>
+%s
 <section class="reader" style="--c:%s" aria-label="Report">
 <div class="rd-bar"><div class="rd-kick"><span class="dot"></span>%s · %s · %s <b>Report</b></div><div class="rd-acts">%s<a class="rd-gh" href="%s" rel="noopener">View on GitHub ↗</a></div></div>
 <article class="rd-body" data-tts-root>
@@ -724,7 +808,8 @@ def report_page(ed, md, items):
 <script src="../../assets/tts.js" defer></script>
 </body>
 </html>
-""") % (seo_block(ed, items, report_story(md)), icon_links("../../"), REPORT_CSS, key, s["color"],
+""") % (seo_block(ed, items, report_story(md)), icon_links("../../"), REPORT_CSS, key,
+        sponsor_html("../../", "dd-spon-wrap dd-spon-rp"), s["color"],
         esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../"))
 
 
@@ -800,13 +885,117 @@ def build_index_seo(editions):
     lis = "".join('<li><a href="%s">%s</a></li>' % (esc(public_path(e)), esc(seo_fields(e)["title"].rsplit(" · ", 1)[0]))
                   for e in editions[:200])
     static = (STATIC_START + '<noscript><section class="wrap block"><h2>All editions</h2><ul>%s</ul>'
-              '<p><a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">Sitemap</a></p></section></noscript>' + STATIC_END) % lis
+              '<p><a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">Sitemap</a> · <a href="contact.html">Contact</a></p></section></noscript>' + STATIC_END) % lis
     doc = re.sub(re.escape(STATIC_START) + ".*?" + re.escape(STATIC_END), lambda m: static, doc, flags=re.S)
     if STATIC_START not in doc:
         doc = doc.replace('<footer class="site">', static + "\n" + '<footer class="site">', 1)
+    doc = put_sponsor(doc, r'<main class="wrap" id="results">')
     doc = ensure_credit(doc)
     if write_if_changed(p, doc):
         log("index.html SEO updated")
+
+
+CONTACT_CSS = """<style>
+.ct{max-width:760px;margin:0 auto;padding:18px 16px 50px}
+.ct-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:0 0 20px}
+.ct-top a{color:var(--mut);font:600 13px var(--sans);text-decoration:none}.ct-top a:hover{color:#fff}.ct-top a.btn{color:var(--ink)}
+.ct-card{position:relative;overflow:hidden;background:linear-gradient(180deg,#121219,#0d0d12);border:1px solid var(--line2);border-top:3px solid var(--amber);border-radius:20px;padding:30px 26px 28px}
+.ct-card:before{content:"";position:absolute;inset:-60% -20% auto -20%;height:300px;pointer-events:none;
+background:radial-gradient(40% 60% at 20% 50%,rgba(245,165,36,.16),transparent 70%),radial-gradient(35% 55% at 55% 30%,rgba(34,224,207,.10),transparent 70%),radial-gradient(35% 55% at 90% 40%,rgba(155,107,255,.14),transparent 70%)}
+.ct-card>*{position:relative}
+.ct .eyebrow{margin:0 0 12px}
+.ct h1{font:400 clamp(38px,7vw,64px)/.95 var(--serif);letter-spacing:-.03em;margin:0 0 14px}
+.ct h1 em{font-style:italic;background:linear-gradient(90deg,var(--amber),var(--aqua) 35%,var(--violet) 68%,var(--flame));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+.ct .lede{font:300 clamp(17px,2.2vw,20px)/1.5 var(--sans);color:#d5d1c8;margin:0 0 22px;max-width:600px}
+.ct-mail{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.ct-addr{flex:1 1 300px;min-width:0;display:block;padding:14px 16px;border:1px solid var(--line2);border-radius:12px;background:#09090c;color:var(--ink);
+font:600 clamp(16px,2.6vw,19px)/1.3 var(--mono);overflow-wrap:anywhere;user-select:all;-webkit-user-select:all;cursor:text}
+.ct-btns{display:flex;flex-wrap:wrap;gap:10px}
+.ct .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:14px;padding:13px 16px}
+.ct .btn.pri{background:var(--amber);border-color:transparent;color:#0b0b0e;font-weight:800}.ct .btn.pri:hover{background:#ffb94a}
+.ct-ok{min-height:20px;margin:10px 0 0;font:600 13px var(--sans);color:var(--aqua)}
+.ct-sec{margin:28px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.ct-sec div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.ct-sec h2{font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:0 0 8px}
+.ct-sec p{margin:0;color:#d5d1c8;font-size:15px;line-height:1.5}
+.ct-sp{scroll-margin-top:20px;margin:28px 0 0;padding:20px;border:1px dashed var(--line2);border-radius:16px}
+.ct-sp h2{font:400 28px/1.1 var(--serif);margin:0 0 8px}.ct-sp p{margin:0 0 14px;color:#d5d1c8}
+@media (max-width:640px){.ct-card{padding:24px 16px 22px;border-radius:16px}.ct-btns{width:100%}.ct-btns .btn{flex:1 1 0;justify-content:center}}
+</style>"""
+
+CONTACT_JS = """<script>(function(){var A="%s",ok=document.getElementById("ct-ok"),el=document.getElementById("ct-addr"),b=document.getElementById("ct-copy");
+function say(t){ok.textContent=t;clearTimeout(say.t);say.t=setTimeout(function(){ok.textContent=""},2600)}
+function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+function legacy(){sel();var d=false;try{d=document.execCommand("copy")}catch(e){}say(d?"Copied":"Selected. Press Ctrl+C or ⌘C to copy.")}
+b.hidden=false;b.addEventListener("click",function(){if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(A).then(function(){sel();say("Copied")},legacy)}else legacy()})})();</script>"""
+
+
+def build_contact_page():
+    url = abs_url(CONTACT_PATH)
+    title = "Contact · %s" % SITE_NAME
+    desc = ("Email Daily Design at %s with questions, tips for future editions, corrections or sponsorship." % CONTACT_EMAIL)
+    ld = {"@context": "https://schema.org", "@type": "ContactPage", "name": title, "url": url, "description": desc,
+          "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": SITE_URL},
+          "mainEntity": dict(publisher_ld(), contactPoint={"@type": "ContactPoint", "email": CONTACT_EMAIL,
+                                                            "contactType": "editorial and sponsorship", "availableLanguage": "en"})}
+    head = SEO_START + "".join([
+        '<title>%s</title>' % esc(title),
+        '<meta name="description" content="%s">' % esc(desc),
+        '<link rel="canonical" href="%s">' % url,
+        '<meta name="robots" content="index,follow">',
+        '<meta property="og:type" content="website">',
+        '<meta property="og:site_name" content="%s">' % SITE_NAME,
+        '<meta property="og:title" content="%s">' % esc(title),
+        '<meta property="og:description" content="%s">' % esc(desc),
+        '<meta property="og:url" content="%s">' % url,
+        '<meta property="og:image" content="%s">' % abs_url("assets/favicon-512.png"),
+        '<meta property="og:locale" content="en_US">',
+        '<meta name="twitter:card" content="summary">',
+        '<meta name="twitter:title" content="%s">' % esc(title),
+        '<meta name="twitter:description" content="%s">' % esc(desc),
+        '<meta name="twitter:image" content="%s">' % abs_url("assets/favicon-512.png"),
+        '<link rel="alternate" type="application/atom+xml" title="Daily Design feed" href="%s">' % abs_url("feed.xml"),
+        ld_json(ld)]) + SEO_END
+    e = esc(CONTACT_EMAIL)
+    doc = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+%s
+<meta name="theme-color" content="#09090c">
+%s
+<link rel="stylesheet" href="assets/site.css">
+%s
+</head>
+<body>
+<main class="ct">
+<nav class="ct-top" aria-label="Daily Design"><a class="btn" href="index.html">← Daily Design index</a></nav>
+<section class="ct-card" aria-labelledby="ct-h">
+<div class="eyebrow">Daily Design · Contact</div>
+<h1 id="ct-h">Say <em>hello</em></h1>
+<p class="lede">Got a question, a tip for a future edition, a correction, or want to sponsor Daily Design? Email us. Tap Copy to grab the address, or Email us to open your mail app.</p>
+<div class="ct-mail"><span class="ct-addr" id="ct-addr">%s</span>
+<div class="ct-btns"><button class="btn" id="ct-copy" type="button" hidden>Copy</button><a class="btn pri" href="%s">Email us</a></div></div>
+<p class="ct-ok" id="ct-ok" role="status" aria-live="polite"></p>
+<div class="ct-sec">
+<div><h2>Tips</h2><p>Seen something made with AI that deserves a spot? Send the link to the post, repo or video.</p></div>
+<div><h2>Corrections</h2><p>Spotted a mistake? Include the edition link and what needs fixing.</p></div>
+<div><h2>Questions</h2><p>Anything about Daily Design, the editions or the archive.</p></div>
+</div>
+<div class="ct-sp" id="sponsor"><h2>Sponsor Daily Design</h2>
+<p>One clearly labelled sponsor spot sits near the top of the index and of each edition. It is kept apart from the editorial picks: sponsors never affect what we pick or how it ranks.</p>
+<a class="btn pri" href="%s">Email about sponsoring</a></div>
+</section>
+</main>
+<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources.%s</div></footer>
+%s
+</body>
+</html>
+""" % (head, icon_links(""), CONTACT_CSS, e, esc(mailto("Daily Design")), esc(mailto("Sponsoring Daily Design")),
+       credit_html(""), CONTACT_JS % CONTACT_EMAIL)
+    if write_if_changed(os.path.join(REPO, CONTACT_PATH), doc):
+        log("contact page", CONTACT_PATH)
 
 
 def xml_esc(s):
@@ -816,6 +1005,7 @@ def xml_esc(s):
 def build_sitemap_feed(editions):
     last = max(e["date"] for e in editions)
     urls = [(SITE_URL, last, "daily", "1.0")]
+    urls += [(abs_url(CONTACT_PATH), last, "yearly", "0.5")]
     urls += [(abs_url(public_path(e)), e["date"], "monthly", "0.8") for e in editions]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
@@ -979,11 +1169,13 @@ def main():
 
     # 3. nav pass: only pages whose prev/next changed (or that were just rewritten) are touched
     pages = [r for r in recs if r["edition"]["kind"] == "page"]
+    import hashlib
+    spon_key = hashlib.sha1(sponsor_html().encode("utf-8")).hexdigest()[:12]
     for i, r in enumerate(pages):
         e = r["edition"]
         prev = pages[i - 1]["edition"] if i > 0 else None
         nxt = pages[i + 1]["edition"] if i + 1 < len(pages) else None
-        nav = [prev and prev["path"], nxt and nxt["path"], NAV_VERSION]
+        nav = [prev and prev["path"], nxt and nxt["path"], NAV_VERSION, spon_key]
         dest = os.path.join(REPO, e["path"])
         doc = open(dest, encoding="utf-8").read()
         if r.get("nav") == nav and NAV_START in doc:
@@ -1031,6 +1223,7 @@ def main():
     write_if_changed(os.path.join(REPO, "data", "index.json"), jdump(data))
     # 4b. SEO: index head/static links, sitemap.xml, robots.txt, feed.xml
     build_index_seo(editions)
+    build_contact_page()
     build_sitemap_feed(editions)
     for legacy in ("index.js",):
         lp = os.path.join(REPO, "data", legacy)
