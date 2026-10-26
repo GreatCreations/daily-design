@@ -1,6 +1,22 @@
 {
- "_readme": "Sponsor spot for Daily Design. The first entry with active=true (and today's date inside its optional start/end, YYYY-MM-DD) is shown near the top of the index, report pages and editions, labelled Sponsored. With none active, an invite to sponsor is shown instead. Fields: name, line (one short sentence), url (https), logo (an https URL or a path in this repo such as assets/sponsors/acme.png), active, start, end. Sponsors are display-only and never affect what is picked or how it ranks. Run tools/publish.py after editing.",
+ "_readme": "Sponsor spot for Daily Design. The first entry with active=true (and today's date inside its optional start/end, YYYY-MM-DD) is the sponsor. Near the top of the index, report pages and editions there is a 4:1 landscape banner (1200x300) labelled Sponsored: the sponsor's banner image when banner.active is true and today is inside banner.start/end, otherwise a text card with its logo, name and line. With no active sponsor the banner shows a 'Your ad here' placeholder linking to contact.html, and a short 'Sponsor Daily Design' invite always sits below it. Fields: name, line (one short sentence), url (https), logo (an https URL or a repo path such as assets/sponsors/acme.png), active, start, end, and banner {image (https URL or repo path, 1200x300 PNG/JPG/WebP, max 300 KB), alt (text describing the ad), url (click URL, https; defaults to url), active, start, end}. Links get rel=\"sponsored noopener\". Sponsors are display-only and never affect what is picked or how it ranks. Run tools/publish.py after editing. Banner spec: tools/PUBLISHING.md.",
  "sponsors": [
-  {"name": "Example Tool", "line": "One short line about the sponsor.", "url": "https://example.com/", "logo": "", "active": false, "start": "", "end": ""}
+  {
+   "name": "Example Tool",
+   "line": "One short line about the sponsor.",
+   "url": "https://example.com/",
+   "logo": "",
+   "active": false,
+   "start": "",
+   "end": "",
+   "banner": {
+    "image": "assets/sponsors/example-tool-1200x300.png",
+    "alt": "Example Tool: one short line about the sponsor",
+    "url": "https://example.com/",
+    "active": false,
+    "start": "",
+    "end": ""
+   }
+  }
  ]
 }

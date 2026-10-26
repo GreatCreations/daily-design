@@ -280,25 +280,41 @@ def ensure_credit(doc):
 
 
 SPONSOR_CSS = """<style id="dd-spon-css">
-.dd-spon,.dd-spon *{box-sizing:border-box;margin:0;letter-spacing:normal;text-transform:none}
-.dd-spon{--sc:var(--dd-accent,#f5a524);display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;padding:10px 14px;border:1px dashed rgba(255,255,255,.18);border-radius:14px;
+.dd-spon,.dd-spon *,.dd-ban,.dd-ban *{box-sizing:border-box;margin:0;letter-spacing:normal;text-transform:none}
+.dd-ban{--sc:var(--dd-accent,#f5a524);display:block;width:100%;font:500 14px/1.4 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:left}
+.dd-ban .dd-ban-lab{display:block;margin:0 0 6px 2px;font:700 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8d8a83}
+.dd-ban .dd-ban-box{position:relative;display:block;width:100%;aspect-ratio:4/1;overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#111114;
+container-type:inline-size;text-decoration:none!important;color:#f1efe9!important}
+.dd-ban .dd-ban-box img{display:block;width:100%;height:100%;max-width:none;object-fit:cover}
+.dd-ban a.dd-ban-box:hover,.dd-ban a.dd-ban-box:focus-visible{border-color:var(--sc);outline:none}
+.dd-ban .dd-ban-ph{border:1px dashed rgba(255,255,255,.22);
+background:radial-gradient(120% 160% at 0% 0%,rgba(245,165,36,.16),transparent 55%),radial-gradient(120% 160% at 100% 100%,rgba(34,224,207,.12),transparent 55%),
+repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 10px,transparent 10px 20px),#0f0f12}
+.dd-ban .dd-ban-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1cqw;padding:0 6cqw;text-align:center}
+.dd-ban .dd-ban-in b{font:800 clamp(15px,4.2cqw,46px)/1.05 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#f1efe9;letter-spacing:-.01em}
+.dd-ban .dd-ban-in span{font:600 clamp(10.5px,1.55cqw,17px)/1.3 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#b9b6ae;letter-spacing:.04em}
+.dd-ban .dd-ban-in .dd-ban-dim{display:inline-block;padding:.45em .9em;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#d5d1c8}
+.dd-ban a.dd-ban-ph:hover .dd-ban-dim{border-color:var(--sc);color:#f1efe9}
+.dd-ban .dd-ban-txt{flex-direction:row;justify-content:flex-start;gap:3cqw;text-align:left;padding:0 5cqw}
+.dd-ban .dd-ban-txt img{flex:0 0 auto;width:13cqw;height:13cqw;border-radius:2cqw;object-fit:contain;background:#fff}
+.dd-ban .dd-ban-txt span{display:block;font-weight:500;letter-spacing:0;color:#d5d1c8;font-size:clamp(11px,2cqw,22px)}
+.dd-spon{--sc:var(--dd-accent,#f5a524);display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin-top:10px;padding:10px 14px;border:1px dashed rgba(255,255,255,.18);border-radius:14px;
 background:rgba(255,255,255,.025);color:#b9b6ae;font:500 14px/1.4 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:left}
-.dd-spon .dd-spon-lab{flex:0 0 auto;font:700 10.5px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8d8a83;
-padding:5px 8px;border:1px solid rgba(255,255,255,.14);border-radius:999px}
 .dd-spon .dd-spon-txt{flex:1 1 220px;min-width:0;color:#d5d1c8}
 .dd-spon .dd-spon-txt b{color:#f1efe9;font-weight:700}
 .dd-spon a.dd-spon-btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;border:1px solid var(--sc);color:#f1efe9!important;
 text-decoration:none!important;font:600 13px/1.2 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;white-space:nowrap;background:transparent}
 .dd-spon a.dd-spon-btn:hover,.dd-spon a.dd-spon-btn:focus-visible{background:rgba(255,255,255,.08);outline:none}
-.dd-spon a.dd-spon-card{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:12px;color:#d5d1c8!important;text-decoration:none!important}
-.dd-spon a.dd-spon-card img{flex:0 0 auto;width:36px;height:36px;border-radius:8px;object-fit:contain;background:#fff}
-.dd-spon a.dd-spon-card:hover b{text-decoration:underline;text-decoration-color:var(--sc)}
-.dd-spon .dd-spon-note{flex:0 0 auto;font-size:12px;color:#76736c}
 .dd-spon-wrap{margin:18px 0 0}
-.dd-spon-strip{padding:10px 14px;background:#0b0b0e;border-bottom:1px solid rgba(255,255,255,.08)}
-.dd-spon-strip .dd-spon{max-width:1100px;margin:0 auto;border-radius:12px}
-@media (max-width:620px){.dd-spon{padding:9px 11px;gap:8px 10px;font-size:13.5px}.dd-spon .dd-spon-note{flex-basis:100%}}
+.dd-spon-wrap.dd-spon-rp{margin:0 0 16px}
+.dd-spon-strip{padding:12px 14px;background:#0b0b0e;border-bottom:1px solid rgba(255,255,255,.08)}
+.dd-spon-strip>.dd-spon-in{max-width:1100px;margin:0 auto}
+@media (max-width:620px){.dd-ban .dd-ban-box{border-radius:10px}.dd-spon{padding:9px 11px;gap:8px 10px;font-size:13.5px}.dd-spon a.dd-spon-btn{padding:7px 11px}}
 </style>"""
+
+
+def _in_dates(o, today):
+    return not ((o.get("start") and today < o["start"]) or (o.get("end") and today > o["end"]))
 
 
 def load_sponsor():
@@ -313,32 +329,50 @@ def load_sponsor():
     for sp in data.get("sponsors", []):
         if not sp.get("active") or not sp.get("name") or not re.match(r"https?://", sp.get("url", "")):
             continue
-        if (sp.get("start") and today < sp["start"]) or (sp.get("end") and today > sp["end"]):
+        if not _in_dates(sp, today):
             continue
+        ban = sp.get("banner") or {}
+        sp = dict(sp, _banner=None)
+        if ban.get("active") and ban.get("image") and _in_dates(ban, today):
+            sp["_banner"] = ban
         return sp
     return None
 
 
+def _asset(src, prefix):
+    return src if re.match(r"https?://", src) else prefix + src.lstrip("/")
+
+
 def sponsor_html(prefix="", wrap="dd-spon-wrap"):
-    """Sponsor spot shown near the top of the index, report pages and editions (between markers).
-    With no active sponsor it shows an invite that links to the contact page."""
+    """Sponsor block near the top of the index, report pages and editions (between markers):
+    1) the 4:1 landscape sponsor banner (1200x300): the sponsor's banner image, a text card if it has none,
+       or with no active sponsor a placeholder 'Your ad here' template linking to the contact page;
+    2) below it, a short 'Sponsor Daily Design' invite linking to the contact page."""
     sp = load_sponsor()
-    if sp:
+    if sp and sp.get("_banner"):
+        ban = sp["_banner"]
+        url = ban.get("url") if re.match(r"https?://", ban.get("url") or "") else sp["url"]
+        banner = ('<div class="dd-ban" role="complementary" aria-label="Sponsored"><span class="dd-ban-lab">Sponsored</span>'
+                  '<a class="dd-ban-box" href="%s" rel="sponsored noopener" target="_blank">'
+                  '<img src="%s" alt="%s" width="1200" height="300" loading="lazy" decoding="async"></a></div>') % (
+            esc(url), esc(_asset(ban["image"], prefix)), esc(ban.get("alt") or ("Sponsored: " + sp["name"])))
+    elif sp:
         logo = sp.get("logo") or ""
-        if logo and not re.match(r"https?://", logo):
-            logo = prefix + logo.lstrip("/")
-        img = ('<img src="%s" alt="" width="36" height="36" loading="lazy">' % esc(logo)) if logo else ""
-        inner = ('<span class="dd-spon-lab">Sponsored</span>'
-                 '<a class="dd-spon-card" href="%s" rel="sponsored noopener" target="_blank">%s<span class="dd-spon-txt"><b>%s</b>%s</span></a>'
-                 '<span class="dd-spon-note">Sponsors never affect what we pick or how it ranks.</span>') % (
-            esc(sp["url"]), img, esc(sp["name"]), (" · " + esc(sp["line"])) if sp.get("line") else "")
+        img = ('<img src="%s" alt="" width="120" height="120" loading="lazy">' % esc(_asset(logo, prefix))) if logo else ""
+        banner = ('<div class="dd-ban" role="complementary" aria-label="Sponsored"><span class="dd-ban-lab">Sponsored</span>'
+                  '<a class="dd-ban-box" href="%s" rel="sponsored noopener" target="_blank"><span class="dd-ban-in dd-ban-txt">%s'
+                  '<span><b>%s</b>%s</span></span></a></div>') % (
+            esc(sp["url"]), img, esc(sp["name"]), ("<span>" + esc(sp["line"]) + "</span>") if sp.get("line") else "")
     else:
-        inner = ('<span class="dd-spon-lab">Sponsor spot</span>'
-                 '<span class="dd-spon-txt"><b>Sponsor Daily Design.</b> Put your tool in front of people who make things with AI, '
-                 'in one clearly labelled spot that never touches the rankings.</span>'
-                 '<a class="dd-spon-btn" href="%s%s#sponsor">Sponsor Daily Design →</a>') % (prefix, CONTACT_PATH)
-    return ('%s%s<div class="%s"><aside class="dd-spon" aria-label="%s">%s</aside></div>%s') % (
-        SPON_START, SPONSOR_CSS, wrap, "Sponsor" if sp else "Sponsor spot", inner, SPON_END)
+        banner = ('<div class="dd-ban" role="complementary" aria-label="Advertising space"><span class="dd-ban-lab">Ad space</span>'
+                  '<a class="dd-ban-box dd-ban-ph" href="%s%s#sponsor"><span class="dd-ban-in"><b>Your ad here</b>'
+                  '<span class="dd-ban-dim">1200 × 300 banner</span></span></a></div>') % (prefix, CONTACT_PATH)
+    invite = ('<aside class="dd-spon" aria-label="Sponsor Daily Design">'
+              '<span class="dd-spon-txt"><b>Sponsor Daily Design.</b> Reach people who make things with AI. '
+              'Sponsors never affect what we pick or how it ranks.</span>'
+              '<a class="dd-spon-btn" href="%s%s#sponsor">Get in touch →</a></aside>') % (prefix, CONTACT_PATH)
+    return ('%s%s<div class="%s"><div class="dd-spon-in">%s%s</div></div>%s') % (
+        SPON_START, SPONSOR_CSS, wrap, banner, invite, SPON_END)
 
 
 def put_sponsor(doc, anchor_re, prefix="", wrap="dd-spon-wrap"):
@@ -986,7 +1020,7 @@ def build_contact_page():
 <div><h2>Questions</h2><p>Anything about Daily Design, the editions or the archive.</p></div>
 </div>
 <div class="ct-sp" id="sponsor"><h2>Sponsor Daily Design</h2>
-<p>One clearly labelled sponsor spot sits near the top of the index and of each edition. It is kept apart from the editorial picks: sponsors never affect what we pick or how it ranks.</p>
+<p>One clearly labelled landscape sponsor banner (1200 × 300) sits near the top of the index, each report and each edition. It is kept apart from the editorial picks: sponsors never affect what we pick or how it ranks.</p>
 <a class="btn pri" href="%s">Email about sponsoring</a></div>
 </section>
 </main>

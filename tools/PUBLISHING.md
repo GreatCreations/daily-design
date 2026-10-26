@@ -63,7 +63,23 @@ Re-running with nothing new prints `nothing new to publish`.
   (clipboard API, with a select-the-text fallback) and an "Email us" mailto link. Every footer (index, report pages, edition pages) gets a
   Contact link through the credit block, so new editions pick it up automatically. The page is in `sitemap.xml`.
 - **Sponsor spot**: `sponsors.json` at the repo root. The first entry with `"active": true` (and today inside its optional `start`/`end`)
-  is shown near the top of the index, each report page and each edition, labelled **Sponsored**, with its logo, name, one line and link
-  (`rel="sponsored"`). With none active, a "Sponsor Daily Design" invite links to `contact.html#sponsor`. It sits between
-  `<!--dd-sponsor:start-->`/`<!--dd-sponsor:end-->`. Editing `sponsors.json` and re-running the publisher updates every page.
+  is the sponsor. Near the top of the index (under search), each report page and each edition (top strip) the publisher renders, between
+  `<!--dd-sponsor:start-->`/`<!--dd-sponsor:end-->`:
+  1. **The banner** (the actual ad space), a 4:1 landscape slot labelled **Sponsored**. It shows the sponsor's `banner.image` when
+     `banner.active` is true and today is inside `banner.start`/`banner.end`; if the sponsor has no live banner, a text card with its
+     logo, name and line. With no active sponsor it shows a placeholder template ("Your ad here · 1200 × 300 banner", labelled
+     **Ad space**) linking to `contact.html#sponsor`. Sponsor links get `rel="sponsored noopener"` and open in a new tab.
+  2. **The invite** below it: a short "Sponsor Daily Design" line and a "Get in touch" link to `contact.html#sponsor`.
+  Editing `sponsors.json` and re-running the publisher updates every page. Fields per sponsor: `name`, `line`, `url`, `logo`,
+  `active`, `start`, `end`, and `banner` = `{image, alt, url, active, start, end}` (`image` is an https URL or a repo path such as
+  `assets/sponsors/acme-1200x300.webp`; `url` defaults to the sponsor `url`; `alt` should say what the ad says).
   The spot is display-only: nothing in it feeds item parsing, ranking or the index data.
+- **Banner spec** (what to ask sponsors for):
+  - 1200 × 300 px (4:1), PNG, JPG or WebP, 300 KB max. Supply 2400 × 600 for extra sharpness if it stays under 300 KB.
+  - It is shown at the width of the content column (up to about 1200 px on the index, 1100 px on editions, about 760 px on report
+    pages, about 360 px on phones) and always keeps 4:1, so it is scaled, never cropped differently per device.
+  - Safe area: keep logo and text inside the central 1080 × 240 px (60 px clear on every side). Text must stay readable at 360 px wide,
+    so use a headline of 48 px or more at full size and no more than about 8 words; avoid small print.
+  - Corners are rounded by the site (about 14 px), so keep nothing important in the corners.
+  - No fake buttons that imitate site controls, no flashing or animation. The site adds the **Sponsored** label above the banner
+    (required disclosure in Canada); do not rely on the image to carry it.
