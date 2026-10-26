@@ -257,13 +257,15 @@ def mailto(subject):
     return "mailto:%s?subject=%s" % (CONTACT_EMAIL, quote(subject))
 
 
-def credit_html(prefix="", cls="dd-credit"):
+def credit_html(prefix="", cls="dd-credit", contact=True):
     """Footer credit line (skipped by the Listen button via .dd-credit). prefix = path back to the site root.
     The studio's icon is a vendored copy of its own favicon (assets/gcs-icon.png), decorative (alt="")."""
     return ('%s<p class="%s">Daily Design is created and brought to you by '
             '<a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" alt="" width="16" height="16">%s</a>.</p>'
-            '<p class="dd-contactln"><a href="%s%s">Contact</a> · questions, tips, corrections and sponsorship</p>%s') % (
-        CREDIT_START, cls, STUDIO_URL, prefix, STUDIO_NAME, prefix, CONTACT_PATH, CREDIT_END)
+            '%s%s') % (
+        CREDIT_START, cls, STUDIO_URL, prefix, STUDIO_NAME,
+        ('<p class="dd-contactln"><a href="%s%s">Contact</a> · questions, tips, corrections and sponsorship</p>' % (prefix, CONTACT_PATH)) if contact else "",
+        CREDIT_END)
 
 
 def ensure_credit(doc):
@@ -993,7 +995,7 @@ def build_contact_page():
 </body>
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, e, esc(mailto("Daily Design")), esc(mailto("Sponsoring Daily Design")),
-       credit_html(""), CONTACT_JS % CONTACT_EMAIL)
+       credit_html("", contact=False), CONTACT_JS % CONTACT_EMAIL)
     if write_if_changed(os.path.join(REPO, CONTACT_PATH), doc):
         log("contact page", CONTACT_PATH)
 
