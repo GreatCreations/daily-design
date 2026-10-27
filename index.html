@@ -99,6 +99,45 @@ vs.forEach(function(v){v.muted=true;v.defaultMuted=true;v.loop=true;v.controls=f
  v.addEventListener("ended",function(){v.currentTime=0;play(v)});
  var b=btn(v);if(b)b.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();v.muted=!v.muted;play(v);sync(v)});
  play(v)});
+var CS=0;function css(){if(CS||document.getElementById("dd-fly-css"))return;CS=1;var s=document.createElement("style");s.id="dd-fly-css";s.textContent=
+".dd-fly{position:fixed;left:0;top:0;margin:0;pointer-events:none;z-index:2147483600;will-change:transform,opacity;transform-origin:50% 50%;opacity:0}"+
+".dd-fly span{position:absolute;inset:0;border-radius:50%;pointer-events:none}"+
+".dd-fly .dd-fly-c{display:flex;align-items:center;justify-content:center;color:#fff;background:radial-gradient(circle at 30% 25%,#ffe3a3,#f5a524 38%,#ff4d8d 72%,#8b5cf6);box-shadow:0 0 0 4px rgba(255,255,255,.92),0 0 34px 10px rgba(245,165,36,.75),0 0 80px 26px rgba(255,77,141,.45)}"+
+".dd-fly .dd-fly-c svg{display:block!important;width:60%;height:60%;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}"+
+".dd-fly .dd-fly-g{inset:-22%;background:radial-gradient(circle,rgba(255,226,150,.6),rgba(255,77,141,0) 66%);animation:ddFlyG .42s ease-in-out infinite alternate}"+
+".dd-fly .dd-fly-r{border:4px solid #22e0cf;opacity:0;animation:ddFlyR .9s ease-out infinite}"+
+".dd-fly .dd-fly-r.r2{animation-delay:.3s;border-color:#ffd27a}.dd-fly .dd-fly-r.r3{animation-delay:.6s;border-color:#ff4d8d}"+
+"@keyframes ddFlyR{0%{transform:scale(1);opacity:.95}100%{transform:scale(2.2);opacity:0}}"+
+"@keyframes ddFlyG{from{transform:scale(.88);opacity:.55}to{transform:scale(1.15);opacity:1}}"+
+".dd-fly-hit{position:fixed;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;pointer-events:none;z-index:2147483600;border:3px solid #ffd27a;box-shadow:0 0 18px 6px rgba(245,165,36,.85);animation:ddFlyHit .55s ease-out forwards}"+
+"@keyframes ddFlyHit{0%{transform:scale(.5);opacity:1}100%{transform:scale(2.8);opacity:0}}"+
+".dd-ban button.dd-ban-mute.dd-landed{animation:ddLand .5s cubic-bezier(.3,1.6,.5,1)}"+
+"@keyframes ddLand{0%{transform:scale(1)}35%{transform:scale(1.6)}65%{transform:scale(.86)}100%{transform:scale(1)}}";
+(document.head||document.body).appendChild(s)}
+function fly(v,box,b){if(box.__ddFly)return;box.__ddFly=1;css();
+ var S=Math.round(Math.max(64,Math.min(130,box.getBoundingClientRect().height*.8)));
+ var el=document.createElement("div");el.className="dd-fly";el.setAttribute("aria-hidden","true");el.__ddBox=box;el.style.width=el.style.height=S+"px";
+ var ic=b.querySelector(v.muted?".i-off":".i-on");
+ el.innerHTML='<span class="dd-fly-r"></span><span class="dd-fly-r r2"></span><span class="dd-fly-r r3"></span><span class="dd-fly-g"></span><span class="dd-fly-c">'+(ic?ic.outerHTML:"")+"</span>";
+ document.body.appendChild(el);var T0=performance.now(),hit=0;
+ function ez(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+ function step(now){var t=(now-T0)/1000,br=box.getBoundingClientRect(),bt=b.getBoundingClientRect();
+  var sx=br.left+S*.62,sy=br.top+S*.62,ex=bt.left+bt.width/2,ey=bt.top+bt.height/2,es=Math.max(bt.width,bt.height)/S,x=sx,y=sy,sc=1,r=0,op=1,k;
+  if(t<.3){k=t/.3;sc=k<.7?k/.7*1.2:1.2-(k-.7)/.3*.2;op=Math.min(1,k*3);r=-20*(1-k)}
+  else if(t<.58){k=(t-.3)/.28;sc=1+.07*Math.sin(k*Math.PI*4);r=12*Math.sin(k*Math.PI*3)}
+  else if(t<1.38){k=ez((t-.58)/.8);var u=1-k,cx=sx+(ex-sx)*.3+Math.min(240,br.width*.25),cy=Math.min(sy,ey)-Math.max(90,S*1.3);
+   x=u*u*sx+2*u*k*cx+k*k*ex;y=u*u*sy+2*u*k*cy+k*k*ey;sc=1+(es-1)*k;r=360*k}
+  else{x=ex;y=ey;sc=es;op=Math.max(0,1-(t-1.38)/.22)}
+  el.style.transform="translate3d("+(x-S/2).toFixed(1)+"px,"+(y-S/2).toFixed(1)+"px,0) scale("+sc.toFixed(3)+") rotate("+r.toFixed(1)+"deg)";el.style.opacity=op;
+  if(t>=1.38&&!hit){hit=1;var h=document.createElement("div");h.className="dd-fly-hit";h.setAttribute("aria-hidden","true");h.style.left=ex+"px";h.style.top=ey+"px";
+   document.body.appendChild(h);setTimeout(function(){h.remove()},600);b.classList.remove("dd-landed");void b.offsetWidth;b.classList.add("dd-landed");
+   setTimeout(function(){b.classList.remove("dd-landed")},520)}
+  if(t<1.6)requestAnimationFrame(step);else{el.remove();box.__ddFly=0}}
+ requestAnimationFrame(step)}
+var touch=window.matchMedia&&(matchMedia("(hover: none)").matches||matchMedia("(pointer: coarse)").matches);
+vs.forEach(function(v){var b=btn(v),box=v.closest(".dd-ban-box");if(!b||!box)return;
+ if(touch&&window.IntersectionObserver){var arm=1;new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting||e.intersectionRatio<=0){arm=1;return}if(arm&&e.intersectionRatio>=.5){arm=0;fly(v,box,b)}})},{threshold:[0,.5,.75]}).observe(box)}
+ else box.addEventListener("pointerenter",function(e){if(e.pointerType!=="touch")fly(v,box,b)})});
 document.addEventListener("visibilitychange",function(){if(!document.hidden)vs.forEach(play)})}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()})();</script></a></div><aside class="dd-spon" aria-label="Sponsor Daily Design"><span class="dd-spon-txt"><b>Sponsor Daily Design.</b> Reach people who make things with AI. Sponsors never affect what we pick or how it ranks.</span><a class="dd-spon-btn" href="contact.html#sponsor">Get in touch →</a></aside></div></div><!--dd-sponsor:end-->
 
@@ -126,6 +165,45 @@ vs.forEach(function(v){v.muted=true;v.defaultMuted=true;v.loop=true;v.controls=f
  v.addEventListener("ended",function(){v.currentTime=0;play(v)});
  var b=btn(v);if(b)b.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();v.muted=!v.muted;play(v);sync(v)});
  play(v)});
+var CS=0;function css(){if(CS||document.getElementById("dd-fly-css"))return;CS=1;var s=document.createElement("style");s.id="dd-fly-css";s.textContent=
+".dd-fly{position:fixed;left:0;top:0;margin:0;pointer-events:none;z-index:2147483600;will-change:transform,opacity;transform-origin:50% 50%;opacity:0}"+
+".dd-fly span{position:absolute;inset:0;border-radius:50%;pointer-events:none}"+
+".dd-fly .dd-fly-c{display:flex;align-items:center;justify-content:center;color:#fff;background:radial-gradient(circle at 30% 25%,#ffe3a3,#f5a524 38%,#ff4d8d 72%,#8b5cf6);box-shadow:0 0 0 4px rgba(255,255,255,.92),0 0 34px 10px rgba(245,165,36,.75),0 0 80px 26px rgba(255,77,141,.45)}"+
+".dd-fly .dd-fly-c svg{display:block!important;width:60%;height:60%;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}"+
+".dd-fly .dd-fly-g{inset:-22%;background:radial-gradient(circle,rgba(255,226,150,.6),rgba(255,77,141,0) 66%);animation:ddFlyG .42s ease-in-out infinite alternate}"+
+".dd-fly .dd-fly-r{border:4px solid #22e0cf;opacity:0;animation:ddFlyR .9s ease-out infinite}"+
+".dd-fly .dd-fly-r.r2{animation-delay:.3s;border-color:#ffd27a}.dd-fly .dd-fly-r.r3{animation-delay:.6s;border-color:#ff4d8d}"+
+"@keyframes ddFlyR{0%{transform:scale(1);opacity:.95}100%{transform:scale(2.2);opacity:0}}"+
+"@keyframes ddFlyG{from{transform:scale(.88);opacity:.55}to{transform:scale(1.15);opacity:1}}"+
+".dd-fly-hit{position:fixed;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;pointer-events:none;z-index:2147483600;border:3px solid #ffd27a;box-shadow:0 0 18px 6px rgba(245,165,36,.85);animation:ddFlyHit .55s ease-out forwards}"+
+"@keyframes ddFlyHit{0%{transform:scale(.5);opacity:1}100%{transform:scale(2.8);opacity:0}}"+
+".dd-ban button.dd-ban-mute.dd-landed{animation:ddLand .5s cubic-bezier(.3,1.6,.5,1)}"+
+"@keyframes ddLand{0%{transform:scale(1)}35%{transform:scale(1.6)}65%{transform:scale(.86)}100%{transform:scale(1)}}";
+(document.head||document.body).appendChild(s)}
+function fly(v,box,b){if(box.__ddFly)return;box.__ddFly=1;css();
+ var S=Math.round(Math.max(64,Math.min(130,box.getBoundingClientRect().height*.8)));
+ var el=document.createElement("div");el.className="dd-fly";el.setAttribute("aria-hidden","true");el.__ddBox=box;el.style.width=el.style.height=S+"px";
+ var ic=b.querySelector(v.muted?".i-off":".i-on");
+ el.innerHTML='<span class="dd-fly-r"></span><span class="dd-fly-r r2"></span><span class="dd-fly-r r3"></span><span class="dd-fly-g"></span><span class="dd-fly-c">'+(ic?ic.outerHTML:"")+"</span>";
+ document.body.appendChild(el);var T0=performance.now(),hit=0;
+ function ez(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+ function step(now){var t=(now-T0)/1000,br=box.getBoundingClientRect(),bt=b.getBoundingClientRect();
+  var sx=br.left+S*.62,sy=br.top+S*.62,ex=bt.left+bt.width/2,ey=bt.top+bt.height/2,es=Math.max(bt.width,bt.height)/S,x=sx,y=sy,sc=1,r=0,op=1,k;
+  if(t<.3){k=t/.3;sc=k<.7?k/.7*1.2:1.2-(k-.7)/.3*.2;op=Math.min(1,k*3);r=-20*(1-k)}
+  else if(t<.58){k=(t-.3)/.28;sc=1+.07*Math.sin(k*Math.PI*4);r=12*Math.sin(k*Math.PI*3)}
+  else if(t<1.38){k=ez((t-.58)/.8);var u=1-k,cx=sx+(ex-sx)*.3+Math.min(240,br.width*.25),cy=Math.min(sy,ey)-Math.max(90,S*1.3);
+   x=u*u*sx+2*u*k*cx+k*k*ex;y=u*u*sy+2*u*k*cy+k*k*ey;sc=1+(es-1)*k;r=360*k}
+  else{x=ex;y=ey;sc=es;op=Math.max(0,1-(t-1.38)/.22)}
+  el.style.transform="translate3d("+(x-S/2).toFixed(1)+"px,"+(y-S/2).toFixed(1)+"px,0) scale("+sc.toFixed(3)+") rotate("+r.toFixed(1)+"deg)";el.style.opacity=op;
+  if(t>=1.38&&!hit){hit=1;var h=document.createElement("div");h.className="dd-fly-hit";h.setAttribute("aria-hidden","true");h.style.left=ex+"px";h.style.top=ey+"px";
+   document.body.appendChild(h);setTimeout(function(){h.remove()},600);b.classList.remove("dd-landed");void b.offsetWidth;b.classList.add("dd-landed");
+   setTimeout(function(){b.classList.remove("dd-landed")},520)}
+  if(t<1.6)requestAnimationFrame(step);else{el.remove();box.__ddFly=0}}
+ requestAnimationFrame(step)}
+var touch=window.matchMedia&&(matchMedia("(hover: none)").matches||matchMedia("(pointer: coarse)").matches);
+vs.forEach(function(v){var b=btn(v),box=v.closest(".dd-ban-box");if(!b||!box)return;
+ if(touch&&window.IntersectionObserver){var arm=1;new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting||e.intersectionRatio<=0){arm=1;return}if(arm&&e.intersectionRatio>=.5){arm=0;fly(v,box,b)}})},{threshold:[0,.5,.75]}).observe(box)}
+ else box.addEventListener("pointerenter",function(e){if(e.pointerType!=="touch")fly(v,box,b)})});
 document.addEventListener("visibilitychange",function(){if(!document.hidden)vs.forEach(play)})}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()})();</script></a></div><aside class="dd-spon" aria-label="Sponsor Daily Design"><span class="dd-spon-txt"><b>Sponsor Daily Design.</b> Reach people who make things with AI. Sponsors never affect what we pick or how it ranks.</span><a class="dd-spon-btn" href="contact.html#sponsor">Get in touch →</a></aside></div></div><!--dd-sponsor-links:end--><div class="eyebrow" id="items-eyebrow">Links</div><div class="items" id="items"></div><div class="more"><button class="btn" id="more" hidden>Show more</button></div></section>
 

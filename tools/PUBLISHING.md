@@ -109,6 +109,10 @@ Re-running with nothing new prints `nothing new to publish`.
   placement has no active sponsor and its entry has a `poster` plus a `video` (MP4) and/or `webm` (https URL or existing repo file),
   the slot plays that video (same rules: autoplays muted, loops, no controls, per-ad sound button if it has audio)
   linking to `contact.html#sponsor`, still labelled **Ad space**. If unset or a file is missing, the "Your ad here" card is shown.
+- **Sound-button pointer**: every video ad with a sound button (sponsor or house) gets a decorative speaker that pops up big over the
+  ad's top-left corner, then flies along a curve, shrinking, onto that ad's own sound button (about 1.6 s). On hover devices it plays
+  on each hover; on touch devices it plays when the ad scrolls at least half into view, and replays only after the ad has fully left the screen and comes back. It always finishes, a new trigger is
+  ignored while one is running for that ad, and it never changes the sound or blocks clicks.
 - **Rate card**: `sponsors.json` → `rates` (`currency`, `unit`, `note`, `footnote`, `packages` = `[{id, label, desc, static, motion}]`).
   `publish.py` renders it on `contact.html#sponsor` ("Intro rates, USD per week"). Change the numbers there and re-run the publisher.
   Intro rates: top $49 / lower $39 / both, same ad $75 / both, different ads $85 per week; animated or video +50%
