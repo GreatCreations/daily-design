@@ -13,14 +13,14 @@ them in the working tree exactly as before (so nav, metadata and incremental che
 Config (environment, never committed or printed):
   DD_GATE=1                    turn the split on (unset = publish exactly as before)
   DD_FREE_FOREVER_THROUGH      default 2026-10-31
-  DD_PRIVATE_ROOT              default /workspace/ai-design-daily/gated-site
+  DD_PRIVATE_ROOT              default: a "daily-design-gated" folder next to the repo (outside git)
   CF_ACCOUNT_ID, CF_KV_NAMESPACE_ID, and the token in CF_KV_TOKEN or in the file named by CF_KV_TOKEN_FILE
   (API token scoped to Workers KV Storage: Edit on that one account only).
 """
 import base64, hashlib, json, os, shutil, urllib.request, urllib.error
 
 FFT = os.environ.get("DD_FREE_FOREVER_THROUGH", "2026-10-31")
-PRIVATE_ROOT = os.environ.get("DD_PRIVATE_ROOT", "/workspace/ai-design-daily/gated-site")
+PRIVATE_ROOT = os.environ.get("DD_PRIVATE_ROOT") or os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "daily-design-gated")
 GATED_DIRS = ("editions", "reports", os.path.join("data", "meta"))
 HEADER_KEYS = ("date", "slot", "time", "title", "kind", "headline", "teaser", "item_count", "tags")
 UA = "daily-design-publish/1 (+gate)"
