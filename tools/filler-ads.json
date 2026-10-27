@@ -1,0 +1,65 @@
+{
+ "_readme": "Filler ad cards for edition pages. When a category grid in an HTML edition (editions/<date>/<slot>.html) has an ODD item count that is not a multiple of 3 (1, 5, 7, 11, 13, 17, 19 ...), tools/publish.py appends exactly ONE of these ads as a card at the end of that category. Even counts and multiples of 3 get none. Ads are taken in list order starting from a per-page offset, so the same ad never appears twice in a row on a page. Fields: id, kind (\"sponsor\" or \"sub\"), active (false = skipped), color (accent), art (big words on the picture), label (small line next to the Ad tag), title, text, cta, href (relative to the site root, or https:/mailto:). Keep the list at 5 active ads. Edit and run tools/publish.py; every edition page is rebuilt.",
+ "ads": [
+  {
+   "id": "sponsor-spot",
+   "kind": "sponsor",
+   "active": true,
+   "color": "#f5a524",
+   "art": "Your tool here",
+   "label": "Sponsorship",
+   "title": "Sponsor Daily Design",
+   "text": "Clearly labelled banner spots on the index, every report and every edition. Sponsors never affect what we pick or how it ranks.",
+   "cta": "See sponsorship",
+   "href": "contact.html#sponsor"
+  },
+  {
+   "id": "sub-feed",
+   "kind": "sub",
+   "active": true,
+   "color": "#22e0cf",
+   "art": "Get the feed",
+   "label": "Daily Design",
+   "title": "Subscribe to Daily Design",
+   "text": "Get every edition in your feed reader as it publishes, four a day, with every link to the original creators.",
+   "cta": "Subscribe to the feed",
+   "href": "feed.xml"
+  },
+  {
+   "id": "sponsor-rates",
+   "kind": "sponsor",
+   "active": true,
+   "color": "#9b6bff",
+   "art": "From $49/wk",
+   "label": "Sponsorship",
+   "title": "Top banner from $49 a week",
+   "text": "Intro rates in USD for the top spot on the index, every report and every edition. Static, animated or video, 1200 × 300.",
+   "cta": "See rates and spec",
+   "href": "contact.html#sponsor"
+  },
+  {
+   "id": "sub-editions",
+   "kind": "sub",
+   "active": true,
+   "color": "#ff5a2e",
+   "art": "4 a day",
+   "label": "Daily Design",
+   "title": "Never miss an edition",
+   "text": "The 7 AM briefing, Noon field report, 6 PM best-of and 8 PM hot list, plus a searchable archive of every edition.",
+   "cta": "Browse every edition",
+   "href": "about.html"
+  },
+  {
+   "id": "sponsor-email",
+   "kind": "sponsor",
+   "active": true,
+   "color": "#ffcf5a",
+   "art": "Your ad here",
+   "label": "Sponsorship",
+   "title": "Book a sponsor week",
+   "text": "Email dailydesign@greatcreations.ca to book a week. Intro rates may change, and booked weeks keep their price.",
+   "cta": "Email us",
+   "href": "mailto:dailydesign@greatcreations.ca?subject=Sponsor%20Daily%20Design"
+  }
+ ]
+}

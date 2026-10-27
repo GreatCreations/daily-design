@@ -59,6 +59,14 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    with pulses at 0/15/30/45 s, starting 1 s after load. The glow is a text-shadow on a transparent `::after` copy of the text; its color
    switches only while it's invisible, so the pulses only animate opacity. `data-glow` must match the link text. There's no glow under `prefers-reduced-motion`. Edition and
    report pages don't have this header; they keep their "← Back to the index" links.
+6g. **Filler ad cards** (`tools/filler-ads.json`, applied by `inject_fill()` in `publish.py` during the nav pass): in HTML editions, every
+   category grid (`<div class="grid">`) whose item count is **odd and not a multiple of 3** (1, 5, 7, 11, 13, 17, 19 ...) gets exactly **one**
+   ad card appended after its last item. Even counts and multiples of 3 get none, and never more than one. The ad is a self-styled
+   `<aside class="dd-fill">` card (16:9 picture, "Ad" badge, "Ad · Sponsor" / "Ad · Subscribe" tag, title, text, button), shown on all screen
+   sizes, wrapped in `<!--dd-fill:start-->`/`<!--dd-fill:end-->` with its CSS in `<!--dd-fillcss:start-->`/`<!--dd-fillcss:end-->`, so re-runs
+   replace it. The 5 ads (3 sponsor, 2 subscribe) are used in list order from a per-page offset, so the same ad never sits in two
+   categories back to back. Section item counts don't include ads, and Listen skips them. Edit the file and run `publish.py`; any change to the
+   file rebuilds every edition page.
 6f. **Time zones.** Editions are filed by Pacific date and timed in Pacific time (America/Vancouver).
    - **Label:** every displayed slot time gets a label, e.g. "7 AM PDT". It comes from one constant, `TZ_LABEL`, in
      `tools/publish.py` and `assets/app.js` (keep the two the same). `"auto"` means PDT or PST by the old daylight rule for the date shown,

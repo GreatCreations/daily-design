@@ -592,6 +592,119 @@ def put_sponsor(doc, anchor_re, prefix="", wrap="dd-spon-wrap"):
     return re.sub(anchor_re, lambda m: m.group(0) + "\n" + sponsor_html(prefix, wrap) + "\n", doc, count=1)
 
 
+# ---------------------------------------------------------------- filler ad cards (tools/filler-ads.json)
+FILL_START, FILL_END = "<!--dd-fill:start-->", "<!--dd-fill:end-->"
+FILLCSS_START, FILLCSS_END = "<!--dd-fillcss:start-->", "<!--dd-fillcss:end-->"
+FILL_FILE = os.path.join(REPO, "tools", "filler-ads.json")
+
+FILL_CSS = """<style id="dd-fill-css">
+.dd-fill,.dd-fill *{box-sizing:border-box;margin:0;letter-spacing:normal;text-transform:none}
+.dd-fill{--fc:#f5a524;display:flex;min-width:0;border-radius:16px;overflow:hidden;border:1px dashed color-mix(in srgb,var(--fc) 55%,transparent);
+background:linear-gradient(180deg,color-mix(in srgb,var(--fc) 9%,transparent),var(--panel,var(--card,#121218)) 45%);
+font:500 14.5px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#ecebe8;text-align:left;transition:border-color .2s,transform .2s}
+.dd-fill:hover{border-color:var(--fc);transform:translateY(-2px)}
+.dd-fill a.dd-fill-a{display:flex;flex-direction:column;width:100%;color:inherit!important;text-decoration:none!important}
+.dd-fill a.dd-fill-a:focus-visible{outline:2px solid var(--fc);outline-offset:-2px}
+.dd-fill .dd-fill-m{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;overflow:hidden;container-type:inline-size;
+background:radial-gradient(120% 140% at 0% 0%,color-mix(in srgb,var(--fc) 38%,transparent),transparent 60%),radial-gradient(90% 120% at 100% 100%,color-mix(in srgb,var(--fc) 22%,transparent),transparent 60%),
+repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 10px,transparent 10px 20px),#0d0d11;border-bottom:1px solid rgba(255,255,255,.08)}
+.dd-fill .dd-fill-art{display:flex;flex-direction:column;align-items:center;gap:3cqw;padding:0 8cqw;text-align:center}
+.dd-fill .dd-fill-art img{width:13cqw;height:13cqw;max-width:56px;max-height:56px;border-radius:12px;display:block}
+.dd-fill .dd-fill-art b{display:block;font:800 clamp(22px,10cqw,46px)/1.02 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#fff;letter-spacing:-.015em;
+text-shadow:0 2px 18px color-mix(in srgb,var(--fc) 55%,transparent)}
+.dd-fill .dd-fill-ad{position:absolute;top:10px;left:10px;font:800 10.5px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:5px 8px;border-radius:999px;
+background:var(--fc);color:#0b0b0e}
+.dd-fill .dd-fill-b{display:flex;flex-direction:column;gap:6px;padding:14px 16px 16px;flex:1}
+.dd-fill .dd-fill-meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:12px;color:#9b988f}
+.dd-fill .dd-fill-tag{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:999px;
+background:color-mix(in srgb,var(--fc) 18%,transparent);color:var(--fc)}
+.dd-fill .dd-fill-h{display:block;font-size:17px;line-height:1.35;font-weight:600;color:#f3f1ec;margin-top:2px}
+.dd-fill .dd-fill-p{display:block;color:#c9c6c0;font-size:14.5px}
+.dd-fill .dd-fill-cta{display:inline-flex;align-self:flex-start;margin-top:auto;padding:7px 13px;border-radius:999px;border:1px solid var(--fc);color:var(--fc);font-weight:700;font-size:13.5px}
+.dd-fill:hover .dd-fill-cta{background:var(--fc);color:#0b0b0e}
+.dd-fill .dd-fill-sp{display:block;height:6px}
+@media (prefers-reduced-motion:reduce){.dd-fill,.dd-fill:hover{transition:none;transform:none}}
+</style>"""
+
+
+def load_fill_ads():
+    try:
+        ads = json.load(open(FILL_FILE, encoding="utf-8")).get("ads", [])
+    except (OSError, ValueError) as e:
+        log("filler ads skipped:", e)
+        return []
+    return [a for a in ads if a.get("active", True) and a.get("title") and a.get("href")]
+
+
+def fill_needed(n):
+    """The user's rule: one ad card when a category's item count is odd and not a multiple of 3 (1, 5, 7, 11, 13 ...)."""
+    return 1 if (n % 2 == 1 and n % 3 != 0) else 0
+
+
+def fill_card(ad, prefix):
+    href = ad["href"]
+    if not re.match(r"^(https?:|mailto:|#)", href):
+        href = prefix + href
+    sponsor = ad.get("kind") == "sponsor"
+    lab = "Ad · Sponsor" if sponsor else "Ad · Subscribe"
+    rel = ' rel="sponsored noopener"' if href.startswith("http") else ""
+    return ('<aside class="dd-fill dd-fill-%s" data-ad="%s" style="--fc:%s" aria-label="%s: %s">'
+            '<a class="dd-fill-a" href="%s"%s><span class="dd-fill-m" aria-hidden="true"><span class="dd-fill-ad">Ad</span>'
+            '<span class="dd-fill-art"><img src="%sassets/favicon.svg" alt="" width="56" height="56"><b>%s</b></span></span>'
+            '<span class="dd-fill-b"><span class="dd-fill-meta"><span class="dd-fill-tag">%s</span><span>%s</span></span>'
+            '<span class="dd-fill-h">%s</span><span class="dd-fill-p">%s</span><span class="dd-fill-sp"></span>'
+            '<span class="dd-fill-cta">%s →</span></span></a></aside>') % (
+        "sponsor" if sponsor else "sub", esc(ad.get("id", "")), esc(ad.get("color") or "#f5a524"), lab, esc(ad["title"]),
+        esc(href), rel, prefix, esc(ad.get("art") or ad["title"]), lab, esc(ad.get("label", "")),
+        esc(ad["title"]), esc(ad.get("text", "")), esc(ad.get("cta") or "Learn more"))
+
+
+def _grid_end(doc, start):
+    """Index of the </div> closing the grid whose opening tag ends at start, plus the count of direct-child <article> cards."""
+    depth, n = 1, 0
+    for t in re.finditer(r"<(/?)(div|article)\b[^>]*>", doc[start:]):
+        if t.group(2) == "article":
+            if not t.group(1) and depth == 1:
+                n += 1
+            continue
+        depth += -1 if t.group(1) else 1
+        if depth == 0:
+            return start + t.start(), n
+    return -1, n
+
+
+def inject_fill(doc, ed, prefix="../../"):
+    """Append one filler ad card to every category grid (<div class="grid">) whose item count is odd and not a multiple of 3."""
+    doc = re.sub(re.escape(FILL_START) + ".*?" + re.escape(FILL_END), "", doc, flags=re.S)
+    doc = re.sub(re.escape(FILLCSS_START) + ".*?" + re.escape(FILLCSS_END) + r"\n?", "", doc, flags=re.S)
+    ads = load_fill_ads()
+    if not ads:
+        return doc
+    spots = []
+    for m in re.finditer(r'<div class="grid">', doc):
+        end, n = _grid_end(doc, m.end())
+        if end > 0 and fill_needed(n):
+            spots.append(end)
+    if not spots:
+        return doc
+    import hashlib
+    seed = int(hashlib.sha1(("%s/%s" % (ed["date"], ed["slot"])).encode("utf-8")).hexdigest()[:8], 16)
+    for k, end in reversed(list(enumerate(spots))):
+        ad = ads[(seed + k) % len(ads)]
+        doc = doc[:end] + FILL_START + fill_card(ad, prefix) + FILL_END + doc[end:]
+    doc = re.sub(r"</head>", lambda m: FILLCSS_START + FILL_CSS + FILLCSS_END + "\n</head>", doc, count=1, flags=re.I)
+    return doc
+
+
+def fill_key():
+    import hashlib
+    try:
+        raw = open(FILL_FILE, "rb").read()
+    except OSError:
+        raw = b""
+    return hashlib.sha1(raw + FILL_CSS.encode("utf-8")).hexdigest()[:12]
+
+
 def icon_links(prefix):
     """Favicon + touch icon + manifest links. prefix is the path back to the site root ("" or "../../")."""
     a = prefix + "assets/"
@@ -687,7 +800,7 @@ def inject_nav(doc, ed, prev, nxt, items=()):
     doc = re.sub(r'<section\b[^>]*\bid="charts"[^>]*>', lambda m: sponsor_html("../../", "dd-spon-wrap dd-spon-ed", "links") + "\n" + m.group(0), doc, count=1)
     idx = doc.lower().rfind("</body>")
     doc = doc[:idx] + foot + doc[idx:] if idx >= 0 else doc + foot
-    return doc
+    return inject_fill(doc, ed)
 
 
 # ---------------------------------------------------------------- Markdown reports
@@ -1669,11 +1782,12 @@ def main():
     import hashlib
     spon_key = hashlib.sha1((sponsor_html() + sponsor_html(slot="links")).encode("utf-8")).hexdigest()[:12]  # top + lower spot: either changing rebuilds every edition page
     credit_key = hashlib.sha1(credit_html("../../").encode("utf-8")).hexdigest()[:12]  # footer credit changing rebuilds every edition page
+    fkey = fill_key()  # filler ads (tools/filler-ads.json) changing rebuilds every edition page
     for i, r in enumerate(pages):
         e = r["edition"]
         prev = pages[i - 1]["edition"] if i > 0 else None
         nxt = pages[i + 1]["edition"] if i + 1 < len(pages) else None
-        nav = [prev and prev["path"], nxt and nxt["path"], NAV_VERSION, spon_key, credit_key]
+        nav = [prev and prev["path"], nxt and nxt["path"], NAV_VERSION, spon_key, credit_key, fkey]
         dest = os.path.join(REPO, e["path"])
         doc = open(dest, encoding="utf-8").read()
         if r.get("nav") == nav and NAV_START in doc:
