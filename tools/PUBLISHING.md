@@ -43,7 +43,7 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    the date range sit above and below the rows; the month heading and heatmap appear for each month on the page. Clicking a heatmap day
    (or picking a month in "Jump to") opens the page holding that day and flashes it. Any filter change goes back to the first page.
 6d. **Maintenance days** (`tools/maintenance.json` → `maintenance` in `data/index.json`, every run): dates listed under `days`
-   (`{"date": "YYYY-MM-DD", "note": "..."}`) show on the archive month calendars in the 8 PM red, striped, with the hover/label
+   (`{"date": "YYYY-MM-DD", "note": "..."}`) show on the archive month calendars in a flat 8 PM red with a soft red ring (no stripes), with the hover/label
    "Maintenance · nothing published". They are not clickable, get no archive row and never count as published. To add one, add
    its date to the file and run `publish.py`. A date that has an edition is dropped from the list. Currently Oct 21 and Oct 22, 2026.
 7. **Item parsing** reads list items in each edition's `.md`:
