@@ -30,7 +30,7 @@ fetch("data/index.json").then(function(r){if(!r.ok)throw new Error(r.status);ret
   $("#items").innerHTML='<div class="empty"><b>Could not load the index</b>Please reload the page.</div>'});
 
 function init(data){
-  D=data; EDS=D.editions; CAL=D.calendar; SHARDS=D.shards;
+  D=data; EDS=D.editions; CAL=D.calendar.slice(); readyToday(); SHARDS=D.shards;
   D.facets.medium.forEach(function(m){MLABEL[m.key]=m.label});
   D.facets.slot.forEach(function(s){SLABEL[s.key]=s.label;SINFO[s.key]=s});
   EDS.forEach(function(e){EDBY[e.date+"/"+e.slot]=e;e._hay=norm([e.title,e.headline,e.summary,e.date,niceDate(e.date),e.slot,e.time,e.kind==="report"?"report":""].join(" "))});
@@ -195,6 +195,13 @@ function slotCell(date,slot,big){
     '<div class="ck"><span>'+esc(e.time)+'</span><span>'+esc(e.title)+'</span>'+(e.kind==="report"?'<em>Report</em>':'')+'</div>'+
     '<div class="ch">'+esc(e.headline)+'</div><div class="cf"><b>'+n(e.item_count)+'</b> items <span>'+(e.kind==="report"?"Read report ↓":"Open edition →")+'</span></div></a>';
 }
+/* from 5 AM Pacific the new day's row is ready before anything publishes: an empty day (four 'Not published' Dee slots)
+   at the top of the Latest strip and the archive. Only the page's copy of the calendar changes; it is never counted as published. */
+function ptNow(){try{var p={};new Intl.DateTimeFormat("en-CA",{timeZone:"America/Vancouver",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",hourCycle:"h23"})
+  .formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return {date:p.year+"-"+p.month+"-"+p.day,h:(+p.hour)%24}}catch(e){return null}}
+function readyToday(){var t=ptNow();if(!t||!/^\d{4}-\d\d-\d\d$/.test(t.date)||t.h<5)return;
+  if(CAL.some(function(c){return c.date===t.date})||(CAL[0]&&t.date<CAL[0].date))return;
+  CAL.unshift({date:t.date,slots:[],ready:true})}
 function renderLatest(){
   var d=CAL[0]?CAL[0].date:null; if(!d)return;
   $("#latest-h").innerHTML='Latest · '+esc(niceDate(d))+' <span class="lnote">'+CAL[0].slots.length+' of 4 editions published</span>';
@@ -210,18 +217,20 @@ function renderArchive(){
   days.forEach(function(c){var m=c.date.slice(0,7);if(!by[m]){by[m]=[];months.push(m)}by[m].push(c)});
   if(state.sort==="old"){months.reverse();months.forEach(function(m){by[m].reverse()})}
   document.querySelectorAll(".segb").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.sort===state.sort)});
-  $("#arch-note").textContent=months.length?n(days.length)+" published day"+(days.length==1?"":"s")+" in "+months.length+" month"+(months.length==1?"":"s")+(filtered()?" match the current edition/date filters":"")+". Click a day in a calendar to jump to it.":"No published days in this range.";
+  var pubDays=days.filter(function(c){return c.slots.length}).length, pubMonths=months.filter(function(m){return by[m].some(function(c){return c.slots.length})}).length;
+  $("#arch-note").textContent=months.length?n(pubDays)+" published day"+(pubDays==1?"":"s")+" in "+pubMonths+" month"+(pubMonths==1?"":"s")+(filtered()?" match the current edition/date filters":"")+". Click a day in a calendar to jump to it.":"No published days in this range.";
   var vis=months.slice(0,mshown);
   if(Object.keys(openMonths).length===0)vis.slice(0,2).forEach(function(m){openMonths[m]=true});
   $("#archive").innerHTML=vis.map(function(m){
     var cnt=by[m].reduce(function(a,c){return a+c.slots.length},0), sh=SHARDS.filter(function(s){return s.month===m})[0];
     return '<details class="month" id="m-'+m+'" data-m="'+m+'"'+(openMonths[m]?" open":"")+'><summary><div class="mt"><h3>'+esc(monthName(m))+'</h3>'+
-      '<span>'+by[m].length+' day'+(by[m].length==1?'':'s')+' · '+cnt+' edition'+(cnt==1?'':'s')+(sh?' · '+n(sh.items)+' links':'')+'</span></div>'+heat(m)+'</summary>'+
+      '<span>'+pd_(by[m])+' day'+(pd_(by[m])==1?'':'s')+' · '+cnt+' edition'+(cnt==1?'':'s')+(sh?' · '+n(sh.items)+' links':'')+'</span></div>'+heat(m)+'</summary>'+
       '<div class="days" data-days="'+m+'">'+(openMonths[m]?daysHtml(by[m]):'')+'</div></details>'}).join("");
   $("#arch-more").hidden=months.length<=mshown;$("#arch-more").textContent=state.sort==="old"?"Later months ("+(months.length-mshown)+")":"Older months ("+(months.length-mshown)+")";
   ARCH_BY=by;
 }
 var ARCH_BY={};
+function pd_(list){return list.filter(function(c){return c.slots.length}).length}
 function daysHtml(list){return list.map(function(c){
   return '<div class="day" id="d-'+c.date+'"><div class="dl"><b>'+esc(fmt(c.date,{day:"numeric"}))+'</b><span>'+esc(fmt(c.date,{weekday:"short"}))+'</span><small>'+c.slots.length+'/4</small></div>'+
     '<div class="daygrid">'+SLOTS.map(function(s){return slotCell(c.date,s,false)}).join("")+'</div></div>'}).join("")}
