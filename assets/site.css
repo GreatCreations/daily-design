@@ -286,14 +286,14 @@ footer.site .dd-contactln a{color:var(--ink);font-weight:700;text-decoration-col
 footer.site .dd-contactln a:hover{color:#fff}
 .dd-spon-rp{margin:0 0 16px}
 /* header title link ("Daily Design · The index" / "· Contact") -> home ("./" = the site base on live and gate). Looks exactly like the
-   plain text; every 15s an amber/flame aura (the DD logo tones, --amber + --flame) fades in and out over 1.5s. The glow is a
-   text-shadow on a transparent copy of the text in ::after, so only its opacity animates (compositor-only). */
+   plain text; every 15s an aura glow fades in and out over 1.5s, each pulse in the next edition slot color (7 AM --amber #f5a524,
+   Noon --aqua #22e0cf, 6 PM --violet #9b6bff, 8 PM --flame #ff5a2e) on a 60s cycle. The glow is a text-shadow on a transparent copy
+   of the text in ::after; its color only switches while it is invisible, so each pulse only animates opacity. */
 a.dd-hlink{color:inherit;text-decoration:none;position:relative;display:inline-block;cursor:pointer}
 a.dd-hlink:hover,a.dd-hlink:active,a.dd-hlink:visited{color:inherit;text-decoration:none}
 a.dd-hlink:focus{outline:none}
 a.dd-hlink:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:3px}
 a.dd-hlink::after{content:attr(data-glow);content:attr(data-glow) / "";position:absolute;left:0;top:0;white-space:nowrap;color:transparent;pointer-events:none;
-  text-shadow:0 0 6px rgba(245,165,36,.95),0 0 14px rgba(255,90,46,.75),0 0 26px rgba(255,90,46,.45);opacity:0;will-change:opacity;
-  animation:dd-hglow 15s ease-in-out 1s infinite}
-@keyframes dd-hglow{0%{opacity:0}5%{opacity:1}10%,100%{opacity:0}}
+  opacity:0;will-change:opacity;animation:dd-hglow 60s ease-in-out 1s infinite}
+@keyframes dd-hglow{0%{opacity:0;text-shadow:0 0 6px rgba(245,165,36,.95),0 0 14px rgba(245,165,36,.7),0 0 26px rgba(245,165,36,.4)}1.25%{opacity:1;text-shadow:0 0 6px rgba(245,165,36,.95),0 0 14px rgba(245,165,36,.7),0 0 26px rgba(245,165,36,.4)}2.5%,24.99%{opacity:0;text-shadow:0 0 6px rgba(245,165,36,.95),0 0 14px rgba(245,165,36,.7),0 0 26px rgba(245,165,36,.4)}25%{opacity:0;text-shadow:0 0 6px rgba(34,224,207,.95),0 0 14px rgba(34,224,207,.7),0 0 26px rgba(34,224,207,.4)}26.25%{opacity:1;text-shadow:0 0 6px rgba(34,224,207,.95),0 0 14px rgba(34,224,207,.7),0 0 26px rgba(34,224,207,.4)}27.5%,49.99%{opacity:0;text-shadow:0 0 6px rgba(34,224,207,.95),0 0 14px rgba(34,224,207,.7),0 0 26px rgba(34,224,207,.4)}50%{opacity:0;text-shadow:0 0 6px rgba(155,107,255,.95),0 0 14px rgba(155,107,255,.7),0 0 26px rgba(155,107,255,.4)}51.25%{opacity:1;text-shadow:0 0 6px rgba(155,107,255,.95),0 0 14px rgba(155,107,255,.7),0 0 26px rgba(155,107,255,.4)}52.5%,74.99%{opacity:0;text-shadow:0 0 6px rgba(155,107,255,.95),0 0 14px rgba(155,107,255,.7),0 0 26px rgba(155,107,255,.4)}75%{opacity:0;text-shadow:0 0 6px rgba(255,90,46,.95),0 0 14px rgba(255,90,46,.7),0 0 26px rgba(255,90,46,.4)}76.25%{opacity:1;text-shadow:0 0 6px rgba(255,90,46,.95),0 0 14px rgba(255,90,46,.7),0 0 26px rgba(255,90,46,.4)}77.5%,100%{opacity:0;text-shadow:0 0 6px rgba(255,90,46,.95),0 0 14px rgba(255,90,46,.7),0 0 26px rgba(255,90,46,.4)}}
 @media (prefers-reduced-motion:reduce){a.dd-hlink::after{animation:none;opacity:0}}
