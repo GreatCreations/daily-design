@@ -1571,7 +1571,7 @@ def build_about_page(editions):
         dt.date.fromisoformat(m + "-01").strftime("%B %Y"), "".join(li)) for m, li in months)
     ld_ = launch_date()
     since = ('<p class="ab-since">Daily Design since <b><time datetime="%s">%s</time></b></p>\n' % (ld_, short_date(ld_))) if ld_ else ""
-    sub = ('<h2>The archive and sub access</h2>\n<p class="ab-sub" id="ab-sub" data-lock="%sT00:00:00-07:00" data-will="%s" data-did="%s">%s</p>\n'
+    sub = ('<h2 id="sub-access">The archive and sub access</h2>\n<p class="ab-sub" id="ab-sub" data-lock="%sT00:00:00-07:00" data-will="%s" data-did="%s">%s</p>\n'
            '<script>(function(){var e=document.getElementById("ab-sub");if(!e)return;var t=Date.parse(e.dataset.lock);'
            'if(!isNaN(t))e.innerHTML=Date.now()>=t?e.dataset.did:e.dataset.will;})();</script>') % (
         SUB_LOCK_DATE, esc(sub_access_text(False)), esc(sub_access_text(True)), sub_access_text(today >= SUB_LOCK_DATE))
