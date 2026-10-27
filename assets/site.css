@@ -207,8 +207,8 @@ a.cell.locked:hover .dd-sa-badge{animation-duration:1.6s}a.cell.locked:hover .dd
 button.hd{cursor:pointer;color:#0b0b0e}button.hd:hover{outline:2px solid #fff}
 .hd.l1{background:rgba(245,165,36,.35)}.hd.l2{background:rgba(245,165,36,.55)}.hd.l3{background:rgba(245,165,36,.78)}.hd.l4{background:linear-gradient(135deg,var(--amber),var(--flame))}
 .hd.out{opacity:.35}
-/* maintenance day (tools/maintenance.json): 8 PM red, striped so it never reads as a full 4/4 day; not a button */
-.hd.mnt{background:repeating-linear-gradient(135deg,var(--flame) 0 3px,rgba(255,90,46,.6) 3px 6px);color:#0b0b0e;font-weight:800;cursor:help}
+/* maintenance day (tools/maintenance.json): flat 8 PM red with a soft red ring (a full 4/4 day is an amber-to-red fade); not a button */
+.hd.mnt{background:var(--flame);color:#0b0b0e;font-weight:800;box-shadow:0 0 0 1.5px rgba(255,90,46,.45);cursor:help}
 .days{padding:0 18px 12px}
 .day{display:flex;gap:14px;align-items:stretch;padding:12px 0;border-top:1px solid var(--line);scroll-margin-top:150px;transition:background .3s}
 .day.flash{background:rgba(245,165,36,.12);border-radius:12px}
