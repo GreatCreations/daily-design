@@ -1423,7 +1423,7 @@ def main():
     # 3. nav pass: only pages whose prev/next changed (or that were just rewritten) are touched
     pages = [r for r in recs if r["edition"]["kind"] == "page"]
     import hashlib
-    spon_key = hashlib.sha1(sponsor_html().encode("utf-8")).hexdigest()[:12]
+    spon_key = hashlib.sha1((sponsor_html() + sponsor_html(slot="links")).encode("utf-8")).hexdigest()[:12]  # top + lower spot: either changing rebuilds every edition page
     for i, r in enumerate(pages):
         e = r["edition"]
         prev = pages[i - 1]["edition"] if i > 0 else None
