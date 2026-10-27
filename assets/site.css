@@ -39,9 +39,11 @@ radial-gradient(35% 55% at 72% 35%,rgba(155,107,255,.18),transparent 70%),radial
 .chip{appearance:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);background:rgba(255,255,255,.03);color:#dcd8cf;
 border-radius:999px;padding:6px 11px;font:600 12.5px/1.1 var(--sans);transition:all .12s}
 .chip:hover{border-color:var(--ink);color:#fff}
-.chip .n{font:600 11px var(--mono);color:var(--dim)}
+:root{--dd-num-read:#22e0cf;--dd-num-sa:#ffcf5a;--dd-num-pill:#0b0b0e}
+.chip .n{font:700 12px var(--mono);color:var(--dd-num-read)}
 .chip[aria-pressed=true]{background:var(--c,var(--ink));border-color:var(--c,var(--ink));color:#0b0b0e}
-.chip[aria-pressed=true] .n{color:rgba(0,0,0,.6)}
+.chip[aria-pressed=true] .n{color:var(--dd-num-read);background:var(--dd-num-pill);border-radius:999px;padding:1px 6px}
+#status-line b{color:var(--dd-num-read);font-weight:700}
 .chip.zero{opacity:.38}
 .chip .sw{width:8px;height:8px;border-radius:50%;background:var(--c)}
 .chip[aria-pressed=true] .sw{background:#0b0b0e}
