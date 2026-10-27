@@ -195,18 +195,18 @@ function slotCell(date,slot,big){
     '<div class="ck"><span>'+esc(e.time)+'</span><span>'+esc(e.title)+'</span>'+(e.kind==="report"?'<em>Report</em>':'')+'</div>'+
     '<div class="ch">'+esc(e.headline)+'</div><div class="cf"><b>'+n(e.item_count)+'</b> items <span>'+(e.kind==="report"?"Read report ↓":"Open edition →")+'</span></div></a>';
 }
-/* from 5 AM Pacific the new day's row is ready before anything publishes: an empty day (four 'Not published' Dee slots)
-   at the top of the Latest strip and the archive. Only the page's copy of the calendar changes; it is never counted as published. */
+/* from 5 AM Pacific the new day's archive row is ready before anything publishes: an empty day (four 'Not published' Dee slots)
+   at the top of the archive. The Latest strip skips it and keeps the last day that has an edition. Only the page's copy of the calendar changes; it is never counted as published. */
 function ptNow(){try{var p={};new Intl.DateTimeFormat("en-CA",{timeZone:"America/Vancouver",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",hourCycle:"h23"})
   .formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return {date:p.year+"-"+p.month+"-"+p.day,h:(+p.hour)%24}}catch(e){return null}}
 function readyToday(){var t=ptNow();if(!t||!/^\d{4}-\d\d-\d\d$/.test(t.date)||t.h<5)return;
   if(CAL.some(function(c){return c.date===t.date})||(CAL[0]&&t.date<CAL[0].date))return;
   CAL.unshift({date:t.date,slots:[],ready:true})}
 function renderLatest(){
-  var d=CAL[0]?CAL[0].date:null; if(!d)return;
-  $("#latest-h").innerHTML='Latest · '+esc(niceDate(d))+' <span class="lnote">'+CAL[0].slots.length+' of 4 editions published</span>';
+  // the most recent day with at least one edition: the 5 AM empty day row is archive-only
+  var L=CAL.filter(function(c){return c.slots.length})[0], d=L?L.date:null; if(!d)return;
+  $("#latest-h").innerHTML='Latest · '+esc(niceDate(d))+' <span class="lnote">'+L.slots.length+' of 4 editions published</span>';
   $("#latest").innerHTML=SLOTS.map(function(s){return slotCell(d,s,true)}).join("");
-  $("#latest").classList.toggle("allmiss",!CAL[0].slots.length);
 }
 /* archive: months -> days -> 4 slots; months render lazily when opened */
 var openMonths={};
