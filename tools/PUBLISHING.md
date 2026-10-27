@@ -97,16 +97,18 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    `index.html` gets its SEO block, plain links to the latest day (`<!--dd-latest-->`) and a no-JS list of editions (`<!--dd-static-->`).
    `sitemap.xml`, `robots.txt` and `feed.xml` are rewritten. The canonical base is `SITE_URL` in `publish.py`.
 7c. **Credit**: every page gets the Great Creation Studios footer credit between `<!--dd-credit:start-->`/`<!--dd-credit:end-->`
-   (inside the edition footer, the report page footer, the index footer and the contact footer), on its own line below the archive
+   (inside the edition footer, the report page footer, the index footer and the contact and about footers), on its own line below the archive
    text: "Daily Design is created and brought to you by Great Creation Studios." The studio name links to
    https://greatcreationstudios.greatcreations.art/ (same tab, `rel="noopener"`). "Daily Design" there is `brand_html()`: the DD logo
-   (`assets/favicon.svg`, 1.1em, decorative) followed by its letters cycling `--amber` #f5a524, `--aqua` #22e0cf, `--violet` #9b6bff,
-   `--flame` #ff5a2e (the space is skipped, so the colors carry on across it). The phrase is wrapped in `role="img" aria-label="Daily Design"`,
+   (`assets/favicon.svg`, 1.1em, decorative) followed by "Daily" in bright white (#ffffff, `.cw`, no cycling) and "Design" with its letters cycling
+   `--amber` #f5a524, `--aqua` #22e0cf, `--violet` #9b6bff and `--flame` #ff5a2e, starting with amber (D amber, e aqua, s violet, i flame, g amber,
+   n aqua). The logo and the words link to `about.html` (`a.dd-brand-a`, no underline; "Daily" underlines on hover/focus). The line under the credit
+   (`.dd-contactln`) links Contact and About, leaving out the page you're on (`credit_html(page="contact"|"about")`). The phrase is wrapped in `role="img" aria-label="Daily Design"`,
    with the logo and letters `aria-hidden`, so screen readers say "Daily Design" once. Styles are in `site.css` (index, contact, reports)
    and in the edition `nav_css` (edition pages don't load `site.css`). Edition pages rebuild automatically when `credit_html()` output
    changes (it's part of the nav key).
 7d. **Asset cache-busting** (every run, `version_assets()`): after all pages are written, every `src`/`href` to a first-party
-   `assets/<name>.js` or `assets/<name>.css` in `index.html`, `contact.html`, `editions/**` and `reports/**` gets `?v=<10-char sha256 of the file>`
+   `assets/<name>.js` or `assets/<name>.css` in `index.html`, `contact.html`, `about.html`, `editions/**` and `reports/**` gets `?v=<10-char sha256 of the file>`
    (any existing `?v=` is replaced). GitHub Pages caches assets for 10 minutes, so a changed file gets a new URL and browsers fetch it right
    away. Old pages are covered because the pass runs over all of them each time. After editing `assets/app.js`, `site.css`, `tts.js`,
    `countdown.js` or `logo3d.js`, run `publish.py` (or `--no-push` then commit) so the links pick up the new hash. New first-party JS/CSS in
@@ -130,6 +132,15 @@ Re-running with nothing new prints `nothing new to publish`.
 - **Contact**: `contact.html` is generated every run (`build_contact_page`) with the public address in `CONTACT_EMAIL`, a Copy button
   (clipboard API, with a select-the-text fallback) and an "Email us" mailto link. Every footer (index, report pages, edition pages) gets a
   Contact link through the credit block, so new editions pick it up automatically. The page is in `sitemap.xml`.
+- **About**: `about.html` (`ABOUT_PATH`) is generated every run (`build_about_page`), in the contact page's look: same header link and glow, credit footer, no sponsor
+  banner. It covers what Daily Design is, the four editions with their Pacific times (`tz_html()`, so visitors also see their own time
+  through `assets/tzlocal.js`), how it works (links go to the sources, searchable by medium, type, edition and date) and a **site map**:
+  - index anchors `#latest-block`, `#search` and `#archive-block` (`app.js` keeps a plain anchor hash and scrolls to it after rendering);
+  - the latest edition of each series (pages by path, reports as `index.html#report=<date>/<slot>`);
+  - every date by month, with links to its published slots (static pages);
+  - Contact, About, `feed.xml` and `sitemap.xml`.
+  Only facts from the site copy go in; add nothing that isn't true. It has its own title, description, canonical, Open Graph and AboutPage
+  JSON-LD tags, and it's in `sitemap.xml`. It refreshes every publish, so the site map picks up new editions.
 - **Sponsor spot**: `sponsors.json` at the repo root. The first entry with `"active": true` (and today inside its optional `start`/`end`)
   is the sponsor. Near the top of the index (under search), each report page and each edition (top strip) the publisher renders, between
   `<!--dd-sponsor:start-->`/`<!--dd-sponsor:end-->`:

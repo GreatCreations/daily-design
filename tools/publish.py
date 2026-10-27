@@ -21,7 +21,7 @@ SITE_URL = "https://studios.greatcreations.art/daily-design/"  # canonical base
 REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
 REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
 TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
-NAV_VERSION = 9   # bump to force nav re-injection on every HTML edition
+NAV_VERSION = 10   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -292,6 +292,7 @@ STUDIO_URL = "https://greatcreationstudios.greatcreations.art/"
 
 CONTACT_EMAIL = "dailydesign@greatcreations.ca"  # public Daily Design address (shown on contact.html)
 CONTACT_PATH = "contact.html"
+ABOUT_PATH = "about.html"  # About + site map, built by build_about_page()
 SPON_START, SPON_END = "<!--dd-sponsor:start-->", "<!--dd-sponsor:end-->"
 SPON2_START, SPON2_END = "<!--dd-sponsor-links:start-->", "<!--dd-sponsor-links:end-->"  # index: above Recent links
 SPON_PLACEMENTS = ("top", "links")  # banner.placements; default ["top"]
@@ -305,30 +306,31 @@ def mailto(subject):
 BRAND_COLS = ("#f5a524", "#22e0cf", "#9b6bff", "#ff5a2e")  # --amber, --aqua, --violet, --flame (7 AM, Noon, 6 PM, 8 PM)
 
 
-def brand_html(prefix=""):
-    """'Daily Design' as the DD logo plus letters cycling the four slot colors (space skipped). Screen readers get one
-    'Daily Design' (role=img + aria-label); the logo and the letter spans are aria-hidden."""
-    letters, n = [], 0
-    for ch in "Daily Design":
-        if ch == " ":
-            letters.append(" ")
-            continue
-        letters.append('<span class="c%d">%s</span>' % (n % 4, ch))
-        n += 1
-    return ('<span class="dd-brand" role="img" aria-label="Daily Design"><img class="dd-brand-ic" src="%sassets/favicon.svg" alt="" '
-            'aria-hidden="true" width="16" height="16"><span class="dd-brand-t" aria-hidden="true">%s</span></span>') % (prefix, "".join(letters))
+def brand_html(prefix="", link=False):
+    """'Daily Design' as the DD logo, 'Daily' in bright white and 'Design' with its letters cycling the four slot colors
+    (amber, aqua, violet, flame). Screen readers get one 'Daily Design' (role=img + aria-label); the logo and the letter spans
+    are aria-hidden. link=True makes the logo + words a link to the About page."""
+    design = "".join('<span class="c%d">%s</span>' % (i % 4, ch) for i, ch in enumerate("Design"))
+    b = ('<span class="dd-brand" role="img" aria-label="Daily Design"><img class="dd-brand-ic" src="%sassets/favicon.svg" alt="" '
+         'aria-hidden="true" width="16" height="16"><span class="dd-brand-t" aria-hidden="true"><span class="cw">Daily</span> %s</span></span>'
+         ) % (prefix, design)
+    return ('<a class="dd-brand-a" href="%s%s" title="About Daily Design">%s</a>' % (prefix, ABOUT_PATH, b)) if link else b
 
 
-def credit_html(prefix="", cls="dd-credit", contact=True):
+def credit_html(prefix="", cls="dd-credit", page=None):
     """Footer credit line (skipped by the Listen button via .dd-credit). prefix = path back to the site root.
-    'Daily Design' is brand_html(): DD logo + letters in the four slot colors.
-    The studio's icon is a vendored copy of its own favicon (assets/gcs-icon.png), decorative (alt="")."""
+    'Daily Design' is brand_html(): DD logo + 'Daily' in white + 'Design' in the four slot colors, linking to the About page.
+    The studio's icon is a vendored copy of its own favicon (assets/gcs-icon.png), decorative (alt="").
+    page = "contact" / "about" leaves out the link to the page you're on."""
+    links = []
+    if page != "contact":
+        links.append('<a href="%s%s">Contact</a> · questions, tips, corrections and sponsorship' % (prefix, CONTACT_PATH))
+    if page != "about":
+        links.append('<a class="dd-aboutln" href="%s%s">About</a>' % (prefix, ABOUT_PATH))
     return ('%s<p class="%s">%s is created and brought to you by '
             '<a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" alt="" width="16" height="16">%s</a>.</p>'
-            '%s%s') % (
-        CREDIT_START, cls, brand_html(prefix), STUDIO_URL, prefix, STUDIO_NAME,
-        ('<p class="dd-contactln"><a href="%s%s">Contact</a> · questions, tips, corrections and sponsorship</p>' % (prefix, CONTACT_PATH)) if contact else "",
-        CREDIT_END)
+            '<p class="dd-contactln">%s</p>%s') % (
+        CREDIT_START, cls, brand_html(prefix, link=True), STUDIO_URL, prefix, STUDIO_NAME, " · ".join(links), CREDIT_END)
 
 
 def ensure_credit(doc):
@@ -631,9 +633,9 @@ background:#09090c;border-top:2px solid var(--dd-accent);font:600 14px/1.3 ui-sa
 #dd-foot .dd-credit{flex-basis:100%%;margin-top:14px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
 #dd-foot .dd-credit-ic{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin:0 5px 0 1px;border-radius:3px}
 #dd-foot .dd-credit a{display:inline;white-space:nowrap;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
-#dd-foot .dd-brand{white-space:nowrap;font-weight:700}#dd-foot .dd-brand-ic{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin:0 .3em 0 0;border-radius:3px}#dd-foot .dd-brand .c0{color:#f5a524}#dd-foot .dd-brand .c1{color:#22e0cf}#dd-foot .dd-brand .c2{color:#9b6bff}#dd-foot .dd-brand .c3{color:#ff5a2e}
+#dd-foot .dd-brand{white-space:nowrap;font-weight:700}#dd-foot .dd-brand-ic{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin:0 .3em 0 0;border-radius:3px}#dd-foot .dd-brand .cw{color:#fff}#dd-foot .dd-credit a.dd-brand-a{text-decoration:none!important}#dd-foot .dd-credit a.dd-brand-a:hover .cw,#dd-foot .dd-credit a.dd-brand-a:focus-visible .cw{text-decoration:underline;text-decoration-color:var(--dd-accent);text-underline-offset:3px}#dd-foot .dd-brand .c0{color:#f5a524}#dd-foot .dd-brand .c1{color:#22e0cf}#dd-foot .dd-brand .c2{color:#9b6bff}#dd-foot .dd-brand .c3{color:#ff5a2e}
 #dd-foot .dd-contactln{flex-basis:100%%;margin-top:2px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
-#dd-foot .dd-contactln a{display:inline;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px;font-weight:700}
+#dd-foot .dd-contactln a.dd-aboutln{font-weight:500}#dd-foot .dd-contactln a{display:inline;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px;font-weight:700}
 @media (max-width:620px){#dd-nav{gap:6px;padding:0 8px}#dd-nav .dd-lab{font-size:12px}#dd-nav .dd-t,#dd-nav .tts-l{display:none}#dd-nav a,#dd-nav button.dd-tts{padding:7px 9px}}
 </style>
 <script>(function(){function fix(){var h=document.getElementById('dd-nav');if(!h)return;var H=h.offsetHeight;
@@ -1163,7 +1165,7 @@ def build_index_seo(editions):
     lis = "".join('<li><a href="%s">%s</a></li>' % (esc(public_path(e)), esc(seo_fields(e)["title"].rsplit(" · ", 1)[0]))
                   for e in editions[:200])
     static = (STATIC_START + '<noscript><section class="wrap block"><h2>All editions</h2><ul>%s</ul>'
-              '<p><a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">Sitemap</a> · <a href="contact.html">Contact</a></p></section></noscript>' + STATIC_END) % lis
+              '<p><a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">Sitemap</a> · <a href="contact.html">Contact</a> · <a href="about.html">About</a></p></section></noscript>' + STATIC_END) % lis
     doc = re.sub(re.escape(STATIC_START) + ".*?" + re.escape(STATIC_END), lambda m: static, doc, flags=re.S)
     if STATIC_START not in doc:
         doc = doc.replace('<footer class="site">', static + "\n" + '<footer class="site">', 1)
@@ -1337,9 +1339,134 @@ def build_contact_page():
 </body>
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, e, esc(mailto("Daily Design")), rates_html(), BANNER_SPEC_HTML, esc(mailto("Sponsoring Daily Design")),
-       credit_html("", contact=False), CONTACT_JS % CONTACT_EMAIL)
+       credit_html("", page="contact"), CONTACT_JS % CONTACT_EMAIL)
     if write_if_changed(os.path.join(REPO, CONTACT_PATH), doc):
         log("contact page", CONTACT_PATH)
+
+
+ABOUT_CSS = """<style>
+.ab h2{font:400 clamp(26px,4vw,34px)/1.1 var(--serif);margin:30px 0 10px}
+.ab h3{font:700 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px}
+.ab p{color:#d5d1c8;line-height:1.55}
+.ab-eds{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.ab-eds li{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:14px;padding:14px 15px}
+.ab-eds b{display:block;font:800 13px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.ab-eds span.n{display:block;font:700 16px/1.3 var(--sans);color:var(--ink);margin:4px 0 2px}.ab-eds small{color:var(--mut);font-size:13.5px}
+.ab-map{columns:2 220px;column-gap:28px;margin:6px 0 0;padding-left:18px;color:#d5d1c8;line-height:1.7}
+.ab-map li{break-inside:avoid}
+.ab a{color:var(--ink);text-decoration-color:var(--amber);text-underline-offset:3px}.ab a:hover{color:#fff}
+.ab-month{margin:0 0 6px}
+.ab-days{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:2px 16px;font-size:14px}
+.ab-days li{padding:4px 0;border-bottom:1px solid var(--line);color:var(--mut)}
+.ab-days .d{display:inline-block;min-width:6.2em;color:#d5d1c8;font-weight:600}
+.ab-days a{display:inline-block;margin-right:8px;font-weight:700;text-decoration:none;color:var(--c)}.ab-days a:hover,.ab-days a:focus-visible{text-decoration:underline}
+.ab .dd-tz{font-size:.88em}
+</style>"""
+
+SLOT_BLURB = {"morning": "The briefing", "noon": "The field report", "best": "The best-of", "hottest": "The hot list"}  # from the index hero copy
+
+
+def build_about_page(editions):
+    url = abs_url(ABOUT_PATH)
+    title = "About · %s" % SITE_NAME
+    desc = ("What Daily Design is: a public archive of AI design research digests from %s, four editions a day in Pacific time, "
+            "plus a site map of every edition." % STUDIO_NAME)
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "name": title, "url": url, "description": desc,
+          "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": SITE_URL},
+          "publisher": publisher_ld(), "creator": studio_ld()}
+    head = SEO_START + "".join([
+        '<title>%s</title>' % esc(title),
+        '<meta name="description" content="%s">' % esc(desc),
+        '<link rel="canonical" href="%s">' % url,
+        '<meta name="robots" content="index,follow">',
+        '<meta property="og:type" content="website">',
+        '<meta property="og:site_name" content="%s">' % SITE_NAME,
+        '<meta property="og:title" content="%s">' % esc(title),
+        '<meta property="og:description" content="%s">' % esc(desc),
+        '<meta property="og:url" content="%s">' % url,
+        '<meta property="og:image" content="%s">' % abs_url("assets/favicon-512.png"),
+        '<meta property="og:locale" content="en_US">',
+        '<meta name="twitter:card" content="summary">',
+        '<meta name="twitter:title" content="%s">' % esc(title),
+        '<meta name="twitter:description" content="%s">' % esc(desc),
+        '<meta name="twitter:image" content="%s">' % abs_url("assets/favicon-512.png"),
+        '<link rel="alternate" type="application/atom+xml" title="Daily Design feed" href="%s">' % abs_url("feed.xml"),
+        ld_json(ld)]) + SEO_END
+    today = pt_today()
+    order = sorted(SLOTS, key=lambda k: SLOTS[k]["order"])
+    eds = "".join('<li style="--c:%s"><b>%s%s</b><span class="n">%s</span><small>%s</small></li>' % (
+        SLOTS[k]["color"], esc(SLOTS[k]["time"]), tz_html(today, k), esc(SLOTS[k]["name"]), SLOT_BLURB[k]) for k in order)
+    eds_sorted = sorted(editions, key=lambda e: (e["date"], SLOTS[e["slot"]]["order"]), reverse=True)
+    latest = {}
+    for e in eds_sorted:
+        latest.setdefault(e["slot"], e)
+    def series_href(e):
+        return "index.html#report=%s/%s" % (e["date"], e["slot"]) if e["kind"] == "report" else e["path"]
+    series = "".join('<li><a href="%s">Latest %s</a> · %s (%s)</li>' % (
+        esc(series_href(latest[k])), esc(SLOTS[k]["name"]), esc(SLOTS[k]["time"]), esc(nice_date(latest[k]["date"])))
+        for k in order if k in latest)
+    by_day = {}
+    for e in eds_sorted:
+        by_day.setdefault(e["date"], []).append(e)
+    months, cur = [], None
+    for d in sorted(by_day, reverse=True):
+        m = d[:7]
+        if m != cur:
+            months.append((m, []))
+            cur = m
+        day = dt.date.fromisoformat(d)
+        links = "".join('<a style="--c:%s" href="%s" aria-label="%s, %s">%s</a>' % (
+            SLOTS[e["slot"]]["color"], esc(public_path(e)), esc(SLOTS[e["slot"]]["name"]), esc(nice_date(d)), esc(SLOTS[e["slot"]]["time"]))
+            for e in sorted(by_day[d], key=lambda e: SLOTS[e["slot"]]["order"]))
+        months[-1][1].append('<li><span class="d">%s</span>%s</li>' % (day.strftime("%a %b ") + str(day.day), links))
+    month_html = "".join('<h3 class="ab-month">%s</h3><ul class="ab-days">%s</ul>' % (
+        dt.date.fromisoformat(m + "-01").strftime("%B %Y"), "".join(li)) for m, li in months)
+    doc = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+%s
+<meta name="theme-color" content="#09090c">
+%s
+<link rel="stylesheet" href="assets/site.css">
+%s%s
+</head>
+<body>
+<main class="ct ab">
+<nav class="ct-top" aria-label="Daily Design"><a class="btn" href="index.html">← Daily Design index</a></nav>
+<section class="ct-card" aria-labelledby="ab-h">
+<div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · About">Daily Design · About</a></div>
+<h1 id="ab-h">About <em>Daily Design</em></h1>
+<p class="lede">Daily Design is a public archive of AI design research digests from <a href="%s" rel="noopener">%s</a>: four editions a day on how AI is changing creative work, across image, video, 3D, code/UI, sound, games and mashups.</p>
+<h2>Four editions a day</h2>
+<ul class="ab-eds">%s</ul>
+<p>Editions are dated and timed in Pacific time (Vancouver), shown as <span class="dd-tz">%s</span>. If your clock differs, your own local time is shown in brackets.</p>
+<h2>How it works</h2>
+<p>Every edition links straight to the original creators and sources. Engagement numbers were read when each edition was compiled and will have changed since. Sponsors never affect what we pick or how it ranks.</p>
+<p>The whole archive is searchable: search every edition and link, then filter by medium, type, edition and date, or browse the archive calendar day by day.</p>
+<p>Questions, tips, corrections or sponsorship: see <a href="%s">Contact</a>.</p>
+</section>
+<section class="ct-card" style="margin-top:18px;border-top-color:var(--aqua)" aria-labelledby="sm-h">
+<h2 id="sm-h" style="margin-top:0">Site map</h2>
+<h3>Home</h3>
+<ul class="ab-map"><li><a href="index.html">Daily Design index</a></li><li><a href="index.html#latest-block">Latest editions</a></li><li><a href="index.html#search">Browse and search</a></li><li><a href="index.html#archive-block">Archive</a></li></ul>
+<h3>Edition series</h3>
+<ul class="ab-map">%s</ul>
+<h3>More</h3>
+<ul class="ab-map"><li><a href="%s">Contact</a></li><li><a href="%s" aria-current="page">About</a></li><li><a href="feed.xml">Feed (Atom)</a></li><li><a href="sitemap.xml">sitemap.xml</a></li></ul>
+<h2>All editions</h2>
+%s
+</section>
+</main>
+<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources.%s</div></footer>
+<script src="assets/tzlocal.js" defer></script>
+</body>
+</html>
+""" % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, eds, tz_label(today), CONTACT_PATH, series,
+       CONTACT_PATH, ABOUT_PATH, month_html, credit_html("", page="about"))
+    if write_if_changed(os.path.join(REPO, ABOUT_PATH), doc):
+        log("about page", ABOUT_PATH)
 
 
 def xml_esc(s):
@@ -1349,7 +1476,7 @@ def xml_esc(s):
 def build_sitemap_feed(editions):
     last = max(e["date"] for e in editions)
     urls = [(SITE_URL, last, "daily", "1.0")]
-    urls += [(abs_url(CONTACT_PATH), last, "yearly", "0.5")]
+    urls += [(abs_url(ABOUT_PATH), last, "weekly", "0.6"), (abs_url(CONTACT_PATH), last, "yearly", "0.5")]
     urls += [(abs_url(public_path(e)), e["date"], "monthly", "0.8") for e in editions]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
@@ -1413,7 +1540,7 @@ def version_assets():
             fp = os.path.join(REPO, "assets", name)
             hashes[name] = hashlib.sha256(open(fp, "rb").read()).hexdigest()[:10] if os.path.isfile(fp) else None
         return m.group(0) if not hashes[name] else '%s%s?v=%s"' % (m.group(1), m.group(2), hashes[name])
-    pages = [os.path.join(REPO, "index.html"), os.path.join(REPO, CONTACT_PATH)]
+    pages = [os.path.join(REPO, "index.html"), os.path.join(REPO, CONTACT_PATH), os.path.join(REPO, ABOUT_PATH)]
     for sub in ("editions", "reports"):
         for root, _, files in os.walk(os.path.join(REPO, sub)):
             pages += [os.path.join(root, f) for f in files if f.endswith(".html")]
@@ -1597,6 +1724,7 @@ def main():
     # 4b. SEO: index head/static links, sitemap.xml, robots.txt, feed.xml
     build_index_seo(editions)
     build_contact_page()
+    build_about_page(editions)
     build_sitemap_feed(editions)
     nv = version_assets()  # 4c. ?v=<hash> on first-party JS/CSS links, after every page is written
     if nv: log("asset versions updated on %d pages" % nv)

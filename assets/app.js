@@ -39,6 +39,7 @@ function init(data){
   $("#totals-note").textContent=n(t.days)+" day"+(t.days==1?"":"s")+" · "+n(t.months)+" month"+(t.months==1?"":"s")+" · latest "+niceDate(t.last);
   $("#updated").textContent="Updated "+niceDate(t.last);
   buildFilters(); buildJump(); readHash(); bind(); renderLatest(); render(); if(state.archive)setTimeout(archTop,80);
+  var an=anchorEl();if(an)setTimeout(function(){an.scrollIntoView()},120);
 }
 
 /* ---------------- shards ---------------- */
@@ -105,6 +106,8 @@ function readHash(){
     else if(Array.isArray(state[k])&&v)state[k]=v.split(",").filter(Boolean)});
   $("#q").value=state.q;$("#from").value=state.from;$("#to").value=state.to;
 }
+// plain in-page anchors (#latest-block, #search, #archive-block from the About site map) are kept, not treated as filter state
+function anchorEl(){var h=location.hash;return /^#[A-Za-z][\w-]*$/.test(h)?document.getElementById(h.slice(1)):null}
 function writeHash(){
   var parts=[];if(state.q)parts.push("q="+encodeURIComponent(state.q));
   GROUPS.concat(["tag"]).forEach(function(g){if(state[g].length)parts.push(g+"="+state[g].map(encodeURIComponent).join(","))});
@@ -112,7 +115,7 @@ function writeHash(){
   if(state.sort==="old")parts.push("sort=old");
   if(state.archive)parts.push("archive="+state.archive);
   if(state.report)parts.push("report="+state.report.split("/").map(encodeURIComponent).join("/"));
-  var h=parts.length?"#"+parts.join("&"):"";
+  var h=parts.length?"#"+parts.join("&"):"";if(!h&&anchorEl())return;
   var push=PUSH;PUSH=false;
   if(h!==location.hash)history[push?"pushState":"replaceState"](null,"",h||location.pathname+location.search);
 }
