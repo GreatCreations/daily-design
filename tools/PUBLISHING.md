@@ -34,6 +34,14 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    day once that day's first edition is published. The empty day is never counted as published (archive notes, month counts and the
    heatmap count only days with editions), slot filters hide it, and before 5 AM the page is unchanged. A page left open over 5 AM picks
    it up on reload. An archive day with nothing published gets the `allmiss` class on its slot grid so `assets/site.css` gives the Dees full size.
+6c. **Archive paging** (browser only, `assets/app.js` → `archBlocks()`/`renderArchive()`; nothing for `publish.py` to do): the archive
+   shows one page at a time and renders only that page's rows. The default page is the newest 8 days counted from the top row (the 5 AM
+   empty day counts as today); "Older 2 weeks" replaces it in place with the 14 days before, and so on. Unfiltered pages are fixed calendar
+   windows, so a page link `#archive=<first date of the window>` always opens the same days (the default page has no `archive=` key;
+   paging uses `pushState`, so Back/Forward step through pages). Oldest-first counts forward from the first day ("Later 2 weeks").
+   With a search, edition filter or date range, pages count matching days instead: the first 8, then 14 each. Newer/Older buttons and
+   the date range sit above and below the rows; the month heading and heatmap appear for each month on the page. Clicking a heatmap day
+   (or picking a month in "Jump to") opens the page holding that day and flashes it. Any filter change goes back to the first page.
 7. **Item parsing** reads list items in each edition's `.md`:
    - `- [Title](url), type. Note…` (morning style)
    - `1. **[Title](url)**: note` (try-this style)

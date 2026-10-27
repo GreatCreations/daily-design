@@ -169,6 +169,16 @@ a.cell:hover{border-color:var(--c);transform:translateY(-2px)}
 .segb{appearance:none;cursor:pointer;background:transparent;color:var(--mut);border:0;padding:9px 13px;font:700 12.5px var(--sans)}
 .segb[aria-pressed=true]{background:var(--ink);color:#0b0b0e}
 .arch-note{color:var(--mut);font-size:14px;margin:10px 0 16px}
+.apager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px}
+.apager-bot{margin:4px 0 0}
+.apager .arange{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;min-width:0}
+.apager .arange b{font:400 22px/1.15 var(--serif);color:var(--ink)}.apager .arange small{font:600 11.5px var(--sans);color:var(--dim);letter-spacing:.06em}
+.apager .apg{white-space:nowrap}.apager .apg[disabled]{opacity:.3;cursor:default;pointer-events:none}
+.arch-gap{margin:0 0 14px}
+/* sub-access cells (title + picture, gold mark); not used by this index yet */
+a.cell.locked{text-decoration:none;cursor:pointer}.cell.locked .ck em.dd-sa-mark{background:transparent;color:var(--dd-num-sa);border:1px solid var(--dd-num-sa);font-weight:700}
+.cell.locked .cf .dd-sa{color:var(--dd-num-sa);font-weight:700}.cell.locked .cth{aspect-ratio:16/7}
+@media (max-width:640px){.apager{gap:6px}.apager .apg{padding:9px 11px;font-size:12.5px}.apager .arange b{font-size:17px}}
 .month{border:1px solid var(--line);border-radius:18px;margin:0 0 14px;background:rgba(255,255,255,.015);scroll-margin-top:150px}
 .month>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:16px 18px}
 .month>summary::-webkit-details-marker{display:none}

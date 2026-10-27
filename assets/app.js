@@ -4,13 +4,13 @@
 (function(){
 "use strict";
 var D, EDS=[], EDBY={}, CAL=[], SHARDS=[], ITEMS=[], LOADED={}, LOADING={};
-var PAGE=40, EPAGE=12, MPAGE=6;
-var shown=PAGE, eshown=EPAGE, mshown=MPAGE, openKey=null, renderT=0;
+var PAGE=40, EPAGE=12;
+var shown=PAGE, eshown=EPAGE, openKey=null, renderT=0;
 var GROUPS=["slot","medium","type"], SLOTS=["morning","noon","best","hottest"];
 var SLOTCOL={morning:"var(--amber)",noon:"var(--aqua)",best:"var(--violet)",hottest:"var(--flame)"};
 var MLABEL={}, SLABEL={}, SINFO={}, TLABEL={"repo/tool":"Repo / tool","case study":"Case study"};
 var state=blank();
-function blank(){return {q:"",slot:[],medium:[],type:[],tag:[],from:"",to:"",sort:"new",report:""}}
+function blank(){return {q:"",slot:[],medium:[],type:[],tag:[],from:"",to:"",sort:"new",report:"",archive:""}}
 var $=function(s){return document.querySelector(s)};
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function norm(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
@@ -38,7 +38,7 @@ function init(data){
   $('[data-k="editions"]').textContent=n(t.editions);$('[data-k="items"]').textContent=n(t.items);$('[data-k="tags"]').textContent=n(t.tags);
   $("#totals-note").textContent=n(t.days)+" day"+(t.days==1?"":"s")+" · "+n(t.months)+" month"+(t.months==1?"":"s")+" · latest "+niceDate(t.last);
   $("#updated").textContent="Updated "+niceDate(t.last);
-  buildFilters(); buildJump(); readHash(); bind(); renderLatest(); render();
+  buildFilters(); buildJump(); readHash(); bind(); renderLatest(); render(); if(state.archive)setTimeout(archTop,80);
 }
 
 /* ---------------- shards ---------------- */
@@ -100,6 +100,7 @@ function readHash(){
   var h=location.hash.replace(/^#/,""); state=blank();
   h.split("&").forEach(function(p){if(!p)return;var i=p.indexOf("=");var k=decodeURIComponent(i<0?p:p.slice(0,i)),v=i<0?"":decodeURIComponent(p.slice(i+1).replace(/\+/g," "));
     if(k==="q"||k==="from"||k==="to"||k==="report")state[k]=v;else if(k==="sort")state.sort=v==="old"?"old":"new";
+    else if(k==="archive"&&/^\d{4}-\d\d-\d\d$/.test(v))state.archive=v;
     else if(k==="date"&&v){var ds=v.split(",").sort();state.from=ds[0];state.to=ds[ds.length-1]}
     else if(Array.isArray(state[k])&&v)state[k]=v.split(",").filter(Boolean)});
   $("#q").value=state.q;$("#from").value=state.from;$("#to").value=state.to;
@@ -109,9 +110,11 @@ function writeHash(){
   GROUPS.concat(["tag"]).forEach(function(g){if(state[g].length)parts.push(g+"="+state[g].map(encodeURIComponent).join(","))});
   if(state.from)parts.push("from="+state.from);if(state.to)parts.push("to="+state.to);
   if(state.sort==="old")parts.push("sort=old");
+  if(state.archive)parts.push("archive="+state.archive);
   if(state.report)parts.push("report="+state.report.split("/").map(encodeURIComponent).join("/"));
   var h=parts.length?"#"+parts.join("&"):"";
-  if(h!==location.hash)history.replaceState(null,"",h||location.pathname+location.search);
+  var push=PUSH;PUSH=false;
+  if(h!==location.hash)history[push?"pushState":"replaceState"](null,"",h||location.pathname+location.search);
 }
 function tokens(){return norm(state.q).split(/\s+/).filter(Boolean)}
 function itemFilters(){return state.medium.length||state.type.length||state.tag.length}
@@ -142,10 +145,11 @@ function render(fromShard){
   $("#clear").hidden=!filtered();
   if(state.sort==="old")res.reverse();
   // editions (only when searching/filtering by item fields)
-  var eb=$("#eds-block");
+  var eb=$("#eds-block"); ARCH_MATCH=null;
   if(act){
     var eds=EDS.filter(function(e){if(!edMatchBasic(e))return false;if(counts[e.path]||counts[e.url])return true;if(itemFilters())return false;
       return toks.every(function(t){return e._hay.indexOf(t)>=0})});
+    ARCH_MATCH={};eds.forEach(function(e){ARCH_MATCH[e.date]=1});
     if(state.sort==="old")eds=eds.slice().reverse();
     eb.hidden=false;
     $("#eds").innerHTML=eds.slice(0,eshown).map(function(e){return edCard(e,counts[e.url]||counts[e.path]||0)}).join("")||'<div class="empty">No editions match.</div>';
@@ -208,29 +212,69 @@ function renderLatest(){
   $("#latest-h").innerHTML='Latest · '+esc(niceDate(d))+' <span class="lnote">'+L.slots.length+' of 4 editions published</span>';
   $("#latest").innerHTML=SLOTS.map(function(s){return slotCell(d,s,true)}).join("");
 }
-/* archive: months -> days -> 4 slots; months render lazily when opened */
-var openMonths={};
+/* archive: paged in place. The default view is the newest 8 days (the 5 AM empty row counts as today); each Older step
+   replaces it with the 14 days before. Unfiltered pages are fixed calendar windows counted back from the newest day (forward
+   from the oldest when sorted oldest first), so #archive=<first date of the page> always opens the same days. With a search or
+   filter, pages count matching days instead: the first 8, then 14 each. Only the current page's rows are rendered. */
+var AFIRST=8, ASTEP=14, ARCH={blocks:[],i:0,list:[]}, ARCH_MATCH=null, PUSH=false;
 function archiveDays(){
-  return CAL.filter(function(c){if(!inRange(c.date))return false;if(state.slot.length&&!c.slots.some(function(s){return state.slot.indexOf(s)>=0}))return false;return true});
+  return CAL.filter(function(c){if(!inRange(c.date))return false;if(state.slot.length&&!c.slots.some(function(s){return state.slot.indexOf(s)>=0}))return false;
+    if(ARCH_MATCH&&!ARCH_MATCH[c.date])return false;return true});
 }
+function archBlocks(list){
+  var old=state.sort==="old", out=[], i, fr, to;
+  function win(a,b,rows){out.push({from:a,to:b,rows:rows.filter(function(c){return c.date>=a&&c.date<=b})})}
+  if(!list.length)return out;
+  if(!filtered()){
+    var N=list[0].date, M=list[list.length-1].date;
+    if(!old){for(i=0;;i++){to=i?addDays(N,-AFIRST-ASTEP*(i-1)):N;fr=addDays(to,-((i?ASTEP:AFIRST)-1));if(to<M)break;win(fr,to,list)}}
+    else{var asc=list.slice().reverse();for(i=0;;i++){fr=i?addDays(M,AFIRST+ASTEP*(i-1)):M;to=addDays(fr,(i?ASTEP:AFIRST)-1);if(fr>N)break;win(fr,to,asc)}}
+  } else {
+    var L=old?list.slice().reverse():list;
+    for(i=0;i<L.length;){var r=L.slice(i,i+(out.length?ASTEP:AFIRST));i+=r.length;
+      var ds=r.map(function(c){return c.date}).sort();out.push({from:ds[0],to:ds[ds.length-1],rows:r})}
+  }
+  return out;
+}
+function archIndex(blocks,d){if(!d||!blocks.length)return 0;var best=0,bd=Infinity;
+  for(var i=0;i<blocks.length;i++){var b=blocks[i];if(d>=b.from&&d<=b.to)return i;var x=Math.min(Math.abs(pd(d)-pd(b.from)),Math.abs(pd(d)-pd(b.to)));if(x<bd){bd=x;best=i}}
+  return best}
+function archRange(b){var l=ARCH.list, lo=b.from, hi=b.to;if(l.length){if(lo<l[l.length-1].date)lo=l[l.length-1].date;if(hi>l[0].date)hi=l[0].date}
+  if(lo>hi){lo=b.from;hi=b.to}
+  var y=String(ptNow()?ptNow().date:"").slice(0,4), o=function(d){return fmt(d,d.slice(0,4)===y?{month:"short",day:"numeric"}:{month:"short",day:"numeric",year:"numeric"})};
+  return lo===hi?o(lo):o(lo)+" – "+o(hi)}
+function archPager(pos){
+  var b=ARCH.blocks, i=ARCH.i, old=state.sort==="old", f=filtered();if(b.length<2)return "";
+  function btn(j,l,cls){return j<0||j>=b.length?'<button type="button" class="btn apg '+cls+'" disabled>'+l+'</button>':'<button type="button" class="btn apg '+cls+'" data-apage="'+j+'">'+l+'</button>'}
+  return '<nav class="apager apager-'+pos+'" aria-label="Archive pages">'+btn(i-1,old?"← Earlier":"← Newer","apg-prev")+
+    '<span class="arange"><b>'+esc(archRange(b[i]))+'</b><small>Page '+(i+1)+' of '+b.length+'</small></span>'+
+    btn(i+1,(old?"Later ":"Older ")+(f?"14 days":"2 weeks")+" →","apg-next")+'</nav>'}
+function archNote(pubDays,pubMonths,list){return n(pubDays)+" published day"+(pubDays==1?"":"s")+" in "+pubMonths+" month"+(pubMonths==1?"":"s")+(filtered()?" match the current search and filters":"")+". Click a day in a calendar to jump to it."}
 function renderArchive(){
-  var days=archiveDays(), months=[], by={};
-  days.forEach(function(c){var m=c.date.slice(0,7);if(!by[m]){by[m]=[];months.push(m)}by[m].push(c)});
-  if(state.sort==="old"){months.reverse();months.forEach(function(m){by[m].reverse()})}
+  var list=archiveDays(), by={}, months=[];
+  ARCH.list=list;
+  var blocks=archBlocks(list), bi=archIndex(blocks,state.archive), B=blocks[bi];
+  state.archive=bi?B.from:""; ARCH.blocks=blocks; ARCH.i=bi;
+  list.forEach(function(c){var m=c.date.slice(0,7);if(!by[m]){by[m]=[];months.push(m)}by[m].push(c)});
   document.querySelectorAll(".segb").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.sort===state.sort)});
-  var pubDays=days.filter(function(c){return c.slots.length}).length, pubMonths=months.filter(function(m){return by[m].some(function(c){return c.slots.length})}).length;
-  $("#arch-note").textContent=months.length?n(pubDays)+" published day"+(pubDays==1?"":"s")+" in "+pubMonths+" month"+(pubMonths==1?"":"s")+(filtered()?" match the current edition/date filters":"")+". Click a day in a calendar to jump to it.":"No published days in this range.";
-  var vis=months.slice(0,mshown);
-  if(Object.keys(openMonths).length===0)vis.slice(0,2).forEach(function(m){openMonths[m]=true});
-  $("#archive").innerHTML=vis.map(function(m){
+  var pubDays=pd_(list), pubMonths=months.filter(function(m){return by[m].some(function(c){return c.slots.length})}).length;
+  $("#arch-note").innerHTML=months.length?archNote(pubDays,pubMonths,list):"No published days in this range.";
+  var rows=B?B.rows:[], gm=[], g={};
+  rows.forEach(function(c){var m=c.date.slice(0,7);if(!g[m]){g[m]=[];gm.push(m)}g[m].push(c)});
+  var body=gm.map(function(m){
     var cnt=by[m].reduce(function(a,c){return a+c.slots.length},0), sh=SHARDS.filter(function(s){return s.month===m})[0];
-    return '<details class="month" id="m-'+m+'" data-m="'+m+'"'+(openMonths[m]?" open":"")+'><summary><div class="mt"><h3>'+esc(monthName(m))+'</h3>'+
+    return '<details class="month" id="m-'+m+'" data-m="'+m+'" open><summary><div class="mt"><h3>'+esc(monthName(m))+'</h3>'+
       '<span>'+pd_(by[m])+' day'+(pd_(by[m])==1?'':'s')+' · '+cnt+' edition'+(cnt==1?'':'s')+(sh?' · '+n(sh.items)+' links':'')+'</span></div>'+heat(m)+'</summary>'+
-      '<div class="days" data-days="'+m+'">'+(openMonths[m]?daysHtml(by[m]):'')+'</div></details>'}).join("");
-  $("#arch-more").hidden=months.length<=mshown;$("#arch-more").textContent=state.sort==="old"?"Later months ("+(months.length-mshown)+")":"Older months ("+(months.length-mshown)+")";
-  ARCH_BY=by;
+      '<div class="days" data-days="'+m+'">'+daysHtml(g[m])+'</div></details>'}).join("");
+  if(B&&!rows.length)body='<div class="empty arch-gap"><b>Nothing published '+esc(archRange(B))+'</b>Use the buttons to keep going.</div>';
+  $("#archive").innerHTML=B?archPager("top")+body+archPager("bot"):"";
+  $("#arch-more").hidden=true;
 }
-var ARCH_BY={};
+// scroll an element to just under the sticky search bar (taller on desktop, where the filters sit inside it)
+function scrollUnder(el){if(!el)return;var sb=$(".searchbox"), off=(sb?sb.getBoundingClientRect().height:0)+14;
+  window.scrollTo({top:Math.max(0,el.getBoundingClientRect().top+window.scrollY-off),behavior:"smooth"})}
+function archTop(){scrollUnder($("#archive-block"))}
+function goPage(j){var b=ARCH.blocks[j];if(!b)return;state.archive=j?b.from:"";PUSH=true;render();archTop()}
 function pd_(list){return list.filter(function(c){return c.slots.length}).length}
 function daysHtml(list){return list.map(function(c){
   return '<div class="day" id="d-'+c.date+'"><div class="dl"><b>'+esc(fmt(c.date,{day:"numeric"}))+'</b><span>'+esc(fmt(c.date,{weekday:"short"}))+'</span><small>'+c.slots.length+'/4</small></div>'+
@@ -244,13 +288,14 @@ function heat(m){
   return '<div class="heat" aria-label="Calendar of published days"><div class="hw"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i></div><div class="hg">'+cells+'</div></div>';
 }
 function jumpTo(m,day){
-  var idx=-1, months=Object.keys(ARCH_BY);
-  if(!ARCH_BY[m]){state.from="";state.to="";$("#from").value="";$("#to").value="";}
-  openMonths[m]=true; render();
-  var keys=[].slice.call(document.querySelectorAll("#archive .month")).map(function(x){return x.dataset.m});
-  while(keys.indexOf(m)<0&&mshown<1e4){mshown+=MPAGE;renderArchive();keys=[].slice.call(document.querySelectorAll("#archive .month")).map(function(x){return x.dataset.m})}
+  function has(){return ARCH.list.some(function(c){return day?c.date===day:c.date.slice(0,7)===m})}
+  if(!has()){state.from="";state.to="";$("#from").value="";$("#to").value="";state.slot=[];render();
+    if(!has()){state.q="";$("#q").value="";state.medium=[];state.type=[];state.tag=[];render()}}
+  var pick=day;
+  if(!pick){var hit=ARCH.list.filter(function(c){return c.date.slice(0,7)===m});if(!hit.length)return;pick=(state.sort==="old"?hit[hit.length-1]:hit[0]).date}
+  state.archive=pick;PUSH=true;render();
   var target=day?document.getElementById("d-"+day):document.getElementById("m-"+m);
-  if(target){target.scrollIntoView({behavior:"smooth",block:"start"});if(day){target.classList.add("flash");setTimeout(function(){target.classList.remove("flash")},1800)}}
+  if(target){scrollUnder(target);if(day){target.classList.add("flash");setTimeout(function(){target.classList.remove("flash")},1800)}}
 }
 function hl(text,toks){
   text=String(text||""); if(!toks.length)return esc(text);
@@ -280,7 +325,7 @@ function itemRow(it,toks){
 }
 function tagLabel(t){if(MLABEL[t])return MLABEL[t];if(SLABEL[t])return SLABEL[t].split(" · ")[0];if(/^\d{4}-\d\d-\d\d$/.test(t))return niceDate(t);return TLABEL[t]||cap(t)}
 function groupOf(t){if(MLABEL[t])return"medium";if(SLABEL[t])return"slot";if(/^\d{4}-\d\d-\d\d$/.test(t))return"date";if(D.facets.type.indexOf(t)>=0)return"type";return"tag"}
-function reset(){shown=PAGE;eshown=EPAGE}
+function reset(keep){shown=PAGE;eshown=EPAGE;if(!keep)state.archive=""}
 function toggle(g,k){var a=state[g],i=a.indexOf(k);if(i>=0)a.splice(i,1);else a.push(k);reset();render()}
 
 /* ---------------- inline report reader ---------------- */
@@ -333,19 +378,17 @@ function bind(){
       if(g==="date"){state.from=t;state.to=t;$("#from").value=t;$("#to").value=t;reset();render()}else if(state[g].indexOf(t)<0)toggle(g,t);
       window.scrollTo({top:$("#results").offsetTop-120,behavior:"smooth"});return}
     var h=e.target.closest("[data-day]");if(h){e.preventDefault();jumpTo(h.dataset.day.slice(0,7),h.dataset.day);return}
-    var s=e.target.closest(".segb");if(s){if(state.sort!==s.dataset.sort){state.sort=s.dataset.sort;openMonths={};mshown=MPAGE}reset();render();return}
+    var s=e.target.closest(".segb");if(s){if(state.sort!==s.dataset.sort){state.sort=s.dataset.sort;reset()}render();return}
+    var pg=e.target.closest("[data-apage]");if(pg){goPage(+pg.dataset.apage);return}
   });
-  $("#archive").addEventListener("toggle",function(e){var d=e.target;if(!d.dataset||!d.dataset.m)return;openMonths[d.dataset.m]=d.open;
-    var box=d.querySelector(".days");if(d.open&&!box.innerHTML)box.innerHTML=daysHtml(ARCH_BY[d.dataset.m]||[])},true);
   $("#jump").addEventListener("change",function(e){if(e.target.value)jumpTo(e.target.value);e.target.value=""});
-  $("#arch-more").addEventListener("click",function(){mshown+=MPAGE;renderArchive()});
   if(window.DDTTS)window.DDTTS.attach($("#rd-tts-play"),$("#rd-tts-stop"),function(){var b=$("#rd-body");return b.querySelector(".empty")?null:b});
   $("#rd-close").addEventListener("click",closeReport);$("#rd-close2").addEventListener("click",closeReport);
   $("#clear").addEventListener("click",function(){var keep=state.report,srt=state.sort;state=blank();state.report=keep;state.sort=srt;$("#q").value="";$("#from").value="";$("#to").value="";reset();render()});
   $("#more").addEventListener("click",function(){shown+=PAGE;render()});
   $("#eds-more").addEventListener("click",function(){eshown+=EPAGE;render()});
   $("#ftoggle").addEventListener("click",function(){var f=$("#filters"),o=f.classList.toggle("open");this.setAttribute("aria-expanded",o)});
-  window.addEventListener("hashchange",function(){readHash();reset();render()});
+  window.addEventListener("hashchange",function(){var pa=state.archive;readHash();reset(true);render();if(state.archive!==pa)archTop()});
   document.addEventListener("keydown",function(e){if(e.key==="/"&&document.activeElement!==$("#q")&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();$("#q").focus()}
     if(e.key==="Escape"){if(document.activeElement===$("#q")){$("#q").value="";state.q="";render()}else if(!$("#reader").hidden)closeReport()}});
 }
