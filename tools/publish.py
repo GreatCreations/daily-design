@@ -1072,8 +1072,8 @@ font:600 clamp(16px,2.6vw,19px)/1.3 var(--mono);overflow-wrap:anywhere;user-sele
 .ct-rate{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px 12px;display:flex;flex-direction:column}
 .ct-rate h3{font:700 15px/1.25 var(--sans);color:var(--ink);margin:0 0 4px}
 .ct-rate>p{margin:0 0 10px!important;font-size:13px!important;line-height:1.45;color:var(--mut)!important}
-.ct-rate dl{margin:auto 0 0;display:flex;gap:10px;border-top:1px solid var(--line);padding-top:10px}
-.ct-rate dl div{flex:1 1 0;min-width:0}
+.ct-rate dl{margin:auto 0 0;display:grid;grid-template-rows:auto auto;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);column-gap:10px;align-items:end;border-top:1px solid var(--line);padding-top:10px}
+.ct-rate dl div{display:contents}
 .ct-rate dt{font:600 10.5px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin:0 0 4px}
 .ct-rate dd{margin:0;font:700 22px/1 var(--sans);color:var(--ink)}.ct-rate dd small{font:500 12px var(--sans);color:var(--mut);margin-left:2px}
 .ct-rate:nth-child(2) dd{color:var(--ink)}
