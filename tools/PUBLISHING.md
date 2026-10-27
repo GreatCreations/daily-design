@@ -67,6 +67,11 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    replace it. The 5 ads (3 sponsor, 2 subscribe) are used in list order from a per-page offset, so the same ad never sits in two
    categories back to back. Section item counts don't include ads, and Listen skips them. Edit the file and run `publish.py`; any change to the
    file rebuilds every edition page.
+6h. **About page extras** (`build_about_page()`): the four edition cards always sit 4 across in one row (sizes scale down with the
+   screen width, down to phones). Under the intro, "Daily Design since <launch date>" reads the `launch` entry in
+   `tools/special-days.json`. "The archive and sub access" note uses `SUB_LOCK_DATE` / `SUB_FROM` / `FREE_THROUGH` in `publish.py`:
+   before Nov 8, 2026 00:00 Pacific it reads "Starting Nov 8, 2026, ... will become sub access ...", and from then on "Since Nov 8, 2026,
+   ... become sub access ...". The browser picks the version from its clock; the static HTML (no JS) uses the Pacific date of the last publish.
 6f. **Time zones.** Editions are filed by Pacific date and timed in Pacific time (America/Vancouver).
    - **Label:** every displayed slot time gets a label, e.g. "7 AM PDT". It comes from one constant, `TZ_LABEL`, in
      `tools/publish.py` and `assets/app.js` (keep the two the same). `"auto"` means PDT or PST by the old daylight rule for the date shown,

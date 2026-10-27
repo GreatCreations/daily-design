@@ -1461,10 +1461,14 @@ ABOUT_CSS = """<style>
 .ab h2{font:400 clamp(26px,4vw,34px)/1.1 var(--serif);margin:30px 0 10px}
 .ab h3{font:700 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px}
 .ab p{color:#d5d1c8;line-height:1.55}
-.ab-eds{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.ab-eds li{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:14px;padding:14px 15px}
-.ab-eds b{display:block;font:800 13px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
-.ab-eds span.n{display:block;font:700 16px/1.3 var(--sans);color:var(--ink);margin:4px 0 2px}.ab-eds small{color:var(--mut);font-size:13.5px}
+.ab-eds{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(4px,1.3vw,10px)}
+.ab-eds li{min-width:0;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:clamp(8px,1.6vw,14px);padding:clamp(7px,1.5vw,14px) clamp(5px,1.4vw,15px);overflow-wrap:anywhere;hyphens:auto}
+.ab-eds b{display:block;font:800 clamp(9.5px,1.25vw,13px)/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--c)}
+.ab-eds b .dd-loc{display:block;font-size:.9em;letter-spacing:0}
+.ab-eds span.n{display:block;font:700 clamp(11px,1.5vw,16px)/1.25 var(--sans);color:var(--ink);margin:4px 0 2px}.ab-eds small{display:block;color:var(--mut);font-size:clamp(10px,1.25vw,13.5px);line-height:1.3}
+.ab-since{margin:-4px 0 0;font:600 13px/1.4 var(--sans);letter-spacing:.04em;color:var(--mut)}.ab-since b{color:var(--aqua);font-weight:800}
+.ab-sub{margin:16px 0 0;padding:12px 14px;border:1px solid var(--line);border-left:3px solid #ffcf5a;border-radius:12px;background:rgba(255,207,90,.05)}
+.ab-sub b.g{color:#ffcf5a}
 .ab-map{columns:2 220px;column-gap:28px;margin:6px 0 0;padding-left:18px;color:#d5d1c8;line-height:1.7}
 .ab-map li{break-inside:avoid}
 .ab a{color:var(--ink);text-decoration-color:var(--amber);text-underline-offset:3px}.ab a:hover{color:#fff}
@@ -1475,6 +1479,37 @@ ABOUT_CSS = """<style>
 .ab-days a{display:inline-block;margin-right:8px;font-weight:700;text-decoration:none;color:var(--c)}.ab-days a:hover,.ab-days a:focus-visible{text-decoration:underline}
 .ab .dd-tz{font-size:.88em}
 </style>"""
+
+SUB_LOCK_DATE = "2026-11-08"  # first sub-access locks (editions dated from SUB_FROM, 7 days after they publish)
+SUB_FROM = "2026-11-01"
+FREE_THROUGH = "2026-10-31"
+
+
+def short_date(d):
+    d = dt.date.fromisoformat(d)
+    return "%s %d, %d" % (d.strftime("%b"), d.day, d.year)
+
+
+def sub_access_text(past):
+    """About-page note on the sub access archive. past=False before SUB_LOCK_DATE (Pacific), True on/after it."""
+    lock, frm, free = short_date(SUB_LOCK_DATE), short_date(SUB_FROM), short_date(FREE_THROUGH)
+    if past:
+        return ("Since %s, editions dated %s and later become <b class=\"g\">sub access</b> (members only) 7 days after they publish. "
+                "Everything dated through %s stays free forever.") % (lock, frm, free)
+    return ("Starting %s, editions dated %s and later will become <b class=\"g\">sub access</b> (members only) 7 days after they publish. "
+            "Everything dated through %s stays free forever.") % (lock, frm, free)
+
+
+def launch_date():
+    p = os.path.join(REPO, "tools", "special-days.json")
+    try:
+        for d in json.load(open(p, encoding="utf-8")).get("days", []):
+            if isinstance(d, dict) and d.get("type") == "launch" and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d.get("date", "")):
+                return d["date"]
+    except (OSError, ValueError):
+        pass
+    return None
+
 
 SLOT_BLURB = {"morning": "The briefing", "noon": "The field report", "best": "The best-of", "hottest": "The hot list"}  # from the index hero copy
 
@@ -1534,6 +1569,12 @@ def build_about_page(editions):
         months[-1][1].append('<li><span class="d">%s</span>%s</li>' % (day.strftime("%a %b ") + str(day.day), links))
     month_html = "".join('<h3 class="ab-month">%s</h3><ul class="ab-days">%s</ul>' % (
         dt.date.fromisoformat(m + "-01").strftime("%B %Y"), "".join(li)) for m, li in months)
+    ld_ = launch_date()
+    since = ('<p class="ab-since">Daily Design since <b><time datetime="%s">%s</time></b></p>\n' % (ld_, short_date(ld_))) if ld_ else ""
+    sub = ('<h2>The archive and sub access</h2>\n<p class="ab-sub" id="ab-sub" data-lock="%sT00:00:00-07:00" data-will="%s" data-did="%s">%s</p>\n'
+           '<script>(function(){var e=document.getElementById("ab-sub");if(!e)return;var t=Date.parse(e.dataset.lock);'
+           'if(!isNaN(t))e.innerHTML=Date.now()>=t?e.dataset.did:e.dataset.will;})();</script>') % (
+        SUB_LOCK_DATE, esc(sub_access_text(False)), esc(sub_access_text(True)), sub_access_text(today >= SUB_LOCK_DATE))
     doc = """<!doctype html>
 <html lang="en">
 <head>
@@ -1552,9 +1593,10 @@ def build_about_page(editions):
 <div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · About">Daily Design · About</a></div>
 <h1 id="ab-h">About <em>Daily Design</em></h1>
 <p class="lede">Daily Design is a public archive of AI design research digests from <a href="%s" rel="noopener">%s</a>: four editions a day on how AI is changing creative work, across image, video, 3D, code/UI, sound, games and mashups.</p>
-<h2>Four editions a day</h2>
+%s<h2>Four editions a day</h2>
 <ul class="ab-eds">%s</ul>
 <p>Editions are dated and timed in Pacific time (Vancouver), shown as <span class="dd-tz">%s</span>. If your clock differs, your own local time is shown in brackets.</p>
+%s
 <h2>How it works</h2>
 <p>Every edition links straight to the original creators and sources. Engagement numbers were read when each edition was compiled and will have changed since. Sponsors never affect what we pick or how it ranks.</p>
 <p>The whole archive is searchable: search every edition and link, then filter by medium, type, edition and date, or browse the archive calendar day by day.</p>
@@ -1576,7 +1618,7 @@ def build_about_page(editions):
 <script src="assets/tzlocal.js" defer></script>
 </body>
 </html>
-""" % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, eds, tz_label(today), CONTACT_PATH, series,
+""" % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, since, eds, tz_label(today), sub, CONTACT_PATH, series,
        CONTACT_PATH, ABOUT_PATH, month_html, credit_html("", page="about"))
     if write_if_changed(os.path.join(REPO, ABOUT_PATH), doc):
         log("about page", ABOUT_PATH)

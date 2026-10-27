@@ -53,10 +53,14 @@ font:600 clamp(16px,2.6vw,19px)/1.3 var(--mono);overflow-wrap:anywhere;user-sele
 .ab h2{font:400 clamp(26px,4vw,34px)/1.1 var(--serif);margin:30px 0 10px}
 .ab h3{font:700 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px}
 .ab p{color:#d5d1c8;line-height:1.55}
-.ab-eds{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.ab-eds li{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:14px;padding:14px 15px}
-.ab-eds b{display:block;font:800 13px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
-.ab-eds span.n{display:block;font:700 16px/1.3 var(--sans);color:var(--ink);margin:4px 0 2px}.ab-eds small{color:var(--mut);font-size:13.5px}
+.ab-eds{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(4px,1.3vw,10px)}
+.ab-eds li{min-width:0;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:clamp(8px,1.6vw,14px);padding:clamp(7px,1.5vw,14px) clamp(5px,1.4vw,15px);overflow-wrap:anywhere;hyphens:auto}
+.ab-eds b{display:block;font:800 clamp(9.5px,1.25vw,13px)/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--c)}
+.ab-eds b .dd-loc{display:block;font-size:.9em;letter-spacing:0}
+.ab-eds span.n{display:block;font:700 clamp(11px,1.5vw,16px)/1.25 var(--sans);color:var(--ink);margin:4px 0 2px}.ab-eds small{display:block;color:var(--mut);font-size:clamp(10px,1.25vw,13.5px);line-height:1.3}
+.ab-since{margin:-4px 0 0;font:600 13px/1.4 var(--sans);letter-spacing:.04em;color:var(--mut)}.ab-since b{color:var(--aqua);font-weight:800}
+.ab-sub{margin:16px 0 0;padding:12px 14px;border:1px solid var(--line);border-left:3px solid #ffcf5a;border-radius:12px;background:rgba(255,207,90,.05)}
+.ab-sub b.g{color:#ffcf5a}
 .ab-map{columns:2 220px;column-gap:28px;margin:6px 0 0;padding-left:18px;color:#d5d1c8;line-height:1.7}
 .ab-map li{break-inside:avoid}
 .ab a{color:var(--ink);text-decoration-color:var(--amber);text-underline-offset:3px}.ab a:hover{color:#fff}
@@ -75,9 +79,13 @@ font:600 clamp(16px,2.6vw,19px)/1.3 var(--mono);overflow-wrap:anywhere;user-sele
 <div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · About">Daily Design · About</a></div>
 <h1 id="ab-h">About <em>Daily Design</em></h1>
 <p class="lede">Daily Design is a public archive of AI design research digests from <a href="https://greatcreationstudios.greatcreations.art/" rel="noopener">Great Creation Studios</a>: four editions a day on how AI is changing creative work, across image, video, 3D, code/UI, sound, games and mashups.</p>
+<p class="ab-since">Daily Design since <b><time datetime="2026-10-16">Oct 16, 2026</time></b></p>
 <h2>Four editions a day</h2>
 <ul class="ab-eds"><li style="--c:#f5a524"><b>7 AM <span class="dd-tz">PDT</span> <span class="dd-loc" data-pt="2026-10-27T07:00:00-07:00" data-ptd="2026-10-27" hidden></span></b><span class="n">AI Design Daily</span><small>The briefing</small></li><li style="--c:#22e0cf"><b>Noon <span class="dd-tz">PDT</span> <span class="dd-loc" data-pt="2026-10-27T12:00:00-07:00" data-ptd="2026-10-27" hidden></span></b><span class="n">AI Design in Use</span><small>The field report</small></li><li style="--c:#9b6bff"><b>6 PM <span class="dd-tz">PDT</span> <span class="dd-loc" data-pt="2026-10-27T18:00:00-07:00" data-ptd="2026-10-27" hidden></span></b><span class="n">Best of the Day</span><small>The best-of</small></li><li style="--c:#ff5a2e"><b>8 PM <span class="dd-tz">PDT</span> <span class="dd-loc" data-pt="2026-10-27T20:00:00-07:00" data-ptd="2026-10-27" hidden></span></b><span class="n">Hottest Right Now</span><small>The hot list</small></li></ul>
 <p>Editions are dated and timed in Pacific time (Vancouver), shown as <span class="dd-tz">PDT</span>. If your clock differs, your own local time is shown in brackets.</p>
+<h2>The archive and sub access</h2>
+<p class="ab-sub" id="ab-sub" data-lock="2026-11-08T00:00:00-07:00" data-will="Starting Nov 8, 2026, editions dated Nov 1, 2026 and later will become &lt;b class=&quot;g&quot;&gt;sub access&lt;/b&gt; (members only) 7 days after they publish. Everything dated through Oct 31, 2026 stays free forever." data-did="Since Nov 8, 2026, editions dated Nov 1, 2026 and later become &lt;b class=&quot;g&quot;&gt;sub access&lt;/b&gt; (members only) 7 days after they publish. Everything dated through Oct 31, 2026 stays free forever.">Starting Nov 8, 2026, editions dated Nov 1, 2026 and later will become <b class="g">sub access</b> (members only) 7 days after they publish. Everything dated through Oct 31, 2026 stays free forever.</p>
+<script>(function(){var e=document.getElementById("ab-sub");if(!e)return;var t=Date.parse(e.dataset.lock);if(!isNaN(t))e.innerHTML=Date.now()>=t?e.dataset.did:e.dataset.will;})();</script>
 <h2>How it works</h2>
 <p>Every edition links straight to the original creators and sources. Engagement numbers were read when each edition was compiled and will have changed since. Sponsors never affect what we pick or how it ranks.</p>
 <p>The whole archive is searchable: search every edition and link, then filter by medium, type, edition and date, or browse the archive calendar day by day.</p>
