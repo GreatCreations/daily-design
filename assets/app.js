@@ -30,7 +30,7 @@ fetch("data/index.json").then(function(r){if(!r.ok)throw new Error(r.status);ret
   $("#items").innerHTML='<div class="empty"><b>Could not load the index</b>Please reload the page.</div>'});
 
 function init(data){
-  D=data; EDS=D.editions; CAL=D.calendar.slice(); MAINT={}; (D.maintenance||[]).forEach(function(d){MAINT[d]=1}); readyToday(); SHARDS=D.shards;
+  D=data; EDS=D.editions; CAL=D.calendar.slice(); MAINT={}; LAUNCH={}; if(D.special)D.special.forEach(function(x){(x.type==="launch"?LAUNCH:MAINT)[x.date]=1}); else (D.maintenance||[]).forEach(function(d){MAINT[d]=1}); readyToday(); SHARDS=D.shards;
   D.facets.medium.forEach(function(m){MLABEL[m.key]=m.label});
   D.facets.slot.forEach(function(s){SLABEL[s.key]=s.label;SINFO[s.key]=s});
   EDS.forEach(function(e){EDBY[e.date+"/"+e.slot]=e;e._hay=norm([e.title,e.headline,e.summary,e.date,niceDate(e.date),e.slot,e.time,e.kind==="report"?"report":""].join(" "))});
@@ -216,7 +216,7 @@ function renderLatest(){
    replaces it with the 14 days before. Unfiltered pages are fixed calendar windows counted back from the newest day (forward
    from the oldest when sorted oldest first), so #archive=<first date of the page> always opens the same days. With a search or
    filter, pages count matching days instead: the first 8, then 14 each. Only the current page's rows are rendered. */
-var MAINT={}; // maintenance days (index.json 'maintenance', from tools/maintenance.json): red on the calendars, no row, never published
+var MAINT={}, LAUNCH={}; // special days (index.json 'special', from tools/special-days.json): maintenance = red, no row, never published; launch = aqua-green, clickable only if it has editions
 var AFIRST=8, ASTEP=14, ARCH={blocks:[],i:0,list:[]}, ARCH_MATCH=null, PUSH=false;
 function archiveDays(){
   return CAL.filter(function(c){if(!inRange(c.date))return false;if(state.slot.length&&!c.slots.some(function(s){return state.slot.indexOf(s)>=0}))return false;
@@ -285,7 +285,7 @@ function heat(m){
   var pub={};CAL.forEach(function(c){if(c.date.slice(0,7)===m)pub[c.date]=c.slots.length});
   for(var i=0;i<dow;i++)cells+='<i class="pad"></i>';
   for(var d=1;d<=last;d++){var ds=m+"-"+(d<10?"0":"")+d, k=pub[ds]||0;
-    cells+=k?'<button type="button" class="hd l'+k+(inRange(ds)?'':' out')+'" data-day="'+ds+'" title="'+esc(niceDate(ds))+': '+k+' of 4 editions">'+d+'</button>':MAINT[ds]?'<i class="hd mnt" role="img" title="'+esc(niceDate(ds))+': Maintenance · nothing published" aria-label="'+esc(niceDate(ds))+': Maintenance · nothing published">'+d+'</i>'
+    cells+=k?'<button type="button" class="hd l'+k+(LAUNCH[ds]?' lch':'')+(inRange(ds)?'':' out')+'" data-day="'+ds+'" title="'+esc(niceDate(ds))+': '+(LAUNCH[ds]?'Launch day · ':'')+k+' of 4 editions">'+d+'</button>':LAUNCH[ds]?'<i class="hd lnch" role="img" title="'+esc(niceDate(ds))+': Launch day" aria-label="'+esc(niceDate(ds))+': Launch day">'+d+'</i>':MAINT[ds]?'<i class="hd mnt" role="img" title="'+esc(niceDate(ds))+': Maintenance · nothing published" aria-label="'+esc(niceDate(ds))+': Maintenance · nothing published">'+d+'</i>'
       :'<i class="hd l0" title="'+esc(niceDate(ds))+': nothing published">'+d+'</i>'}
   return '<div class="heat" aria-label="Calendar of published days"><div class="hw"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i></div><div class="hg">'+cells+'</div></div>';
 }

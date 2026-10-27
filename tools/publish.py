@@ -1021,20 +1021,29 @@ def build_report_pages(recs):
     return pages
 
 
-def load_maintenance(days):
-    """Maintenance days from tools/maintenance.json -> sorted dates for index.json (red on the archive calendars, never published).
-    Bad entries are skipped; a date that has an edition is dropped."""
-    p = os.path.join(REPO, "tools", "maintenance.json")
+SPECIAL_TYPES = ("maintenance", "launch")
+
+
+def load_special_days(days):
+    """Special days from tools/special-days.json -> [{date, type}] for index.json, newest first.
+    type 'maintenance' (default): red on the archive calendars, never published; dropped if the date has an edition.
+    type 'launch': aqua-green on the calendars; kept either way (a launch day with editions stays clickable).
+    Bad entries are skipped."""
+    p = os.path.join(REPO, "tools", "special-days.json")
     try:
         raw = json.load(open(p, encoding="utf-8")).get("days", [])
     except FileNotFoundError:
         return []
-    out = set()
+    out = {}
     for d in raw:
+        t = (d.get("type") or "maintenance") if isinstance(d, dict) else "maintenance"
         d = d.get("date") if isinstance(d, dict) else d
-        if isinstance(d, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d) and d not in days:
-            out.add(d)
-    return sorted(out, reverse=True)
+        if not (isinstance(d, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d) and t in SPECIAL_TYPES):
+            continue
+        if t == "maintenance" and d in days:
+            continue
+        out[d] = t
+    return [dict(date=d, type=out[d]) for d in sorted(out, reverse=True)]
 
 
 def build_index_seo(editions):
@@ -1515,7 +1524,8 @@ def main():
         shards=[dict(month=m, path="data/items/%s.json" % m, items=len(v),
                      editions=sum(1 for e in editions if e["date"][:7] == m)) for m, v in sorted(shards.items(), reverse=True)],
         editions=editions)
-    data["maintenance"] = load_maintenance(days)
+    data["special"] = load_special_days(days)
+    data["maintenance"] = [x["date"] for x in data["special"] if x["type"] == "maintenance"]  # older app/gate builds
     write_if_changed(os.path.join(REPO, "data", "index.json"), jdump(data))
     # 4b. SEO: index head/static links, sitemap.xml, robots.txt, feed.xml
     build_index_seo(editions)

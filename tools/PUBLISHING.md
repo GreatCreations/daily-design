@@ -42,10 +42,14 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    With a search, edition filter or date range, pages count matching days instead: the first 8, then 14 each. Newer/Older buttons and
    the date range sit above and below the rows; the month heading and heatmap appear for each month on the page. Clicking a heatmap day
    (or picking a month in "Jump to") opens the page holding that day and flashes it. Any filter change goes back to the first page.
-6d. **Maintenance days** (`tools/maintenance.json` → `maintenance` in `data/index.json`, every run): dates listed under `days`
-   (`{"date": "YYYY-MM-DD", "note": "..."}`) show on the archive month calendars in a flat 8 PM red with a soft red ring (no stripes), with the hover/label
-   "Maintenance · nothing published". They are not clickable, get no archive row and never count as published. To add one, add
-   its date to the file and run `publish.py`. A date that has an edition is dropped from the list. Currently Oct 21 and Oct 22, 2026.
+6d. **Special days** (`tools/special-days.json` → `special` in `data/index.json` as `[{date, type}]`, every run; `maintenance` keeps the
+   maintenance dates for older builds): each entry under `days` is `{"date": "YYYY-MM-DD", "type": "maintenance" | "launch", "note": "..."}`
+   (no type = maintenance). Maintenance days show on the archive month calendars in a flat 8 PM red with a soft red ring (no stripes),
+   hover/label "Maintenance · nothing published"; they are not clickable, get no archive row, never count as published, and are dropped
+   if the date has an edition. Launch days show in the theme aqua-green (`--aqua`) with a soft green ring, hover/label "Launch day";
+   with no editions they are not clickable and not counted, with editions the day stays a normal clickable day with a green ring and
+   "Launch day · N of 4 editions". To add one, add it to the file and run `publish.py`. Currently: launch Oct 16, 2026; maintenance
+   Oct 21 and Oct 22, 2026.
 7. **Item parsing** reads list items in each edition's `.md`:
    - `- [Title](url), type. Note…` (morning style)
    - `1. **[Title](url)**: note` (try-this style)

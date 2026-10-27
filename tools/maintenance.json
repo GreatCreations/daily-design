@@ -1,7 +1,0 @@
-{
-  "about": "Days the site was down for maintenance. Each date shows red on the archive calendars ('Maintenance · nothing published'), is not clickable and never counts as published. Add a date here and run tools/publish.py. A date that has an edition is ignored.",
-  "days": [
-    {"date": "2026-10-21", "note": "site maintenance"},
-    {"date": "2026-10-22", "note": "site maintenance"}
-  ]
-}
