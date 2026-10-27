@@ -82,12 +82,30 @@ Re-running with nothing new prints `nothing new to publish`.
   `active`, `start`, `end`, and `banner` = `{placements, image, alt, url, active, start, end}` (`image` is an https URL or a repo path such as
   `assets/sponsors/acme-1200x300.webp`; `url` defaults to the sponsor `url`; `alt` should say what the ad says).
   The spot is display-only: nothing in it feeds item parsing, ranking or the index data.
-- **Banner spec** (what to ask sponsors for):
-  - 1200 × 300 px (4:1), PNG, JPG or WebP, 300 KB max. Supply 2400 × 600 for extra sharpness if it stays under 300 KB.
-  - It is shown at the width of the content column (up to about 1200 px on the index, 1100 px on editions, about 760 px on report
-    pages, about 360 px on phones) and always keeps 4:1, so it is scaled, never cropped differently per device.
-  - Safe area: keep logo and text inside the central 1080 × 240 px (60 px clear on every side). Text must stay readable at 360 px wide,
-    so use a headline of 48 px or more at full size and no more than about 8 words; avoid small print.
-  - Corners are rounded by the site (about 14 px), so keep nothing important in the corners.
-  - No fake buttons that imitate site controls, no flashing or animation. The site adds the **Sponsored** label above the banner
-    (required disclosure in Canada); do not rely on the image to carry it.
+- **Banner spec** (what to ask sponsors for; also shown on `contact.html#sponsor`):
+  - `banner.type`: `"image"` (default), `"animated"` or `"video"`.
+  - **Static image**: 1200 × 300 px (4:1), PNG, JPG or WebP, 300 KB max (2400 × 600 is fine if it stays under 300 KB).
+  - **Animated**: GIF or animated WebP, 1200 × 300, 1.5 MB max, a loop of 15 s or less. Needs `banner.poster`, a static
+    1200 × 300 frame.
+  - **Video**: MP4 (H.264) or WebM, 1200 × 300 or 2400 × 600, 4 MB max, 30 s or less (optional `banner.webm` adds a WebM source next to the MP4). It may include audio but always starts
+    muted; sound is viewer-controlled through a small mute/unmute button next to the Sponsored label (shown only when the video
+    has an audio track: ffprobe checks repo files, or set `banner.audio: true` for an https video). Each button controls only its own ad
+    (ads are independent), and nothing is remembered between page loads. It plays inline, looping, with no other controls, and only loads and plays
+    when it is near the viewport. `banner.poster` is required
+    (a video banner without a poster is not shown).
+  - Visitors with `prefers-reduced-motion: reduce` see the poster/static frame instead of the animation or video.
+  - Banners lazy-load (`loading="lazy"`; video `preload="none"` until it comes into view).
+  - Shown at the width of the content column (about 1200 px on the index, 1100 px on editions, about 950 px on report pages,
+    about 360 px on phones), always 4:1, so it is scaled, never cropped differently per device.
+  - Safe area: keep logo and text inside the central 1080 × 240 px (60 px clear on every side); headline 48 px or more at full size,
+    about 8 words max. Corners are rounded by the site (about 14 px).
+  - No fake buttons that imitate site controls, and no rapid flashing (no more than 3 flashes per second). The site adds the
+    **Sponsored** label above every banner (required disclosure in Canada); do not rely on the image to carry it.
+- **House placeholder videos**: `sponsors.json` → `placeholders` → `top` / `links` = `{video, webm, poster, alt, audio}`. When a
+  placement has no active sponsor and its entry has a `poster` plus a `video` (MP4) and/or `webm` (https URL or existing repo file),
+  the slot plays that video (same rules: starts muted, per-ad sound button if it has audio, reduced-motion shows the poster, lazy)
+  linking to `contact.html#sponsor`, still labelled **Ad space**. If unset or a file is missing, the "Your ad here" card is shown.
+- **Rate card**: `sponsors.json` → `rates` (`currency`, `unit`, `note`, `footnote`, `packages` = `[{id, label, desc, static, motion}]`).
+  `publish.py` renders it on `contact.html#sponsor` ("Intro rates, USD per week"). Change the numbers there and re-run the publisher.
+  Intro rates: top $49 / lower $39 / both, same ad $75 / both, different ads $85 per week; animated or video +50%
+  ($74 / $59 / $112 / $128). Display-only; nothing here affects picks or rankings.

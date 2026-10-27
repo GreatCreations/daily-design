@@ -1,5 +1,5 @@
 {
- "_readme": "Sponsor spot for Daily Design. The first entry with active=true (and today's date inside its optional start/end, YYYY-MM-DD) is the sponsor. There are two placements. Near the top of the index, report pages and editions (\"top\"), and on the index above Recent links (\"links\"), there is a 4:1 landscape banner (1200x300) labelled Sponsored: the sponsor's banner image when banner.active is true and today is inside banner.start/end, otherwise a text card with its logo, name and line. With no active sponsor for a placement, its banner shows a 'Your ad here' placeholder linking to contact.html, and a short 'Sponsor Daily Design' invite always sits below each banner. Fields: name, line (one short sentence), url (https), logo (an https URL or a repo path such as assets/sponsors/acme.png), active, start, end, and banner {placements (where the banner shows: \"top\" = top of the index, reports and editions; \"links\" = the second spot on the index, above Recent links; one or both; default [\"top\"]), image (https URL or repo path, 1200x300 PNG/JPG/WebP, max 300 KB), alt (text describing the ad), url (click URL, https; defaults to url), active, start, end}. Links get rel=\"sponsored noopener\". Sponsors are display-only and never affect what is picked or how it ranks. Run tools/publish.py after editing. Banner spec: tools/PUBLISHING.md.",
+ "_readme": "Sponsor spot for Daily Design. The first entry with active=true (and today's date inside its optional start/end, YYYY-MM-DD) is the sponsor. There are two placements. Near the top of the index, report pages and editions (\"top\"), and on the index above Recent links (\"links\"), there is a 4:1 landscape banner (1200x300) labelled Sponsored: the sponsor's banner image when banner.active is true and today is inside banner.start/end, otherwise a text card with its logo, name and line. With no active sponsor for a placement, its banner shows a 'Your ad here' placeholder linking to contact.html, and a short 'Sponsor Daily Design' invite always sits below each banner. Fields: name, line (one short sentence), url (https), logo (an https URL or a repo path such as assets/sponsors/acme.png), active, start, end, and banner {type (\"image\", \"animated\" = GIF/animated WebP, or \"video\" = MP4/WebM; default image), webm (optional WebM source for video), audio (true for an https video with sound; repo files are checked automatically), poster (static 1200x300 frame, required for video and animated; shown to reduced-motion visitors), placements (where the banner shows: \"top\" = top of the index, reports and editions; \"links\" = the second spot on the index, above Recent links; one or both; default [\"top\"]), image (https URL or repo path, 1200x300 PNG/JPG/WebP, max 300 KB; animated max 1.5 MB; video max 4 MB and 30 s, may have audio: always starts muted, with a per-ad sound button), alt (text describing the ad), url (click URL, https; defaults to url), active, start, end}. Links get rel=\"sponsored noopener\". Sponsors are display-only and never affect what is picked or how it ranks. Run tools/publish.py after editing. Banner spec: tools/PUBLISHING.md. rates: the contact page rate card (currency, unit, note, footnote, packages [{id, label, desc, static, motion}]); edit the numbers and re-run tools/publish.py. placeholders: house videos for empty placements, {top|links: {video (MP4), webm, poster, alt, audio}}; unset = the 'Your ad here' card.",
  "sponsors": [
   {
    "name": "Example Tool",
@@ -10,6 +10,7 @@
    "start": "",
    "end": "",
    "banner": {
+    "type": "image",
     "placements": [
      "top"
     ],
@@ -18,8 +19,59 @@
     "url": "https://example.com/",
     "active": false,
     "start": "",
-    "end": ""
+    "end": "",
+    "poster": ""
    }
   }
- ]
+ ],
+ "rates": {
+  "currency": "USD",
+  "unit": "week",
+  "note": "Intro rates",
+  "footnote": "Sponsors never affect what we pick or how it ranks. Rates are introductory and may change; booked weeks keep their price.",
+  "packages": [
+   {
+    "id": "top",
+    "label": "Top banner",
+    "desc": "Top of the index, every report and every edition.",
+    "static": 49,
+    "motion": 74
+   },
+   {
+    "id": "lower",
+    "label": "Lower banner",
+    "desc": "On the index, just above the recent links.",
+    "static": 39,
+    "motion": 59
+   },
+   {
+    "id": "both-same",
+    "label": "Both spots, same ad",
+    "desc": "One banner and link in the top and lower spots.",
+    "static": 75,
+    "motion": 112
+   },
+   {
+    "id": "both-different",
+    "label": "Both spots, different ads",
+    "desc": "A different banner and link in each spot.",
+    "static": 85,
+    "motion": 128
+   }
+  ]
+ },
+ "placeholders": {
+  "top": {
+   "video": "",
+   "webm": "",
+   "poster": "",
+   "alt": "Advertise on Daily Design"
+  },
+  "links": {
+   "video": "",
+   "webm": "",
+   "poster": "",
+   "alt": "Advertise on Daily Design"
+  }
+ }
 }

@@ -284,10 +284,17 @@ def ensure_credit(doc):
 SPONSOR_CSS = """<style id="dd-spon-css">
 .dd-spon,.dd-spon *,.dd-ban,.dd-ban *{box-sizing:border-box;margin:0;letter-spacing:normal;text-transform:none}
 .dd-ban{--sc:var(--dd-accent,#f5a524);display:block;width:100%;font:500 14px/1.4 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:left}
-.dd-ban .dd-ban-lab{display:block;margin:0 0 6px 2px;font:700 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8d8a83}
+.dd-ban .dd-ban-hd{display:flex;align-items:center;gap:8px;min-height:20px;margin:0 0 6px 2px}
+.dd-ban button.dd-ban-mute{display:inline-flex;align-items:center;justify-content:center;width:22px;height:20px;padding:0;border:1px solid rgba(255,255,255,.18);border-radius:999px;
+background:transparent;color:#b9b6ae;cursor:pointer;line-height:0}
+.dd-ban button.dd-ban-mute:hover{color:#f1efe9;border-color:rgba(255,255,255,.35)}
+.dd-ban button.dd-ban-mute:focus-visible{outline:2px solid var(--sc);outline-offset:2px}
+.dd-ban button.dd-ban-mute.on{color:#0b0b0e;background:var(--sc);border-color:var(--sc)}
+.dd-ban .dd-ban-mute .i-on,.dd-ban .dd-ban-mute.on .i-off{display:none}.dd-ban .dd-ban-mute.on .i-on{display:block}
+.dd-ban .dd-ban-lab{display:block;margin:0;font:700 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8d8a83}
 .dd-ban .dd-ban-box{position:relative;display:block;width:100%;aspect-ratio:4/1;overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#111114;
 container-type:inline-size;text-decoration:none!important;color:#f1efe9!important}
-.dd-ban .dd-ban-box img{display:block;width:100%;height:100%;max-width:none;object-fit:cover}
+.dd-ban .dd-ban-box img,.dd-ban .dd-ban-box video{display:block;width:100%;height:100%;max-width:none;object-fit:cover}.dd-ban .dd-ban-box picture{display:block;width:100%;height:100%}
 .dd-ban a.dd-ban-box:hover,.dd-ban a.dd-ban-box:focus-visible{border-color:var(--sc);outline:none}
 .dd-ban .dd-ban-ph{border:1px dashed rgba(255,255,255,.22);
 background:radial-gradient(120% 160% at 0% 0%,rgba(245,165,36,.16),transparent 55%),radial-gradient(120% 160% at 100% 100%,rgba(34,224,207,.12),transparent 55%),
@@ -342,7 +349,9 @@ def load_sponsor(slot="top"):
         if slot not in places:
             continue
         sp = dict(sp, _banner=None)
-        if ban.get("active") and ban.get("image") and _in_dates(ban, today):
+        kind = (ban.get("type") or "image").lower()
+        if (ban.get("active") and ban.get("image") and _in_dates(ban, today)
+                and (kind != "video" or ban.get("poster"))):
             sp["_banner"] = ban
         return sp
     return None
@@ -350,6 +359,86 @@ def load_sponsor(slot="top"):
 
 def _asset(src, prefix):
     return src if re.match(r"https?://", src) else prefix + src.lstrip("/")
+
+
+BANNER_VIDEO_JS = """<script>(function(){if(window.__ddBanV)return;window.__ddBanV=1;
+function go(){var vs=[].slice.call(document.querySelectorAll("video.dd-ban-v"));if(!vs.length)return;
+var mq=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)");
+function still(){return mq&&mq.matches}
+function btn(v){var b=v.closest(".dd-ban");return b&&b.querySelector(".dd-ban-mute")}
+function sync(v){var b=btn(v);if(!b)return;b.setAttribute("aria-pressed",v.muted?"false":"true");b.setAttribute("aria-label",v.muted?"Unmute ad":"Mute ad");b.classList.toggle("on",!v.muted)}
+vs.forEach(function(v){v.muted=true;v.defaultMuted=true;v.controls=false;v.removeAttribute("controls");sync(v);v.addEventListener("volumechange",function(){sync(v)});
+ var b=btn(v);if(b)b.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();
+  if(v.muted){v.muted=false;v._user=true;v.preload="auto";var q=v.play();if(q&&q.catch)q.catch(function(){})}else v.muted=true;sync(v)})});
+function play(v){if((still()&&!v._user)||!v._in){v.pause();return}if(v.preload!=="auto"){v.preload="auto"}var p=v.play();if(p&&p.catch)p.catch(function(){})}
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target._in=e.isIntersecting;play(e.target)})},{rootMargin:"200px 0px"});vs.forEach(function(v){io.observe(v)})}
+else vs.forEach(function(v){v._in=true;play(v)});
+if(mq&&mq.addEventListener)mq.addEventListener("change",function(){vs.forEach(play)})}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()})();</script>"""
+
+
+MUTE_BTN = ('<button class="dd-ban-mute" type="button" aria-label="Unmute ad" aria-pressed="false" title="Sound on/off">'
+            '<svg class="i-off" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/>'
+            '<path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>'
+            '<svg class="i-on" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/>'
+            '<path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>')
+
+
+def banner_has_audio(ban):
+    """Whether a video banner has sound: probed with ffprobe for repo files, else the banner's "audio" flag."""
+    src = ban.get("image") or ""
+    if not re.match(r"https?://", src):
+        f = os.path.join(REPO, src.lstrip("/"))
+        if os.path.isfile(f) and shutil.which("ffprobe"):
+            try:
+                out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=index",
+                                      "-of", "csv=p=0", f], capture_output=True, text=True, timeout=20).stdout
+                return bool(out.strip())
+            except (OSError, subprocess.SubprocessError):
+                pass
+    return bool(ban.get("audio"))
+
+
+def placeholder_video(slot):
+    """House video shown in an empty placement: sponsors.json "placeholders" -> {slot: {video, webm, poster, alt}}.
+    Needs a poster and at least one of video (MP4) / webm, each an https URL or an existing repo file; otherwise None
+    (the 'Your ad here' card is shown)."""
+    try:
+        ph = (json.load(open(os.path.join(REPO, SPONSORS_FILE), encoding="utf-8")).get("placeholders") or {}).get(slot) or {}
+    except (OSError, ValueError):
+        return None
+    def ok(v):
+        return bool(v) and (re.match(r"https?://", v) or os.path.isfile(os.path.join(REPO, v.lstrip("/"))))
+    mp4, webm, poster = ph.get("video") or "", ph.get("webm") or "", ph.get("poster") or ""
+    if not ok(poster) or not (ok(mp4) or ok(webm)):
+        return None
+    return {"type": "video", "image": mp4 if ok(mp4) else webm, "webm": webm if (ok(webm) and ok(mp4)) else "",
+            "poster": poster, "alt": ph.get("alt") or "", "audio": ph.get("audio")}
+
+
+def _vtype(src):
+    return "video/webm" if src.lower().split("?")[0].endswith(".webm") else "video/mp4"
+
+
+def banner_media(ban, prefix, alt):
+    """The sponsor's banner media. type: "image" (default), "animated" (GIF / animated WebP) or "video" (MP4 / WebM).
+    Animated and video banners need a static poster (1200x300 frame): it is what reduced-motion visitors see.
+    Video is always muted, inline, looping, without controls, and only loads/plays when near the viewport."""
+    kind = (ban.get("type") or "image").lower()
+    src = _asset(ban["image"], prefix)
+    poster = _asset(ban["poster"], prefix) if ban.get("poster") else ""
+    if kind == "video" and poster:
+        return ('<video class="dd-ban-v" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback '
+                'poster="%s" width="1200" height="300" aria-label="%s">%s<source src="%s" type="%s"></video>%s') % (
+            esc(poster), esc(alt),
+            ('<source src="%s" type="video/webm">' % esc(_asset(ban["webm"], prefix))) if ban.get("webm") else "",
+            esc(src), _vtype(src), BANNER_VIDEO_JS)
+    if kind == "animated" and poster:
+        return ('<picture><source media="(prefers-reduced-motion: reduce)" srcset="%s">'
+                '<img src="%s" alt="%s" width="1200" height="300" loading="lazy" decoding="async"></picture>') % (
+            esc(poster), esc(src), esc(alt))
+    still = poster if kind == "video" else src  # a video without a poster is not shown as video
+    return '<img src="%s" alt="%s" width="1200" height="300" loading="lazy" decoding="async">' % (esc(still), esc(alt))
 
 
 def sponsor_html(prefix="", wrap="dd-spon-wrap", slot="top"):
@@ -361,19 +450,25 @@ def sponsor_html(prefix="", wrap="dd-spon-wrap", slot="top"):
     if sp and sp.get("_banner"):
         ban = sp["_banner"]
         url = ban.get("url") if re.match(r"https?://", ban.get("url") or "") else sp["url"]
-        banner = ('<div class="dd-ban" role="complementary" aria-label="Sponsored"><span class="dd-ban-lab">Sponsored</span>'
-                  '<a class="dd-ban-box" href="%s" rel="sponsored noopener" target="_blank">'
-                  '<img src="%s" alt="%s" width="1200" height="300" loading="lazy" decoding="async"></a></div>') % (
-            esc(url), esc(_asset(ban["image"], prefix)), esc(ban.get("alt") or ("Sponsored: " + sp["name"])))
+        media = banner_media(ban, prefix, ban.get("alt") or ("Sponsored: " + sp["name"]))
+        mute = MUTE_BTN if ("<video" in media and banner_has_audio(ban)) else ""
+        banner = ('<div class="dd-ban" role="complementary" aria-label="Sponsored"><div class="dd-ban-hd"><span class="dd-ban-lab">Sponsored</span>%s</div>'
+                  '<a class="dd-ban-box" href="%s" rel="sponsored noopener" target="_blank">%s</a></div>') % (mute, esc(url), media)
     elif sp:
         logo = sp.get("logo") or ""
         img = ('<img src="%s" alt="" width="120" height="120" loading="lazy">' % esc(_asset(logo, prefix))) if logo else ""
-        banner = ('<div class="dd-ban" role="complementary" aria-label="Sponsored"><span class="dd-ban-lab">Sponsored</span>'
+        banner = ('<div class="dd-ban" role="complementary" aria-label="Sponsored"><div class="dd-ban-hd"><span class="dd-ban-lab">Sponsored</span></div>'
                   '<a class="dd-ban-box" href="%s" rel="sponsored noopener" target="_blank"><span class="dd-ban-in dd-ban-txt">%s'
                   '<span><b>%s</b>%s</span></span></a></div>') % (
             esc(sp["url"]), img, esc(sp["name"]), ("<span>" + esc(sp["line"]) + "</span>") if sp.get("line") else "")
+    elif placeholder_video(slot):
+        ph = placeholder_video(slot)
+        media = banner_media(ph, prefix, ph.get("alt") or "Advertise on Daily Design")
+        mute = MUTE_BTN if ("<video" in media and banner_has_audio(ph)) else ""
+        banner = ('<div class="dd-ban" role="complementary" aria-label="Advertising space"><div class="dd-ban-hd"><span class="dd-ban-lab">Ad space</span>%s</div>'
+                  '<a class="dd-ban-box" href="%s%s#sponsor">%s</a></div>') % (mute, prefix, CONTACT_PATH, media)
     else:
-        banner = ('<div class="dd-ban" role="complementary" aria-label="Advertising space"><span class="dd-ban-lab">Ad space</span>'
+        banner = ('<div class="dd-ban" role="complementary" aria-label="Advertising space"><div class="dd-ban-hd"><span class="dd-ban-lab">Ad space</span></div>'
                   '<a class="dd-ban-box dd-ban-ph" href="%s%s#sponsor"><span class="dd-ban-in"><b>Your ad here</b>'
                   '<span class="dd-ban-dim">1200 × 300 banner</span></span></a></div>') % (prefix, CONTACT_PATH)
     invite = ('<aside class="dd-spon" aria-label="Sponsor Daily Design">'
@@ -970,6 +1065,22 @@ font:600 clamp(16px,2.6vw,19px)/1.3 var(--mono);overflow-wrap:anywhere;user-sele
 .ct-sec p{margin:0;color:#d5d1c8;font-size:15px;line-height:1.5}
 .ct-sp{scroll-margin-top:20px;margin:28px 0 0;padding:20px;border:1px dashed var(--line2);border-radius:16px}
 .ct-sp h2{font:400 28px/1.1 var(--serif);margin:0 0 8px}.ct-sp p{margin:0 0 14px;color:#d5d1c8}
+.ct-rates{margin:6px 0 16px}
+.ct-rates-h h3{font:700 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin:0 0 10px}
+.ct-rates-h p{margin:-4px 0 10px;font-size:13px;color:var(--mut)}
+.ct-rgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ct-rate{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px 12px;display:flex;flex-direction:column}
+.ct-rate h3{font:700 15px/1.25 var(--sans);color:var(--ink);margin:0 0 4px}
+.ct-rate>p{margin:0 0 10px!important;font-size:13px!important;line-height:1.45;color:var(--mut)!important}
+.ct-rate dl{margin:auto 0 0;display:flex;gap:10px;border-top:1px solid var(--line);padding-top:10px}
+.ct-rate dl div{flex:1 1 0;min-width:0}
+.ct-rate dt{font:600 10.5px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin:0 0 4px}
+.ct-rate dd{margin:0;font:700 22px/1 var(--sans);color:var(--ink)}.ct-rate dd small{font:500 12px var(--sans);color:var(--mut);margin-left:2px}
+.ct-rate:nth-child(2) dd{color:var(--ink)}
+.ct-spec{margin:0 0 16px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#0b0b0f}
+.ct-spec summary{cursor:pointer;font:600 14px var(--sans);color:var(--ink)}
+.ct-spec ul{margin:10px 0 2px;padding-left:18px;color:#d5d1c8;font-size:14px;line-height:1.5}.ct-spec li{margin:0 0 6px}
+@media (max-width:640px){.ct-rgrid{grid-template-columns:1fr}}
 @media (max-width:640px){.ct-card{padding:24px 16px 22px;border-radius:16px}.ct-btns{width:100%}.ct-btns .btn{flex:1 1 0;justify-content:center}}
 </style>"""
 
@@ -978,6 +1089,50 @@ function say(t){ok.textContent=t;clearTimeout(say.t);say.t=setTimeout(function()
 function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
 function legacy(){sel();var d=false;try{d=document.execCommand("copy")}catch(e){}say(d?"Copied":"Selected. Press Ctrl+C or ⌘C to copy.")}
 b.hidden=false;b.addEventListener("click",function(){if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(A).then(function(){sel();say("Copied")},legacy)}else legacy()})})();</script>"""
+
+
+DEFAULT_RATES = {"currency": "USD", "unit": "week", "note": "Intro rates", "packages": []}
+
+
+def load_rates():
+    try:
+        r = json.load(open(os.path.join(REPO, SPONSORS_FILE), encoding="utf-8")).get("rates") or {}
+    except (OSError, ValueError):
+        r = {}
+    return dict(DEFAULT_RATES, **r)
+
+
+def _money(v, cur):
+    v = float(v)
+    amt = ("%d" % v) if v == int(v) else ("%.2f" % v)
+    return ("$" + amt) if cur in ("USD", "CAD") else (amt + " " + cur)
+
+
+def rates_html():
+    """Rate card for the contact page, rendered from sponsors.json "rates". Display-only."""
+    r = load_rates()
+    pk = [x for x in r.get("packages", []) if x.get("label") and x.get("static") is not None]
+    if not pk:
+        return ""
+    cur, unit = r.get("currency", "USD"), r.get("unit", "week")
+    cards = "".join(
+        '<div class="ct-rate"><h3>%s</h3><p>%s</p><dl><div><dt>Static image</dt><dd>%s<small>/%s</small></dd></div>%s</dl></div>' % (
+            esc(x["label"]), esc(x.get("desc", "")), _money(x["static"], cur), esc(unit),
+            ('<div><dt>Animated or video</dt><dd>%s<small>/%s</small></dd></div>' % (_money(x["motion"], cur), esc(unit)))
+            if x.get("motion") is not None else "")
+        for x in pk)
+    return ('<div class="ct-rates"><div class="ct-rates-h"><h3>%s, %s per %s</h3>%s</div><div class="ct-rgrid">%s</div></div>') % (
+        esc(r.get("note") or "Rates"), esc(cur), esc(unit),
+        ('<p>%s</p>' % esc(r["footnote"])) if r.get("footnote") else "", cards)
+
+
+BANNER_SPEC_HTML = """<details class="ct-spec"><summary>Banner spec</summary><ul>
+<li><b>Static image:</b> 1200 × 300 px (4:1), PNG, JPG or WebP, up to 300 KB.</li>
+<li><b>Animated:</b> GIF or animated WebP, 1200 × 300, up to 1.5 MB, loop of 15 seconds or less, plus a static 1200 × 300 frame.</li>
+<li><b>Video:</b> MP4 (H.264) or WebM, 1200 × 300 or 2400 × 600, up to 4 MB, 30 seconds or less. It may include audio but always starts muted; viewers can turn the sound on with the small speaker button next to the Sponsored label. It loops, has no other controls, and needs a static 1200 × 300 poster frame.</li>
+<li>Visitors who ask for reduced motion see the static frame. Animated and video banners load only as they come into view.</li>
+<li>Keep logos and text inside the central 1080 × 240 px. Corners are rounded. No fake buttons that imitate site controls, and no rapid flashing (no more than 3 flashes per second).</li>
+<li>We add the <b>Sponsored</b> label above every banner.</li></ul></details>"""
 
 
 def build_contact_page():
@@ -1034,7 +1189,9 @@ def build_contact_page():
 <div><h2>Questions</h2><p>Anything about Daily Design, the editions or the archive.</p></div>
 </div>
 <div class="ct-sp" id="sponsor"><h2>Sponsor Daily Design</h2>
-<p>One clearly labelled landscape sponsor banner (1200 × 300) sits near the top of the index, each report and each edition. It is kept apart from the editorial picks: sponsors never affect what we pick or how it ranks.</p>
+<p>Two clearly labelled landscape banner spots (1200 × 300). The <b>top spot</b> sits near the top of the index, each report and each edition. The <b>lower spot</b> sits on the index, just above the recent links. Both are kept apart from the editorial picks: sponsors never affect what we pick or how it ranks.</p>
+%s
+%s
 <a class="btn pri" href="%s">Email about sponsoring</a></div>
 </section>
 </main>
@@ -1042,7 +1199,7 @@ def build_contact_page():
 %s
 </body>
 </html>
-""" % (head, icon_links(""), CONTACT_CSS, e, esc(mailto("Daily Design")), esc(mailto("Sponsoring Daily Design")),
+""" % (head, icon_links(""), CONTACT_CSS, e, esc(mailto("Daily Design")), rates_html(), BANNER_SPEC_HTML, esc(mailto("Sponsoring Daily Design")),
        credit_html("", contact=False), CONTACT_JS % CONTACT_EMAIL)
     if write_if_changed(os.path.join(REPO, CONTACT_PATH), doc):
         log("contact page", CONTACT_PATH)

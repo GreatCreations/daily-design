@@ -72,10 +72,17 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <!--dd-sponsor:start--><style id="dd-spon-css">
 .dd-spon,.dd-spon *,.dd-ban,.dd-ban *{box-sizing:border-box;margin:0;letter-spacing:normal;text-transform:none}
 .dd-ban{--sc:var(--dd-accent,#f5a524);display:block;width:100%;font:500 14px/1.4 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:left}
-.dd-ban .dd-ban-lab{display:block;margin:0 0 6px 2px;font:700 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8d8a83}
+.dd-ban .dd-ban-hd{display:flex;align-items:center;gap:8px;min-height:20px;margin:0 0 6px 2px}
+.dd-ban button.dd-ban-mute{display:inline-flex;align-items:center;justify-content:center;width:22px;height:20px;padding:0;border:1px solid rgba(255,255,255,.18);border-radius:999px;
+background:transparent;color:#b9b6ae;cursor:pointer;line-height:0}
+.dd-ban button.dd-ban-mute:hover{color:#f1efe9;border-color:rgba(255,255,255,.35)}
+.dd-ban button.dd-ban-mute:focus-visible{outline:2px solid var(--sc);outline-offset:2px}
+.dd-ban button.dd-ban-mute.on{color:#0b0b0e;background:var(--sc);border-color:var(--sc)}
+.dd-ban .dd-ban-mute .i-on,.dd-ban .dd-ban-mute.on .i-off{display:none}.dd-ban .dd-ban-mute.on .i-on{display:block}
+.dd-ban .dd-ban-lab{display:block;margin:0;font:700 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8d8a83}
 .dd-ban .dd-ban-box{position:relative;display:block;width:100%;aspect-ratio:4/1;overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#111114;
 container-type:inline-size;text-decoration:none!important;color:#f1efe9!important}
-.dd-ban .dd-ban-box img{display:block;width:100%;height:100%;max-width:none;object-fit:cover}
+.dd-ban .dd-ban-box img,.dd-ban .dd-ban-box video{display:block;width:100%;height:100%;max-width:none;object-fit:cover}.dd-ban .dd-ban-box picture{display:block;width:100%;height:100%}
 .dd-ban a.dd-ban-box:hover,.dd-ban a.dd-ban-box:focus-visible{border-color:var(--sc);outline:none}
 .dd-ban .dd-ban-ph{border:1px dashed rgba(255,255,255,.22);
 background:radial-gradient(120% 160% at 0% 0%,rgba(245,165,36,.16),transparent 55%),radial-gradient(120% 160% at 100% 100%,rgba(34,224,207,.12),transparent 55%),
@@ -101,7 +108,16 @@ text-decoration:none!important;font:600 13px/1.2 ui-sans-serif,system-ui,-apple-
 .dd-spon-strip{padding:12px 14px;background:#0b0b0e;border-bottom:1px solid rgba(255,255,255,.08)}
 .dd-spon-strip>.dd-spon-in{max-width:1100px;margin:0 auto}
 @media (max-width:620px){.dd-ban .dd-ban-box{border-radius:10px}.dd-spon{padding:9px 11px;gap:8px 10px;font-size:13.5px}.dd-spon a.dd-spon-btn{padding:7px 11px}}
-</style><div class="dd-spon-strip"><div class="dd-spon-in"><div class="dd-ban" role="complementary" aria-label="Advertising space"><span class="dd-ban-lab">Ad space</span><a class="dd-ban-box dd-ban-ph" href="../../contact.html#sponsor"><span class="dd-ban-in"><b>Your ad here</b><span class="dd-ban-dim">1200 × 300 banner</span></span></a></div><aside class="dd-spon" aria-label="Sponsor Daily Design"><span class="dd-spon-txt"><b>Sponsor Daily Design.</b> Reach people who make things with AI. Sponsors never affect what we pick or how it ranks.</span><a class="dd-spon-btn" href="../../contact.html#sponsor">Get in touch →</a></aside></div></div><!--dd-sponsor:end-->
+</style><div class="dd-spon-strip"><div class="dd-spon-in"><div class="dd-ban" role="complementary" aria-label="Advertising space"><div class="dd-ban-hd"><span class="dd-ban-lab">Ad space</span></div><a class="dd-ban-box dd-ban-ph" href="../../contact.html#sponsor"><span class="dd-ban-in"><b>Your ad here</b><span class="dd-ban-dim">1200 × 300 banner</span></span></a></div><aside class="dd-spon" aria-label="Sponsor Daily Design"><span class="dd-spon-txt"><b>Sponsor Daily Design.</b> Reach people who make things with AI. Sponsors never affect what we pick or how it ranks.</span><a class="dd-spon-btn" href="../../contact.html#sponsor">Get in touch →</a></aside></div></div><!--dd-sponsor:end-->
+
+
+
+
+
+
+
+
+
 
 
 
