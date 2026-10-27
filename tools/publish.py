@@ -317,6 +317,7 @@ text-decoration:none!important;font:600 13px/1.2 ui-sans-serif,system-ui,-apple-
 .dd-spon-wrap{margin:18px 0 0}
 .dd-spon-wrap.dd-spon-rp{margin:0 0 16px}
 .dd-spon-wrap.dd-spon-lk{margin:0 0 22px}
+.dd-spon-wrap.dd-spon-ed{margin:0 0 22px;clear:both}
 .dd-spon-strip{padding:12px 14px;background:#0b0b0e;border-bottom:1px solid rgba(255,255,255,.08)}
 .dd-spon-strip>.dd-spon-in{max-width:1100px;margin:0 auto}
 @media (max-width:620px){.dd-ban .dd-ban-box{border-radius:10px}.dd-spon{padding:9px 11px;gap:8px 10px;font-size:13.5px}.dd-spon a.dd-spon-btn{padding:7px 11px}}
@@ -596,7 +597,7 @@ def nav_link(ed, cls, label, arrow_first):
 
 
 def inject_nav(doc, ed, prev, nxt, items=()):
-    for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END), (ICON_START, ICON_END), (CREDIT_START, CREDIT_END), (SPON_START, SPON_END)):
+    for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END), (ICON_START, ICON_END), (CREDIT_START, CREDIT_END), (SPON_START, SPON_END), (SPON2_START, SPON2_END)):
         doc = re.sub(re.escape(a) + ".*?" + re.escape(b) + r"\n?", "", doc, flags=re.S)
     s = SLOTS[ed["slot"]]
     bar = ('%s<nav id="dd-nav" aria-label="Daily Design"><a class="dd-home" href="../../index.html">← <span class="dd-t">Back to </span>index</a>'
@@ -616,6 +617,8 @@ def inject_nav(doc, ed, prev, nxt, items=()):
         doc = re.sub(r"(<head[^>]*>)", lambda m: m.group(1) + "\n" + seo_block(ed, items), doc, count=1, flags=re.I)
     doc = re.sub(r"</head>", lambda m: icon_links("../../") + "\n" + nav_css(s["color"]) + "\n</head>", doc, count=1, flags=re.I)
     doc = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + "\n" + bar + sponsor_html("../../", "dd-spon-strip") + "\n", doc, count=1, flags=re.I)
+    # second ad spot (its own independent copy of the lower ad): just before the edition's in-numbers block (#charts)
+    doc = re.sub(r'<section\b[^>]*\bid="charts"[^>]*>', lambda m: sponsor_html("../../", "dd-spon-wrap dd-spon-ed", "links") + "\n" + m.group(0), doc, count=1)
     idx = doc.lower().rfind("</body>")
     doc = doc[:idx] + foot + doc[idx:] if idx >= 0 else doc + foot
     return doc
