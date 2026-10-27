@@ -206,6 +206,7 @@ function renderLatest(){
   var d=CAL[0]?CAL[0].date:null; if(!d)return;
   $("#latest-h").innerHTML='Latest · '+esc(niceDate(d))+' <span class="lnote">'+CAL[0].slots.length+' of 4 editions published</span>';
   $("#latest").innerHTML=SLOTS.map(function(s){return slotCell(d,s,true)}).join("");
+  $("#latest").classList.toggle("allmiss",!CAL[0].slots.length);
 }
 /* archive: months -> days -> 4 slots; months render lazily when opened */
 var openMonths={};
@@ -233,7 +234,7 @@ var ARCH_BY={};
 function pd_(list){return list.filter(function(c){return c.slots.length}).length}
 function daysHtml(list){return list.map(function(c){
   return '<div class="day" id="d-'+c.date+'"><div class="dl"><b>'+esc(fmt(c.date,{day:"numeric"}))+'</b><span>'+esc(fmt(c.date,{weekday:"short"}))+'</span><small>'+c.slots.length+'/4</small></div>'+
-    '<div class="daygrid">'+SLOTS.map(function(s){return slotCell(c.date,s,false)}).join("")+'</div></div>'}).join("")}
+    '<div class="daygrid'+(c.slots.length?'':' allmiss')+'">'+SLOTS.map(function(s){return slotCell(c.date,s,false)}).join("")+'</div></div>'}).join("")}
 function heat(m){
   var first=pd(m+"-01"), dow=(first.getUTCDay()+6)%7, last=new Date(Date.UTC(first.getUTCFullYear(),first.getUTCMonth()+1,0)).getUTCDate(), cells="";
   var pub={};CAL.forEach(function(c){if(c.date.slice(0,7)===m)pub[c.date]=c.slots.length});

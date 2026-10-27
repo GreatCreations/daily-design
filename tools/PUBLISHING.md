@@ -31,7 +31,8 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    America/Vancouver, if `data/index.json` has no calendar entry for today, the index adds an empty day for today to its own copy of the
    calendar. The Latest strip shows the new date with "0 of 4 editions published" and four "Not published" Dee slots, and the archive gets
    that day's row. Editions fill it as they publish. It is never counted as published (archive notes, month counts and the heatmap count
-   only days with editions), slot filters hide it, and before 5 AM the page is unchanged. A page left open over 5 AM picks it up on reload.
+   only days with editions), slot filters hide it, and before 5 AM the page is unchanged. A day with nothing published gets the
+   `allmiss` class on its slot grid so `assets/site.css` gives the Dees full size. A page left open over 5 AM picks it up on reload.
 7. **Item parsing** reads list items in each edition's `.md`:
    - `- [Title](url), type. Note…` (morning style)
    - `1. **[Title](url)**: note` (try-this style)

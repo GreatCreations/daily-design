@@ -156,7 +156,9 @@ a.cell:hover{border-color:var(--c);transform:translateY(-2px)}
 .cell.miss .cdee picture{display:contents}
 .cell.miss .cdee img{position:absolute;inset:0;margin:auto;display:block;height:56px;max-height:100%;width:auto;max-width:100%;object-fit:contain}
 .daygrid.big .cell.miss .cdee img{height:150px}
-@media (max-width:640px){.cell.miss .cdee img{height:56px}.daygrid.big .cell.miss .cdee img{height:120px}}
+/* a day with nothing published yet (e.g. the 5 AM row): give the Dees room instead of squeezing them */
+.daygrid.allmiss .cell.miss .cdee{flex:1 0 64px}.daygrid.big.allmiss .cell.miss{min-height:240px}
+@media (max-width:640px){.cell.miss .cdee img{height:56px}.daygrid.big .cell.miss .cdee img{height:120px}.daygrid.big.allmiss .cell.miss{min-height:200px}}
 .archive{padding-top:30px}
 .arch-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px;border-top:1px solid var(--line2);padding-top:22px}
 .arch-head h2{margin:0;font:400 clamp(34px,4.6vw,54px)/1 var(--serif);letter-spacing:-.02em}
