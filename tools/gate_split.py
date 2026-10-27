@@ -178,19 +178,16 @@ def split(repo, data, shards, recs, log, dry_run=False):
     for e in pub["editions"]:
         if gated(e["date"]):
             e["teaser"] = _teaser(next(x for x in data["editions"] if x["date"] == e["date"] and x["slot"] == e["slot"]).get("summary"))
+    # Counters keep counting EVERYTHING (totals, calendar, shard counts are just numbers): they stay as built.
+    # Only the item records of gated dates leave the shard files; a month whose items are all gated keeps an empty shard file.
     items_dir = os.path.join(repo, "data", "items")
-    pub_shards = []
     for s in data["shards"]:
         its = [it for it in shards.get(s["month"], []) if not gated(it["date"])]
-        p = os.path.join(items_dir, s["month"] + ".json")
-        if its:
-            with open(p, "w", encoding="utf-8") as f:
-                f.write(json.dumps({"month": s["month"], "items": its}, ensure_ascii=False, separators=(",", ":")))
-            pub_shards.append(dict(s, items=len(its), editions=sum(1 for e in data["editions"] if e["date"][:7] == s["month"] and not gated(e["date"]))))
-        elif os.path.exists(p):
-            os.remove(p)
-    pub["shards"] = pub_shards
-    pub["totals"] = dict(data["totals"], items=sum(s["items"] for s in pub_shards), months=len(pub_shards))
+        with open(os.path.join(items_dir, s["month"] + ".json"), "w", encoding="utf-8") as f:
+            f.write(json.dumps({"month": s["month"], "items": its}, ensure_ascii=False, separators=(",", ":")))
+    pub["shards"] = [dict(s) for s in data["shards"]]
+    pub["totals"] = dict(data["totals"])
+    pub["calendar"] = data["calendar"]
     with open(os.path.join(repo, "data", "index.json"), "w", encoding="utf-8") as f:
         f.write(json.dumps(pub, ensure_ascii=False, separators=(",", ":")))
     return [e for e in data["editions"] if not gated(e["date"])]
