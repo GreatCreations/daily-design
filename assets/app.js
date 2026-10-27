@@ -201,7 +201,7 @@ function tzAuto(ds){if(!/^\d{4}-\d\d-\d\d$/.test(ds||""))return "PT";if(ds>=TZ_P
   var y=+ds.slice(0,4),k=+ds.slice(5,7)*100+(+ds.slice(8,10));function sun(mo,n){var f=new Date(Date.UTC(y,mo-1,1)).getUTCDay();return 1+(7-f)%7+7*(n-1)}
   return k>=300+sun(3,2)&&k<1100+sun(11,1)?"PDT":"PST"}
 function tzLabel(ds){return TZ_LABEL!=="auto"?TZ_LABEL:tzAuto(ds||(ptNow()||{}).date)}
-var SLOTH={morning:7,noon:12,best:18,hottest:20}, SLOTWHEN={morning:"morning",noon:"noon",best:"afternoon",hottest:"evening"};
+var SLOTH={morning:7,noon:12,best:18,hottest:20}, SLOTWHEN={morning:"morning",noon:"noon",best:"evening",hottest:"late evening"};
 function slotMs(ds,slot){return Date.UTC(+ds.slice(0,4),+ds.slice(5,7)-1,+ds.slice(8,10),SLOTH[slot])+(tzAuto(ds)==="PST"?8:7)*3600e3}
 /* the visitor's own clock for a Pacific slot time; "" when it reads the same as Pacific (Vancouver visitors see Pacific only) */
 var LOCF=null,LOCD=null,LOC12=true;try{LOCF=new Intl.DateTimeFormat(undefined,{hour:"numeric",minute:"2-digit",timeZoneName:"short"});
