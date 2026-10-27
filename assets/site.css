@@ -177,7 +177,21 @@ a.cell:hover{border-color:var(--c);transform:translateY(-2px)}
 .arch-gap{margin:0 0 14px}
 /* sub-access cells (title + picture, gold mark); not used by this index yet */
 a.cell.locked{text-decoration:none;cursor:pointer}.cell.locked .ck em.dd-sa-mark{background:transparent;color:var(--dd-num-sa);border:1px solid var(--dd-num-sa);font-weight:700}
-.cell.locked .cf .dd-sa{color:var(--dd-num-sa);font-weight:700}.cell.locked .cth{aspect-ratio:16/7}
+.cell.locked .cf .dd-sa{color:var(--dd-num-sa);font-weight:700}.cell.locked .cth{aspect-ratio:16/7;position:relative}
+/* gold badge floating on the picture's bottom-right corner: transform/opacity-only motion, static under reduced motion */
+.cell.locked .dd-sa-badge{position:absolute;right:8px;bottom:8px;z-index:1;overflow:hidden;padding:4px 10px 4px 9px;border-radius:999px;
+  font:800 10px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--dd-num-sa);white-space:nowrap;
+  background:rgba(9,9,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--dd-num-sa);
+  box-shadow:0 2px 10px rgba(0,0,0,.45);text-shadow:0 1px 2px rgba(0,0,0,.6);will-change:transform;animation:dd-sa-float 3.2s ease-in-out infinite}
+.cell.locked .dd-sa-badge:before{content:"";position:absolute;inset:-1px;border-radius:inherit;box-shadow:0 0 12px 1px rgba(255,207,90,.55);opacity:.25;animation:dd-sa-glow 3.2s ease-in-out infinite;pointer-events:none}
+.cell.locked .dd-sa-badge:after{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(100deg,transparent,rgba(255,231,160,.55),transparent);
+  transform:translateX(-120%) skewX(-18deg);animation:dd-sa-shine 3.2s ease-in-out infinite;pointer-events:none}
+@keyframes dd-sa-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes dd-sa-glow{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes dd-sa-shine{0%,55%{transform:translateX(-120%) skewX(-18deg)}85%,100%{transform:translateX(330%) skewX(-18deg)}}
+a.cell.locked:hover .dd-sa-badge{animation-duration:1.6s}a.cell.locked:hover .dd-sa-badge:before,a.cell.locked:hover .dd-sa-badge:after{animation-duration:1.6s}
+@media (prefers-reduced-motion:reduce){.cell.locked .dd-sa-badge,.cell.locked .dd-sa-badge:before{animation:none}.cell.locked .dd-sa-badge:before{opacity:.6}.cell.locked .dd-sa-badge:after{display:none}}
+@media (max-width:640px){.cell.locked .dd-sa-badge{right:5px;bottom:5px;padding:2px 7px;font-size:8.5px;letter-spacing:.08em}}
 @media (max-width:640px){.apager{gap:6px}.apager .apg{padding:9px 11px;font-size:12.5px}.apager .arange b{font-size:17px}}
 .month{border:1px solid var(--line);border-radius:18px;margin:0 0 14px;background:rgba(255,255,255,.015);scroll-margin-top:150px}
 .month>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:16px 18px}
@@ -193,6 +207,8 @@ a.cell.locked{text-decoration:none;cursor:pointer}.cell.locked .ck em.dd-sa-mark
 button.hd{cursor:pointer;color:#0b0b0e}button.hd:hover{outline:2px solid #fff}
 .hd.l1{background:rgba(245,165,36,.35)}.hd.l2{background:rgba(245,165,36,.55)}.hd.l3{background:rgba(245,165,36,.78)}.hd.l4{background:linear-gradient(135deg,var(--amber),var(--flame))}
 .hd.out{opacity:.35}
+/* maintenance day (tools/maintenance.json): 8 PM red, striped so it never reads as a full 4/4 day; not a button */
+.hd.mnt{background:repeating-linear-gradient(135deg,var(--flame) 0 3px,rgba(255,90,46,.6) 3px 6px);color:#0b0b0e;font-weight:800;cursor:help}
 .days{padding:0 18px 12px}
 .day{display:flex;gap:14px;align-items:stretch;padding:12px 0;border-top:1px solid var(--line);scroll-margin-top:150px;transition:background .3s}
 .day.flash{background:rgba(245,165,36,.12);border-radius:12px}
