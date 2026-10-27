@@ -184,9 +184,11 @@ function edCard(e,matches){
     '<h3>'+esc(e.headline)+'</h3><p>'+esc(e.summary)+'</p>'+
     '<div class="ft"><span><b>'+n(e.item_count)+'</b> items</span>'+(matches!=null?'<span><b>'+n(matches)+'</b> match'+(matches==1?'':'es')+'</span>':'')+'</div></div></a>';
 }
+// Dee mascot in empty ('Not published') slots: animated SVG, static PNG pose when reduced motion is on
+function deeArt(slot){var u='assets/dee/dee-'+slot;return '<div class="cdee" aria-hidden="true"><picture><source media="(prefers-reduced-motion: reduce)" srcset="'+u+'.png"><img src="'+u+'.svg" alt="" width="128" height="96" loading="lazy" decoding="async"></picture></div>'}
 function slotCell(date,slot,big){
   var e=EDBY[date+"/"+slot], s=SINFO[slot];
-  if(!e)return '<div class="cell miss" style="--c:'+SLOTCOL[slot]+'"><div class="ck"><span>'+esc(s.label.split(" · ")[0])+'</span><span>'+esc(s.label.split(" · ")[1])+'</span></div><div class="cm">Not published</div></div>';
+  if(!e)return '<div class="cell miss" style="--c:'+SLOTCOL[slot]+'"><div class="ck"><span>'+esc(s.label.split(" · ")[0])+'</span><span>'+esc(s.label.split(" · ")[1])+'</span></div>'+deeArt(slot)+'<div class="cm">Not published</div></div>';
   var th=big&&(e.thumb||e.header);
   return '<a class="cell'+(e.kind==="report"?" report":"")+'" style="--c:'+SLOTCOL[slot]+'" href="'+esc(edHref(e))+'"'+edAttrs(e)+'>'+
     (th?'<div class="cth"><img src="'+esc(th)+'" alt="" loading="lazy" decoding="async"></div>':'')+
