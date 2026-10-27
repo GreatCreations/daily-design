@@ -28,7 +28,7 @@
   "currency": "USD",
   "unit": "week",
   "note": "Intro rates",
-  "footnote": "Sponsors never affect what we pick or how it ranks. Rates are introductory and may change; booked weeks keep their price.",
+  "footnote": "Rates are introductory and may change; booked weeks keep their price.",
   "packages": [
    {
     "id": "top",
