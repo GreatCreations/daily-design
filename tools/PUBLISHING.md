@@ -59,6 +59,29 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    with pulses at 0/15/30/45 s, starting 1 s after load. The glow is a text-shadow on a transparent `::after` copy of the text; its color
    switches only while it's invisible, so the pulses only animate opacity. `data-glow` must match the link text. There's no glow under `prefers-reduced-motion`. Edition and
    report pages don't have this header; they keep their "← Back to the index" links.
+6f. **Time zones.** Editions are filed by Pacific date and timed in Pacific time (America/Vancouver).
+   - **Label:** every displayed slot time gets a label, e.g. "7 AM PDT". It comes from one constant, `TZ_LABEL`, in
+     `tools/publish.py` and `assets/app.js` (keep the two the same). `"auto"` means PDT or PST by the old daylight rule for the date shown,
+     until B.C.'s permanent UTC-7 starts on `TZ_PERM_FROM` (2026-11-01); from then on it shows `TZ_PERMANENT` (`"PT"`; B.C. calls the zone "Pacific
+     time"). To show one fixed label everywhere, set `TZ_LABEL = "PST"` / `"PT"` in both files and run `publish.py`. The UTC offset used for
+     conversions always follows the real rule (UTC-7 from 2026-03-08 on), whatever the label. Browsers and Python with tzdata 2026b+ name the new
+     zone "MST", so the label is rule-based on purpose.
+   - **Visitor time:** when the visitor's clock differs from Pacific, their own time is shown in brackets with their zone name, plus the weekday
+     if their date differs, e.g. "7 AM PDT (3 PM GMT+1)" or "8 PM PDT (Wed 12 PM GMT+9)". It's formatted with Intl and the browser's own
+     zone and locale. Pacific visitors see the Pacific label only.
+   - **Where (index, app.js):**
+     - results cards, Latest cells (visible) and archive cells (tooltip);
+     - item meta;
+     - the reader kicker;
+     - the "Edition · PDT" filter heading, with a tooltip on each slot chip;
+     - the hero line "(all in Pacific time (PDT))", via `[data-tz]`;
+     - the `#tznote` line under Latest.
+   - **Where (static):** the edition nav label and the report kicker, through `tz_html()`: the Pacific label, plus a hidden `.dd-loc` span
+     that `assets/tzlocal.js` fills in (no JS = Pacific only); also the static Latest fallback cards and the nav tooltips. The countdown already
+     shows the visitor's own time with its zone name.
+   - **Empty slots:** today's (Pacific date) empty slots read "Not published until morning / noon / afternoon / evening" before their time, with the
+     visitor's time under it on Latest. Up to 2 h after the slot time they read "Publishing soon", later that day "Not published yet", and on past days
+     "Not published".
 7. **Item parsing** reads list items in each edition's `.md`:
    - `- [Title](url), type. Note…` (morning style)
    - `1. **[Title](url)**: note` (try-this style)

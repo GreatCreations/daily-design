@@ -76,9 +76,9 @@ function schedule(){clearTimeout(renderT);renderT=setTimeout(function(){render(t
 function buildFilters(){
   var html="";
   [["slot","Edition",SLOTS],["medium","Medium",D.facets.medium.map(function(m){return m.key})],["type","Type",D.facets.type]].forEach(function(d){
-    html+='<div class="fgroup"><span class="lab">'+d[1]+'</span><div class="chips">';
+    html+='<div class="fgroup"><span class="lab">'+d[1]+(d[0]==="slot"?' · <span class="dd-tz">'+tzLabel()+'</span>':'')+'</span><div class="chips">';
     d[2].forEach(function(k){var c=d[0]==="slot"?' style="--c:'+SLOTCOL[k]+'"':"";
-      html+='<button class="chip" type="button" data-g="'+d[0]+'" data-k="'+esc(k)+'" aria-pressed="false"'+c+'>'+(d[0]==="slot"?'<span class="sw"></span>':"")+esc(label(d[0],k))+' <span class="n"></span></button>'});
+      html+='<button class="chip" type="button" data-g="'+d[0]+'" data-k="'+esc(k)+'" aria-pressed="false"'+c+(d[0]==="slot"?' title="'+esc(tzTip((ptNow()||{}).date,k))+'"':'')+'>'+(d[0]==="slot"?'<span class="sw"></span>':"")+esc(label(d[0],k))+' <span class="n"></span></button>'});
     html+='</div></div>';
   });
   var t=D.totals;
@@ -184,19 +184,50 @@ function edCard(e,matches){
   var th=e.thumb||e.header, rep=e.kind==="report";
   return '<a class="ed'+(rep?' report':'')+'" style="--c:'+SLOTCOL[e.slot]+'" href="'+esc(edHref(e))+'"'+edAttrs(e)+'>'+
     '<div class="th">'+(th?'<img src="'+esc(th)+'" alt="" loading="lazy" decoding="async">':'')+'</div>'+(rep?'<span class="rtag">Report</span>':'')+
-    '<div class="bd"><div class="k"><span>'+esc(e.time)+' · '+esc(e.title)+'</span><span>'+esc(niceDate(e.date))+'</span></div>'+
+    '<div class="bd"><div class="k"><span>'+esc(e.time)+tzs(e.date,e.slot,true)+' · '+esc(e.title)+'</span><span>'+esc(niceDate(e.date))+'</span></div>'+
     '<h3>'+esc(e.headline)+'</h3><p>'+esc(e.summary)+'</p>'+
     '<div class="ft"><span><b>'+n(e.item_count)+'</b> items</span>'+(matches!=null?'<span><b>'+n(matches)+'</b> match'+(matches==1?'':'es')+'</span>':'')+'</div></div></a>';
 }
+/* ---- time zones. Editions are filed and timed in Pacific time (America/Vancouver).
+   TZ_LABEL: "auto", or one fixed label ("PST", "PT", ...) shown after every Pacific clock time. auto = PDT/PST by the old daylight rule for
+   the date shown until B.C.'s permanent UTC-7 starts on TZ_PERM_FROM (no fall-back on 2026-11-01; B.C. calls it "Pacific time"), then
+   TZ_PERMANENT. Rule-based on purpose (browsers with tzdata 2026b+ name that zone "MST"; older ones still apply UTC-8). The UTC offset
+   always follows the real rule, whatever the label. Mirrors TZ_LABEL in tools/publish.py and assets/tzlocal.js. */
+var TZ_LABEL="auto", TZ_PERMANENT="PT", TZ_PERM_FROM="2026-11-01";
+function tzAuto(ds){if(!/^\d{4}-\d\d-\d\d$/.test(ds||""))return "PT";if(ds>=TZ_PERM_FROM)return TZ_PERMANENT;
+  var y=+ds.slice(0,4),k=+ds.slice(5,7)*100+(+ds.slice(8,10));function sun(mo,n){var f=new Date(Date.UTC(y,mo-1,1)).getUTCDay();return 1+(7-f)%7+7*(n-1)}
+  return k>=300+sun(3,2)&&k<1100+sun(11,1)?"PDT":"PST"}
+function tzLabel(ds){return TZ_LABEL!=="auto"?TZ_LABEL:tzAuto(ds||(ptNow()||{}).date)}
+var SLOTH={morning:7,noon:12,best:18,hottest:20}, SLOTWHEN={morning:"morning",noon:"noon",best:"afternoon",hottest:"evening"};
+function slotMs(ds,slot){return Date.UTC(+ds.slice(0,4),+ds.slice(5,7)-1,+ds.slice(8,10),SLOTH[slot])+(tzAuto(ds)==="PST"?8:7)*3600e3}
+/* the visitor's own clock for a Pacific slot time; "" when it reads the same as Pacific (Vancouver visitors see Pacific only) */
+var LOCF=null,LOCD=null,LOC12=true;try{LOCF=new Intl.DateTimeFormat(undefined,{hour:"numeric",minute:"2-digit",timeZoneName:"short"});
+  LOC12=/h1[12]/.test(LOCF.resolvedOptions().hourCycle||"h12");LOCD=new Intl.DateTimeFormat("en-CA",{year:"numeric",month:"2-digit",day:"2-digit"})}catch(e){}
+function locHint(ds,slot){if(!LOCF||!SLOTH[slot]||!/^\d{4}-\d\d-\d\d$/.test(ds||""))return "";var t=slotMs(ds,slot),d=new Date(t);
+  if(-d.getTimezoneOffset()===(tzAuto(ds)==="PST"?-480:-420))return "";
+  var s=LOCF.format(d);if(LOC12)s=s.replace(/:00(?=\D)/,"");
+  if(LOCD.format(d)!==ds)s=new Intl.DateTimeFormat(undefined,{weekday:"short"}).format(d)+" "+s;return s}
+/* " PDT" label (+ " (3 PM BST)" visitor time when loc) after a Pacific time */
+function tzs(ds,slot,loc){var h=loc&&locHint(ds,slot);return ' <span class="dd-tz">'+tzLabel(ds)+'</span>'+(h?' <span class="dd-loc" title="Your time">('+esc(h)+')</span>':'')}
+function tzTip(ds,slot){var s=(SINFO[slot]||{label:""}).label.split(" · ")[0],h=locHint(ds,slot);return s+" "+tzLabel(ds)+(h?" · "+h+" your time":"")}
+function slotLab(slot,ds){var s=(SINFO[slot]||{label:""}).label.split(" · ");return esc(s[0])+tzs(ds,slot,true)+(s[1]?' · '+esc(s[1]):'')}
+/* empty slot wording: today (Vancouver) before the slot's time -> "Not published until <part of day>"; up to 2 h after it -> "Publishing soon";
+   later today -> "Not published yet"; past days -> "Not published" */
+function missText(ds,slot){var t=ptNow();if(!t||ds!==t.date||!SLOTH[slot])return "Not published";
+  return t.h<SLOTH[slot]?"Not published until "+SLOTWHEN[slot]:t.h<SLOTH[slot]+2?"Publishing soon":"Not published yet"}
+function missLoc(ds,slot){var t=ptNow();if(!t||ds!==t.date||t.h>=SLOTH[slot])return "";var h=locHint(ds,slot);return h?h+" your time":""}
+function fillTz(){var t=(ptNow()||{}).date,L=tzLabel(t);[].forEach.call(document.querySelectorAll("[data-tz]"),function(x){x.textContent=L});
+  var n=document.getElementById("tznote"),h=locHint(t,"noon");
+  if(n)n.textContent="Editions are dated and timed in Pacific time ("+L+")."+(h?" Times in brackets are your local time ("+(h.split(" ").pop())+").":"")}
 // Dee mascot in empty ('Not published') slots: animated SVG, static PNG pose when reduced motion is on
 function deeArt(slot){var u='assets/dee/dee-'+slot;return '<div class="cdee" aria-hidden="true"><picture><source media="(prefers-reduced-motion: reduce)" srcset="'+u+'.png"><img src="'+u+'.svg" alt="" width="128" height="96" loading="lazy" decoding="async"></picture></div>'}
 function slotCell(date,slot,big){
   var e=EDBY[date+"/"+slot], s=SINFO[slot];
-  if(!e)return '<div class="cell miss" style="--c:'+SLOTCOL[slot]+'"><div class="ck"><span>'+esc(s.label.split(" · ")[0])+'</span><span>'+esc(s.label.split(" · ")[1])+'</span></div>'+deeArt(slot)+'<div class="cm">Not published</div></div>';
+  if(!e)return '<div class="cell miss" style="--c:'+SLOTCOL[slot]+'" title="'+esc(tzTip(date,slot))+'"><div class="ck"><span>'+esc(s.label.split(" · ")[0])+tzs(date,slot,false)+'</span><span>'+esc(s.label.split(" · ")[1])+'</span></div>'+deeArt(slot)+'<div class="cm">'+missText(date,slot)+(big&&missLoc(date,slot)?'<small class="cm-loc">'+esc(missLoc(date,slot))+'</small>':'')+'</div></div>';
   var th=big&&(e.thumb||e.header);
   return '<a class="cell'+(e.kind==="report"?" report":"")+'" style="--c:'+SLOTCOL[slot]+'" href="'+esc(edHref(e))+'"'+edAttrs(e)+'>'+
     (th?'<div class="cth"><img src="'+esc(th)+'" alt="" loading="lazy" decoding="async"></div>':'')+
-    '<div class="ck"><span>'+esc(e.time)+'</span><span>'+esc(e.title)+'</span>'+(e.kind==="report"?'<em>Report</em>':'')+'</div>'+
+    '<div class="ck" title="'+esc(tzTip(e.date,e.slot))+'"><span>'+esc(e.time)+tzs(e.date,e.slot,big)+'</span><span>'+esc(e.title)+'</span>'+(e.kind==="report"?'<em>Report</em>':'')+'</div>'+
     '<div class="ch">'+esc(e.headline)+'</div><div class="cf"><b>'+n(e.item_count)+'</b> items <span>'+(e.kind==="report"?"Read report ↓":"Open edition →")+'</span></div></a>';
 }
 /* from 5 AM Pacific the new day's archive row is ready before anything publishes: an empty day (four 'Not published' Dee slots)
@@ -206,7 +237,7 @@ function ptNow(){try{var p={};new Intl.DateTimeFormat("en-CA",{timeZone:"America
 function readyToday(){var t=ptNow();if(!t||!/^\d{4}-\d\d-\d\d$/.test(t.date)||t.h<5)return;
   if(CAL.some(function(c){return c.date===t.date})||(CAL[0]&&t.date<CAL[0].date))return;
   CAL.unshift({date:t.date,slots:[],ready:true})}
-function renderLatest(){
+function renderLatest(){fillTz();
   // the most recent day with at least one edition: the 5 AM empty day row is archive-only
   var L=CAL.filter(function(c){return c.slots.length})[0], d=L?L.date:null; if(!d)return;
   $("#latest-h").innerHTML='Latest · '+esc(niceDate(d))+' <span class="lnote">'+L.slots.length+' of 4 editions published</span>';
@@ -315,7 +346,7 @@ function itemRow(it,toks){
   if(it.author&&it.source)meta.push('<span>'+hl(it.source,toks)+'</span>');
   if(it.item_date)meta.push('<span>'+esc(it.item_date)+'</span>');
   if(it.engagement)meta.push('<span class="eng">'+esc(it.engagement)+'</span>');
-  meta.push('<span>'+esc(s.label)+' · '+esc(niceDate(it.date))+'</span>');
+  meta.push('<span>'+slotLab(it.slot,it.date)+' · '+esc(niceDate(it.date))+'</span>');
   var tags=(it.tags||[]).map(function(t){return '<button type="button" data-tagclick="'+esc(t)+'">'+esc(tagLabel(t))+'</button>'}).join("");
   var xl=(it.links||[]).map(function(l){return '<a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+hl(l.label,toks)+' ↗</a>'}).join("");
   var ed=it.edition_kind==="report"?'<a href="#report='+esc(it.date+"/"+it.slot)+'" data-report="'+esc(it.date+"/"+it.slot)+'">Read report ↓</a>':'<a href="'+esc(it.edition+frag(it.title))+'">In edition →</a>';
@@ -351,7 +382,7 @@ function syncReader(scroll){
   ttsStop();var e=EDBY[state.report]; openKey=state.report; r.hidden=false;
   if(!e||e.kind!=="report"){$("#rd-kick").textContent="Report";$("#rd-gh").removeAttribute("href");$("#rd-body").innerHTML='<div class="empty"><b>Report not found</b>It may not be published yet.</div>';return}
   r.style.setProperty("--c",SLOTCOL[e.slot]);
-  $("#rd-kick").innerHTML='<span class="dot"></span>'+esc(e.time)+" · "+esc(e.title)+" · "+esc(niceDate(e.date))+' <b>Report</b>';
+  $("#rd-kick").innerHTML='<span class="dot"></span>'+esc(e.time)+tzs(e.date,e.slot,true)+" · "+esc(e.title)+" · "+esc(niceDate(e.date))+' <b>Report</b>';
   $("#rd-gh").href=e.url;
   var body=$("#rd-body");body.innerHTML='<div class="empty">Loading report…</div>';
   var base=e.path.replace(/[^\/]+$/,""), hdrName=e.header?e.header.split("/").pop():"";

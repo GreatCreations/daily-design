@@ -21,7 +21,7 @@ SITE_URL = "https://studios.greatcreations.art/daily-design/"  # canonical base
 REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
 REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
 TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
-NAV_VERSION = 8   # bump to force nav re-injection on every HTML edition
+NAV_VERSION = 9   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -30,6 +30,49 @@ SLOTS = {
     "best":    dict(order=2, time="6 PM", name="Best of the Day", color="#9b6bff"),
     "hottest": dict(order=3, time="8 PM", name="Hottest Right Now", color="#ff5a2e"),
 }
+# Pacific time label after clock times ("7 AM PDT"). "auto", or one fixed label ("PST", "PT", ...) used everywhere.
+# auto = PDT/PST by the old daylight rule for the edition's date until B.C.'s permanent UTC-7 starts on TZ_PERM_FROM (no fall-back on
+# 2026-11-01; B.C. calls it "Pacific time"), then TZ_PERMANENT. Mirrors TZ_LABEL in assets/app.js. The UTC offset always follows the real rule.
+TZ_LABEL = "auto"
+TZ_PERMANENT, TZ_PERM_FROM = "PT", "2026-11-01"
+SLOT_HOUR = {"morning": 7, "noon": 12, "best": 18, "hottest": 20}
+
+
+def tz_auto(date):
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date or ""):
+        return "PT"
+    if date >= TZ_PERM_FROM:
+        return TZ_PERMANENT
+    y, m, d = int(date[:4]), int(date[5:7]), int(date[8:10])
+    def sun(mo, n):  # nth Sunday of month mo
+        f = dt.date(y, mo, 1).weekday()  # Mon=0
+        return 1 + (6 - f) % 7 + 7 * (n - 1)
+    return "PDT" if (3, sun(3, 2)) <= (m, d) < (11, sun(11, 1)) else "PST"
+
+
+def tz_label(date):
+    return TZ_LABEL if TZ_LABEL != "auto" else tz_auto(date)
+
+
+def pt_iso(date, slot):
+    """ISO instant of a slot's Pacific time, for assets/tzlocal.js."""
+    return "%sT%02d:00:00%s" % (date, SLOT_HOUR[slot], "-08:00" if tz_auto(date) == "PST" else "-07:00")
+
+
+def tz_html(date, slot):
+    """' PDT' label plus the hidden visitor-time span that assets/tzlocal.js fills in (Pacific only without JS)."""
+    return (' <span class="dd-tz">%s</span> <span class="dd-loc" data-pt="%s" data-ptd="%s" hidden></span>'
+            % (tz_label(date), pt_iso(date, slot), date))
+
+
+def pt_today():
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.datetime.now(ZoneInfo("America/Vancouver")).date().isoformat()
+    except Exception:
+        return (dt.datetime.utcnow() - dt.timedelta(hours=7)).date().isoformat()
+
+
 FILE_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-(morning|noon|best|hottest)\.(html|md)$")
 IMG_EXT = (".png", ".jpg", ".jpeg", ".webp")
 
@@ -573,6 +616,7 @@ border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);white-sp
 #dd-nav a.dd-home{background:var(--dd-accent);color:#0b0b0e!important;border-color:transparent;font-weight:800}
 #dd-nav .dd-lab{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#b9b6ae;font-weight:500}
 #dd-nav .dd-lab b{color:var(--dd-accent);font-weight:800;margin-right:6px}
+#dd-nav .dd-tz{font-size:.88em;letter-spacing:.03em}#dd-nav .dd-loc{color:#b9b6ae;font-weight:500}
 #dd-nav .dd-off,#dd-foot .dd-off{opacity:.35;pointer-events:none}
 #dd-nav button.dd-tts{appearance:none;cursor:pointer;font:inherit;color:#ecebe8;display:inline-flex;align-items:center;gap:6px;padding:7px 11px;min-height:32px;
 border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);white-space:nowrap;font-weight:600}
@@ -611,7 +655,7 @@ def nav_link(ed, cls, label, arrow_first):
     if not ed:
         return '<a class="%s dd-off" aria-disabled="true">%s</a>' % (cls, label)
     href = "../%s/%s.html" % (ed["date"], ed["slot"])
-    tip = "%s · %s %s" % (nice_date(ed["date"]), SLOTS[ed["slot"]]["time"], SLOTS[ed["slot"]]["name"])
+    tip = "%s · %s %s %s" % (nice_date(ed["date"]), SLOTS[ed["slot"]]["time"], tz_label(ed["date"]), SLOTS[ed["slot"]]["name"])
     return '<a class="%s" href="%s" title="%s">%s</a>' % (cls, href, esc(tip), label)
 
 
@@ -620,8 +664,9 @@ def inject_nav(doc, ed, prev, nxt, items=()):
         doc = re.sub(re.escape(a) + ".*?" + re.escape(b) + r"\n?", "", doc, flags=re.S)
     s = SLOTS[ed["slot"]]
     bar = ('%s<nav id="dd-nav" aria-label="Daily Design"><a class="dd-home" href="../../index.html">← <span class="dd-t">Back to </span>index</a>'
-           '<span class="dd-lab"><b>%s</b>%s · %s</span>%s%s%s</nav>%s\n') % (
-        NAV_START, esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])), TTS_BUTTONS,
+           '<span class="dd-lab"><b>%s%s</b>%s · %s</span>%s%s%s</nav>%s\n') % (
+        NAV_START, esc(s["time"]), tz_html(ed["date"], ed["slot"]), esc(s["name"]), esc(nice_date(ed["date"])),
+        TTS_BUTTONS + '<script src="../../assets/tzlocal.js" defer></script>',
         nav_link(prev, "dd-prev", '‹ <span class="dd-t">Prev</span>', True),
         nav_link(nxt, "dd-next", '<span class="dd-t">Next</span> ›', False), NAV_END)
     foot = ('%s<div id="dd-foot">%s<a class="dd-home" href="../../index.html">← Back to the Daily Design index</a>%s%s</div>%s\n') % (
@@ -826,7 +871,7 @@ def seo_fields(ed, items=(), story=""):
     desc = ed.get("summary") or ""
     if not desc:
         desc = "%s %s for %s: %d linked items on how AI is changing creative work." % (
-            s["time"], s["name"], day, ed.get("item_count", 0))
+            "%s %s" % (s["time"], tz_label(ed["date"])), s["name"], day, ed.get("item_count", 0))
     meds = [MEDIUM_LABEL[t] for t in ed.get("tags", []) if t in MEDIUM_LABEL]
     types = []
     for it in items:
@@ -1012,11 +1057,12 @@ def report_page(ed, md, items):
 </main>
 <footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources; engagement numbers were read when each edition was compiled and will have changed since.%s</div></footer>
 <script src="../../assets/tts.js" defer></script>
+<script src="../../assets/tzlocal.js" defer></script>
 </body>
 </html>
 """) % (seo_block(ed, items, report_story(md)), icon_links("../../"), REPORT_CSS, key,
         sponsor_html("../../", "dd-spon-wrap dd-spon-rp"), s["color"],
-        esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../"))
+        esc(s["time"]) + tz_html(ed["date"], ed["slot"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../"))
 
 
 REPORT_TTS = ('<button class="btn rd-tts" id="dd-tts-play" type="button" hidden aria-label="Listen: read this page aloud" aria-pressed="false">'
@@ -1107,10 +1153,11 @@ def build_index_seo(editions):
     doc = re.sub(r"(<meta name=\"viewport\"[^>]*>)", lambda m: m.group(1) + "\n" + head, doc, count=1)
     # latest day: plain links inside #latest (the app replaces them once it loads)
     day = latest["date"] if latest else ""
-    cards = "".join('<a class="static-ed" href="%s"><b>%s · %s</b> %s</a>' % (
-        esc(public_path(e)), esc(e["time"]), esc(e["title"]), esc(seo_fields(e)["headline"]))
+    cards = "".join('<a class="static-ed" href="%s"><b>%s %s · %s</b> %s</a>' % (
+        esc(public_path(e)), esc(e["time"]), tz_label(e["date"]), esc(e["title"]), esc(seo_fields(e)["headline"]))
         for e in editions if e["date"] == day)
     doc = re.sub(re.escape(LATEST_START) + ".*?" + re.escape(LATEST_END), lambda m: LATEST_START + cards + LATEST_END, doc, flags=re.S)
+    doc = re.sub(r'(<span class="dd-tz" data-tz>)[^<]*(</span>)', lambda m: m.group(1) + tz_label(pt_today()) + m.group(2), doc)  # app.js refreshes it too
     if LATEST_START not in doc:
         doc = doc.replace('<div class="daygrid big" id="latest">', '<div class="daygrid big" id="latest">' + LATEST_START + cards + LATEST_END, 1)
     lis = "".join('<li><a href="%s">%s</a></li>' % (esc(public_path(e)), esc(seo_fields(e)["title"].rsplit(" · ", 1)[0]))
