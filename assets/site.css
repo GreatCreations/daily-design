@@ -285,3 +285,15 @@ footer.site .dd-contactln{margin:8px 0 0;color:var(--mut);font-size:13px}
 footer.site .dd-contactln a{color:var(--ink);font-weight:700;text-decoration-color:var(--amber);text-underline-offset:3px}
 footer.site .dd-contactln a:hover{color:#fff}
 .dd-spon-rp{margin:0 0 16px}
+/* header title link ("Daily Design · The index" / "· Contact") -> home ("./" = the site base on live and gate). Looks exactly like the
+   plain text; every 15s an amber/flame aura (the DD logo tones, --amber + --flame) fades in and out over 1.5s. The glow is a
+   text-shadow on a transparent copy of the text in ::after, so only its opacity animates (compositor-only). */
+a.dd-hlink{color:inherit;text-decoration:none;position:relative;display:inline-block;cursor:pointer}
+a.dd-hlink:hover,a.dd-hlink:active,a.dd-hlink:visited{color:inherit;text-decoration:none}
+a.dd-hlink:focus{outline:none}
+a.dd-hlink:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:3px}
+a.dd-hlink::after{content:attr(data-glow);content:attr(data-glow) / "";position:absolute;left:0;top:0;white-space:nowrap;color:transparent;pointer-events:none;
+  text-shadow:0 0 6px rgba(245,165,36,.95),0 0 14px rgba(255,90,46,.75),0 0 26px rgba(255,90,46,.45);opacity:0;will-change:opacity;
+  animation:dd-hglow 15s ease-in-out 1s infinite}
+@keyframes dd-hglow{0%{opacity:0}5%{opacity:1}10%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){a.dd-hlink::after{animation:none;opacity:0}}

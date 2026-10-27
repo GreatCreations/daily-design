@@ -1248,7 +1248,7 @@ def build_contact_page():
 <main class="ct">
 <nav class="ct-top" aria-label="Daily Design"><a class="btn" href="index.html">← Daily Design index</a></nav>
 <section class="ct-card" aria-labelledby="ct-h">
-<div class="eyebrow">Daily Design · Contact</div>
+<div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · Contact">Daily Design · Contact</a></div>
 <h1 id="ct-h">Say <em>hello</em></h1>
 <p class="lede">Got a question, a tip for a future edition, a correction, or want to sponsor Daily Design? Email us. Tap Copy to grab the address, or Email us to open your mail app.</p>
 <div class="ct-mail"><span class="ct-addr" id="ct-addr">%s</span>
