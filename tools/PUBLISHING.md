@@ -85,16 +85,20 @@ Re-running with nothing new prints `nothing new to publish`.
 - **Banner spec** (what to ask sponsors for; also shown on `contact.html#sponsor`):
   - `banner.type`: `"image"` (default), `"animated"` or `"video"`.
   - **Static image**: 1200 × 300 px (4:1), PNG, JPG or WebP, 300 KB max (2400 × 600 is fine if it stays under 300 KB).
-  - **Animated**: GIF or animated WebP, 1200 × 300, 1.5 MB max, a loop of 15 s or less. Needs `banner.poster`, a static
-    1200 × 300 frame.
-  - **Video**: MP4 (H.264) or WebM, 1200 × 300 or 2400 × 600, 4 MB max, 30 s or less (optional `banner.webm` adds a WebM source next to the MP4). It may include audio but always starts
-    muted; sound is viewer-controlled through a small mute/unmute button next to the Sponsored label (shown only when the video
-    has an audio track: ffprobe checks repo files, or set `banner.audio: true` for an https video). Each button controls only its own ad
-    (ads are independent), and nothing is remembered between page loads. It plays inline, looping, with no other controls, and only loads and plays
-    when it is near the viewport. `banner.poster` is required
-    (a video banner without a poster is not shown).
-  - Visitors with `prefers-reduced-motion: reduce` see the poster/static frame instead of the animation or video.
-  - Banners lazy-load (`loading="lazy"`; video `preload="none"` until it comes into view).
+  - **Animated**: GIF or animated WebP, 1200 × 300, 1.5 MB max, a loop of 15 s or less. Loads and plays right away
+    (`banner.poster` optional, unused).
+  - **Video**: MP4 (H.264) or WebM, 1200 × 300 or 2400 × 600, 4 MB max, 30 s or less (optional `banner.webm` adds a WebM
+    source next to the MP4). It may include audio.
+    - Autoplays on page load (`autoplay muted playsinline loop preload="auto"`), loops endlessly, and is not scrubbable: no native
+      controls, no play/pause, no seek bar, `controlslist="nodownload nofullscreen noplaybackrate noremoteplayback"`,
+      `disablepictureinpicture`, `disableremoteplayback`, context menu blocked, `pointer-events:none` on the video so a click
+      goes to the banner link. If the browser pauses it, the script resumes it.
+    - The only control is the per-ad mute/unmute button right of the label (shown only when the video has an audio track:
+      ffprobe checks repo files, or set `banner.audio: true` for an https video). Each button controls only its own ad; every
+      page load/refresh starts muted.
+    - `banner.poster` (static 1200 × 300 frame) is required; it shows only until the first frame is ready (a video banner
+      without a poster is not shown).
+  - No reduced-motion swap and no lazy-load delay for animated/video banners; static images still lazy-load.
   - Shown at the width of the content column (about 1200 px on the index, 1100 px on editions, about 950 px on report pages,
     about 360 px on phones), always 4:1, so it is scaled, never cropped differently per device.
   - Safe area: keep logo and text inside the central 1080 × 240 px (60 px clear on every side); headline 48 px or more at full size,
@@ -103,7 +107,7 @@ Re-running with nothing new prints `nothing new to publish`.
     **Sponsored** label above every banner (required disclosure in Canada); do not rely on the image to carry it.
 - **House placeholder videos**: `sponsors.json` → `placeholders` → `top` / `links` = `{video, webm, poster, alt, audio}`. When a
   placement has no active sponsor and its entry has a `poster` plus a `video` (MP4) and/or `webm` (https URL or existing repo file),
-  the slot plays that video (same rules: starts muted, per-ad sound button if it has audio, reduced-motion shows the poster, lazy)
+  the slot plays that video (same rules: autoplays muted, loops, no controls, per-ad sound button if it has audio)
   linking to `contact.html#sponsor`, still labelled **Ad space**. If unset or a file is missing, the "Your ad here" card is shown.
 - **Rate card**: `sponsors.json` → `rates` (`currency`, `unit`, `note`, `footnote`, `packages` = `[{id, label, desc, static, motion}]`).
   `publish.py` renders it on `contact.html#sponsor` ("Intro rates, USD per week"). Change the numbers there and re-run the publisher.

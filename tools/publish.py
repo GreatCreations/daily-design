@@ -294,7 +294,7 @@ background:transparent;color:#b9b6ae;cursor:pointer;line-height:0}
 .dd-ban .dd-ban-lab{display:block;margin:0;font:700 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8d8a83}
 .dd-ban .dd-ban-box{position:relative;display:block;width:100%;aspect-ratio:4/1;overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#111114;
 container-type:inline-size;text-decoration:none!important;color:#f1efe9!important}
-.dd-ban .dd-ban-box img,.dd-ban .dd-ban-box video{display:block;width:100%;height:100%;max-width:none;object-fit:cover}.dd-ban .dd-ban-box picture{display:block;width:100%;height:100%}
+.dd-ban .dd-ban-box img,.dd-ban .dd-ban-box video{display:block;width:100%;height:100%;max-width:none;object-fit:cover}.dd-ban .dd-ban-box picture{display:block;width:100%;height:100%}.dd-ban .dd-ban-box video{pointer-events:none}.dd-ban video::-webkit-media-controls{display:none!important}
 .dd-ban a.dd-ban-box:hover,.dd-ban a.dd-ban-box:focus-visible{border-color:var(--sc);outline:none}
 .dd-ban .dd-ban-ph{border:1px dashed rgba(255,255,255,.22);
 background:radial-gradient(120% 160% at 0% 0%,rgba(245,165,36,.16),transparent 55%),radial-gradient(120% 160% at 100% 100%,rgba(34,224,207,.12),transparent 55%),
@@ -363,17 +363,17 @@ def _asset(src, prefix):
 
 BANNER_VIDEO_JS = """<script>(function(){if(window.__ddBanV)return;window.__ddBanV=1;
 function go(){var vs=[].slice.call(document.querySelectorAll("video.dd-ban-v"));if(!vs.length)return;
-var mq=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)");
-function still(){return mq&&mq.matches}
 function btn(v){var b=v.closest(".dd-ban");return b&&b.querySelector(".dd-ban-mute")}
 function sync(v){var b=btn(v);if(!b)return;b.setAttribute("aria-pressed",v.muted?"false":"true");b.setAttribute("aria-label",v.muted?"Unmute ad":"Mute ad");b.classList.toggle("on",!v.muted)}
-vs.forEach(function(v){v.muted=true;v.defaultMuted=true;v.controls=false;v.removeAttribute("controls");sync(v);v.addEventListener("volumechange",function(){sync(v)});
- var b=btn(v);if(b)b.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();
-  if(v.muted){v.muted=false;v._user=true;v.preload="auto";var q=v.play();if(q&&q.catch)q.catch(function(){})}else v.muted=true;sync(v)})});
-function play(v){if((still()&&!v._user)||!v._in){v.pause();return}if(v.preload!=="auto"){v.preload="auto"}var p=v.play();if(p&&p.catch)p.catch(function(){})}
-if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target._in=e.isIntersecting;play(e.target)})},{rootMargin:"200px 0px"});vs.forEach(function(v){io.observe(v)})}
-else vs.forEach(function(v){v._in=true;play(v)});
-if(mq&&mq.addEventListener)mq.addEventListener("change",function(){vs.forEach(play)})}
+function play(v){var p=v.play();if(p&&p.catch)p.catch(function(){})}
+vs.forEach(function(v){v.muted=true;v.defaultMuted=true;v.loop=true;v.controls=false;v.removeAttribute("controls");sync(v);
+ v.addEventListener("volumechange",function(){sync(v)});
+ v.addEventListener("contextmenu",function(e){e.preventDefault()});
+ v.addEventListener("pause",function(){if(!v.ended)play(v)});
+ v.addEventListener("ended",function(){v.currentTime=0;play(v)});
+ var b=btn(v);if(b)b.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();v.muted=!v.muted;play(v);sync(v)});
+ play(v)});
+document.addEventListener("visibilitychange",function(){if(!document.hidden)vs.forEach(play)})}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()})();</script>"""
 
 
@@ -422,21 +422,20 @@ def _vtype(src):
 
 def banner_media(ban, prefix, alt):
     """The sponsor's banner media. type: "image" (default), "animated" (GIF / animated WebP) or "video" (MP4 / WebM).
-    Animated and video banners need a static poster (1200x300 frame): it is what reduced-motion visitors see.
+    Animated plays right away; video autoplays muted on load, loops endlessly and has no controls (poster shows only until the first frame).
     Video is always muted, inline, looping, without controls, and only loads/plays when near the viewport."""
     kind = (ban.get("type") or "image").lower()
     src = _asset(ban["image"], prefix)
     poster = _asset(ban["poster"], prefix) if ban.get("poster") else ""
     if kind == "video" and poster:
-        return ('<video class="dd-ban-v" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback '
+        return ('<video class="dd-ban-v" autoplay muted playsinline webkit-playsinline loop preload="auto" disablepictureinpicture disableremoteplayback '
+                'controlslist="nodownload nofullscreen noplaybackrate noremoteplayback" tabindex="-1" draggable="false" '
                 'poster="%s" width="1200" height="300" aria-label="%s">%s<source src="%s" type="%s"></video>%s') % (
             esc(poster), esc(alt),
             ('<source src="%s" type="video/webm">' % esc(_asset(ban["webm"], prefix))) if ban.get("webm") else "",
             esc(src), _vtype(src), BANNER_VIDEO_JS)
-    if kind == "animated" and poster:
-        return ('<picture><source media="(prefers-reduced-motion: reduce)" srcset="%s">'
-                '<img src="%s" alt="%s" width="1200" height="300" loading="lazy" decoding="async"></picture>') % (
-            esc(poster), esc(src), esc(alt))
+    if kind == "animated":
+        return '<img src="%s" alt="%s" width="1200" height="300" loading="eager" decoding="async" draggable="false">' % (esc(src), esc(alt))
     still = poster if kind == "video" else src  # a video without a poster is not shown as video
     return '<img src="%s" alt="%s" width="1200" height="300" loading="lazy" decoding="async">' % (esc(still), esc(alt))
 
@@ -1128,9 +1127,9 @@ def rates_html():
 
 BANNER_SPEC_HTML = """<details class="ct-spec"><summary>Banner spec</summary><ul>
 <li><b>Static image:</b> 1200 × 300 px (4:1), PNG, JPG or WebP, up to 300 KB.</li>
-<li><b>Animated:</b> GIF or animated WebP, 1200 × 300, up to 1.5 MB, loop of 15 seconds or less, plus a static 1200 × 300 frame.</li>
-<li><b>Video:</b> MP4 (H.264) or WebM, 1200 × 300 or 2400 × 600, up to 4 MB, 30 seconds or less. It may include audio but always starts muted; viewers can turn the sound on with the small speaker button next to the Sponsored label. It loops, has no other controls, and needs a static 1200 × 300 poster frame.</li>
-<li>Visitors who ask for reduced motion see the static frame. Animated and video banners load only as they come into view.</li>
+<li><b>Animated:</b> GIF or animated WebP, 1200 × 300, up to 1.5 MB, loop of 15 seconds or less.</li>
+<li><b>Video:</b> MP4 (H.264) or WebM, 1200 × 300 or 2400 × 600, up to 4 MB, 30 seconds or less. It may include audio. It autoplays muted as the page loads and loops endlessly, with no play, pause or seek controls; the only control is a small speaker button next to the Sponsored label that turns that ad's sound on or off, and every page load starts muted. Please also send a static 1200 × 300 poster frame, shown until the video starts.</li>
+<li>Clicking the banner opens your link.</li>
 <li>Keep logos and text inside the central 1080 × 240 px. Corners are rounded. No fake buttons that imitate site controls, and no rapid flashing (no more than 3 flashes per second).</li>
 <li>We add the <b>Sponsored</b> label above every banner.</li></ul></details>"""
 
