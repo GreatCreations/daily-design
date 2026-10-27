@@ -1478,6 +1478,7 @@ ABOUT_CSS = """<style>
 .ab-days .d{display:inline-block;min-width:6.2em;color:#d5d1c8;font-weight:600}
 .ab-days a{display:inline-block;margin-right:8px;font-weight:700;text-decoration:none;color:var(--c)}.ab-days a:hover,.ab-days a:focus-visible{text-decoration:underline}
 .ab .dd-tz{font-size:.88em}
+.ab .lede{max-width:none;text-wrap:balance;text-wrap:pretty}.ab .lede .nw{white-space:nowrap}
 </style>"""
 
 SUB_LOCK_DATE = "2026-11-08"  # first sub-access locks (editions dated from SUB_FROM, 7 days after they publish)
@@ -1592,7 +1593,7 @@ def build_about_page(editions):
 <section class="ct-card" aria-labelledby="ab-h">
 <div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · About">Daily Design · About</a></div>
 <h1 id="ab-h">About <em>Daily Design</em></h1>
-<p class="lede">Daily Design is a public archive of AI design research digests from <a href="%s" rel="noopener">%s</a>: four editions a day on how AI is changing creative work, across image, video, 3D, code/UI, sound, games and mashups.</p>
+<p class="lede">Daily Design is a public archive of AI design research digests from <span class="nw"><a href="%s" rel="noopener">%s</a>:</span> four editions a day on how AI is changing creative work, across image, video, 3D, <span class="nw">code/UI,</span> sound, <span class="nw">games and mashups.</span></p>
 %s<h2>Four editions a day</h2>
 <ul class="ab-eds">%s</ul>
 <p>Editions are dated and timed in Pacific time (Vancouver), shown as <span class="dd-tz">%s</span>. If your clock differs, your own local time is shown in brackets.</p>
