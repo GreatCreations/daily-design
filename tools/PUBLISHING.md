@@ -50,6 +50,12 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    `sitemap.xml`, `robots.txt` and `feed.xml` are rewritten. The canonical base is `SITE_URL` in `publish.py`.
 7c. **Credit**: every page gets the Great Creation Studios footer credit between `<!--dd-credit:start-->`/`<!--dd-credit:end-->`
    (inside the edition footer, the report page footer and the index footer).
+7d. **Asset cache-busting** (every run, `version_assets()`): after all pages are written, every `src`/`href` to a first-party
+   `assets/<name>.js` or `assets/<name>.css` in `index.html`, `contact.html`, `editions/**` and `reports/**` gets `?v=<10-char sha256 of the file>`
+   (any existing `?v=` is replaced). GitHub Pages caches assets for 10 minutes, so a changed file gets a new URL and browsers fetch it right
+   away. Old pages are covered because the pass runs over all of them each time. After editing `assets/app.js`, `site.css`, `tts.js`,
+   `countdown.js` or `logo3d.js`, run `publish.py` (or `--no-push` then commit) so the links pick up the new hash. New first-party JS/CSS in
+   `assets/` is covered automatically. The gate test Worker matches `assets/app.js` by path only, so the query string doesn't affect it.
 8. **Safety scan**: every new or changed file is checked for local paths, tokens, email addresses and private Slack/Drive links, plus the patterns
    in an optional private denylist kept outside the repo (`<src>/.publish-denylist`, one regex per line). If anything matches, nothing is committed.
 9. **Commit and push** to `main` as GreatCreations. The repo's local git credential helper asks `gh auth token -u GreatCreations` for the token,

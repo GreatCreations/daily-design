@@ -1308,6 +1308,32 @@ def sha(path):
     return h.hexdigest()
 
 
+ASSET_REF_RE = re.compile(r'((?:src|href)=")((?:\.\./)*assets/([A-Za-z0-9_-]+\.(?:js|css)))(?:\?v=[0-9a-f]{6,16})?"')
+
+
+def version_assets():
+    """Cache-bust first-party JS/CSS: every src/href to assets/<name>.js|.css in the site's HTML gets ?v=<10-char content hash>,
+    so a changed file gets a new URL (Pages caches assets for 10 minutes). Runs over every page each publish, so old pages are covered."""
+    import hashlib
+    hashes = {}
+    def ver(m):
+        name = m.group(3)
+        if name not in hashes:
+            fp = os.path.join(REPO, "assets", name)
+            hashes[name] = hashlib.sha256(open(fp, "rb").read()).hexdigest()[:10] if os.path.isfile(fp) else None
+        return m.group(0) if not hashes[name] else '%s%s?v=%s"' % (m.group(1), m.group(2), hashes[name])
+    pages = [os.path.join(REPO, "index.html"), os.path.join(REPO, CONTACT_PATH)]
+    for sub in ("editions", "reports"):
+        for root, _, files in os.walk(os.path.join(REPO, sub)):
+            pages += [os.path.join(root, f) for f in files if f.endswith(".html")]
+    n = 0
+    for pg in pages:
+        if os.path.isfile(pg):
+            doc = open(pg, encoding="utf-8").read()
+            n += write_if_changed(pg, ASSET_REF_RE.sub(ver, doc))
+    return n
+
+
 def write_if_changed(path, text):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     if os.path.exists(path) and open(path, encoding="utf-8").read() == text:
@@ -1478,6 +1504,8 @@ def main():
     build_index_seo(editions)
     build_contact_page()
     build_sitemap_feed(editions)
+    nv = version_assets()  # 4c. ?v=<hash> on first-party JS/CSS links, after every page is written
+    if nv: log("asset versions updated on %d pages" % nv)
     for legacy in ("index.js",):
         lp = os.path.join(REPO, "data", legacy)
         if os.path.exists(lp): os.remove(lp)
