@@ -72,6 +72,15 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    `tools/special-days.json`. "The archive and sub access" note uses `SUB_LOCK_DATE` / `SUB_FROM` / `FREE_THROUGH` in `publish.py`:
    before Nov 8, 2026 00:00 Pacific it reads "Starting Nov 8, 2026, ... will become sub access ...", and from then on "Since Nov 8, 2026,
    ... become sub access ...". The browser picks the version from its clock; the static HTML (no JS) uses the Pacific date of the last publish.
+6i. **Visitor analytics** (Cloudflare Web Analytics, cookie-free JS beacon): every HTML page the site serves (home, About, Contact,
+   every HTML edition and every report page, past and future) gets exactly one
+   `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "..."}'>` just before `</head>`,
+   between `<!--dd-beacon:start-->`/`<!--dd-beacon:end-->`. It's added by `ensure_beacon()` inside `write_if_changed()`, so any `.html`
+   that `publish.py` writes carries it, and the asset-version pass touches every page each run, so pages edited by hand get it back on the
+   next publish. The token is `CF_BEACON_TOKEN` in `publish.py`; it is public by design (it ships in the page HTML). Set it to `""` and run
+   `publish.py` to remove the beacon everywhere. The site isn't proxied by Cloudflare, so this is a manual (not auto-installed) Web
+   Analytics site for `studios.greatcreations.art`. It counts page views, referrers, countries, devices and page speed only: no cookies,
+   no personal data, no cross-site tracking, and no click tracking. The About page says so in one line under "How it works".
 6f. **Time zones.** Editions are filed by Pacific date and timed in Pacific time (America/Vancouver).
    - **Label:** every displayed slot time gets a label, e.g. "7 AM PDT". It comes from one constant, `TZ_LABEL`, in
      `tools/publish.py` and `assets/app.js` (keep the two the same). `"auto"` means PDT or PST by the old daylight rule for the date shown,

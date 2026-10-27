@@ -286,6 +286,20 @@ FOOT_START, FOOT_END = "<!--dd-foot:start-->", "<!--dd-foot:end-->"
 STYLE_START, STYLE_END = "<!--dd-style:start-->", "<!--dd-style:end-->"
 ICON_START, ICON_END = "<!--dd-icon:start-->", "<!--dd-icon:end-->"
 CREDIT_START, CREDIT_END = "<!--dd-credit:start-->", "<!--dd-credit:end-->"
+# Cloudflare Web Analytics (cookie-free JS beacon). The token is public by design: it ships in every page's HTML.
+CF_BEACON_TOKEN = "cde3bd9455d349709d6709130b5b58e3"
+BEACON_START, BEACON_END = "<!--dd-beacon:start-->", "<!--dd-beacon:end-->"
+BEACON_HTML = (BEACON_START + '<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
+               'data-cf-beacon=\'{"token": "%s"}\'></script>' + BEACON_END) % CF_BEACON_TOKEN
+
+
+def ensure_beacon(doc):
+    """Exactly one analytics beacon per HTML page, just before </head> (re-runs replace it)."""
+    doc = re.sub(re.escape(BEACON_START) + ".*?" + re.escape(BEACON_END) + r"\n?", "", doc, flags=re.S)
+    if not CF_BEACON_TOKEN:
+        return doc
+    i = doc.lower().rfind("</head>")
+    return doc[:i] + BEACON_HTML + "\n" + doc[i:] if i >= 0 else doc
 STUDIO_NAME = "Great Creation Studios"
 STUDIO_URL = "https://greatcreationstudios.greatcreations.art/"
 
@@ -1602,6 +1616,7 @@ def build_about_page(editions):
 <p>Every edition links straight to the original creators and sources. Engagement numbers were read when each edition was compiled and will have changed since. Sponsors never affect what we pick or how it ranks.</p>
 <p>The whole archive is searchable: search every edition and link, then filter by medium, type, edition and date, or browse the archive calendar day by day.</p>
 <p>Questions, tips, corrections or sponsorship: see <a href="%s">Contact</a>.</p>
+<p>We count visits with Cloudflare Web Analytics, which is cookie-free: no cookies, no personal data and no cross-site tracking.</p>
 </section>
 <section class="ct-card" style="margin-top:18px;border-top-color:var(--aqua)" aria-labelledby="sm-h">
 <h2 id="sm-h" style="margin-top:0">Site map</h2>
@@ -1710,6 +1725,8 @@ def version_assets():
 
 def write_if_changed(path, text):
     os.makedirs(os.path.dirname(path), exist_ok=True)
+    if path.endswith(".html"):  # every page the site serves gets the analytics beacon
+        text = ensure_beacon(text)
     if os.path.exists(path) and open(path, encoding="utf-8").read() == text:
         return False
     open(path, "w", encoding="utf-8").write(text)
