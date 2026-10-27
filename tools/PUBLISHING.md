@@ -74,7 +74,14 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    `index.html` gets its SEO block, plain links to the latest day (`<!--dd-latest-->`) and a no-JS list of editions (`<!--dd-static-->`).
    `sitemap.xml`, `robots.txt` and `feed.xml` are rewritten. The canonical base is `SITE_URL` in `publish.py`.
 7c. **Credit**: every page gets the Great Creation Studios footer credit between `<!--dd-credit:start-->`/`<!--dd-credit:end-->`
-   (inside the edition footer, the report page footer and the index footer).
+   (inside the edition footer, the report page footer, the index footer and the contact footer), on its own line below the archive
+   text: "Daily Design is created and brought to you by Great Creation Studios." The studio name links to
+   https://greatcreationstudios.greatcreations.art/ (same tab, `rel="noopener"`). "Daily Design" there is `brand_html()`: the DD logo
+   (`assets/favicon.svg`, 1.1em, decorative) followed by its letters cycling `--amber` #f5a524, `--aqua` #22e0cf, `--violet` #9b6bff,
+   `--flame` #ff5a2e (the space is skipped, so the colors carry on across it). The phrase is wrapped in `role="img" aria-label="Daily Design"`,
+   with the logo and letters `aria-hidden`, so screen readers say "Daily Design" once. Styles are in `site.css` (index, contact, reports)
+   and in the edition `nav_css` (edition pages don't load `site.css`). Edition pages rebuild automatically when `credit_html()` output
+   changes (it's part of the nav key).
 7d. **Asset cache-busting** (every run, `version_assets()`): after all pages are written, every `src`/`href` to a first-party
    `assets/<name>.js` or `assets/<name>.css` in `index.html`, `contact.html`, `editions/**` and `reports/**` gets `?v=<10-char sha256 of the file>`
    (any existing `?v=` is replaced). GitHub Pages caches assets for 10 minutes, so a changed file gets a new URL and browsers fetch it right

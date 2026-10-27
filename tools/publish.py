@@ -21,7 +21,7 @@ SITE_URL = "https://studios.greatcreations.art/daily-design/"  # canonical base
 REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
 REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
 TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
-NAV_VERSION = 7   # bump to force nav re-injection on every HTML edition
+NAV_VERSION = 8   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -244,7 +244,7 @@ STYLE_START, STYLE_END = "<!--dd-style:start-->", "<!--dd-style:end-->"
 ICON_START, ICON_END = "<!--dd-icon:start-->", "<!--dd-icon:end-->"
 CREDIT_START, CREDIT_END = "<!--dd-credit:start-->", "<!--dd-credit:end-->"
 STUDIO_NAME = "Great Creation Studios"
-STUDIO_URL = "https://greatcreationstudios.greatcreations.art"
+STUDIO_URL = "https://greatcreationstudios.greatcreations.art/"
 
 
 CONTACT_EMAIL = "dailydesign@greatcreations.ca"  # public Daily Design address (shown on contact.html)
@@ -259,13 +259,31 @@ def mailto(subject):
     return "mailto:%s?subject=%s" % (CONTACT_EMAIL, quote(subject))
 
 
+BRAND_COLS = ("#f5a524", "#22e0cf", "#9b6bff", "#ff5a2e")  # --amber, --aqua, --violet, --flame (7 AM, Noon, 6 PM, 8 PM)
+
+
+def brand_html(prefix=""):
+    """'Daily Design' as the DD logo plus letters cycling the four slot colors (space skipped). Screen readers get one
+    'Daily Design' (role=img + aria-label); the logo and the letter spans are aria-hidden."""
+    letters, n = [], 0
+    for ch in "Daily Design":
+        if ch == " ":
+            letters.append(" ")
+            continue
+        letters.append('<span class="c%d">%s</span>' % (n % 4, ch))
+        n += 1
+    return ('<span class="dd-brand" role="img" aria-label="Daily Design"><img class="dd-brand-ic" src="%sassets/favicon.svg" alt="" '
+            'aria-hidden="true" width="16" height="16"><span class="dd-brand-t" aria-hidden="true">%s</span></span>') % (prefix, "".join(letters))
+
+
 def credit_html(prefix="", cls="dd-credit", contact=True):
     """Footer credit line (skipped by the Listen button via .dd-credit). prefix = path back to the site root.
+    'Daily Design' is brand_html(): DD logo + letters in the four slot colors.
     The studio's icon is a vendored copy of its own favicon (assets/gcs-icon.png), decorative (alt="")."""
-    return ('%s<p class="%s">Daily Design is created and brought to you by '
+    return ('%s<p class="%s">%s is created and brought to you by '
             '<a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" alt="" width="16" height="16">%s</a>.</p>'
             '%s%s') % (
-        CREDIT_START, cls, STUDIO_URL, prefix, STUDIO_NAME,
+        CREDIT_START, cls, brand_html(prefix), STUDIO_URL, prefix, STUDIO_NAME,
         ('<p class="dd-contactln"><a href="%s%s">Contact</a> · questions, tips, corrections and sponsorship</p>' % (prefix, CONTACT_PATH)) if contact else "",
         CREDIT_END)
 
@@ -569,6 +587,7 @@ background:#09090c;border-top:2px solid var(--dd-accent);font:600 14px/1.3 ui-sa
 #dd-foot .dd-credit{flex-basis:100%%;margin-top:14px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
 #dd-foot .dd-credit-ic{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin:0 5px 0 1px;border-radius:3px}
 #dd-foot .dd-credit a{display:inline;white-space:nowrap;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
+#dd-foot .dd-brand{white-space:nowrap;font-weight:700}#dd-foot .dd-brand-ic{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin:0 .3em 0 0;border-radius:3px}#dd-foot .dd-brand .c0{color:#f5a524}#dd-foot .dd-brand .c1{color:#22e0cf}#dd-foot .dd-brand .c2{color:#9b6bff}#dd-foot .dd-brand .c3{color:#ff5a2e}
 #dd-foot .dd-contactln{flex-basis:100%%;margin-top:2px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
 #dd-foot .dd-contactln a{display:inline;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px;font-weight:700}
 @media (max-width:620px){#dd-nav{gap:6px;padding:0 8px}#dd-nav .dd-lab{font-size:12px}#dd-nav .dd-t,#dd-nav .tts-l{display:none}#dd-nav a,#dd-nav button.dd-tts{padding:7px 9px}}
@@ -1475,11 +1494,12 @@ def main():
     pages = [r for r in recs if r["edition"]["kind"] == "page"]
     import hashlib
     spon_key = hashlib.sha1((sponsor_html() + sponsor_html(slot="links")).encode("utf-8")).hexdigest()[:12]  # top + lower spot: either changing rebuilds every edition page
+    credit_key = hashlib.sha1(credit_html("../../").encode("utf-8")).hexdigest()[:12]  # footer credit changing rebuilds every edition page
     for i, r in enumerate(pages):
         e = r["edition"]
         prev = pages[i - 1]["edition"] if i > 0 else None
         nxt = pages[i + 1]["edition"] if i + 1 < len(pages) else None
-        nav = [prev and prev["path"], nxt and nxt["path"], NAV_VERSION, spon_key]
+        nav = [prev and prev["path"], nxt and nxt["path"], NAV_VERSION, spon_key, credit_key]
         dest = os.path.join(REPO, e["path"])
         doc = open(dest, encoding="utf-8").read()
         if r.get("nav") == nav and NAV_START in doc:

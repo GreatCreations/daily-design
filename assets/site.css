@@ -252,6 +252,10 @@ footer.site .dd-credit{margin:14px 0 0;padding-top:14px;border-top:1px solid var
 footer.site .dd-credit a{white-space:nowrap;color:var(--ink);text-decoration-color:var(--amber);text-underline-offset:3px}
 footer.site .dd-credit a:hover{color:#fff}
 footer.site .dd-credit-ic{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin:0 5px 0 1px;border-radius:3px}
+/* "Daily Design" in the footer credit: DD logo + letters cycling the four slot colors (publish.py brand_html) */
+.dd-brand{white-space:nowrap;font-weight:700}
+.dd-brand-ic{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin:0 .3em 0 0;border-radius:3px}
+.dd-brand .c0{color:var(--amber)}.dd-brand .c1{color:var(--aqua)}.dd-brand .c2{color:var(--violet)}.dd-brand .c3{color:var(--flame)}
 /* ---------- 3D DD logo: scroll-scrubbed between the hero spot and the search-bar dock (assets/logo3d.js) ---------- */
 .hero-side{display:flex;flex-direction:column;min-width:0}
 .logo-spot{position:relative;align-self:center;width:150px;height:150px;margin:0 0 10px;--k:1}
