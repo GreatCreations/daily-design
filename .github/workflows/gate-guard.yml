@@ -1,0 +1,42 @@
+# Members-gate guard (backstop). The real stop is tools/gate_split.leak_check() before every commit;
+# this workflow fails loudly (GitHub emails the owner) if a push ever carries gated full content.
+name: gate-guard
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    env:
+      FREE_FOREVER_THROUGH: "2026-10-31"
+    steps:
+      - uses: actions/checkout@v4
+      - name: No full content for editions after FREE_FOREVER_THROUGH
+        run: |
+          python3 - <<'PY'
+          import json, os, sys
+          fft = os.environ["FREE_FOREVER_THROUGH"]
+          keys = {"date","slot","time","title","kind","headline","teaser","item_count","tags","locked_after_first_week"}
+          bad = []
+          for d in ("editions", "reports", "data/meta"):
+              if os.path.isdir(d):
+                  bad += ["%s/%s" % (d, x) for x in os.listdir(d) if len(x) == 10 and x > fft]
+          idx = json.load(open("data/index.json"))
+          for e in idx["editions"]:
+              if e["date"] > fft and set(e) - keys:
+                  bad.append("index.json %s/%s has %s" % (e["date"], e["slot"], sorted(set(e) - keys)))
+          for f in os.listdir("data/items"):
+              if any(i.get("date", "") > fft for i in json.load(open("data/items/" + f)).get("items", [])):
+                  bad.append("data/items/" + f + " has gated items")
+          for f in ("sitemap.xml", "feed.xml", "index.html"):
+              t = open(f, encoding="utf-8").read()
+              import re
+              for m in re.finditer(r"(?:editions|reports|data/meta)/(\d{4}-\d{2}-\d{2})/", t):
+                  if m.group(1) > fft: bad.append("%s links %s" % (f, m.group(0))); break
+          if bad:
+              print("GATE LEAK:"); [print("  " + b) for b in bad]; sys.exit(1)
+          print("gate guard clean")
+          PY
