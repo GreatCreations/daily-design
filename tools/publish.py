@@ -362,8 +362,7 @@ def credit_html(prefix="", cls="dd-credit", page=None, blurb="", gh=False):
     if page != "contact":
         site.append('<li><a href="%s%s">Contact</a><span class="dd-fnote">Questions, tips, corrections and sponsorship</span></li>'
                     % (prefix, CONTACT_PATH))
-    if gh:
-        site.append('<li><a href="%s" rel="noopener">Source on GitHub</a></li>' % GH_SOURCE_URL)
+    # The footer GitHub link was removed on Oct 28, 2026; gh is kept for call compatibility.
     follow = '<li>%s<span class="dd-fnote">Follow every creator we feature</span></li>' % xlist_link()
     left = ('<div class="dd-fcol dd-fabout"><p class="dd-fbrand">%s</p>%s'
             '<p class="%s">Created and brought to you by <a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" '
