@@ -304,6 +304,8 @@ STUDIO_NAME = "Great Creation Studios"
 STUDIO_URL = "https://greatcreationstudios.greatcreations.art/"
 
 
+XLIST_URL = "https://x.com/i/lists/2115263443770937364"  # public X list of every creator Daily Design features (owned by @GreatCreations_)
+XLIST_NAME = "Daily Design Creators"
 CONTACT_EMAIL = "dailydesign@greatcreations.ca"  # public Daily Design address (shown on contact.html)
 CONTACT_PATH = "contact.html"
 ABOUT_PATH = "about.html"  # About + site map, built by build_about_page()
@@ -331,6 +333,16 @@ def brand_html(prefix="", link=False):
     return ('<a class="dd-brand-a" href="%s%s" title="About Daily Design">%s</a>' % (prefix, ABOUT_PATH, b)) if link else b
 
 
+def xlist_link(label=None):
+    return '<a class="dd-xlist-a" href="%s" target="_blank" rel="noopener">%s<span aria-hidden="true"> ↗</span></a>' % (
+        XLIST_URL, label or XLIST_NAME + " on X")
+
+
+def xlist_html(cls="dd-xlist"):
+    """'Follow every creator we feature' line linking the public X list (footers, report pages)."""
+    return '<p class="%s">Follow every creator we feature on X: %s</p>' % (cls, xlist_link())
+
+
 def credit_html(prefix="", cls="dd-credit", page=None):
     """Footer credit line (skipped by the Listen button via .dd-credit). prefix = path back to the site root.
     'Daily Design' is brand_html(): DD logo + 'Daily' in white + 'Design' in the four slot colors, linking to the About page.
@@ -343,8 +355,8 @@ def credit_html(prefix="", cls="dd-credit", page=None):
         links.append('<a class="dd-aboutln" href="%s%s">About</a>' % (prefix, ABOUT_PATH))
     return ('%s<p class="%s">%s is created and brought to you by '
             '<a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" alt="" width="16" height="16">%s</a>.</p>'
-            '<p class="dd-contactln">%s</p>%s') % (
-        CREDIT_START, cls, brand_html(prefix, link=True), STUDIO_URL, prefix, STUDIO_NAME, " · ".join(links), CREDIT_END)
+            '<p class="dd-contactln">%s</p>%s%s') % (
+        CREDIT_START, cls, brand_html(prefix, link=True), STUDIO_URL, prefix, STUDIO_NAME, " · ".join(links), xlist_html(), CREDIT_END)
 
 
 def ensure_credit(doc):
@@ -762,6 +774,8 @@ background:#09090c;border-top:2px solid var(--dd-accent);font:600 14px/1.3 ui-sa
 #dd-foot .dd-credit a{display:inline;white-space:nowrap;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
 #dd-foot .dd-brand{white-space:nowrap;font-weight:700}#dd-foot .dd-brand-ic{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin:0 .3em 0 0;border-radius:3px}#dd-foot .dd-brand .cw{color:#fff}#dd-foot .dd-credit a.dd-brand-a{text-decoration:none!important}#dd-foot .dd-credit a.dd-brand-a:hover .cw,#dd-foot .dd-credit a.dd-brand-a:focus-visible .cw{text-decoration:underline;text-decoration-color:var(--dd-accent);text-underline-offset:3px}#dd-foot .dd-brand .c0{color:#f5a524}#dd-foot .dd-brand .c1{color:#22e0cf}#dd-foot .dd-brand .c2{color:#9b6bff}#dd-foot .dd-brand .c3{color:#ff5a2e}
 #dd-foot .dd-contactln{flex-basis:100%%;margin-top:2px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
+#dd-foot .dd-xlist{flex-basis:100%%;margin-top:2px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
+#dd-foot .dd-xlist a{display:inline;white-space:nowrap;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px;font-weight:700}
 #dd-foot .dd-contactln a.dd-aboutln{font-weight:500}#dd-foot .dd-contactln a{display:inline;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px;font-weight:700}
 @media (max-width:620px){#dd-nav{gap:6px;padding:0 8px}#dd-nav .dd-lab{font-size:12px}#dd-nav .dd-t,#dd-nav .tts-l{display:none}#dd-nav a,#dd-nav button.dd-tts{padding:7px 9px}}
 </style>
@@ -1156,9 +1170,19 @@ REPORT_CSS = """<style>
 </style>"""
 
 
+def with_xlist(body):
+    """Report pages: the X list line goes just before the sign-off (the body's last paragraph), or at the end if the body
+    doesn't end with a paragraph. The edition's own text is untouched."""
+    line = xlist_html("rd-xlist") + "\n"
+    m = re.search(r"<p>(?:(?!</?p>).)*</p>\s*$", body, re.S)
+    if m:
+        return body[:m.start()] + line + body[m.start():]
+    return body.rstrip() + "\n" + line
+
+
 def report_page(ed, md, items):
     s = SLOTS[ed["slot"]]
-    body = md_to_html(md)
+    body = with_xlist(md_to_html(md))
     gh = REPO_BLOB + ed["path"]
     key = "%s/%s" % (ed["date"], ed["slot"])
     return ("""<!doctype html>
@@ -1616,6 +1640,7 @@ def build_about_page(editions):
 <p>Every edition links straight to the original creators and sources. Engagement numbers were read when each edition was compiled and will have changed since. Sponsors never affect what we pick or how it ranks.</p>
 <p>The whole archive is searchable: search every edition and link, then filter by medium, type, edition and date, or browse the archive calendar day by day.</p>
 <p>Questions, tips, corrections or sponsorship: see <a href="%s">Contact</a>.</p>
+<p>Every creator, studio and lab we feature goes on our public X list, @@XLIST@@, with new ones added after every edition.</p>
 <p>We count visits with Cloudflare Web Analytics, which is cookie-free: no cookies, no personal data and no cross-site tracking.</p>
 </section>
 <section class="ct-card" style="margin-top:18px;border-top-color:var(--aqua)" aria-labelledby="sm-h">
@@ -1625,7 +1650,7 @@ def build_about_page(editions):
 <h3>Edition series</h3>
 <ul class="ab-map">%s</ul>
 <h3>More</h3>
-<ul class="ab-map"><li><a href="%s">Contact</a></li><li><a href="%s" aria-current="page">About</a></li><li><a href="feed.xml">Feed (Atom)</a></li><li><a href="sitemap.xml">sitemap.xml</a></li></ul>
+<ul class="ab-map"><li><a href="%s">Contact</a></li><li><a href="%s" aria-current="page">About</a></li>@@XLISTLI@@<li><a href="feed.xml">Feed (Atom)</a></li><li><a href="sitemap.xml">sitemap.xml</a></li></ul>
 <h2>All editions</h2>
 %s
 </section>
@@ -1636,6 +1661,7 @@ def build_about_page(editions):
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, since, eds, tz_label(today), sub, CONTACT_PATH, series,
        CONTACT_PATH, ABOUT_PATH, month_html, credit_html("", page="about"))
+    doc = doc.replace("@@XLIST@@", xlist_link(XLIST_NAME)).replace("@@XLISTLI@@", "<li>%s</li>" % xlist_link())
     if write_if_changed(os.path.join(REPO, ABOUT_PATH), doc):
         log("about page", ABOUT_PATH)
 

@@ -129,6 +129,12 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    with the logo and letters `aria-hidden`, so screen readers say "Daily Design" once. Styles are in `site.css` (index, contact, reports)
    and in the edition `nav_css` (edition pages don't load `site.css`). Edition pages rebuild automatically when `credit_html()` output
    changes (it's part of the nav key).
+7c2. **X list link**: the public X list "Daily Design Creators" (`XLIST_URL` / `XLIST_NAME` in `publish.py`, owned by @GreatCreations_,
+   holding every creator, studio and lab Daily Design features) is linked in three places, all generated, so new editions pick it up:
+   - every footer, through the credit block (`credit_html()` → `xlist_html()`, `.dd-xlist`): "Follow every creator we feature on X: Daily Design Creators on X ↗";
+   - the About page ("How it works" line and the site map's More list);
+   - each static report page, just before the sign-off (the body's last paragraph) via `with_xlist()` in `report_page()` (`.rd-xlist`).
+     The edition Markdown is not changed. Listen skips `.dd-xlist` / `.rd-xlist`. Links open in a new tab (`rel="noopener"`).
 7d. **Asset cache-busting** (every run, `version_assets()`): after all pages are written, every `src`/`href` to a first-party
    `assets/<name>.js` or `assets/<name>.css` in `index.html`, `contact.html`, `about.html`, `editions/**` and `reports/**` gets `?v=<10-char sha256 of the file>`
    (any existing `?v=` is replaced). GitHub Pages caches assets for 10 minutes, so a changed file gets a new URL and browsers fetch it right
