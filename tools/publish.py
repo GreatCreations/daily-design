@@ -21,7 +21,7 @@ SITE_URL = "https://studios.greatcreations.art/daily-design/"  # canonical base
 REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
 REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
 TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
-NAV_VERSION = 10   # bump to force nav re-injection on every HTML edition
+NAV_VERSION = 11   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -343,31 +343,58 @@ def xlist_html(cls="dd-xlist"):
     return '<p class="%s">Follow every creator we feature on X: %s</p>' % (cls, xlist_link())
 
 
-def credit_html(prefix="", cls="dd-credit", page=None):
-    """Footer credit line (skipped by the Listen button via .dd-credit). prefix = path back to the site root.
-    'Daily Design' is brand_html(): DD logo + 'Daily' in white + 'Design' in the four slot colors, linking to the About page.
-    The studio's icon is a vendored copy of its own favicon (assets/gcs-icon.png), decorative (alt="").
-    page = "contact" / "about" leaves out the link to the page you're on."""
-    links = []
-    if page != "contact":
-        links.append('<a href="%s%s">Contact</a> · questions, tips, corrections and sponsorship' % (prefix, CONTACT_PATH))
+GH_SOURCE_URL = "https://github.com/GreatCreations/daily-design"
+FOOT_BLURB = ("Daily Design is a public archive of AI design research digests. "
+              "Links go to the original creators and sources.")
+FOOT_BLURB_NUMBERS = ("Daily Design is a public archive of AI design research digests. Links go to the original creators and sources; "
+                      "engagement numbers were read when each edition was compiled and will have changed since.")
+
+
+def credit_html(prefix="", cls="dd-credit", page=None, blurb="", gh=False):
+    """Shared two-column site footer (skipped by the Listen button: it sits in <footer>/#dd-foot and carries .dd-credit / .dd-fcols).
+    Left column: the Daily Design wordmark (brand_html, links to About), the page's one-line description (blurb, optional) and the
+    studio credit (the studio's icon is a vendored copy of its own favicon, assets/gcs-icon.png, decorative alt="").
+    Right column: labelled link groups (Daily Design: About / Contact / Source on GitHub when gh; Follow: the public X list).
+    prefix = path back to the site root. page = "contact" / "about" leaves out the link to the page you're on."""
+    site = []
     if page != "about":
-        links.append('<a class="dd-aboutln" href="%s%s">About</a>' % (prefix, ABOUT_PATH))
-    return ('%s<p class="%s">%s is created and brought to you by '
-            '<a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" alt="" width="16" height="16">%s</a>.</p>'
-            '<p class="dd-contactln">%s</p>%s%s') % (
-        CREDIT_START, cls, brand_html(prefix, link=True), STUDIO_URL, prefix, STUDIO_NAME, " · ".join(links), xlist_html(), CREDIT_END)
+        site.append('<li><a class="dd-aboutln" href="%s%s">About</a></li>' % (prefix, ABOUT_PATH))
+    if page != "contact":
+        site.append('<li><a href="%s%s">Contact</a><span class="dd-fnote">Questions, tips, corrections and sponsorship</span></li>'
+                    % (prefix, CONTACT_PATH))
+    if gh:
+        site.append('<li><a href="%s" rel="noopener">Source on GitHub</a></li>' % GH_SOURCE_URL)
+    follow = '<li>%s<span class="dd-fnote">Follow every creator we feature</span></li>' % xlist_link()
+    left = ('<div class="dd-fcol dd-fabout"><p class="dd-fbrand">%s</p>%s'
+            '<p class="%s">Created and brought to you by <a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" '
+            'alt="" width="16" height="16">%s</a>.</p></div>') % (
+        brand_html(prefix, link=True), ('<p class="dd-fdesc">%s</p>' % blurb) if blurb else "", cls, STUDIO_URL, prefix, STUDIO_NAME)
+    right = ('<nav class="dd-fcol dd-flinks" aria-label="Footer">'
+             '<div class="dd-fgroup"><p class="dd-fh">Daily Design</p><ul>%s</ul></div>'
+             '<div class="dd-fgroup"><p class="dd-fh">Follow</p><ul>%s</ul></div></nav>') % ("".join(site), follow)
+    return '%s<div class="dd-fcols">%s%s</div>%s' % (CREDIT_START, left, right, CREDIT_END)
 
 
 def ensure_credit(doc):
-    """Put exactly one credit inside <footer class="site"> (index and report pages)."""
-    doc = re.sub(re.escape(CREDIT_START) + ".*?" + re.escape(CREDIT_END), "", doc, flags=re.S)
-    m = re.search(r'(<footer class="site"><div class="wrap">.*?)(</div></footer>)', doc, re.S)
-    if m:
-        return doc[:m.end(1)] + credit_html() + doc[m.end(1):]
-    idx = doc.lower().rfind("</body>")
-    slim = '<footer class="site">' + '<div class="wrap">' + credit_html() + "</div></footer>\n"
-    return doc[:idx] + slim + doc[idx:] if idx >= 0 else doc + slim
+    """Put exactly one two-column credit footer inside <footer class="site"> (index). The footer's description text (loose text
+    before the credit on older builds, or the .dd-fdesc already inside it) becomes the left column's blurb; a 'Source on GitHub'
+    link in it moves to the link column."""
+    m = re.search(r'(<footer class="site"><div class="wrap">)(.*?)(</div></footer>)', doc, re.S)
+    if not m:
+        doc = re.sub(re.escape(CREDIT_START) + ".*?" + re.escape(CREDIT_END), "", doc, flags=re.S)
+        idx = doc.lower().rfind("</body>")
+        slim = '<footer class="site">' + '<div class="wrap">' + credit_html() + "</div></footer>\n"
+        return doc[:idx] + slim + doc[idx:] if idx >= 0 else doc + slim
+    inner = m.group(2)
+    gh = GH_SOURCE_URL in inner
+    old = re.search(re.escape(CREDIT_START) + "(.*?)" + re.escape(CREDIT_END), inner, re.S)
+    outside = re.sub(re.escape(CREDIT_START) + ".*?" + re.escape(CREDIT_END), "", inner, flags=re.S)
+    outside = re.sub(r'\s*<a href="%s"[^>]*>Source on GitHub</a>\.?' % re.escape(GH_SOURCE_URL), "", outside).strip()
+    blurb = outside
+    if not blurb and old:
+        d = re.search(r'<p class="dd-fdesc">(.*?)</p>', old.group(1), re.S)
+        blurb = d.group(1).strip() if d else ""
+    return doc[:m.start(2)] + credit_html(blurb=blurb, gh=gh) + doc[m.end(2):]
 
 
 SPONSOR_CSS = """<style id="dd-spon-css">
@@ -769,14 +796,24 @@ border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,2
 background:#09090c;border-top:2px solid var(--dd-accent);font:600 14px/1.3 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 #dd-foot a{color:#ecebe8!important;text-decoration:none!important;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
 #dd-foot a.dd-home{background:var(--dd-accent);color:#0b0b0e!important;border-color:transparent;font-weight:800}
-#dd-foot .dd-credit{flex-basis:100%%;margin-top:14px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
+#dd-foot .dd-fcols{flex-basis:100%%;width:100%%;max-width:1100px;margin:22px auto 0;padding-top:28px;border-top:1px solid rgba(255,255,255,.09);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px 64px;align-items:start;text-align:left;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
+#dd-foot .dd-fcols a{display:inline;padding:0;border:0;border-radius:0;background:none;white-space:normal}
+#dd-foot .dd-fcol p,#dd-foot .dd-fcol ul{margin:0;padding:0}
+#dd-foot .dd-fbrand{font-size:18px;line-height:1.3}
+#dd-foot .dd-fdesc{margin-top:12px!important;max-width:58ch;color:#76736c;line-height:1.65}
+#dd-foot .dd-credit{margin-top:16px!important;color:#a7a39a}
+#dd-foot .dd-credit a{white-space:nowrap;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
 #dd-foot .dd-credit-ic{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin:0 5px 0 1px;border-radius:3px}
-#dd-foot .dd-credit a{display:inline;white-space:nowrap;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
-#dd-foot .dd-brand{white-space:nowrap;font-weight:700}#dd-foot .dd-brand-ic{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin:0 .3em 0 0;border-radius:3px}#dd-foot .dd-brand .cw{color:#fff}#dd-foot .dd-credit a.dd-brand-a{text-decoration:none!important}#dd-foot .dd-credit a.dd-brand-a:hover .cw,#dd-foot .dd-credit a.dd-brand-a:focus-visible .cw{text-decoration:underline;text-decoration-color:var(--dd-accent);text-underline-offset:3px}#dd-foot .dd-brand .c0{color:#f5a524}#dd-foot .dd-brand .c1{color:#22e0cf}#dd-foot .dd-brand .c2{color:#9b6bff}#dd-foot .dd-brand .c3{color:#ff5a2e}
-#dd-foot .dd-contactln{flex-basis:100%%;margin-top:2px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
-#dd-foot .dd-xlist{flex-basis:100%%;margin-top:2px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
-#dd-foot .dd-xlist a{display:inline;white-space:nowrap;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px;font-weight:700}
-#dd-foot .dd-contactln a.dd-aboutln{font-weight:500}#dd-foot .dd-contactln a{display:inline;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px;font-weight:700}
+#dd-foot .dd-brand{white-space:nowrap;font-weight:700}#dd-foot .dd-brand-ic{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin:0 .3em 0 0;border-radius:3px}#dd-foot .dd-brand .cw{color:#fff}#dd-foot a.dd-brand-a{text-decoration:none!important}#dd-foot a.dd-brand-a:hover .cw,#dd-foot a.dd-brand-a:focus-visible .cw{text-decoration:underline;text-decoration-color:var(--dd-accent);text-underline-offset:3px}#dd-foot .dd-brand .c0{color:#f5a524}#dd-foot .dd-brand .c1{color:#22e0cf}#dd-foot .dd-brand .c2{color:#9b6bff}#dd-foot .dd-brand .c3{color:#ff5a2e}
+#dd-foot .dd-flinks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px;padding-left:32px;border-left:1px solid rgba(255,255,255,.09)}
+#dd-foot .dd-fh{margin:0 0 14px!important;font:700 11px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--dd-accent)}
+#dd-foot .dd-flinks ul{list-style:none;display:grid;gap:12px}
+#dd-foot .dd-flinks li{min-width:0;list-style:none}
+#dd-foot .dd-flinks a{color:#ecebe8!important;font-size:14px;font-weight:600;text-decoration:none!important;overflow-wrap:anywhere}
+#dd-foot .dd-flinks a:hover,#dd-foot .dd-flinks a:focus-visible{color:#fff!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
+#dd-foot .dd-fnote{display:block;margin-top:3px!important;color:#76736c;font-size:12px;font-weight:500;line-height:1.45}
+@media (max-width:760px){#dd-foot .dd-fcols{grid-template-columns:minmax(0,1fr);gap:26px}#dd-foot .dd-flinks{padding:24px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.09)}}
+@media (max-width:440px){#dd-foot .dd-flinks{grid-template-columns:minmax(0,1fr);gap:22px}}
 @media (max-width:620px){#dd-nav{gap:6px;padding:0 8px}#dd-nav .dd-lab{font-size:12px}#dd-nav .dd-t,#dd-nav .tts-l{display:none}#dd-nav a,#dd-nav button.dd-tts{padding:7px 9px}}
 </style>
 <script>(function(){function fix(){var h=document.getElementById('dd-nav');if(!h)return;var H=h.offsetHeight;
@@ -1208,14 +1245,14 @@ def report_page(ed, md, items):
 <div class="rd-foot"><a class="btn" href="../../index.html">← Back to the Daily Design index</a></div>
 </section>
 </main>
-<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources; engagement numbers were read when each edition was compiled and will have changed since.%s</div></footer>
+<footer class="site"><div class="wrap">%s</div></footer>
 <script src="../../assets/tts.js" defer></script>
 <script src="../../assets/tzlocal.js" defer></script>
 </body>
 </html>
 """) % (seo_block(ed, items, report_story(md)), icon_links("../../"), REPORT_CSS, key,
         sponsor_html("../../", "dd-spon-wrap dd-spon-rp"), s["color"],
-        esc(s["time"]) + tz_html(ed["date"], ed["slot"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../"))
+        esc(s["time"]) + tz_html(ed["date"], ed["slot"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../", blurb=FOOT_BLURB_NUMBERS))
 
 
 REPORT_TTS = ('<button class="btn rd-tts" id="dd-tts-play" type="button" hidden aria-label="Listen: read this page aloud" aria-pressed="false">'
@@ -1485,12 +1522,12 @@ def build_contact_page():
 <a class="btn pri" href="%s">Email about sponsoring</a></div>
 </section>
 </main>
-<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources.%s</div></footer>
+<footer class="site"><div class="wrap">%s</div></footer>
 %s
 </body>
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, e, esc(mailto("Daily Design")), rates_html(), BANNER_SPEC_HTML, esc(mailto("Sponsoring Daily Design")),
-       credit_html("", page="contact"), CONTACT_JS % CONTACT_EMAIL)
+       credit_html("", page="contact", blurb=FOOT_BLURB), CONTACT_JS % CONTACT_EMAIL)
     if write_if_changed(os.path.join(REPO, CONTACT_PATH), doc):
         log("contact page", CONTACT_PATH)
 
@@ -1655,12 +1692,12 @@ def build_about_page(editions):
 %s
 </section>
 </main>
-<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources.%s</div></footer>
+<footer class="site"><div class="wrap">%s</div></footer>
 <script src="assets/tzlocal.js" defer></script>
 </body>
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, since, eds, tz_label(today), sub, CONTACT_PATH, series,
-       CONTACT_PATH, ABOUT_PATH, month_html, credit_html("", page="about"))
+       CONTACT_PATH, ABOUT_PATH, month_html, credit_html("", page="about", blurb=FOOT_BLURB))
     doc = doc.replace("@@XLIST@@", xlist_link(XLIST_NAME)).replace("@@XLISTLI@@", "<li>%s</li>" % xlist_link())
     if write_if_changed(os.path.join(REPO, ABOUT_PATH), doc):
         log("about page", ABOUT_PATH)

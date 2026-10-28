@@ -118,20 +118,31 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    page `reports/<date>/<slot>.html` rendered from its Markdown in plain report styling (with Listen, favicon and a back link).
    `index.html` gets its SEO block, plain links to the latest day (`<!--dd-latest-->`) and a no-JS list of editions (`<!--dd-static-->`).
    `sitemap.xml`, `robots.txt` and `feed.xml` are rewritten. The canonical base is `SITE_URL` in `publish.py`.
-7c. **Credit**: every page gets the Great Creation Studios footer credit between `<!--dd-credit:start-->`/`<!--dd-credit:end-->`
-   (inside the edition footer, the report page footer, the index footer and the contact and about footers), on its own line below the archive
-   text: "Daily Design is created and brought to you by Great Creation Studios." The studio name links to
-   https://greatcreationstudios.greatcreations.art/ (same tab, `rel="noopener"`). "Daily Design" there is `brand_html()`: the DD logo
+7c. **Footer (credit block)**: every page gets the same two-column footer between `<!--dd-credit:start-->`/`<!--dd-credit:end-->`
+   (inside the edition footer `#dd-foot` below the prev/index/next pills, the report page footer, the index footer and the contact and about
+   footers), built by `credit_html(prefix, page=, blurb=, gh=)`:
+   - **Left column** (`.dd-fabout`): the "Daily Design" wordmark (`.dd-fbrand`, `brand_html()`), the page's one-line description (`.dd-fdesc`,
+     `FOOT_BLURB` on contact/about, `FOOT_BLURB_NUMBERS` on report pages and the index; edition pages have none) and the studio credit
+     (`.dd-credit`): "Created and brought to you by Great Creation Studios." The studio name links to
+     https://greatcreationstudios.greatcreations.art/ (same tab, `rel="noopener"`).
+   - **Right column** (`nav.dd-flinks`, `aria-label="Footer"`): two labelled groups (`.dd-fh` labels in the accent colour). "Daily Design":
+     About, Contact (note: questions, tips, corrections and sponsorship), and Source on GitHub on the index (`gh=True`); the link to the page
+     you're on is left out (`page="contact"|"about"`). "Follow": Daily Design Creators on X ↗ (note: follow every creator we feature).
+   - Desktop: left column ~55%, link column with a hairline divider on its left. Under 760px the columns stack (link groups under a hairline);
+     under 440px the two link groups stack too. Accent is `--acc` (amber) in `site.css`; on edition pages it's the slot colour (`--dd-accent`).
+   - `ensure_credit()` keeps the index footer idempotent: loose description text before the credit (older builds) or the existing `.dd-fdesc`
+     becomes the blurb, and an index "Source on GitHub" link moves into the link column.
+   "Daily Design" in the wordmark is `brand_html()`: the DD logo
    (`assets/favicon.svg`, 1.1em, decorative) followed by "Daily" in bright white (#ffffff, `.cw`, no cycling) and "Design" with its letters cycling
    `--amber` #f5a524, `--aqua` #22e0cf, `--violet` #9b6bff and `--flame` #ff5a2e, starting with amber (D amber, e aqua, s violet, i flame, g amber,
-   n aqua). The logo and the words link to `about.html` (`a.dd-brand-a`, no underline; "Daily" underlines on hover/focus). The line under the credit
-   (`.dd-contactln`) links Contact and About, leaving out the page you're on (`credit_html(page="contact"|"about")`). The phrase is wrapped in `role="img" aria-label="Daily Design"`,
-   with the logo and letters `aria-hidden`, so screen readers say "Daily Design" once. Styles are in `site.css` (index, contact, reports)
+   n aqua). The logo and the words link to `about.html` (`a.dd-brand-a`, no underline; "Daily" underlines on hover/focus). The phrase is wrapped in `role="img" aria-label="Daily Design"`,
+   with the logo and letters `aria-hidden`, so screen readers say "Daily Design" once. Styles are in `site.css` (index, contact, about, reports)
    and in the edition `nav_css` (edition pages don't load `site.css`). Edition pages rebuild automatically when `credit_html()` output
-   changes (it's part of the nav key).
+   changes (it's part of the nav key); bump `NAV_VERSION` when only the edition footer CSS changes. Listen skips the whole footer
+   (`footer`, `#dd-foot`, `.dd-fcols`, `.dd-credit` in `tts.js`).
 7c2. **X list link**: the public X list "Daily Design Creators" (`XLIST_URL` / `XLIST_NAME` in `publish.py`, owned by @GreatCreations_,
    holding every creator, studio and lab Daily Design features) is linked in three places, all generated, so new editions pick it up:
-   - every footer, through the credit block (`credit_html()` → `xlist_html()`, `.dd-xlist`): "Follow every creator we feature on X: Daily Design Creators on X ↗";
+   - every footer, through the credit block's "Follow" group (`credit_html()` → `xlist_link()`): "Daily Design Creators on X ↗" with the note "Follow every creator we feature";
    - the About page ("How it works" line and the site map's More list);
    - each static report page, just before the sign-off (the body's last paragraph) via `with_xlist()` in `report_page()` (`.rd-xlist`).
      The edition Markdown is not changed. Listen skips `.dd-xlist` / `.rd-xlist`. Links open in a new tab (`rel="noopener"`).
