@@ -306,6 +306,7 @@ STUDIO_URL = "https://greatcreationstudios.greatcreations.art/"
 
 XLIST_URL = "https://x.com/i/lists/2115263443770937364"  # public X list of every creator Daily Design features (owned by @GreatCreations_)
 XLIST_NAME = "Daily Design Creators"
+FB_PAGE_URL = "https://www.facebook.com/profile.php?id=61595851597605"  # Daily Design Facebook Page (footer Follow group)
 CONTACT_EMAIL = "dailydesign@greatcreations.ca"  # public Daily Design address (shown on contact.html)
 CONTACT_PATH = "contact.html"
 ABOUT_PATH = "about.html"  # About + site map, built by build_about_page()
@@ -363,7 +364,9 @@ def credit_html(prefix="", cls="dd-credit", page=None, blurb="", gh=False):
         site.append('<li><a href="%s%s">Contact</a><span class="dd-fnote">Questions, tips, corrections and sponsorship</span></li>'
                     % (prefix, CONTACT_PATH))
     # The footer GitHub link was removed on Oct 28, 2026; gh is kept for call compatibility.
-    follow = '<li>%s<span class="dd-fnote">Follow every creator we feature</span></li>' % xlist_link()
+    follow = ('<li>%s<span class="dd-fnote">Follow every creator we feature</span></li>' % xlist_link()
+              + '<li><a class="dd-fb-a" href="%s" target="_blank" rel="noopener">Daily Design on Facebook<span aria-hidden="true"> ↗</span></a>'
+                '<span class="dd-fnote">Every edition on our Facebook Page</span></li>' % FB_PAGE_URL)
     left = ('<div class="dd-fcol dd-fabout"><p class="dd-fbrand">%s</p>%s'
             '<p class="%s">Created and brought to you by <a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" '
             'alt="" width="16" height="16">%s</a>.</p></div>') % (
