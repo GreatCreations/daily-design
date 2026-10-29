@@ -1,0 +1,311 @@
+{
+ "version": 1,
+ "report": "2026-10-19/best",
+ "date": "2026-10-19",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-19/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-19/best",
+ "link": "#report=2026-10-19/best&part=<id> (index reader) or reports/2026-10-19/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-3d-worlds-you-can",
+   "kind": "section",
+   "heading": "3D worlds you can step inside are having their moment",
+   "text": "3D worlds you can step inside are having their moment",
+   "h": "f4038ea067",
+   "medium": "3d"
+  },
+  {
+   "id": "s-3d-worlds-you-can-i1",
+   "kind": "paragraph",
+   "parent": "s-3d-worlds-you-can",
+   "section": "s-3d-worlds-you-can",
+   "medium": "3d",
+   "text": "The design story that broke out today is Viggle's JST-2, a \"physics-native world model\" that builds scenes, characters and motion directly in 3D instead of…",
+   "h": "fca194721c"
+  },
+  {
+   "id": "s-3d-worlds-you-can-i2",
+   "kind": "paragraph",
+   "parent": "s-3d-worlds-you-can",
+   "section": "s-3d-worlds-you-can",
+   "medium": "3d",
+   "text": "Engagement figures were read from the X API, GitHub, Hacker News and YouTube search on the evening of Oct 19 (PT) and will keep changing. Reddit blocked our…",
+   "h": "5ebad72306"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-3d-and-worlds",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "🧊 3D and worlds",
+   "medium": "3d",
+   "text": "🧊 3D and worlds",
+   "h": "9003dee935"
+  },
+  {
+   "id": "s-pick-of-the-day-3d-and-worlds-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-3d-and-worlds",
+   "section": "s-pick-of-the-day",
+   "medium": "3d",
+   "type": "repo/tool",
+   "title": "JST-2, Viggle's physics-native world model (Viggle Research)",
+   "url": "https://viggle.ai/jst2",
+   "text": "JST-2, Viggle's physics-native world model (Viggle Research), model/tool. One model that generates 3D scenes (and keeps extending them as you move to new…",
+   "h": "3ff8987b1a"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "showcase",
+   "title": "Portal jumping through Gaussian-splat worlds in real time with WebGPU (@XRarchitect)",
+   "url": "https://x.com/XRarchitect/status/2112207444101541962",
+   "text": "Portal jumping through Gaussian-splat worlds in real time with WebGPU (@XRarchitect), showcase. Walk through a doorway and you're in a different photoreal…",
+   "h": "8444b03bb9"
+  },
+  {
+   "id": "s-ranked-picks-3d-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "repo/tool",
+   "title": "SolidCraft, free open-source parametric CAD with a built-in MCP server (GitHub)",
+   "url": "https://github.com/tangency-labs/solidcraft",
+   "text": "SolidCraft, free open-source parametric CAD with a built-in MCP server (GitHub), repo/tool. A pure-Rust CAD app with sketches, constraints and a feature…",
+   "h": "88baba9dee"
+  },
+  {
+   "id": "s-ranked-picks-3d-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "news",
+   "title": "SKY-001, a world model aimed at engineering and CAD (@testingcatalog)",
+   "url": "https://x.com/testingcatalog/status/2112274382122865149",
+   "text": "SKY-001, a world model aimed at engineering and CAD (@testingcatalog), news. Skyfall AI's model breaks an object into parts and rebuilds it in CAD as a visual…",
+   "h": "caa9fb70eb"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "title": "MiniMax M3.1 Flash, the cheap fast model behind \"Space Bunny\" (MiniMax)",
+   "url": "https://www.minimax.io/blog/minimax-m31f",
+   "text": "MiniMax M3.1 Flash, the cheap fast model behind \"Space Bunny\" (MiniMax), model. The finished version of the anonymous model that topped coding leaderboards…",
+   "h": "37dfcbfa51"
+  },
+  {
+   "id": "s-ranked-picks-image",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-ranked-picks-image-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "news",
+   "title": "GPT-Image-2.5 Sunburst is #1 on three Arena image leaderboards, and free to test for 14 days (Arena)",
+   "url": "https://x.com/arena/status/2112199487217434855",
+   "text": "GPT-Image-2.5 Sunburst is #1 on three Arena image leaderboards, and free to test for 14 days (Arena), news. OpenAI's latest image model leads Arena's…",
+   "h": "78b94d2518"
+  },
+  {
+   "id": "s-ranked-picks-image-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "showcase",
+   "title": "A small custom model that makes exact 16×16 pixel art, where frontier models don't (@GrilliotTodd)",
+   "url": "https://x.com/GrilliotTodd/status/2112267299378090314",
+   "text": "A small custom model that makes exact 16×16 pixel art, where frontier models don't (@GrilliotTodd), showcase. Asked for \"exactly 16x16 pixels\", his trained…",
+   "h": "02a9df72a2"
+  },
+  {
+   "id": "s-ranked-picks-video-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video and animation",
+   "medium": "video",
+   "text": "🎬 Video and animation",
+   "h": "1d57cc816d"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "title": "Kling 4.0 reaches creators: native 30-second clips, 15 references, 10 keyframes (Kling release notes)",
+   "url": "https://kling.ai/release-note/release-history",
+   "text": "Kling 4.0 reaches creators: native 30-second clips, 15 references, 10 keyframes (Kling release notes), model. Launched Oct 15 and now spreading through…",
+   "h": "63193ca224"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "MiniMax H3 reference-to-video for about $0.70 a clip (@simonecanciello)",
+   "url": "https://x.com/simonecanciello/status/2112186079533043788",
+   "text": "MiniMax H3 reference-to-video for about $0.70 a clip (@simonecanciello), tutorial. Attach a good reference video and swap the person for your own character…",
+   "h": "f94385062a"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Mr. Bean enters F1 in his own car, made with Seedance 2.5 and GPT Image 2.5 (@TechieBySA)",
+   "url": "https://x.com/TechieBySA/status/2112152540343369929",
+   "text": "Mr. Bean enters F1 in his own car, made with Seedance 2.5 and GPT Image 2.5 (@TechieBySA), showcase. A comedy mashup with the prompt shared in the thread. Why…",
+   "h": "c7a5974f2f"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i4",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "“No One Needs Us Anymore”, a music video animated entirely as code by Claude Opus 5.5 (Degenerative Pixels, YouTube)",
+   "url": "https://www.youtube.com/watch?v=zONGVaONKe8",
+   "text": "“No One Needs Us Anymore”, a music video animated entirely as code by Claude Opus 5.5 (Degenerative Pixels, YouTube), showcase. The channel's songs come from…",
+   "h": "f1b6975477"
+  },
+  {
+   "id": "s-ranked-picks-games",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games",
+   "medium": "games",
+   "text": "🎮 Games",
+   "h": "dd27204535"
+  },
+  {
+   "id": "s-ranked-picks-games-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "showcase",
+   "title": "The strongest AI models build Battlefield from scratch in Godot: Claude vs GPT vs Gemini vs Muse (НейроЧел+, YouTube)",
+   "url": "https://www.youtube.com/watch?v=kyMBuFbt5f4",
+   "text": "The strongest AI models build Battlefield from scratch in Godot: Claude vs GPT vs Gemini vs Muse (НейроЧел+, YouTube), showcase. A Russian-language…",
+   "h": "09fe798375"
+  },
+  {
+   "id": "s-ranked-picks-mashups-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧪 Mashups and agent studios",
+   "medium": "mashups",
+   "text": "🧪 Mashups and agent studios",
+   "h": "5e16096064"
+  },
+  {
+   "id": "s-ranked-picks-mashups-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-mashups-and",
+   "section": "s-ranked-picks",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "title": "Runway's generation tools now plug straight into Grok Bot (Runway)",
+   "url": "https://x.com/runwayml/status/2112247791678541845",
+   "text": "Runway's generation tools now plug straight into Grok Bot (Runway), tool. Runway's MCP connector lets you generate images and video from inside a chat instead…",
+   "h": "8cc640fc93"
+  },
+  {
+   "id": "s-ranked-picks-what-people-are",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🗣️ What people are talking about",
+   "text": "🗣️ What people are talking about",
+   "h": "1e33e8cfa5"
+  },
+  {
+   "id": "s-ranked-picks-what-people-are-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-what-people-are",
+   "section": "s-ranked-picks",
+   "type": "buzz",
+   "title": "Fable 5.5, Gemini 4 Carbon and GPT-6.1 Terra all reportedly on deck (@Angaisb_)",
+   "url": "https://x.com/Angaisb_/status/2112207072876019982",
+   "text": "Fable 5.5, Gemini 4 Carbon and GPT-6.1 Terra all reportedly on deck (@Angaisb_), buzz. Citing a report in The Information, posters say Anthropic, Google and…",
+   "h": "cbc53808ab"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: starts from today's morning and noon digests, then a fresh evening check of X, YouTube, GitHub trending, Hugging Face trending and Hacker News. Ranked…",
+   "h": "3415513aa2"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Want a deeper dive on any of these, or more of one medium tomorrow? Say the word and the next edition will steer there.",
+   "h": "17db245e12"
+  }
+ ]
+}

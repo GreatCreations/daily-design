@@ -1149,13 +1149,15 @@ def md_inline(t):
     return re.sub(r"\x00(\d+)\x00", lambda m: "<code>%s</code>" % esc(codes[int(m.group(1))]), t)
 
 
-def md_to_html(md):
+def md_blocks(md):
+    """Top-level Markdown blocks in order: dict(tag, html, src) for headings/p/hr/blockquote/table, and
+    dict(tag="ul"|"ol", items=[(li_html, li_src), ...]) for lists. md_to_html() joins them; report pages add part ids."""
     lines = md.replace("\r\n", "\n").split("\n")
     out, para, i = [], [], 0
 
     def flush():
         if para:
-            out.append("<p>%s</p>" % md_inline(" ".join(x.strip() for x in para)))
+            out.append(dict(tag="p", html=md_inline(" ".join(x.strip() for x in para)), src=" ".join(x.strip() for x in para)))
             para.clear()
     while i < len(lines):
         l = lines[i]
@@ -1164,22 +1166,22 @@ def md_to_html(md):
         m = re.match(r"^(#{1,6})\s+(.*?)\s*#*\s*$", l)
         if m:
             flush(); n = len(m.group(1))
-            out.append("<h%d>%s</h%d>" % (n, md_inline(m.group(2)), n)); i += 1; continue
+            out.append(dict(tag="h%d" % n, html=md_inline(m.group(2)), src=m.group(2))); i += 1; continue
         if re.match(r"^\s{0,3}([-*_])(\s*\1){2,}\s*$", l):
-            flush(); out.append("<hr>"); i += 1; continue
+            flush(); out.append(dict(tag="hr", html="", src="")); i += 1; continue
         if l.lstrip().startswith(">"):
             flush(); q = []
             while i < len(lines) and lines[i].lstrip().startswith(">"):
                 q.append(re.sub(r"^\s*>\s?", "", lines[i])); i += 1
-            out.append("<blockquote>%s</blockquote>" % md_to_html("\n".join(q))); continue
+            out.append(dict(tag="blockquote", html=md_to_html("\n".join(q)), src="\n".join(q))); continue
         if l.lstrip().startswith("|") and i + 1 < len(lines) and re.match(r"^\s*\|?[\s:|-]+\|[\s:|-]*$", lines[i + 1]):
-            flush(); rows = []
+            flush(); rows = []; src = []
             while i < len(lines) and lines[i].lstrip().startswith("|"):
-                rows.append([c.strip() for c in lines[i].strip().strip("|").split("|")]); i += 1
+                src.append(lines[i]); rows.append([c.strip() for c in lines[i].strip().strip("|").split("|")]); i += 1
             head, body = rows[0], rows[2:]
-            out.append("<table><thead><tr>%s</tr></thead><tbody>%s</tbody></table>" % (
+            out.append(dict(tag="table", src="\n".join(src), html="<thead><tr>%s</tr></thead><tbody>%s</tbody>" % (
                 "".join("<th>%s</th>" % md_inline(c) for c in head),
-                "".join("<tr>%s</tr>" % "".join("<td>%s</td>" % md_inline(c) for c in r) for r in body)))
+                "".join("<tr>%s</tr>" % "".join("<td>%s</td>" % md_inline(c) for c in r) for r in body))))
             continue
         m = re.match(r"^(\s*)([-*+]|\d+[.)])\s+(.*)$", l)
         if m:
@@ -1192,12 +1194,158 @@ def md_to_html(md):
                     items[-1] += " " + lines[i].strip().lstrip("-*+ ").strip(); i += 1
                 else:
                     break
-            tag = "ol" if ordered else "ul"
-            out.append("<%s>%s</%s>" % (tag, "".join("<li>%s</li>" % md_inline(x) for x in items), tag))
+            out.append(dict(tag="ol" if ordered else "ul", items=[(md_inline(x), x) for x in items]))
             continue
         para.append(l); i += 1
     flush()
+    return out
+
+
+def blocks_html(blocks, ids=None):
+    """Render md_blocks() output. ids maps (block index, li index or None) -> part id."""
+    ids = ids or {}
+    out = []
+    for bi, b in enumerate(blocks):
+        a = (lambda k: ' id="%s"' % ids[k] if k in ids else "")
+        t = b["tag"]
+        if t == "hr":
+            out.append("<hr>")
+        elif t in ("ul", "ol"):
+            out.append("<%s>%s</%s>" % (t, "".join("<li%s>%s</li>" % (a((bi, li)), h) for li, (h, _) in enumerate(b["items"])), t))
+        else:
+            out.append("<%s%s>%s</%s>" % (t, a((bi, None)), b["html"], t))
     return "\n".join(out)
+
+
+def md_to_html(md):
+    return blocks_html(md_blocks(md))
+
+
+# ---------------------------------------------------------------- report parts (marker anchors)
+# Every addressable part of a report gets a permanent id, used on the static page (reports/<date>/<slot>.html),
+# by the index reader (#report=<date>/<slot>&part=<id>) and in reports/<date>/<slot>.parts.json.
+#   section (h2)      s-<slug>                 slug = first 4 words of the heading, max 24 chars
+#   subsection (h3)   <section id>-<slug>      slug = first 3 words, max 16 chars
+#   item / paragraph  <parent id>-i<n>         n = 1-based position under its nearest h2/h3 (list items, paragraphs,
+#                                              quotes, tables; h1, rules and image-only paragraphs are skipped)
+# Text before the first h2 sits under "s-intro"; text after a horizontal rule (closing notes) under "s-notes" (no part of its own). Duplicate ids get -2, -3 ... Once a parts.json exists, a part whose text
+# is unchanged keeps its old id even if the report is edited, so published marker links never move.
+PARTS_VERSION = 1
+
+
+def part_slug(text, words, maxlen):
+    """First `words` words of the text (leading the/a/an dropped), cut back to whole words within maxlen."""
+    w = slugify(strip_md(text)).split("-")
+    while len(w) > 1 and w[0] in ("the", "a", "an"):
+        w = w[1:]
+    w = w[:words]
+    while len(w) > 1 and len("-".join(w)) > maxlen:
+        w = w[:-1]
+    return "-".join(w)[:maxlen].strip("-") or "x"
+
+
+def part_text(src):
+    return html.unescape(strip_md(re.sub(r"(?<![\w_])_(?!\s)(.+?)(?<!\s)_(?!\w)", r"\1", src)))
+
+
+def part_hash(text):
+    import hashlib
+    return hashlib.sha1(re.sub(r"[^a-z0-9]+", "", text.lower()).encode()).hexdigest()[:10]
+
+
+def report_parts(md, items=(), old=None, known=None):
+    """-> (blocks, ids, parts) for a report's Markdown. ids feeds blocks_html(); parts goes into parts.json.
+    known: url -> {medium, type} from every edition's items, used where this report's own item has no facet."""
+    blocks = md_blocks(md)
+    by_url = {}
+    for it in items or ():
+        by_url.setdefault(it.get("url"), it)
+    old_by_hash = {}
+    for op in (old or {}).get("parts", []):
+        old_by_hash.setdefault((op.get("kind"), op.get("h")), []).append(op["id"])
+    used, ids, parts = set(), {}, []
+    sec = dict(id="s-intro", heading="", medium="")
+    sub = None
+    counts = {}
+
+    def uniq(base):
+        cand, k = base, 2
+        while cand in used:
+            cand = "%s-%d" % (base, k); k += 1
+        return cand
+
+    def add(key, kind, base, src, extra):
+        text = part_text(src)
+        h = part_hash(text)
+        keep = [x for x in old_by_hash.get((kind, h), []) if x not in used]
+        pid = keep[0] if keep else uniq(base)
+        used.add(pid); ids[key] = pid
+        p = dict(id=pid, kind=kind)
+        p.update(extra)
+        p["text"] = clip(text, 160)
+        p["h"] = h
+        parts.append(p)
+        return pid
+
+    def item(key, src, kind):
+        parent = sub or sec
+        n = counts[parent["id"]] = counts.get(parent["id"], 0) + 1
+        extra = dict(parent=parent["id"], section=sec["id"])
+        urls = [u for _, u in LINK_RE.findall(src)]
+        it = next((by_url[u] for u in urls if u in by_url), None)
+        k = {}
+        for u in urls:
+            if u in (known or {}):
+                k = known[u]; break
+        med = (it or {}).get("medium") or parent.get("medium") or sec.get("medium") or k.get("medium") or ""
+        typ = (it or {}).get("type") or k.get("type") or ""
+        if med: extra["medium"] = med
+        if typ: extra["type"] = typ
+        if it:
+            extra["title"] = it.get("title", "")
+            extra["url"] = it.get("url", "")
+        add(key, kind, "%s-i%d" % (parent["id"], n), src, extra)
+
+    for bi, b in enumerate(blocks):
+        t = b["tag"]
+        if t == "h1":
+            continue
+        if t == "hr":  # a rule closes the section: closing notes after it go under s-notes
+            if sec["id"] != "s-intro" or counts.get("s-intro"):
+                sec = dict(id=uniq("s-notes"), heading="", medium="")
+                used.add(sec["id"])
+            sub = None
+            continue
+        if t == "h2":
+            heading = part_text(b["src"])
+            sec = dict(heading=heading, medium=medium_of(heading))
+            sec["id"] = add((bi, None), "section", "s-" + part_slug(b["src"], 4, 24), b["src"], dict(heading=heading))
+            if sec["medium"]: parts[-1]["medium"] = sec["medium"]
+            sub = None
+            continue
+        if t == "h3":
+            heading = part_text(b["src"])
+            sub = dict(heading=heading, medium=medium_of(heading) or sec.get("medium", ""))
+            extra = dict(parent=sec["id"], section=sec["id"], heading=heading)
+            if sub["medium"]: extra["medium"] = sub["medium"]
+            sub["id"] = add((bi, None), "subsection", "%s-%s" % (sec["id"], part_slug(b["src"], 3, 16)), b["src"], extra)
+            continue
+        if t in ("ul", "ol"):
+            for li, (_, src) in enumerate(b["items"]):
+                item((bi, li), src, "item")
+            continue
+        if t == "p" and not part_text(b["src"]):
+            continue  # image-only paragraph (the header image)
+        item((bi, None), b.get("src", ""), "heading" if t[:1] == "h" else "paragraph")
+    return blocks, ids, parts
+
+
+def parts_doc(ed, parts):
+    key = "%s/%s" % (ed["date"], ed["slot"])
+    return dict(version=PARTS_VERSION, report=key, date=ed["date"], slot=ed["slot"],
+                page=SITE_URL + public_path(ed), reader=SITE_URL + "#report=" + key,
+                link="#report=%s&part=<id> (index reader) or reports/%s.html#<id> (static page)" % (key, key),
+                parts=parts)
 
 
 REPORT_CSS = """<style>
@@ -1213,15 +1361,17 @@ def with_xlist(body):
     """Report pages: the X list line goes just before the sign-off (the body's last paragraph), or at the end if the body
     doesn't end with a paragraph. The edition's own text is untouched."""
     line = xlist_html("rd-xlist") + "\n"
-    m = re.search(r"<p>(?:(?!</?p>).)*</p>\s*$", body, re.S)
+    m = re.search(r"<p(?: id=\"[^\"]*\")?>(?:(?!</?p[ >]).)*</p>\s*$", body, re.S)
     if m:
         return body[:m.start()] + line + body[m.start():]
     return body.rstrip() + "\n" + line
 
 
-def report_page(ed, md, items):
+def report_page(ed, md, items, old_parts=None, known=None):
+    """-> (page html, parts list)."""
     s = SLOTS[ed["slot"]]
-    body = with_xlist(md_to_html(md))
+    blocks, ids, parts = report_parts(md, items, old_parts, known)
+    body = with_xlist(blocks_html(blocks, ids))
     gh = REPO_BLOB + ed["path"]
     key = "%s/%s" % (ed["date"], ed["slot"])
     return ("""<!doctype html>
@@ -1254,7 +1404,7 @@ def report_page(ed, md, items):
 </html>
 """) % (seo_block(ed, items, report_story(md)), icon_links("../../"), REPORT_CSS, key,
         sponsor_html("../../", "dd-spon-wrap dd-spon-rp"), s["color"],
-        esc(s["time"]) + tz_html(ed["date"], ed["slot"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../", blurb=FOOT_BLURB_NUMBERS))
+        esc(s["time"]) + tz_html(ed["date"], ed["slot"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../", blurb=FOOT_BLURB_NUMBERS)), parts
 
 
 REPORT_TTS = ('<button class="btn rd-tts" id="dd-tts-play" type="button" hidden aria-label="Listen: read this page aloud" aria-pressed="false">'
@@ -1262,8 +1412,20 @@ REPORT_TTS = ('<button class="btn rd-tts" id="dd-tts-play" type="button" hidden 
               '<button class="btn rd-tts" id="dd-tts-stop" type="button" hidden aria-label="Stop reading"><span aria-hidden="true">■</span> Stop</button>')
 
 
+def parts_path(e):
+    """reports/<date>/<slot>.parts.json: the marker anchor map next to the report's Markdown."""
+    return re.sub(r"\.md$", ".parts.json", e["path"])
+
+
 def build_report_pages(recs):
     pages = []
+    known = {}  # url -> medium/type facets from every edition, for report items whose own section gives none
+    for r in recs:
+        for it in r["items"]:
+            k = known.setdefault(it.get("url"), {})
+            for f in ("medium", "type"):
+                if it.get(f) and not k.get(f):
+                    k[f] = it[f]
     for r in recs:
         e = r["edition"]
         if e["kind"] != "report":
@@ -1272,8 +1434,18 @@ def build_report_pages(recs):
         if not os.path.exists(mdp):
             continue
         dest = os.path.join(REPO, public_path(e))
-        if write_if_changed(dest, report_page(e, open(mdp, encoding="utf-8").read(), r["items"])):
+        pjson = os.path.join(REPO, parts_path(e))
+        old = None
+        if os.path.exists(pjson):
+            try:
+                old = json.load(open(pjson, encoding="utf-8"))
+            except ValueError:
+                old = None
+        page, parts = report_page(e, open(mdp, encoding="utf-8").read(), r["items"], old, known)
+        if write_if_changed(dest, page):
             log("report page", public_path(e))
+        if write_if_changed(pjson, jdump(parts_doc(e, parts), pretty=True)):
+            log("report parts", parts_path(e), "(%d parts)" % len(parts))
         pages.append(public_path(e))
     return pages
 

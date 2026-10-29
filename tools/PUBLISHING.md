@@ -152,6 +152,27 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    away. Old pages are covered because the pass runs over all of them each time. After editing `assets/app.js`, `site.css`, `tts.js`,
    `countdown.js` or `logo3d.js`, run `publish.py` (or `--no-push` then commit) so the links pick up the new hash. New first-party JS/CSS in
    `assets/` is covered automatically. The gate test Worker matches `assets/app.js` by path only, so the query string doesn't affect it.
+7e. **Report parts (marker anchors)** (every run, `report_parts()` / `build_report_pages()` in `publish.py`): every addressable part of
+   every report (6 PM, 8 PM and any other `kind: report` edition) gets a permanent id, so a member can bookmark part of a report.
+   - **Scheme**, from each report's Markdown in document order:
+     - section (`##`): `s-<slug>`, the first 4 words of the heading (a leading "the/a/an" dropped, emoji dropped), max 24 chars, whole words;
+     - subsection (`###`): `<section id>-<slug>`, first 3 words, max 16 chars;
+     - item or paragraph: `<parent id>-i<n>`, where the parent is the nearest `##`/`###` and n counts list items, paragraphs, quotes and
+       tables under it from 1. The `#` title, rules and image-only paragraphs (the header image) get none. Text before the first `##`
+       sits under `s-intro`; text after a `---` rule (the method and sign-off notes) sits under `s-notes`. A clash gets `-2`, `-3` ...
+     - Example: `s-ranked-picks-code-and-ui-i2` is the 2nd item in "Code and UI" under "The ranked picks".
+   - **Permanence**: ids depend only on the Markdown, so re-running gives the same ids. If a published report is edited, any part whose
+     text is unchanged keeps the id already in its `parts.json` (matched by the `h` text hash), so existing marker links never move.
+   - **Static page** `reports/<date>/<slot>.html`: the ids are on the `h2`/`h3`/`li`/`p` elements; `reports/<date>/<slot>.html#<id>` jumps there.
+   - **Index reader**: `#report=<date>/<slot>&part=<id>` opens the report, scrolls to the part and highlights it (`.dd-part-hit`).
+     `assets/app.js` renders the Markdown itself, so it loads the parts file and puts the same ids on the matching elements (checked by
+     text). Plain `#report=<date>/<slot>` links work as before; opening another report or closing the reader drops `part=`.
+   - **Anchor map** `reports/<date>/<slot>.parts.json`: `{version, report, date, slot, page, reader, link, parts: [...]}`, each part
+     `{id, kind (section | subsection | item | paragraph), parent, section, heading (sections), medium, type, title, url, text, h}`.
+     `medium` / `type` are the index facets (`data/index.json` → `facets`): from the report's own item, else the heading, else the same
+     link in any other edition; left out when unknown. `text` is a short preview.
+   - The highlight is a soft tint of the slot colour (`site.css`, `.dd-part-hit` and `:target`). Nothing else on the page changes.
+   - HTML editions (7 AM, noon) don't get part ids yet.
 8. **Safety scan**: every new or changed file is checked for local paths, tokens, email addresses and private Slack/Drive links, plus the patterns
    in an optional private denylist kept outside the repo (`<src>/.publish-denylist`, one regex per line). If anything matches, nothing is committed.
 9. **Commit and push** to `main` as GreatCreations. The repo's local git credential helper asks `gh auth token -u GreatCreations` for the token,
@@ -164,7 +185,7 @@ Re-running with nothing new prints `nothing new to publish`.
 - 7 AM / noon: write `YYYY-MM-DD-<slot>.html`, `YYYY-MM-DD-<slot>.md` and `YYYY-MM-DD-<slot>-header.png` into the source folder.
 - 6 PM / 8 PM: write `YYYY-MM-DD-best.md` / `YYYY-MM-DD-hottest.md` and the matching `-header.png`.
 - Run `python3 /workspace/daily-design/tools/publish.py`.
-- Pages: `https://studios.greatcreations.art/daily-design/editions/<date>/<slot>.html`. Reports: `https://studios.greatcreations.art/daily-design/#report=<date>/<slot>` (inline reader) or `.../reports/<date>/<slot>.html` (static page).
+- Pages: `https://studios.greatcreations.art/daily-design/editions/<date>/<slot>.html`. Reports: `https://studios.greatcreations.art/daily-design/#report=<date>/<slot>` (inline reader) or `.../reports/<date>/<slot>.html` (static page). Part of a report: add `&part=<id>` to the reader link or `#<id>` to the static page (ids in `reports/<date>/<slot>.parts.json`).
 
 ## Contact page and sponsor spot
 

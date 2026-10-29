@@ -10,7 +10,7 @@ var GROUPS=["slot","medium","type"], SLOTS=["morning","noon","best","hottest"];
 var SLOTCOL={morning:"var(--amber)",noon:"var(--aqua)",best:"var(--violet)",hottest:"var(--flame)"};
 var MLABEL={}, SLABEL={}, SINFO={}, TLABEL={"repo/tool":"Repo / tool","case study":"Case study"};
 var state=blank();
-function blank(){return {q:"",slot:[],medium:[],type:[],tag:[],from:"",to:"",sort:"new",report:"",archive:""}}
+function blank(){return {q:"",slot:[],medium:[],type:[],tag:[],from:"",to:"",sort:"new",report:"",part:"",archive:""}}
 var $=function(s){return document.querySelector(s)};
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function norm(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
@@ -102,6 +102,7 @@ function readHash(){
   h.split("&").forEach(function(p){if(!p)return;var i=p.indexOf("=");var k=decodeURIComponent(i<0?p:p.slice(0,i)),v=i<0?"":decodeURIComponent(p.slice(i+1).replace(/\+/g," "));
     if(k==="q"||k==="from"||k==="to"||k==="report")state[k]=v;else if(k==="sort")state.sort=v==="old"?"old":"new";
     else if(k==="archive"&&/^\d{4}-\d\d-\d\d$/.test(v))state.archive=v;
+    else if(k==="part"&&/^[a-z0-9-]{1,80}$/.test(v))state.part=v;
     else if(k==="date"&&v){var ds=v.split(",").sort();state.from=ds[0];state.to=ds[ds.length-1]}
     else if(Array.isArray(state[k])&&v)state[k]=v.split(",").filter(Boolean)});
   $("#q").value=state.q;$("#from").value=state.from;$("#to").value=state.to;
@@ -115,6 +116,7 @@ function writeHash(){
   if(state.sort==="old")parts.push("sort=old");
   if(state.archive)parts.push("archive="+state.archive);
   if(state.report)parts.push("report="+state.report.split("/").map(encodeURIComponent).join("/"));
+  if(state.report&&state.part)parts.push("part="+state.part);
   var h=parts.length?"#"+parts.join("&"):"";if(!h&&anchorEl())return;
   var push=PUSH;PUSH=false;
   if(h!==location.hash)history[push?"pushState":"replaceState"](null,"",h||location.pathname+location.search);
@@ -368,9 +370,23 @@ function toggle(g,k){var a=state[g],i=a.indexOf(k);if(i>=0)a.splice(i,1);else a.
 var markedP=null;
 function loadMarked(){if(window.marked)return Promise.resolve(window.marked);if(markedP)return markedP;
   markedP=new Promise(function(res,rej){var s=document.createElement("script");s.src="assets/vendor/marked.min.js";s.onload=function(){res(window.marked)};s.onerror=function(){markedP=null;rej()};document.head.appendChild(s)});return markedP}
-function openFromClick(key){state.report=key;openKey=null;writeHash();syncReader(true)}
+function openFromClick(key){state.report=key;state.part="";openKey=null;writeHash();syncReader(true)}
 function ttsStop(){if(window.DDTTS)window.DDTTS.stop()}
-function closeReport(){ttsStop();$("#reader").hidden=true;openKey=null;state.report="";writeHash()}
+function closeReport(){ttsStop();$("#reader").hidden=true;openKey=null;state.report="";state.part="";writeHash()}
+/* marker anchors: reports/<date>/<slot>.parts.json lists every part's permanent id in document order (the static report page
+   carries the same ids). The reader renders the Markdown itself, so ids are put on the matching elements here, checked by text. */
+var partShown="";
+function ptxt(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g,"").slice(0,40)}
+function applyParts(root,doc){if(!doc||!doc.parts)return;var els=[];
+  [].forEach.call(root.children,function(c){var t=c.tagName;if(t==="H1"||t==="HR"||t==="IMG")return;
+    if(t==="UL"||t==="OL"){[].forEach.call(c.children,function(li){if(li.tagName==="LI")els.push(li)});return}
+    if(t==="P"&&!c.textContent.trim())return;els.push(c)});
+  var j=0;doc.parts.forEach(function(p){var want=ptxt(p.text);
+    for(var k=j;k<Math.min(els.length,j+4);k++){if(ptxt(els[k].textContent)===want){els[k].id=p.id;j=k+1;return}}})}
+function showPart(){var id=state.part;if(!id||!state.report){partShown="";return}
+  var b=$("#rd-body"),el=document.getElementById(id);if(!el||!b.contains(el))return;
+  [].forEach.call(b.querySelectorAll(".dd-part-hit"),function(x){x.classList.remove("dd-part-hit")});
+  partShown=id;el.classList.add("dd-part-hit");scrollUnder(el)}
 function clean(root,base){
   root.querySelectorAll("script,iframe,object,embed,style,link,meta,form,input,button").forEach(function(x){x.remove()});
   root.querySelectorAll("*").forEach(function(x){[].slice.call(x.attributes).forEach(function(a){
@@ -381,7 +397,7 @@ function clean(root,base){
 function syncReader(scroll){
   var r=$("#reader");
   if(!state.report){if(!r.hidden){ttsStop();r.hidden=true;openKey=null}return}
-  if(openKey===state.report)return;
+  if(openKey===state.report){if(state.part!==partShown)showPart();return}
   ttsStop();var e=EDBY[state.report]; openKey=state.report; r.hidden=false;
   if(!e||e.kind!=="report"){$("#rd-kick").textContent="Report";$("#rd-gh").removeAttribute("href");$("#rd-body").innerHTML='<div class="empty"><b>Report not found</b>It may not be published yet.</div>';return}
   r.style.setProperty("--c",SLOTCOL[e.slot]);
@@ -390,13 +406,16 @@ function syncReader(scroll){
   var body=$("#rd-body");body.innerHTML='<div class="empty">Loading report…</div>';
   var base=e.path.replace(/[^\/]+$/,""), hdrName=e.header?e.header.split("/").pop():"";
   setTimeout(function(){r.scrollIntoView({behavior:"smooth",block:"start"})},30);
-  Promise.all([loadMarked(),fetch(e.path).then(function(x){if(!x.ok)throw new Error(x.status);return x.text()})]).then(function(v){
+  var pj=e.path.replace(/\.md$/,".parts.json");partShown="";
+  Promise.all([loadMarked(),fetch(e.path).then(function(x){if(!x.ok)throw new Error(x.status);return x.text()}),
+    fetch(pj).then(function(x){return x.ok?x.json():null}).catch(function(){return null})]).then(function(v){
     if(openKey!==e.date+"/"+e.slot)return;
     var tpl=document.createElement("template");tpl.innerHTML=v[0].parse(v[1],{gfm:true});var tmp=tpl.content;  // inert: images don't load before paths are fixed
     if(hdrName)tmp.querySelectorAll("img").forEach(function(i){if((i.getAttribute("src")||"").split("/").pop()===hdrName){var p=i.parentNode;i.remove();if(p&&p.tagName==="P"&&!p.textContent.trim())p.remove()}});
     clean(tmp,base);
     var box=document.createElement("div");box.appendChild(tmp);
     body.innerHTML=(e.header?'<img class="rd-hdr" src="'+esc(e.header)+'" alt="'+esc(e.title)+' header image">':'')+box.innerHTML;
+    applyParts(body,v[2]);if(state.part)setTimeout(showPart,80);
   }).catch(function(){body.innerHTML='<div class="empty"><b>Could not load this report here</b><a href="'+esc(e.url)+'" target="_blank" rel="noopener">Read it on GitHub ↗</a></div>'});
 }
 

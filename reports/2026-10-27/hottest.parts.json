@@ -1,0 +1,358 @@
+{
+ "version": 1,
+ "report": "2026-10-27/hottest",
+ "date": "2026-10-27",
+ "slot": "hottest",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-27/hottest.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-27/hottest",
+ "link": "#report=2026-10-27/hottest&part=<id> (index reader) or reports/2026-10-27/hottest.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-genie-4-turned-world",
+   "kind": "section",
+   "heading": "Genie 4 turned world models into today's design story, while computer-use models and agent design skills own the week and month",
+   "text": "Genie 4 turned world models into today's design story, while computer-use models and agent design skills own the week and month",
+   "h": "b04ddad82f"
+  },
+  {
+   "id": "s-genie-4-turned-world-i1",
+   "kind": "paragraph",
+   "parent": "s-genie-4-turned-world",
+   "section": "s-genie-4-turned-world",
+   "text": "Today's one real explosion is Genie 4, Google DeepMind's new world model: you steer a live, explorable scene with prompts and the keyboard, and it now makes…",
+   "h": "c3fee8a77d"
+  },
+  {
+   "id": "s-genie-4-turned-world-i2",
+   "kind": "paragraph",
+   "parent": "s-genie-4-turned-world",
+   "section": "s-genie-4-turned-world",
+   "text": "Engagement figures were read from X (post lookups by ID and searches), YouTube, GitHub trending and repo data, Hugging Face, Hacker News and Reddit's…",
+   "h": "12f400dfc6"
+  },
+  {
+   "id": "s-blew-up-today",
+   "kind": "section",
+   "heading": "🔥 Blew up today",
+   "text": "🔥 Blew up today",
+   "h": "855a8b0061"
+  },
+  {
+   "id": "s-blew-up-today-i1",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "title": "Genie 4, a world model you can walk into (Google DeepMind)",
+   "url": "https://x.com/GoogleDeepMind/status/2115114028338962672",
+   "text": "Genie 4, a world model you can walk into (Google DeepMind), video, 3D and games model. You prompt a world into being and then explore and change it live; this…",
+   "h": "96667cb9bf"
+  },
+  {
+   "id": "s-blew-up-today-i2",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "title": "MAI-Image-2.7-Preview climbs the image-editing boards (Artificial Analysis)",
+   "url": "https://x.com/ArtificialAnlys/status/2115097540320506069",
+   "text": "MAI-Image-2.7-Preview climbs the image-editing boards (Artificial Analysis), image model. Microsoft's new editing model for relighting, restyling and swapping…",
+   "h": "03c9ae3368"
+  },
+  {
+   "id": "s-hottest-this-week",
+   "kind": "section",
+   "heading": "📈 Hottest this week",
+   "text": "📈 Hottest this week",
+   "h": "927e2ad085"
+  },
+  {
+   "id": "s-hottest-this-week-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "GPT-6.1 Terra, a fast computer-use model (OpenAI)",
+   "url": "https://x.com/OpenAI/status/2114780711664398349",
+   "text": "GPT-6.1 Terra, a fast computer-use model (OpenAI), code, UI and 3D model. A cheaper model that reads the screen and acts across apps; OpenAI's examples…",
+   "h": "7e21825714"
+  },
+  {
+   "id": "s-hottest-this-week-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Odyssey Episode 1, made with Grok Imagine (@imagine)",
+   "url": "https://x.com/imagine/status/2113712964419063911",
+   "text": "Odyssey Episode 1, made with Grok Imagine (@imagine), video showcase. The first episode of a series made with Grok Imagine. The signal: 23,892 likes, 15,007…",
+   "h": "d83f2489c2"
+  },
+  {
+   "id": "s-hottest-this-week-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "title": "CapCut's plugin is coming to ChatGPT (CapCut)",
+   "url": "https://x.com/capcutapp/status/2114062937094823955",
+   "text": "CapCut's plugin is coming to ChatGPT (CapCut), video tool news. Start an idea in the chat, generate and edit with CapCut there, then finish in CapCut's web…",
+   "h": "c8739d1e32"
+  },
+  {
+   "id": "s-hottest-this-week-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "Hallmark, an anti-AI-slop design skill for coding agents (GitHub)",
+   "url": "https://github.com/Nutlope/hallmark",
+   "text": "Hallmark, an anti-AI-slop design skill for coding agents (GitHub), code and UI skill. Pushes Claude Code, Cursor and Codex past template defaults toward real…",
+   "h": "2f5b41b3b3"
+  },
+  {
+   "id": "s-hottest-this-week-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "tutorial",
+   "title": "Kling AI 4.0 Tutorial: How to Make Cinematic AI Videos (FILM CRUX, YouTube)",
+   "url": "https://www.youtube.com/watch?v=PzOH1v5GaW0",
+   "text": "Kling AI 4.0 Tutorial: How to Make Cinematic AI Videos (FILM CRUX, YouTube), video tutorial. A walkthrough of Kling 4.0 for cinematic shots. The signal…",
+   "h": "3798a3dede"
+  },
+  {
+   "id": "s-hottest-this-week-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Canva Craft, Canva's first image model built for design (Canva)",
+   "url": "https://x.com/canva/status/2113348707223753165",
+   "text": "Canva Craft, Canva's first image model built for design (Canva), image model. It plans the layout before drawing, aiming at accurate text and editable…",
+   "h": "74b27ed78d"
+  },
+  {
+   "id": "s-hottest-this-week-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Ideogram Vector 1.0, text or image to editable SVG (Ideogram)",
+   "url": "https://x.com/ideogram_ai/status/2113300317584720259",
+   "text": "Ideogram Vector 1.0, text or image to editable SVG (Ideogram), image and vector model. Logos and illustrations come out as separate vector shapes. The signal…",
+   "h": "a212b67316"
+  },
+  {
+   "id": "s-hottest-this-week-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "MiniMax H3 character swaps in ComfyUI (r/comfyui)",
+   "url": "https://www.reddit.com/r/comfyui/comments/1xbljy9/character_swap_minimax_h3_referencetovideo_lora/",
+   "text": "MiniMax H3 character swaps in ComfyUI (r/comfyui), video model and workflow. Reference-to-video with LoRAs for swapping a character into footage. The signal…",
+   "h": "c16006f787"
+  },
+  {
+   "id": "s-hottest-this-week-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "title": "Kimi K3.1 Pro, an open-weight model tested on 3D and Blender (Moonshot)",
+   "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "text": "Kimi K3.1 Pro, an open-weight model tested on 3D and Blender (Moonshot), 3D and code model. Moonshot's most capable open-weight model, per Moonshot. The…",
+   "h": "983bb13a05"
+  },
+  {
+   "id": "s-hottest-this-week-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "3d",
+   "type": "showcase",
+   "title": "I Rebuilt 3ds Max With AI (Jake Denham, YouTube)",
+   "url": "https://www.youtube.com/watch?v=74TsKdNWEaA",
+   "text": "I Rebuilt 3ds Max With AI (Jake Denham, YouTube), 3D showcase. A creator rebuilds a 3ds Max-style 3D tool using AI. The signal: 107,713 views in five days…",
+   "h": "dd8b59f1a4"
+  },
+  {
+   "id": "s-hottest-this-week-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "image",
+   "type": "repo/tool",
+   "title": "gpu-unlock, faster BF16 maths on RTX 30-series cards (GitHub)",
+   "url": "https://github.com/Zagitta/gpu-unlock",
+   "text": "gpu-unlock, faster BF16 maths on RTX 30-series cards (GitHub), image and video tool. An experimental Linux module that speeds up local image and video models…",
+   "h": "cd4249d47a"
+  },
+  {
+   "id": "s-hottest-this-week-i12",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "sound",
+   "title": "Voxtral 3, speech and expressive voices (Mistral)",
+   "url": "https://mistral.ai/news/voxtral-3/",
+   "text": "Voxtral 3, speech and expressive voices (Mistral), sound model. Real-time speech in 50+ languages, transcription and expressive text-to-speech, per Mistral.…",
+   "h": "78da2408f0"
+  },
+  {
+   "id": "s-hottest-this-month",
+   "kind": "section",
+   "heading": "🏆 Hottest this month",
+   "text": "🏆 Hottest this month",
+   "h": "4f4d3d858e"
+  },
+  {
+   "id": "s-hottest-this-month-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "Claude Dashboards and Claude Motion are in beta (Claude)",
+   "url": "https://x.com/claudeai/status/2108271552991252810",
+   "text": "Claude Dashboards and Claude Motion are in beta (Claude), motion and UI tool. Turn data into live dashboards and ideas into animated explainers. The signal…",
+   "h": "197e97bde4"
+  },
+  {
+   "id": "s-hottest-this-month-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Gemini 4 Argon: 3D World in Blender (Google, YouTube)",
+   "url": "https://www.youtube.com/watch?v=1dAcJEIlQM8",
+   "text": "Gemini 4 Argon: 3D World in Blender (Google, YouTube), 3D showcase. Argon building a 3D world inside Blender through an agent. The signal: 10,025,462 views…",
+   "h": "522e34b753"
+  },
+  {
+   "id": "s-hottest-this-month-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "code",
+   "type": "news",
+   "title": "DeepSeek-V4.1-Flash-1017, open weights (DeepSeek)",
+   "url": "https://x.com/deepseek_ai/status/2111375640717033777",
+   "text": "DeepSeek-V4.1-Flash-1017, open weights (DeepSeek), code and motion model. An open model creators quickly tested on motion design. The signal: 37,165 likes and…",
+   "h": "cb625350c5"
+  },
+  {
+   "id": "s-hottest-this-month-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "news",
+   "title": "GPT-6 and Intelligent UI in ChatGPT (OpenAI)",
+   "url": "https://x.com/OpenAI/status/2107894997538525580",
+   "text": "GPT-6 and Intelligent UI in ChatGPT (OpenAI), code and UI news. Answers laid out by the model as text, charts and interactive pieces. The signal: 24,108…",
+   "h": "bb4f8b278f"
+  },
+  {
+   "id": "s-hottest-this-month-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "sound",
+   "type": "repo/tool",
+   "title": "VoiceStudio, a fully local ElevenLabs alternative (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "text": "VoiceStudio, a fully local ElevenLabs alternative (GitHub), sound tool. Voice cloning, voice design, dubbing and audiobooks on your own machine. The signal…",
+   "h": "c9107f5b16"
+  },
+  {
+   "id": "s-hottest-this-month-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "LGTM (Looks Good to Me), a Claude Opus 5.5 music video (Degenerative Pixels, YouTube)",
+   "url": "https://www.youtube.com/watch?v=3TNpOD6bov8",
+   "text": "LGTM (Looks Good to Me), a Claude Opus 5.5 music video (Degenerative Pixels, YouTube), music and video creation. An AI-made music video about AI coding…",
+   "h": "825b5624c9"
+  },
+  {
+   "id": "s-hottest-this-month-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "title": "HyperFrames: write HTML, render video (HeyGen, GitHub)",
+   "url": "https://github.com/heygen-com/hyperframes",
+   "text": "HyperFrames: write HTML, render video (HeyGen, GitHub), video and code tool. A framework built for agents that turns web pages into rendered video. The…",
+   "h": "cf3ed6728b"
+  },
+  {
+   "id": "s-hottest-this-month-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "impeccable, a design language for AI coding tools (GitHub)",
+   "url": "https://github.com/pbakaus/impeccable",
+   "text": "impeccable, a design language for AI coding tools (GitHub), code and UI skill. Built to make AI coding tools better at design. The signal: 18,683 stars this…",
+   "h": "71e66d5898"
+  },
+  {
+   "id": "s-hottest-this-month-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "How I Make Realistic AI Videos with Seedance 2.5, Full Guide (Dan Kieft, YouTube)",
+   "url": "https://www.youtube.com/watch?v=2hJsvDSPWYM",
+   "text": "How I Make Realistic AI Videos with Seedance 2.5, Full Guide (Dan Kieft, YouTube), video tutorial. A full guide to realistic shots in Seedance 2.5. The…",
+   "h": "fd17e541ea"
+  },
+  {
+   "id": "s-hottest-this-month-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "Mirelo SFX 2.0 (Mirelo)",
+   "url": "https://x.com/MireloAI/status/2110360787780800611",
+   "text": "Mirelo SFX 2.0 (Mirelo), sound tool. A video-to-sound model that builds synced sound effects for a clip. The signal: 3,845 likes, 4,317 bookmarks and about…",
+   "h": "b065ca9a4c"
+  },
+  {
+   "id": "s-hottest-this-month-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "3d",
+   "type": "repo/tool",
+   "title": "text-to-cad, design physical products with AI (GitHub)",
+   "url": "https://github.com/earthtojake/text-to-cad",
+   "text": "text-to-cad, design physical products with AI (GitHub), 3D and CAD tool. Describes itself as a way to design physical products with AI. The signal: 7,192…",
+   "h": "fc09ca54a6"
+  },
+  {
+   "id": "s-hottest-this-month-i12",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "FLUX.3 image klein for ComfyUI (Black Forest Labs, Hugging Face)",
+   "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+   "text": "FLUX.3 image klein for ComfyUI (Black Forest Labs, Hugging Face), image model. A small FLUX.3 image-to-image model packaged for ComfyUI. The signal: 750,694…",
+   "h": "9210617ef4"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: a fresh evening sweep of X (post lookups by ID and searches of today's and this week's posts), YouTube (week-range searches across video, animation…",
+   "h": "6d97c4001a"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition toward any medium or tool you want to go deeper on.",
+   "h": "46256b85c3"
+  }
+ ]
+}

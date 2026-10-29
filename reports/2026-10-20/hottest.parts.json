@@ -1,0 +1,408 @@
+{
+ "version": 1,
+ "report": "2026-10-20/hottest",
+ "date": "2026-10-20",
+ "slot": "hottest",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-20/hottest.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-20/hottest",
+ "link": "#report=2026-10-20/hottest&part=<id> (index reader) or reports/2026-10-20/hottest.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-intro-i1",
+   "kind": "paragraph",
+   "parent": "s-intro",
+   "section": "s-intro",
+   "text": "Catch-up edition: written on Oct 24, 2026 for the Oct 20 night slot. Every engagement figure below (likes, bookmarks, views, points, stars, downloads) was…",
+   "h": "cde4f0bf27"
+  },
+  {
+   "id": "s-google-owns-the-week",
+   "kind": "section",
+   "heading": "Google owns the week's views, Claude owns the month's saves",
+   "text": "Google owns the week's views, Claude owns the month's saves",
+   "h": "d830e68551"
+  },
+  {
+   "id": "s-google-owns-the-week-i1",
+   "kind": "paragraph",
+   "parent": "s-google-owns-the-week",
+   "section": "s-google-owns-the-week",
+   "text": "Gemini 4 Argon was the loudest AI launch of the week. Sundar Pichai's launch post on Oct 13 has more than 28,000 likes, and Google's own demo videos, a webcam…",
+   "h": "b9cd98808d"
+  },
+  {
+   "id": "s-google-owns-the-week-i2",
+   "kind": "paragraph",
+   "parent": "s-google-owns-the-week",
+   "section": "s-google-owns-the-week",
+   "text": "Engagement figures were read from the X API, YouTube, GitHub repo data, Hugging Face and Hacker News on Oct 24 (PT), four days after the slot, and will keep…",
+   "h": "9d05eb540e"
+  },
+  {
+   "id": "s-blew-up-today",
+   "kind": "section",
+   "heading": "🔥 Blew up today",
+   "text": "🔥 Blew up today",
+   "h": "855a8b0061"
+  },
+  {
+   "id": "s-blew-up-today-i1",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "3d",
+   "type": "showcase",
+   "title": "Gemini 4 Argon builds a 3D periodic table synced to Tom Lehrer's \"The Elements\" (Google DeepMind)",
+   "url": "https://x.com/GoogleDeepMind/status/2112557925264752930",
+   "text": "Gemini 4 Argon builds a 3D periodic table synced to Tom Lehrer's \"The Elements\" (Google DeepMind), 3D/code showcase. Made in Antigravity, it animates orbiting…",
+   "h": "856a268361"
+  },
+  {
+   "id": "s-blew-up-today-i2",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "image",
+   "title": "Vyb, Coco Labs' first design model, which builds editable layered designs from your brand (Coco Labs)",
+   "url": "https://cocolabs.ai/blog/introducing-vyb",
+   "text": "Vyb, Coco Labs' first design model, which builds editable layered designs from your brand (Coco Labs), design model. It starts from your logo, fonts, colors…",
+   "h": "8238bde196"
+  },
+  {
+   "id": "s-blew-up-today-i3",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "title": "Did Google just dethrone OpenAI and Anthropic? (Fireship, YouTube)",
+   "url": "https://www.youtube.com/watch?v=b2tjnxX8IHU",
+   "text": "Did Google just dethrone OpenAI and Anthropic? (Fireship, YouTube), video review. Fireship puts Google's new model up against GPT-6 and Opus 5.5 in a hands-on…",
+   "h": "a251e92914"
+  },
+  {
+   "id": "s-blew-up-today-i4",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "sound",
+   "title": "Voxtral 3, Mistral's new speech-to-text and text-to-speech models (Mistral)",
+   "url": "https://mistral.ai/news/voxtral-3/",
+   "text": "Voxtral 3, Mistral's new speech-to-text and text-to-speech models (Mistral), voice model. The models power Mistral's new voice-agents API. The signal: the…",
+   "h": "fe4153a000"
+  },
+  {
+   "id": "s-blew-up-today-i5",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "image",
+   "type": "news",
+   "title": "Krea 3 reaches the top of the image arenas (Krea)",
+   "url": "https://x.com/krea_ai/status/2112567020353102324",
+   "text": "Krea 3 reaches the top of the image arenas (Krea), image model. Krea says \"Fast\" pushes the speed-and-quality curve and \"Ultra\" ranks top-4, behind only…",
+   "h": "0f079ec774"
+  },
+  {
+   "id": "s-blew-up-today-i6",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "title": "FastH3 Omni, open-sourced with training code (FastVideo, Hugging Face)",
+   "url": "https://huggingface.co/FastVideo/FastH3-Omni-Comfy",
+   "text": "FastH3 Omni, open-sourced with training code (FastVideo, Hugging Face), open video model. FastVideo open-sourced MiniMax's FastH3 Omni with ComfyUI support…",
+   "h": "d51af3a38e"
+  },
+  {
+   "id": "s-hottest-this-week",
+   "kind": "section",
+   "heading": "📈 Hottest this week",
+   "text": "📈 Hottest this week",
+   "h": "927e2ad085"
+  },
+  {
+   "id": "s-hottest-this-week-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "news",
+   "title": "Gemini 4 Argon is here (Sundar Pichai)",
+   "url": "https://x.com/sundarpichai/status/2110038898009407584",
+   "text": "Gemini 4 Argon is here (Sundar Pichai), model launch. Out Oct 13 in the Gemini API, Antigravity, the Gemini app and Search. The signal: 28,456 likes and about…",
+   "h": "c94d247143"
+  },
+  {
+   "id": "s-hottest-this-week-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "3d",
+   "type": "showcase",
+   "title": "Portal jumping through gaussian splat worlds with WebGPU (@XRarchitect)",
+   "url": "https://x.com/XRarchitect/status/2112207444101541962",
+   "text": "Portal jumping through gaussian splat worlds with WebGPU (@XRarchitect), 3D/real-time. Real-time portal jumps between captured splat scenes in the browser.…",
+   "h": "834a48467f"
+  },
+  {
+   "id": "s-hottest-this-week-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "games",
+   "type": "result",
+   "title": "Vibe coding is creating a serious problem for the video game industry (@Pirat_Nation, via Kotaku)",
+   "url": "https://x.com/Pirat_Nation/status/2111593348293128535",
+   "text": "Vibe coding is creating a serious problem for the video game industry (@Pirat_Nation, via Kotaku), industry talk. A summary of Kotaku's report that Opus 5.5…",
+   "h": "96782b534b"
+  },
+  {
+   "id": "s-hottest-this-week-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "buzz",
+   "title": "Make sure your game is fun without a bunch of fancy art (@pvncher)",
+   "url": "https://x.com/pvncher/status/2111613394143027269",
+   "text": "Make sure your game is fun without a bunch of fancy art (@pvncher), craft talk. The argument: LLMs make it too easy to build visually rich levels with no real…",
+   "h": "a6872cde46"
+  },
+  {
+   "id": "s-hottest-this-week-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "video",
+   "type": "buzz",
+   "title": "\"This Opus 5.5 prompt is literally a $400/hr motion graphics designer\" (@minchoi)",
+   "url": "https://x.com/minchoi/status/2111306174259691669",
+   "text": "\"This Opus 5.5 prompt is literally a $400/hr motion graphics designer\" (@minchoi), prompt. A shared prompt for getting motion-graphics work out of Opus 5.5.…",
+   "h": "cee41709f1"
+  },
+  {
+   "id": "s-hottest-this-week-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Paris City Tours, now 50% off, an AI satire (@Wytsekoetse)",
+   "url": "https://x.com/Wytsekoetse/status/2112211697008075021",
+   "text": "Paris City Tours, now 50% off, an AI satire (@Wytsekoetse), video short. A fake tourism ad, with the full toolchain listed: ChatGPT for prompts, GPT Image 2.5…",
+   "h": "82e5c7a2d9"
+  },
+  {
+   "id": "s-hottest-this-week-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "475 video demos built with Claude Opus 5.5 in one GitHub repo (@hurricodes)",
+   "url": "https://x.com/hurricodes/status/2111531584037785970",
+   "text": "475 video demos built with Claude Opus 5.5 in one GitHub repo (@hurricodes), resource. Motion graphics, explainers, 3D scenes and games made with HTML…",
+   "h": "ce5e6ff21f"
+  },
+  {
+   "id": "s-hottest-this-week-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Gus & Spark, billed as the first Claude-made anime (@ziwenxu_)",
+   "url": "https://x.com/ziwenxu_/status/2111212505947357651",
+   "text": "Gus & Spark, billed as the first Claude-made anime (@ziwenxu_), animation. A 25-minute episode the creator says Opus 5.5 wrote in code over more than 15…",
+   "h": "64668c143f"
+  },
+  {
+   "id": "s-hottest-this-week-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "video",
+   "type": "showcase",
+   "title": "DeepSeek V4.1 Flash as \"the new SOTA for motion design\" (Higgsfield)",
+   "url": "https://x.com/higgsfield_ai/status/2111499195257700857",
+   "text": "DeepSeek V4.1 Flash as \"the new SOTA for motion design\" (Higgsfield), model demo. Higgsfield shows 3D detail and UI transitions made with…",
+   "h": "eee5b700c8"
+  },
+  {
+   "id": "s-hottest-this-week-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "FLUX 3 Image Klein, ComfyUI build (Black Forest Labs, Hugging Face)",
+   "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+   "text": "FLUX 3 Image Klein, ComfyUI build (Black Forest Labs, Hugging Face), open image model. Released Oct 14. The signal: 1,479 likes and about 591K downloads on…",
+   "h": "0f37d584da"
+  },
+  {
+   "id": "s-hottest-this-week-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "repo/tool",
+   "title": "Mirelo SFX 2.0, sound design for AI video (Mirelo)",
+   "url": "https://x.com/MireloAI/status/2110360787780800611",
+   "text": "Mirelo SFX 2.0, sound design for AI video (Mirelo), audio. It watches a clip, keeps the dialogue, cuts music you never asked for and builds synced sound…",
+   "h": "92be6ca02d"
+  },
+  {
+   "id": "s-hottest-this-week-i12",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "repo/tool",
+   "title": "earshot, ears for coding agents (GitHub)",
+   "url": "https://github.com/Leonxlnx/earshot",
+   "text": "earshot, ears for coding agents (GitHub), open-source tool. It lets an AI agent hear, review and make sound, on CPU only. The signal: about 2,600 stars since…",
+   "h": "a12d7218da"
+  },
+  {
+   "id": "s-hottest-this-month",
+   "kind": "section",
+   "heading": "🗓️ Hottest this month",
+   "text": "🗓️ Hottest this month",
+   "h": "4f4d3d858e"
+  },
+  {
+   "id": "s-hottest-this-month-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "news",
+   "title": "Introducing Claude Opus 5.5 (Claude)",
+   "url": "https://x.com/claudeai/status/2102435511222890900",
+   "text": "Introducing Claude Opus 5.5 (Claude), model launch. Out Sept 22. The signal: 97,487 likes, 13,305 bookmarks and about 28.6M views, the most-liked post in this…",
+   "h": "1e48a2bf73"
+  },
+  {
+   "id": "s-hottest-this-month-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "Claude Dashboards and Claude Motion are in beta (Claude)",
+   "url": "https://x.com/claudeai/status/2108271552991252810",
+   "text": "Claude Dashboards and Claude Motion are in beta (Claude), design tool. You ask, and Claude turns data into live dashboards and ideas into animated explainers.…",
+   "h": "846a9510d4"
+  },
+  {
+   "id": "s-hottest-this-month-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "news",
+   "title": "GPT-6 and Intelligent UI for everyone (OpenAI)",
+   "url": "https://x.com/OpenAI/status/2107894997538525580",
+   "text": "GPT-6 and Intelligent UI for everyone (OpenAI), product launch. Intelligent UI makes ChatGPT answers more visual and interactive. The signal: 24,059 likes and…",
+   "h": "71a6662235"
+  },
+  {
+   "id": "s-hottest-this-month-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Pros Try Fake AI Photoshop (Linus Tech Tips, YouTube)",
+   "url": "https://www.youtube.com/watch?v=fr0WIIZxvx0",
+   "text": "Pros Try Fake AI Photoshop (Linus Tech Tips, YouTube), video. LTT has professionals try a free \"fake AI Photoshop\" and asks whether the wave of AI clones and…",
+   "h": "d3393892f3"
+  },
+  {
+   "id": "s-hottest-this-month-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "LGTM (Looks Good to Me), a Claude Opus 5.5 music video (Degenerative Pixels, YouTube)",
+   "url": "https://www.youtube.com/watch?v=3TNpOD6bov8",
+   "text": "LGTM (Looks Good to Me), a Claude Opus 5.5 music video (Degenerative Pixels, YouTube), music video. A song made with Suno v6 and animation Opus 5.5 wrote in…",
+   "h": "537ae29dee"
+  },
+  {
+   "id": "s-hottest-this-month-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "video",
+   "type": "repo/tool",
+   "title": "awesome-opus5-5-videos (GitHub)",
+   "url": "https://github.com/yihui-dev/awesome-opus5-5-videos",
+   "text": "awesome-opus5-5-videos (GitHub), resource. A growing collection of viral Opus 5.5 videos and the prompts behind them, each shown next to a live remake. The…",
+   "h": "d04e894b28"
+  },
+  {
+   "id": "s-hottest-this-month-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "universal-modder, point Claude at any game (GitHub)",
+   "url": "https://github.com/rehan-remade/universal-modder",
+   "text": "universal-modder, point Claude at any game (GitHub), tool. Skills and tools that let Claude Code mod almost any PC game you own, including fal-generated art…",
+   "h": "d780056c6a"
+  },
+  {
+   "id": "s-hottest-this-month-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "lemo-opuscar, film styles made in code (GitHub)",
+   "url": "https://github.com/lemomo-ai/lemo-opuscar",
+   "text": "lemo-opuscar, film styles made in code (GitHub), resource. A toolbox of 59 film styles for Claude Code, each with a style prompt and a demo film made in code…",
+   "h": "a438114a0e"
+  },
+  {
+   "id": "s-hottest-this-month-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "tutorial",
+   "title": "How to Make Insane Motion Graphics With Opus 5.5 (Lukas Margerie, YouTube)",
+   "url": "https://www.youtube.com/watch?v=747ZnEtsRbg",
+   "text": "How to Make Insane Motion Graphics With Opus 5.5 (Lukas Margerie, YouTube), tutorial. A walkthrough of making motion graphics with Opus 5.5. The signal: about…",
+   "h": "c46846dbbe"
+  },
+  {
+   "id": "s-hottest-this-month-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "I gave Opus 5.5 one prompt and six hours to visualize Invisible Cities (Quesma)",
+   "url": "https://quesma.com/blog/invisible-cities-one-shot/",
+   "text": "I gave Opus 5.5 one prompt and six hours to visualize Invisible Cities (Quesma), experiment. A one-prompt, six-hour run at visualizing Calvino's book. The…",
+   "h": "45eeb1bcd0"
+  },
+  {
+   "id": "s-hottest-this-month-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons (Nieman Lab)",
+   "url": "https://www.niemanlab.org/2026/10/chatgpt-is-adding-real-cartoonists-signatures-to-fake-new-yorker-cartoons/",
+   "text": "ChatGPT is adding real cartoonists' signatures to fake New Yorker cartoons (Nieman Lab), talk. The signal: 559 points on Hacker News, the month's most-upvoted…",
+   "h": "12f5d0ec47"
+  },
+  {
+   "id": "s-hottest-this-month-i12",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Qwen-Image-2.1-Turbo, open-weights images in 8 steps (Qwen)",
+   "url": "https://x.com/Alibaba_Qwen/status/2108549075218120949",
+   "text": "Qwen-Image-2.1-Turbo, open-weights images in 8 steps (Qwen), open image model. It creates and edits 2K images in 8 denoising steps. The signal: 5,317 likes…",
+   "h": "cc2cef0848"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: a catch-up sweep written on Oct 24, 2026 for the Oct 20 slot, with every figure read Oct 24 (PT). It covers X (lab and creator accounts, keyword…",
+   "h": "77482b4e15"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Want a deeper dive on any of these, or more of one medium next time? Say the word and the next edition will steer there.",
+   "h": "27e843787c"
+  }
+ ]
+}

@@ -1,0 +1,304 @@
+{
+ "version": 1,
+ "report": "2026-10-20/best",
+ "date": "2026-10-20",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-20/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-20/best",
+ "link": "#report=2026-10-20/best&part=<id> (index reader) or reports/2026-10-20/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-intro-i1",
+   "kind": "paragraph",
+   "parent": "s-intro",
+   "section": "s-intro",
+   "text": "Catch-up edition: written on Oct 24, 2026 for the Oct 20 evening slot. Every engagement figure below (likes, bookmarks, views, points, downloads) was read on…",
+   "h": "728cbd223b"
+  },
+  {
+   "id": "s-design-models-not-image",
+   "kind": "section",
+   "heading": "Design models, not image models",
+   "text": "Design models, not image models",
+   "h": "15dbf48f3b",
+   "medium": "image"
+  },
+  {
+   "id": "s-design-models-not-image-i1",
+   "kind": "paragraph",
+   "parent": "s-design-models-not-image",
+   "section": "s-design-models-not-image",
+   "medium": "image",
+   "text": "The design story of Oct 20 is Vyb, the first model from Coco Labs. Co-founder Anusha Ramesh says she launched Google's first image and video generation models…",
+   "h": "9038fc540f"
+  },
+  {
+   "id": "s-design-models-not-image-i2",
+   "kind": "paragraph",
+   "parent": "s-design-models-not-image",
+   "section": "s-design-models-not-image",
+   "medium": "image",
+   "text": "Method in one line: picks start from the Oct 20 morning and noon editions, plus a catch-up sweep on Oct 24 of what blew up on Oct 20 (PT) through about 6 PM.…",
+   "h": "5e0aec06ef"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-image-and",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "🖼️ Image and graphic design",
+   "medium": "image",
+   "text": "🖼️ Image and graphic design",
+   "h": "114d961828"
+  },
+  {
+   "id": "s-pick-of-the-day-image-and-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-image-and",
+   "section": "s-pick-of-the-day",
+   "medium": "image",
+   "title": "Vyb, Coco Labs' first design model, which builds editable layered designs from your brand (Coco Labs)",
+   "url": "https://cocolabs.ai/blog/introducing-vyb",
+   "text": "Vyb, Coco Labs' first design model, which builds editable layered designs from your brand (Coco Labs), model. Vyb starts from your logo, fonts, colors and…",
+   "h": "0fdf5be703"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-3d-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D and interactive",
+   "medium": "3d",
+   "text": "🧊 3D and interactive",
+   "h": "7afb9f780a"
+  },
+  {
+   "id": "s-ranked-picks-3d-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d-and",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "showcase",
+   "title": "Gemini 4 Argon builds a 3D periodic table synced to Tom Lehrer's \"The Elements\" (Google DeepMind)",
+   "url": "https://x.com/GoogleDeepMind/status/2112557925264752930",
+   "text": "Gemini 4 Argon builds a 3D periodic table synced to Tom Lehrer's \"The Elements\" (Google DeepMind), showcase. Made in Antigravity, it animates orbiting…",
+   "h": "c0151760a2"
+  },
+  {
+   "id": "s-ranked-picks-sound-and-voice",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🔊 Sound and voice",
+   "medium": "sound",
+   "text": "🔊 Sound and voice",
+   "h": "484051993e"
+  },
+  {
+   "id": "s-ranked-picks-sound-and-voice-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-sound-and-voice",
+   "section": "s-ranked-picks",
+   "medium": "sound",
+   "title": "Voxtral 3, Mistral's new speech-to-text and text-to-speech family with a voice-agent SDK (Mistral)",
+   "url": "https://mistral.ai/news/voxtral-3/",
+   "text": "Voxtral 3, Mistral's new speech-to-text and text-to-speech family with a voice-agent SDK (Mistral), model. The TTS model changes emotion, pace and emphasis to…",
+   "h": "78a5453005"
+  },
+  {
+   "id": "s-ranked-picks-image",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-ranked-picks-image-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "news",
+   "title": "Krea 3 reaches the top tier of image-editing arenas (Krea)",
+   "url": "https://x.com/krea_ai/status/2112567020353102324",
+   "text": "Krea 3 reaches the top tier of image-editing arenas (Krea), model news. Krea says its in-house model comes in two versions: \"Fast\" pushes the speed-quality…",
+   "h": "dd979f306e"
+  },
+  {
+   "id": "s-ranked-picks-image-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "title": "Fibo 2.0, Bria's open-weights image-editing model trained on licensed data (Bria)",
+   "url": "https://x.com/bria_ai_/status/2112559473458045305",
+   "text": "Fibo 2.0, Bria's open-weights image-editing model trained on licensed data (Bria), model. Bria calls it the #1 open-weights image-editing model on Artificial…",
+   "h": "04ecd2379f"
+  },
+  {
+   "id": "s-ranked-picks-image-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "title": "Grok Imagine turns a snapshot into a studio photoshoot (@imagine)",
+   "url": "https://x.com/imagine/status/2112613486845120758",
+   "text": "Grok Imagine turns a snapshot into a studio photoshoot (@imagine), feature. Take a phone photo and edit it into a styled studio shoot. Why people are talking…",
+   "h": "e80e131467"
+  },
+  {
+   "id": "s-ranked-picks-image-i4",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "title": "11 broken images, 7 AI editors, one try each: a tier list (@VORTEX_Promos)",
+   "url": "https://x.com/VORTEX_Promos/status/2112657082998473013",
+   "text": "11 broken images, 7 AI editors, one try each: a tier list (@VORTEX_Promos), test. Extra hands, a third leg, duplicate people and typos were handed to Krea 3…",
+   "h": "e01f1e1e92"
+  },
+  {
+   "id": "s-ranked-picks-image-i5",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "tutorial",
+   "title": "A practical guide to AI image generation, from diffusion to agents (Daniel Ball)",
+   "url": "https://danielball.com/notes/ai_image_generation.html",
+   "text": "A practical guide to AI image generation, from diffusion to agents (Daniel Ball), tutorial. How the models work, what you get from ChatGPT, and how to build…",
+   "h": "9c3ab60917"
+  },
+  {
+   "id": "s-ranked-picks-video-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video and animation",
+   "medium": "video",
+   "text": "🎬 Video and animation",
+   "h": "1d57cc816d"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "title": "FastH3 Omni goes open source, training code included (@haoailab)",
+   "url": "https://x.com/haoailab/status/2112625528805208257",
+   "text": "FastH3 Omni goes open source, training code included (@haoailab), model. FastVideo's distilled MiniMax H3 does multi-reference video. The team says it runs in…",
+   "h": "8fae44a003"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "A short film about a paperclip and a sticky note, every frame drawn in code (@kevin_t_ngo)",
+   "url": "https://x.com/kevin_t_ngo/status/2112584730856366140",
+   "text": "A short film about a paperclip and a sticky note, every frame drawn in code (@kevin_t_ngo), showcase. The creator says Claude Opus 5.5 drew every frame in…",
+   "h": "df8785d19c"
+  },
+  {
+   "id": "s-ranked-picks-games",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games",
+   "medium": "games",
+   "text": "🎮 Games",
+   "h": "dd27204535"
+  },
+  {
+   "id": "s-ranked-picks-games-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "showcase",
+   "title": "A full 3D tower-defense game built with Claude Opus 5.5 (@MrTacticalX)",
+   "url": "https://x.com/MrTacticalX/status/2112708402367639740",
+   "text": "A full 3D tower-defense game built with Claude Opus 5.5 (@MrTacticalX), showcase. He lists 5 maps, 14 towers, boss fights, volcano eruptions and hordes of…",
+   "h": "81fd23dc15"
+  },
+  {
+   "id": "s-ranked-picks-mashups-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧪 Mashups and agent studios",
+   "medium": "mashups",
+   "text": "🧪 Mashups and agent studios",
+   "h": "5e16096064"
+  },
+  {
+   "id": "s-ranked-picks-mashups-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-mashups-and",
+   "section": "s-ranked-picks",
+   "medium": "mashups",
+   "type": "workflow",
+   "title": "A full motion-design studio inside one Claude Code folder, on a weekly schedule (@thegreatest_sv)",
+   "url": "https://x.com/thegreatest_sv/status/2112609040962359354",
+   "text": "A full motion-design studio inside one Claude Code folder, on a weekly schedule (@thegreatest_sv), workflow. A STUDIO folder with a brand/ directory and a…",
+   "h": "32f6be9f2d"
+  },
+  {
+   "id": "s-ranked-picks-what-people-are",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🗣️ What people are talking about",
+   "text": "🗣️ What people are talking about",
+   "h": "1e33e8cfa5"
+  },
+  {
+   "id": "s-ranked-picks-what-people-are-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-what-people-are",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "news",
+   "title": "Steam players ask for a \"no AI\" filter as Next Fest fills with generated games (IGN)",
+   "url": "https://www.ign.com/articles/steam-fans-are-begging-for-a-no-ai-filter-as-steam-next-fest-is-filled-with-slop",
+   "text": "Steam players ask for a \"no AI\" filter as Next Fest fills with generated games (IGN), news. One Steam player quoted by IGN asks to filter out every game with…",
+   "h": "2ad2326545"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: a catch-up edition, written on Oct 24, 2026. Picks start from the Oct 20 morning and noon editions. A fresh sweep on Oct 24 then checked X (launch…",
+   "h": "a33675581e"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Want a deeper dive on any of these, or more of one medium next time? Say the word and the next edition will steer there.",
+   "h": "27e843787c"
+  }
+ ]
+}

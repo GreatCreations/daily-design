@@ -1,0 +1,258 @@
+{
+ "version": 1,
+ "report": "2026-10-28/best",
+ "date": "2026-10-28",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-28/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-28/best",
+ "link": "#report=2026-10-28/best&part=<id> (index reader) or reports/2026-10-28/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-one-free-local-model",
+   "kind": "section",
+   "heading": "One free local model, a full anime short and a flood of design-skill stars: the open-model crowd had the day",
+   "text": "One free local model, a full anime short and a flood of design-skill stars: the open-model crowd had the day",
+   "h": "437308594f"
+  },
+  {
+   "id": "s-one-free-local-model-i1",
+   "kind": "paragraph",
+   "parent": "s-one-free-local-model",
+   "section": "s-one-free-local-model",
+   "text": "The pick of the day is Mickmumpitz's \"One AI Model to RULE THEM ALL (FREE & LOCAL)\", a 12-minute walkthrough of making a whole anime short film, SHIBUWAKA…",
+   "h": "507df69ced"
+  },
+  {
+   "id": "s-one-free-local-model-i2",
+   "kind": "paragraph",
+   "parent": "s-one-free-local-model",
+   "section": "s-one-free-local-model",
+   "text": "Engagement figures were read from X, YouTube, GitHub, Hugging Face and Hacker News on the afternoon of Oct 28 (PT) and will keep changing. Reddit blocked our…",
+   "h": "524040c86f"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-video",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-pick-of-the-day-video-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-video",
+   "section": "s-pick-of-the-day",
+   "medium": "video",
+   "type": "workflow",
+   "title": "One AI Model to RULE THEM ALL (FREE & LOCAL) (Mickmumpitz, YouTube)",
+   "url": "https://www.youtube.com/watch?v=xwTJ3E3NU7A",
+   "text": "One AI Model to RULE THEM ALL (FREE & LOCAL) (Mickmumpitz, YouTube), workflow. Per the description, the team makes an anime short about two wannabe daredevils…",
+   "h": "3133bd5e6c"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-games-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games and interactive",
+   "medium": "games",
+   "text": "🎮 Games and interactive",
+   "h": "61afdd649a"
+  },
+  {
+   "id": "s-ranked-picks-games-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games-and",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "showcase",
+   "title": "I Made UE 5 Game Using Only Free AI in 4 Days (Stefan 3D AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=UtY2DsOUCjE",
+   "text": "I Made UE 5 Game Using Only Free AI in 4 Days (Stefan 3D AI, YouTube), showcase. A playable Unreal Engine 5 obstacle course with rotating platforms, ragdoll…",
+   "h": "43942ccef6"
+  },
+  {
+   "id": "s-ranked-picks-games-and-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-games-and",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "news",
+   "title": "Valve tells developers to make games harder to copy, as AI clones flood Steam (Eurogamer)",
+   "url": "https://www.eurogamer.net/steam-ai-clone-game-problem-valve-response",
+   "text": "Valve tells developers to make games harder to copy, as AI clones flood Steam (Eurogamer), news. At a Steam developer conference in Korea, Valve's Tom…",
+   "h": "55aad39eee"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "news",
+   "title": "Gemini 4 Carbon, Google's next frontier model (Google)",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+   "text": "Gemini 4 Carbon, Google's next frontier model (Google), model/news. Google calls it its strongest model, aimed at cybersecurity and long-running coding work.…",
+   "h": "9f1ee8137d"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "The agent design-skills wave: ai-design-skills, Hallmark and impeccable are all on GitHub's daily list (GitHub)",
+   "url": "https://github.com/elayadesign/ai-design-skills",
+   "text": "The agent design-skills wave: ai-design-skills, Hallmark and impeccable are all on GitHub's daily list (GitHub), tool. Update on repos we covered earlier this…",
+   "h": "e69d826296"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "tutorial",
+   "title": "Make your Figma design system agent-ready (Figma, YouTube)",
+   "url": "https://www.youtube.com/watch?v=yj90StgN70w",
+   "text": "Make your Figma design system agent-ready (Figma, YouTube), tutorial. Figma's own video on preparing a design system for its Figma agent: thoughtful component…",
+   "h": "403db76ed8"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i4",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "showcase",
+   "title": "A mortuary landing page built with Claude Code (@IwuDesigns)",
+   "url": "https://x.com/IwuDesigns/status/2115339088744128915",
+   "text": "A mortuary landing page built with Claude Code (@IwuDesigns), showcase. A calm \"Restora — Professional Mortuary Care\" site, with a live demo, built with…",
+   "h": "ad3b2b87f2"
+  },
+  {
+   "id": "s-ranked-picks-video",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-ranked-picks-video-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "\"Paper Dragon,\" a one-minute AI short film (@xIrissy)",
+   "url": "https://x.com/xIrissy/status/2115379237234549125",
+   "text": "\"Paper Dragon,\" a one-minute AI short film (@xIrissy), showcase. A boy's kite flies away and comes back that night as a 20-metre dragon. The poster says it…",
+   "h": "125b871852"
+  },
+  {
+   "id": "s-ranked-picks-video-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Same prompt, Kling 4.0 against Seedance 2.5 (@doctorwasif)",
+   "url": "https://x.com/doctorwasif/status/2115424536510537748",
+   "text": "Same prompt, Kling 4.0 against Seedance 2.5 (@doctorwasif), showcase. A Korean beauty-shop scene with early-2000s nostalgia, run on Pollo AI with the same…",
+   "h": "5f261e262c"
+  },
+  {
+   "id": "s-ranked-picks-video-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "repo/tool",
+   "title": "Digital Human Koubo: one photo and one sentence to a talking-head video (andyhuo520, GitHub)",
+   "url": "https://github.com/andyhuo520/digital-human-koubo",
+   "text": "Digital Human Koubo: one photo and one sentence to a talking-head video (andyhuo520, GitHub), tool. An MIT-licensed agent skill that scripts, voices…",
+   "h": "83b8f32945"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "tutorial",
+   "title": "Animate ANY 3D Character From Just a Video (Free & Open Source) (PixelArtistry, YouTube)",
+   "url": "https://www.youtube.com/watch?v=D-n-zdb59lo",
+   "text": "Animate ANY 3D Character From Just a Video (Free & Open Source) (PixelArtistry, YouTube), tutorial. A walkthrough of MoCapAnything V2, which per the video…",
+   "h": "6e0c0846c5"
+  },
+  {
+   "id": "s-ranked-picks-3d-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "repo/tool",
+   "title": "DeepOpen 3D Webs: one image and a prompt become a Gaussian-splat scene you can fly through (deepopen-com, GitHub)",
+   "url": "https://github.com/deepopen-com/deepopen-3d-webs",
+   "text": "DeepOpen 3D Webs: one image and a prompt become a Gaussian-splat scene you can fly through (deepopen-com, GitHub), tool. A web studio that takes a reference…",
+   "h": "5b37bc26f8"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: the 23 X posts gathered for this edition were each opened by ID and their text and metrics re-read; none were taken on trust. They were checked…",
+   "h": "39e1f4f183"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}

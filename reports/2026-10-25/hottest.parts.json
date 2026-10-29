@@ -1,0 +1,374 @@
+{
+ "version": 1,
+ "report": "2026-10-25/hottest",
+ "date": "2026-10-25",
+ "slot": "hottest",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-25/hottest.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-25/hottest",
+ "link": "#report=2026-10-25/hottest&part=<id> (index reader) or reports/2026-10-25/hottest.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-ai-series-episode",
+   "kind": "section",
+   "heading": "An AI series episode doubled overnight, and design tools for coding agents are the month's fastest climbers",
+   "text": "An AI series episode doubled overnight, and design tools for coding agents are the month's fastest climbers",
+   "h": "e713f5146f"
+  },
+  {
+   "id": "s-ai-series-episode-i1",
+   "kind": "paragraph",
+   "parent": "s-ai-series-episode",
+   "section": "s-ai-series-episode",
+   "text": "The biggest mover again is Odyssey Episode 1 from the Grok Imagine account, which nearly doubled in a day to 19,210 likes, 12,036 bookmarks and about 5.83M…",
+   "h": "e049f9346d"
+  },
+  {
+   "id": "s-ai-series-episode-i2",
+   "kind": "paragraph",
+   "parent": "s-ai-series-episode",
+   "section": "s-ai-series-episode",
+   "text": "Engagement figures were read from the X API, YouTube search, GitHub (trending pages and repo data), Hugging Face and Hacker News on the evening of Oct 25 (PT)…",
+   "h": "6e08e471b7"
+  },
+  {
+   "id": "s-blew-up-today",
+   "kind": "section",
+   "heading": "🔥 Blew up today",
+   "text": "🔥 Blew up today",
+   "h": "855a8b0061"
+  },
+  {
+   "id": "s-blew-up-today-i1",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Odyssey Episode 1, a series episode made with Grok Imagine (@imagine)",
+   "url": "https://x.com/imagine/status/2113712964419063911",
+   "text": "Odyssey Episode 1, a series episode made with Grok Imagine (@imagine), video showcase. The first episode of an Odyssey series from the Grok Imagine account.…",
+   "h": "c26ec9a4f5"
+  },
+  {
+   "id": "s-blew-up-today-i2",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "code",
+   "type": "buzz",
+   "title": "Claude 2.0 is Insane, All Updates Explained (Ben AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=J5EbL1UaqG8",
+   "text": "Claude 2.0 is Insane, All Updates Explained (Ben AI, YouTube), code and UI buzz. A walkthrough of the latest Claude updates for building and design work. The…",
+   "h": "649f6f5c01"
+  },
+  {
+   "id": "s-blew-up-today-i3",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Seedance 2.5 clips lead today's most-saved creative posts (@YaseenK7212)",
+   "url": "https://x.com/YaseenK7212/status/2114457595159491015",
+   "text": "Seedance 2.5 clips lead today's most-saved creative posts (@YaseenK7212), video showcase. A short Seedance 2.5 clip posted this afternoon, with a similar post…",
+   "h": "fe77b9c62e"
+  },
+  {
+   "id": "s-blew-up-today-i4",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "Hallmark, an anti-AI-slop design skill for coding agents (GitHub)",
+   "url": "https://github.com/Nutlope/hallmark",
+   "text": "Hallmark, an anti-AI-slop design skill for coding agents (GitHub), code and UI skill. A design skill for Claude Code, Cursor and Codex that pushes generated…",
+   "h": "c076dfd516"
+  },
+  {
+   "id": "s-hottest-this-week",
+   "kind": "section",
+   "heading": "📈 Hottest this week",
+   "text": "📈 Hottest this week",
+   "h": "927e2ad085"
+  },
+  {
+   "id": "s-hottest-this-week-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "news",
+   "title": "DeepSeek-V4.1-Flash-1017, open weights (DeepSeek)",
+   "url": "https://x.com/deepseek_ai/status/2111375640717033777",
+   "text": "DeepSeek-V4.1-Flash-1017, open weights (DeepSeek), code and motion model. An updated open model that DeepSeek says has stronger benchmark performance. The…",
+   "h": "c5cdbc720c"
+  },
+  {
+   "id": "s-hottest-this-week-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Canva Craft, Canva's first image model built for design (Canva)",
+   "url": "https://x.com/canva/status/2113348707223753165",
+   "text": "Canva Craft, Canva's first image model built for design (Canva), image model. It plans the layout before it draws, aimed at accurate text and editable…",
+   "h": "0fca132fb6"
+  },
+  {
+   "id": "s-hottest-this-week-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "tutorial",
+   "title": "Kling AI 4.0 Tutorial: How to Make Cinematic AI Videos (FILM CRUX, YouTube)",
+   "url": "https://www.youtube.com/watch?v=PzOH1v5GaW0",
+   "text": "Kling AI 4.0 Tutorial: How to Make Cinematic AI Videos (FILM CRUX, YouTube), video tutorial. A walkthrough of Kling 4.0. The signal: 458,087 views in five…",
+   "h": "906f3523fd"
+  },
+  {
+   "id": "s-hottest-this-week-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Gemini 4 Argon builds an interactive 3D anatomy model (Google DeepMind)",
+   "url": "https://x.com/GoogleDeepMind/status/2112974723659247896",
+   "text": "Gemini 4 Argon builds an interactive 3D anatomy model (Google DeepMind), 3D showcase. Argon combined three open datasets into a 3D body you can peel back…",
+   "h": "f430a6b39e"
+  },
+  {
+   "id": "s-hottest-this-week-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "title": "Krea now works inside Grok Bot (Krea)",
+   "url": "https://x.com/krea_ai/status/2113661958331494461",
+   "text": "Krea now works inside Grok Bot (Krea), image and video tool. A connector that generates images and video with Krea's models from inside a chat. The signal…",
+   "h": "7e4f41839c"
+  },
+  {
+   "id": "s-hottest-this-week-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Ideogram Vector 1.0, text or image to editable SVG (Ideogram)",
+   "url": "https://x.com/ideogram_ai/status/2113300317584720259",
+   "text": "Ideogram Vector 1.0, text or image to editable SVG (Ideogram), image and vector model. Logos, lettering and illustrations come out as separate vector shapes.…",
+   "h": "8eecbc0a7d"
+  },
+  {
+   "id": "s-hottest-this-week-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "buzz",
+   "title": "10 GitHub repos to turn you into a design and motion studio (@AmirMushich)",
+   "url": "https://x.com/AmirMushich/status/2113692928824484078",
+   "text": "10 GitHub repos to turn you into a design and motion studio (@AmirMushich), code and motion buzz. A list covering impeccable, Blender MCP, HyperFrames…",
+   "h": "42c32555ce"
+  },
+  {
+   "id": "s-hottest-this-week-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "tutorial",
+   "title": "How to Create Insane Motion Graphics With Claude, for free (Futurepedia, YouTube)",
+   "url": "https://www.youtube.com/watch?v=Ge1B-Ok1Pfk",
+   "text": "How to Create Insane Motion Graphics With Claude, for free (Futurepedia, YouTube), motion tutorial. Prompt-to-animation explainers built in code with Claude.…",
+   "h": "a4f6ef51c4"
+  },
+  {
+   "id": "s-hottest-this-week-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "games",
+   "type": "showcase",
+   "title": "A first game built in six weeks with no coding background (@rewind02)",
+   "url": "https://x.com/rewind02/status/2113934403478999211",
+   "text": "A first game built in six weeks with no coding background (@rewind02), games showcase. A creator's account of shipping a game with Claude Opus 5.5 after six…",
+   "h": "531c0a9bb6"
+  },
+  {
+   "id": "s-hottest-this-week-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "image",
+   "type": "repo/tool",
+   "title": "gpu-unlock, faster BF16 maths on RTX 30-series cards (GitHub)",
+   "url": "https://github.com/Zagitta/gpu-unlock",
+   "text": "gpu-unlock, faster BF16 maths on RTX 30-series cards (GitHub), image and video tool. A Linux module that raises how fast older cards issue FP16/BF16 maths…",
+   "h": "1c328c3b53"
+  },
+  {
+   "id": "s-hottest-this-week-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "title": "Kimi K3.1 Pro, Moonshot's open-weight model for coding and 3D (Kimi)",
+   "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "text": "Kimi K3.1 Pro, Moonshot's open-weight model for coding and 3D (Kimi), code and 3D model. Moonshot calls it its most capable open-weight model. The signal…",
+   "h": "1ffd0c8ca8"
+  },
+  {
+   "id": "s-hottest-this-month",
+   "kind": "section",
+   "heading": "🏆 Hottest this month",
+   "text": "🏆 Hottest this month",
+   "h": "4f4d3d858e"
+  },
+  {
+   "id": "s-hottest-this-month-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "Claude Dashboards and Claude Motion are in beta (Claude)",
+   "url": "https://x.com/claudeai/status/2108271552991252810",
+   "text": "Claude Dashboards and Claude Motion are in beta (Claude), motion and UI tool. Ask Claude to turn data into live dashboards and ideas into animated explainers.…",
+   "h": "08be64a361"
+  },
+  {
+   "id": "s-hottest-this-month-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Building Real-Time Animation with Gemini 4 Argon (Google Antigravity, YouTube)",
+   "url": "https://www.youtube.com/watch?v=T2Wfds62ZjM",
+   "text": "Building Real-Time Animation with Gemini 4 Argon (Google Antigravity, YouTube), code and UI showcase. Google's demo of Argon building real-time animation as…",
+   "h": "5537701f0c"
+  },
+  {
+   "id": "s-hottest-this-month-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Gemini 4 Argon: 3D World in Blender (Google, YouTube)",
+   "url": "https://www.youtube.com/watch?v=1dAcJEIlQM8",
+   "text": "Gemini 4 Argon: 3D World in Blender (Google, YouTube), 3D showcase. Argon building a 3D world inside Blender through an agent. The signal: 8,747,148 views as…",
+   "h": "2f6c34aad0"
+  },
+  {
+   "id": "s-hottest-this-month-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "news",
+   "title": "GPT-6 and Intelligent UI rolling out in ChatGPT (OpenAI)",
+   "url": "https://x.com/OpenAI/status/2107894997538525580",
+   "text": "GPT-6 and Intelligent UI rolling out in ChatGPT (OpenAI), code and UI news. ChatGPT answers are laid out by the model as text, charts and interactive pieces.…",
+   "h": "95e50108f5"
+  },
+  {
+   "id": "s-hottest-this-month-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "sound",
+   "type": "repo/tool",
+   "title": "VoiceStudio, an open-source, fully local ElevenLabs alternative (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "text": "VoiceStudio, an open-source, fully local ElevenLabs alternative (GitHub), sound tool. Voice cloning, voice design, video dubbing and audiobooks on your own…",
+   "h": "54c070ea1b"
+  },
+  {
+   "id": "s-hottest-this-month-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "How I Make Realistic AI Videos with Seedance 2.5, Full Guide (Dan Kieft, YouTube)",
+   "url": "https://www.youtube.com/watch?v=2hJsvDSPWYM",
+   "text": "How I Make Realistic AI Videos with Seedance 2.5, Full Guide (Dan Kieft, YouTube), video tutorial. A full guide to realistic shots in Seedance 2.5. The…",
+   "h": "6dda9b9f80"
+  },
+  {
+   "id": "s-hottest-this-month-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "title": "HyperFrames: write HTML, render video (HeyGen, GitHub)",
+   "url": "https://github.com/heygen-com/hyperframes",
+   "text": "HyperFrames: write HTML, render video (HeyGen, GitHub), video and code tool. A framework built for agents that turns web pages into rendered video. The…",
+   "h": "d5284d7fc9"
+  },
+  {
+   "id": "s-hottest-this-month-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "impeccable, a design language for AI coding tools (GitHub)",
+   "url": "https://github.com/pbakaus/impeccable",
+   "text": "impeccable, a design language for AI coding tools (GitHub), code and UI skill. Its authors pitch it as a way to make AI coding tools better at design. The…",
+   "h": "ba40ad4df8"
+  },
+  {
+   "id": "s-hottest-this-month-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "anatomy, an agent skill for isometric illustrations (GitHub)",
+   "url": "https://github.com/wheresryan22/anatomy",
+   "text": "anatomy, an agent skill for isometric illustrations (GitHub), illustration skill. It makes detailed, interactive isometric drawings of real machines and…",
+   "h": "8b1fce5090"
+  },
+  {
+   "id": "s-hottest-this-month-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "Mirelo SFX 2.0 (Mirelo)",
+   "url": "https://x.com/MireloAI/status/2110360787780800611",
+   "text": "Mirelo SFX 2.0 (Mirelo), sound tool. A video-to-sound model that watches a clip and builds synced sound effects. The signal: 3,837 likes, 4,318 bookmarks and…",
+   "h": "bd24ef687b"
+  },
+  {
+   "id": "s-hottest-this-month-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "3d",
+   "type": "repo/tool",
+   "title": "text-to-cad, CAD skills for coding agents (GitHub)",
+   "url": "https://github.com/earthtojake/text-to-cad",
+   "text": "text-to-cad, CAD skills for coding agents (GitHub), 3D tool. Its tagline: give your agent CAD superpowers. The signal: 6,821 stars this month on GitHub's…",
+   "h": "19da01187a"
+  },
+  {
+   "id": "s-hottest-this-month-i12",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "MOSS-Image for ComfyUI (Hugging Face)",
+   "url": "https://huggingface.co/Comfy-Org/MOSS-Image",
+   "text": "MOSS-Image for ComfyUI (Hugging Face), image model. An open model known for clean text rendering, packaged for ComfyUI. The signal: 2,161,961 downloads and…",
+   "h": "2341a3508d"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: a fresh evening sweep of X (post lookups by ID, including posts from earlier editions), YouTube search, GitHub trending (daily, weekly, monthly) and…",
+   "h": "7a0411d11c"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}
