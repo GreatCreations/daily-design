@@ -33,6 +33,7 @@
    "medium": "video",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "video",
     "best",
@@ -69,6 +70,7 @@
    "medium": "video",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "video",
     "tutorial",
@@ -93,6 +95,7 @@
    "medium": "video",
    "type": "repo/tool",
    "kind": "repo/tool",
+   "kind_key": "repo-tool",
    "tags": [
     "video",
     "repo/tool",
@@ -122,6 +125,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -151,6 +155,7 @@
    "medium": "3d",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "3d",
     "tutorial",
@@ -180,6 +185,7 @@
    "medium": "3d",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "3d",
     "showcase",
@@ -204,6 +210,7 @@
    "medium": "mashups",
    "type": "buzz",
    "kind": "buzz",
+   "kind_key": "buzz",
    "tags": [
     "mashups",
     "buzz",
@@ -237,6 +244,7 @@
    "medium": "mashups",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "mashups",
     "showcase",
@@ -261,6 +269,7 @@
    "medium": "games",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "games",
     "tutorial",
@@ -285,6 +294,7 @@
    "medium": "image",
    "type": "repo/tool",
    "kind": "repo/tool",
+   "kind_key": "repo-tool",
    "tags": [
     "image",
     "repo/tool",
@@ -318,6 +328,7 @@
    "medium": "sound",
    "type": "repo/tool",
    "kind": "repo/tool",
+   "kind_key": "repo-tool",
    "tags": [
     "sound",
     "repo/tool",
@@ -342,6 +353,7 @@
    "medium": "",
    "type": "buzz",
    "kind": "buzz",
+   "kind_key": "buzz",
    "tags": [
     "buzz",
     "best",
@@ -365,6 +377,7 @@
    "medium": "",
    "type": "buzz",
    "kind": "buzz",
+   "kind_key": "buzz",
    "tags": [
     "buzz",
     "best",

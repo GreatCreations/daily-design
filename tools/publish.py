@@ -1976,6 +1976,99 @@ def jdump(obj, pretty=False):
     return json.dumps(obj, ensure_ascii=False, separators=(",", ":")) + "\n"
 
 
+# ---------------------------------------------------------------- kinds registry (data/kinds.json)
+# Writers keep typing kinds freely; this list only records them. Each spelling is matched to a canonical kind by a
+# loose key (lowercase, "&" -> "and", any run of non-letters/digits -> "-", plus a trailing-"s" plural fallback).
+# Unknown kinds are appended automatically (first_seen = the item's date) and new spellings of a known kind become
+# aliases. Keys are permanent: never rename or delete an entry, only add aliases. A kinds problem never blocks a publish.
+KINDS_PATH = os.path.join(REPO, "data", "kinds.json")
+
+
+def kind_slug(kind):
+    k = re.sub(r"\s*&\s*", " and ", (kind or "").strip().lower())
+    return re.sub(r"[^a-z0-9]+", "-", k).strip("-")
+
+
+class KindRegistry:
+    def __init__(self, path=KINDS_PATH):
+        self.path, self.ok, self.kinds = path, True, []
+        try:
+            if os.path.exists(path):
+                self.kinds = json.load(open(path, encoding="utf-8")).get("kinds", [])
+        except Exception as e:  # unreadable registry: still publish, but don't overwrite the file
+            log("kinds registry unreadable (%s); kinds keyed by spelling only this run" % e)
+            self.ok, self.kinds = False, []
+        self._index()
+
+    def _index(self):
+        self.by_key = {k["key"]: k for k in self.kinds}
+        self.lookup = {}
+        for k in self.kinds:
+            for v in [k["key"], k["label"]] + k.get("aliases", []):
+                self.lookup.setdefault(kind_slug(v), k)
+
+    def resolve(self, kind, date):
+        """Canonical entry for a kind as written; records new kinds and new spellings."""
+        raw = (kind or "").strip()
+        slug = kind_slug(raw)
+        if not slug:
+            return None
+        ent = self.lookup.get(slug) or (self.lookup.get(slug[:-1]) if slug.endswith("s") and len(slug) > 3 else None)
+        if ent is None:
+            key = slug
+            while key in self.by_key:  # never reuse a key
+                key += "-2"
+            ent = dict(key=key, label=raw.lower(), first_seen=date, aliases=[])
+            self.kinds.append(ent); self.by_key[key] = ent
+            log("kinds: new kind %r (%s)" % (ent["label"], key))
+        elif date and date < ent.get("first_seen", date):
+            ent["first_seen"] = date
+        if raw != ent["label"] and raw not in ent["aliases"]:
+            ent["aliases"].append(raw)
+        self.lookup.setdefault(slug, ent)
+        return ent
+
+    def save(self):
+        if not self.ok:
+            return
+        for k in self.kinds:
+            k["aliases"] = sorted(set(k["aliases"]), key=lambda a: (a.lower(), a))
+        doc = dict(version=1,
+                   note=("Daily Design item kinds. Each item keeps its kind as written (kind) and gets kind_key, the permanent "
+                         "key of its canonical kind here. Spellings that differ only by case, spacing, punctuation or a plural s "
+                         "are listed as aliases. New kinds are added automatically; keys never change."),
+                   kinds=sorted(self.kinds, key=lambda k: k["key"]))
+        write_if_changed(self.path, jdump(doc, pretty=True))
+
+
+def apply_kinds(recs, reg):
+    """Set kind_key on every item and use the canonical kind label as its kind tag. Returns records changed."""
+    changed = []
+    for r in recs:
+        dirty = False
+        for it in r["items"]:
+            ent = reg.resolve(it.get("kind"), it.get("date"))
+            key, label = (ent["key"], ent["label"]) if ent else ("", "")
+            tags = list(it.get("tags") or [])
+            base = len([t for t in (it.get("medium"), it.get("type"), it.get("slot"), it.get("date")) if t])
+            raw = (it.get("kind") or "").strip().lower()
+            if len(tags) > base and tags[base] not in ("older", "try today") and tags[base] in (raw, label):
+                del tags[base]
+            if label and canon_type(label) != label:
+                tags.insert(base, label)
+            if it.get("kind_key") != key or tags != it.get("tags"):
+                new = {}
+                for k, v in it.items():
+                    if k == "kind_key": continue
+                    new[k] = tags if k == "tags" else v
+                    if k == "kind": new["kind_key"] = key
+                it.clear(); it.update(new)
+                dirty = True
+        if dirty:
+            changed.append(r)
+    return changed
+
+
 def tag_item(it, date, slot, n, href, kind):
     it.update(id="%s-%s-%d" % (date, slot, n), date=date, slot=slot, edition=href, edition_kind=kind)
     tags = [t for t in [it["medium"], it["type"], slot, date] if t]
@@ -2073,6 +2166,15 @@ def main():
     if not recs:
         log("no editions yet"); return 1
     recs.sort(key=lambda r: (r["edition"]["date"], SLOTS[r["edition"]["slot"]]["order"]))
+    # 2b. kinds registry: canonical kind_key + tag for every item (backfills older records too); never blocks
+    try:
+        reg = KindRegistry()
+        for r in apply_kinds(recs, reg):
+            e = r["edition"]
+            write_if_changed(os.path.join(meta_dir, e["date"], e["slot"] + ".json"), jdump(r, pretty=True))
+        reg.save()
+    except Exception as ex:
+        log("kinds registry skipped this run: %s" % ex)
 
     # 3. nav pass: only pages whose prev/next changed (or that were just rewritten) are touched
     pages = [r for r in recs if r["edition"]["kind"] == "page"]

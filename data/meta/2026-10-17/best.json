@@ -34,6 +34,7 @@
    "medium": "3d",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "3d",
     "tutorial",
@@ -71,6 +72,7 @@
    "medium": "code",
    "type": "buzz",
    "kind": "buzz",
+   "kind_key": "buzz",
    "tags": [
     "code",
     "buzz",
@@ -100,6 +102,7 @@
    "medium": "code",
    "type": "repo/tool",
    "kind": "repo/tool",
+   "kind_key": "repo-tool",
    "tags": [
     "code",
     "repo/tool",
@@ -124,6 +127,7 @@
    "medium": "image",
    "type": "update",
    "kind": "update",
+   "kind_key": "update",
    "tags": [
     "image",
     "update",
@@ -157,6 +161,7 @@
    "medium": "video",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "video",
     "tutorial",
@@ -181,6 +186,7 @@
    "medium": "video",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "video",
     "tutorial",
@@ -205,6 +211,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -229,6 +236,7 @@
    "medium": "video",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "video",
     "tutorial",
@@ -253,6 +261,7 @@
    "medium": "sound",
    "type": "repo/tool",
    "kind": "repo/tool",
+   "kind_key": "repo-tool",
    "tags": [
     "sound",
     "repo/tool",
@@ -277,6 +286,7 @@
    "medium": "mashups",
    "type": "buzz",
    "kind": "buzz",
+   "kind_key": "buzz",
    "tags": [
     "mashups",
     "buzz",
@@ -310,6 +320,7 @@
    "medium": "games",
    "type": "case study",
    "kind": "case study",
+   "kind_key": "case-study",
    "tags": [
     "games",
     "case study",
@@ -339,6 +350,7 @@
    "medium": "",
    "type": "buzz",
    "kind": "buzz",
+   "kind_key": "buzz",
    "tags": [
     "buzz",
     "best",

@@ -31,6 +31,7 @@
    "medium": "video",
    "type": "workflow",
    "kind": "workflow",
+   "kind_key": "workflow",
    "tags": [
     "video",
     "workflow",
@@ -60,6 +61,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "games",
     "showcase",
@@ -84,6 +86,7 @@
    "medium": "games",
    "type": "news",
    "kind": "news",
+   "kind_key": "news",
    "tags": [
     "games",
     "news",
@@ -113,12 +116,13 @@
    "medium": "code",
    "type": "news",
    "kind": "model/news",
+   "kind_key": "model-news",
    "tags": [
     "code",
     "news",
     "best",
     "2026-10-28",
-    "model/news"
+    "model news"
    ],
    "source": "blog.google",
    "author": "",
@@ -147,6 +151,7 @@
    "medium": "code",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "code",
     "repo/tool",
@@ -189,6 +194,7 @@
    "medium": "code",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "code",
     "tutorial",
@@ -213,6 +219,7 @@
    "medium": "code",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "code",
     "showcase",
@@ -242,6 +249,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -266,6 +274,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -290,6 +299,7 @@
    "medium": "video",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "video",
     "repo/tool",
@@ -315,6 +325,7 @@
    "medium": "3d",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "3d",
     "tutorial",
@@ -356,6 +367,7 @@
    "medium": "3d",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "3d",
     "repo/tool",

@@ -34,12 +34,13 @@
    "medium": "games",
    "type": "news",
    "kind": "model/news",
+   "kind_key": "model-news",
    "tags": [
     "games",
     "news",
     "best",
     "2026-10-27",
-    "model/news"
+    "model news"
    ],
    "source": "deepmind.google",
    "author": "",
@@ -80,12 +81,13 @@
    "medium": "image",
    "type": "news",
    "kind": "model/news",
+   "kind_key": "model-news",
    "tags": [
     "image",
     "news",
     "best",
     "2026-10-27",
-    "model/news"
+    "model news"
    ],
    "source": "microsoft.ai",
    "author": "",
@@ -114,6 +116,7 @@
    "medium": "image",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "image",
     "repo/tool",
@@ -148,6 +151,7 @@
    "medium": "code",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "code",
     "repo/tool",
@@ -178,6 +182,7 @@
    "medium": "code",
    "type": "buzz",
    "kind": "buzz",
+   "kind_key": "buzz",
    "tags": [
     "code",
     "buzz",
@@ -202,6 +207,7 @@
    "medium": "3d",
    "type": "workflow",
    "kind": "workflow",
+   "kind_key": "workflow",
    "tags": [
     "3d",
     "workflow",
@@ -226,6 +232,7 @@
    "medium": "3d",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "3d",
     "best",
@@ -254,6 +261,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "games",
     "showcase",
@@ -278,6 +286,7 @@
    "medium": "games",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "games",
     "repo/tool",
@@ -308,6 +317,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -332,6 +342,7 @@
    "medium": "image",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "image",
     "showcase",
@@ -356,6 +367,7 @@
    "medium": "sound",
    "type": "news",
    "kind": "news",
+   "kind_key": "news",
    "tags": [
     "sound",
     "news",
@@ -380,6 +392,7 @@
    "medium": "mashups",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "mashups",
     "showcase",

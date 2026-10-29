@@ -27,6 +27,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -66,6 +67,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -93,6 +95,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -124,6 +127,7 @@
    "medium": "",
    "type": "showcase",
    "kind": "video showcase",
+   "kind_key": "video-showcase",
    "tags": [
     "showcase",
     "hottest",
@@ -148,6 +152,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "video tool news",
+   "kind_key": "video-tool-news",
    "tags": [
     "repo/tool",
     "hottest",
@@ -172,6 +177,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -207,6 +213,7 @@
    "medium": "",
    "type": "tutorial",
    "kind": "video tutorial",
+   "kind_key": "video-tutorial",
    "tags": [
     "tutorial",
     "hottest",
@@ -231,6 +238,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -253,6 +261,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -275,6 +284,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -302,6 +312,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -333,6 +344,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -355,6 +367,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "image and video tool",
+   "kind_key": "image-and-video-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -384,6 +397,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -411,6 +425,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -438,6 +453,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -465,6 +481,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -496,6 +513,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -523,6 +541,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "sound tool",
+   "kind_key": "sound-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -547,6 +566,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -569,6 +589,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "video and code tool",
+   "kind_key": "video-and-code-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -593,6 +614,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -615,6 +637,7 @@
    "medium": "",
    "type": "tutorial",
    "kind": "video tutorial",
+   "kind_key": "video-tutorial",
    "tags": [
     "tutorial",
     "hottest",
@@ -639,6 +662,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "sound tool",
+   "kind_key": "sound-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -663,6 +687,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"
@@ -685,6 +710,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-27"

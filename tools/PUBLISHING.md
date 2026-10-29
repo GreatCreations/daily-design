@@ -113,6 +113,12 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    Medium comes from the nearest heading (image, video, 3D, code/UI, sound, games, mashups). The item's own label is mapped onto tutorial,
    repo/tool, showcase, news, update, buzz, case study, breakdown, workflow or result, and the original label is kept as an extra tag.
    "Stories to read first" (duplicate picks) and "Method & caveats" sections are skipped.
+7a. **Kinds registry** (`data/kinds.json`, every run): each item keeps its `kind` exactly as the writer typed it and gets
+   `kind_key`, the permanent key of its canonical kind. Spellings that differ only by case, spacing, punctuation, `&`/`and` or a
+   trailing plural s are folded into one kind as `aliases`; anything else that's new is appended automatically with
+   `first_seen` = the item's date. Writers never pick from the list, it only records. The item's kind tag uses the canonical
+   `label`. Keys are never renamed or removed (to merge two kinds by hand, move one's spellings into the other's `aliases`
+   only if no item uses its key yet). A missing or unreadable registry never blocks a publish.
 7b. **SEO** (every run): edition pages get title, description, canonical, Open Graph/Twitter and NewsArticle JSON-LD in their head
    (between `<!--dd-seo:start-->`/`<!--dd-seo:end-->`; the page's own title/description tags are replaced). Each report gets a static
    page `reports/<date>/<slot>.html` rendered from its Markdown in plain report styling (with Listen, favicon and a back link).

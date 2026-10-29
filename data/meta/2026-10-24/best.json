@@ -33,6 +33,7 @@
    "medium": "video",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "video",
     "best",
@@ -69,6 +70,7 @@
    "medium": "code",
    "type": "buzz",
    "kind": "buzz",
+   "kind_key": "buzz",
    "tags": [
     "code",
     "buzz",
@@ -98,6 +100,7 @@
    "medium": "code",
    "type": "update",
    "kind": "update",
+   "kind_key": "update",
    "tags": [
     "code",
     "update",
@@ -127,6 +130,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -151,6 +155,7 @@
    "medium": "video",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "video",
     "tutorial",
@@ -188,6 +193,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -212,6 +218,7 @@
    "medium": "games",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "games",
     "tutorial",
@@ -236,6 +243,7 @@
    "medium": "3d",
    "type": "repo/tool",
    "kind": "repo/tool",
+   "kind_key": "repo-tool",
    "tags": [
     "3d",
     "repo/tool",
@@ -265,6 +273,7 @@
    "medium": "3d",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "3d",
     "tutorial",
@@ -289,6 +298,7 @@
    "medium": "image",
    "type": "repo/tool",
    "kind": "repo/tool",
+   "kind_key": "repo-tool",
    "tags": [
     "image",
     "repo/tool",
@@ -326,6 +336,7 @@
    "medium": "image",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "image",
     "best",
@@ -349,6 +360,7 @@
    "medium": "sound",
    "type": "news",
    "kind": "news",
+   "kind_key": "news",
    "tags": [
     "sound",
     "news",

@@ -27,6 +27,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -54,6 +55,7 @@
    "medium": "",
    "type": "news",
    "kind": "games news",
+   "kind_key": "games-news",
    "tags": [
     "news",
     "hottest",
@@ -87,6 +89,7 @@
    "medium": "",
    "type": "showcase",
    "kind": "video showcase",
+   "kind_key": "video-showcase",
    "tags": [
     "showcase",
     "hottest",
@@ -111,6 +114,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -142,6 +146,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -164,6 +169,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -186,6 +192,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -225,6 +232,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -256,6 +264,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -283,6 +292,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -314,6 +324,7 @@
    "medium": "",
    "type": "showcase",
    "kind": "video showcase",
+   "kind_key": "video-showcase",
    "tags": [
     "showcase",
     "hottest",
@@ -338,6 +349,7 @@
    "medium": "",
    "type": "tutorial",
    "kind": "video tutorial",
+   "kind_key": "video-tutorial",
    "tags": [
     "tutorial",
     "hottest",
@@ -362,6 +374,7 @@
    "medium": "",
    "type": "tutorial",
    "kind": "tutorial and buzz",
+   "kind_key": "tutorial-and-buzz",
    "tags": [
     "tutorial",
     "hottest",
@@ -386,6 +399,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -413,6 +427,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -435,6 +450,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -457,6 +473,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -479,6 +496,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -501,6 +519,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -523,6 +542,7 @@
    "medium": "",
    "type": "tutorial",
    "kind": "video tutorial",
+   "kind_key": "video-tutorial",
    "tags": [
     "tutorial",
     "hottest",
@@ -552,6 +572,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-28"
@@ -579,6 +600,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "motion and video tool",
+   "kind_key": "motion-and-video-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -603,6 +625,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "games tool",
+   "kind_key": "games-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -632,6 +655,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "design tool news",
+   "kind_key": "design-tool-news",
    "tags": [
     "repo/tool",
     "hottest",
