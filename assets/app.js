@@ -386,7 +386,9 @@ function applyParts(root,doc){if(!doc||!doc.parts)return;var els=[];
 function showPart(){var id=state.part;if(!id||!state.report){partShown="";return}
   var b=$("#rd-body"),el=document.getElementById(id);if(!el||!b.contains(el))return;
   [].forEach.call(b.querySelectorAll(".dd-part-hit"),function(x){x.classList.remove("dd-part-hit")});
-  partShown=id;el.classList.add("dd-part-hit");scrollUnder(el)}
+  partShown=id;el.classList.add("dd-part-hit");scrollUnder(el);
+  // the header image can finish loading after the jump and push the part down: aim again once it has
+  var h=b.querySelector(".rd-hdr");if(h&&!h.complete)h.addEventListener("load",function(){if(partShown===id)scrollUnder(el)},{once:true})}
 function clean(root,base){
   root.querySelectorAll("script,iframe,object,embed,style,link,meta,form,input,button").forEach(function(x){x.remove()});
   root.querySelectorAll("*").forEach(function(x){[].slice.call(x.attributes).forEach(function(a){
