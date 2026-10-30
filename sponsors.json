@@ -62,16 +62,18 @@
  },
  "placeholders": {
   "top": {
-   "video": "",
-   "webm": "",
-   "poster": "",
-   "alt": "Advertise on Daily Design"
+   "video": "assets/ads/house-top.mp4",
+   "webm": "assets/ads/house-top.webm",
+   "poster": "assets/ads/house-top-poster.png",
+   "alt": "Advertise on Daily Design: animated house ad with Dee, the Daily Design logo",
+   "audio": true
   },
   "links": {
-   "video": "",
-   "webm": "",
-   "poster": "",
-   "alt": "Advertise on Daily Design"
+   "video": "assets/ads/house-lower.mp4",
+   "webm": "assets/ads/house-lower.webm",
+   "poster": "assets/ads/house-lower-poster.png",
+   "alt": "Advertise on Daily Design: animated house ad with Dee, the Daily Design logo",
+   "audio": true
   }
  }
 }

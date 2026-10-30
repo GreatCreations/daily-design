@@ -34,6 +34,7 @@
    "medium": "image",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "image",
     "best",
@@ -70,6 +71,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -94,6 +96,7 @@
    "medium": "video",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "video",
     "best",
@@ -126,6 +129,7 @@
    "medium": "image",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "image",
     "best",
@@ -158,6 +162,7 @@
    "medium": "image",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "image",
     "best",
@@ -186,6 +191,7 @@
    "medium": "image",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "image",
     "best",
@@ -214,6 +220,7 @@
    "medium": "code",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "code",
     "best",
@@ -250,6 +257,7 @@
    "medium": "mashups",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "mashups",
     "repo/tool",
@@ -280,6 +288,7 @@
    "medium": "games",
    "type": "news",
    "kind": "news",
+   "kind_key": "news",
    "tags": [
     "games",
     "news",
@@ -304,6 +313,7 @@
    "medium": "3d",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "3d",
     "showcase",
@@ -333,6 +343,7 @@
    "medium": "sound",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "sound",
     "best",

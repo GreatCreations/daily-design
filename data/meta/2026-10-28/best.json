@@ -1,0 +1,394 @@
+{
+ "edition": {
+  "date": "2026-10-28",
+  "slot": "best",
+  "time": "6 PM",
+  "title": "Best of the Day",
+  "kind": "report",
+  "headline": "AI Design Best of the Day · Wednesday, Oct 28, 2026",
+  "summary": "The pick of the day is Mickmumpitz's \"One AI Model to RULE THEM ALL (FREE & LOCAL)\", a 12-minute walkthrough of making a whole anime short film, SHIBUWAKA, with the MiniMax H3 model running in ComfyUI on one home GPU. It matters because it takes the day's open-model chatter (H3 upscalers, face passes and fan films all over the morning's feeds) and turns it into a start-to-finish recipe: character sheets, turnarounds, consistent voices, storyboards, Blender layouts, music and a 4K upscale. It had 20,343 views in about eight hours, and the model it uses has 6,423 likes on Hugging Face. The video is sponsored by NVIDIA and the workflow files sit on the maker's Patreon, so treat \"free\" as the creator's wording. The rest of the day split three ways: a free-AI Unreal Engine 5 game build passed 41,000 views, Google announced Gemini 4 Carbon (721 points on Hacker News) with a web-development score attached, and three agent design-skill repos added about 5,500 GitHub stars between them.",
+  "path": "reports/2026-10-28/best.md",
+  "url": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+  "header": "reports/2026-10-28/best-header.png",
+  "thumb": "reports/2026-10-28/best-thumb.jpg",
+  "item_count": 12,
+  "tags": [
+   "best",
+   "2026-10-28",
+   "3d",
+   "code",
+   "games",
+   "video",
+   "report"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-28-best-1",
+   "title": "One AI Model to RULE THEM ALL (FREE & LOCAL) (Mickmumpitz, YouTube)",
+   "url": "https://www.youtube.com/watch?v=xwTJ3E3NU7A",
+   "note": "Per the description, the team makes an anime short about two wannabe daredevils racing through rural Japan with one model, MiniMax H3, in ComfyUI on a local NVIDIA RTX GPU, with no cloud credits. The chapters cover character sheets, turnarounds, environments and image editing, consistent voices, video generation, steering motion with video references, storyboards, Blender 3D layouts, music and sound effects, then the full film. Why people are losing it: 20,343 views in about eight hours, up from 1,826 views when the noon edition listed the same video (an update on that listing); H3 itself has 6,423 likes and about 5.44M downloads on Hugging Face, and the model was the open-source story all morning. The video is an advertisement for NVIDIA RTX, and the free workflows and example files are Patreon posts, so check what is actually downloadable before you plan around it. How to try it: install H3 in ComfyUI following the 1:21 chapter, then copy the character-sheet to turnaround step with your own character before attempting a film.",
+   "medium": "video",
+   "type": "workflow",
+   "kind": "workflow",
+   "kind_key": "workflow",
+   "tags": [
+    "video",
+    "workflow",
+    "best",
+    "2026-10-28"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "MiniMax H3",
+     "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-2",
+   "title": "I Made UE 5 Game Using Only Free AI in 4 Days (Stefan 3D AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=UtY2DsOUCjE",
+   "note": "A playable Unreal Engine 5 obstacle course with rotating platforms, ragdoll physics, checkpoints and NPCs. Per the description: concept images from Gemini, 3D models from Hunyuan 3D Studio, and animation and game logic from DeepSeek V4.1 Flash, all on free tiers for $0. Why it's here: 41,245 views in about ten hours, the most-watched AI design showcase or tutorial we could verify today. The project files and written report are on the maker's Patreon, and the description carries a Tripo referral link. How to try it: follow the chapters for one asset, \"Generating 2D 3D Assets\" at 1:17 and \"AI Rigging and Animations\" at 4:05, before building the level.",
+   "medium": "games",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "games",
+    "showcase",
+    "best",
+    "2026-10-28"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-3",
+   "title": "Valve tells developers to make games harder to copy, as AI clones flood Steam (Eurogamer)",
+   "url": "https://www.eurogamer.net/steam-ai-clone-game-problem-valve-response",
+   "note": "At a Steam developer conference in Korea, Valve's Tom Giardino reportedly said Valve doesn't want to be a gatekeeper on which tools developers use, and advised building a community, making the real version the best one and adding features and personality that are hard to copy. Eurogamer notes the remarks are second-hand, via a machine translation that InvenGlobal checked with a native speaker, and it has asked Valve for clarification. Why it's here: Eurogamer's post has 118 likes, 49 replies, 33 bookmarks and about 51,000 views, and the article cites the indie game Needle in a Haystack Simulator, copied so often that its developer joked about a mode where you find the original. What it means: if you ship AI-assisted games, assume a clone can appear within days.",
+   "medium": "games",
+   "type": "news",
+   "kind": "news",
+   "kind_key": "news",
+   "tags": [
+    "games",
+    "news",
+    "best",
+    "2026-10-28"
+   ],
+   "source": "eurogamer.net",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Eurogamer's post",
+     "url": "https://x.com/eurogamer/status/2115455440209506363"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-4",
+   "title": "Gemini 4 Carbon, Google's next frontier model (Google)",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+   "note": "Google calls it its strongest model, aimed at cybersecurity and long-running coding work. For designers the line to note is web development: per Google, Carbon rises 89 Elo points to #4 (1768) on WebDev Arena, and ranks #1 on the Artificial Analysis Intelligence Index v5 at 59. Why it's here: the Hacker News thread has 721 points and 589 comments. It is not generally available: Google says a subset of cyber defenders get it this week, with developers and consumers \"as soon as possible\", and introductory pricing is $2 per million input tokens and $10 per million output tokens. The benchmark claims are Google's own. How to try it: not yet; when it opens, rerun one of your own landing-page prompts against your current model.",
+   "medium": "code",
+   "type": "news",
+   "kind": "model/news",
+   "kind_key": "model-news",
+   "tags": [
+    "code",
+    "news",
+    "best",
+    "2026-10-28",
+    "model news"
+   ],
+   "source": "blog.google",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Artificial Analysis Intelligence Index v5",
+     "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5"
+    },
+    {
+     "label": "Hacker News thread",
+     "url": "https://news.ycombinator.com/item?id=50276792"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-5",
+   "title": "The agent design-skills wave: ai-design-skills, Hallmark and impeccable are all on GitHub's daily list (GitHub)",
+   "url": "https://github.com/elayadesign/ai-design-skills",
+   "note": "Update on repos we covered earlier this week. ai-design-skills gained 1,938 stars today and is at 11,043 (it was 9,245 yesterday); Hallmark gained 2,109 and is at 40,631; impeccable gained 1,471 and is at 92,508, with 6,713 this week; and taste-skill, at 104,392, added 3,941 this week. Why it's here: all three daily gainers are on GitHub's daily trending list at once, and creators are making tutorials about it, such as Claude Code Just Solved AI SLOP FOREVER, 3,754 views in about nine hours, where the maker shares a free prompt for calmer admin apps. How to try it: install one of the skills and ask your agent for the same page you built last week.",
+   "medium": "code",
+   "type": "repo/tool",
+   "kind": "tool",
+   "kind_key": "tool",
+   "tags": [
+    "code",
+    "repo/tool",
+    "best",
+    "2026-10-28",
+    "tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hallmark",
+     "url": "https://github.com/Nutlope/hallmark"
+    },
+    {
+     "label": "impeccable",
+     "url": "https://github.com/pbakaus/impeccable"
+    },
+    {
+     "label": "taste-skill",
+     "url": "https://github.com/Leonxlnx/taste-skill"
+    },
+    {
+     "label": "Claude Code Just Solved AI SLOP FOREVER",
+     "url": "https://www.youtube.com/watch?v=kvXb9GriTy0"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-6",
+   "title": "Make your Figma design system agent-ready (Figma, YouTube)",
+   "url": "https://www.youtube.com/watch?v=yj90StgN70w",
+   "note": "Figma's own video on preparing a design system for its Figma agent: thoughtful component design, consistent naming and descriptive documentation, then guidance for agents through examples, guidelines and skills. Why it's here: 4,260 views in about seven hours, a sign the design-tool vendors are now teaching agent-readiness. How to try it: rename a handful of components consistently and add short descriptions, which is the cheapest step in the video.",
+   "medium": "code",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "kind_key": "tutorial",
+   "tags": [
+    "code",
+    "tutorial",
+    "best",
+    "2026-10-28"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-7",
+   "title": "A mortuary landing page built with Claude Code (@IwuDesigns)",
+   "url": "https://x.com/IwuDesigns/status/2115339088744128915",
+   "note": "A calm \"Restora — Professional Mortuary Care\" site, with a live demo, built with Claude Code. Why it's here: 66 likes, 14 reposts, 18 replies and about 3,900 views, a dull-sounding niche made to look considered. How to try it: pick an unglamorous business and ask your agent for one landing page in a single tone.",
+   "medium": "code",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "code",
+    "showcase",
+    "best",
+    "2026-10-28"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "live demo",
+     "url": "https://restora-alpha.vercel.app/"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-8",
+   "title": "\"Paper Dragon,\" a one-minute AI short film (@xIrissy)",
+   "url": "https://x.com/xIrissy/status/2115379237234549125",
+   "note": "A boy's kite flies away and comes back that night as a 20-metre dragon. The poster says it was made entirely with NadouPro, a tool whose details we did not verify. Why it's here: 229 likes, 55 reposts, 162 bookmarks and about 30,900 views, the highest-engagement video post in the X posts gathered for this edition and a high save rate. How to try it: write the one-sentence story first, then give the tool that sentence and nothing else.",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "best",
+    "2026-10-28"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-9",
+   "title": "Same prompt, Kling 4.0 against Seedance 2.5 (@doctorwasif)",
+   "url": "https://x.com/doctorwasif/status/2115424536510537748",
+   "note": "A Korean beauty-shop scene with early-2000s nostalgia, run on Pollo AI with the same prompt through both models. Why it's here: 156 likes and 31 replies, the most replies of any video post in the X posts gathered for this edition. The poster asks followers to vote, so it shows no verdict. How to try it: run your own scene through both models before paying for either. This comparison keeps recurring; we list it only because of the reply count.",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "best",
+    "2026-10-28"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-10",
+   "title": "Digital Human Koubo: one photo and one sentence to a talking-head video (andyhuo520, GitHub)",
+   "url": "https://github.com/andyhuo520/digital-human-koubo",
+   "note": "An MIT-licensed agent skill that scripts, voices, lip-syncs and captions a presenter video; the README's 27-second sample ad cost 482 credits on Renoise, the video service it calls through MCP. Why it's here: 1,299 stars two days after it was created. Because it runs on a paid third-party service, check pricing before you build on it.",
+   "medium": "video",
+   "type": "repo/tool",
+   "kind": "tool",
+   "kind_key": "tool",
+   "tags": [
+    "video",
+    "repo/tool",
+    "best",
+    "2026-10-28",
+    "tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-11",
+   "title": "Animate ANY 3D Character From Just a Video (Free & Open Source) (PixelArtistry, YouTube)",
+   "url": "https://www.youtube.com/watch?v=D-n-zdb59lo",
+   "note": "A walkthrough of MoCapAnything V2, which per the video turns an ordinary video into animation for any rigged 3D character, including animals and creatures, with BVH and GLB export into Blender. Why it's here: 15,481 views in about nine hours. There is a free Hugging Face demo, a project page, the paper's code (425 stars) and a creator-made one-click installer; the video also promotes the creator's paid workflow pack. How to try it: start with the browser demo, since the local install needs about 20 GB of disk.",
+   "medium": "3d",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "kind_key": "tutorial",
+   "tags": [
+    "3d",
+    "tutorial",
+    "best",
+    "2026-10-28"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "free Hugging Face demo",
+     "url": "https://huggingface.co/spaces/kehong/MoCapAnythingV2"
+    },
+    {
+     "label": "project page",
+     "url": "https://animotionlab.github.io/MoCapAnythingV2/"
+    },
+    {
+     "label": "paper's code",
+     "url": "https://github.com/phongdaot/MocapAnything"
+    },
+    {
+     "label": "one-click installer",
+     "url": "https://github.com/pixelartistry/PixelArtistry-MoCapAnything"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-28-best-12",
+   "title": "DeepOpen 3D Webs: one image and a prompt become a Gaussian-splat scene you can fly through (deepopen-com, GitHub)",
+   "url": "https://github.com/deepopen-com/deepopen-3d-webs",
+   "note": "A web studio that takes a reference image and a Chinese prompt, plans a camera path and produces stills, colour and depth animations and a point cloud you can open in SuperSplat or MeshLab. Why it's here: 488 stars within two days of its creation. The README says demo mode needs no GPU, while full generation needs CUDA and model weights, and the page calls for Chinese-language prompts. How to try it: run the Docker image in demo mode and browse the sample scenes before deciding whether to install the full engine.",
+   "medium": "3d",
+   "type": "repo/tool",
+   "kind": "tool",
+   "kind_key": "tool",
+   "tags": [
+    "3d",
+    "repo/tool",
+    "best",
+    "2026-10-28",
+    "tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-28/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-28",
+   "slot": "best"
+  }
+ ],
+ "src_hash": {
+  "md": "c1438a7d7967430cfe80c5583c98f986dba3fcd9"
+ },
+ "tool_version": 3,
+ "nav": null
+}

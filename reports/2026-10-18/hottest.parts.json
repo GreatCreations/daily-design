@@ -1,0 +1,347 @@
+{
+ "version": 1,
+ "report": "2026-10-18/hottest",
+ "date": "2026-10-18",
+ "slot": "hottest",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-18/hottest.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-18/hottest",
+ "link": "#report=2026-10-18/hottest&part=<id> (index reader) or reports/2026-10-18/hottest.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-three-frontier-models",
+   "kind": "section",
+   "heading": "Three frontier models walk into a motion-design studio",
+   "text": "Three frontier models walk into a motion-design studio",
+   "h": "3cd4e3009a",
+   "medium": "video"
+  },
+  {
+   "id": "s-three-frontier-models-i1",
+   "kind": "paragraph",
+   "parent": "s-three-frontier-models",
+   "section": "s-three-frontier-models",
+   "medium": "video",
+   "text": "This was the week the code-first design fight went three-way. For a month the hottest AI design work has been animation, 3D and UI written as code by Claude…",
+   "h": "cc247b189b"
+  },
+  {
+   "id": "s-three-frontier-models-i2",
+   "kind": "paragraph",
+   "parent": "s-three-frontier-models",
+   "section": "s-three-frontier-models",
+   "medium": "video",
+   "text": "Engagement figures were read from the X API, GitHub trending (weekly and monthly), Hugging Face, Hacker News and YouTube search on the evening of Oct 18 (PT).…",
+   "h": "b1bdf1951b"
+  },
+  {
+   "id": "s-blew-up-today",
+   "kind": "section",
+   "heading": "🔥 Blew up today",
+   "text": "🔥 Blew up today",
+   "h": "855a8b0061"
+  },
+  {
+   "id": "s-blew-up-today-i1",
+   "kind": "paragraph",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "text": "Nothing new truly took off today. Sunday's biggest design posts were follow-ups to this week's launches and stacks, mostly in the low hundreds of likes.",
+   "h": "18c4849c6e"
+  },
+  {
+   "id": "s-hottest-this-week",
+   "kind": "section",
+   "heading": "📈 Hottest this week",
+   "text": "📈 Hottest this week",
+   "h": "927e2ad085"
+  },
+  {
+   "id": "s-hottest-this-week-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "news",
+   "title": "DeepSeek-V4.1-Flash-1017, open weights (DeepSeek)",
+   "url": "https://x.com/deepseek_ai/status/2111375640717033777",
+   "text": "DeepSeek-V4.1-Flash-1017, open weights (DeepSeek), code and motion model. An updated open model (MIT licence) that DeepSeek says is stronger, faster and…",
+   "h": "13ab065565"
+  },
+  {
+   "id": "s-hottest-this-week-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Gemini 4 Argon turns a raw Pixel CAD file into an exploded-view product film through Blender MCP (Sundar Pichai)",
+   "url": "https://x.com/sundarpichai/status/2110059840957768027",
+   "text": "Gemini 4 Argon turns a raw Pixel CAD file into an exploded-view product film through Blender MCP (Sundar Pichai), 3D showcase. Working in Google Antigravity…",
+   "h": "6ef628d0b0"
+  },
+  {
+   "id": "s-hottest-this-week-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Build a 3D-printing CAD studio in Gemini Canvas (Gemini)",
+   "url": "https://x.com/GeminiApp/status/2110772859580895678",
+   "text": "Build a 3D-printing CAD studio in Gemini Canvas (Gemini), 3D and product design. Upload a photo with rough measurements and Argon builds an interactive CAD…",
+   "h": "6f46d97f98"
+  },
+  {
+   "id": "s-hottest-this-week-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "The /anatomy-reveal skill: photo or name in, real-size 3D reveal film out (@0xMovez)",
+   "url": "https://x.com/0xMovez/status/2110735931401457935",
+   "text": "The /anatomy-reveal skill: photo or name in, real-size 3D reveal film out (@0xMovez), motion and 3D skill. A Claude skill that builds real-size 3D models from…",
+   "h": "5bda77f19d"
+  },
+  {
+   "id": "s-hottest-this-week-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Higgsfield's flying-car trend (Higgsfield)",
+   "url": "https://x.com/higgsfield_ai/status/2111191058721992897",
+   "text": "Higgsfield's flying-car trend (Higgsfield), video trend. A run of short, funny \"what if cars could fly\" clips made on Higgsfield, some with Kling 4.0 and…",
+   "h": "9cb03894b5"
+  },
+  {
+   "id": "s-hottest-this-week-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "tutorial",
+   "title": "How To Make Insane Motion Graphics With Opus 5.5 (Claude Motion) (kaye.creatives, YouTube)",
+   "url": "https://www.youtube.com/watch?v=AsvN_feasyY",
+   "text": "How To Make Insane Motion Graphics With Opus 5.5 (Claude Motion) (kaye.creatives, YouTube), motion tutorial. A walkthrough of making motion graphics entirely…",
+   "h": "c54d5d5293"
+  },
+  {
+   "id": "s-hottest-this-week-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "FLUX 3 Image Klein in ComfyUI (Black Forest Labs, Hugging Face)",
+   "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+   "text": "FLUX 3 Image Klein in ComfyUI (Black Forest Labs, Hugging Face), image model. The 5.6B-parameter open-weights image model with 4K output and bounding-box…",
+   "h": "52e8d0241e"
+  },
+  {
+   "id": "s-hottest-this-week-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "MOSS-Image, an open 5B image model with layout control (OpenMOSS, GitHub)",
+   "url": "https://github.com/OpenMOSS/MOSS-Image",
+   "text": "MOSS-Image, an open 5B image model with layout control (OpenMOSS, GitHub), image model. An Apache-licensed text-to-image model with layout control, strong…",
+   "h": "63a2b6f729"
+  },
+  {
+   "id": "s-hottest-this-week-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "ArtCraft, a crafting engine for artists, designers and filmmakers (GitHub)",
+   "url": "https://github.com/storytold/artcraft",
+   "text": "ArtCraft, a crafting engine for artists, designers and filmmakers (GitHub), image and video tool. An open-source creative workspace pitched as an IDE for…",
+   "h": "356e8f83f3"
+  },
+  {
+   "id": "s-hottest-this-week-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Video to 3D animation, with one colour per leg (@Stefan_3D_AI)",
+   "url": "https://x.com/Stefan_3D_AI/status/2109568757001756710",
+   "text": "Video to 3D animation, with one colour per leg (@Stefan_3D_AI), 3D workflow. A fix for the classic problem of AI mixing up near and far legs when copying an…",
+   "h": "4583d0f512"
+  },
+  {
+   "id": "s-hottest-this-week-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "tutorial",
+   "title": "This Is How I Actually Make Games With AI, My Setup (Stefan 3D AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=czsNiALTgWQ",
+   "text": "This Is How I Actually Make Games With AI, My Setup (Stefan 3D AI, YouTube), games tutorial. A creator's full working setup for making games with AI tools.…",
+   "h": "e7d2d8e7b3"
+  },
+  {
+   "id": "s-hottest-this-week-i12",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Play your camera like a synthesizer with Gemini 4 Argon (Gemini)",
+   "url": "https://x.com/GeminiApp/status/2110105496145576406",
+   "text": "Play your camera like a synthesizer with Gemini 4 Argon (Gemini), sound and code. Argon builds an interactive audio app in Canvas that turns your video or…",
+   "h": "852c5e1873"
+  },
+  {
+   "id": "s-hottest-this-week-i13",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "buzz",
+   "title": "The 40 hands-on accounts to follow for AI creative work (@TaylorLorenz)",
+   "url": "https://x.com/TaylorLorenz/status/2109793608111145196",
+   "text": "The 40 hands-on accounts to follow for AI creative work (@TaylorLorenz), mashups and community. A curated list of creators and founders actually experimenting…",
+   "h": "b68861ca09"
+  },
+  {
+   "id": "s-hottest-this-month",
+   "kind": "section",
+   "heading": "🏆 Hottest this month",
+   "text": "🏆 Hottest this month",
+   "h": "4f4d3d858e"
+  },
+  {
+   "id": "s-hottest-this-month-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "news",
+   "title": "GPT-6 and Intelligent UI rolling out in ChatGPT (OpenAI)",
+   "url": "https://x.com/OpenAI/status/2107894997538525580",
+   "text": "GPT-6 and Intelligent UI rolling out in ChatGPT (OpenAI), code and UI news. ChatGPT answers are now laid out by the model as text, visuals, charts and…",
+   "h": "a20ec7d89f"
+  },
+  {
+   "id": "s-hottest-this-month-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "20 GitHub repos that turn Opus 5.5 into a motion studio (@N01ennn)",
+   "url": "https://x.com/N01ennn/status/2108182955671580771",
+   "text": "20 GitHub repos that turn Opus 5.5 into a motion studio (@N01ennn), motion-design stack. A list of open-source skills and engines, from claude-motion to…",
+   "h": "0d505ea8d9"
+  },
+  {
+   "id": "s-hottest-this-month-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "showcase",
+   "title": "Can I BEAT AI At Animation? (Prince Artwork, YouTube)",
+   "url": "https://www.youtube.com/watch?v=nmqBbX3twrM",
+   "text": "Can I BEAT AI At Animation? (Prince Artwork, YouTube), animation showcase. An animator goes head to head with AI tools. The signal: 1,209,661 views in two…",
+   "h": "6ca8ee0a09"
+  },
+  {
+   "id": "s-hottest-this-month-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "I tested viral AI 3D products (Blender Guru, YouTube)",
+   "url": "https://www.youtube.com/watch?v=qsmDdOi07fI",
+   "text": "I tested viral AI 3D products (Blender Guru, YouTube), 3D review. One of Blender's best-known teachers puts the AI 3D tools everyone is sharing to a real…",
+   "h": "1e150b6806"
+  },
+  {
+   "id": "s-hottest-this-month-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "tutorial",
+   "title": "How to Make Insane Motion Graphics With Opus 5.5 (Lukas Margerie, YouTube)",
+   "url": "https://www.youtube.com/watch?v=747ZnEtsRbg",
+   "text": "How to Make Insane Motion Graphics With Opus 5.5 (Lukas Margerie, YouTube), motion tutorial. A guide to code-based motion graphics with Opus 5.5. The signal…",
+   "h": "fc58a7ae51"
+  },
+  {
+   "id": "s-hottest-this-month-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Nano Banana 2.1 (Google)",
+   "url": "https://x.com/Google/status/2107501209154204148",
+   "text": "Nano Banana 2.1 (Google), image model. Google's upgraded image generation and editing model, with better visual design, mask-based editing and subject…",
+   "h": "acc8525495"
+  },
+  {
+   "id": "s-hottest-this-month-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Qwen-Image-2.1-Turbo, open-weights images in 8 steps (Qwen)",
+   "url": "https://x.com/Alibaba_Qwen/status/2108549075218120949",
+   "text": "Qwen-Image-2.1-Turbo, open-weights images in 8 steps (Qwen), image model. A faster checkpoint of the 7B Qwen-Image-2.1 that creates and edits images in eight…",
+   "h": "6d59e553a2"
+  },
+  {
+   "id": "s-hottest-this-month-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "sound",
+   "type": "repo/tool",
+   "title": "VoiceStudio, a fully local ElevenLabs alternative (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "text": "VoiceStudio, a fully local ElevenLabs alternative (GitHub), sound tool. Open-source voice cloning, voice design, video dubbing and transcription that run on…",
+   "h": "52f2387829"
+  },
+  {
+   "id": "s-hottest-this-month-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "breakdown",
+   "title": "How To Animate a Short Film with Blender + Higgsfield, breakdown (Higgsfield, YouTube)",
+   "url": "https://www.youtube.com/watch?v=reFzEtCG_m8",
+   "text": "How To Animate a Short Film with Blender + Higgsfield, breakdown (Higgsfield, YouTube), animation breakdown. A behind-the-scenes look at blocking a short in…",
+   "h": "b18301dcd7"
+  },
+  {
+   "id": "s-hottest-this-month-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "title": "HyperFrames: write HTML, render video (GitHub)",
+   "url": "https://github.com/heygen-com/hyperframes",
+   "text": "HyperFrames: write HTML, render video (GitHub), video tool. An open-source tool that turns HTML into MP4, built for agents, and the render engine under many…",
+   "h": "f4eea52ec4"
+  },
+  {
+   "id": "s-hottest-this-month-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Tells of a Slop UI (Hacker News)",
+   "url": "https://news.ycombinator.com/item?id=49867038",
+   "text": "Tells of a Slop UI (Hacker News), code and UI essay. A short guide to the visual habits that make an interface look machine-made. The signal: 386 points and…",
+   "h": "3b73cb456f"
+  },
+  {
+   "id": "s-hottest-this-month-i12",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "MiniMax H3 360 Orbit LoRA (Hugging Face)",
+   "url": "https://huggingface.co/pablodawson/MiniMax-H3-360-Orbit-LoRA",
+   "text": "MiniMax H3 360 Orbit LoRA (Hugging Face), video LoRA. A community LoRA that makes MiniMax H3 orbit the camera a full 360 degrees around a subject. The signal…",
+   "h": "1491eb40d9"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: a fresh search of X (lab and creator accounts and keyword searches over the past day, week and month), GitHub trending (daily, weekly and monthly)…",
+   "h": "ec14097a98"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Want a deeper dive on any of these, or a different mix of mediums next time? Say the word and the next edition will steer there.",
+   "h": "9f6f77c947"
+  }
+ ]
+}

@@ -1,0 +1,276 @@
+{
+ "version": 1,
+ "report": "2026-10-25/best",
+ "date": "2026-10-25",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-25/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-25/best",
+ "link": "#report=2026-10-25/best&part=<id> (index reader) or reports/2026-10-25/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-free-gpu-unlock-became",
+   "kind": "section",
+   "heading": "The free GPU unlock became a movement, and a quiet Sunday made it the clear pick",
+   "text": "The free GPU unlock became a movement, and a quiet Sunday made it the clear pick",
+   "h": "5d6aeee380"
+  },
+  {
+   "id": "s-free-gpu-unlock-became-i1",
+   "kind": "paragraph",
+   "parent": "s-free-gpu-unlock-became",
+   "section": "s-free-gpu-unlock-became",
+   "text": "The pick of the day is the gpu-unlock family. The original module for RTX 30-series cards has gone from about 3,150 GitHub stars on Saturday evening to 6,569…",
+   "h": "7b58d90973"
+  },
+  {
+   "id": "s-free-gpu-unlock-became-i2",
+   "kind": "paragraph",
+   "parent": "s-free-gpu-unlock-became",
+   "section": "s-free-gpu-unlock-became",
+   "text": "Engagement figures were read from X, YouTube, GitHub, Hugging Face, Hacker News and Product Hunt on the afternoon of Oct 25 (PT) and will keep changing.…",
+   "h": "5cf9df7ac3"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-image",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-pick-of-the-day-image-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-image",
+   "section": "s-pick-of-the-day",
+   "medium": "image",
+   "type": "repo/tool",
+   "title": "gpu-unlock, a free kernel module that speeds up BF16 maths on RTX 30-series cards (Zagitta, GitHub)",
+   "url": "https://github.com/Zagitta/gpu-unlock",
+   "text": "gpu-unlock, a free kernel module that speeds up BF16 maths on RTX 30-series cards (Zagitta, GitHub), repo/tool. It raises the rate at which older NVIDIA cards…",
+   "h": "4ffe6c5188"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-video",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-ranked-picks-video-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Seedance 2.5 clips lead the day's most-liked posts (@YaseenK7212, @wiliam_web3)",
+   "url": "https://x.com/YaseenK7212/status/2114457595159491015",
+   "text": "Seedance 2.5 clips lead the day's most-liked posts (@YaseenK7212, @wiliam_web3), showcase. The top two creative posts in the X list we were given are short…",
+   "h": "f54d2e7b36"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "buzz",
+   "title": "Claude 2.0 is Insane, All Updates Explained (Ben AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=J5EbL1UaqG8",
+   "text": "Claude 2.0 is Insane, All Updates Explained (Ben AI, YouTube), buzz. One of the two biggest AI videos in our sweep today, behind only a weekly news roundup…",
+   "h": "a25a8f40d3"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "update",
+   "title": "Hallmark and impeccable, design skills for coding agents (GitHub)",
+   "url": "https://github.com/Nutlope/hallmark",
+   "text": "Hallmark and impeccable, design skills for coding agents (GitHub), update. Both were on GitHub's daily trending list again, with Hallmark at 33,681 stars and…",
+   "h": "20acc818df"
+  },
+  {
+   "id": "s-ranked-picks-image",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-ranked-picks-image-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "showcase",
+   "title": "MOSS-Image keeps spreading, with a 192-prompt comparison against Kromoss and Krea 2 (r/StableDiffusion)",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1xfe5qy/moss_vs_kromoss_vs_krea_2_192_images_for_each/",
+   "text": "MOSS-Image keeps spreading, with a 192-prompt comparison against Kromoss and Krea 2 (r/StableDiffusion), showcase. The poster ran the same 192 prompts through…",
+   "h": "5db2483675"
+  },
+  {
+   "id": "s-ranked-picks-image-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "showcase",
+   "title": "Nano Banana 2.1 candid-shot prompt (@Faeiz4Ai)",
+   "url": "https://x.com/Faeiz4Ai/status/2114387078653862282",
+   "text": "Nano Banana 2.1 candid-shot prompt (@Faeiz4Ai), showcase. A prompt share (Arabic text) for turning your photo into a candid, photographer-caught-you-off-guard…",
+   "h": "c00b12462b"
+  },
+  {
+   "id": "s-ranked-picks-image-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "news",
+   "title": "Nikon contest winner loses title after scientists spot signs of AI (TechSpot)",
+   "url": "https://www.techspot.com/news/114171-nikon-photography-contest-winner-loses-title-after-scientists.html",
+   "text": "⏪ Nikon contest winner loses title after scientists spot signs of AI (TechSpot), news. Reports say Nikon disqualified the winner of a microscopy video contest…",
+   "h": "e30c59087a"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "update",
+   "title": "Kimi K3.1 Pro gets a wave of 3D and Blender tests (Stefan 3D AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=cxxGMz-YXU0",
+   "text": "Kimi K3.1 Pro gets a wave of 3D and Blender tests (Stefan 3D AI, YouTube), update. Friday's open-weight coding model is now being tested in Blender and Godot.…",
+   "h": "20b13d3066"
+  },
+  {
+   "id": "s-ranked-picks-games",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games",
+   "medium": "games",
+   "text": "🎮 Games",
+   "h": "dd27204535"
+  },
+  {
+   "id": "s-ranked-picks-games-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "repo/tool",
+   "title": "awesome-gamedev-agent-skills, 74 game-dev skills for coding agents (GitHub)",
+   "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
+   "text": "awesome-gamedev-agent-skills, 74 game-dev skills for coding agents (GitHub), repo/tool. Portable skills for Godot, Unity, Unreal, Phaser, PixiJS, three.js…",
+   "h": "93e7e4a8b8"
+  },
+  {
+   "id": "s-ranked-picks-mashups",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧪 Mashups",
+   "medium": "mashups",
+   "text": "🧪 Mashups",
+   "h": "37537fc95f"
+  },
+  {
+   "id": "s-ranked-picks-mashups-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-mashups",
+   "section": "s-ranked-picks",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "title": "Kinoloom, an open-source local film studio for an 8 GB graphics card (harlixay7, GitHub)",
+   "url": "https://github.com/harlixay7/Kinoloom",
+   "text": "Kinoloom, an open-source local film studio for an 8 GB graphics card (harlixay7, GitHub), repo/tool. A web app on top of ComfyUI that takes a story, casts…",
+   "h": "297194940d"
+  },
+  {
+   "id": "s-ranked-picks-sound",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🔊 Sound",
+   "medium": "sound",
+   "text": "🔊 Sound",
+   "h": "5e2e97c3c7"
+  },
+  {
+   "id": "s-ranked-picks-sound-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-sound",
+   "section": "s-ranked-picks",
+   "medium": "sound",
+   "type": "update",
+   "title": "VoiceStudio, an open-source local alternative to ElevenLabs (debpalash, GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "text": "VoiceStudio, an open-source local alternative to ElevenLabs (debpalash, GitHub), update. Voice cloning, voice design, dubbing and audiobooks on your own…",
+   "h": "a9291a6e69"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: the 25 X posts gathered for this edition were each opened by ID and their metrics re-read, then checked against a fresh sweep of YouTube (last-day…",
+   "h": "f5591ae119"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}

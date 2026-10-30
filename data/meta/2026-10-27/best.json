@@ -1,0 +1,418 @@
+{
+ "edition": {
+  "date": "2026-10-27",
+  "slot": "best",
+  "time": "6 PM",
+  "title": "Best of the Day",
+  "kind": "report",
+  "headline": "AI Design Best of the Day · Tuesday, Oct 27, 2026",
+  "summary": "The pick of the day is Genie 4, the new world model Google DeepMind announced this morning. You steer a live, explorable scene with the keyboard and plain-language prompts (change the weather, move the camera, add a person), and for the first time the model makes the sound too: ambient noise, music and characters who talk back. It matters for designers because DeepMind's own trusted testers are using it the way creative teams work: filmmakers running live \"takes\" for previs, and game developers going from an idea to an explorable prototype before writing engine code. The launch post has 13,730 likes, 5,597 bookmarks and about 1.43M views in under eight hours, Sundar Pichai's post has 11,920 likes, and the Hacker News thread has 650 points. It is a research preview for now, and the realism claims are DeepMind's own. The rest of the day was about control. Microsoft's MAI-Image-2.7-Preview jumped to #3 on Arena's image-edit board, a new design-skills repo for coding agents led GitHub's daily list, and creators kept turning one AI mesh or one prompt into whole game pipelines.",
+  "path": "reports/2026-10-27/best.md",
+  "url": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+  "header": "reports/2026-10-27/best-header.png",
+  "thumb": "reports/2026-10-27/best-thumb.jpg",
+  "item_count": 13,
+  "tags": [
+   "best",
+   "2026-10-27",
+   "3d",
+   "code",
+   "games",
+   "image",
+   "mashups",
+   "sound",
+   "video",
+   "report"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-27-best-1",
+   "title": "Genie 4, a real-time world model with native sound (Google DeepMind)",
+   "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+   "note": "Per DeepMind, you explore a generated world with standard keyboard controls and steer it with text as it runs, while Gemini watches the scene and keeps it coherent; it simulates physics and people, and generates ambient audio and real-time dialogue with the world. DeepMind says testers are using it as a \"draft mode\" for previs and to prototype game ideas, and it is open about the limits: details and object permanence can drift in longer sessions, and legible text and long-term consistency are still being worked on. Why people are losing it: DeepMind's launch post has 13,730 likes, 5,597 bookmarks and about 1.43M views, Sundar Pichai's post has 11,920 likes, the launch video passed 207,000 views in seven hours, and the Hacker News thread has 650 points and 399 comments. Theoretically Media's first reaction video had 10,032 views in three hours. How to try it: it is with trusted testers now; DeepMind says Google AI Ultra subscribers in Project Genie and early-access partners in the Gemini API and AI Studio come next, and there is a waitlist on the blog post. Until then, save the prompts on DeepMind's page; they read like shot briefs you can reuse in video models today.",
+   "medium": "games",
+   "type": "news",
+   "kind": "model/news",
+   "kind_key": "model-news",
+   "tags": [
+    "games",
+    "news",
+    "best",
+    "2026-10-27",
+    "model news"
+   ],
+   "source": "deepmind.google",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "DeepMind's launch post",
+     "url": "https://x.com/GoogleDeepMind/status/2115114028338962672"
+    },
+    {
+     "label": "Sundar Pichai's post",
+     "url": "https://x.com/sundarpichai/status/2115115252690145519"
+    },
+    {
+     "label": "launch video",
+     "url": "https://www.youtube.com/watch?v=sFfPkUJd_Jk"
+    },
+    {
+     "label": "Hacker News thread",
+     "url": "https://news.ycombinator.com/item?id=50261319"
+    },
+    {
+     "label": "first reaction video",
+     "url": "https://www.youtube.com/watch?v=kJgYSiIZMb8"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-2",
+   "title": "MAI-Image-2.7-Preview jumps to #3 on Arena's image-edit board (Microsoft AI)",
+   "url": "https://microsoft.ai/news/mai-image-2-7-debut/",
+   "note": "Microsoft's new image-editing model for restyling and relighting scenes, changing text and symbols inside an image, and restoring old assets. Why it's here: Arena puts it at #3 in Image Edit with 1,470 points, up 45 points from MAI-Image-2.6 at #7, and #3 in Product, Branding and Commercial Design (up from #8); Artificial Analysis ranks it #2 on its editing board, and that post has 389 likes and about 235K views. How to try it: it is in MAI Playground for editing only; Microsoft says text-to-image is coming soon, and its post lists no API or price. Run one product shot through a relight and a text swap.",
+   "medium": "image",
+   "type": "news",
+   "kind": "model/news",
+   "kind_key": "model-news",
+   "tags": [
+    "image",
+    "news",
+    "best",
+    "2026-10-27",
+    "model news"
+   ],
+   "source": "microsoft.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Arena",
+     "url": "https://x.com/arena/status/2115101113666134276"
+    },
+    {
+     "label": "Artificial Analysis",
+     "url": "https://x.com/ArtificialAnlys/status/2115097540320506069"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-3",
+   "title": "T-DIG, a tool for finding the variety hiding inside an image model (@simi_97k)",
+   "url": "https://x.com/simi_97k/status/2115192082138792352",
+   "note": "Ask for something like Halloween costume ideas and, instead of the same witch eight times, T-DIG explores the range of what the model can make for that request. Why it's here: a new research tool with a public demo and gallery; the post is small so far (15 likes, 4 bookmarks), but it tackles the sameness problem everyone complains about. How to try it: put one of your stock prompts through the demo and see how many directions you were missing.",
+   "medium": "image",
+   "type": "repo/tool",
+   "kind": "tool",
+   "kind_key": "tool",
+   "tags": [
+    "image",
+    "repo/tool",
+    "best",
+    "2026-10-27",
+    "tool"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "demo",
+     "url": "https://image-study.org/demo"
+    },
+    {
+     "label": "gallery",
+     "url": "https://image-study.org/gallery"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-4",
+   "title": "ai-design-skills tops GitHub's daily trending (elayadesign, GitHub)",
+   "url": "https://github.com/elayadesign/ai-design-skills",
+   "note": "An MIT-licensed set of design skills for Claude Code, Cursor, Codex and Windsurf; right now it holds one skill, landing-page-design, which runs intake questions, page structure, conversion copy and a full visual system for type, spacing, radius and motion. Why it's here: 1,395 stars today, first on the daily list, and 9,245 in total. Update on a repo we've covered: Hallmark added 2,859 today and is at 38,926, up from 37,979 this morning. How to try it: copy the skill into your project and ask for one landing page, then compare it with what your agent made before.",
+   "medium": "code",
+   "type": "repo/tool",
+   "kind": "tool",
+   "kind_key": "tool",
+   "tags": [
+    "code",
+    "repo/tool",
+    "best",
+    "2026-10-27",
+    "tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hallmark",
+     "url": "https://github.com/Nutlope/hallmark"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-5",
+   "title": "A designer on Figma, AI and vibe coding (@Tegadesigns)",
+   "url": "https://x.com/Tegadesigns/status/2114975387172155393",
+   "note": "A designer looks back at a year in which \"Thank you, Figma\" turned into panic about AI, and argues for learning by building rather than waiting. Why it's here: 95 likes and 30 replies, the most replies of any design post in the X posts gathered for this edition. What it means: the conversation has moved from \"will it replace us\" to how designers retool.",
+   "medium": "code",
+   "type": "buzz",
+   "kind": "buzz",
+   "kind_key": "buzz",
+   "tags": [
+    "code",
+    "buzz",
+    "best",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-6",
+   "title": "One Tripo mesh becomes a game-ready, rigged pistol (@Graalitoo)",
+   "url": "https://x.com/Graalitoo/status/2115007986670489799",
+   "note": "Claude Code split a single Tripo AI mesh into 15 real parts, built the hidden geometry a reload reveals, rigged it with 18 bones, animated fire, reload and inspect, rendered it headless in Blender Cycles and exported FBX and GLB; the sounds and music were made locally with Stable Audio. Why it's here: 49 likes and 41 bookmarks on about 3,200 views, a very high save rate. How to try it: take one AI mesh you already have and ask your agent to separate it into parts along its seams before you rig anything.",
+   "medium": "3d",
+   "type": "workflow",
+   "kind": "workflow",
+   "kind_key": "workflow",
+   "tags": [
+    "3d",
+    "workflow",
+    "best",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-7",
+   "title": "Open3DLab says a Roblox-labelled crawler downloaded 145 GB of its creators' models (Open3DLab)",
+   "url": "https://open3dlab.com/news/roblox-downloaded-145-gb-of-models-from-our-sites/",
+   "note": "counterpoint. Per the site, a crawler whose user agent named Roblox and 3D foundation-model research took 1,027 files from 712 projects on Oct 15 and 16, ignored robots.txt and the terms of service, and 423 of those projects are licensed for non-commercial use only; the site says Roblox has not replied. These are the site's own claims. Why it's here: 452 points and 267 comments on Hacker News. What it means: if you publish 3D work, check what your host's licence and robots rules actually stop.",
+   "medium": "3d",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "3d",
+    "best",
+    "2026-10-27"
+   ],
+   "source": "open3dlab.com",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "452 points and 267 comments on Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50256985"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-8",
+   "title": "A multi-model iOS game where every asset went through Meshy, Blender MCP and Unity (@ashen_one)",
+   "url": "https://x.com/ashen_one/status/2115096634816090266",
+   "note": "An Animal Crossing-style town builder set in rural Afghanistan, built over several weeks with five models; each asset was made in Meshy, animated through Blender MCP and wired into the game with the Unity command line. He says it holds about 11 hours of gameplay, which is his own figure. Why it's here: 51 likes, 18 replies and 17 bookmarks on about 3,700 views. How to try it: borrow the three-step asset pipeline for one prop before planning a whole game.",
+   "medium": "games",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "games",
+    "showcase",
+    "best",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-9",
+   "title": "Sprite Forge fixes AI sprite sheets that won't line up (@rlaope)",
+   "url": "https://x.com/rlaope/status/2115095845968478464",
+   "note": "Part of the open-source oh-my-hermes kit: it draws the sheet as a grid on flat magenta, locks every frame to the same scale and baseline, and scores drift so you regenerate instead of fixing frames by hand. Why it's here: it solves the bobbing-character bug anyone who has tried AI sprites knows, though the post is small (5 likes). How to try it: run one walk cycle through it and drop the sheet into your engine.",
+   "medium": "games",
+   "type": "repo/tool",
+   "kind": "tool",
+   "kind_key": "tool",
+   "tags": [
+    "games",
+    "repo/tool",
+    "best",
+    "2026-10-27",
+    "tool"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "oh-my-hermes",
+     "url": "https://github.com/rlaope/oh-my-hermes"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-10",
+   "title": "Same prompt, four video models, three timed shots (@gargantuaxdev)",
+   "url": "https://x.com/gargantuaxdev/status/2115053129729479028",
+   "note": "A snowy mountain station at dusk with cuts at 3 and 6 seconds: per the creator, Kling 4.0 hit both cuts and the light, Kling 3.0 shot it in daylight, Seedance 2.5 came out darkest and Veo 3.1 drew \"35mm film grain\" as a film-strip border. He lists 8 seconds at 720p with audio at $1.14 for Kling 4.0, $0.80 for Kling 3.0, $1.73 for Seedance 2.5 and $1.00 for Veo 3.1, the lowest public prices he found. Why it's here: same-prompt model comparisons were the most common video posts in the X posts gathered for this edition, and this one tests timing and lists prices, as Kling 4.0 reaches more apps. How to use it: test your own multi-shot timing before you buy credits; prices vary by app.",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "best",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-11",
+   "title": "I Challenged FOUR AI Models to Design Hand-Drawn Characters (Pomeroy Art Academy, YouTube)",
+   "url": "https://www.youtube.com/watch?v=kbpzuZ5e12w",
+   "note": "Pomeroy Art Academy puts four AI models through a hand-drawn character-design challenge. Why it's here: 5,344 views in about 10 hours, the most-watched result in our search for AI design videos from the last day. We could not read its description, so this is from the title alone. How to use it: watch for where the models break on hands and line weight before using them for character sheets.",
+   "medium": "image",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "image",
+    "showcase",
+    "best",
+    "2026-10-27"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-12",
+   "title": "AI Music Video Show moves to Roku (@aimusicvideo)",
+   "url": "https://x.com/aimusicvideo/status/2115168355514777887",
+   "note": "The weekday AI music-video stream is ending its X broadcast and is now a channel you can search for on Roku. Why it's here: 39 likes and 10 reposts, the most-shared sound post in the X posts gathered for this edition. What it means: AI music video is getting a TV channel of its own; if you make them, this is a new place to aim for.",
+   "medium": "sound",
+   "type": "news",
+   "kind": "news",
+   "kind_key": "news",
+   "tags": [
+    "sound",
+    "news",
+    "best",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-27-best-13",
+   "title": "\"SAY HEY,\" a slopcore music video (@MrQuiyst)",
+   "url": "https://x.com/MrQuiyst/status/2115036771759137101",
+   "note": "Muse-assisted lyrics, a Suno song, GPT Image stills, Kling and Seedance video, then animated and edited in code, starring an open character shared by another creator. Why it's here: about 8,950 views, the most viewed mashup in the X posts gathered for this edition. Its maker says he fell down the #slopcore rabbit hole and had to make one. How to try it: pick one open character and run it through the same five steps.",
+   "medium": "mashups",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "mashups",
+    "showcase",
+    "best",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "best"
+  }
+ ],
+ "src_hash": {
+  "md": "1789324d9c6c192d7fc15e5296e3c8ff0d568706"
+ },
+ "tool_version": 3,
+ "nav": null
+}

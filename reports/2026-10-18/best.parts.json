@@ -1,0 +1,301 @@
+{
+ "version": 1,
+ "report": "2026-10-18/best",
+ "date": "2026-10-18",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-18/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-18/best",
+ "link": "#report=2026-10-18/best&part=<id> (index reader) or reports/2026-10-18/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-open-free-model-just",
+   "kind": "section",
+   "heading": "An open, free model just walked into the motion-design fight",
+   "text": "An open, free model just walked into the motion-design fight",
+   "h": "5e6d60aa16",
+   "medium": "video"
+  },
+  {
+   "id": "s-open-free-model-just-i1",
+   "kind": "paragraph",
+   "parent": "s-open-free-model-just",
+   "section": "s-open-free-model-just",
+   "medium": "video",
+   "text": "The loudest design story of the weekend is DeepSeek-V4.1-Flash-1017, an MIT-licensed open-weights update that creators spent two days pitting against Claude…",
+   "h": "a9fda31a42"
+  },
+  {
+   "id": "s-open-free-model-just-i2",
+   "kind": "paragraph",
+   "parent": "s-open-free-model-just",
+   "section": "s-open-free-model-just",
+   "medium": "video",
+   "text": "Engagement figures were read from the X API, GitHub, Hugging Face and YouTube on the evening of Oct 18 (PT) and will keep changing. Reddit blocked our tools…",
+   "h": "bbdfa5ecf1"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-code-ui-and",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "💻 Code, UI and motion",
+   "medium": "video",
+   "text": "💻 Code, UI and motion",
+   "h": "6b9fdc56d8"
+  },
+  {
+   "id": "s-pick-of-the-day-code-ui-and-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-code-ui-and",
+   "section": "s-pick-of-the-day",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "DeepSeek-V4.1-Flash-1017, open weights (Hugging Face)",
+   "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+   "text": "DeepSeek-V4.1-Flash-1017, open weights (Hugging Face), model. DeepSeek's Oct 17 update to V4.1 Flash: stronger benchmarks, faster task completion and shorter…",
+   "h": "7a4be82d96"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-video-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video and animation (written as code)",
+   "medium": "video",
+   "text": "🎬 Video and animation (written as code)",
+   "h": "2af2722b27"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "“This Opus 5.5 prompt is literally a $400/hr motion graphics designer” (@minchoi)",
+   "url": "https://x.com/minchoi/status/2111306174259691669",
+   "text": "“This Opus 5.5 prompt is literally a $400/hr motion graphics designer” (@minchoi), tutorial. A motion-graphics prompt for Claude Opus 5.5 with a demo. Why…",
+   "h": "6f444f3381"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "repo/tool",
+   "title": "awesome-opus5-5-videos: 475 viral Opus 5.5 videos with their prompts (GitHub)",
+   "url": "https://github.com/yihui-dev/awesome-opus5-5-videos",
+   "text": "awesome-opus5-5-videos: 475 viral Opus 5.5 videos with their prompts (GitHub), repo/tool. A collection of motion graphics, explainers, 3D scenes and games…",
+   "h": "3b131e2d60"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "“Gus & Spark”, a 25-minute anime episode written entirely as code by Claude (@ziwenxu_)",
+   "url": "https://x.com/ziwenxu_/status/2111212505947357651",
+   "text": "“Gus & Spark”, a 25-minute anime episode written entirely as code by Claude (@ziwenxu_), showcase. No AI video model at all: the creator says Opus 5.5 worked…",
+   "h": "b673cb2c7a"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "tutorial",
+   "title": "Build a game-ready room in Blender and move it into Unreal Engine 5 with Opus 5.5 (@rewind02)",
+   "url": "https://x.com/rewind02/status/2111849852350894319",
+   "text": "Build a game-ready room in Blender and move it into Unreal Engine 5 with Opus 5.5 (@rewind02), tutorial. An eight-step setup: Opus models simple objects…",
+   "h": "611aa20f3a"
+  },
+  {
+   "id": "s-ranked-picks-3d-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "showcase",
+   "title": "Opus 5.5 drew a 92 m² apartment from a single grid line, then built it in 3D (@Solvaix)",
+   "url": "https://x.com/Solvaix/status/2111880621954081240",
+   "text": "Opus 5.5 drew a 92 m² apartment from a single grid line, then built it in 3D (@Solvaix), showcase. The CAD screen, every command and the 3D model are one HTML…",
+   "h": "fb5e22631c"
+  },
+  {
+   "id": "s-ranked-picks-mashups-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧪 Mashups and agent studios",
+   "medium": "mashups",
+   "text": "🧪 Mashups and agent studios",
+   "h": "5e16096064"
+  },
+  {
+   "id": "s-ranked-picks-mashups-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-mashups-and",
+   "section": "s-ranked-picks",
+   "medium": "mashups",
+   "type": "buzz",
+   "title": "10 skills and repos that turn Opus 5.5 into a motion studio (@0xMovez)",
+   "url": "https://x.com/0xMovez/status/2111841847408517282",
+   "text": "10 skills and repos that turn Opus 5.5 into a motion studio (@0xMovez), buzz. Explainer figures, exploded product views, 3D, physics, motion and sound, all as…",
+   "h": "0bf6543a72"
+  },
+  {
+   "id": "s-ranked-picks-mashups-and-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-mashups-and",
+   "section": "s-ranked-picks",
+   "medium": "mashups",
+   "type": "showcase",
+   "title": "A melancholic music video made entirely on one RTX 3090 (@superalesha)",
+   "url": "https://x.com/superalesha/status/2111726450848272429",
+   "text": "A melancholic music video made entirely on one RTX 3090 (@superalesha), showcase. Song, pictures, video and upscale, with no cloud model: MiniMax H3 and its…",
+   "h": "d8dcc89668"
+  },
+  {
+   "id": "s-ranked-picks-games",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games",
+   "medium": "games",
+   "text": "🎮 Games",
+   "h": "dd27204535"
+  },
+  {
+   "id": "s-ranked-picks-games-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "tutorial",
+   "title": "A local fishing game built with Opus 5.5 and Unity 6, and the one rule behind it (@sorenxet)",
+   "url": "https://x.com/sorenxet/status/2111583999294398792",
+   "text": "A local fishing game built with Opus 5.5 and Unity 6, and the one rule behind it (@sorenxet), tutorial. Build one system, play it, then move on, with Tripo…",
+   "h": "883206777d"
+  },
+  {
+   "id": "s-ranked-picks-image",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-ranked-picks-image-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "repo/tool",
+   "title": "MOSS-Image in 8 steps: community distillation LoRA (Hugging Face)",
+   "url": "https://huggingface.co/lodestones/MOSS-Image-SFT-8-steps-dmd",
+   "text": "MOSS-Image in 8 steps: community distillation LoRA (Hugging Face), repo/tool. A work-in-progress LoRA that cuts MOSS-Image-SFT from 50 steps to 8 with no CFG.…",
+   "h": "1119214cd4"
+  },
+  {
+   "id": "s-ranked-picks-sound",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎵 Sound",
+   "medium": "sound",
+   "text": "🎵 Sound",
+   "h": "5e2e97c3c7"
+  },
+  {
+   "id": "s-ranked-picks-sound-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-sound",
+   "section": "s-ranked-picks",
+   "medium": "sound",
+   "type": "repo/tool",
+   "title": "VoiceStudio, a fully local ElevenLabs alternative (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "text": "VoiceStudio, a fully local ElevenLabs alternative (GitHub), repo/tool. Open-source voice cloning, voice design, video dubbing and dictation that runs on your…",
+   "h": "fed7ac8907"
+  },
+  {
+   "id": "s-ranked-picks-what-people-are",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🗣️ What people are talking about",
+   "text": "🗣️ What people are talking about",
+   "h": "1e33e8cfa5"
+  },
+  {
+   "id": "s-ranked-picks-what-people-are-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-what-people-are",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "buzz",
+   "title": "“Vibe coding” is starting to create a serious problem for the game industry (@Pirat_Nation)",
+   "url": "https://x.com/Pirat_Nation/status/2111593348293128535",
+   "text": "“Vibe coding” is starting to create a serious problem for the game industry (@Pirat_Nation), buzz. A summary of Kotaku's report that Opus 5.5 has made…",
+   "h": "caeb2684fd"
+  },
+  {
+   "id": "s-ranked-picks-what-people-are-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-what-people-are",
+   "section": "s-ranked-picks",
+   "type": "buzz",
+   "title": "“Make sure your game is fun without a bunch of fancy art” (@pvncher)",
+   "url": "https://x.com/pvncher/status/2111613394143027269",
+   "text": "“Make sure your game is fun without a bunch of fancy art” (@pvncher), buzz. The argument that LLMs make it too easy to build visually rich levels with no real…",
+   "h": "26c9e4f388"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: starts from today's morning and noon digests, then a fresh evening check of X, YouTube, GitHub trending, Hugging Face trending and Hacker News. Ranked…",
+   "h": "3415513aa2"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Want a deeper dive on any of these, or more of one medium tomorrow? Say the word and the next edition will steer there.",
+   "h": "17db245e12"
+  }
+ ]
+}

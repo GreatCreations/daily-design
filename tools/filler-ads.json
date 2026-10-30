@@ -1,0 +1,65 @@
+{
+ "_readme": "Filler ad cards for edition pages. When a category grid in an HTML edition (editions/<date>/<slot>.html) has an ODD item count that is not a multiple of 3 (1, 5, 7, 11, 13, 17, 19 ...), tools/publish.py appends exactly ONE of these ads as a card at the end of that category. Even counts and multiples of 3 get none. Ads are taken in list order starting from a per-page offset, so the same ad never appears twice in a row on a page. Fields: id, kind (\"sponsor\" or \"sub\"), active (false = skipped), color (accent), art (big words on the picture), label (small line next to the Ad tag), title, text, cta, href (relative to the site root, or https:/mailto:). Keep the list at 5 active ads. Edit and run tools/publish.py; every edition page is rebuilt. These cards are house ads that send readers to subscribe or to become a sponsor; they are not rentable ad space, so keep the copy short hype with no prices, rates, specs or 'your ad here' wording. Subscribe cards point to about.html#sub-access until membership goes live (at the Oct 31, 2026 cutover switch their href to members/, the join page).",
+ "ads": [
+  {
+   "id": "sponsor-back",
+   "kind": "sponsor",
+   "active": true,
+   "color": "#f5a524",
+   "art": "Back the work",
+   "label": "Daily Design",
+   "title": "Sponsor Daily Design",
+   "text": "Put your name behind the daily read on AI and creative work.",
+   "cta": "Become a sponsor",
+   "href": "contact.html#sponsor"
+  },
+  {
+   "id": "sub-ahead",
+   "kind": "sub",
+   "active": true,
+   "color": "#22e0cf",
+   "art": "Stay ahead",
+   "label": "Daily Design",
+   "title": "Subscribe to Daily Design",
+   "text": "AI is changing creative work fast. Keep up without the endless scroll.",
+   "cta": "Subscribe",
+   "href": "about.html#sub-access"
+  },
+  {
+   "id": "sponsor-part",
+   "kind": "sponsor",
+   "active": true,
+   "color": "#9b6bff",
+   "art": "Be part of it",
+   "label": "Daily Design",
+   "title": "Help keep it coming",
+   "text": "Sponsor Daily Design and help power every edition.",
+   "cta": "Sponsor us",
+   "href": "contact.html#sponsor"
+  },
+  {
+   "id": "sub-drop",
+   "kind": "sub",
+   "active": true,
+   "color": "#ff5a2e",
+   "art": "Never miss a drop",
+   "label": "Daily Design",
+   "title": "Get the sub",
+   "text": "The best AI design finds, every day, straight from the source.",
+   "cta": "Get a sub",
+   "href": "about.html#sub-access"
+  },
+  {
+   "id": "sponsor-build",
+   "kind": "sponsor",
+   "active": true,
+   "color": "#ffcf5a",
+   "art": "Let's build this",
+   "label": "Daily Design",
+   "title": "Become a sponsor",
+   "text": "Grow with Daily Design from the very start.",
+   "cta": "Let's talk",
+   "href": "contact.html#sponsor"
+  }
+ ]
+}

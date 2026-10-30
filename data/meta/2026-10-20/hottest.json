@@ -27,6 +27,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -54,6 +55,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -81,6 +83,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -103,6 +106,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -134,6 +138,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -156,6 +161,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -183,6 +189,7 @@
    "medium": "",
    "type": "news",
    "kind": "model launch",
+   "kind_key": "model-launch",
    "tags": [
     "news",
     "hottest",
@@ -216,6 +223,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -238,6 +246,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -265,6 +274,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -287,6 +297,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -309,6 +320,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -331,6 +343,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -353,6 +366,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -375,6 +389,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -402,6 +417,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -429,6 +445,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -451,6 +468,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "open-source tool",
+   "kind_key": "open-source-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -475,6 +493,7 @@
    "medium": "",
    "type": "news",
    "kind": "model launch",
+   "kind_key": "model-launch",
    "tags": [
     "news",
     "hottest",
@@ -504,6 +523,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "design tool",
+   "kind_key": "design-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -533,6 +553,7 @@
    "medium": "",
    "type": "news",
    "kind": "product launch",
+   "kind_key": "product-launch",
    "tags": [
     "news",
     "hottest",
@@ -562,6 +583,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -584,6 +606,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -606,6 +629,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -628,6 +652,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -652,6 +677,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -674,6 +700,7 @@
    "medium": "",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "tutorial",
     "hottest",
@@ -697,6 +724,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -724,6 +752,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"
@@ -751,6 +780,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-20"

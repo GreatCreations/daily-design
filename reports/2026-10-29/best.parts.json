@@ -1,0 +1,271 @@
+{
+ "version": 1,
+ "report": "2026-10-29/best",
+ "date": "2026-10-29",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-29/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-29/best",
+ "link": "#report=2026-10-29/best&part=<id> (index reader) or reports/2026-10-29/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-free-scroll-to-3d",
+   "kind": "section",
+   "heading": "A free scroll-to-3D house kit, Tencent's world model taking on Genie 4 and a game built over 100 hours of agent time",
+   "text": "A free scroll-to-3D house kit, Tencent's world model taking on Genie 4 and a game built over 100 hours of agent time",
+   "h": "c7eea5c562",
+   "medium": "3d"
+  },
+  {
+   "id": "s-free-scroll-to-3d-i1",
+   "kind": "paragraph",
+   "parent": "s-free-scroll-to-3d",
+   "section": "s-free-scroll-to-3d",
+   "medium": "3d",
+   "text": "The pick of the day is \"Flat to 3D,\" Samnang Aing's seven scroll-driven demos that turn an architect's flat drawing (an exploded axo, a section, a…",
+   "h": "3036c2ea6f"
+  },
+  {
+   "id": "s-free-scroll-to-3d-i2",
+   "kind": "paragraph",
+   "parent": "s-free-scroll-to-3d",
+   "section": "s-free-scroll-to-3d",
+   "medium": "3d",
+   "text": "Engagement figures were read from X, YouTube, GitHub, Hugging Face and Hacker News on the afternoon of Oct 29 (PT) and will keep changing. Reddit and Product…",
+   "h": "b41ee481cb"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-pick-of-the-day-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-code-and-ui",
+   "section": "s-pick-of-the-day",
+   "medium": "code",
+   "type": "showcase",
+   "title": "Flat to 3D: seven ways to turn an architectural drawing into a 3D scroll (Samnang Aing, GitHub)",
+   "url": "https://github.com/Sam1983Aing/flat-to-3d",
+   "text": "Flat to 3D: seven ways to turn an architectural drawing into a 3D scroll (Samnang Aing, GitHub), showcase. Per the README: an exploded axo that lands layer by…",
+   "h": "5f003a0ce7"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-video",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-ranked-picks-video-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "news",
+   "title": "Hy-Nomas vs Genie 4: Tencent's technical report, benchmark and demo (Tencent Hunyuan)",
+   "url": "https://x.com/TencentHunyuan/status/2115851165904814283",
+   "text": "Hy-Nomas vs Genie 4: Tencent's technical report, benchmark and demo (Tencent Hunyuan), model/news. An update on the interactive world model from the Oct 24…",
+   "h": "9084d3278c"
+  },
+  {
+   "id": "s-ranked-picks-video-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "\"This AI video is a 10/10 masterpiece,\" a Seedance 2.5 short (@Xmbluee)",
+   "url": "https://x.com/Xmbluee/status/2115678521515299013",
+   "text": "\"This AI video is a 10/10 masterpiece,\" a Seedance 2.5 short (@Xmbluee), showcase. A short clip tagged Seedance 2.5 with no prompt, workflow or tool details…",
+   "h": "6bef67d5bf"
+  },
+  {
+   "id": "s-ranked-picks-video-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "Open-H3-Regenerate-2K in ComfyUI: a 480p H3 draft to 2K (Benji's AI Playground, YouTube)",
+   "url": "https://www.youtube.com/watch?v=eiJbJMFU52M",
+   "text": "Open-H3-Regenerate-2K in ComfyUI: a 480p H3 draft to 2K (Benji's AI Playground, YouTube), tutorial. A walkthrough of NVIDIA's open refiner for MiniMax H3…",
+   "h": "d12791c8d9"
+  },
+  {
+   "id": "s-ranked-picks-video-i4",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "buzz",
+   "title": "The Orange, Runway's first short film in 2019, against today's AI video (@c_valenzuelab)",
+   "url": "https://x.com/c_valenzuelab/status/2115795594367082499",
+   "text": "The Orange, Runway's first short film in 2019, against today's AI video (@c_valenzuelab), buzz. Runway's CEO sets the 2019 short \"The Orange,\" made with…",
+   "h": "9c33e57ebc"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "impeccable gains 2,881 stars in a day (Paul Bakaus, GitHub)",
+   "url": "https://github.com/pbakaus/impeccable",
+   "text": "impeccable gains 2,881 stars in a day (Paul Bakaus, GitHub), tool. An update on the agent design-vocabulary repo from earlier this week. It is at 95,193 stars…",
+   "h": "d67d9c85e8"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "showcase",
+   "title": "SWAGBENCH: AI-conference merch ranked on design, wearability and status (@demian_ai)",
+   "url": "https://swagbench.app/",
+   "text": "SWAGBENCH: AI-conference merch ranked on design, wearability and status (@demian_ai), showcase. A satirical, well-built chart site that scores 222 pieces of…",
+   "h": "6bf012b4d9"
+  },
+  {
+   "id": "s-ranked-picks-image-and-visual",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image and visual",
+   "medium": "image",
+   "text": "🖼️ Image and visual",
+   "h": "b9f6fb7c21"
+  },
+  {
+   "id": "s-ranked-picks-image-and-visual-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image-and-visual",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "tutorial",
+   "title": "MiniMax Design, Opus 5.5 and GPT Image 2.5 for game characters and pixel sheets (성공지식백과, YouTube)",
+   "url": "https://www.youtube.com/watch?v=w-7FkzY8CbY",
+   "text": "MiniMax Design, Opus 5.5 and GPT Image 2.5 for game characters and pixel sheets (성공지식백과, YouTube), tutorial. A Korean-language walkthrough. Per the…",
+   "h": "eb4aa370eb"
+  },
+  {
+   "id": "s-ranked-picks-image-and-visual-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-image-and-visual",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "tutorial",
+   "title": "A fashion reference sheet prompt for GPT Image 2.5 (@Just_Anika_Here)",
+   "url": "https://x.com/Just_Anika_Here/status/2115679456140702100",
+   "text": "A fashion reference sheet prompt for GPT Image 2.5 (@Just_Anika_Here), tutorial. The full prompt is in the post: a six-panel, 2-by-3 sheet of the same model…",
+   "h": "3a4ffc677f"
+  },
+  {
+   "id": "s-ranked-picks-games-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games and interactive",
+   "medium": "games",
+   "text": "🎮 Games and interactive",
+   "h": "61afdd649a"
+  },
+  {
+   "id": "s-ranked-picks-games-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games-and",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "showcase",
+   "title": "I Spent 100 Hours Building This Video Game With Claude (Brendan Jowett, YouTube)",
+   "url": "https://www.youtube.com/watch?v=tpbXZyRxWNY",
+   "text": "I Spent 100 Hours Building This Video Game With Claude (Brendan Jowett, YouTube), showcase. An update on a video the morning edition listed just after upload.…",
+   "h": "fe72ecdec4"
+  },
+  {
+   "id": "s-ranked-picks-games-and-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-games-and",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "repo/tool",
+   "title": "tinyworldformer: a tiny world model that generates and plays games on a Raspberry Pi Pico 2 W (SheepSeb, GitHub)",
+   "url": "https://github.com/SheepSeb/tinyworldformer",
+   "text": "tinyworldformer: a tiny world model that generates and plays games on a Raspberry Pi Pico 2 W (SheepSeb, GitHub), repo/tool. Per the README, one small looped…",
+   "h": "c184da0049"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "tutorial",
+   "title": "Can a cheaper ChatGPT model run Blender? GPT-6.1 Terra builds a da Vinci air screw (TokyoMakers, YouTube)",
+   "url": "https://www.youtube.com/watch?v=BzEAOHUBnhI",
+   "text": "Can a cheaper ChatGPT model run Blender? GPT-6.1 Terra builds a da Vinci air screw (TokyoMakers, YouTube), tutorial. A Japanese-language test. Per the…",
+   "h": "cee6866694"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: the 26 X posts gathered for this edition were each opened by ID and their text and metrics re-read; none were taken on trust. They were checked…",
+   "h": "a8eb03706f"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}

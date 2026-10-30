@@ -25,7 +25,7 @@ SITE_URL = "https://studios.greatcreations.art/daily-design/"  # canonical base
 REPO_BLOB = "https://github.com/GreatCreations/daily-design/blob/main/"
 REPORT_SLOTS = {"best", "hottest"}  # these stay plain Markdown reports
 TOOL_VERSION = 3  # bump to force every source edition to be reprocessed
-NAV_VERSION = 7   # bump to force nav re-injection on every HTML edition
+NAV_VERSION = 11   # bump to force nav re-injection on every HTML edition
 GH_USER = "GreatCreations"
 
 SLOTS = {
@@ -34,6 +34,49 @@ SLOTS = {
     "best":    dict(order=2, time="6 PM", name="Best of the Day", color="#9b6bff"),
     "hottest": dict(order=3, time="8 PM", name="Hottest Right Now", color="#ff5a2e"),
 }
+# Pacific time label after clock times ("7 AM PDT"). "auto", or one fixed label ("PST", "PT", ...) used everywhere.
+# auto = PDT/PST by the old daylight rule for the edition's date until B.C.'s permanent UTC-7 starts on TZ_PERM_FROM (no fall-back on
+# 2026-11-01; B.C. calls it "Pacific time"), then TZ_PERMANENT. Mirrors TZ_LABEL in assets/app.js. The UTC offset always follows the real rule.
+TZ_LABEL = "auto"
+TZ_PERMANENT, TZ_PERM_FROM = "PT", "2026-11-01"
+SLOT_HOUR = {"morning": 7, "noon": 12, "best": 18, "hottest": 20}
+
+
+def tz_auto(date):
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date or ""):
+        return "PT"
+    if date >= TZ_PERM_FROM:
+        return TZ_PERMANENT
+    y, m, d = int(date[:4]), int(date[5:7]), int(date[8:10])
+    def sun(mo, n):  # nth Sunday of month mo
+        f = dt.date(y, mo, 1).weekday()  # Mon=0
+        return 1 + (6 - f) % 7 + 7 * (n - 1)
+    return "PDT" if (3, sun(3, 2)) <= (m, d) < (11, sun(11, 1)) else "PST"
+
+
+def tz_label(date):
+    return TZ_LABEL if TZ_LABEL != "auto" else tz_auto(date)
+
+
+def pt_iso(date, slot):
+    """ISO instant of a slot's Pacific time, for assets/tzlocal.js."""
+    return "%sT%02d:00:00%s" % (date, SLOT_HOUR[slot], "-08:00" if tz_auto(date) == "PST" else "-07:00")
+
+
+def tz_html(date, slot):
+    """' PDT' label plus the hidden visitor-time span that assets/tzlocal.js fills in (Pacific only without JS)."""
+    return (' <span class="dd-tz">%s</span> <span class="dd-loc" data-pt="%s" data-ptd="%s" hidden></span>'
+            % (tz_label(date), pt_iso(date, slot), date))
+
+
+def pt_today():
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.datetime.now(ZoneInfo("America/Vancouver")).date().isoformat()
+    except Exception:
+        return (dt.datetime.utcnow() - dt.timedelta(hours=7)).date().isoformat()
+
+
 FILE_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-(morning|noon|best|hottest)\.(html|md)$")
 IMG_EXT = (".png", ".jpg", ".jpeg", ".webp")
 
@@ -247,12 +290,30 @@ FOOT_START, FOOT_END = "<!--dd-foot:start-->", "<!--dd-foot:end-->"
 STYLE_START, STYLE_END = "<!--dd-style:start-->", "<!--dd-style:end-->"
 ICON_START, ICON_END = "<!--dd-icon:start-->", "<!--dd-icon:end-->"
 CREDIT_START, CREDIT_END = "<!--dd-credit:start-->", "<!--dd-credit:end-->"
+# Cloudflare Web Analytics (cookie-free JS beacon). The token is public by design: it ships in every page's HTML.
+CF_BEACON_TOKEN = "cde3bd9455d349709d6709130b5b58e3"
+BEACON_START, BEACON_END = "<!--dd-beacon:start-->", "<!--dd-beacon:end-->"
+BEACON_HTML = (BEACON_START + '<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
+               'data-cf-beacon=\'{"token": "%s"}\'></script>' + BEACON_END) % CF_BEACON_TOKEN
+
+
+def ensure_beacon(doc):
+    """Exactly one analytics beacon per HTML page, just before </head> (re-runs replace it)."""
+    doc = re.sub(re.escape(BEACON_START) + ".*?" + re.escape(BEACON_END) + r"\n?", "", doc, flags=re.S)
+    if not CF_BEACON_TOKEN:
+        return doc
+    i = doc.lower().rfind("</head>")
+    return doc[:i] + BEACON_HTML + "\n" + doc[i:] if i >= 0 else doc
 STUDIO_NAME = "Great Creation Studios"
-STUDIO_URL = "https://greatcreationstudios.greatcreations.art"
+STUDIO_URL = "https://greatcreationstudios.greatcreations.art/"
 
 
+XLIST_URL = "https://x.com/i/lists/2115263443770937364"  # public X list of every creator Daily Design features (owned by @GreatCreations_)
+XLIST_NAME = "Daily Design Creators"
+FB_PAGE_URL = "https://www.facebook.com/profile.php?id=61595851597605"  # Daily Design Facebook Page (footer Follow group)
 CONTACT_EMAIL = "dailydesign@greatcreations.ca"  # public Daily Design address (shown on contact.html)
 CONTACT_PATH = "contact.html"
+ABOUT_PATH = "about.html"  # About + site map, built by build_about_page()
 SPON_START, SPON_END = "<!--dd-sponsor:start-->", "<!--dd-sponsor:end-->"
 SPON2_START, SPON2_END = "<!--dd-sponsor-links:start-->", "<!--dd-sponsor-links:end-->"  # index: above Recent links
 SPON_PLACEMENTS = ("top", "links")  # banner.placements; default ["top"]
@@ -263,26 +324,83 @@ def mailto(subject):
     return "mailto:%s?subject=%s" % (CONTACT_EMAIL, quote(subject))
 
 
-def credit_html(prefix="", cls="dd-credit", contact=True):
-    """Footer credit line (skipped by the Listen button via .dd-credit). prefix = path back to the site root.
-    The studio's icon is a vendored copy of its own favicon (assets/gcs-icon.png), decorative (alt="")."""
-    return ('%s<p class="%s">Daily Design is created and brought to you by '
-            '<a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" alt="" width="16" height="16">%s</a>.</p>'
-            '%s%s') % (
-        CREDIT_START, cls, STUDIO_URL, prefix, STUDIO_NAME,
-        ('<p class="dd-contactln"><a href="%s%s">Contact</a> · questions, tips, corrections and sponsorship</p>' % (prefix, CONTACT_PATH)) if contact else "",
-        CREDIT_END)
+BRAND_COLS = ("#f5a524", "#22e0cf", "#9b6bff", "#ff5a2e")  # --amber, --aqua, --violet, --flame (7 AM, Noon, 6 PM, 8 PM)
+
+
+def brand_html(prefix="", link=False):
+    """'Daily Design' as the DD logo, 'Daily' in bright white and 'Design' with its letters cycling the four slot colors
+    (amber, aqua, violet, flame). Screen readers get one 'Daily Design' (role=img + aria-label); the logo and the letter spans
+    are aria-hidden. link=True makes the logo + words a link to the About page."""
+    design = "".join('<span class="c%d">%s</span>' % (i % 4, ch) for i, ch in enumerate("Design"))
+    b = ('<span class="dd-brand" role="img" aria-label="Daily Design"><img class="dd-brand-ic" src="%sassets/favicon.svg" alt="" '
+         'aria-hidden="true" width="16" height="16"><span class="dd-brand-t" aria-hidden="true"><span class="cw">Daily</span> %s</span></span>'
+         ) % (prefix, design)
+    return ('<a class="dd-brand-a" href="%s%s" title="About Daily Design">%s</a>' % (prefix, ABOUT_PATH, b)) if link else b
+
+
+def xlist_link(label=None):
+    return '<a class="dd-xlist-a" href="%s" target="_blank" rel="noopener">%s<span aria-hidden="true"> ↗</span></a>' % (
+        XLIST_URL, label or XLIST_NAME + " on X")
+
+
+def xlist_html(cls="dd-xlist"):
+    """'Follow every creator we feature' line linking the public X list (footers, report pages)."""
+    return '<p class="%s">Follow every creator we feature on X: %s</p>' % (cls, xlist_link())
+
+
+GH_SOURCE_URL = "https://github.com/GreatCreations/daily-design"
+FOOT_BLURB = ("Daily Design is a public archive of AI design research digests. "
+              "Links go to the original creators and sources.")
+FOOT_BLURB_NUMBERS = ("Daily Design is a public archive of AI design research digests. Links go to the original creators and sources; "
+                      "engagement numbers were read when each edition was compiled and will have changed since.")
+
+
+def credit_html(prefix="", cls="dd-credit", page=None, blurb="", gh=False):
+    """Shared two-column site footer (skipped by the Listen button: it sits in <footer>/#dd-foot and carries .dd-credit / .dd-fcols).
+    Left column: the Daily Design wordmark (brand_html, links to About), the page's one-line description (blurb, optional) and the
+    studio credit (the studio's icon is a vendored copy of its own favicon, assets/gcs-icon.png, decorative alt="").
+    Right column: labelled link groups (Daily Design: About / Contact / Source on GitHub when gh; Follow: the public X list).
+    prefix = path back to the site root. page = "contact" / "about" leaves out the link to the page you're on."""
+    site = []
+    if page != "about":
+        site.append('<li><a class="dd-aboutln" href="%s%s">About</a></li>' % (prefix, ABOUT_PATH))
+    if page != "contact":
+        site.append('<li><a href="%s%s">Contact</a><span class="dd-fnote">Questions, tips, corrections and sponsorship</span></li>'
+                    % (prefix, CONTACT_PATH))
+    # The footer GitHub link was removed on Oct 28, 2026; gh is kept for call compatibility.
+    follow = ('<li>%s<span class="dd-fnote">Follow every creator we feature</span></li>' % xlist_link()
+              + '<li><a class="dd-fb-a" href="%s" target="_blank" rel="noopener">Daily Design on Facebook<span aria-hidden="true"> ↗</span></a>'
+                '<span class="dd-fnote">Every edition on our Facebook Page</span></li>' % FB_PAGE_URL)
+    left = ('<div class="dd-fcol dd-fabout"><p class="dd-fbrand">%s</p>%s'
+            '<p class="%s">Created and brought to you by <a href="%s" rel="noopener"><img class="dd-credit-ic" src="%sassets/gcs-icon.png" '
+            'alt="" width="16" height="16">%s</a>.</p></div>') % (
+        brand_html(prefix, link=True), ('<p class="dd-fdesc">%s</p>' % blurb) if blurb else "", cls, STUDIO_URL, prefix, STUDIO_NAME)
+    right = ('<nav class="dd-fcol dd-flinks" aria-label="Footer">'
+             '<div class="dd-fgroup"><p class="dd-fh">Daily Design</p><ul>%s</ul></div>'
+             '<div class="dd-fgroup"><p class="dd-fh">Follow</p><ul>%s</ul></div></nav>') % ("".join(site), follow)
+    return '%s<div class="dd-fcols">%s%s</div>%s' % (CREDIT_START, left, right, CREDIT_END)
 
 
 def ensure_credit(doc):
-    """Put exactly one credit inside <footer class="site"> (index and report pages)."""
-    doc = re.sub(re.escape(CREDIT_START) + ".*?" + re.escape(CREDIT_END), "", doc, flags=re.S)
-    m = re.search(r'(<footer class="site"><div class="wrap">.*?)(</div></footer>)', doc, re.S)
-    if m:
-        return doc[:m.end(1)] + credit_html() + doc[m.end(1):]
-    idx = doc.lower().rfind("</body>")
-    slim = '<footer class="site">' + '<div class="wrap">' + credit_html() + "</div></footer>\n"
-    return doc[:idx] + slim + doc[idx:] if idx >= 0 else doc + slim
+    """Put exactly one two-column credit footer inside <footer class="site"> (index). The footer's description text (loose text
+    before the credit on older builds, or the .dd-fdesc already inside it) becomes the left column's blurb; a 'Source on GitHub'
+    link in it moves to the link column."""
+    m = re.search(r'(<footer class="site"><div class="wrap">)(.*?)(</div></footer>)', doc, re.S)
+    if not m:
+        doc = re.sub(re.escape(CREDIT_START) + ".*?" + re.escape(CREDIT_END), "", doc, flags=re.S)
+        idx = doc.lower().rfind("</body>")
+        slim = '<footer class="site">' + '<div class="wrap">' + credit_html() + "</div></footer>\n"
+        return doc[:idx] + slim + doc[idx:] if idx >= 0 else doc + slim
+    inner = m.group(2)
+    gh = GH_SOURCE_URL in inner
+    old = re.search(re.escape(CREDIT_START) + "(.*?)" + re.escape(CREDIT_END), inner, re.S)
+    outside = re.sub(re.escape(CREDIT_START) + ".*?" + re.escape(CREDIT_END), "", inner, flags=re.S)
+    outside = re.sub(r'\s*<a href="%s"[^>]*>Source on GitHub</a>\.?' % re.escape(GH_SOURCE_URL), "", outside).strip()
+    blurb = outside
+    if not blurb and old:
+        d = re.search(r'<p class="dd-fdesc">(.*?)</p>', old.group(1), re.S)
+        blurb = d.group(1).strip() if d else ""
+    return doc[:m.start(2)] + credit_html(blurb=blurb, gh=gh) + doc[m.end(2):]
 
 
 SPONSOR_CSS = """<style id="dd-spon-css">
@@ -321,6 +439,7 @@ text-decoration:none!important;font:600 13px/1.2 ui-sans-serif,system-ui,-apple-
 .dd-spon-wrap{margin:18px 0 0}
 .dd-spon-wrap.dd-spon-rp{margin:0 0 16px}
 .dd-spon-wrap.dd-spon-lk{margin:0 0 22px}
+.dd-spon-wrap.dd-spon-ed{margin:0 0 22px;clear:both}
 .dd-spon-strip{padding:12px 14px;background:#0b0b0e;border-bottom:1px solid rgba(255,255,255,.08)}
 .dd-spon-strip>.dd-spon-in{max-width:1100px;margin:0 auto}
 @media (max-width:620px){.dd-ban .dd-ban-box{border-radius:10px}.dd-spon{padding:9px 11px;gap:8px 10px;font-size:13.5px}.dd-spon a.dd-spon-btn{padding:7px 11px}}
@@ -377,6 +496,50 @@ vs.forEach(function(v){v.muted=true;v.defaultMuted=true;v.loop=true;v.controls=f
  v.addEventListener("ended",function(){v.currentTime=0;play(v)});
  var b=btn(v);if(b)b.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();v.muted=!v.muted;play(v);sync(v)});
  play(v)});
+var CS=0;function css(){if(CS||document.getElementById("dd-fly-css"))return;CS=1;var s=document.createElement("style");s.id="dd-fly-css";s.textContent=
+".dd-fly{position:fixed;left:0;top:0;margin:0;pointer-events:none;z-index:2147483600;will-change:transform,opacity;transform-origin:50% 50%;opacity:0}"+
+".dd-fly span{position:absolute;inset:0;border-radius:50%;pointer-events:none}"+
+".dd-fly .dd-fly-c{display:flex;align-items:center;justify-content:center;color:#fff;background:radial-gradient(circle at 30% 25%,#ffe3a3,#f5a524 38%,#ff4d8d 72%,#8b5cf6);box-shadow:0 0 0 4px rgba(255,255,255,.92),0 0 34px 10px rgba(245,165,36,.75),0 0 80px 26px rgba(255,77,141,.45)}"+
+".dd-fly .dd-fly-c svg{display:block!important;width:64%;height:64%;margin-left:4%;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}"+
+".dd-fly .dd-fly-c .w1,.dd-fly .dd-fly-c .w2,.dd-fly .dd-fly-c .w3{animation:ddFlyW .6s ease-in-out infinite}.dd-fly .dd-fly-c .w2{animation-delay:.12s}.dd-fly .dd-fly-c .w3{animation-delay:.24s}"+
+"@keyframes ddFlyW{0%,100%{opacity:.35}50%{opacity:1}}"+
+".dd-fly .dd-fly-g{inset:-22%;background:radial-gradient(circle,rgba(255,226,150,.6),rgba(255,77,141,0) 66%);animation:ddFlyG .42s ease-in-out infinite alternate}"+
+".dd-fly .dd-fly-r{border:4px solid #22e0cf;opacity:0;animation:ddFlyR .9s ease-out infinite}"+
+".dd-fly .dd-fly-r.r2{animation-delay:.3s;border-color:#ffd27a}.dd-fly .dd-fly-r.r3{animation-delay:.6s;border-color:#ff4d8d}"+
+"@keyframes ddFlyR{0%{transform:scale(1);opacity:.95}100%{transform:scale(2.2);opacity:0}}"+
+"@keyframes ddFlyG{from{transform:scale(.88);opacity:.55}to{transform:scale(1.15);opacity:1}}"+
+".dd-fly-hit{position:fixed;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;pointer-events:none;z-index:2147483600;border:3px solid #ffd27a;box-shadow:0 0 18px 6px rgba(245,165,36,.85);animation:ddFlyHit .55s ease-out forwards}"+
+"@keyframes ddFlyHit{0%{transform:scale(.5);opacity:1}100%{transform:scale(2.8);opacity:0}}"+
+".dd-ban button.dd-ban-mute.dd-landed{animation:ddLand .5s cubic-bezier(.3,1.6,.5,1)}"+
+"@keyframes ddLand{0%{transform:scale(1)}35%{transform:scale(1.6)}65%{transform:scale(.86)}100%{transform:scale(1)}}";
+(document.head||document.body).appendChild(s)}
+function fly(v,box,b){if(box.__ddFly)return;box.__ddFly=1;css();
+ var S=Math.round(Math.max(64,Math.min(130,box.getBoundingClientRect().height*.8)));
+ var el=document.createElement("div");el.className="dd-fly";el.setAttribute("aria-hidden","true");el.__ddBox=box;el.style.width=el.style.height=S+"px";
+ var ic='<svg class="dd-fly-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9h4l5.5-4.8v15.6L6.5 15h-4z" fill="currentColor"/>'+
+  '<path class="w1" d="M15 9a4.2 4.2 0 0 1 0 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>'+
+  '<path class="w2" d="M17.6 6.6a7.6 7.6 0 0 1 0 10.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>'+
+  '<path class="w3" d="M20.2 4.2a11 11 0 0 1 0 15.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>';
+ el.innerHTML='<span class="dd-fly-r"></span><span class="dd-fly-r r2"></span><span class="dd-fly-r r3"></span><span class="dd-fly-g"></span><span class="dd-fly-c">'+ic+"</span>";
+ document.body.appendChild(el);var T0=performance.now(),hit=0;
+ function ez(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+ function step(now){var t=(now-T0)/1000,br=box.getBoundingClientRect(),bt=b.getBoundingClientRect();
+  var sx=br.left+S*.62,sy=br.top+S*.62,ex=bt.left+bt.width/2,ey=bt.top+bt.height/2,es=Math.max(bt.width,bt.height)/S,x=sx,y=sy,sc=1,r=0,op=1,k;
+  if(t<.3){k=t/.3;sc=k<.7?k/.7*1.2:1.2-(k-.7)/.3*.2;op=Math.min(1,k*3);r=-20*(1-k)}
+  else if(t<.58){k=(t-.3)/.28;sc=1+.07*Math.sin(k*Math.PI*4);r=12*Math.sin(k*Math.PI*3)}
+  else if(t<1.38){k=ez((t-.58)/.8);var u=1-k,cx=sx+(ex-sx)*.3+Math.min(240,br.width*.25),cy=Math.min(sy,ey)-Math.max(90,S*1.3);
+   x=u*u*sx+2*u*k*cx+k*k*ex;y=u*u*sy+2*u*k*cy+k*k*ey;sc=1+(es-1)*k;r=360*k}
+  else{x=ex;y=ey;sc=es;op=Math.max(0,1-(t-1.38)/.22)}
+  el.style.transform="translate3d("+(x-S/2).toFixed(1)+"px,"+(y-S/2).toFixed(1)+"px,0) scale("+sc.toFixed(3)+") rotate("+r.toFixed(1)+"deg)";el.style.opacity=op;
+  if(t>=1.38&&!hit){hit=1;var h=document.createElement("div");h.className="dd-fly-hit";h.setAttribute("aria-hidden","true");h.style.left=ex+"px";h.style.top=ey+"px";
+   document.body.appendChild(h);setTimeout(function(){h.remove()},600);b.classList.remove("dd-landed");void b.offsetWidth;b.classList.add("dd-landed");
+   setTimeout(function(){b.classList.remove("dd-landed")},520)}
+  if(t<1.6)requestAnimationFrame(step);else{el.remove();box.__ddFly=0}}
+ requestAnimationFrame(step)}
+var touch=window.matchMedia&&(matchMedia("(hover: none)").matches||matchMedia("(pointer: coarse)").matches);
+vs.forEach(function(v){var b=btn(v),box=v.closest(".dd-ban-box");if(!b||!box)return;
+ if(touch&&window.IntersectionObserver){var arm=1;new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting||e.intersectionRatio<=0){arm=1;return}if(arm&&e.intersectionRatio>=.5){arm=0;fly(v,box,b)}})},{threshold:[0,.5,.75]}).observe(box)}
+ else box.addEventListener("pointerenter",function(e){if(e.pointerType!=="touch")fly(v,box,b)})});
 document.addEventListener("visibilitychange",function(){if(!document.hidden)vs.forEach(play)})}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()})();</script>"""
 
@@ -488,6 +651,119 @@ def put_sponsor(doc, anchor_re, prefix="", wrap="dd-spon-wrap"):
     return re.sub(anchor_re, lambda m: m.group(0) + "\n" + sponsor_html(prefix, wrap) + "\n", doc, count=1)
 
 
+# ---------------------------------------------------------------- filler ad cards (tools/filler-ads.json)
+FILL_START, FILL_END = "<!--dd-fill:start-->", "<!--dd-fill:end-->"
+FILLCSS_START, FILLCSS_END = "<!--dd-fillcss:start-->", "<!--dd-fillcss:end-->"
+FILL_FILE = os.path.join(REPO, "tools", "filler-ads.json")
+
+FILL_CSS = """<style id="dd-fill-css">
+.dd-fill,.dd-fill *{box-sizing:border-box;margin:0;letter-spacing:normal;text-transform:none}
+.dd-fill{--fc:#f5a524;display:flex;min-width:0;border-radius:16px;overflow:hidden;border:1px dashed color-mix(in srgb,var(--fc) 55%,transparent);
+background:linear-gradient(180deg,color-mix(in srgb,var(--fc) 9%,transparent),var(--panel,var(--card,#121218)) 45%);
+font:500 14.5px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#ecebe8;text-align:left;transition:border-color .2s,transform .2s}
+.dd-fill:hover{border-color:var(--fc);transform:translateY(-2px)}
+.dd-fill a.dd-fill-a{display:flex;flex-direction:column;width:100%;color:inherit!important;text-decoration:none!important}
+.dd-fill a.dd-fill-a:focus-visible{outline:2px solid var(--fc);outline-offset:-2px}
+.dd-fill .dd-fill-m{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;overflow:hidden;container-type:inline-size;
+background:radial-gradient(120% 140% at 0% 0%,color-mix(in srgb,var(--fc) 38%,transparent),transparent 60%),radial-gradient(90% 120% at 100% 100%,color-mix(in srgb,var(--fc) 22%,transparent),transparent 60%),
+repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 10px,transparent 10px 20px),#0d0d11;border-bottom:1px solid rgba(255,255,255,.08)}
+.dd-fill .dd-fill-art{display:flex;flex-direction:column;align-items:center;gap:3cqw;padding:0 8cqw;text-align:center}
+.dd-fill .dd-fill-art img{width:13cqw;height:13cqw;max-width:56px;max-height:56px;border-radius:12px;display:block}
+.dd-fill .dd-fill-art b{display:block;font:800 clamp(22px,10cqw,46px)/1.02 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#fff;letter-spacing:-.015em;
+text-shadow:0 2px 18px color-mix(in srgb,var(--fc) 55%,transparent)}
+.dd-fill .dd-fill-ad{position:absolute;top:10px;left:10px;font:800 10.5px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:5px 8px;border-radius:999px;
+background:var(--fc);color:#0b0b0e}
+.dd-fill .dd-fill-b{display:flex;flex-direction:column;gap:6px;padding:14px 16px 16px;flex:1}
+.dd-fill .dd-fill-meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:12px;color:#9b988f}
+.dd-fill .dd-fill-tag{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:999px;
+background:color-mix(in srgb,var(--fc) 18%,transparent);color:var(--fc)}
+.dd-fill .dd-fill-h{display:block;font-size:17px;line-height:1.35;font-weight:600;color:#f3f1ec;margin-top:2px}
+.dd-fill .dd-fill-p{display:block;color:#c9c6c0;font-size:14.5px}
+.dd-fill .dd-fill-cta{display:inline-flex;align-self:flex-start;margin-top:auto;padding:7px 13px;border-radius:999px;border:1px solid var(--fc);color:var(--fc);font-weight:700;font-size:13.5px}
+.dd-fill:hover .dd-fill-cta{background:var(--fc);color:#0b0b0e}
+.dd-fill .dd-fill-sp{display:block;height:6px}
+@media (prefers-reduced-motion:reduce){.dd-fill,.dd-fill:hover{transition:none;transform:none}}
+</style>"""
+
+
+def load_fill_ads():
+    try:
+        ads = json.load(open(FILL_FILE, encoding="utf-8")).get("ads", [])
+    except (OSError, ValueError) as e:
+        log("filler ads skipped:", e)
+        return []
+    return [a for a in ads if a.get("active", True) and a.get("title") and a.get("href")]
+
+
+def fill_needed(n):
+    """The user's rule: one ad card when a category's item count is odd and not a multiple of 3 (1, 5, 7, 11, 13 ...)."""
+    return 1 if (n % 2 == 1 and n % 3 != 0) else 0
+
+
+def fill_card(ad, prefix):
+    href = ad["href"]
+    if not re.match(r"^(https?:|mailto:|#)", href):
+        href = prefix + href
+    sponsor = ad.get("kind") == "sponsor"
+    lab = "Ad · Sponsor" if sponsor else "Ad · Subscribe"
+    rel = ' rel="sponsored noopener"' if href.startswith("http") else ""
+    return ('<aside class="dd-fill dd-fill-%s" data-ad="%s" style="--fc:%s" aria-label="%s: %s">'
+            '<a class="dd-fill-a" href="%s"%s><span class="dd-fill-m" aria-hidden="true"><span class="dd-fill-ad">Ad</span>'
+            '<span class="dd-fill-art"><img src="%sassets/favicon.svg" alt="" width="56" height="56"><b>%s</b></span></span>'
+            '<span class="dd-fill-b"><span class="dd-fill-meta"><span class="dd-fill-tag">%s</span><span>%s</span></span>'
+            '<span class="dd-fill-h">%s</span><span class="dd-fill-p">%s</span><span class="dd-fill-sp"></span>'
+            '<span class="dd-fill-cta">%s →</span></span></a></aside>') % (
+        "sponsor" if sponsor else "sub", esc(ad.get("id", "")), esc(ad.get("color") or "#f5a524"), lab, esc(ad["title"]),
+        esc(href), rel, prefix, esc(ad.get("art") or ad["title"]), lab, esc(ad.get("label", "")),
+        esc(ad["title"]), esc(ad.get("text", "")), esc(ad.get("cta") or "Learn more"))
+
+
+def _grid_end(doc, start):
+    """Index of the </div> closing the grid whose opening tag ends at start, plus the count of direct-child <article> cards."""
+    depth, n = 1, 0
+    for t in re.finditer(r"<(/?)(div|article)\b[^>]*>", doc[start:]):
+        if t.group(2) == "article":
+            if not t.group(1) and depth == 1:
+                n += 1
+            continue
+        depth += -1 if t.group(1) else 1
+        if depth == 0:
+            return start + t.start(), n
+    return -1, n
+
+
+def inject_fill(doc, ed, prefix="../../"):
+    """Append one filler ad card to every category grid (<div class="grid">) whose item count is odd and not a multiple of 3."""
+    doc = re.sub(re.escape(FILL_START) + ".*?" + re.escape(FILL_END), "", doc, flags=re.S)
+    doc = re.sub(re.escape(FILLCSS_START) + ".*?" + re.escape(FILLCSS_END) + r"\n?", "", doc, flags=re.S)
+    ads = load_fill_ads()
+    if not ads:
+        return doc
+    spots = []
+    for m in re.finditer(r'<div class="grid">', doc):
+        end, n = _grid_end(doc, m.end())
+        if end > 0 and fill_needed(n):
+            spots.append(end)
+    if not spots:
+        return doc
+    import hashlib
+    seed = int(hashlib.sha1(("%s/%s" % (ed["date"], ed["slot"])).encode("utf-8")).hexdigest()[:8], 16)
+    for k, end in reversed(list(enumerate(spots))):
+        ad = ads[(seed + k) % len(ads)]
+        doc = doc[:end] + FILL_START + fill_card(ad, prefix) + FILL_END + doc[end:]
+    doc = re.sub(r"</head>", lambda m: FILLCSS_START + FILL_CSS + FILLCSS_END + "\n</head>", doc, count=1, flags=re.I)
+    return doc
+
+
+def fill_key():
+    import hashlib
+    try:
+        raw = open(FILL_FILE, "rb").read()
+    except OSError:
+        raw = b""
+    return hashlib.sha1(raw + FILL_CSS.encode("utf-8")).hexdigest()[:12]
+
+
 def icon_links(prefix):
     """Favicon + touch icon + manifest links. prefix is the path back to the site root ("" or "../../")."""
     a = prefix + "assets/"
@@ -514,6 +790,7 @@ border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);white-sp
 #dd-nav a.dd-home{background:var(--dd-accent);color:#0b0b0e!important;border-color:transparent;font-weight:800}
 #dd-nav .dd-lab{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#b9b6ae;font-weight:500}
 #dd-nav .dd-lab b{color:var(--dd-accent);font-weight:800;margin-right:6px}
+#dd-nav .dd-tz{font-size:.88em;letter-spacing:.03em}#dd-nav .dd-loc{color:#b9b6ae;font-weight:500}
 #dd-nav .dd-off,#dd-foot .dd-off{opacity:.35;pointer-events:none}
 #dd-nav button.dd-tts{appearance:none;cursor:pointer;font:inherit;color:#ecebe8;display:inline-flex;align-items:center;gap:6px;padding:7px 11px;min-height:32px;
 border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);white-space:nowrap;font-weight:600}
@@ -525,11 +802,24 @@ border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,2
 background:#09090c;border-top:2px solid var(--dd-accent);font:600 14px/1.3 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 #dd-foot a{color:#ecebe8!important;text-decoration:none!important;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
 #dd-foot a.dd-home{background:var(--dd-accent);color:#0b0b0e!important;border-color:transparent;font-weight:800}
-#dd-foot .dd-credit{flex-basis:100%%;margin-top:14px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
+#dd-foot .dd-fcols{flex-basis:100%%;width:100%%;max-width:1100px;margin:22px auto 0;padding-top:28px;border-top:1px solid rgba(255,255,255,.09);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px 64px;align-items:start;text-align:left;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
+#dd-foot .dd-fcols a{display:inline;padding:0;border:0;border-radius:0;background:none;white-space:normal}
+#dd-foot .dd-fcol p,#dd-foot .dd-fcol ul{margin:0;padding:0}
+#dd-foot .dd-fbrand{font-size:18px;line-height:1.3}
+#dd-foot .dd-fdesc{margin-top:12px!important;max-width:58ch;color:#76736c;line-height:1.65}
+#dd-foot .dd-credit{margin-top:16px!important;color:#a7a39a}
+#dd-foot .dd-credit a{white-space:nowrap;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
 #dd-foot .dd-credit-ic{display:inline-block;width:16px;height:16px;vertical-align:-3px;margin:0 5px 0 1px;border-radius:3px}
-#dd-foot .dd-credit a{display:inline;white-space:nowrap;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
-#dd-foot .dd-contactln{flex-basis:100%%;margin-top:2px;text-align:center;font:500 13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#8d8a83}
-#dd-foot .dd-contactln a{display:inline;padding:0;border:0;border-radius:0;color:#ecebe8!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px;font-weight:700}
+#dd-foot .dd-brand{white-space:nowrap;font-weight:700}#dd-foot .dd-brand-ic{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.2em;margin:0 .3em 0 0;border-radius:3px}#dd-foot .dd-brand .cw{color:#fff}#dd-foot a.dd-brand-a{text-decoration:none!important}#dd-foot a.dd-brand-a:hover .cw,#dd-foot a.dd-brand-a:focus-visible .cw{text-decoration:underline;text-decoration-color:var(--dd-accent);text-underline-offset:3px}#dd-foot .dd-brand .c0{color:#f5a524}#dd-foot .dd-brand .c1{color:#22e0cf}#dd-foot .dd-brand .c2{color:#9b6bff}#dd-foot .dd-brand .c3{color:#ff5a2e}
+#dd-foot .dd-flinks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px;padding-left:32px;border-left:1px solid rgba(255,255,255,.09)}
+#dd-foot .dd-fh{margin:0 0 14px!important;font:700 11px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--dd-accent)}
+#dd-foot .dd-flinks ul{list-style:none;display:grid;gap:12px}
+#dd-foot .dd-flinks li{min-width:0;list-style:none}
+#dd-foot .dd-flinks a{color:#ecebe8!important;font-size:14px;font-weight:600;text-decoration:none!important;overflow-wrap:anywhere}
+#dd-foot .dd-flinks a:hover,#dd-foot .dd-flinks a:focus-visible{color:#fff!important;text-decoration:underline!important;text-decoration-color:var(--dd-accent)!important;text-underline-offset:3px}
+#dd-foot .dd-fnote{display:block;margin-top:3px!important;color:#76736c;font-size:12px;font-weight:500;line-height:1.45}
+@media (max-width:760px){#dd-foot .dd-fcols{grid-template-columns:minmax(0,1fr);gap:26px}#dd-foot .dd-flinks{padding:24px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.09)}}
+@media (max-width:440px){#dd-foot .dd-flinks{grid-template-columns:minmax(0,1fr);gap:22px}}
 @media (max-width:620px){#dd-nav{gap:6px;padding:0 8px}#dd-nav .dd-lab{font-size:12px}#dd-nav .dd-t,#dd-nav .tts-l{display:none}#dd-nav a,#dd-nav button.dd-tts{padding:7px 9px}}
 </style>
 <script>(function(){function fix(){var h=document.getElementById('dd-nav');if(!h)return;var H=h.offsetHeight;
@@ -551,17 +841,18 @@ def nav_link(ed, cls, label, arrow_first):
     if not ed:
         return '<a class="%s dd-off" aria-disabled="true">%s</a>' % (cls, label)
     href = "../%s/%s.html" % (ed["date"], ed["slot"])
-    tip = "%s · %s %s" % (nice_date(ed["date"]), SLOTS[ed["slot"]]["time"], SLOTS[ed["slot"]]["name"])
+    tip = "%s · %s %s %s" % (nice_date(ed["date"]), SLOTS[ed["slot"]]["time"], tz_label(ed["date"]), SLOTS[ed["slot"]]["name"])
     return '<a class="%s" href="%s" title="%s">%s</a>' % (cls, href, esc(tip), label)
 
 
 def inject_nav(doc, ed, prev, nxt, items=()):
-    for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END), (ICON_START, ICON_END), (CREDIT_START, CREDIT_END), (SPON_START, SPON_END)):
+    for a, b in ((NAV_START, NAV_END), (FOOT_START, FOOT_END), (STYLE_START, STYLE_END), (ICON_START, ICON_END), (CREDIT_START, CREDIT_END), (SPON_START, SPON_END), (SPON2_START, SPON2_END)):
         doc = re.sub(re.escape(a) + ".*?" + re.escape(b) + r"\n?", "", doc, flags=re.S)
     s = SLOTS[ed["slot"]]
     bar = ('%s<nav id="dd-nav" aria-label="Daily Design"><a class="dd-home" href="../../index.html">← <span class="dd-t">Back to </span>index</a>'
-           '<span class="dd-lab"><b>%s</b>%s · %s</span>%s%s%s</nav>%s\n') % (
-        NAV_START, esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])), TTS_BUTTONS,
+           '<span class="dd-lab"><b>%s%s</b>%s · %s</span>%s%s%s</nav>%s\n') % (
+        NAV_START, esc(s["time"]), tz_html(ed["date"], ed["slot"]), esc(s["name"]), esc(nice_date(ed["date"])),
+        TTS_BUTTONS + '<script src="../../assets/tzlocal.js" defer></script>',
         nav_link(prev, "dd-prev", '‹ <span class="dd-t">Prev</span>', True),
         nav_link(nxt, "dd-next", '<span class="dd-t">Next</span> ›', False), NAV_END)
     foot = ('%s<div id="dd-foot">%s<a class="dd-home" href="../../index.html">← Back to the Daily Design index</a>%s%s</div>%s\n') % (
@@ -576,9 +867,11 @@ def inject_nav(doc, ed, prev, nxt, items=()):
         doc = re.sub(r"(<head[^>]*>)", lambda m: m.group(1) + "\n" + seo_block(ed, items), doc, count=1, flags=re.I)
     doc = re.sub(r"</head>", lambda m: icon_links("../../") + "\n" + nav_css(s["color"]) + "\n</head>", doc, count=1, flags=re.I)
     doc = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + "\n" + bar + sponsor_html("../../", "dd-spon-strip") + "\n", doc, count=1, flags=re.I)
+    # second ad spot (its own independent copy of the lower ad): just before the edition's in-numbers block (#charts)
+    doc = re.sub(r'<section\b[^>]*\bid="charts"[^>]*>', lambda m: sponsor_html("../../", "dd-spon-wrap dd-spon-ed", "links") + "\n" + m.group(0), doc, count=1)
     idx = doc.lower().rfind("</body>")
     doc = doc[:idx] + foot + doc[idx:] if idx >= 0 else doc + foot
-    return doc
+    return inject_fill(doc, ed)
 
 
 # ---------------------------------------------------------------- Markdown reports
@@ -764,7 +1057,7 @@ def seo_fields(ed, items=(), story=""):
     desc = ed.get("summary") or ""
     if not desc:
         desc = "%s %s for %s: %d linked items on how AI is changing creative work." % (
-            s["time"], s["name"], day, ed.get("item_count", 0))
+            "%s %s" % (s["time"], tz_label(ed["date"])), s["name"], day, ed.get("item_count", 0))
     meds = [MEDIUM_LABEL[t] for t in ed.get("tags", []) if t in MEDIUM_LABEL]
     types = []
     for it in items:
@@ -860,13 +1153,15 @@ def md_inline(t):
     return re.sub(r"\x00(\d+)\x00", lambda m: "<code>%s</code>" % esc(codes[int(m.group(1))]), t)
 
 
-def md_to_html(md):
+def md_blocks(md):
+    """Top-level Markdown blocks in order: dict(tag, html, src) for headings/p/hr/blockquote/table, and
+    dict(tag="ul"|"ol", items=[(li_html, li_src), ...]) for lists. md_to_html() joins them; report pages add part ids."""
     lines = md.replace("\r\n", "\n").split("\n")
     out, para, i = [], [], 0
 
     def flush():
         if para:
-            out.append("<p>%s</p>" % md_inline(" ".join(x.strip() for x in para)))
+            out.append(dict(tag="p", html=md_inline(" ".join(x.strip() for x in para)), src=" ".join(x.strip() for x in para)))
             para.clear()
     while i < len(lines):
         l = lines[i]
@@ -875,22 +1170,22 @@ def md_to_html(md):
         m = re.match(r"^(#{1,6})\s+(.*?)\s*#*\s*$", l)
         if m:
             flush(); n = len(m.group(1))
-            out.append("<h%d>%s</h%d>" % (n, md_inline(m.group(2)), n)); i += 1; continue
+            out.append(dict(tag="h%d" % n, html=md_inline(m.group(2)), src=m.group(2))); i += 1; continue
         if re.match(r"^\s{0,3}([-*_])(\s*\1){2,}\s*$", l):
-            flush(); out.append("<hr>"); i += 1; continue
+            flush(); out.append(dict(tag="hr", html="", src="")); i += 1; continue
         if l.lstrip().startswith(">"):
             flush(); q = []
             while i < len(lines) and lines[i].lstrip().startswith(">"):
                 q.append(re.sub(r"^\s*>\s?", "", lines[i])); i += 1
-            out.append("<blockquote>%s</blockquote>" % md_to_html("\n".join(q))); continue
+            out.append(dict(tag="blockquote", html=md_to_html("\n".join(q)), src="\n".join(q))); continue
         if l.lstrip().startswith("|") and i + 1 < len(lines) and re.match(r"^\s*\|?[\s:|-]+\|[\s:|-]*$", lines[i + 1]):
-            flush(); rows = []
+            flush(); rows = []; src = []
             while i < len(lines) and lines[i].lstrip().startswith("|"):
-                rows.append([c.strip() for c in lines[i].strip().strip("|").split("|")]); i += 1
+                src.append(lines[i]); rows.append([c.strip() for c in lines[i].strip().strip("|").split("|")]); i += 1
             head, body = rows[0], rows[2:]
-            out.append("<table><thead><tr>%s</tr></thead><tbody>%s</tbody></table>" % (
+            out.append(dict(tag="table", src="\n".join(src), html="<thead><tr>%s</tr></thead><tbody>%s</tbody>" % (
                 "".join("<th>%s</th>" % md_inline(c) for c in head),
-                "".join("<tr>%s</tr>" % "".join("<td>%s</td>" % md_inline(c) for c in r) for r in body)))
+                "".join("<tr>%s</tr>" % "".join("<td>%s</td>" % md_inline(c) for c in r) for r in body))))
             continue
         m = re.match(r"^(\s*)([-*+]|\d+[.)])\s+(.*)$", l)
         if m:
@@ -903,12 +1198,158 @@ def md_to_html(md):
                     items[-1] += " " + lines[i].strip().lstrip("-*+ ").strip(); i += 1
                 else:
                     break
-            tag = "ol" if ordered else "ul"
-            out.append("<%s>%s</%s>" % (tag, "".join("<li>%s</li>" % md_inline(x) for x in items), tag))
+            out.append(dict(tag="ol" if ordered else "ul", items=[(md_inline(x), x) for x in items]))
             continue
         para.append(l); i += 1
     flush()
+    return out
+
+
+def blocks_html(blocks, ids=None):
+    """Render md_blocks() output. ids maps (block index, li index or None) -> part id."""
+    ids = ids or {}
+    out = []
+    for bi, b in enumerate(blocks):
+        a = (lambda k: ' id="%s"' % ids[k] if k in ids else "")
+        t = b["tag"]
+        if t == "hr":
+            out.append("<hr>")
+        elif t in ("ul", "ol"):
+            out.append("<%s>%s</%s>" % (t, "".join("<li%s>%s</li>" % (a((bi, li)), h) for li, (h, _) in enumerate(b["items"])), t))
+        else:
+            out.append("<%s%s>%s</%s>" % (t, a((bi, None)), b["html"], t))
     return "\n".join(out)
+
+
+def md_to_html(md):
+    return blocks_html(md_blocks(md))
+
+
+# ---------------------------------------------------------------- report parts (marker anchors)
+# Every addressable part of a report gets a permanent id, used on the static page (reports/<date>/<slot>.html),
+# by the index reader (#report=<date>/<slot>&part=<id>) and in reports/<date>/<slot>.parts.json.
+#   section (h2)      s-<slug>                 slug = first 4 words of the heading, max 24 chars
+#   subsection (h3)   <section id>-<slug>      slug = first 3 words, max 16 chars
+#   item / paragraph  <parent id>-i<n>         n = 1-based position under its nearest h2/h3 (list items, paragraphs,
+#                                              quotes, tables; h1, rules and image-only paragraphs are skipped)
+# Text before the first h2 sits under "s-intro"; text after a horizontal rule (closing notes) under "s-notes" (no part of its own). Duplicate ids get -2, -3 ... Once a parts.json exists, a part whose text
+# is unchanged keeps its old id even if the report is edited, so published marker links never move.
+PARTS_VERSION = 1
+
+
+def part_slug(text, words, maxlen):
+    """First `words` words of the text (leading the/a/an dropped), cut back to whole words within maxlen."""
+    w = slugify(strip_md(text)).split("-")
+    while len(w) > 1 and w[0] in ("the", "a", "an"):
+        w = w[1:]
+    w = w[:words]
+    while len(w) > 1 and len("-".join(w)) > maxlen:
+        w = w[:-1]
+    return "-".join(w)[:maxlen].strip("-") or "x"
+
+
+def part_text(src):
+    return html.unescape(strip_md(re.sub(r"(?<![\w_])_(?!\s)(.+?)(?<!\s)_(?!\w)", r"\1", src)))
+
+
+def part_hash(text):
+    import hashlib
+    return hashlib.sha1(re.sub(r"[^a-z0-9]+", "", text.lower()).encode()).hexdigest()[:10]
+
+
+def report_parts(md, items=(), old=None, known=None):
+    """-> (blocks, ids, parts) for a report's Markdown. ids feeds blocks_html(); parts goes into parts.json.
+    known: url -> {medium, type} from every edition's items, used where this report's own item has no facet."""
+    blocks = md_blocks(md)
+    by_url = {}
+    for it in items or ():
+        by_url.setdefault(it.get("url"), it)
+    old_by_hash = {}
+    for op in (old or {}).get("parts", []):
+        old_by_hash.setdefault((op.get("kind"), op.get("h")), []).append(op["id"])
+    used, ids, parts = set(), {}, []
+    sec = dict(id="s-intro", heading="", medium="")
+    sub = None
+    counts = {}
+
+    def uniq(base):
+        cand, k = base, 2
+        while cand in used:
+            cand = "%s-%d" % (base, k); k += 1
+        return cand
+
+    def add(key, kind, base, src, extra):
+        text = part_text(src)
+        h = part_hash(text)
+        keep = [x for x in old_by_hash.get((kind, h), []) if x not in used]
+        pid = keep[0] if keep else uniq(base)
+        used.add(pid); ids[key] = pid
+        p = dict(id=pid, kind=kind)
+        p.update(extra)
+        p["text"] = clip(text, 160)
+        p["h"] = h
+        parts.append(p)
+        return pid
+
+    def item(key, src, kind):
+        parent = sub or sec
+        n = counts[parent["id"]] = counts.get(parent["id"], 0) + 1
+        extra = dict(parent=parent["id"], section=sec["id"])
+        urls = [u for _, u in LINK_RE.findall(src)]
+        it = next((by_url[u] for u in urls if u in by_url), None)
+        k = {}
+        for u in urls:
+            if u in (known or {}):
+                k = known[u]; break
+        med = (it or {}).get("medium") or parent.get("medium") or sec.get("medium") or k.get("medium") or ""
+        typ = (it or {}).get("type") or k.get("type") or ""
+        if med: extra["medium"] = med
+        if typ: extra["type"] = typ
+        if it:
+            extra["title"] = it.get("title", "")
+            extra["url"] = it.get("url", "")
+        add(key, kind, "%s-i%d" % (parent["id"], n), src, extra)
+
+    for bi, b in enumerate(blocks):
+        t = b["tag"]
+        if t == "h1":
+            continue
+        if t == "hr":  # a rule closes the section: closing notes after it go under s-notes
+            if sec["id"] != "s-intro" or counts.get("s-intro"):
+                sec = dict(id=uniq("s-notes"), heading="", medium="")
+                used.add(sec["id"])
+            sub = None
+            continue
+        if t == "h2":
+            heading = part_text(b["src"])
+            sec = dict(heading=heading, medium=medium_of(heading))
+            sec["id"] = add((bi, None), "section", "s-" + part_slug(b["src"], 4, 24), b["src"], dict(heading=heading))
+            if sec["medium"]: parts[-1]["medium"] = sec["medium"]
+            sub = None
+            continue
+        if t == "h3":
+            heading = part_text(b["src"])
+            sub = dict(heading=heading, medium=medium_of(heading) or sec.get("medium", ""))
+            extra = dict(parent=sec["id"], section=sec["id"], heading=heading)
+            if sub["medium"]: extra["medium"] = sub["medium"]
+            sub["id"] = add((bi, None), "subsection", "%s-%s" % (sec["id"], part_slug(b["src"], 3, 16)), b["src"], extra)
+            continue
+        if t in ("ul", "ol"):
+            for li, (_, src) in enumerate(b["items"]):
+                item((bi, li), src, "item")
+            continue
+        if t == "p" and not part_text(b["src"]):
+            continue  # image-only paragraph (the header image)
+        item((bi, None), b.get("src", ""), "heading" if t[:1] == "h" else "paragraph")
+    return blocks, ids, parts
+
+
+def parts_doc(ed, parts):
+    key = "%s/%s" % (ed["date"], ed["slot"])
+    return dict(version=PARTS_VERSION, report=key, date=ed["date"], slot=ed["slot"],
+                page=SITE_URL + public_path(ed), reader=SITE_URL + "#report=" + key,
+                link="#report=%s&part=<id> (index reader) or reports/%s.html#<id> (static page)" % (key, key),
+                parts=parts)
 
 
 REPORT_CSS = """<style>
@@ -920,9 +1361,21 @@ REPORT_CSS = """<style>
 </style>"""
 
 
-def report_page(ed, md, items):
+def with_xlist(body):
+    """Report pages: the X list line goes just before the sign-off (the body's last paragraph), or at the end if the body
+    doesn't end with a paragraph. The edition's own text is untouched."""
+    line = xlist_html("rd-xlist") + "\n"
+    m = re.search(r"<p(?: id=\"[^\"]*\")?>(?:(?!</?p[ >]).)*</p>\s*$", body, re.S)
+    if m:
+        return body[:m.start()] + line + body[m.start():]
+    return body.rstrip() + "\n" + line
+
+
+def report_page(ed, md, items, old_parts=None, known=None):
+    """-> (page html, parts list)."""
     s = SLOTS[ed["slot"]]
-    body = md_to_html(md)
+    blocks, ids, parts = report_parts(md, items, old_parts, known)
+    body = with_xlist(blocks_html(blocks, ids))
     gh = REPO_BLOB + ed["path"]
     key = "%s/%s" % (ed["date"], ed["slot"])
     return ("""<!doctype html>
@@ -948,13 +1401,14 @@ def report_page(ed, md, items):
 <div class="rd-foot"><a class="btn" href="../../index.html">← Back to the Daily Design index</a></div>
 </section>
 </main>
-<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources; engagement numbers were read when each edition was compiled and will have changed since.%s</div></footer>
+<footer class="site"><div class="wrap">%s</div></footer>
 <script src="../../assets/tts.js" defer></script>
+<script src="../../assets/tzlocal.js" defer></script>
 </body>
 </html>
 """) % (seo_block(ed, items, report_story(md)), icon_links("../../"), REPORT_CSS, key,
         sponsor_html("../../", "dd-spon-wrap dd-spon-rp"), s["color"],
-        esc(s["time"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../"))
+        esc(s["time"]) + tz_html(ed["date"], ed["slot"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../", blurb=FOOT_BLURB_NUMBERS)), parts
 
 
 REPORT_TTS = ('<button class="btn rd-tts" id="dd-tts-play" type="button" hidden aria-label="Listen: read this page aloud" aria-pressed="false">'
@@ -962,8 +1416,20 @@ REPORT_TTS = ('<button class="btn rd-tts" id="dd-tts-play" type="button" hidden 
               '<button class="btn rd-tts" id="dd-tts-stop" type="button" hidden aria-label="Stop reading"><span aria-hidden="true">■</span> Stop</button>')
 
 
+def parts_path(e):
+    """reports/<date>/<slot>.parts.json: the marker anchor map next to the report's Markdown."""
+    return re.sub(r"\.md$", ".parts.json", e["path"])
+
+
 def build_report_pages(recs):
     pages = []
+    known = {}  # url -> medium/type facets from every edition, for report items whose own section gives none
+    for r in recs:
+        for it in r["items"]:
+            k = known.setdefault(it.get("url"), {})
+            for f in ("medium", "type"):
+                if it.get(f) and not k.get(f):
+                    k[f] = it[f]
     for r in recs:
         e = r["edition"]
         if e["kind"] != "report":
@@ -972,10 +1438,45 @@ def build_report_pages(recs):
         if not os.path.exists(mdp):
             continue
         dest = os.path.join(REPO, public_path(e))
-        if write_if_changed(dest, report_page(e, open(mdp, encoding="utf-8").read(), r["items"])):
+        pjson = os.path.join(REPO, parts_path(e))
+        old = None
+        if os.path.exists(pjson):
+            try:
+                old = json.load(open(pjson, encoding="utf-8"))
+            except ValueError:
+                old = None
+        page, parts = report_page(e, open(mdp, encoding="utf-8").read(), r["items"], old, known)
+        if write_if_changed(dest, page):
             log("report page", public_path(e))
+        if write_if_changed(pjson, jdump(parts_doc(e, parts), pretty=True)):
+            log("report parts", parts_path(e), "(%d parts)" % len(parts))
         pages.append(public_path(e))
     return pages
+
+
+SPECIAL_TYPES = ("maintenance", "launch")
+
+
+def load_special_days(days):
+    """Special days from tools/special-days.json -> [{date, type}] for index.json, newest first.
+    type 'maintenance' (default): red on the archive calendars, never published; dropped if the date has an edition.
+    type 'launch': aqua-green on the calendars; kept either way (a launch day with editions stays clickable).
+    Bad entries are skipped."""
+    p = os.path.join(REPO, "tools", "special-days.json")
+    try:
+        raw = json.load(open(p, encoding="utf-8")).get("days", [])
+    except FileNotFoundError:
+        return []
+    out = {}
+    for d in raw:
+        t = (d.get("type") or "maintenance") if isinstance(d, dict) else "maintenance"
+        d = d.get("date") if isinstance(d, dict) else d
+        if not (isinstance(d, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d) and t in SPECIAL_TYPES):
+            continue
+        if t == "maintenance" and d in days:
+            continue
+        out[d] = t
+    return [dict(date=d, type=out[d]) for d in sorted(out, reverse=True)]
 
 
 def build_index_seo(editions):
@@ -1020,16 +1521,17 @@ def build_index_seo(editions):
     doc = re.sub(r"(<meta name=\"viewport\"[^>]*>)", lambda m: m.group(1) + "\n" + head, doc, count=1)
     # latest day: plain links inside #latest (the app replaces them once it loads)
     day = latest["date"] if latest else ""
-    cards = "".join('<a class="static-ed" href="%s"><b>%s · %s</b> %s</a>' % (
-        esc(public_path(e)), esc(e["time"]), esc(e["title"]), esc(seo_fields(e)["headline"]))
+    cards = "".join('<a class="static-ed" href="%s"><b>%s %s · %s</b> %s</a>' % (
+        esc(public_path(e)), esc(e["time"]), tz_label(e["date"]), esc(e["title"]), esc(seo_fields(e)["headline"]))
         for e in editions if e["date"] == day)
     doc = re.sub(re.escape(LATEST_START) + ".*?" + re.escape(LATEST_END), lambda m: LATEST_START + cards + LATEST_END, doc, flags=re.S)
+    doc = re.sub(r'(<span class="dd-tz" data-tz>)[^<]*(</span>)', lambda m: m.group(1) + tz_label(pt_today()) + m.group(2), doc)  # app.js refreshes it too
     if LATEST_START not in doc:
         doc = doc.replace('<div class="daygrid big" id="latest">', '<div class="daygrid big" id="latest">' + LATEST_START + cards + LATEST_END, 1)
     lis = "".join('<li><a href="%s">%s</a></li>' % (esc(public_path(e)), esc(seo_fields(e)["title"].rsplit(" · ", 1)[0]))
                   for e in editions[:200])
     static = (STATIC_START + '<noscript><section class="wrap block"><h2>All editions</h2><ul>%s</ul>'
-              '<p><a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">Sitemap</a> · <a href="contact.html">Contact</a></p></section></noscript>' + STATIC_END) % lis
+              '<p><a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">Sitemap</a> · <a href="contact.html">Contact</a> · <a href="about.html">About</a></p></section></noscript>' + STATIC_END) % lis
     doc = re.sub(re.escape(STATIC_START) + ".*?" + re.escape(STATIC_END), lambda m: static, doc, flags=re.S)
     if STATIC_START not in doc:
         doc = doc.replace('<footer class="site">', static + "\n" + '<footer class="site">', 1)
@@ -1180,7 +1682,7 @@ def build_contact_page():
 <main class="ct">
 <nav class="ct-top" aria-label="Daily Design"><a class="btn" href="index.html">← Daily Design index</a></nav>
 <section class="ct-card" aria-labelledby="ct-h">
-<div class="eyebrow">Daily Design · Contact</div>
+<div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · Contact">Daily Design · Contact</a></div>
 <h1 id="ct-h">Say <em>hello</em></h1>
 <p class="lede">Got a question, a tip for a future edition, a correction, or want to sponsor Daily Design? Email us. Tap Copy to grab the address, or Email us to open your mail app.</p>
 <div class="ct-mail"><span class="ct-addr" id="ct-addr">%s</span>
@@ -1198,14 +1700,185 @@ def build_contact_page():
 <a class="btn pri" href="%s">Email about sponsoring</a></div>
 </section>
 </main>
-<footer class="site"><div class="wrap">Daily Design is a public archive of AI design research digests. Links go to the original creators and sources.%s</div></footer>
+<footer class="site"><div class="wrap">%s</div></footer>
 %s
 </body>
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, e, esc(mailto("Daily Design")), rates_html(), BANNER_SPEC_HTML, esc(mailto("Sponsoring Daily Design")),
-       credit_html("", contact=False), CONTACT_JS % CONTACT_EMAIL)
+       credit_html("", page="contact", blurb=FOOT_BLURB), CONTACT_JS % CONTACT_EMAIL)
     if write_if_changed(os.path.join(REPO, CONTACT_PATH), doc):
         log("contact page", CONTACT_PATH)
+
+
+ABOUT_CSS = """<style>
+.ab h2{font:400 clamp(26px,4vw,34px)/1.1 var(--serif);margin:30px 0 10px}
+.ab h3{font:700 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px}
+.ab p{color:#d5d1c8;line-height:1.55}
+.ab-eds{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(4px,1.3vw,10px)}
+.ab-eds li{min-width:0;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:clamp(8px,1.6vw,14px);padding:clamp(7px,1.5vw,14px) clamp(5px,1.4vw,15px);overflow-wrap:anywhere;hyphens:auto}
+.ab-eds b{display:block;font:800 clamp(9.5px,1.25vw,13px)/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--c)}
+.ab-eds b .dd-loc{display:block;font-size:.9em;letter-spacing:0}
+.ab-eds span.n{display:block;font:700 clamp(11px,1.5vw,16px)/1.25 var(--sans);color:var(--ink);margin:4px 0 2px}.ab-eds small{display:block;color:var(--mut);font-size:clamp(10px,1.25vw,13.5px);line-height:1.3}
+.ab-since{margin:-4px 0 0;font:600 13px/1.4 var(--sans);letter-spacing:.04em;color:var(--mut)}.ab-since b{color:var(--aqua);font-weight:800}
+.ab-sub{margin:16px 0 0;padding:12px 14px;border:1px solid var(--line);border-left:3px solid #ffcf5a;border-radius:12px;background:rgba(255,207,90,.05)}
+.ab-sub b.g{color:#ffcf5a}
+.ab-map{columns:2 220px;column-gap:28px;margin:6px 0 0;padding-left:18px;color:#d5d1c8;line-height:1.7}
+.ab-map li{break-inside:avoid}
+.ab a{color:var(--ink);text-decoration-color:var(--amber);text-underline-offset:3px}.ab a:hover{color:#fff}
+.ab-month{margin:0 0 6px}
+.ab-days{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:2px 16px;font-size:14px}
+.ab-days li{padding:4px 0;border-bottom:1px solid var(--line);color:var(--mut)}
+.ab-days .d{display:inline-block;min-width:6.2em;color:#d5d1c8;font-weight:600}
+.ab-days a{display:inline-block;margin-right:8px;font-weight:700;text-decoration:none;color:var(--c)}.ab-days a:hover,.ab-days a:focus-visible{text-decoration:underline}
+.ab .dd-tz{font-size:.88em}
+.ab .lede{max-width:none;text-wrap:balance;text-wrap:pretty}.ab .lede .nw{white-space:nowrap}
+</style>"""
+
+SUB_LOCK_DATE = "2026-11-08"  # first sub-access locks (editions dated from SUB_FROM, 7 days after they publish)
+SUB_FROM = "2026-11-01"
+FREE_THROUGH = "2026-10-31"
+
+
+def short_date(d):
+    d = dt.date.fromisoformat(d)
+    return "%s %d, %d" % (d.strftime("%b"), d.day, d.year)
+
+
+def sub_access_text(past):
+    """About-page note on the sub access archive. past=False before SUB_LOCK_DATE (Pacific), True on/after it."""
+    lock, frm, free = short_date(SUB_LOCK_DATE), short_date(SUB_FROM), short_date(FREE_THROUGH)
+    if past:
+        return ("Since %s, editions dated %s and later become <b class=\"g\">sub access</b> (members only) 7 days after they publish. "
+                "Everything dated through %s stays free forever.") % (lock, frm, free)
+    return ("Starting %s, editions dated %s and later will become <b class=\"g\">sub access</b> (members only) 7 days after they publish. "
+            "Everything dated through %s stays free forever.") % (lock, frm, free)
+
+
+def launch_date():
+    p = os.path.join(REPO, "tools", "special-days.json")
+    try:
+        for d in json.load(open(p, encoding="utf-8")).get("days", []):
+            if isinstance(d, dict) and d.get("type") == "launch" and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d.get("date", "")):
+                return d["date"]
+    except (OSError, ValueError):
+        pass
+    return None
+
+
+SLOT_BLURB = {"morning": "The briefing", "noon": "The field report", "best": "The best-of", "hottest": "The hot list"}  # from the index hero copy
+
+
+def build_about_page(editions):
+    url = abs_url(ABOUT_PATH)
+    title = "About · %s" % SITE_NAME
+    desc = ("What Daily Design is: a public archive of AI design research digests from %s, four editions a day in Pacific time, "
+            "plus a site map of every edition." % STUDIO_NAME)
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "name": title, "url": url, "description": desc,
+          "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": SITE_URL},
+          "publisher": publisher_ld(), "creator": studio_ld()}
+    head = SEO_START + "".join([
+        '<title>%s</title>' % esc(title),
+        '<meta name="description" content="%s">' % esc(desc),
+        '<link rel="canonical" href="%s">' % url,
+        '<meta name="robots" content="index,follow">',
+        '<meta property="og:type" content="website">',
+        '<meta property="og:site_name" content="%s">' % SITE_NAME,
+        '<meta property="og:title" content="%s">' % esc(title),
+        '<meta property="og:description" content="%s">' % esc(desc),
+        '<meta property="og:url" content="%s">' % url,
+        '<meta property="og:image" content="%s">' % abs_url("assets/favicon-512.png"),
+        '<meta property="og:locale" content="en_US">',
+        '<meta name="twitter:card" content="summary">',
+        '<meta name="twitter:title" content="%s">' % esc(title),
+        '<meta name="twitter:description" content="%s">' % esc(desc),
+        '<meta name="twitter:image" content="%s">' % abs_url("assets/favicon-512.png"),
+        '<link rel="alternate" type="application/atom+xml" title="Daily Design feed" href="%s">' % abs_url("feed.xml"),
+        ld_json(ld)]) + SEO_END
+    today = pt_today()
+    order = sorted(SLOTS, key=lambda k: SLOTS[k]["order"])
+    eds = "".join('<li style="--c:%s"><b>%s%s</b><span class="n">%s</span><small>%s</small></li>' % (
+        SLOTS[k]["color"], esc(SLOTS[k]["time"]), tz_html(today, k), esc(SLOTS[k]["name"]), SLOT_BLURB[k]) for k in order)
+    eds_sorted = sorted(editions, key=lambda e: (e["date"], SLOTS[e["slot"]]["order"]), reverse=True)
+    latest = {}
+    for e in eds_sorted:
+        latest.setdefault(e["slot"], e)
+    def series_href(e):
+        return "index.html#report=%s/%s" % (e["date"], e["slot"]) if e["kind"] == "report" else e["path"]
+    series = "".join('<li><a href="%s">Latest %s</a> · %s (%s)</li>' % (
+        esc(series_href(latest[k])), esc(SLOTS[k]["name"]), esc(SLOTS[k]["time"]), esc(nice_date(latest[k]["date"])))
+        for k in order if k in latest)
+    by_day = {}
+    for e in eds_sorted:
+        by_day.setdefault(e["date"], []).append(e)
+    months, cur = [], None
+    for d in sorted(by_day, reverse=True):
+        m = d[:7]
+        if m != cur:
+            months.append((m, []))
+            cur = m
+        day = dt.date.fromisoformat(d)
+        links = "".join('<a style="--c:%s" href="%s" aria-label="%s, %s">%s</a>' % (
+            SLOTS[e["slot"]]["color"], esc(public_path(e)), esc(SLOTS[e["slot"]]["name"]), esc(nice_date(d)), esc(SLOTS[e["slot"]]["time"]))
+            for e in sorted(by_day[d], key=lambda e: SLOTS[e["slot"]]["order"]))
+        months[-1][1].append('<li><span class="d">%s</span>%s</li>' % (day.strftime("%a %b ") + str(day.day), links))
+    month_html = "".join('<h3 class="ab-month">%s</h3><ul class="ab-days">%s</ul>' % (
+        dt.date.fromisoformat(m + "-01").strftime("%B %Y"), "".join(li)) for m, li in months)
+    ld_ = launch_date()
+    since = ('<p class="ab-since">Daily Design since <b><time datetime="%s">%s</time></b></p>\n' % (ld_, short_date(ld_))) if ld_ else ""
+    sub = ('<h2 id="sub-access">The archive and sub access</h2>\n<p class="ab-sub" id="ab-sub" data-lock="%sT00:00:00-07:00" data-will="%s" data-did="%s">%s</p>\n'
+           '<script>(function(){var e=document.getElementById("ab-sub");if(!e)return;var t=Date.parse(e.dataset.lock);'
+           'if(!isNaN(t))e.innerHTML=Date.now()>=t?e.dataset.did:e.dataset.will;})();</script>') % (
+        SUB_LOCK_DATE, esc(sub_access_text(False)), esc(sub_access_text(True)), sub_access_text(today >= SUB_LOCK_DATE))
+    doc = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+%s
+<meta name="theme-color" content="#09090c">
+%s
+<link rel="stylesheet" href="assets/site.css">
+%s%s
+</head>
+<body>
+<main class="ct ab">
+<nav class="ct-top" aria-label="Daily Design"><a class="btn" href="index.html">← Daily Design index</a></nav>
+<section class="ct-card" aria-labelledby="ab-h">
+<div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · About">Daily Design · About</a></div>
+<h1 id="ab-h">About <em>Daily Design</em></h1>
+<p class="lede">Daily Design is a public archive of AI design research digests from <span class="nw"><a href="%s" rel="noopener">%s</a>:</span> four editions a day on how AI is changing creative work, across image, video, 3D, <span class="nw">code/UI,</span> sound, <span class="nw">games and mashups.</span></p>
+%s<h2>Four editions a day</h2>
+<ul class="ab-eds">%s</ul>
+<p>Editions are dated and timed in Pacific time (Vancouver), shown as <span class="dd-tz">%s</span>. If your clock differs, your own local time is shown in brackets.</p>
+%s
+<h2>How it works</h2>
+<p>Every edition links straight to the original creators and sources. Engagement numbers were read when each edition was compiled and will have changed since. Sponsors never affect what we pick or how it ranks.</p>
+<p>The whole archive is searchable: search every edition and link, then filter by medium, type, edition and date, or browse the archive calendar day by day.</p>
+<p>Questions, tips, corrections or sponsorship: see <a href="%s">Contact</a>.</p>
+<p>Every creator, studio and lab we feature goes on our public X list, @@XLIST@@, with new ones added after every edition.</p>
+<p>We count visits with Cloudflare Web Analytics, which is cookie-free: no cookies, no personal data and no cross-site tracking.</p>
+</section>
+<section class="ct-card" style="margin-top:18px;border-top-color:var(--aqua)" aria-labelledby="sm-h">
+<h2 id="sm-h" style="margin-top:0">Site map</h2>
+<h3>Home</h3>
+<ul class="ab-map"><li><a href="index.html">Daily Design index</a></li><li><a href="index.html#latest-block">Latest editions</a></li><li><a href="index.html#search">Browse and search</a></li><li><a href="index.html#archive-block">Archive</a></li></ul>
+<h3>Edition series</h3>
+<ul class="ab-map">%s</ul>
+<h3>More</h3>
+<ul class="ab-map"><li><a href="%s">Contact</a></li><li><a href="%s" aria-current="page">About</a></li>@@XLISTLI@@<li><a href="feed.xml">Feed (Atom)</a></li><li><a href="sitemap.xml">sitemap.xml</a></li></ul>
+<h2>All editions</h2>
+%s
+</section>
+</main>
+<footer class="site"><div class="wrap">%s</div></footer>
+<script src="assets/tzlocal.js" defer></script>
+</body>
+</html>
+""" % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, since, eds, tz_label(today), sub, CONTACT_PATH, series,
+       CONTACT_PATH, ABOUT_PATH, month_html, credit_html("", page="about", blurb=FOOT_BLURB))
+    doc = doc.replace("@@XLIST@@", xlist_link(XLIST_NAME)).replace("@@XLISTLI@@", "<li>%s</li>" % xlist_link())
+    if write_if_changed(os.path.join(REPO, ABOUT_PATH), doc):
+        log("about page", ABOUT_PATH)
 
 
 def xml_esc(s):
@@ -1215,7 +1888,7 @@ def xml_esc(s):
 def build_sitemap_feed(editions):
     last = max(e["date"] for e in editions)
     urls = [(SITE_URL, last, "daily", "1.0")]
-    urls += [(abs_url(CONTACT_PATH), last, "yearly", "0.5")]
+    urls += [(abs_url(ABOUT_PATH), last, "weekly", "0.6"), (abs_url(CONTACT_PATH), last, "yearly", "0.5")]
     urls += [(abs_url(public_path(e)), e["date"], "monthly", "0.8") for e in editions]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
@@ -1265,8 +1938,36 @@ def sha(path):
     return h.hexdigest()
 
 
+ASSET_REF_RE = re.compile(r'((?:src|href)=")((?:\.\./)*assets/([A-Za-z0-9_-]+\.(?:js|css)))(?:\?v=[0-9a-f]{6,16})?"')
+
+
+def version_assets():
+    """Cache-bust first-party JS/CSS: every src/href to assets/<name>.js|.css in the site's HTML gets ?v=<10-char content hash>,
+    so a changed file gets a new URL (Pages caches assets for 10 minutes). Runs over every page each publish, so old pages are covered."""
+    import hashlib
+    hashes = {}
+    def ver(m):
+        name = m.group(3)
+        if name not in hashes:
+            fp = os.path.join(REPO, "assets", name)
+            hashes[name] = hashlib.sha256(open(fp, "rb").read()).hexdigest()[:10] if os.path.isfile(fp) else None
+        return m.group(0) if not hashes[name] else '%s%s?v=%s"' % (m.group(1), m.group(2), hashes[name])
+    pages = [os.path.join(REPO, "index.html"), os.path.join(REPO, CONTACT_PATH), os.path.join(REPO, ABOUT_PATH)]
+    for sub in ("editions", "reports"):
+        for root, _, files in os.walk(os.path.join(REPO, sub)):
+            pages += [os.path.join(root, f) for f in files if f.endswith(".html")]
+    n = 0
+    for pg in pages:
+        if os.path.isfile(pg):
+            doc = open(pg, encoding="utf-8").read()
+            n += write_if_changed(pg, ASSET_REF_RE.sub(ver, doc))
+    return n
+
+
 def write_if_changed(path, text):
     os.makedirs(os.path.dirname(path), exist_ok=True)
+    if path.endswith(".html"):  # every page the site serves gets the analytics beacon
+        text = ensure_beacon(text)
     if os.path.exists(path) and open(path, encoding="utf-8").read() == text:
         return False
     open(path, "w", encoding="utf-8").write(text)
@@ -1277,6 +1978,99 @@ def jdump(obj, pretty=False):
     if pretty:
         return json.dumps(obj, ensure_ascii=False, indent=1) + "\n"
     return json.dumps(obj, ensure_ascii=False, separators=(",", ":")) + "\n"
+
+
+# ---------------------------------------------------------------- kinds registry (data/kinds.json)
+# Writers keep typing kinds freely; this list only records them. Each spelling is matched to a canonical kind by a
+# loose key (lowercase, "&" -> "and", any run of non-letters/digits -> "-", plus a trailing-"s" plural fallback).
+# Unknown kinds are appended automatically (first_seen = the item's date) and new spellings of a known kind become
+# aliases. Keys are permanent: never rename or delete an entry, only add aliases. A kinds problem never blocks a publish.
+KINDS_PATH = os.path.join(REPO, "data", "kinds.json")
+
+
+def kind_slug(kind):
+    k = re.sub(r"\s*&\s*", " and ", (kind or "").strip().lower())
+    return re.sub(r"[^a-z0-9]+", "-", k).strip("-")
+
+
+class KindRegistry:
+    def __init__(self, path=KINDS_PATH):
+        self.path, self.ok, self.kinds = path, True, []
+        try:
+            if os.path.exists(path):
+                self.kinds = json.load(open(path, encoding="utf-8")).get("kinds", [])
+        except Exception as e:  # unreadable registry: still publish, but don't overwrite the file
+            log("kinds registry unreadable (%s); kinds keyed by spelling only this run" % e)
+            self.ok, self.kinds = False, []
+        self._index()
+
+    def _index(self):
+        self.by_key = {k["key"]: k for k in self.kinds}
+        self.lookup = {}
+        for k in self.kinds:
+            for v in [k["key"], k["label"]] + k.get("aliases", []):
+                self.lookup.setdefault(kind_slug(v), k)
+
+    def resolve(self, kind, date):
+        """Canonical entry for a kind as written; records new kinds and new spellings."""
+        raw = (kind or "").strip()
+        slug = kind_slug(raw)
+        if not slug:
+            return None
+        ent = self.lookup.get(slug) or (self.lookup.get(slug[:-1]) if slug.endswith("s") and len(slug) > 3 else None)
+        if ent is None:
+            key = slug
+            while key in self.by_key:  # never reuse a key
+                key += "-2"
+            ent = dict(key=key, label=raw.lower(), first_seen=date, aliases=[])
+            self.kinds.append(ent); self.by_key[key] = ent
+            log("kinds: new kind %r (%s)" % (ent["label"], key))
+        elif date and date < ent.get("first_seen", date):
+            ent["first_seen"] = date
+        if raw != ent["label"] and raw not in ent["aliases"]:
+            ent["aliases"].append(raw)
+        self.lookup.setdefault(slug, ent)
+        return ent
+
+    def save(self):
+        if not self.ok:
+            return
+        for k in self.kinds:
+            k["aliases"] = sorted(set(k["aliases"]), key=lambda a: (a.lower(), a))
+        doc = dict(version=1,
+                   note=("Daily Design item kinds. Each item keeps its kind as written (kind) and gets kind_key, the permanent "
+                         "key of its canonical kind here. Spellings that differ only by case, spacing, punctuation or a plural s "
+                         "are listed as aliases. New kinds are added automatically; keys never change."),
+                   kinds=sorted(self.kinds, key=lambda k: k["key"]))
+        write_if_changed(self.path, jdump(doc, pretty=True))
+
+
+def apply_kinds(recs, reg):
+    """Set kind_key on every item and use the canonical kind label as its kind tag. Returns records changed."""
+    changed = []
+    for r in recs:
+        dirty = False
+        for it in r["items"]:
+            ent = reg.resolve(it.get("kind"), it.get("date"))
+            key, label = (ent["key"], ent["label"]) if ent else ("", "")
+            tags = list(it.get("tags") or [])
+            base = len([t for t in (it.get("medium"), it.get("type"), it.get("slot"), it.get("date")) if t])
+            raw = (it.get("kind") or "").strip().lower()
+            if len(tags) > base and tags[base] not in ("older", "try today") and tags[base] in (raw, label):
+                del tags[base]
+            if label and canon_type(label) != label:
+                tags.insert(base, label)
+            if it.get("kind_key") != key or tags != it.get("tags"):
+                new = {}
+                for k, v in it.items():
+                    if k == "kind_key": continue
+                    new[k] = tags if k == "tags" else v
+                    if k == "kind": new["kind_key"] = key
+                it.clear(); it.update(new)
+                dirty = True
+        if dirty:
+            changed.append(r)
+    return changed
 
 
 def tag_item(it, date, slot, n, href, kind):
@@ -1377,16 +2171,27 @@ def main():
     if not recs:
         log("no editions yet"); return 1
     recs.sort(key=lambda r: (r["edition"]["date"], SLOTS[r["edition"]["slot"]]["order"]))
+    # 2b. kinds registry: canonical kind_key + tag for every item (backfills older records too); never blocks
+    try:
+        reg = KindRegistry()
+        for r in apply_kinds(recs, reg):
+            e = r["edition"]
+            write_if_changed(os.path.join(meta_dir, e["date"], e["slot"] + ".json"), jdump(r, pretty=True))
+        reg.save()
+    except Exception as ex:
+        log("kinds registry skipped this run: %s" % ex)
 
     # 3. nav pass: only pages whose prev/next changed (or that were just rewritten) are touched
     pages = [r for r in recs if r["edition"]["kind"] == "page"]
     import hashlib
-    spon_key = hashlib.sha1(sponsor_html().encode("utf-8")).hexdigest()[:12]
+    spon_key = hashlib.sha1((sponsor_html() + sponsor_html(slot="links")).encode("utf-8")).hexdigest()[:12]  # top + lower spot: either changing rebuilds every edition page
+    credit_key = hashlib.sha1(credit_html("../../").encode("utf-8")).hexdigest()[:12]  # footer credit changing rebuilds every edition page
+    fkey = fill_key()  # filler ads (tools/filler-ads.json) changing rebuilds every edition page
     for i, r in enumerate(pages):
         e = r["edition"]
         prev = pages[i - 1]["edition"] if i > 0 else None
         nxt = pages[i + 1]["edition"] if i + 1 < len(pages) else None
-        nav = [prev and prev["path"], nxt and nxt["path"], NAV_VERSION, spon_key]
+        nav = [prev and prev["path"], nxt and nxt["path"], NAV_VERSION, spon_key, credit_key, fkey]
         dest = os.path.join(REPO, e["path"])
         doc = open(dest, encoding="utf-8").read()
         if r.get("nav") == nav and NAV_START in doc:
@@ -1431,13 +2236,18 @@ def main():
         shards=[dict(month=m, path="data/items/%s.json" % m, items=len(v),
                      editions=sum(1 for e in editions if e["date"][:7] == m)) for m, v in sorted(shards.items(), reverse=True)],
         editions=editions)
+    data["special"] = load_special_days(days)
+    data["maintenance"] = [x["date"] for x in data["special"] if x["type"] == "maintenance"]  # older app/gate builds
     write_if_changed(os.path.join(REPO, "data", "index.json"), jdump(data))
     # 4a. members gate: full content of editions after FREE_FOREVER_THROUGH goes to KV and leaves the repo
     public_eds = gate_split.split(REPO, data, shards, recs, log, dry_run=args.no_push)
     # 4b. SEO: index head/static links, sitemap.xml, robots.txt, feed.xml (public editions only)
     build_index_seo(public_eds)
     build_contact_page()
+    build_about_page(public_eds)
     build_sitemap_feed(public_eds)
+    nv = version_assets()  # 4c. ?v=<hash> on first-party JS/CSS links, after every page is written
+    if nv: log("asset versions updated on %d pages" % nv)
     for legacy in ("index.js",):
         lp = os.path.join(REPO, "data", legacy)
         if os.path.exists(lp): os.remove(lp)

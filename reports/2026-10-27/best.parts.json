@@ -1,0 +1,312 @@
+{
+ "version": 1,
+ "report": "2026-10-27/best",
+ "date": "2026-10-27",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-27/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-27/best",
+ "link": "#report=2026-10-27/best&part=<id> (index reader) or reports/2026-10-27/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-google-deepmind-s-genie",
+   "kind": "section",
+   "heading": "Google DeepMind's Genie 4 made world models the day's design story, and Microsoft's image editor climbed the leaderboards",
+   "text": "Google DeepMind's Genie 4 made world models the day's design story, and Microsoft's image editor climbed the leaderboards",
+   "h": "4fc3986f3d",
+   "medium": "image"
+  },
+  {
+   "id": "s-google-deepmind-s-genie-i1",
+   "kind": "paragraph",
+   "parent": "s-google-deepmind-s-genie",
+   "section": "s-google-deepmind-s-genie",
+   "medium": "image",
+   "text": "The pick of the day is Genie 4, the new world model Google DeepMind announced this morning. You steer a live, explorable scene with the keyboard and…",
+   "h": "107ffa4684"
+  },
+  {
+   "id": "s-google-deepmind-s-genie-i2",
+   "kind": "paragraph",
+   "parent": "s-google-deepmind-s-genie",
+   "section": "s-google-deepmind-s-genie",
+   "medium": "image",
+   "text": "Engagement figures were read from X, YouTube, GitHub, Hugging Face and Hacker News on the afternoon of Oct 27 (PT) and will keep changing. Reddit's feeds…",
+   "h": "174eeb62af"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-games-and",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "🎮 Games and interactive",
+   "medium": "games",
+   "text": "🎮 Games and interactive",
+   "h": "61afdd649a"
+  },
+  {
+   "id": "s-pick-of-the-day-games-and-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-games-and",
+   "section": "s-pick-of-the-day",
+   "medium": "games",
+   "type": "news",
+   "title": "Genie 4, a real-time world model with native sound (Google DeepMind)",
+   "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+   "text": "Genie 4, a real-time world model with native sound (Google DeepMind), model/news. Per DeepMind, you explore a generated world with standard keyboard controls…",
+   "h": "d98ff5ce5c"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-image",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-ranked-picks-image-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "news",
+   "title": "MAI-Image-2.7-Preview jumps to #3 on Arena's image-edit board (Microsoft AI)",
+   "url": "https://microsoft.ai/news/mai-image-2-7-debut/",
+   "text": "MAI-Image-2.7-Preview jumps to #3 on Arena's image-edit board (Microsoft AI), model/news. Microsoft's new image-editing model for restyling and relighting…",
+   "h": "9ca8a6cd4b"
+  },
+  {
+   "id": "s-ranked-picks-image-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "repo/tool",
+   "title": "T-DIG, a tool for finding the variety hiding inside an image model (@simi_97k)",
+   "url": "https://x.com/simi_97k/status/2115192082138792352",
+   "text": "T-DIG, a tool for finding the variety hiding inside an image model (@simi_97k), tool. Ask for something like Halloween costume ideas and, instead of the same…",
+   "h": "4f28a8d9ec"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "ai-design-skills tops GitHub's daily trending (elayadesign, GitHub)",
+   "url": "https://github.com/elayadesign/ai-design-skills",
+   "text": "ai-design-skills tops GitHub's daily trending (elayadesign, GitHub), tool. An MIT-licensed set of design skills for Claude Code, Cursor, Codex and Windsurf…",
+   "h": "f8429b5bac"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "buzz",
+   "title": "A designer on Figma, AI and vibe coding (@Tegadesigns)",
+   "url": "https://x.com/Tegadesigns/status/2114975387172155393",
+   "text": "A designer on Figma, AI and vibe coding (@Tegadesigns), buzz. A designer looks back at a year in which \"Thank you, Figma\" turned into panic about AI, and…",
+   "h": "517f480e32"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "workflow",
+   "title": "One Tripo mesh becomes a game-ready, rigged pistol (@Graalitoo)",
+   "url": "https://x.com/Graalitoo/status/2115007986670489799",
+   "text": "One Tripo mesh becomes a game-ready, rigged pistol (@Graalitoo), workflow. Claude Code split a single Tripo AI mesh into 15 real parts, built the hidden…",
+   "h": "9d06cf567f"
+  },
+  {
+   "id": "s-ranked-picks-3d-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "title": "Open3DLab says a Roblox-labelled crawler downloaded 145 GB of its creators' models (Open3DLab)",
+   "url": "https://open3dlab.com/news/roblox-downloaded-145-gb-of-models-from-our-sites/",
+   "text": "Open3DLab says a Roblox-labelled crawler downloaded 145 GB of its creators' models (Open3DLab), counterpoint. Per the site, a crawler whose user agent named…",
+   "h": "ea4d410e4b"
+  },
+  {
+   "id": "s-ranked-picks-games-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games and interactive",
+   "medium": "games",
+   "text": "🎮 Games and interactive",
+   "h": "61afdd649a"
+  },
+  {
+   "id": "s-ranked-picks-games-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games-and",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "showcase",
+   "title": "A multi-model iOS game where every asset went through Meshy, Blender MCP and Unity (@ashen_one)",
+   "url": "https://x.com/ashen_one/status/2115096634816090266",
+   "text": "A multi-model iOS game where every asset went through Meshy, Blender MCP and Unity (@ashen_one), showcase. An Animal Crossing-style town builder set in rural…",
+   "h": "09e44ed380"
+  },
+  {
+   "id": "s-ranked-picks-games-and-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-games-and",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "repo/tool",
+   "title": "Sprite Forge fixes AI sprite sheets that won't line up (@rlaope)",
+   "url": "https://x.com/rlaope/status/2115095845968478464",
+   "text": "Sprite Forge fixes AI sprite sheets that won't line up (@rlaope), tool. Part of the open-source oh-my-hermes kit: it draws the sheet as a grid on flat…",
+   "h": "8ab01f9408"
+  },
+  {
+   "id": "s-ranked-picks-video",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-ranked-picks-video-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Same prompt, four video models, three timed shots (@gargantuaxdev)",
+   "url": "https://x.com/gargantuaxdev/status/2115053129729479028",
+   "text": "Same prompt, four video models, three timed shots (@gargantuaxdev), showcase. A snowy mountain station at dusk with cuts at 3 and 6 seconds: per the creator…",
+   "h": "d0303fa029"
+  },
+  {
+   "id": "s-ranked-picks-illustration",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "✏️ Illustration",
+   "medium": "image",
+   "text": "✏️ Illustration",
+   "h": "6573ac5f33"
+  },
+  {
+   "id": "s-ranked-picks-illustration-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-illustration",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "showcase",
+   "title": "I Challenged FOUR AI Models to Design Hand-Drawn Characters (Pomeroy Art Academy, YouTube)",
+   "url": "https://www.youtube.com/watch?v=kbpzuZ5e12w",
+   "text": "I Challenged FOUR AI Models to Design Hand-Drawn Characters (Pomeroy Art Academy, YouTube), showcase. Pomeroy Art Academy puts four AI models through a…",
+   "h": "81376eaaaf"
+  },
+  {
+   "id": "s-ranked-picks-sound",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🔊 Sound",
+   "medium": "sound",
+   "text": "🔊 Sound",
+   "h": "5e2e97c3c7"
+  },
+  {
+   "id": "s-ranked-picks-sound-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-sound",
+   "section": "s-ranked-picks",
+   "medium": "sound",
+   "type": "news",
+   "title": "AI Music Video Show moves to Roku (@aimusicvideo)",
+   "url": "https://x.com/aimusicvideo/status/2115168355514777887",
+   "text": "AI Music Video Show moves to Roku (@aimusicvideo), news. The weekday AI music-video stream is ending its X broadcast and is now a channel you can search for…",
+   "h": "7f34cb7dd2"
+  },
+  {
+   "id": "s-ranked-picks-mashups",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧪 Mashups",
+   "medium": "mashups",
+   "text": "🧪 Mashups",
+   "h": "37537fc95f"
+  },
+  {
+   "id": "s-ranked-picks-mashups-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-mashups",
+   "section": "s-ranked-picks",
+   "medium": "mashups",
+   "type": "showcase",
+   "title": "\"SAY HEY,\" a slopcore music video (@MrQuiyst)",
+   "url": "https://x.com/MrQuiyst/status/2115036771759137101",
+   "text": "\"SAY HEY,\" a slopcore music video (@MrQuiyst), showcase. Muse-assisted lyrics, a Suno song, GPT Image stills, Kling and Seedance video, then animated and…",
+   "h": "e7cf6286fa"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: the 25 X posts gathered for this edition were each opened by ID and their metrics re-read, then checked against a fresh sweep of X launch posts and…",
+   "h": "6498d26e34"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}

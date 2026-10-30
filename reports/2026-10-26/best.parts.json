@@ -1,0 +1,273 @@
+{
+ "version": 1,
+ "report": "2026-10-26/best",
+ "date": "2026-10-26",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-26/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-26/best",
+ "link": "#report=2026-10-26/best&part=<id> (index reader) or reports/2026-10-26/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-openai-s-new-computer",
+   "kind": "section",
+   "heading": "OpenAI's new computer-use model became the day's design story, and agents started driving Blender",
+   "text": "OpenAI's new computer-use model became the day's design story, and agents started driving Blender",
+   "h": "26f1626a4d"
+  },
+  {
+   "id": "s-openai-s-new-computer-i1",
+   "kind": "paragraph",
+   "parent": "s-openai-s-new-computer",
+   "section": "s-openai-s-new-computer",
+   "text": "The pick of the day is GPT-6.1 Terra, which OpenAI released this morning. It is a cheaper, faster model built to read what is on screen and work inside apps…",
+   "h": "b08d4a76fc"
+  },
+  {
+   "id": "s-openai-s-new-computer-i2",
+   "kind": "paragraph",
+   "parent": "s-openai-s-new-computer",
+   "section": "s-openai-s-new-computer",
+   "text": "Engagement figures were read from X, YouTube, GitHub, Hugging Face, Hacker News and Product Hunt on the afternoon of Oct 26 (PT) and will keep changing.…",
+   "h": "d09196ce14"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-pick-of-the-day-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-code-and-ui",
+   "section": "s-pick-of-the-day",
+   "medium": "code",
+   "type": "news",
+   "title": "GPT-6.1 Terra, a fast computer-use model that works inside your apps (OpenAI)",
+   "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+   "text": "GPT-6.1 Terra, a fast computer-use model that works inside your apps (OpenAI), model/news. Per OpenAI, it understands what's on screen and takes actions…",
+   "h": "ea488d603b"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "workflow",
+   "title": "GPT-6.1 Terra builds and animates a car in Blender (@mattworkman)",
+   "url": "https://x.com/mattworkman/status/2114825275167175105",
+   "text": "GPT-6.1 Terra builds and animates a car in Blender (@mattworkman), workflow. A full pipeline run through Codex with the fal plugin: generate an image of a…",
+   "h": "73666faf72"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "update",
+   "title": "Hallmark tops GitHub's daily trending, with impeccable close behind (Nutlope, GitHub)",
+   "url": "https://github.com/Nutlope/hallmark",
+   "text": "Hallmark tops GitHub's daily trending, with impeccable close behind (Nutlope, GitHub), update. Hallmark is a design skill for Claude Code, Cursor and Codex…",
+   "h": "8e7a167cda"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "desigma, a free, open-source Figma alternative written in Rust (Product Hunt)",
+   "url": "https://www.producthunt.com/products/desigma",
+   "text": "desigma, a free, open-source Figma alternative written in Rust (Product Hunt), tool. An Apache-licensed design editor whose code is on GitHub. Why it's here…",
+   "h": "76f4bab63b"
+  },
+  {
+   "id": "s-ranked-picks-video",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-ranked-picks-video-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Kling 4.0 vs Seedance 2.5, same prompt (@AIwithkhan)",
+   "url": "https://x.com/AIwithkhan/status/2114688186937192711",
+   "text": "Kling 4.0 vs Seedance 2.5, same prompt (@AIwithkhan), showcase. A side-by-side of one prompt in both models. Why it's here: 208 likes and about 21.6K views…",
+   "h": "8c0e786719"
+  },
+  {
+   "id": "s-ranked-picks-video-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "buzz",
+   "title": "I Made an Editor and AI Edit the Same Video (Ali Abdaal, YouTube)",
+   "url": "https://www.youtube.com/watch?v=C0jOKDJtK9s",
+   "text": "I Made an Editor and AI Edit the Same Video (Ali Abdaal, YouTube), buzz. A head-to-head between a human editor and AI editing on the same footage. Why it's…",
+   "h": "33df29c495"
+  },
+  {
+   "id": "s-ranked-picks-image",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-ranked-picks-image-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "repo/tool",
+   "title": "SurgePix, AI images you can keep editing layer by layer (Product Hunt)",
+   "url": "https://www.producthunt.com/products/surgepix",
+   "text": "SurgePix, AI images you can keep editing layer by layer (Product Hunt), tool. Per the makers, you can edit any layer, swap text, repaint a region and stay on…",
+   "h": "09ab05877d"
+  },
+  {
+   "id": "s-ranked-picks-image-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "showcase",
+   "title": "MOSS-Image edit vs Fibo-2.0-edit (r/StableDiffusion)",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1xg526w/moss_image_edit_vs_fibo20edit/",
+   "text": "MOSS-Image edit vs Fibo-2.0-edit (r/StableDiffusion), showcase. A side-by-side of two open image-editing models on the same edits. Why it's here: it is one of…",
+   "h": "30353e4bf9"
+  },
+  {
+   "id": "s-ranked-picks-type",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🔤 Type",
+   "text": "🔤 Type",
+   "h": "d0a3e7f81a"
+  },
+  {
+   "id": "s-ranked-picks-type-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-type",
+   "section": "s-ranked-picks",
+   "type": "repo/tool",
+   "title": "TitleArt, make text like it's 1997 (Show HN)",
+   "url": "https://titleart.dvy.io/",
+   "text": "TitleArt, make text like it's 1997 (Show HN), tool. A browser editor that brings back WordArt-style text: gradients, 3D shadows, arcs and waves, with PNG…",
+   "h": "476189ce54"
+  },
+  {
+   "id": "s-ranked-picks-illustration",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "✏️ Illustration",
+   "medium": "image",
+   "text": "✏️ Illustration",
+   "h": "6573ac5f33"
+  },
+  {
+   "id": "s-ranked-picks-illustration-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-illustration",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "title": "VGen shows a way to remove AI from your feed (@_VGen_)",
+   "url": "https://x.com/_VGen_/status/2114772734341480499",
+   "text": "VGen shows a way to remove AI from your feed (@VGen), counterpoint. A short clip from the artist-commissions site about filtering AI out of what you see. Why…",
+   "h": "cf67834614"
+  },
+  {
+   "id": "s-ranked-picks-sound",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🔊 Sound",
+   "medium": "sound",
+   "text": "🔊 Sound",
+   "h": "5e2e97c3c7"
+  },
+  {
+   "id": "s-ranked-picks-sound-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-sound",
+   "section": "s-ranked-picks",
+   "medium": "sound",
+   "type": "repo/tool",
+   "title": "2G, a sampler that imagines neural synthesis in the early 2000s (Product Hunt)",
+   "url": "https://www.producthunt.com/products/2g",
+   "text": "2G, a sampler that imagines neural synthesis in the early 2000s (Product Hunt), tool. Describe a sound and 2G makes it, then you edit it and play it from your…",
+   "h": "c1f4e0881e"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: the 28 X posts gathered for this edition were each opened by ID and their metrics re-read, then checked against a fresh sweep of X launch posts…",
+   "h": "86e0584823"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}

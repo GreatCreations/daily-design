@@ -1,0 +1,734 @@
+{
+ "edition": {
+  "date": "2026-10-27",
+  "slot": "hottest",
+  "time": "8 PM",
+  "title": "Hottest Right Now",
+  "kind": "report",
+  "headline": "AI Design Hottest Right Now · Tuesday, Oct 27, 2026",
+  "summary": "Today's one real explosion is Genie 4, Google DeepMind's new world model: you steer a live, explorable scene with prompts and the keyboard, and it now makes the sound and dialogue too. Its launch post reached 16,104 likes, 6,624 bookmarks and about 1.84M views in roughly eleven hours, and it sits at 750 points on Hacker News. The week belongs to models that work inside the tools designers already use: GPT-6.1 Terra, OpenAI's computer-use model, has grown to 27,157 likes and about 5.83M views in a day and a half, and CapCut's coming ChatGPT plugin is at 7,885 likes. On the video side, Grok Imagine's Odyssey Episode 1 is still the most-saved creative post of the week (15,007 bookmarks), and creators spent the week running the same prompt through Kling 4, Seedance 2.5, Wan 3.0 and MiniMax H3. Over the month, staying power belongs to tools that teach agents to design and animate. Claude Motion is still the biggest AI design post at 60,553 likes, and VoiceStudio, HyperFrames and impeccable gained a combined 91,910 GitHub stars this month.",
+  "path": "reports/2026-10-27/hottest.md",
+  "url": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+  "header": "reports/2026-10-27/hottest-header.png",
+  "thumb": "reports/2026-10-27/hottest-thumb.jpg",
+  "item_count": 26,
+  "tags": [
+   "hottest",
+   "2026-10-27",
+   "report"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-27-hottest-1",
+   "title": "Genie 4, a world model you can walk into (Google DeepMind)",
+   "url": "https://x.com/GoogleDeepMind/status/2115114028338962672",
+   "note": "video, 3D and games model. You prompt a world into being and then explore and change it live; this version generates ambient audio and real-time dialogue, and DeepMind says testers use it for previs and game prototyping. The signal: 16,104 likes, 6,624 bookmarks and about 1.84M views since this morning, Sundar Pichai's post at 13,581 likes, the launch video at 250,818 views, and 750 points on Hacker News. Try it: it's with trusted testers now, with a waitlist on DeepMind's blog post; meanwhile, reuse its example prompts as shot briefs in your video model.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Sundar Pichai's post",
+     "url": "https://x.com/sundarpichai/status/2115115252690145519"
+    },
+    {
+     "label": "launch video",
+     "url": "https://www.youtube.com/watch?v=sFfPkUJd_Jk"
+    },
+    {
+     "label": "Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50261319"
+    },
+    {
+     "label": "DeepMind's blog post",
+     "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-2",
+   "title": "MAI-Image-2.7-Preview climbs the image-editing boards (Artificial Analysis)",
+   "url": "https://x.com/ArtificialAnlys/status/2115097540320506069",
+   "note": "image model. Microsoft's new editing model for relighting, restyling and swapping text inside images. The signal: #2 on Artificial Analysis's editing board, a post with 404 likes and about 316K views, and #3 in Arena's Image Edit ranking. Smaller than Genie 4, but the day's biggest image move. Try it: it's in MAI Playground for editing; relight one product shot and swap its label text.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "#3 in Arena's Image Edit ranking",
+     "url": "https://x.com/arena/status/2115101113666134276"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-3",
+   "title": "GPT-6.1 Terra, a fast computer-use model (OpenAI)",
+   "url": "https://x.com/OpenAI/status/2114780711664398349",
+   "note": "code, UI and 3D model. A cheaper model that reads the screen and acts across apps; OpenAI's examples include drawings to 3D models and video edits. The signal: 27,157 likes, 4,220 bookmarks and about 5.83M views, the launch video at 400,998 views, and 625 points on Hacker News. Try it: give it one repetitive task in your design app and watch every step.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "launch video",
+     "url": "https://www.youtube.com/watch?v=tTuk4pGnT0A"
+    },
+    {
+     "label": "Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50248124"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-4",
+   "title": "Odyssey Episode 1, made with Grok Imagine (@imagine)",
+   "url": "https://x.com/imagine/status/2113712964419063911",
+   "note": "The first episode of a series made with Grok Imagine. The signal: 23,892 likes, 15,007 bookmarks and about 7.77M views, the most-saved creative post of the week. Use it: study its cutting and pacing before planning a multi-part AI series.",
+   "medium": "",
+   "type": "showcase",
+   "kind": "video showcase",
+   "kind_key": "video-showcase",
+   "tags": [
+    "showcase",
+    "hottest",
+    "2026-10-27",
+    "video showcase"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-5",
+   "title": "CapCut's plugin is coming to ChatGPT (CapCut)",
+   "url": "https://x.com/capcutapp/status/2114062937094823955",
+   "note": "Start an idea in the chat, generate and edit with CapCut there, then finish in CapCut's web editor. The signal: 7,885 likes, 5,330 bookmarks and about 1.55M views. Use it: list the short-form edits you'd hand to a chat first; it isn't out yet.",
+   "medium": "",
+   "type": "repo/tool",
+   "kind": "video tool news",
+   "kind_key": "video-tool-news",
+   "tags": [
+    "repo/tool",
+    "hottest",
+    "2026-10-27",
+    "video tool news"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-6",
+   "title": "Hallmark, an anti-AI-slop design skill for coding agents (GitHub)",
+   "url": "https://github.com/Nutlope/hallmark",
+   "note": "code and UI skill. Pushes Claude Code, Cursor and Codex past template defaults toward real hierarchy, type and spacing. The signal: 2,830 stars today on GitHub's daily trending and 39,153 in total; the same list has impeccable (+1,449) and ai-design-skills (+1,395), and the new MotionSites skill post has 2,884 bookmarks. Try it: build one page with and one without it, and compare.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "impeccable",
+     "url": "https://github.com/pbakaus/impeccable"
+    },
+    {
+     "label": "ai-design-skills",
+     "url": "https://github.com/elayadesign/ai-design-skills"
+    },
+    {
+     "label": "MotionSites skill",
+     "url": "https://x.com/viktoroddy/status/2114684257109254434"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-7",
+   "title": "Kling AI 4.0 Tutorial: How to Make Cinematic AI Videos (FILM CRUX, YouTube)",
+   "url": "https://www.youtube.com/watch?v=PzOH1v5GaW0",
+   "note": "A walkthrough of Kling 4.0 for cinematic shots. The signal: 625,512 views in a week, up from 540,680 last night, the most-watched AI video tutorial of the week in our sweep. Try it: follow it with one 10-second product shot.",
+   "medium": "",
+   "type": "tutorial",
+   "kind": "video tutorial",
+   "kind_key": "video-tutorial",
+   "tags": [
+    "tutorial",
+    "hottest",
+    "2026-10-27",
+    "video tutorial"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-8",
+   "title": "Canva Craft, Canva's first image model built for design (Canva)",
+   "url": "https://x.com/canva/status/2113348707223753165",
+   "note": "image model. It plans the layout before drawing, aiming at accurate text and editable compositions. The signal: 3,144 likes, 1,546 bookmarks and about 1.92M views. Try it: give it a poster brief with a real headline and check the lettering.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-9",
+   "title": "Ideogram Vector 1.0, text or image to editable SVG (Ideogram)",
+   "url": "https://x.com/ideogram_ai/status/2113300317584720259",
+   "note": "image and vector model. Logos and illustrations come out as separate vector shapes. The signal: 1,799 likes, 1,243 bookmarks and about 575K views, and creators were still posting about it today. Try it: convert one raster logo and recolour a single shape.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-10",
+   "title": "MiniMax H3 character swaps in ComfyUI (r/comfyui)",
+   "url": "https://www.reddit.com/r/comfyui/comments/1xbljy9/character_swap_minimax_h3_referencetovideo_lora/",
+   "note": "video model and workflow. Reference-to-video with LoRAs for swapping a character into footage. The signal: MiniMax H3 posts hold three of the top spots in r/comfyui's top-of-week feed, and a four-model comparison of Kling 4, Seedance 2.5, Wan 3.0 Prime and H3 has 223 likes and 243 bookmarks. Try it: run one shot through H3 locally and then through a paid model, and compare cost against quality.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "Reddit",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "four-model comparison",
+     "url": "https://x.com/rom1trs/status/2115008848800968756"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-11",
+   "title": "Kimi K3.1 Pro, an open-weight model tested on 3D and Blender (Moonshot)",
+   "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "note": "3D and code model. Moonshot's most capable open-weight model, per Moonshot. The signal: 1,091 points on Hacker News, and Stefan 3D AI's Blender test at 52,538 views. Try it: give it the Blender prompt you use with a paid model.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "kimi.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50212065"
+    },
+    {
+     "label": "Blender test",
+     "url": "https://www.youtube.com/watch?v=cxxGMz-YXU0"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-12",
+   "title": "I Rebuilt 3ds Max With AI (Jake Denham, YouTube)",
+   "url": "https://www.youtube.com/watch?v=74TsKdNWEaA",
+   "note": "3D showcase. A creator rebuilds a 3ds Max-style 3D tool using AI. The signal: 107,713 views in five days, the top 3D result in tonight's week-range YouTube search. We could only read the title and listing. Use it: a reference for how far vibe-coded creative tools now go.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-13",
+   "title": "gpu-unlock, faster BF16 maths on RTX 30-series cards (GitHub)",
+   "url": "https://github.com/Zagitta/gpu-unlock",
+   "note": "An experimental Linux module that speeds up local image and video models on older cards. The signal: 11,448 stars since Oct 18, up from 9,884 last night, 349 points on Hacker News, and two posts about it in r/comfyui's top of the week. Try it: read its caveats first, then time one workflow before and after.",
+   "medium": "",
+   "type": "repo/tool",
+   "kind": "image and video tool",
+   "kind_key": "image-and-video-tool",
+   "tags": [
+    "repo/tool",
+    "hottest",
+    "2026-10-27",
+    "image and video tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50219700"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-14",
+   "title": "Voxtral 3, speech and expressive voices (Mistral)",
+   "url": "https://mistral.ai/news/voxtral-3/",
+   "note": "sound model. Real-time speech in 50+ languages, transcription and expressive text-to-speech, per Mistral. The signal: 770 points on Hacker News, the week's biggest sound thread there. Try it: voice one narration line in two emotions.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "mistral.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50168396"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-15",
+   "title": "Claude Dashboards and Claude Motion are in beta (Claude)",
+   "url": "https://x.com/claudeai/status/2108271552991252810",
+   "note": "motion and UI tool. Turn data into live dashboards and ideas into animated explainers. The signal: 60,553 likes, 39,748 bookmarks and about 11.45M views, still the month's biggest AI design post in our sweep, and Futurepedia's tutorial at 317,122 views. Try it: turn one spreadsheet into a dashboard and one idea into a short explainer.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "tutorial",
+     "url": "https://www.youtube.com/watch?v=Ge1B-Ok1Pfk"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-16",
+   "title": "Gemini 4 Argon: 3D World in Blender (Google, YouTube)",
+   "url": "https://www.youtube.com/watch?v=1dAcJEIlQM8",
+   "note": "3D showcase. Argon building a 3D world inside Blender through an agent. The signal: 10,025,462 views, the most-viewed AI design video of the month in our sweep, and the launch post at 28,455 likes. Try it: connect Blender to an agent and ask for one small room.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "launch post",
+     "url": "https://x.com/sundarpichai/status/2110038898009407584"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-17",
+   "title": "DeepSeek-V4.1-Flash-1017, open weights (DeepSeek)",
+   "url": "https://x.com/deepseek_ai/status/2111375640717033777",
+   "note": "code and motion model. An open model creators quickly tested on motion design. The signal: 37,165 likes and about 8.08M views, 3,396 likes on Hugging Face where it still tops trending, and Higgsfield's motion-design post at 2,148 likes. Try it: run your motion-graphics prompt and compare with a paid model.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "3,396 likes on Hugging Face",
+     "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    },
+    {
+     "label": "motion-design post",
+     "url": "https://x.com/higgsfield_ai/status/2111499195257700857"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-18",
+   "title": "GPT-6 and Intelligent UI in ChatGPT (OpenAI)",
+   "url": "https://x.com/OpenAI/status/2107894997538525580",
+   "note": "code and UI news. Answers laid out by the model as text, charts and interactive pieces. The signal: 24,108 likes, 6,661 bookmarks and about 6.99M views, plus 761 points on Hacker News. Why it matters: the model now designs the interface of its own answers.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hacker News",
+     "url": "https://news.ycombinator.com/item?id=49996425"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-19",
+   "title": "VoiceStudio, a fully local ElevenLabs alternative (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "note": "Voice cloning, voice design, dubbing and audiobooks on your own machine. The signal: 52,726 stars this month and 91,481 in total, top of GitHub's monthly trending. Try it: dub a short clip into a second language locally.",
+   "medium": "",
+   "type": "repo/tool",
+   "kind": "sound tool",
+   "kind_key": "sound-tool",
+   "tags": [
+    "repo/tool",
+    "hottest",
+    "2026-10-27",
+    "sound tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-20",
+   "title": "LGTM (Looks Good to Me), a Claude Opus 5.5 music video (Degenerative Pixels, YouTube)",
+   "url": "https://www.youtube.com/watch?v=3TNpOD6bov8",
+   "note": "music and video creation. An AI-made music video about AI coding culture. The signal: 1,673,147 views in about three weeks, the most-viewed AI music video in our sweep. Use it: a reference for a one-person song-plus-visuals piece.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-21",
+   "title": "HyperFrames: write HTML, render video (HeyGen, GitHub)",
+   "url": "https://github.com/heygen-com/hyperframes",
+   "note": "A framework built for agents that turns web pages into rendered video. The signal: 20,501 stars this month and 74,016 in total. Try it: have an agent build an animated title card as HTML and render it to MP4.",
+   "medium": "",
+   "type": "repo/tool",
+   "kind": "video and code tool",
+   "kind_key": "video-and-code-tool",
+   "tags": [
+    "repo/tool",
+    "hottest",
+    "2026-10-27",
+    "video and code tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-22",
+   "title": "impeccable, a design language for AI coding tools (GitHub)",
+   "url": "https://github.com/pbakaus/impeccable",
+   "note": "code and UI skill. Built to make AI coding tools better at design. The signal: 18,683 stars this month and 90,682 in total, on the daily and monthly trending lists at once. Try it: add it to your agent setup before your next landing page.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-23",
+   "title": "How I Make Realistic AI Videos with Seedance 2.5, Full Guide (Dan Kieft, YouTube)",
+   "url": "https://www.youtube.com/watch?v=2hJsvDSPWYM",
+   "note": "A full guide to realistic shots in Seedance 2.5. The signal: 564,255 views in eleven days, the month's most-watched AI video tutorial in our sweep. Try it: draft at low resolution and render only the keeper at full quality.",
+   "medium": "",
+   "type": "tutorial",
+   "kind": "video tutorial",
+   "kind_key": "video-tutorial",
+   "tags": [
+    "tutorial",
+    "hottest",
+    "2026-10-27",
+    "video tutorial"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-24",
+   "title": "Mirelo SFX 2.0 (Mirelo)",
+   "url": "https://x.com/MireloAI/status/2110360787780800611",
+   "note": "A video-to-sound model that builds synced sound effects for a clip. The signal: 3,845 likes, 4,317 bookmarks and about 1.90M views, saved more often than liked. Try it: re-sound one AI clip with a weak soundtrack.",
+   "medium": "",
+   "type": "repo/tool",
+   "kind": "sound tool",
+   "kind_key": "sound-tool",
+   "tags": [
+    "repo/tool",
+    "hottest",
+    "2026-10-27",
+    "sound tool"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-25",
+   "title": "text-to-cad, design physical products with AI (GitHub)",
+   "url": "https://github.com/earthtojake/text-to-cad",
+   "note": "3D and CAD tool. Describes itself as a way to design physical products with AI. The signal: 7,192 stars this month and 23,601 in total, on GitHub's monthly trending list. Try it: describe one simple bracket or enclosure and check the model before printing.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-27-hottest-26",
+   "title": "FLUX.3 image klein for ComfyUI (Black Forest Labs, Hugging Face)",
+   "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+   "note": "image model. A small FLUX.3 image-to-image model packaged for ComfyUI. The signal: 750,694 downloads and 1,868 likes since Oct 14, on Hugging Face's trending list. Try it: load it in ComfyUI and run your usual edit workflow against it.",
+   "medium": "",
+   "type": "",
+   "kind": "",
+   "kind_key": "",
+   "tags": [
+    "hottest",
+    "2026-10-27"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-27/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-27",
+   "slot": "hottest"
+  }
+ ],
+ "src_hash": {
+  "md": "33c2c4cba0b3b88df08830222e826daebd28a5fb"
+ },
+ "tool_version": 3,
+ "nav": null
+}

@@ -1,0 +1,368 @@
+{
+ "version": 1,
+ "note": "Daily Design item kinds. Each item keeps its kind as written (kind) and gets kind_key, the permanent key of its canonical kind here. Spellings that differ only by case, spacing, punctuation or a plural s are listed as aliases. New kinds are added automatically; keys never change.",
+ "kinds": [
+  {
+   "key": "animation-breakdown",
+   "label": "animation breakdown",
+   "first_seen": "2026-10-18",
+   "aliases": []
+  },
+  {
+   "key": "animation-showcase",
+   "label": "animation showcase",
+   "first_seen": "2026-10-18",
+   "aliases": []
+  },
+  {
+   "key": "animation-workflow",
+   "label": "animation workflow",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "backlash",
+   "label": "backlash",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Backlash"
+   ]
+  },
+  {
+   "key": "breakdown",
+   "label": "breakdown",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Breakdown"
+   ]
+  },
+  {
+   "key": "buzz",
+   "label": "buzz",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "case-study",
+   "label": "case study",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Case study"
+   ]
+  },
+  {
+   "key": "client-style-ad",
+   "label": "client-style ad",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Client-style ad"
+   ]
+  },
+  {
+   "key": "client-work",
+   "label": "client work",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Client work"
+   ]
+  },
+  {
+   "key": "code-and-motion-buzz",
+   "label": "code and motion buzz",
+   "first_seen": "2026-10-24",
+   "aliases": []
+  },
+  {
+   "key": "community",
+   "label": "community",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Community"
+   ]
+  },
+  {
+   "key": "community-challenge",
+   "label": "community challenge",
+   "first_seen": "2026-10-19",
+   "aliases": []
+  },
+  {
+   "key": "design-tool",
+   "label": "design tool",
+   "first_seen": "2026-10-20",
+   "aliases": []
+  },
+  {
+   "key": "design-tool-news",
+   "label": "design tool news",
+   "first_seen": "2026-10-28",
+   "aliases": []
+  },
+  {
+   "key": "festival",
+   "label": "festival",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Festival"
+   ]
+  },
+  {
+   "key": "finished-project",
+   "label": "finished project",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Finished project"
+   ]
+  },
+  {
+   "key": "games-case-study",
+   "label": "games case study",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "games-news",
+   "label": "games news",
+   "first_seen": "2026-10-28",
+   "aliases": []
+  },
+  {
+   "key": "games-showcase",
+   "label": "games showcase",
+   "first_seen": "2026-10-25",
+   "aliases": []
+  },
+  {
+   "key": "games-tool",
+   "label": "games tool",
+   "first_seen": "2026-10-28",
+   "aliases": []
+  },
+  {
+   "key": "games-tutorial",
+   "label": "games tutorial",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "honest-result",
+   "label": "honest result",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Honest result"
+   ]
+  },
+  {
+   "key": "image-and-video-tool",
+   "label": "image and video tool",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "image and video tools"
+   ]
+  },
+  {
+   "key": "image-tool",
+   "label": "image tool",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "image-tool-news",
+   "label": "image tool news",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "mashups-and-community",
+   "label": "mashups and community",
+   "first_seen": "2026-10-18",
+   "aliases": []
+  },
+  {
+   "key": "model-launch",
+   "label": "model launch",
+   "first_seen": "2026-10-20",
+   "aliases": []
+  },
+  {
+   "key": "model-news",
+   "label": "model news",
+   "first_seen": "2026-10-20",
+   "aliases": [
+    "model/news"
+   ]
+  },
+  {
+   "key": "model-tool",
+   "label": "model/tool",
+   "first_seen": "2026-10-19",
+   "aliases": []
+  },
+  {
+   "key": "motion-and-video-tool",
+   "label": "motion and video tool",
+   "first_seen": "2026-10-28",
+   "aliases": []
+  },
+  {
+   "key": "motion-tutorial",
+   "label": "motion tutorial",
+   "first_seen": "2026-10-18",
+   "aliases": []
+  },
+  {
+   "key": "news",
+   "label": "news",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "News"
+   ]
+  },
+  {
+   "key": "open-source-tool",
+   "label": "open-source tool",
+   "first_seen": "2026-10-20",
+   "aliases": []
+  },
+  {
+   "key": "product-launch",
+   "label": "product launch",
+   "first_seen": "2026-10-20",
+   "aliases": []
+  },
+  {
+   "key": "reference-shelf",
+   "label": "reference shelf",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Reference shelf"
+   ]
+  },
+  {
+   "key": "repo-in-use",
+   "label": "repo in use",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Repo in use"
+   ]
+  },
+  {
+   "key": "repo-tool",
+   "label": "repo/tool",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "result",
+   "label": "result",
+   "first_seen": "2026-10-18",
+   "aliases": [
+    "Result"
+   ]
+  },
+  {
+   "key": "showcase",
+   "label": "showcase",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Showcase"
+   ]
+  },
+  {
+   "key": "signal",
+   "label": "signal",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Signal"
+   ]
+  },
+  {
+   "key": "sound-tool",
+   "label": "sound tool",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "tool",
+   "label": "tool",
+   "first_seen": "2026-10-19",
+   "aliases": [
+    "Tool"
+   ]
+  },
+  {
+   "key": "tool-in-use",
+   "label": "tool in use",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Tool in use"
+   ]
+  },
+  {
+   "key": "tutorial",
+   "label": "tutorial",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Tutorial"
+   ]
+  },
+  {
+   "key": "tutorial-and-buzz",
+   "label": "tutorial and buzz",
+   "first_seen": "2026-10-28",
+   "aliases": []
+  },
+  {
+   "key": "update",
+   "label": "update",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "video-and-code-tool",
+   "label": "video and code tool",
+   "first_seen": "2026-10-23",
+   "aliases": []
+  },
+  {
+   "key": "video-showcase",
+   "label": "video showcase",
+   "first_seen": "2026-10-23",
+   "aliases": []
+  },
+  {
+   "key": "video-tool",
+   "label": "video tool",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "video-tool-news",
+   "label": "video tool news",
+   "first_seen": "2026-10-26",
+   "aliases": []
+  },
+  {
+   "key": "video-tutorial",
+   "label": "video tutorial",
+   "first_seen": "2026-10-17",
+   "aliases": []
+  },
+  {
+   "key": "viral",
+   "label": "viral",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Viral"
+   ]
+  },
+  {
+   "key": "workflow",
+   "label": "workflow",
+   "first_seen": "2026-10-17",
+   "aliases": [
+    "Workflow"
+   ]
+  }
+ ]
+}

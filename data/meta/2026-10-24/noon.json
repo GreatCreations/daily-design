@@ -33,6 +33,7 @@
    "medium": "image",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "image",
     "showcase",
@@ -57,6 +58,7 @@
    "medium": "image",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "image",
     "showcase",
@@ -81,6 +83,7 @@
    "medium": "image",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "image",
     "workflow",
@@ -105,6 +108,7 @@
    "medium": "image",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "image",
     "showcase",
@@ -129,6 +133,7 @@
    "medium": "image",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "image",
     "result",
@@ -153,6 +158,7 @@
    "medium": "image",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "image",
     "showcase",
@@ -177,6 +183,7 @@
    "medium": "image",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "image",
     "workflow",
@@ -201,6 +208,7 @@
    "medium": "image",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "image",
     "result",
@@ -225,6 +233,7 @@
    "medium": "image",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "image",
     "result",
@@ -249,6 +258,7 @@
    "medium": "image",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "image",
     "showcase",
@@ -273,6 +283,7 @@
    "medium": "video",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "video",
     "result",
@@ -297,6 +308,7 @@
    "medium": "video",
    "type": "breakdown",
    "kind": "Breakdown",
+   "kind_key": "breakdown",
    "tags": [
     "video",
     "breakdown",
@@ -321,6 +333,7 @@
    "medium": "video",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "video",
     "result",
@@ -345,6 +358,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -369,6 +383,7 @@
    "medium": "video",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "video",
     "workflow",
@@ -393,6 +408,7 @@
    "medium": "video",
    "type": "breakdown",
    "kind": "Breakdown",
+   "kind_key": "breakdown",
    "tags": [
     "video",
     "breakdown",
@@ -417,6 +433,7 @@
    "medium": "video",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "video",
     "result",
@@ -441,6 +458,7 @@
    "medium": "video",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "video",
     "result",
@@ -465,6 +483,7 @@
    "medium": "video",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "video",
     "result",
@@ -490,6 +509,7 @@
    "medium": "video",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "video",
     "workflow",
@@ -514,6 +534,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -538,6 +559,7 @@
    "medium": "video",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "video",
     "workflow",
@@ -562,6 +584,7 @@
    "medium": "video",
    "type": "case study",
    "kind": "Case study",
+   "kind_key": "case-study",
    "tags": [
     "video",
     "case study",
@@ -587,6 +610,7 @@
    "medium": "video",
    "type": "case study",
    "kind": "Case study",
+   "kind_key": "case-study",
    "tags": [
     "video",
     "case study",
@@ -612,6 +636,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -636,6 +661,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -660,6 +686,7 @@
    "medium": "3d",
    "type": "breakdown",
    "kind": "Breakdown",
+   "kind_key": "breakdown",
    "tags": [
     "3d",
     "breakdown",
@@ -684,6 +711,7 @@
    "medium": "3d",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "3d",
     "showcase",
@@ -708,6 +736,7 @@
    "medium": "3d",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "3d",
     "workflow",
@@ -732,6 +761,7 @@
    "medium": "3d",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "3d",
     "showcase",
@@ -756,6 +786,7 @@
    "medium": "3d",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "3d",
     "showcase",
@@ -780,6 +811,7 @@
    "medium": "3d",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "3d",
     "workflow",
@@ -804,6 +836,7 @@
    "medium": "code",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "code",
     "result",
@@ -828,6 +861,7 @@
    "medium": "code",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "code",
     "workflow",
@@ -852,6 +886,7 @@
    "medium": "code",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "code",
     "result",
@@ -876,6 +911,7 @@
    "medium": "code",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "code",
     "result",
@@ -900,6 +936,7 @@
    "medium": "code",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "code",
     "result",
@@ -924,6 +961,7 @@
    "medium": "code",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "code",
     "result",
@@ -948,6 +986,7 @@
    "medium": "code",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "code",
     "result",
@@ -972,6 +1011,7 @@
    "medium": "code",
    "type": "result",
    "kind": "Result",
+   "kind_key": "result",
    "tags": [
     "code",
     "result",
@@ -996,6 +1036,7 @@
    "medium": "code",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "code",
     "showcase",
@@ -1020,6 +1061,7 @@
    "medium": "code",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "code",
     "showcase",
@@ -1044,6 +1086,7 @@
    "medium": "sound",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "sound",
     "showcase",
@@ -1068,6 +1111,7 @@
    "medium": "sound",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "sound",
     "showcase",
@@ -1092,6 +1136,7 @@
    "medium": "sound",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "sound",
     "showcase",
@@ -1116,6 +1161,7 @@
    "medium": "games",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "games",
     "workflow",
@@ -1140,6 +1186,7 @@
    "medium": "games",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "games",
     "workflow",
@@ -1164,6 +1211,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "games",
     "showcase",
@@ -1188,6 +1236,7 @@
    "medium": "games",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "games",
     "workflow",
@@ -1212,6 +1261,7 @@
    "medium": "games",
    "type": "case study",
    "kind": "Case study",
+   "kind_key": "case-study",
    "tags": [
     "games",
     "case study",
@@ -1236,6 +1286,7 @@
    "medium": "mashups",
    "type": "case study",
    "kind": "Case study",
+   "kind_key": "case-study",
    "tags": [
     "mashups",
     "case study",
@@ -1261,6 +1312,7 @@
    "medium": "mashups",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "mashups",
     "workflow",
@@ -1285,6 +1337,7 @@
    "medium": "mashups",
    "type": "showcase",
    "kind": "Showcase",
+   "kind_key": "showcase",
    "tags": [
     "mashups",
     "showcase",
@@ -1310,7 +1363,9 @@
  "nav": [
   "editions/2026-10-24/morning.html",
   "editions/2026-10-25/morning.html",
-  7,
-  "f6fcc78ab9fe"
+  11,
+  "cae5861fe905",
+  "2ff5412c4845",
+  "411a29bef46d"
  ]
 }

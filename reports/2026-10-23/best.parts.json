@@ -1,0 +1,272 @@
+{
+ "version": 1,
+ "report": "2026-10-23/best",
+ "date": "2026-10-23",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-23/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-23/best",
+ "link": "#report=2026-10-23/best&part=<id> (index reader) or reports/2026-10-23/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-design-tools-just-got",
+   "kind": "section",
+   "heading": "Design tools just got their own image models",
+   "text": "Design tools just got their own image models",
+   "h": "77b6f1f12e",
+   "medium": "image"
+  },
+  {
+   "id": "s-design-tools-just-got-i1",
+   "kind": "paragraph",
+   "parent": "s-design-tools-just-got",
+   "section": "s-design-tools-just-got",
+   "medium": "image",
+   "text": "The design story of the day is Canva Craft, the first image model Canva has built itself. Canva says Craft plans the composition first and only then renders…",
+   "h": "1cc8dc9ca7"
+  },
+  {
+   "id": "s-design-tools-just-got-i2",
+   "kind": "paragraph",
+   "parent": "s-design-tools-just-got",
+   "section": "s-design-tools-just-got",
+   "medium": "image",
+   "text": "Engagement figures were read from the X API, YouTube search, Hugging Face and Hacker News on the evening of Oct 23 (PT) and will keep changing. This edition…",
+   "h": "ee99e51aa6"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-image",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-pick-of-the-day-image-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-image",
+   "section": "s-pick-of-the-day",
+   "medium": "image",
+   "title": "Canva Craft, Canva's first frontier image model built for design (Canva)",
+   "url": "https://www.canva.com/newsroom/news/canva-craft/",
+   "text": "Canva Craft, Canva's first frontier image model built for design (Canva), model. A two-stage model that plans the layout before it draws, aimed at accurate…",
+   "h": "f62ac1a37a"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-video",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-ranked-picks-video-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Odyssey Episode 1, a full episode made with Grok Imagine (@imagine)",
+   "url": "https://x.com/imagine/status/2113712964419063911",
+   "text": "Odyssey Episode 1, a full episode made with Grok Imagine (@imagine), showcase. A cinematic retelling of Homer made with Wonder Studios and director Dev…",
+   "h": "6eb8a38f73"
+  },
+  {
+   "id": "s-ranked-picks-video-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "title": "Seedance 2.5 4K, ByteDance's native 4K video model for film work (BytePlus, YouTube)",
+   "url": "https://www.youtube.com/watch?v=5ymQgaSP03Q",
+   "text": "Seedance 2.5 4K, ByteDance's native 4K video model for film work (BytePlus, YouTube), model. Native 4K with 10-bit colour, plus a Draft mode that lets you…",
+   "h": "b20b3d9410"
+  },
+  {
+   "id": "s-ranked-picks-image",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-ranked-picks-image-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "title": "Ideogram Vector 1.0, text or image to clean, editable SVG (Ideogram)",
+   "url": "https://ideogram.ai/models/vector",
+   "text": "Ideogram Vector 1.0, text or image to clean, editable SVG (Ideogram), model. Logos, labels, lettering and illustrations come out as separate vector shapes you…",
+   "h": "39103109cb"
+  },
+  {
+   "id": "s-ranked-picks-image-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "title": "FLUX 3 image klein, Black Forest Labs' small image-editing model (Hugging Face)",
+   "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein",
+   "text": "FLUX 3 image klein, Black Forest Labs' small image-editing model (Hugging Face), model. An open image-to-image model that's still near the top of Hugging…",
+   "h": "0327ea376d"
+  },
+  {
+   "id": "s-ranked-picks-image-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "title": "How does Fable 5.1 hide messages in images? (LessWrong)",
+   "url": "https://www.lesswrong.com/posts/WHEQps5PK8LrrcTAb/how-does-fable-5-1-hide-messages-in-images",
+   "text": "How does Fable 5.1 hide messages in images? (LessWrong), research. Researchers asked the model to draw ordinary-looking SVG pictures that secretly encode…",
+   "h": "af51252abb"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "title": "Kimi K3.1 Pro, Moonshot's open-weight model with strong coding and 3D modelling (Kimi)",
+   "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "text": "Kimi K3.1 Pro, Moonshot's open-weight model with strong coding and 3D modelling (Kimi), model. Moonshot calls it its most capable 3T-class open-weight model…",
+   "h": "839dc24c1c"
+  },
+  {
+   "id": "s-ranked-picks-mashups",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧪 Mashups",
+   "medium": "mashups",
+   "text": "🧪 Mashups",
+   "h": "37537fc95f"
+  },
+  {
+   "id": "s-ranked-picks-mashups-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-mashups",
+   "section": "s-ranked-picks",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "title": "Krea now works inside Grok Bot (Krea)",
+   "url": "https://x.com/krea_ai/status/2113661958331494461",
+   "text": "Krea now works inside Grok Bot (Krea), tool. Krea's connector lets you generate images and video with its model lineup from inside a chat. Why people are…",
+   "h": "50bb4aad4c"
+  },
+  {
+   "id": "s-ranked-picks-games",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games",
+   "medium": "games",
+   "text": "🎮 Games",
+   "h": "dd27204535"
+  },
+  {
+   "id": "s-ranked-picks-games-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "news",
+   "title": "Epic Games announces the AI MegaJam for Unreal (@Grummz)",
+   "url": "https://x.com/Grummz/status/2113359672657027527",
+   "text": "Epic Games announces the AI MegaJam for Unreal (@Grummz), news. A game jam where, as the post puts it, small teams of humans can bring unlimited agents, with…",
+   "h": "2cdecfbcd3"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "showcase",
+   "title": "The PAL's Office, a walkable 3D office full of AI characters (Tavus)",
+   "url": "https://office.tavus.io",
+   "text": "The PAL's Office, a walkable 3D office full of AI characters (Tavus), showcase. Wander between eighteen desks and talk face to face with Tavus's video agents…",
+   "h": "e53819287c"
+  },
+  {
+   "id": "s-ranked-picks-sound",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🔊 Sound",
+   "medium": "sound",
+   "text": "🔊 Sound",
+   "h": "5e2e97c3c7"
+  },
+  {
+   "id": "s-ranked-picks-sound-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-sound",
+   "section": "s-ranked-picks",
+   "medium": "sound",
+   "title": "Dessa, a speech model trained only on speech (Block)",
+   "url": "https://block.xyz/dessa",
+   "text": "Dessa, a speech model trained only on speech (Block), research preview. A full-duplex model that listens and talks at the same time, so it handles…",
+   "h": "e3ff335706"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: a fresh evening check of X (launch accounts, search and trending stories), YouTube search, Hugging Face trending and Hacker News. Ranked by engagement…",
+   "h": "b18c9b7adb"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Want a deeper dive on any of these, or more of one medium tomorrow? Say the word and the next edition will steer there.",
+   "h": "17db245e12"
+  }
+ ]
+}

@@ -34,6 +34,7 @@
    "medium": "image",
    "type": "repo/tool",
    "kind": "repo/tool",
+   "kind_key": "repo-tool",
    "tags": [
     "image",
     "repo/tool",
@@ -79,6 +80,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -116,6 +118,7 @@
    "medium": "code",
    "type": "buzz",
    "kind": "buzz",
+   "kind_key": "buzz",
    "tags": [
     "code",
     "buzz",
@@ -140,6 +143,7 @@
    "medium": "code",
    "type": "update",
    "kind": "update",
+   "kind_key": "update",
    "tags": [
     "code",
     "update",
@@ -173,6 +177,7 @@
    "medium": "image",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "image",
     "showcase",
@@ -210,6 +215,7 @@
    "medium": "image",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "image",
     "showcase",
@@ -234,6 +240,7 @@
    "medium": "image",
    "type": "news",
    "kind": "news",
+   "kind_key": "news",
    "tags": [
     "image",
     "news",
@@ -264,6 +271,7 @@
    "medium": "3d",
    "type": "update",
    "kind": "update",
+   "kind_key": "update",
    "tags": [
     "3d",
     "update",
@@ -293,6 +301,7 @@
    "medium": "games",
    "type": "repo/tool",
    "kind": "repo/tool",
+   "kind_key": "repo-tool",
    "tags": [
     "games",
     "repo/tool",
@@ -322,6 +331,7 @@
    "medium": "mashups",
    "type": "repo/tool",
    "kind": "repo/tool",
+   "kind_key": "repo-tool",
    "tags": [
     "mashups",
     "repo/tool",
@@ -355,6 +365,7 @@
    "medium": "sound",
    "type": "update",
    "kind": "update",
+   "kind_key": "update",
    "tags": [
     "sound",
     "update",

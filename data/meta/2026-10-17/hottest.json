@@ -27,6 +27,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -49,6 +50,7 @@
    "medium": "",
    "type": "case study",
    "kind": "games case study",
+   "kind_key": "games-case-study",
    "tags": [
     "case study",
     "hottest",
@@ -73,6 +75,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -95,6 +98,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -117,6 +121,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -148,6 +153,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -175,6 +181,7 @@
    "medium": "",
    "type": "tutorial",
    "kind": "games tutorial",
+   "kind_key": "games-tutorial",
    "tags": [
     "tutorial",
     "hottest",
@@ -199,6 +206,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -226,6 +234,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -253,6 +262,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "image and video tool",
+   "kind_key": "image-and-video-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -277,6 +287,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -304,6 +315,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -326,6 +338,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -348,6 +361,7 @@
    "medium": "",
    "type": "tutorial",
    "kind": "video tutorial",
+   "kind_key": "video-tutorial",
    "tags": [
     "tutorial",
     "hottest",
@@ -372,6 +386,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -399,6 +414,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -430,6 +446,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -452,6 +469,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "sound tool",
+   "kind_key": "sound-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -476,6 +494,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "image tool",
+   "kind_key": "image-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -500,6 +519,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "image tool news",
+   "kind_key": "image-tool-news",
    "tags": [
     "repo/tool",
     "hottest",
@@ -524,6 +544,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -546,6 +567,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"
@@ -573,6 +595,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "video tool",
+   "kind_key": "video-tool",
    "tags": [
     "repo/tool",
     "hottest",
@@ -597,6 +620,7 @@
    "medium": "",
    "type": "workflow",
    "kind": "animation workflow",
+   "kind_key": "animation-workflow",
    "tags": [
     "workflow",
     "hottest",
@@ -621,6 +645,7 @@
    "medium": "",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "hottest",
     "2026-10-17"

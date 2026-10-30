@@ -1,0 +1,290 @@
+{
+ "version": 1,
+ "report": "2026-10-17/best",
+ "date": "2026-10-17",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-17/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-17/best",
+ "link": "#report=2026-10-17/best&part=<id> (index reader) or reports/2026-10-17/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-treat-every-3d-model",
+   "kind": "section",
+   "heading": "Treat every 3D model as code: today's design crowd is building in Blender by talking to an agent",
+   "text": "Treat every 3D model as code: today's design crowd is building in Blender by talking to an agent",
+   "h": "4b2557aeff",
+   "medium": "3d"
+  },
+  {
+   "id": "s-treat-every-3d-model-i1",
+   "kind": "paragraph",
+   "parent": "s-treat-every-3d-model",
+   "section": "s-treat-every-3d-model",
+   "medium": "3d",
+   "text": "The idea people kept saving today is a change in how 3D gets made. Instead of sculpting, creators have Claude Opus 5.5 write Python that builds each model…",
+   "h": "9a1209f285"
+  },
+  {
+   "id": "s-treat-every-3d-model-i2",
+   "kind": "paragraph",
+   "parent": "s-treat-every-3d-model",
+   "section": "s-treat-every-3d-model",
+   "medium": "3d",
+   "text": "Engagement figures were read from the X API, GitHub trending, Hugging Face and Hacker News on the evening of Oct 17 (PT). Reddit blocks direct access from our…",
+   "h": "2f462c621a"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-3d",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-pick-of-the-day-3d-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-3d",
+   "section": "s-pick-of-the-day",
+   "medium": "3d",
+   "type": "tutorial",
+   "title": "Make game models with Claude Opus 5.5 + Blender, \"treat every model as code\" (@rewind02)",
+   "url": "https://x.com/rewind02/status/2111393368097849615",
+   "text": "Make game models with Claude Opus 5.5 + Blender, \"treat every model as code\" (@rewind02), tutorial. A step-by-step thread: connect Opus 5.5 to Blender through…",
+   "h": "bba26c1173"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "buzz",
+   "title": "An anti-\"AI slop\" design rules file (@shipper_now)",
+   "url": "https://x.com/shipper_now/status/2110637576935891122",
+   "text": "An anti-\"AI slop\" design rules file (@shipper_now), buzz. A huge Markdown rules file for coding agents that bans the tells of generated UI: box shadows…",
+   "h": "6d82980f6c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "ArtCraft, \"the IDE for artists\" (GitHub)",
+   "url": "https://github.com/storytold/artcraft",
+   "text": "ArtCraft, \"the IDE for artists\" (GitHub), repo/tool. An open-source (Apache-2.0) crafting engine for artists, designers and filmmakers. Why people are losing…",
+   "h": "1c178c6d5c"
+  },
+  {
+   "id": "s-ranked-picks-image",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-ranked-picks-image-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "update",
+   "title": "FLUX 3 Image Klein: fixed ComfyUI workflows (Black Forest Labs)",
+   "url": "https://x.com/bfl_ai/status/2111467996350652684",
+   "text": "FLUX 3 Image Klein: fixed ComfyUI workflows (Black Forest Labs), update. BFL patched the day-one workflows for its new 5.6B open-weights image model and…",
+   "h": "75a06f7f07"
+  },
+  {
+   "id": "s-ranked-picks-video-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video and animation",
+   "medium": "video",
+   "text": "🎬 Video and animation",
+   "h": "1d57cc816d"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "The Disturbance Call: a Blender blockout drives Seedance 2.5 (ComfyUI)",
+   "url": "https://x.com/ComfyUI/status/2111110239714165176",
+   "text": "The Disturbance Call: a Blender blockout drives Seedance 2.5 (ComfyUI), tutorial. A rough 3D blockout fixes the camera, action and timing; Seedance 2.5…",
+   "h": "16a42aaaed"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "\"Image models are done\": making AI characters with a video model (@DavidRunsAds)",
+   "url": "https://x.com/DavidRunsAds/status/2111405833355427843",
+   "text": "\"Image models are done\": making AI characters with a video model (@DavidRunsAds), tutorial. The argument: image models make everyone look like a perfect…",
+   "h": "7b3cc58bfb"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Seedance 2.5 AI animation (@SarcasticAnnabe)",
+   "url": "https://x.com/SarcasticAnnabe/status/2111499845231919153",
+   "text": "Seedance 2.5 AI animation (@SarcasticAnnabe), showcase. A stylised animation clip made with Seedance 2.5. Why people are losing it: 250 likes and 178…",
+   "h": "15b3586002"
+  },
+  {
+   "id": "s-ranked-picks-video-and-i4",
+   "kind": "item",
+   "parent": "s-ranked-picks-video-and",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "Youri van Hofwegen: Master Kling 4.0 (YouTube)",
+   "url": "https://www.youtube.com/watch?v=PaDFM23THsM",
+   "text": "Youri van Hofwegen: Master Kling 4.0 (YouTube), tutorial. A prompt structure for Kling 4.0's 30-second shots: timestamped beats with one action and one camera…",
+   "h": "3ac69e2ac0"
+  },
+  {
+   "id": "s-ranked-picks-sound",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎵 Sound",
+   "medium": "sound",
+   "text": "🎵 Sound",
+   "h": "5e2e97c3c7"
+  },
+  {
+   "id": "s-ranked-picks-sound-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-sound",
+   "section": "s-ranked-picks",
+   "medium": "sound",
+   "type": "repo/tool",
+   "title": "VoiceStudio, a fully local ElevenLabs alternative (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "text": "VoiceStudio, a fully local ElevenLabs alternative (GitHub), repo/tool. Open-source voice cloning, voice design, video dubbing and dictation that runs on your…",
+   "h": "b9a5488671"
+  },
+  {
+   "id": "s-ranked-picks-mashups",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧪 Mashups",
+   "medium": "mashups",
+   "text": "🧪 Mashups",
+   "h": "37537fc95f"
+  },
+  {
+   "id": "s-ranked-picks-mashups-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-mashups",
+   "section": "s-ranked-picks",
+   "medium": "mashups",
+   "type": "buzz",
+   "title": "8 open-source repos that turn your AI agent into a creative studio (@RoundtableSpace)",
+   "url": "https://x.com/RoundtableSpace/status/2111234483139510507",
+   "text": "8 open-source repos that turn your AI agent into a creative studio (@RoundtableSpace), buzz. A list led by HyperFrames (HTML to MP4) and diagram-design…",
+   "h": "fa3a662c63"
+  },
+  {
+   "id": "s-ranked-picks-games",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games",
+   "medium": "games",
+   "text": "🎮 Games",
+   "h": "dd27204535"
+  },
+  {
+   "id": "s-ranked-picks-games-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "case study",
+   "title": "I Just Wanted to Fish: every model scripted by Claude through Blender MCP",
+   "url": "https://www.mcp-for-blender.com/creations/case-studies/i-just-wanted-to-fish/",
+   "text": "I Just Wanted to Fish: every model scripted by Claude through Blender MCP, case study. A solo Unity developer ran one Claude Code session that drove both…",
+   "h": "d0803c3d62"
+  },
+  {
+   "id": "s-ranked-picks-what-people-are",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🗣️ What people are talking about",
+   "text": "🗣️ What people are talking about",
+   "h": "1e33e8cfa5"
+  },
+  {
+   "id": "s-ranked-picks-what-people-are-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-what-people-are",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "buzz",
+   "title": "Allegation that a studio's \"Verity\" character models were AI-generated (@JamsDX_)",
+   "url": "https://x.com/JamsDX_/status/2111503161034973450",
+   "text": "Allegation that a studio's \"Verity\" character models were AI-generated (@JamsDX_), buzz. A post arguing, from behind-the-scenes footage, that the character…",
+   "h": "7d53543e96"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: starts from today's morning and noon digests, then a fresh evening check of X, GitHub trending, Hugging Face trending, Hacker News and YouTube. Ranked…",
+   "h": "0028e74289"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Want a deeper dive on any of these, or more of one medium tomorrow? Say the word and the next edition will steer there.",
+   "h": "17db245e12"
+  }
+ ]
+}

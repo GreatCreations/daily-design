@@ -33,6 +33,7 @@
    "medium": "image",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "image",
     "best",
@@ -65,6 +66,7 @@
    "medium": "3d",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "3d",
     "showcase",
@@ -98,6 +100,7 @@
    "medium": "sound",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "sound",
     "best",
@@ -130,6 +133,7 @@
    "medium": "image",
    "type": "news",
    "kind": "model news",
+   "kind_key": "model-news",
    "tags": [
     "image",
     "news",
@@ -164,6 +168,7 @@
    "medium": "image",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "image",
     "best",
@@ -196,6 +201,7 @@
    "medium": "image",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "image",
     "best",
@@ -224,6 +230,7 @@
    "medium": "image",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "image",
     "best",
@@ -247,6 +254,7 @@
    "medium": "image",
    "type": "tutorial",
    "kind": "tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "image",
     "tutorial",
@@ -276,6 +284,7 @@
    "medium": "video",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "video",
     "best",
@@ -312,6 +321,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -336,6 +346,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "games",
     "showcase",
@@ -365,6 +376,7 @@
    "medium": "mashups",
    "type": "workflow",
    "kind": "workflow",
+   "kind_key": "workflow",
    "tags": [
     "mashups",
     "workflow",
@@ -389,6 +401,7 @@
    "medium": "",
    "type": "news",
    "kind": "news",
+   "kind_key": "news",
    "tags": [
     "news",
     "best",

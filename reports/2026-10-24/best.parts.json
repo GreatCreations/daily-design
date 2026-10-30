@@ -1,0 +1,276 @@
+{
+ "version": 1,
+ "report": "2026-10-24/best",
+ "date": "2026-10-24",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-24/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-24/best",
+ "link": "#report=2026-10-24/best&part=<id> (index reader) or reports/2026-10-24/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-open-world-model-you",
+   "kind": "section",
+   "heading": "An open world model you can steer is the story of the day",
+   "text": "An open world model you can steer is the story of the day",
+   "h": "365af6ea94"
+  },
+  {
+   "id": "s-open-world-model-you-i1",
+   "kind": "paragraph",
+   "parent": "s-open-world-model-you",
+   "section": "s-open-world-model-you",
+   "text": "The pick of the day is Hy-Nomas, Tencent's open-source video world model, which you steer with text prompts and camera paths instead of rendering a clip and…",
+   "h": "3944ab3bb7"
+  },
+  {
+   "id": "s-open-world-model-you-i2",
+   "kind": "paragraph",
+   "parent": "s-open-world-model-you",
+   "section": "s-open-world-model-you",
+   "text": "Engagement figures were read from X, YouTube, GitHub, Hugging Face, Hacker News and Product Hunt on the afternoon of Oct 24 (PT) and will keep changing.…",
+   "h": "63dc476677"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-video",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-pick-of-the-day-video-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-video",
+   "section": "s-pick-of-the-day",
+   "medium": "video",
+   "title": "Hy-Nomas, Tencent's open-source interactive video world model (Tencent Hunyuan)",
+   "url": "https://github.com/Tencent-Hunyuan/Hy-Nomas",
+   "text": "Hy-Nomas, Tencent's open-source interactive video world model (Tencent Hunyuan), model. Text prompts and camera trajectories steer a generated world segment…",
+   "h": "d65dd0fd1d"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "buzz",
+   "title": "10 GitHub repos to turn you into a design and motion studio (@AmirMushich)",
+   "url": "https://x.com/AmirMushich/status/2113692928824484078",
+   "text": "10 GitHub repos to turn you into a design and motion studio (@AmirMushich), buzz. A curated list covering impeccable, UI UX Pro Max, Blender MCP, img2threejs…",
+   "h": "669e4c277c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "update",
+   "title": "Update: Kimi K3.1 Pro gets its first independent hands-on tests (Bijan Bowen, YouTube)",
+   "url": "https://www.youtube.com/watch?v=4MRMLerpcQc",
+   "text": "Update: Kimi K3.1 Pro gets its first independent hands-on tests (Bijan Bowen, YouTube), update. Yesterday's open-weight coding and 3D model now has long video…",
+   "h": "fb336187a3"
+  },
+  {
+   "id": "s-ranked-picks-video",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-ranked-picks-video-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Why Veo and Sora can't animate pixel art, and the model one developer trained instead (@GrilliotTodd)",
+   "url": "https://x.com/GrilliotTodd/status/2114015306633081340",
+   "text": "Why Veo and Sora can't animate pixel art, and the model one developer trained instead (@GrilliotTodd), showcase. A side-by-side of Veo and a custom pixel-art…",
+   "h": "e1302943a3"
+  },
+  {
+   "id": "s-ranked-picks-video-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "Seedance 2.5, Kling 4.0 and Wan 3.0 priced per shot (@johnmccoyx)",
+   "url": "https://x.com/johnmccoyx/status/2113929742848266708",
+   "text": "Seedance 2.5, Kling 4.0 and Wan 3.0 priced per shot (@johnmccoyx), tutorial. Six video models got the same real TikTok and one new face, ranked with the price…",
+   "h": "466d2d13db"
+  },
+  {
+   "id": "s-ranked-picks-video-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "CRAFT (1979), Season 1 finale (LatentDiffusion, YouTube)",
+   "url": "https://www.youtube.com/watch?v=tqWFG8GfcRg",
+   "text": "CRAFT (1979), Season 1 finale (LatentDiffusion, YouTube), showcase. A fan-made, 1970s-style film series inspired by a block-building game, finishing its tenth…",
+   "h": "925b309ff5"
+  },
+  {
+   "id": "s-ranked-picks-games",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games",
+   "medium": "games",
+   "text": "🎮 Games",
+   "h": "dd27204535"
+  },
+  {
+   "id": "s-ranked-picks-games-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "tutorial",
+   "title": "A game in six weeks with no coding background, and the eight-step setup behind it (@rewind02)",
+   "url": "https://x.com/rewind02/status/2113934403478999211",
+   "text": "A game in six weeks with no coding background, and the eight-step setup behind it (@rewind02), tutorial. Run Opus 5.5 in Claude Code inside a Godot project…",
+   "h": "42b5ec2526"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "repo/tool",
+   "title": "image-blaster, one picture becomes meshes, a splat and sound (neilsonnn, GitHub)",
+   "url": "https://github.com/neilsonnn/image-blaster",
+   "text": "image-blaster, one picture becomes meshes, a splat and sound (neilsonnn, GitHub), repo/tool. A Claude skill set that turns one image into .glb and .obj models…",
+   "h": "c21d3d2ee6"
+  },
+  {
+   "id": "s-ranked-picks-3d-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "tutorial",
+   "title": "New local AI turns any video into Mixamo animation (Stefan 3D AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=58UpDAnbdkM",
+   "text": "New local AI turns any video into Mixamo animation (Stefan 3D AI, YouTube), tutorial. Motion2MixamoRig puts the motion from a video of one person onto a…",
+   "h": "b31c221589"
+  },
+  {
+   "id": "s-ranked-picks-image",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image",
+   "medium": "image",
+   "text": "🖼️ Image",
+   "h": "0e76292794"
+  },
+  {
+   "id": "s-ranked-picks-image-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "repo/tool",
+   "title": "gpu-unlock, free faster BF16 maths on RTX 30-series cards (Zagitta, GitHub)",
+   "url": "https://github.com/Zagitta/gpu-unlock",
+   "text": "gpu-unlock, free faster BF16 maths on RTX 30-series cards (Zagitta, GitHub), repo/tool. A Linux module that raises how fast older RTX 30-series cards issue…",
+   "h": "2fb1045355"
+  },
+  {
+   "id": "s-ranked-picks-image-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-image",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "title": "Fibo 2.0 for ComfyUI, an open image and edit model (Comfy-Org, Hugging Face)",
+   "url": "https://huggingface.co/Comfy-Org/Fibo-2.0",
+   "text": "Fibo 2.0 for ComfyUI, an open image and edit model (Comfy-Org, Hugging Face), model. Bria's text-to-image and edit models, repackaged for ComfyUI. Why it's…",
+   "h": "cfbc445842"
+  },
+  {
+   "id": "s-ranked-picks-sound",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🔊 Sound",
+   "medium": "sound",
+   "text": "🔊 Sound",
+   "h": "5e2e97c3c7"
+  },
+  {
+   "id": "s-ranked-picks-sound-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-sound",
+   "section": "s-ranked-picks",
+   "medium": "sound",
+   "type": "news",
+   "title": "ElevenLabs Realtime, voice-agent models with 570 ms to first audio (Product Hunt)",
+   "url": "https://www.producthunt.com/posts/elevenlabs-realtime",
+   "text": "ElevenLabs Realtime, voice-agent models with 570 ms to first audio (Product Hunt), news. Two speech-to-speech models, Mini for natural conversation and Max…",
+   "h": "155e0e55a8"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: the 27 X posts gathered for this edition were each opened and their metrics re-read, then checked against a fresh sweep of YouTube, GitHub (trending…",
+   "h": "42be5b4e37"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}

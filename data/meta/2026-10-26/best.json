@@ -32,12 +32,13 @@
    "medium": "code",
    "type": "news",
    "kind": "model/news",
+   "kind_key": "model-news",
    "tags": [
     "code",
     "news",
     "best",
     "2026-10-26",
-    "model/news"
+    "model news"
    ],
    "source": "openai.com",
    "author": "",
@@ -70,6 +71,7 @@
    "medium": "3d",
    "type": "workflow",
    "kind": "workflow",
+   "kind_key": "workflow",
    "tags": [
     "3d",
     "workflow",
@@ -94,6 +96,7 @@
    "medium": "code",
    "type": "update",
    "kind": "update",
+   "kind_key": "update",
    "tags": [
     "code",
     "update",
@@ -127,6 +130,7 @@
    "medium": "code",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "code",
     "repo/tool",
@@ -157,6 +161,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "video",
     "showcase",
@@ -198,6 +203,7 @@
    "medium": "video",
    "type": "buzz",
    "kind": "buzz",
+   "kind_key": "buzz",
    "tags": [
     "video",
     "buzz",
@@ -222,6 +228,7 @@
    "medium": "image",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "image",
     "repo/tool",
@@ -247,6 +254,7 @@
    "medium": "image",
    "type": "showcase",
    "kind": "showcase",
+   "kind_key": "showcase",
    "tags": [
     "image",
     "showcase",
@@ -280,6 +288,7 @@
    "medium": "",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "repo/tool",
     "best",
@@ -309,6 +318,7 @@
    "medium": "image",
    "type": "",
    "kind": "",
+   "kind_key": "",
    "tags": [
     "image",
     "best",
@@ -332,6 +342,7 @@
    "medium": "sound",
    "type": "repo/tool",
    "kind": "tool",
+   "kind_key": "tool",
    "tags": [
     "sound",
     "repo/tool",

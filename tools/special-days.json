@@ -1,0 +1,8 @@
+{
+  "about": "Special days on the archive calendars. type 'maintenance': the site was down; shows 8 PM red ('Maintenance · nothing published'), not clickable, never counts as published, ignored if the date has an edition. type 'launch': launch day; shows the aqua-green theme color ('Launch day'); not clickable when it has no editions, otherwise the day stays clickable with a green ring. Add a date here and run tools/publish.py.",
+  "days": [
+    {"date": "2026-10-16", "type": "launch", "note": "site launch"},
+    {"date": "2026-10-21", "type": "maintenance", "note": "site maintenance"},
+    {"date": "2026-10-22", "type": "maintenance", "note": "site maintenance"}
+  ]
+}

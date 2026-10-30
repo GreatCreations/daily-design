@@ -1,0 +1,341 @@
+{
+ "version": 1,
+ "report": "2026-10-28/hottest",
+ "date": "2026-10-28",
+ "slot": "hottest",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-28/hottest.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-28/hottest",
+ "link": "#report=2026-10-28/hottest&part=<id> (index reader) or reports/2026-10-28/hottest.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-genie-4-is-still",
+   "kind": "section",
+   "heading": "Genie 4 is still climbing a day after launch, open ComfyUI rebuilds of Higgsfield are the week's new energy, and design skills for coding agents own the month",
+   "text": "Genie 4 is still climbing a day after launch, open ComfyUI rebuilds of Higgsfield are the week's new energy, and design skills for coding agents own the month",
+   "h": "56d1c024a2"
+  },
+  {
+   "id": "s-genie-4-is-still-i1",
+   "kind": "paragraph",
+   "parent": "s-genie-4-is-still",
+   "section": "s-genie-4-is-still",
+   "text": "Nothing in design blew up today the way Genie 4 did yesterday: its launch post has grown to 23,076 likes, 9,634 bookmarks and about 3.21M views, up from…",
+   "h": "ea51dfe924"
+  },
+  {
+   "id": "s-genie-4-is-still-i2",
+   "kind": "paragraph",
+   "parent": "s-genie-4-is-still",
+   "section": "s-genie-4-is-still",
+   "text": "Engagement figures were read on the evening of Oct 28 (PT) from X post pages, GitHub (trending and repo data), Hugging Face, Hacker News and YouTube search…",
+   "h": "50de1738eb"
+  },
+  {
+   "id": "s-blew-up-today",
+   "kind": "section",
+   "heading": "🔥 Blew up today",
+   "text": "🔥 Blew up today",
+   "h": "855a8b0061"
+  },
+  {
+   "id": "s-blew-up-today-i1",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "code",
+   "type": "news",
+   "title": "Gemini 4 Carbon, Google's new frontier model (Google)",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+   "text": "Gemini 4 Carbon, Google's new frontier model (Google), code and agent model news. Google calls it its strongest model, built for long, hard engineering tasks…",
+   "h": "629a983204"
+  },
+  {
+   "id": "s-blew-up-today-i2",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "type": "news",
+   "title": "Valve tells developers to make games harder to copy as AI clones flood Steam (Eurogamer)",
+   "url": "https://x.com/eurogamer/status/2115455440209506363",
+   "text": "Valve tells developers to make games harder to copy as AI clones flood Steam (Eurogamer), games news. At a Steam developer conference in Korea, Valve staff…",
+   "h": "9ca7140e1d"
+  },
+  {
+   "id": "s-blew-up-today-i3",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Paper Dragon, a one-minute AI short film (@xIrissy)",
+   "url": "https://x.com/xIrissy/status/2115379237234549125",
+   "text": "Paper Dragon, a one-minute AI short film (@xIrissy), video showcase. A boy's kite flies away and returns that night as a 20-metre dragon; the poster says it…",
+   "h": "b02c564427"
+  },
+  {
+   "id": "s-hottest-this-week",
+   "kind": "section",
+   "heading": "📈 Hottest this week",
+   "text": "📈 Hottest this week",
+   "h": "927e2ad085"
+  },
+  {
+   "id": "s-hottest-this-week-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Genie 4, a world model you can walk into (Google DeepMind)",
+   "url": "https://x.com/GoogleDeepMind/status/2115114028338962672",
+   "text": "Genie 4, a world model you can walk into (Google DeepMind), video, 3D and games model, update. You steer a live scene by describing weather, camera or new…",
+   "h": "b232e8569c"
+  },
+  {
+   "id": "s-hottest-this-week-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "GPT-6.1 Terra, a fast computer-use model (OpenAI)",
+   "url": "https://x.com/OpenAI/status/2114780711664398349",
+   "text": "GPT-6.1 Terra, a fast computer-use model (OpenAI), code, UI and 3D model, update. A cheaper model that operates apps by reading the screen. The signal: 27,868…",
+   "h": "c058bb716e"
+  },
+  {
+   "id": "s-hottest-this-week-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Odyssey Episode 1, made with Grok Imagine (@imagine)",
+   "url": "https://x.com/imagine/status/2113712964419063911",
+   "text": "Odyssey Episode 1, made with Grok Imagine (@imagine), video showcase, update. The first episode of a series made with Grok Imagine. The signal: 24,759 likes…",
+   "h": "54450881fe"
+  },
+  {
+   "id": "s-hottest-this-week-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Freefield, Higgsfield rebuilt on ComfyUI (GitHub)",
+   "url": "https://github.com/neuregex/freefield",
+   "text": "Freefield, Higgsfield rebuilt on ComfyUI (GitHub), image, video and sound tool. After Higgsfield said it would open source its platform (per the entrants'…",
+   "h": "9d3c8cdf78"
+  },
+  {
+   "id": "s-hottest-this-week-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "video",
+   "type": "result",
+   "title": "My first scene created with MiniMax H3 in ComfyUI, on an RTX 3090 (r/StableDiffusion)",
+   "url": "https://www.reddit.com/r/StableDiffusion/comments/1xf5pqg/my_first_scene_created_with_minimax_h3_in_comfyui/",
+   "text": "My first scene created with MiniMax H3 in ComfyUI, on an RTX 3090 (r/StableDiffusion), video showcase and model, update. A user's first test of MiniMax H3 on…",
+   "h": "721c6a02be"
+  },
+  {
+   "id": "s-hottest-this-week-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "image",
+   "type": "tutorial",
+   "title": "gpu-unlock, faster BF16 maths on older GeForce cards (GitHub)",
+   "url": "https://github.com/Zagitta/gpu-unlock",
+   "text": "gpu-unlock, faster BF16 maths on older GeForce cards (GitHub), image and video tool, update. An experimental Linux module that, per the repo, raises tensor…",
+   "h": "40ccd17b59"
+  },
+  {
+   "id": "s-hottest-this-week-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "Design skills for coding agents: ai-design-skills, Hallmark and impeccable (GitHub)",
+   "url": "https://github.com/elayadesign/ai-design-skills",
+   "text": "Design skills for coding agents: ai-design-skills, Hallmark and impeccable (GitHub), code and UI skills, update. Three repos that push Claude Code, Cursor and…",
+   "h": "3bd2fea157"
+  },
+  {
+   "id": "s-hottest-this-week-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "showcase",
+   "title": "Seedance 2.5 animation clip (@SarcasticAnnabe)",
+   "url": "https://x.com/SarcasticAnnabe/status/2112919117556531696",
+   "text": "Seedance 2.5 animation clip (@SarcasticAnnabe), video showcase. The week's most-liked Seedance 2.5 clip on X: 2,645 likes, 1,208 bookmarks and about 139,000…",
+   "h": "5b67cc7b21"
+  },
+  {
+   "id": "s-hottest-this-week-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "mashups",
+   "type": "tutorial",
+   "title": "OpenArt Nano Banana 2.1 with Seedance 2.5: Full AI Product Campaign Workflow (Eigi and AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=yqUD3645J44",
+   "text": "OpenArt Nano Banana 2.1 with Seedance 2.5: Full AI Product Campaign Workflow (Eigi and AI, YouTube), video tutorial. A workflow from product image to campaign…",
+   "h": "d8c930ee96"
+  },
+  {
+   "id": "s-hottest-this-week-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "tutorial",
+   "title": "Claude 2.0 is Insane (All Updates Explained) (Ben AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=J5EbL1UaqG8",
+   "text": "Claude 2.0 is Insane (All Updates Explained) (Ben AI, YouTube), tutorial and buzz. A walkthrough of recent Claude updates; the title is the channel's claim.…",
+   "h": "c52af0f6c9"
+  },
+  {
+   "id": "s-hottest-this-month",
+   "kind": "section",
+   "heading": "🏆 Hottest this month",
+   "text": "🏆 Hottest this month",
+   "h": "4f4d3d858e"
+  },
+  {
+   "id": "s-hottest-this-month-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "Claude Dashboards and Claude Motion are in beta (Claude)",
+   "url": "https://x.com/claudeai/status/2108271552991252810",
+   "text": "Claude Dashboards and Claude Motion are in beta (Claude), motion and UI tool, update. Turn data into live dashboards and ideas into animated explainers. The…",
+   "h": "13433f002e"
+  },
+  {
+   "id": "s-hottest-this-month-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Gemini 4 Argon: 3D World in Blender (Google, YouTube)",
+   "url": "https://www.youtube.com/watch?v=1dAcJEIlQM8",
+   "text": "Gemini 4 Argon: 3D World in Blender (Google, YouTube), 3D showcase, update. Argon building a 3D world inside Blender through an agent. The signal: about 10.0M…",
+   "h": "a1386795bd"
+  },
+  {
+   "id": "s-hottest-this-month-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "sound",
+   "type": "repo/tool",
+   "title": "VoiceStudio, a fully local ElevenLabs alternative (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "text": "VoiceStudio, a fully local ElevenLabs alternative (GitHub), sound tool, update. Voice cloning, voice design, video dubbing and audiobooks on your own machine…",
+   "h": "e7f4e4c930"
+  },
+  {
+   "id": "s-hottest-this-month-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "title": "HyperFrames: write HTML, render video (HeyGen, GitHub)",
+   "url": "https://github.com/heygen-com/hyperframes",
+   "text": "HyperFrames: write HTML, render video (HeyGen, GitHub), video and code tool, update. A framework built for agents that renders web pages to video. The signal…",
+   "h": "7d779fe200"
+  },
+  {
+   "id": "s-hottest-this-month-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "taste-skill, agent skills that give coding agents taste (GitHub)",
+   "url": "https://github.com/Leonxlnx/taste-skill",
+   "text": "taste-skill, agent skills that give coding agents taste (GitHub), code and UI skill. Art direction, reference images and a browser check instead of generic AI…",
+   "h": "e44146f22c"
+  },
+  {
+   "id": "s-hottest-this-month-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "oil-ui, a UI design skill for coding agents (GitHub)",
+   "url": "https://github.com/oil-oil/oil-ui",
+   "text": "oil-ui, a UI design skill for coding agents (GitHub), code and UI skill. Lets an agent explore several distinct UI directions, compare them side by side and…",
+   "h": "9dfcaee55e"
+  },
+  {
+   "id": "s-hottest-this-month-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "tutorial",
+   "title": "Claude as a video editor: \"Claude Edited My Entire CapCut Video\" (Matt Loui, YouTube)",
+   "url": "https://www.youtube.com/watch?v=5N1moUCsVhI",
+   "text": "Claude as a video editor: \"Claude Edited My Entire CapCut Video\" (Matt Loui, YouTube), video tutorial. The title says Claude edited the full video without the…",
+   "h": "5bb4d2c372"
+  },
+  {
+   "id": "s-hottest-this-month-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "LTX-2.5, open video model (Lightricks, Hugging Face)",
+   "url": "https://huggingface.co/Lightricks/LTX-2.5",
+   "text": "LTX-2.5, open video model (Lightricks, Hugging Face), video model. An image-to-video model that stays popular long after its July release, with community…",
+   "h": "f502728a82"
+  },
+  {
+   "id": "s-hottest-this-month-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "manimgx, an animation engine for agents (GitHub)",
+   "url": "https://github.com/academa-labs/manimgx",
+   "text": "manimgx, an animation engine for agents (GitHub), motion and video tool. Math and 3D explainer videos from Manim's Python API on a Rust GPU core, built for…",
+   "h": "1b840bb6ca"
+  },
+  {
+   "id": "s-hottest-this-month-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "games",
+   "type": "repo/tool",
+   "title": "Google Playground, describe a game and play it (Google)",
+   "url": "https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/",
+   "text": "Google Playground, describe a game and play it (Google), games tool. Build, play and share games from text prompts in the browser, announced Oct 7 for US…",
+   "h": "64cb6aa644"
+  },
+  {
+   "id": "s-hottest-this-month-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "Figma's remote MCP server accepts only supported clients (Figma)",
+   "url": "https://x.com/GayaniFigma/status/2105295629941350454",
+   "text": "Figma's remote MCP server accepts only supported clients (Figma), design tool news. A Figma staff reply says the server only accepts clients on its supported…",
+   "h": "9809114751"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: a fresh evening sweep of the X posts gathered for this edition (each opened by ID to read its text and metrics), YouTube (week- and month-range…",
+   "h": "2c78d808ef"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}

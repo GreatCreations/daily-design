@@ -1,0 +1,350 @@
+{
+ "version": 1,
+ "report": "2026-10-17/hottest",
+ "date": "2026-10-17",
+ "slot": "hottest",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-17/hottest.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-17/hottest",
+ "link": "#report=2026-10-17/hottest&part=<id> (index reader) or reports/2026-10-17/hottest.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-design-tools-stop",
+   "kind": "section",
+   "heading": "Design tools stop drawing and start writing code",
+   "text": "Design tools stop drawing and start writing code",
+   "h": "6481e8bb0d",
+   "medium": "code"
+  },
+  {
+   "id": "s-design-tools-stop-i1",
+   "kind": "paragraph",
+   "parent": "s-design-tools-stop",
+   "section": "s-design-tools-stop",
+   "medium": "code",
+   "text": "The big story of the week and the month is the same one: the hottest AI design work is being made as code you can edit, not as pixels you regenerate. Figma's…",
+   "h": "8282771ec7"
+  },
+  {
+   "id": "s-design-tools-stop-i2",
+   "kind": "paragraph",
+   "parent": "s-design-tools-stop",
+   "section": "s-design-tools-stop",
+   "medium": "code",
+   "text": "Engagement figures were read from the X API, GitHub trending (weekly and monthly), Hugging Face trending, Hacker News and YouTube search on the evening of Oct…",
+   "h": "a1df305213"
+  },
+  {
+   "id": "s-blew-up-today",
+   "kind": "section",
+   "heading": "🔥 Blew up today",
+   "text": "🔥 Blew up today",
+   "h": "855a8b0061"
+  },
+  {
+   "id": "s-blew-up-today-i1",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "3d",
+   "type": "tutorial",
+   "title": "Make game models with Claude Opus 5.5 + Blender, \"treat every model as code\" (@rewind02)",
+   "url": "https://x.com/rewind02/status/2111393368097849615",
+   "text": "Make game models with Claude Opus 5.5 + Blender, \"treat every model as code\" (@rewind02), 3D tutorial. Opus connects to Blender through MCP and writes Python…",
+   "h": "23c09c6827"
+  },
+  {
+   "id": "s-blew-up-today-i2",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "games",
+   "type": "case study",
+   "title": "This Game Was Built Only With AI in 11 Weeks (Stefan 3D AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=6a5VLKPlJRo",
+   "text": "This Game Was Built Only With AI in 11 Weeks (Stefan 3D AI, YouTube), games case study. A creator's look at a game built entirely with AI in 11 weeks. The…",
+   "h": "a5d553e467"
+  },
+  {
+   "id": "s-blew-up-today-i3",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "games",
+   "type": "buzz",
+   "title": "Allegation that a studio's \"Verity\" character models were AI-generated (@JamsDX_)",
+   "url": "https://x.com/JamsDX_/status/2111503161034973450",
+   "text": "Allegation that a studio's \"Verity\" character models were AI-generated (@JamsDX_), 3D buzz. A post arguing from behind-the-scenes footage that the character…",
+   "h": "aa72028883"
+  },
+  {
+   "id": "s-hottest-this-week",
+   "kind": "section",
+   "heading": "📈 Hottest this week",
+   "text": "📈 Hottest this week",
+   "h": "927e2ad085"
+  },
+  {
+   "id": "s-hottest-this-week-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "buzz",
+   "title": "ComfyUI's $25,000 open-source build challenge (ComfyUI)",
+   "url": "https://x.com/ComfyUI/status/2110870071933645103",
+   "text": "ComfyUI's $25,000 open-source build challenge (ComfyUI), mashups and tools news. After Higgsfield didn't open-source its platform as promised, Comfy and…",
+   "h": "e2adf15742"
+  },
+  {
+   "id": "s-hottest-this-week-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "FLUX 3 Image Klein, open weights (Black Forest Labs)",
+   "url": "https://x.com/bfl_ai/status/2110751201105256925",
+   "text": "FLUX 3 Image Klein, open weights (Black Forest Labs), image model. A 5.6B-parameter open-weights image model that runs on one consumer GPU, with native 4K…",
+   "h": "2272c4da12"
+  },
+  {
+   "id": "s-hottest-this-week-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Figma's Chrome extension captures live website code as a Code Layer (Figma, Config India)",
+   "url": "https://x.com/figma/status/2110603044346052714",
+   "text": "Figma's Chrome extension captures live website code as a Code Layer (Figma, Config India), code and UI tool. Point the extension at a site and its code lands…",
+   "h": "44afb30119"
+  },
+  {
+   "id": "s-hottest-this-week-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "tutorial",
+   "title": "How to make a cozy fishing game solo with Claude Opus 5.5 + Blender + 3D AI + Unity 6 (@rewind02)",
+   "url": "https://x.com/rewind02/status/2109585491280453986",
+   "text": "How to make a cozy fishing game solo with Claude Opus 5.5 + Blender + 3D AI + Unity 6 (@rewind02), games tutorial. A step-by-step pipeline built on giving…",
+   "h": "e214ee11a3"
+  },
+  {
+   "id": "s-hottest-this-week-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Krea 3 beta, an image model built for editing (Krea)",
+   "url": "https://x.com/krea_ai/status/2110760037128012146",
+   "text": "Krea 3 beta, an image model built for editing (Krea), image model. End-to-end 2K edits in under 8 seconds, multi-turn edits and bounding-box control, also…",
+   "h": "5c3cb0e03d"
+  },
+  {
+   "id": "s-hottest-this-week-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "buzz",
+   "title": "An anti-\"AI slop\" design rules file for coding agents (@shipper_now)",
+   "url": "https://x.com/shipper_now/status/2110637576935891122",
+   "text": "An anti-\"AI slop\" design rules file for coding agents (@shipper_now), code and UI buzz. A huge Markdown rules file that bans the tells of generated UI: box…",
+   "h": "81153a6bf7"
+  },
+  {
+   "id": "s-hottest-this-week-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "ArtCraft, a crafting engine for artists, designers and filmmakers (GitHub)",
+   "url": "https://github.com/storytold/artcraft",
+   "text": "ArtCraft, a crafting engine for artists, designers and filmmakers (GitHub), image and video tool. An open-source creative workspace pitched as an IDE for…",
+   "h": "2737e84cd9"
+  },
+  {
+   "id": "s-hottest-this-week-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Kling 4.0 is fully available, now with MCP and CLI access (Kling AI)",
+   "url": "https://x.com/Kling_ai/status/2110747537187709424",
+   "text": "Kling 4.0 is fully available, now with MCP and CLI access (Kling AI), video model. Kling's new model with 30-second shots, a refreshed web interface and agent…",
+   "h": "a52316fb8c"
+  },
+  {
+   "id": "s-hottest-this-week-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "diagram-design: editorial diagrams for coding agents (GitHub)",
+   "url": "https://github.com/cathrynlavery/diagram-design",
+   "text": "diagram-design: editorial diagrams for coding agents (GitHub), code and UI skill. 44 diagram types as self-contained HTML and SVG, for Claude Code, Codex…",
+   "h": "dae8753850"
+  },
+  {
+   "id": "s-hottest-this-week-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Gemini 4 Argon and Google Antigravity: from 2D concept to 3D cathedral (Google for Developers, YouTube)",
+   "url": "https://www.youtube.com/watch?v=OYp5j2RihPE",
+   "text": "Gemini 4 Argon and Google Antigravity: from 2D concept to 3D cathedral (Google for Developers, YouTube), 3D showcase. A demo that takes a flat 2D concept to a…",
+   "h": "d18f54c62b"
+  },
+  {
+   "id": "s-hottest-this-week-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "How I Make Realistic AI Videos with Seedance 2.5, full guide (Dan Kieft, YouTube)",
+   "url": "https://www.youtube.com/watch?v=2hJsvDSPWYM",
+   "text": "How I Make Realistic AI Videos with Seedance 2.5, full guide (Dan Kieft, YouTube), video tutorial. A complete walkthrough for realistic Seedance 2.5 footage.…",
+   "h": "7abc6ff038"
+  },
+  {
+   "id": "s-hottest-this-month",
+   "kind": "section",
+   "heading": "🏆 Hottest this month",
+   "text": "🏆 Hottest this month",
+   "h": "4f4d3d858e"
+  },
+  {
+   "id": "s-hottest-this-month-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "news",
+   "title": "GPT-6 and Intelligent UI rolling out in ChatGPT (OpenAI)",
+   "url": "https://x.com/OpenAI/status/2107894997538525580",
+   "text": "GPT-6 and Intelligent UI rolling out in ChatGPT (OpenAI), code and UI news. ChatGPT answers can now be built from text, visuals, charts and interactive…",
+   "h": "ced3edba4a"
+  },
+  {
+   "id": "s-hottest-this-month-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Qwen-Image-2.1-Turbo, open-weights image generation and editing in 8 steps (Qwen)",
+   "url": "https://x.com/Alibaba_Qwen/status/2108549075218120949",
+   "text": "Qwen-Image-2.1-Turbo, open-weights image generation and editing in 8 steps (Qwen), image model. A sped-up checkpoint of the 7B Qwen-Image-2.1 model that…",
+   "h": "952afb6343"
+  },
+  {
+   "id": "s-hottest-this-month-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Nano Banana 2.1 (Google)",
+   "url": "https://x.com/Google/status/2107501209154204148",
+   "text": "Nano Banana 2.1 (Google), image model. Google's upgraded image generation and editing model, with better visual design, mask-based editing and subject…",
+   "h": "14ef3c2d37"
+  },
+  {
+   "id": "s-hottest-this-month-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "sound",
+   "type": "repo/tool",
+   "title": "VoiceStudio, a fully local ElevenLabs alternative (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "text": "VoiceStudio, a fully local ElevenLabs alternative (GitHub), sound tool. Open-source voice cloning, voice design, video dubbing, dictation and audiobook tools…",
+   "h": "369b2ba03b"
+  },
+  {
+   "id": "s-hottest-this-month-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "Higgsfield Ads Studio (Higgsfield)",
+   "url": "https://x.com/higgsfield_ai/status/2107154889478664342",
+   "text": "Higgsfield Ads Studio (Higgsfield), image tool. A static-ad generator that researches a brand, watches trending formats and drafts ads from them. The signal…",
+   "h": "60df8347cd"
+  },
+  {
+   "id": "s-hottest-this-month-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "repo/tool",
+   "title": "Midjourney opens a limited test of a Midjourney MCP (Midjourney)",
+   "url": "https://x.com/midjourney/status/2108717365068509447",
+   "text": "Midjourney opens a limited test of a Midjourney MCP (Midjourney), image tool news. Midjourney is recruiting creative and technical people to test an MCP…",
+   "h": "9210b321f3"
+  },
+  {
+   "id": "s-hottest-this-month-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Figma agent is out of beta (Figma)",
+   "url": "https://x.com/figma/status/2107471912704327937",
+   "text": "Figma agent is out of beta (Figma), code and UI tool. Figma's built-in agent, now better at following instructions and handling longer tasks across files and…",
+   "h": "b2f1913cdf"
+  },
+  {
+   "id": "s-hottest-this-month-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Motion design with no video model: Claude + Higgsfield Katana (Higgsfield)",
+   "url": "https://x.com/higgsfield_ai/status/2108378429737628038",
+   "text": "Motion design with no video model: Claude + Higgsfield Katana (Higgsfield), video and animation showcase. A run of clips where every frame is written as code…",
+   "h": "571d2a99ac"
+  },
+  {
+   "id": "s-hottest-this-month-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "mashups",
+   "type": "repo/tool",
+   "title": "HyperFrames: write HTML, render video (GitHub)",
+   "url": "https://github.com/heygen-com/hyperframes",
+   "text": "HyperFrames: write HTML, render video (GitHub), video tool. An open-source tool that turns HTML into MP4, built for agents. The signal: 15,041 stars gained…",
+   "h": "568a10c3de"
+  },
+  {
+   "id": "s-hottest-this-month-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "workflow",
+   "title": "ComfyUI for animation: keyframes to full character animation (ComfyUI)",
+   "url": "https://x.com/ComfyUI/status/2107166635312414777",
+   "text": "ComfyUI for animation: keyframes to full character animation (ComfyUI), animation workflow. Load a few keyframes and one graph generates the in-betweens into…",
+   "h": "be2ce1ffde"
+  },
+  {
+   "id": "s-hottest-this-month-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "sound",
+   "type": "repo/tool",
+   "title": "Drama-3 text-to-speech (Fish Audio, Hugging Face)",
+   "url": "https://huggingface.co/fishaudio/drama-3",
+   "text": "Drama-3 text-to-speech (Fish Audio, Hugging Face), sound model. An open text-to-speech model released this month. The signal: 623 likes and 8,193 downloads on…",
+   "h": "5e0c077aba"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: a fresh search of X (lab and creator accounts and keyword searches over the past week and month), GitHub trending (daily, weekly and monthly), Hugging…",
+   "h": "5827596a73"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Want a deeper dive on any of these, or a different mix of mediums in the next edition? Say the word and it will steer there.",
+   "h": "77c85406b4"
+  }
+ ]
+}

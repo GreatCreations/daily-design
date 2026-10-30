@@ -33,6 +33,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -67,6 +68,7 @@
    "medium": "games",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "games",
     "result",
@@ -97,6 +99,7 @@
    "medium": "games",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "games",
     "result",
@@ -131,6 +134,7 @@
    "medium": "games",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "games",
     "result",
@@ -161,6 +165,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -191,6 +196,7 @@
    "medium": "games",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "games",
     "workflow",
@@ -215,6 +221,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -240,6 +247,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -265,6 +273,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -290,6 +299,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -315,6 +325,7 @@
    "medium": "games",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "games",
     "workflow",
@@ -339,6 +350,7 @@
    "medium": "games",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "games",
     "workflow",
@@ -363,6 +375,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -393,6 +406,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -423,6 +437,7 @@
    "medium": "games",
    "type": "buzz",
    "kind": "Backlash",
+   "kind_key": "backlash",
    "tags": [
     "games",
     "buzz",
@@ -448,6 +463,7 @@
    "medium": "games",
    "type": "buzz",
    "kind": "Community",
+   "kind_key": "community",
    "tags": [
     "games",
     "buzz",
@@ -473,6 +489,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -503,6 +520,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -533,6 +551,7 @@
    "medium": "games",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "games",
     "showcase",
@@ -558,6 +577,7 @@
    "medium": "video",
    "type": "breakdown",
    "kind": "Breakdown",
+   "kind_key": "breakdown",
    "tags": [
     "video",
     "breakdown",
@@ -582,6 +602,7 @@
    "medium": "video",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "video",
     "workflow",
@@ -606,6 +627,7 @@
    "medium": "video",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "video",
     "result",
@@ -631,6 +653,7 @@
    "medium": "video",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "video",
     "workflow",
@@ -655,6 +678,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "video",
     "showcase",
@@ -680,6 +704,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "video",
     "showcase",
@@ -705,6 +730,7 @@
    "medium": "video",
    "type": "breakdown",
    "kind": "Breakdown",
+   "kind_key": "breakdown",
    "tags": [
     "video",
     "breakdown",
@@ -729,6 +755,7 @@
    "medium": "video",
    "type": "case study",
    "kind": "Client-style ad",
+   "kind_key": "client-style-ad",
    "tags": [
     "video",
     "case study",
@@ -754,6 +781,7 @@
    "medium": "video",
    "type": "case study",
    "kind": "Client-style ad",
+   "kind_key": "client-style-ad",
    "tags": [
     "video",
     "case study",
@@ -779,6 +807,7 @@
    "medium": "video",
    "type": "case study",
    "kind": "Client-style ad",
+   "kind_key": "client-style-ad",
    "tags": [
     "video",
     "case study",
@@ -804,6 +833,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "video",
     "showcase",
@@ -829,6 +859,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "video",
     "showcase",
@@ -854,6 +885,7 @@
    "medium": "video",
    "type": "news",
    "kind": "Festival",
+   "kind_key": "festival",
    "tags": [
     "video",
     "news",
@@ -879,6 +911,7 @@
    "medium": "video",
    "type": "news",
    "kind": "Festival",
+   "kind_key": "festival",
    "tags": [
     "video",
     "news",
@@ -904,6 +937,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "video",
     "showcase",
@@ -929,6 +963,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "video",
     "showcase",
@@ -954,6 +989,7 @@
    "medium": "video",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "video",
     "result",
@@ -979,6 +1015,7 @@
    "medium": "video",
    "type": "case study",
    "kind": "Client work",
+   "kind_key": "client-work",
    "tags": [
     "video",
     "case study",
@@ -1004,6 +1041,7 @@
    "medium": "video",
    "type": "case study",
    "kind": "Client work",
+   "kind_key": "client-work",
    "tags": [
     "video",
     "case study",
@@ -1029,6 +1067,7 @@
    "medium": "video",
    "type": "tutorial",
    "kind": "Tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "video",
     "tutorial",
@@ -1053,6 +1092,7 @@
    "medium": "video",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "video",
     "showcase",
@@ -1078,6 +1118,7 @@
    "medium": "video",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "video",
     "result",
@@ -1103,6 +1144,7 @@
    "medium": "video",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "video",
     "result",
@@ -1128,6 +1170,7 @@
    "medium": "video",
    "type": "repo/tool",
    "kind": "Tool in use",
+   "kind_key": "tool-in-use",
    "tags": [
     "video",
     "repo/tool",
@@ -1158,6 +1201,7 @@
    "medium": "image",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "image",
     "workflow",
@@ -1182,6 +1226,7 @@
    "medium": "image",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "image",
     "workflow",
@@ -1206,6 +1251,7 @@
    "medium": "image",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "image",
     "workflow",
@@ -1230,6 +1276,7 @@
    "medium": "image",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "image",
     "workflow",
@@ -1254,6 +1301,7 @@
    "medium": "image",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "image",
     "result",
@@ -1279,6 +1327,7 @@
    "medium": "image",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "image",
     "workflow",
@@ -1303,6 +1352,7 @@
    "medium": "image",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "image",
     "showcase",
@@ -1328,6 +1378,7 @@
    "medium": "image",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "image",
     "workflow",
@@ -1352,6 +1403,7 @@
    "medium": "image",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "image",
     "result",
@@ -1377,6 +1429,7 @@
    "medium": "image",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "image",
     "workflow",
@@ -1401,6 +1454,7 @@
    "medium": "image",
    "type": "tutorial",
    "kind": "Reference shelf",
+   "kind_key": "reference-shelf",
    "tags": [
     "image",
     "tutorial",
@@ -1426,6 +1480,7 @@
    "medium": "3d",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "3d",
     "workflow",
@@ -1450,6 +1505,7 @@
    "medium": "3d",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "3d",
     "showcase",
@@ -1475,6 +1531,7 @@
    "medium": "3d",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "3d",
     "showcase",
@@ -1505,6 +1562,7 @@
    "medium": "3d",
    "type": "repo/tool",
    "kind": "Tool in use",
+   "kind_key": "tool-in-use",
    "tags": [
     "3d",
     "repo/tool",
@@ -1535,6 +1593,7 @@
    "medium": "3d",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "3d",
     "showcase",
@@ -1560,6 +1619,7 @@
    "medium": "3d",
    "type": "repo/tool",
    "kind": "Repo in use",
+   "kind_key": "repo-in-use",
    "tags": [
     "3d",
     "repo/tool",
@@ -1585,6 +1645,7 @@
    "medium": "3d",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "3d",
     "result",
@@ -1615,6 +1676,7 @@
    "medium": "code",
    "type": "breakdown",
    "kind": "Breakdown",
+   "kind_key": "breakdown",
    "tags": [
     "code",
     "breakdown",
@@ -1639,6 +1701,7 @@
    "medium": "code",
    "type": "buzz",
    "kind": "Viral",
+   "kind_key": "viral",
    "tags": [
     "code",
     "buzz",
@@ -1664,6 +1727,7 @@
    "medium": "code",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "code",
     "workflow",
@@ -1688,6 +1752,7 @@
    "medium": "code",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "code",
     "showcase",
@@ -1713,6 +1778,7 @@
    "medium": "code",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "code",
     "showcase",
@@ -1743,6 +1809,7 @@
    "medium": "code",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "code",
     "result",
@@ -1773,6 +1840,7 @@
    "medium": "code",
    "type": "repo/tool",
    "kind": "Tool in use",
+   "kind_key": "tool-in-use",
    "tags": [
     "code",
     "repo/tool",
@@ -1798,6 +1866,7 @@
    "medium": "code",
    "type": "repo/tool",
    "kind": "Tool in use",
+   "kind_key": "tool-in-use",
    "tags": [
     "code",
     "repo/tool",
@@ -1823,6 +1892,7 @@
    "medium": "code",
    "type": "repo/tool",
    "kind": "Tool in use",
+   "kind_key": "tool-in-use",
    "tags": [
     "code",
     "repo/tool",
@@ -1848,6 +1918,7 @@
    "medium": "code",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "code",
     "result",
@@ -1873,6 +1944,7 @@
    "medium": "code",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "code",
     "workflow",
@@ -1897,6 +1969,7 @@
    "medium": "code",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "code",
     "showcase",
@@ -1922,6 +1995,7 @@
    "medium": "code",
    "type": "buzz",
    "kind": "Viral",
+   "kind_key": "viral",
    "tags": [
     "code",
     "buzz",
@@ -1947,6 +2021,7 @@
    "medium": "sound",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "sound",
     "workflow",
@@ -1971,6 +2046,7 @@
    "medium": "sound",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "sound",
     "showcase",
@@ -1996,6 +2072,7 @@
    "medium": "sound",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "sound",
     "result",
@@ -2021,6 +2098,7 @@
    "medium": "sound",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "sound",
     "showcase",
@@ -2046,6 +2124,7 @@
    "medium": "sound",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "sound",
     "showcase",
@@ -2071,6 +2150,7 @@
    "medium": "sound",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "sound",
     "workflow",
@@ -2095,6 +2175,7 @@
    "medium": "sound",
    "type": "repo/tool",
    "kind": "Tool in use",
+   "kind_key": "tool-in-use",
    "tags": [
     "sound",
     "repo/tool",
@@ -2129,6 +2210,7 @@
    "medium": "sound",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "sound",
     "workflow",
@@ -2153,6 +2235,7 @@
    "medium": "mashups",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "mashups",
     "showcase",
@@ -2187,6 +2270,7 @@
    "medium": "mashups",
    "type": "result",
    "kind": "Honest result",
+   "kind_key": "honest-result",
    "tags": [
     "mashups",
     "result",
@@ -2212,6 +2296,7 @@
    "medium": "mashups",
    "type": "workflow",
    "kind": "Workflow",
+   "kind_key": "workflow",
    "tags": [
     "mashups",
     "workflow",
@@ -2236,6 +2321,7 @@
    "medium": "mashups",
    "type": "repo/tool",
    "kind": "Tool in use",
+   "kind_key": "tool-in-use",
    "tags": [
     "mashups",
     "repo/tool",
@@ -2261,6 +2347,7 @@
    "medium": "mashups",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "mashups",
     "showcase",
@@ -2286,6 +2373,7 @@
    "medium": "mashups",
    "type": "showcase",
    "kind": "Finished project",
+   "kind_key": "finished-project",
    "tags": [
     "mashups",
     "showcase",
@@ -2311,6 +2399,7 @@
    "medium": "mashups",
    "type": "tutorial",
    "kind": "Tutorial",
+   "kind_key": "tutorial",
    "tags": [
     "mashups",
     "tutorial",
@@ -2335,6 +2424,7 @@
    "medium": "mashups",
    "type": "repo/tool",
    "kind": "Tool in use",
+   "kind_key": "tool-in-use",
    "tags": [
     "mashups",
     "repo/tool",
@@ -2360,6 +2450,7 @@
    "medium": "mashups",
    "type": "buzz",
    "kind": "Signal",
+   "kind_key": "signal",
    "tags": [
     "mashups",
     "buzz",
@@ -2385,6 +2476,7 @@
    "medium": "mashups",
    "type": "repo/tool",
    "kind": "Repo in use",
+   "kind_key": "repo-in-use",
    "tags": [
     "mashups",
     "repo/tool",
@@ -2419,6 +2511,7 @@
    "medium": "mashups",
    "type": "repo/tool",
    "kind": "Repo in use",
+   "kind_key": "repo-in-use",
    "tags": [
     "mashups",
     "repo/tool",
@@ -2449,6 +2542,7 @@
    "medium": "mashups",
    "type": "repo/tool",
    "kind": "Tool in use",
+   "kind_key": "tool-in-use",
    "tags": [
     "mashups",
     "repo/tool",
@@ -2475,7 +2569,9 @@
  "nav": [
   "editions/2026-10-17/morning.html",
   "editions/2026-10-18/morning.html",
-  7,
-  "f6fcc78ab9fe"
+  11,
+  "cae5861fe905",
+  "2ff5412c4845",
+  "411a29bef46d"
  ]
 }
