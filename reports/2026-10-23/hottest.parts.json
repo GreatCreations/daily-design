@@ -287,6 +287,7 @@
    "kind": "item",
    "parent": "s-hottest-this-month",
    "section": "s-hottest-this-month",
+   "medium": "code",
    "type": "update",
    "title": "impeccable, a design language for AI coding tools (GitHub)",
    "url": "https://github.com/pbakaus/impeccable",
