@@ -114,6 +114,7 @@
    "parent": "s-ranked-picks-sound-and-voice",
    "section": "s-ranked-picks",
    "medium": "sound",
+   "type": "update",
    "title": "Voxtral 3, Mistral's new speech-to-text and text-to-speech family with a voice-agent SDK (Mistral)",
    "url": "https://mistral.ai/news/voxtral-3/",
    "text": "Voxtral 3, Mistral's new speech-to-text and text-to-speech family with a voice-agent SDK (Mistral), model. The TTS model changes emotion, pace and emphasis to…",

@@ -125,6 +125,7 @@
    "kind": "item",
    "parent": "s-hottest-this-week",
    "section": "s-hottest-this-week",
+   "type": "update",
    "title": "MOSS-Image, now built into ComfyUI (Comfy-Org, Hugging Face)",
    "url": "https://huggingface.co/Comfy-Org/MOSS-Image",
    "text": "MOSS-Image, now built into ComfyUI (Comfy-Org, Hugging Face), image model. The Apache-licensed 5B open image model with layout control and legible text, now…",

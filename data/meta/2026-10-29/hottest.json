@@ -1,0 +1,599 @@
+{
+ "edition": {
+  "date": "2026-10-29",
+  "slot": "hottest",
+  "time": "8 PM",
+  "title": "Hottest Right Now",
+  "kind": "report",
+  "headline": "AI Design Hottest Right Now · Thursday, Oct 29, 2026",
+  "summary": "Today's biggest explosion was Mistral Large 4, a roughly 1-trillion-parameter open-weight model that reached 1,156 points on Hacker News, though it is a general coding and agent model rather than a design tool. The design story of the week is still agents learning taste: impeccable gained 9,713 GitHub stars in seven days and 2,870 today, taste-skill added 4,359 this week, and a new slide-deck skill, ppt-master, added 4,980. Genie 4 is holding at 1,038 points on Hacker News two days after launch. Over the month, staying power belongs to open weights and local tools: VoiceStudio gained 47,778 stars, and the ComfyUI packages for Qwen-Image 2.1, MiniMax H3 and MOSS-Image have passed 10.2 million, 5.6 million and 3.4 million downloads.",
+  "path": "reports/2026-10-29/hottest.md",
+  "url": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+  "header": "reports/2026-10-29/hottest-header.png",
+  "thumb": "reports/2026-10-29/hottest-thumb.jpg",
+  "item_count": 22,
+  "tags": [
+   "hottest",
+   "2026-10-29",
+   "report"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-29-hottest-1",
+   "title": "Mistral Large 4 open weights (Mistral)",
+   "url": "https://mistral.ai/news/mistral-large-4-oss/",
+   "note": "Mistral released the weights of its flagship: about 1 trillion parameters in total, natively multimodal input, and a modified MIT license that requires a separate commercial license from anyone offering it as a hosted service. The signal: 1,156 points and 330 comments on Hacker News, the top AI story on the front page. Why it matters: it is a general coding and agent model with no image-generation or design claims on Mistral's page, so treat it as news for people who build interfaces and tools. Benchmarks on the page (for example 41% on Terminal-Bench 4.0) are Mistral's own, and commenters report the smallest quantization still needs about 256 GB of memory.",
+   "medium": "",
+   "type": "news",
+   "kind": "model news",
+   "kind_key": "model-news",
+   "tags": [
+    "news",
+    "hottest",
+    "2026-10-29",
+    "model news"
+   ],
+   "source": "mistral.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50289418"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-2",
+   "title": "Pika H3 Flex, LoRA adapters on MiniMax H3 (Pika, Hugging Face)",
+   "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex",
+   "note": "Per the model page, it generates video with synchronized audio in six sampling steps, at 480p or 768p, 24 fps and 5 to 15 seconds, with up to 12 reference inputs. The signal: 76 likes within hours of the page appearing this morning, and it is already in the top five of Hugging Face's trending image-to-video list. Much smaller than Mistral Large 4, but the day's only new video model with traction in our sweep. Try it: the adapters sit on top of MiniMax H3 and follow its community license; Pika says the 1080p to 4K features are only in its hosted API.",
+   "medium": "",
+   "type": "news",
+   "kind": "model launch",
+   "kind_key": "model-launch",
+   "tags": [
+    "news",
+    "hottest",
+    "2026-10-29",
+    "model launch"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "MiniMax H3",
+     "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-3",
+   "title": "impeccable, a design vocabulary for coding agents (GitHub)",
+   "url": "https://github.com/pbakaus/impeccable",
+   "note": "Commands such as polish, bolder, critique and audit, plus a rule-based detector that flags generic AI-looking design. The signal: 9,713 stars this week and 2,870 today (the top of GitHub's daily list), 95,315 in total; Apache-2.0. Try it: run npx impeccable install, then /impeccable init in your agent, and audit one existing page.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-4",
+   "title": "taste-skill, art direction for coding agents (GitHub)",
+   "url": "https://github.com/Leonxlnx/taste-skill",
+   "note": "Adds art direction, real photographs and a browser check of the agent's own output; version 2.1 adds dashboards and app screens. The signal: 4,359 stars this week, 14,568 this month and 105,546 in total; MIT. Try it: npx skills add https://github.com/Leonxlnx/taste-skill --skill \"design-taste-frontend\", then build the same page with and without it.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-5",
+   "title": "ppt-master, editable PowerPoint decks from a prompt or document (GitHub)",
+   "url": "https://github.com/hugohe3/ppt-master",
+   "note": "Runs inside an agent such as Claude Code and writes native, editable PowerPoint shapes, charts and tables instead of flat images, with optional transitions, animations and narration from speaker notes. The signal: 4,980 stars this week and 70,825 in total on GitHub's weekly trending; MIT, with an optional PDF converter that depends on an AGPL library. Try it: npx skills add hugohe3/ppt-master, drop a source document in projects/ and ask for a deck.",
+   "medium": "",
+   "type": "repo/tool",
+   "kind": "design tool",
+   "kind_key": "design-tool",
+   "tags": [
+    "repo/tool",
+    "hottest",
+    "2026-10-29",
+    "design tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-6",
+   "title": "Genie 4, a world model you can walk into (Google DeepMind)",
+   "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+   "note": "Prompt a live, interactive scene, steer it with text (weather, camera, new people or objects), and get ambient sound, music and real-time dialogue with it. The signal: 1,038 points and 587 comments on Hacker News (1,021 points in the previous edition). The post says testers use it for previs and game prototyping, and lists drifting detail and legible text as open problems. Try it: it is a limited preview for trusted testers, with a waitlist linked from the post; Ultra subscribers and early-access Gemini API partners come next.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "deepmind.google",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50261319"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-7",
+   "title": "SurgePix, AI visuals you keep editing layer by layer (Product Hunt)",
+   "url": "https://www.producthunt.com/products/surgepix",
+   "note": "Per the makers, you can split a flat image into editable layers, pull text off an image to retype it, repaint a region and keep a brand kit, and open-source agent skills let Claude Code and Cursor call it. The signal: 263 upvotes, #8 on Product Hunt's weekly leaderboard (212 points in the Oct 26 edition). Try it: it has a free option, with no tiers listed; split one of your own flat posters into layers and retype the headline.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "Product Hunt",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-8",
+   "title": "Interfaces skills for coding agents (Jakub Krehel, GitHub)",
+   "url": "https://github.com/jakubkrehel/skills",
+   "note": "Fourteen skills, including better-typography, better-colors, better-accessibility, build-design (builds UI from a Figma file or design image) and explain-interface (explains how an effect or animation was built from a URL or screenshot). The signal: 980 stars this week and 9,174 in total on GitHub's weekly trending; MIT. Try it: npx skills add jakubkrehel/skills, then run better-interface on one screen.",
+   "medium": "",
+   "type": "repo/tool",
+   "kind": "design tool",
+   "kind_key": "design-tool",
+   "tags": [
+    "repo/tool",
+    "hottest",
+    "2026-10-29",
+    "design tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-9",
+   "title": "ai-design-skills (GitHub)",
+   "url": "https://github.com/elayadesign/ai-design-skills",
+   "note": "Still only one skill so far, landing-page-design, which covers page structure, conversion copy and a visual system. The signal: 1,187 stars today and 12,151 in total (11,116 in the previous edition); MIT. Try it: copy the skill folder into .claude/skills and brief it with a real product.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-10",
+   "title": "Kimi K3.1 Pro, an open-weight model aimed at front-end and 3D work (Moonshot)",
+   "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "note": "Moonshot says it builds front-end pages, Three.js scenes and Unity, Unreal and Godot games, scripts Blender and CAD, and scores 92.7% on BenchCAD; all benchmark numbers are Moonshot's. The signal: 1,096 points and 679 comments on Hacker News. New since the last edition: the page says full weights are due by Nov 4 and does not yet name a license. Try it: it is live on kimi.ai and the Kimi API; its 3D Make feature previews and exports models for printing.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "kimi.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50212065"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-11",
+   "title": "GPT-6.1 Terra (OpenAI)",
+   "url": "https://news.ycombinator.com/item?id=50248124",
+   "note": "The signal: 636 points and 426 comments on Hacker News since Oct 26, one of the week's biggest AI threads. OpenAI's own page returned a 403 error for us, so we are linking the discussion and cannot describe the model beyond its title. Use it: read the thread before deciding if it fits your design workflow.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "Hacker News",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-12",
+   "title": "Claude Dashboards and Claude Motion (Claude)",
+   "url": "https://claude.com/resources/articles/dashboards-and-motion",
+   "note": "Dashboards turn connected company data into a live dashboard where each number links to its query; Motion makes animated explainers as editable code (not generated footage) that export as MP4. Per the page, Dashboards is in beta on paid plans and Motion in beta on Team and Enterprise, both off by default for Enterprise admins. The signal: the Oct 28 edition recorded 60,543 likes for the launch post on X, still the biggest AI design post of the month; we could not re-read X tonight, so that figure is from the earlier edition. Try it: type /motion and describe a 30-second explainer.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "claude.com",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-13",
+   "title": "VoiceStudio, a local voice studio (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "note": "Voice cloning, voice design, dubbing, dictation, transcription and audiobooks on your own device; the repo says it covers 646 languages. The signal: 47,778 stars this month and 94,313 in total, the most gained on GitHub's monthly trending list. It is AGPL-3.0, and model weights and voices carry their own licenses. Try it: dub a short clip into a second language locally.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-14",
+   "title": "HyperFrames: write HTML, render video (HeyGen, GitHub)",
+   "url": "https://github.com/heygen-com/hyperframes",
+   "note": "Turns HTML, CSS and seekable animations into deterministic MP4s, built for agents. The signal: 21,520 stars this month and 75,469 in total; Apache-2.0 with no per-render fees. Try it: npx hyperframes init my-video, then preview and render; it needs Node 22 and FFmpeg.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-15",
+   "title": "Hallmark, a design skill that refuses to look AI-generated (Nutlope, GitHub)",
+   "url": "https://github.com/Nutlope/hallmark",
+   "note": "Fifty design themes plus a lint pass for common machine-made tells, for Claude Code, Codex, Cursor and OpenCode. The signal: 12,501 stars this month and 42,096 in total; MIT. Try it: npx skills add nutlope/hallmark -g.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-16",
+   "title": "MOSS-Image for ComfyUI (Hugging Face)",
+   "url": "https://huggingface.co/Comfy-Org/MOSS-Image",
+   "note": "A 5B open model from OpenMOSS, packaged for ComfyUI; its model page says it accepts prompts, tag lists or JSON layouts that control where text and objects go. The signal: 3,401,045 downloads and 544 likes on the ComfyUI package (2,442,344 downloads in the Oct 26 edition); Apache-2.0. Try it: lay out a poster with a JSON layout and check the lettering.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "model page",
+     "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-17",
+   "title": "Qwen-Image 2.1 and its 8-step Turbo (Qwen, Hugging Face)",
+   "url": "https://huggingface.co/Qwen/Qwen-Image-2.1",
+   "note": "A 7B open model for text-to-image and editing, with up to 10 reference images, local edits by circle or mask, and native transparent output, per Qwen. The signal: 3,496 likes on the original and 10,165,332 downloads on its ComfyUI package; Turbo (1,081 likes) runs in eight steps. Both use the Qwen Research License, so check it before commercial use. Try it: use Turbo for drafts and the full model for keepers.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "ComfyUI package",
+     "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1"
+    },
+    {
+     "label": "Turbo",
+     "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-18",
+   "title": "FLUX.3 image klein for ComfyUI (Black Forest Labs, Hugging Face)",
+   "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+   "note": "A 5.6B model for text-to-image and editing with up to 10 reference images; the card says to keep its prompt upsampler on. The signal: 832,197 downloads and 2,049 likes since Oct 14 (750,694 downloads in the Oct 27 edition). The int8 files are described as running on 8 GB cards. The repo is gated and its license allows commercial output only for users under US$5M in revenue. Try it: load the repo's ComfyUI workflow and edit one photo with three references.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-19",
+   "title": "MiniMax H3, an open audio-video model (MiniMaxAI, Hugging Face)",
+   "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+   "note": "A 33B model that makes video with stereo audio at 768p, up to 15 seconds; the Ref2VA checkpoint takes up to 12 reference files, and dialogue is supported in 11 languages. The signal: 6,439 likes and 5,575,683 downloads, with community LoRAs built on it, Pika's among them, crowding Hugging Face's image-to-video trending list. 2K output and the prompt preprocessor are not open, and the example serving commands use four GPUs. Try it: the model page covers ComfyUI, diffusers, vLLM and SGLang.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-20",
+   "title": "LTX-2.5, an open world-and-video model (Lightricks, Hugging Face)",
+   "url": "https://huggingface.co/Lightricks/LTX-2.5",
+   "note": "Open weights for local video with synchronized audio, native multishot generation and LoRA training. The signal: 9,848 likes and 2,269,999 downloads, #1 on Hugging Face's image-to-video trending list. Free commercial use under US$10M revenue; the repo is gated. Try it: the page has a distilled checkpoint and low-memory options (--quantization fp8-cast --offload cpu).",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "Hugging Face",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-21",
+   "title": "text-to-cad, design physical products with AI (GitHub)",
+   "url": "https://github.com/earthtojake/text-to-cad",
+   "note": "A plugin where the agent writes a build123d Python script and exports STEP, GLB, STL or 3MF, with design-for-manufacturing checks. The signal: 7,732 stars this month and 24,140 in total; MIT. Try it: claude plugin marketplace add earthtojake/text-to-cad#latest, then describe one bracket; telemetry is on by default and can be turned off.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  },
+  {
+   "id": "2026-10-29-hottest-22",
+   "title": "Voxtral 3, speech-to-text and text-to-speech (Mistral)",
+   "url": "https://mistral.ai/news/voxtral-3/",
+   "note": "Transcription in 50+ languages, text-to-speech in 35+ languages, and a voice-agent SDK. The signal: 770 points and 202 comments on Hacker News. It is API-first: the page names no license and lists $13 per million characters for text-to-speech; claims about beating Whisper are Mistral's. Try it: voice one narration line in the Studio playground.",
+   "medium": "",
+   "type": "update",
+   "kind": "update",
+   "kind_key": "update",
+   "tags": [
+    "update",
+    "hottest",
+    "2026-10-29"
+   ],
+   "source": "mistral.ai",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Hacker News",
+     "url": "https://news.ycombinator.com/item?id=50168396"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-29/hottest.md",
+   "edition_kind": "report",
+   "date": "2026-10-29",
+   "slot": "hottest"
+  }
+ ],
+ "src_hash": {
+  "md": "1a42190ee65733c158e7042432ae8e55b2578139"
+ },
+ "tool_version": 3,
+ "nav": null
+}

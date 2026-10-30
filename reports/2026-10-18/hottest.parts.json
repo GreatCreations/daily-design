@@ -123,6 +123,7 @@
    "kind": "item",
    "parent": "s-hottest-this-week",
    "section": "s-hottest-this-week",
+   "type": "update",
    "title": "FLUX 3 Image Klein in ComfyUI (Black Forest Labs, Hugging Face)",
    "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
    "text": "FLUX 3 Image Klein in ComfyUI (Black Forest Labs, Hugging Face), image model. The 5.6B-parameter open-weights image model with 4K output and bounding-box…",
