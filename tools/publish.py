@@ -11,8 +11,12 @@ Usage:  python3 /workspace/daily-design/tools/publish.py [--no-push] [--src DIR]
 4. Keeps per-edition metadata in data/meta/<date>/<slot>.json and rebuilds data/index.json
    (editions, calendar, facets, totals) plus monthly item shards data/items/<YYYY-MM>.json.
 5. Runs a public-safety scan, then commits and pushes as GreatCreations.
+6. Members gate (DD_GATE=1): editions dated after FREE_FOREVER_THROUGH go to the gate Worker's KV in full and stay
+   out of this repo except as header-only index entries (see tools/gate_split.py).
 """
 import argparse, datetime as dt, html, json, os, re, shutil, subprocess, sys, unicodedata
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import gate_split  # members gate: Nov 1+ full content -> KV, header-only -> repo (off unless DD_GATE=1)
 from urllib.parse import urlparse, quote
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -2133,6 +2137,7 @@ def main():
     args = ap.parse_args()
     src = args.src
     meta_dir = os.path.join(REPO, "data", "meta")
+    gate_split.restore(REPO, log)  # gated files from the last run come back so nav/meta/incremental checks work
 
     # 1. new or changed source editions -> repo + metadata
     found = {}
@@ -2234,11 +2239,13 @@ def main():
     data["special"] = load_special_days(days)
     data["maintenance"] = [x["date"] for x in data["special"] if x["type"] == "maintenance"]  # older app/gate builds
     write_if_changed(os.path.join(REPO, "data", "index.json"), jdump(data))
-    # 4b. SEO: index head/static links, sitemap.xml, robots.txt, feed.xml
-    build_index_seo(editions)
+    # 4a. members gate: full content of editions after FREE_FOREVER_THROUGH goes to KV and leaves the repo
+    public_eds = gate_split.split(REPO, data, shards, recs, log, dry_run=args.no_push)
+    # 4b. SEO: index head/static links, sitemap.xml, robots.txt, feed.xml (public editions only)
+    build_index_seo(public_eds)
     build_contact_page()
-    build_about_page(editions)
-    build_sitemap_feed(editions)
+    build_about_page(public_eds)
+    build_sitemap_feed(public_eds)
     nv = version_assets()  # 4c. ?v=<hash> on first-party JS/CSS links, after every page is written
     if nv: log("asset versions updated on %d pages" % nv)
     for legacy in ("index.js",):
@@ -2274,6 +2281,14 @@ def main():
             log("  ", b)
         return 2
     log("safety scan clean (%d changed files)" % len(scan))
+    if gate_split.enabled():
+        leaks = gate_split.leak_check(REPO, changed)
+        if leaks:
+            log("GATE LEAK CHECK FAILED; nothing committed:")
+            for b in leaks[:40]:
+                log("  ", b)
+            return 3
+        log("gate leak check clean")
 
     if args.no_push:
         return 0

@@ -262,3 +262,11 @@ Re-running with nothing new prints `nothing new to publish`.
   `publish.py` renders it on `contact.html#sponsor` ("Intro rates, USD per week"). Change the numbers there and re-run the publisher.
   Intro rates: top $49 / lower $39 / both, same ad $75 / both, different ads $85 per week; animated or video +50%
   ($74 / $59 / $112 / $128). Display-only; nothing here affects picks or rankings.
+
+## Members gate (from Nov 1, 2026; DRAFT on branch gate-kv-publish)
+
+Set `DD_GATE=1` (plus `CF_ACCOUNT_ID`, `CF_KV_NAMESPACE_ID`, `CF_KV_TOKEN_FILE`) to turn it on. Editions dated after
+`DD_FREE_FOREVER_THROUGH` (default 2026-10-31) are still built in the working tree, then `tools/gate_split.py` uploads
+their full files plus the full index and item shards to the gate Worker's KV, moves the files to `DD_PRIVATE_ROOT`
+(outside git), writes header-only index entries, and blocks the commit if anything gated is left. Without `DD_GATE`
+publishing is unchanged. `.github/workflows/gate-guard.yml` is a backstop alert only, because by the time CI runs the push is already public.
