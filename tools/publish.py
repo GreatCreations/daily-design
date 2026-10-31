@@ -1377,6 +1377,7 @@ def report_page(ed, md, items, old_parts=None, known=None):
     blocks, ids, parts = report_parts(md, items, old_parts, known)
     body = with_xlist(blocks_html(blocks, ids))
     gh = REPO_BLOB + ed["path"]
+    gh_link = '' if (gate_split.enabled() and gate_split.gated(ed["date"])) else '<a class="rd-gh" href="%s" rel="noopener">View on GitHub ↗</a>' % gh
     key = "%s/%s" % (ed["date"], ed["slot"])
     return ("""<!doctype html>
 <html lang="en">
@@ -1394,7 +1395,7 @@ def report_page(ed, md, items, old_parts=None, known=None):
 <nav class="rp-top" aria-label="Daily Design"><a class="btn" href="../../index.html">← Daily Design index</a><a href="../../#report=%s">Open in the index reader</a></nav>
 %s
 <section class="reader" style="--c:%s" aria-label="Report">
-<div class="rd-bar"><div class="rd-kick"><span class="dot"></span>%s · %s · %s <b>Report</b></div><div class="rd-acts">%s<a class="rd-gh" href="%s" rel="noopener">View on GitHub ↗</a></div></div>
+<div class="rd-bar"><div class="rd-kick"><span class="dot"></span>%s · %s · %s <b>Report</b></div><div class="rd-acts">%s%s</div></div>
 <article class="rd-body" data-tts-root>
 %s
 </article>
@@ -1408,7 +1409,7 @@ def report_page(ed, md, items, old_parts=None, known=None):
 </html>
 """) % (seo_block(ed, items, report_story(md)), icon_links("../../"), REPORT_CSS, key,
         sponsor_html("../../", "dd-spon-wrap dd-spon-rp"), s["color"],
-        esc(s["time"]) + tz_html(ed["date"], ed["slot"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, esc(gh), body, credit_html("../../", blurb=FOOT_BLURB_NUMBERS)), parts
+        esc(s["time"]) + tz_html(ed["date"], ed["slot"]), esc(s["name"]), esc(nice_date(ed["date"])), REPORT_TTS, gh_link.replace(gh, esc(gh)), body, credit_html("../../", blurb=FOOT_BLURB_NUMBERS)), parts
 
 
 REPORT_TTS = ('<button class="btn rd-tts" id="dd-tts-play" type="button" hidden aria-label="Listen: read this page aloud" aria-pressed="false">'
@@ -2289,6 +2290,11 @@ def main():
                 log("  ", b)
             return 3
         log("gate leak check clean")
+        if not args.no_push:
+            err = gate_split.backup(REPO, log, GH_USER)
+            if err:
+                log("!!! PRIVATE BACKUP FAILED; public commit stopped (KV already has the content): " + err)
+                return 4
 
     if args.no_push:
         return 0

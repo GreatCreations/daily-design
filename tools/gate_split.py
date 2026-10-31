@@ -17,7 +17,16 @@ Config (environment, never committed or printed):
   CF_ACCOUNT_ID, CF_KV_NAMESPACE_ID, and the token in CF_KV_TOKEN or in the file named by CF_KV_TOKEN_FILE
   (API token scoped to Workers KV Storage: Edit on that one account only).
 """
-import base64, hashlib, json, os, shutil, urllib.request, urllib.error
+import base64, hashlib, json, os, shutil, subprocess, urllib.request, urllib.error
+
+# Publishing-box config (outside the repo, mode 600, KEY=VALUE lines). Environment variables win.
+_CFG = os.environ.get("DD_GATE_CONFIG") or os.path.expanduser("~/.config/daily-design-gate.env")
+if os.path.exists(_CFG):
+    for _l in open(_CFG, encoding="utf-8"):
+        _l = _l.strip()
+        if _l and not _l.startswith("#") and "=" in _l:
+            _k, _v = _l.split("=", 1)
+            os.environ.setdefault(_k.strip(), os.path.expanduser(_v.strip()))
 
 FFT = os.environ.get("DD_FREE_FOREVER_THROUGH", "2026-10-31")
 PRIVATE_ROOT = os.environ.get("DD_PRIVATE_ROOT") or os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "daily-design-gated")
@@ -35,7 +44,7 @@ def gated(date):
 
 
 def _token():
-    t = os.environ.get("CF_KV_TOKEN")
+    t = os.environ.get("CF_KV_TOKEN") or os.environ.get("CF_KV_WRITE_TOKEN")
     if not t and os.environ.get("CF_KV_TOKEN_FILE"):
         t = open(os.environ["CF_KV_TOKEN_FILE"], encoding="utf-8").read().strip()
     if not t:
@@ -223,3 +232,56 @@ def leak_check(repo, changed):
             if gated(it.get("date", "")):
                 bad.append("gated item in %s" % f); break
     return bad
+
+
+BACKUP_REPO = os.environ.get("DD_BACKUP_REPO", "GreatCreations/daily-design-members")  # PRIVATE repo; never linked from the site
+BACKUP_DIR = os.environ.get("DD_BACKUP_DIR") or os.path.join(os.path.dirname(PRIVATE_ROOT), "daily-design-members")
+
+
+def backup(repo, log, gh_user="GreatCreations"):
+    """Commit the full gated content (md, HTML, header, thumbnail, meta) to the private backup repo.
+    Returns None on success, or an error string (caller fails loudly)."""
+    dates = sorted(_gated_dates(PRIVATE_ROOT))
+    if not dates:
+        return None
+    env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
+    env.pop("GH_TOKEN", None); env.pop("GITHUB_TOKEN", None)
+    helper = ('!f() { test "$1" = get && echo username=x-access-token && '
+              'echo "password=$(gh auth token -u %s)"; }; f' % gh_user)
+    def g(*a):
+        return subprocess.run(["git", "-C", BACKUP_DIR, "-c", "credential.helper=", "-c", "credential.helper=" + helper] + list(a),
+                              env=env, text=True, capture_output=True)
+    try:
+        vis = subprocess.run(["gh", "api", "repos/" + BACKUP_REPO, "--jq", ".private"], env=dict(env, GH_TOKEN=subprocess.run(
+            ["gh", "auth", "token", "-u", gh_user], text=True, capture_output=True).stdout.strip()), text=True, capture_output=True).stdout.strip()
+        if vis != "true":
+            return "backup repo %s is not confirmed private (%r); nothing backed up" % (BACKUP_REPO, vis)
+        if not os.path.isdir(os.path.join(BACKUP_DIR, ".git")):
+            os.makedirs(BACKUP_DIR, exist_ok=True)
+            for a in (("init", "-q", "-b", "main"), ("remote", "add", "origin", "https://github.com/%s.git" % BACKUP_REPO)):
+                r = g(*a)
+                if r.returncode: return "git %s: %s" % (a[0], r.stderr.strip()[:200])
+            g("config", "user.name", gh_user); g("config", "user.email", "%s@users.noreply.github.com" % gh_user)
+            if g("ls-remote", "--exit-code", "origin", "main").returncode == 0:
+                r = g("pull", "-q", "origin", "main")
+                if r.returncode: return "git pull: %s" % r.stderr.strip()[:200]
+        else:
+            r = g("pull", "-q", "--rebase", "origin", "main")
+            if r.returncode and "couldn't find remote ref" not in r.stderr: return "git pull: %s" % r.stderr.strip()[:200]
+        n = 0
+        for date in dates:
+            for rel in _files_for(PRIVATE_ROOT, date):
+                dst = os.path.join(BACKUP_DIR, rel)
+                os.makedirs(os.path.dirname(dst), exist_ok=True)
+                shutil.copy2(os.path.join(PRIVATE_ROOT, rel), dst); n += 1
+        g("add", "-A")
+        if not g("status", "--porcelain").stdout.strip():
+            log("backup: private repo already up to date (%d files)" % n); return None
+        r = g("commit", "-q", "-m", "Backup gated editions through %s" % dates[-1])
+        if r.returncode: return "git commit: %s" % r.stderr.strip()[:200]
+        r = g("push", "-q", "origin", "HEAD:main")
+        if r.returncode: return "git push: %s" % r.stderr.strip()[:200]
+        log("backup: pushed %d gated files to private %s" % (n, BACKUP_REPO))
+        return None
+    except Exception as e:
+        return "backup error: %s" % e
