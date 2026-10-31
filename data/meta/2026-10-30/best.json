@@ -1,0 +1,336 @@
+{
+ "edition": {
+  "date": "2026-10-30",
+  "slot": "best",
+  "time": "6 PM",
+  "title": "Best of the Day",
+  "kind": "report",
+  "headline": "AI Design Best of the Day · Friday, Oct 30, 2026",
+  "summary": "The pick of the day is Nate Herk's \"I Told Claude to 'Make it better' 100 Times,\" a YouTube experiment that gives Claude Code one bad coffee-shop website and asks for 100 rounds of improvement, once with Sonnet 5.5 and once with Opus 5.5. It matters because it tests the habit behind much of today's agent-made design, which is to keep telling the model to try again, and it reports where that stops working: Sonnet made small, careful changes, while Opus kept adding features until the site reached 21,000 lines and started breaking itself, per the video description. The video had 174,762 views about a day after upload, up from 89,350 when this morning's edition read it. Around it, long Seedance 2.5 clips drew the most X engagement of the day, a new Claude skill called unslop passed 1,100 GitHub stars in about a day, and a video-to-game kit built on fal turned 31 generated videos into playable three.js games.",
+  "path": "reports/2026-10-30/best.md",
+  "url": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+  "header": "reports/2026-10-30/best-header.png",
+  "thumb": "reports/2026-10-30/best-thumb.jpg",
+  "item_count": 11,
+  "tags": [
+   "best",
+   "2026-10-30",
+   "3d",
+   "code",
+   "games",
+   "image",
+   "video",
+   "report"
+  ]
+ },
+ "items": [
+  {
+   "id": "2026-10-30-best-1",
+   "title": "I Told Claude to \"Make it better\" 100 Times (It Went Too Far) (Nate Herk, YouTube)",
+   "url": "https://www.youtube.com/watch?v=DByAR5Su1Yw",
+   "note": "An update on a video the morning edition listed from its title alone; the description is now read. Per the description, he gave Claude Code a deliberately bad coffee-shop website and said \"make it better\" 100 times in a row, once with Sonnet 5.5 and once with Opus 5.5. Sonnet made small, careful changes; Opus kept adding features until the site hit 21,000 lines and started breaking itself; and neither model searched the web once, though it could have. Why people are losing it: 174,762 views in about a day, the most-viewed design-related video we could verify today, and the chapter list (Sonnet's 100 rounds, Opus's 100 rounds, final stats, \"no web search\") makes it easy to jump to the part you care about. It is one site and one run per model, so treat the verdict as the creator's, and the description carries links to his paid community, a free website-design skill sign-up and a hosting discount code. How to try it: watch the final-stats chapter at 12:03, then run 10 rounds of your own on a page you already have and stop when it starts adding features you did not ask for.",
+   "medium": "code",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "kind_key": "tutorial",
+   "tags": [
+    "code",
+    "tutorial",
+    "best",
+    "2026-10-30"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-30-best-2",
+   "title": "Three long Seedance 2.5 clips lead X: \"This AI video cooked whole hollywood\" (@xmliisu)",
+   "url": "https://x.com/xmliisu/status/2116177871467335739",
+   "note": "The post is a clip tagged Seedance 2.5 with no prompt, workflow or credit to a maker. Why it's here: 546 likes, 110 reposts, 250 bookmarks and about 96,300 views, the highest-reach post in the X posts gathered for this edition. Two more near-identical captions have @xIrissy (listed in this morning's edition, now updated) at 411 likes, 244 reposts, 191 bookmarks and about 9,800 views, and @SarcasticAnnabe at 306 likes, 65 reposts, 195 bookmarks and about 4,900 views. The three clips run about 2:40, 3:12 and 7:19 and none says who made them, so this is a signal that Seedance 2.5 is what people are sharing, not a credited work. How to try it: judge the clips yourself, then rebuild a short with a documented workflow such as the next pick.",
+   "medium": "video",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "video",
+    "showcase",
+    "best",
+    "2026-10-30"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "@xIrissy",
+     "url": "https://x.com/xIrissy/status/2116117794882490468"
+    },
+    {
+     "label": "@SarcasticAnnabe",
+     "url": "https://x.com/SarcasticAnnabe/status/2116198601936527397"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-30-best-3",
+   "title": "I Spent 72 Hours Making This AI Commercial With Seedance 2.5 (Every Prompt I Used) (Higgsfield AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=ktGkJfxNN9M",
+   "note": "A 27-minute breakdown of a sportswear commercial with three characters, made with Claude and Higgsfield Cinema Studio, from character references and kits to scene building, failed and successful takes, and the final edit. Why it's here: 26,633 views in about nine hours, and chapters such as \"Fixing the Dance Movement\" and \"Goalkeeper Generation Budget\" show the retakes most clips hide. The channel belongs to the platform that sells the tool, so it is a product demo, and the description promises the prompts and assets on a Higgsfield page and ends with a \"Total Credits\" chapter but gives no cost figure. How to try it: skim the character and kit chapters first (2:45 to 5:50) to see how reusable assets are built before any scene is shot.",
+   "medium": "video",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "kind_key": "tutorial",
+   "tags": [
+    "video",
+    "tutorial",
+    "best",
+    "2026-10-30"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-30-best-4",
+   "title": "Claude as a motion designer, in two videos the same morning (Георгий Ривера and Kenzo Nakagawa, YouTube)",
+   "url": "https://www.youtube.com/watch?v=AIHViECQwiU",
+   "note": "Both creators have Claude write code that renders animated video with no After Effects. Per the Russian-language description, Rivera's free \"Rivera Motion\" skill walks you through four motion projects, from a business explainer to a pixel-art intro and real-estate 3D, with a chapter on saving Claude tokens. Kenzo's Portuguese-language video says it needs only Claude and Python and produces a paper-cutout collage style in vertical or horizontal; its description still shows an unfilled placeholder where the prompt link should be. Why it's here: 9,737 and 4,855 views within hours of upload, from two creators in two languages. How to try it: start with Rivera's four-projects chapter at 4:15 and judge the output before installing anything.",
+   "medium": "video",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "kind_key": "tutorial",
+   "tags": [
+    "video",
+    "tutorial",
+    "best",
+    "2026-10-30"
+   ],
+   "source": "YouTube",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "Kenzo's Portuguese-language video",
+     "url": "https://www.youtube.com/watch?v=0gSkUR1R7EY"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-30-best-5",
+   "title": "unslop: a Claude skill that turns AI-looking UI into a designed one (Damir Sokolovsky, GitHub)",
+   "url": "https://github.com/heydamir/unslop",
+   "note": "Per the README, it finds the slop first (purple gradients, glows, emoji labels, shouty copy, uneven spacing), proposes a direction from your product, then fixes the screen in passes for spacing, color, icons, copy, type, layout, details, visuals and motion; it can also render a short story video of the screen unslopping itself. Why it's here: 1,102 stars and 53 forks since it was created yesterday, among the fastest-rising new design repos we found, and another entry in the anti-\"AI look\" wave that impeccable and others have been riding this week. It is CC BY 4.0, so credit the author, and the README ends with an offer to unslop one screen for hire. How to try it: copy the skill into your Claude Code skills folder and run /unslop on a dashboard you vibe-coded.",
+   "medium": "code",
+   "type": "repo/tool",
+   "kind": "tool",
+   "kind_key": "tool",
+   "tags": [
+    "code",
+    "repo/tool",
+    "best",
+    "2026-10-30",
+    "tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-30-best-6",
+   "title": "Keychain app onboarding, designed in Figma and animated with Claude Code SVG (@oiharshit)",
+   "url": "https://x.com/oiharshit/status/2116150062829207886",
+   "note": "A nine-second square clip of an onboarding flow; the post says it was designed in Figma, then animated and built with Claude Code using SVG animations. Why it's here: 151 likes, 75 bookmarks, 28 replies and about 3,100 views, a high save rate for a post with no tutorial attached. There is no code or prompt in the post. How to try it: export a Figma frame as SVG and ask your agent to animate the layers one at a time, checking each against your design.",
+   "medium": "code",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "code",
+    "showcase",
+    "best",
+    "2026-10-30"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-30-best-7",
+   "title": "video-to-game: turn a generated video into a playable three.js game (lovisdotio, GitHub)",
+   "url": "https://github.com/lovisdotio/video-to-game",
+   "note": "Per the README, a video model designs the game's look, camera and one mechanic; the agent studies the clip frame by frame, makes every image, 3D model and sound with fal, writes a single-file three.js game, then plays it and films its best seconds. The repo shows 31 games from 10 to 15 second MiniMax H3 Max videos, with 1,013 fal calls and about 6 USD per game, 202 USD in total, which are the authors' figures. Why it's here: 270 stars and 38 forks in about a day, and you can play all 31 games without installing anything. It is built around fal's paid services, so your costs depend on them. How to try it: play two or three from the gallery, then read the README's \"Why\" section on using the video as the design document.",
+   "medium": "games",
+   "type": "repo/tool",
+   "kind": "tool",
+   "kind_key": "tool",
+   "tags": [
+    "games",
+    "repo/tool",
+    "best",
+    "2026-10-30",
+    "tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "play all 31 games",
+     "url": "https://fal-video-to-game.vercel.app"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-30-best-8",
+   "title": "pixelfx: 232 pixel-art effects, each a small piece of code, plus a Claude Code skill (patch-gg, GitHub)",
+   "url": "https://github.com/patch-gg/pixelfx",
+   "note": "Fire, explosions, water, magic, weather, UI and pickups that you can play live in a gallery, recolor, mirror, drop into a browser game or export as sprite sheets, with a skill for making new ones by drafting, rendering, looking and refining. The README credits Hugo Duprez's method for making pixel-art effects with Claude. Why it's here: 277 stars and 28 forks within about sixteen hours of creation, MIT licensed, and every effect is code rather than an image. How to try it: open the gallery, pick one effect, and export it as a sprite sheet for your engine.",
+   "medium": "games",
+   "type": "repo/tool",
+   "kind": "tool",
+   "kind_key": "tool",
+   "tags": [
+    "games",
+    "repo/tool",
+    "best",
+    "2026-10-30",
+    "tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [
+    {
+     "label": "gallery",
+     "url": "https://patch-gg.github.io/pixelfx/"
+    }
+   ],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-30-best-9",
+   "title": "One day in a browser game, sunrise to midnight, running live in a tab (@PawelJLisowski)",
+   "url": "https://x.com/PawelJLisowski/status/2116108914777600500",
+   "note": "A video of a day cycle where, per the post, every shot is the game itself running in a browser tab with nothing pre-rendered, a three.js client and a Rust server built with Claude Code over four weeks. Why it's here: 28 likes and 13 replies on about 930 views, the most-discussed small game post in the X list. The post links no playable build, so the \"four weeks\" and \"nothing pre-rendered\" claims are the maker's. How to try it: ask the maker for a link, or use it as a lighting reference for your own three.js scene.",
+   "medium": "games",
+   "type": "showcase",
+   "kind": "showcase",
+   "kind_key": "showcase",
+   "tags": [
+    "games",
+    "showcase",
+    "best",
+    "2026-10-30"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-30-best-10",
+   "title": "Nano Banana 2.1 reverse-angle shot test, with the prompts in the post (@ai_artworkgen)",
+   "url": "https://x.com/ai_artworkgen/status/2116217421077848340",
+   "note": "The maker gave the model one scene and asked it to \"show me the reverse angle shot of this exact scene\" while keeping the subject's position, pose, outfit and environment identical, then added a blizzard with a second prompt and built other shots from the subject's face as a reference; the post credits Google Flow. Why it's here: 37 likes, 44 bookmarks and about 3,000 views, with both prompts printed so you can copy them. It is four images from one run, not a benchmark. How to try it: take one of your own scenes and ask for the reverse angle with the same wording.",
+   "medium": "image",
+   "type": "tutorial",
+   "kind": "tutorial",
+   "kind_key": "tutorial",
+   "tags": [
+    "image",
+    "tutorial",
+    "best",
+    "2026-10-30"
+   ],
+   "source": "X",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  },
+  {
+   "id": "2026-10-30-best-11",
+   "title": "Ultra Water: a real-time FFT ocean renderer for three.js (Humpalumps, GitHub)",
+   "url": "https://github.com/Humpalumps/Ultra-Water",
+   "note": "Per the README, shore breakers, foam, caustics, underwater rendering and buoyancy in WebGL2, with a demo island scene and camera shots you can pick from a dropdown. The author's benchmark on an RTX 3060 is 3.3 to 4.8 ms a frame (about 208 to 303 fps uncapped) at 1440p-equivalent, and the README says the design was argued out with a second agent. Why it's here: 436 stars and 59 forks within about two days, MIT licensed. There is no hosted demo, so you run it locally with npm install and npm run dev. How to try it: run it and cycle the camera shots from open ocean to underwater.",
+   "medium": "3d",
+   "type": "repo/tool",
+   "kind": "tool",
+   "kind_key": "tool",
+   "tags": [
+    "3d",
+    "repo/tool",
+    "best",
+    "2026-10-30",
+    "tool"
+   ],
+   "source": "GitHub",
+   "author": "",
+   "engagement": "",
+   "item_date": "",
+   "links": [],
+   "edition": "https://github.com/GreatCreations/daily-design/blob/main/reports/2026-10-30/best.md",
+   "edition_kind": "report",
+   "date": "2026-10-30",
+   "slot": "best"
+  }
+ ],
+ "src_hash": {
+  "md": "69bbdb7af34c270e4a1e4139cbf4c9185b45d75e"
+ },
+ "tool_version": 3,
+ "nav": null
+}

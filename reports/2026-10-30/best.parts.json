@@ -1,0 +1,259 @@
+{
+ "version": 1,
+ "report": "2026-10-30/best",
+ "date": "2026-10-30",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-30/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-30/best",
+ "link": "#report=2026-10-30/best&part=<id> (index reader) or reports/2026-10-30/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-100-rounds-of-make",
+   "kind": "section",
+   "heading": "100 rounds of \"make it better,\" a one-day-old skill that unslops AI-looking UI and 31 playable games built from generated videos",
+   "text": "100 rounds of \"make it better,\" a one-day-old skill that unslops AI-looking UI and 31 playable games built from generated videos",
+   "h": "42b73a2ae1",
+   "medium": "video"
+  },
+  {
+   "id": "s-100-rounds-of-make-i1",
+   "kind": "paragraph",
+   "parent": "s-100-rounds-of-make",
+   "section": "s-100-rounds-of-make",
+   "medium": "video",
+   "text": "The pick of the day is Nate Herk's \"I Told Claude to 'Make it better' 100 Times,\" a YouTube experiment that gives Claude Code one bad coffee-shop website and…",
+   "h": "fff9e5912a"
+  },
+  {
+   "id": "s-100-rounds-of-make-i2",
+   "kind": "paragraph",
+   "parent": "s-100-rounds-of-make",
+   "section": "s-100-rounds-of-make",
+   "medium": "video",
+   "text": "Engagement figures were read from X, YouTube, GitHub, Hacker News and Hugging Face on the afternoon of Oct 30 (PT) and will keep changing. Reddit and Product…",
+   "h": "cf2f113dc9"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-pick-of-the-day-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-code-and-ui",
+   "section": "s-pick-of-the-day",
+   "medium": "code",
+   "type": "tutorial",
+   "title": "I Told Claude to \"Make it better\" 100 Times (It Went Too Far) (Nate Herk, YouTube)",
+   "url": "https://www.youtube.com/watch?v=DByAR5Su1Yw",
+   "text": "I Told Claude to \"Make it better\" 100 Times (It Went Too Far) (Nate Herk, YouTube), tutorial. An update on a video the morning edition listed from its title…",
+   "h": "085a7e25f2"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-video",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-ranked-picks-video-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Three long Seedance 2.5 clips lead X: \"This AI video cooked whole hollywood\" (@xmliisu)",
+   "url": "https://x.com/xmliisu/status/2116177871467335739",
+   "text": "Three long Seedance 2.5 clips lead X: \"This AI video cooked whole hollywood\" (@xmliisu), showcase. The post is a clip tagged Seedance 2.5 with no prompt…",
+   "h": "16a300c1d3"
+  },
+  {
+   "id": "s-ranked-picks-video-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "I Spent 72 Hours Making This AI Commercial With Seedance 2.5 (Every Prompt I Used) (Higgsfield AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=ktGkJfxNN9M",
+   "text": "I Spent 72 Hours Making This AI Commercial With Seedance 2.5 (Every Prompt I Used) (Higgsfield AI, YouTube), tutorial. A 27-minute breakdown of a sportswear…",
+   "h": "536f14e262"
+  },
+  {
+   "id": "s-ranked-picks-video-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "Claude as a motion designer, in two videos the same morning (Георгий Ривера and Kenzo Nakagawa, YouTube)",
+   "url": "https://www.youtube.com/watch?v=AIHViECQwiU",
+   "text": "Claude as a motion designer, in two videos the same morning (Георгий Ривера and Kenzo Nakagawa, YouTube), tutorial. Both creators have Claude write code that…",
+   "h": "0195d2336f"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "unslop: a Claude skill that turns AI-looking UI into a designed one (Damir Sokolovsky, GitHub)",
+   "url": "https://github.com/heydamir/unslop",
+   "text": "unslop: a Claude skill that turns AI-looking UI into a designed one (Damir Sokolovsky, GitHub), tool. Per the README, it finds the slop first (purple…",
+   "h": "3f5907a8cf"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "showcase",
+   "title": "Keychain app onboarding, designed in Figma and animated with Claude Code SVG (@oiharshit)",
+   "url": "https://x.com/oiharshit/status/2116150062829207886",
+   "text": "Keychain app onboarding, designed in Figma and animated with Claude Code SVG (@oiharshit), showcase. A nine-second square clip of an onboarding flow; the post…",
+   "h": "6b6fd9fed6"
+  },
+  {
+   "id": "s-ranked-picks-games-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games and interactive",
+   "medium": "games",
+   "text": "🎮 Games and interactive",
+   "h": "61afdd649a"
+  },
+  {
+   "id": "s-ranked-picks-games-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games-and",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "repo/tool",
+   "title": "video-to-game: turn a generated video into a playable three.js game (lovisdotio, GitHub)",
+   "url": "https://github.com/lovisdotio/video-to-game",
+   "text": "video-to-game: turn a generated video into a playable three.js game (lovisdotio, GitHub), tool. Per the README, a video model designs the game's look, camera…",
+   "h": "cc23b85d3b"
+  },
+  {
+   "id": "s-ranked-picks-games-and-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-games-and",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "repo/tool",
+   "title": "pixelfx: 232 pixel-art effects, each a small piece of code, plus a Claude Code skill (patch-gg, GitHub)",
+   "url": "https://github.com/patch-gg/pixelfx",
+   "text": "pixelfx: 232 pixel-art effects, each a small piece of code, plus a Claude Code skill (patch-gg, GitHub), tool. Fire, explosions, water, magic, weather, UI and…",
+   "h": "c5447a65cd"
+  },
+  {
+   "id": "s-ranked-picks-games-and-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-games-and",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "showcase",
+   "title": "One day in a browser game, sunrise to midnight, running live in a tab (@PawelJLisowski)",
+   "url": "https://x.com/PawelJLisowski/status/2116108914777600500",
+   "text": "One day in a browser game, sunrise to midnight, running live in a tab (@PawelJLisowski), showcase. A video of a day cycle where, per the post, every shot is…",
+   "h": "c17e537295"
+  },
+  {
+   "id": "s-ranked-picks-image-and-visual",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image and visual",
+   "medium": "image",
+   "text": "🖼️ Image and visual",
+   "h": "b9f6fb7c21"
+  },
+  {
+   "id": "s-ranked-picks-image-and-visual-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image-and-visual",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "tutorial",
+   "title": "Nano Banana 2.1 reverse-angle shot test, with the prompts in the post (@ai_artworkgen)",
+   "url": "https://x.com/ai_artworkgen/status/2116217421077848340",
+   "text": "Nano Banana 2.1 reverse-angle shot test, with the prompts in the post (@ai_artworkgen), tutorial. The maker gave the model one scene and asked it to \"show me…",
+   "h": "190f4329b1"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "repo/tool",
+   "title": "Ultra Water: a real-time FFT ocean renderer for three.js (Humpalumps, GitHub)",
+   "url": "https://github.com/Humpalumps/Ultra-Water",
+   "text": "Ultra Water: a real-time FFT ocean renderer for three.js (Humpalumps, GitHub), tool. Per the README, shore breakers, foam, caustics, underwater rendering and…",
+   "h": "10bf9f1e90"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: the 21 X posts gathered for this edition were each opened by ID and their text and metrics re-read; none were taken on trust, and 6 are linked above.…",
+   "h": "d2eb2e2ad2"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}
