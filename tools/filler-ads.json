@@ -23,7 +23,7 @@
    "title": "Subscribe to Daily Design",
    "text": "AI is changing creative work fast. Keep up without the endless scroll.",
    "cta": "Subscribe",
-   "href": "about.html#sub-access"
+   "href": "members/"
   },
   {
    "id": "sponsor-part",
@@ -47,7 +47,7 @@
    "title": "Get the sub",
    "text": "The best AI design finds, every day, straight from the source.",
    "cta": "Get a sub",
-   "href": "about.html#sub-access"
+   "href": "members/"
   },
   {
    "id": "sponsor-build",
