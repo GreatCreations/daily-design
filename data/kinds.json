@@ -261,6 +261,12 @@
    ]
   },
   {
+   "key": "security-news",
+   "label": "security news",
+   "first_seen": "2026-10-30",
+   "aliases": []
+  },
+  {
    "key": "showcase",
    "label": "showcase",
    "first_seen": "2026-10-17",

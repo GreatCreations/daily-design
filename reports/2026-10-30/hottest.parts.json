@@ -1,0 +1,336 @@
+{
+ "version": 1,
+ "report": "2026-10-30/hottest",
+ "date": "2026-10-30",
+ "slot": "hottest",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-30/hottest.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-30/hottest",
+ "link": "#report=2026-10-30/hottest&part=<id> (index reader) or reports/2026-10-30/hottest.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-backdoored-coding-agent",
+   "kind": "section",
+   "heading": "A backdoored coding-agent extension and Canva's new editing model made today's news, while design skills for agents keep climbing and open image and video weights set the pace for the month",
+   "text": "A backdoored coding-agent extension and Canva's new editing model made today's news, while design skills for agents keep climbing and open image and video…",
+   "h": "09125dd645",
+   "medium": "image"
+  },
+  {
+   "id": "s-backdoored-coding-agent-i1",
+   "kind": "paragraph",
+   "parent": "s-backdoored-coding-agent",
+   "section": "s-backdoored-coding-agent",
+   "medium": "image",
+   "text": "Today's biggest thread was a security story: a vendor advisory says the official Claude Code extension for VS Code was backdoored on the Cursor Marketplace…",
+   "h": "23cc5b8f52"
+  },
+  {
+   "id": "s-backdoored-coding-agent-i2",
+   "kind": "paragraph",
+   "parent": "s-backdoored-coding-agent",
+   "section": "s-backdoored-coding-agent",
+   "medium": "image",
+   "text": "Engagement figures were read on the evening of Oct 30 (PT) from GitHub (trending pages and repo pages), Hugging Face (model listings and pages), Hacker News…",
+   "h": "5393dc9afc"
+  },
+  {
+   "id": "s-blew-up-today",
+   "kind": "section",
+   "heading": "🔥 Blew up today",
+   "text": "🔥 Blew up today",
+   "h": "855a8b0061"
+  },
+  {
+   "id": "s-blew-up-today-i1",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "Canva Brush, a model that edits your designs (Canva, Product Hunt)",
+   "url": "https://www.producthunt.com/products/canva",
+   "text": "Canva Brush, a model that edits your designs (Canva, Product Hunt), design tool. A vision-language model from Canva that edits an existing design from a…",
+   "h": "c1a7b1f9bf"
+  },
+  {
+   "id": "s-blew-up-today-i2",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "type": "news",
+   "title": "Backdoor in the Claude Code for VS Code extension on the Cursor Marketplace (Phorion)",
+   "url": "https://phorion.io/blog/offical-claude-code-vsx-compromise/",
+   "text": "Backdoor in the Claude Code for VS Code extension on the Cursor Marketplace (Phorion), security news. Phorion, a security vendor, reports that versions…",
+   "h": "8a766c60b7"
+  },
+  {
+   "id": "s-hottest-this-week",
+   "kind": "section",
+   "heading": "📈 Hottest this week",
+   "text": "📈 Hottest this week",
+   "h": "927e2ad085"
+  },
+  {
+   "id": "s-hottest-this-week-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "update",
+   "title": "impeccable, a design vocabulary for coding agents (GitHub)",
+   "url": "https://github.com/pbakaus/impeccable",
+   "text": "impeccable, a design vocabulary for coding agents (GitHub), update. Commands such as polish, bolder, critique and audit, plus a detector that flags generic…",
+   "h": "83f14d222a"
+  },
+  {
+   "id": "s-hottest-this-week-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "update",
+   "title": "Mistral Large 4 open weights (Mistral)",
+   "url": "https://mistral.ai/news/mistral-large-4-oss/",
+   "text": "Mistral Large 4 open weights (Mistral), update. A roughly 1-trillion-parameter, natively multimodal open-weight model under a modified MIT license (businesses…",
+   "h": "824a772618"
+  },
+  {
+   "id": "s-hottest-this-week-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "update",
+   "title": "Kimi K3.1 Pro, an open-weight model aimed at front-end and 3D work (Moonshot)",
+   "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "text": "Kimi K3.1 Pro, an open-weight model aimed at front-end and 3D work (Moonshot), update. Moonshot says it builds front-end pages and Three.js scenes, works with…",
+   "h": "7e7f61f085"
+  },
+  {
+   "id": "s-hottest-this-week-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "games",
+   "type": "update",
+   "title": "Genie 4, a world model you can walk into (Google DeepMind)",
+   "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+   "text": "Genie 4, a world model you can walk into (Google DeepMind), update. Prompt a live scene, steer it with text (weather, camera, people, objects), and get…",
+   "h": "739c496c4d"
+  },
+  {
+   "id": "s-hottest-this-week-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "update",
+   "title": "taste-skill, art direction for coding agents (GitHub)",
+   "url": "https://github.com/Leonxlnx/taste-skill",
+   "text": "taste-skill, art direction for coding agents (GitHub), update. Deals the agent one of 20 design directions, builds with credited open-collection images and…",
+   "h": "555f8c88df"
+  },
+  {
+   "id": "s-hottest-this-week-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "update",
+   "title": "Interfaces skills for coding agents (Jakub Krehel, GitHub)",
+   "url": "https://github.com/jakubkrehel/skills",
+   "text": "Interfaces skills for coding agents (Jakub Krehel, GitHub), update. Fourteen skills, including better-interface (one ranked review of a screen)…",
+   "h": "77f793b703"
+  },
+  {
+   "id": "s-hottest-this-week-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "update",
+   "title": "Pika H3 Flex, LoRA adapters on MiniMax H3 (Pika, Hugging Face)",
+   "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex",
+   "text": "Pika H3 Flex, LoRA adapters on MiniMax H3 (Pika, Hugging Face), update. Per the model page, it makes video with synchronized stereo audio in six sampling…",
+   "h": "8a6801b186"
+  },
+  {
+   "id": "s-hottest-this-week-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "image",
+   "type": "update",
+   "title": "SurgePix, AI visuals you keep editing layer by layer (Product Hunt)",
+   "url": "https://www.producthunt.com/products/surgepix",
+   "text": "SurgePix, AI visuals you keep editing layer by layer (Product Hunt), update. Per the makers, you can split an image or slide into editable layers, swap text…",
+   "h": "c2827f878a"
+  },
+  {
+   "id": "s-hottest-this-week-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "nesformer, a Nintendo CPU running inside language-model weights (Drew Breunig, GitHub)",
+   "url": "https://github.com/dbreunig/nesformer",
+   "text": "nesformer, a Nintendo CPU running inside language-model weights (Drew Breunig, GitHub), creation. The README says a compiler, not training, set every weight…",
+   "h": "1a9c0fb54b"
+  },
+  {
+   "id": "s-hottest-this-month",
+   "kind": "section",
+   "heading": "🏆 Hottest this month",
+   "text": "🏆 Hottest this month",
+   "h": "4f4d3d858e"
+  },
+  {
+   "id": "s-hottest-this-month-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "sound",
+   "type": "update",
+   "title": "VoiceStudio, a local voice studio (GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "text": "VoiceStudio, a local voice studio (GitHub), update. Voice cloning, voice design from a text description, video dubbing, dictation, transcription and…",
+   "h": "4fca6264cd"
+  },
+  {
+   "id": "s-hottest-this-month-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "mashups",
+   "type": "update",
+   "title": "HyperFrames: write HTML, render video (HeyGen, GitHub)",
+   "url": "https://github.com/heygen-com/hyperframes",
+   "text": "HyperFrames: write HTML, render video (HeyGen, GitHub), update. Turns HTML, CSS and seekable animations (GSAP, Lottie, Three.js and others) into deterministic…",
+   "h": "d5150df871"
+  },
+  {
+   "id": "s-hottest-this-month-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "Claude Dashboards and Claude Motion (Claude)",
+   "url": "https://claude.com/resources/articles/dashboards-and-motion",
+   "text": "Claude Dashboards and Claude Motion (Claude), update. Dashboards turn connected company data into a live dashboard where each number links to its query…",
+   "h": "f384fbe8e5"
+  },
+  {
+   "id": "s-hottest-this-month-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "Qwen-Image 2.1 (Qwen, Hugging Face)",
+   "url": "https://huggingface.co/Qwen/Qwen-Image-2.1",
+   "text": "Qwen-Image 2.1 (Qwen, Hugging Face), update. A 7B open model for text-to-image and editing, with up to 10 reference images, local edits by circle or mask and…",
+   "h": "cb8537fb0f"
+  },
+  {
+   "id": "s-hottest-this-month-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "MiniMax H3, an open audio-video model (MiniMaxAI, Hugging Face)",
+   "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+   "text": "MiniMax H3, an open audio-video model (MiniMaxAI, Hugging Face), update. Makes video with stereo audio, with first-frame and reference-file conditioning. The…",
+   "h": "037f894fd6"
+  },
+  {
+   "id": "s-hottest-this-month-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "code",
+   "type": "update",
+   "title": "Hallmark, a design skill that refuses to look AI-generated (Nutlope, GitHub)",
+   "url": "https://github.com/Nutlope/hallmark",
+   "text": "Hallmark, a design skill that refuses to look AI-generated (Nutlope, GitHub), update. Picks three themes from a catalog of fifty, builds the page around the…",
+   "h": "37fe45c504"
+  },
+  {
+   "id": "s-hottest-this-month-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "LTX-2.5, an open video model with audio (Lightricks, Hugging Face)",
+   "url": "https://huggingface.co/Lightricks/LTX-2.5",
+   "text": "LTX-2.5, an open video model with audio (Lightricks, Hugging Face), update. Open weights for local video with synchronized audio, native multishot generation…",
+   "h": "3c7367c0be"
+  },
+  {
+   "id": "s-hottest-this-month-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "MOSS-Image for ComfyUI (Hugging Face)",
+   "url": "https://huggingface.co/Comfy-Org/MOSS-Image",
+   "text": "MOSS-Image for ComfyUI (Hugging Face), update. A 5B open model from OpenMOSS, packaged for ComfyUI. The signal: 3,702,490 downloads and 556 likes (3,401,045…",
+   "h": "ac47e9b516"
+  },
+  {
+   "id": "s-hottest-this-month-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "3d",
+   "type": "update",
+   "title": "text-to-cad, design physical products with AI (GitHub)",
+   "url": "https://github.com/earthtojake/text-to-cad",
+   "text": "text-to-cad, design physical products with AI (GitHub), update. A plugin where the agent writes a build123d Python script and exports STEP, GLB, STL or 3MF…",
+   "h": "83867201dc"
+  },
+  {
+   "id": "s-hottest-this-month-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "ArtCraft, \"the IDE for artists\" (GitHub)",
+   "url": "https://github.com/storytold/artcraft",
+   "text": "ArtCraft, \"the IDE for artists\" (GitHub), tool. Compose in 2D, stage scenes in 3D, turn images into 3D meshes and animate images into video, with a catalog of…",
+   "h": "1cf682dfd3"
+  },
+  {
+   "id": "s-hottest-this-month-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "FLUX.3 image klein for ComfyUI (Black Forest Labs, Hugging Face)",
+   "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+   "text": "FLUX.3 image klein for ComfyUI (Black Forest Labs, Hugging Face), update. One model for text-to-image, editing and multi-reference generation with up to 10…",
+   "h": "47423a145c"
+  },
+  {
+   "id": "s-hottest-this-month-i12",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "Fibo 2.0, Bria's open editing and image model trained on licensed data (Bria, Hugging Face)",
+   "url": "https://huggingface.co/briaai/Fibo-2.0-dev",
+   "text": "Fibo 2.0, Bria's open editing and image model trained on licensed data (Bria, Hugging Face), update. An 8B model that handles instruction edits, masked edits…",
+   "h": "7dae2a1600"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: a fresh evening sweep of GitHub trending (daily, weekly, monthly) with each repo opened for its description, license and install steps, Hugging Face…",
+   "h": "c6d329d36f"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}
