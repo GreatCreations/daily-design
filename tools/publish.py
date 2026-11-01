@@ -34,10 +34,11 @@ SLOTS = {
     "best":    dict(order=2, time="6 PM", name="Best of the Day", color="#9b6bff"),
     "hottest": dict(order=3, time="8 PM", name="Hottest Right Now", color="#ff5a2e"),
 }
-# Pacific time label after clock times ("7 AM PDT"). "auto", or one fixed label ("PST", "PT", ...) used everywhere.
-# auto = PDT/PST by the old daylight rule for the edition's date until B.C.'s permanent UTC-7 starts on TZ_PERM_FROM (no fall-back on
-# 2026-11-01; B.C. calls it "Pacific time"), then TZ_PERMANENT. Mirrors TZ_LABEL in assets/app.js. The UTC offset always follows the real rule.
-TZ_LABEL = "auto"
+# Pacific time label after clock times ("7 AM PT"). One fixed label used everywhere ("PT": B.C. moved to permanent UTC-7 and calls it
+# "Pacific time"; tzdata would call it "MST"). "auto" brings back PDT/PST by the old daylight rule for the edition's date until B.C.'s
+# permanent UTC-7 starts on TZ_PERM_FROM, then TZ_PERMANENT. Mirrors TZ_LABEL in assets/app.js. The UTC offset always follows the real
+# rule, whatever the label. The nav key doesn't include the label: after changing it, run publish.py --rebuild (or bump NAV_VERSION).
+TZ_LABEL = "PT"
 TZ_PERMANENT, TZ_PERM_FROM = "PT", "2026-11-01"
 SLOT_HOUR = {"morning": 7, "noon": 12, "best": 18, "hottest": 20}
 
@@ -64,7 +65,7 @@ def pt_iso(date, slot):
 
 
 def tz_html(date, slot):
-    """' PDT' label plus the hidden visitor-time span that assets/tzlocal.js fills in (Pacific only without JS)."""
+    """' PT' label plus the hidden visitor-time span that assets/tzlocal.js fills in (Pacific only without JS)."""
     return (' <span class="dd-tz">%s</span> <span class="dd-loc" data-pt="%s" data-ptd="%s" hidden></span>'
             % (tz_label(date), pt_iso(date, slot), date))
 

@@ -1,7 +1,9 @@
 /* Daily Design: the visitor's own clock next to a Pacific time on static pages (edition and report headers).
    <span class="dd-loc" data-pt="2026-10-26T07:00:00-07:00" data-ptd="2026-10-26" hidden></span> -> "(3 PM GMT+1)", with the weekday when the
-   visitor's date differs from the Pacific date. Stays hidden for visitors whose clock reads the same as Pacific, and without JS. */
+   visitor's date differs from the Pacific date. Stays hidden for visitors whose clock reads the same as Pacific (including any visitor
+   whose own zone is America/Vancouver, so they never see the browser's name for it), and without JS. */
 (function(){try{
+  if(Intl.DateTimeFormat().resolvedOptions().timeZone==="America/Vancouver")return;
   var f=new Intl.DateTimeFormat(undefined,{hour:"numeric",minute:"2-digit",timeZoneName:"short"}),h12=/h1[12]/.test(f.resolvedOptions().hourCycle||"h12"),
       dk=new Intl.DateTimeFormat("en-CA",{year:"numeric",month:"2-digit",day:"2-digit"}),wd=new Intl.DateTimeFormat(undefined,{weekday:"short"});
   [].forEach.call(document.querySelectorAll(".dd-loc[data-pt]"),function(x){

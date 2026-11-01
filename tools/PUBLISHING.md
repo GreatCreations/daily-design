@@ -90,21 +90,23 @@ Options: `--no-push` rebuilds and runs the safety scan without committing. `--re
    Analytics site for `studios.greatcreations.art`. It counts page views, referrers, countries, devices and page speed only: no cookies,
    no personal data, no cross-site tracking, and no click tracking. The About page says so in one line under "How it works".
 6f. **Time zones.** Editions are filed by Pacific date and timed in Pacific time (America/Vancouver).
-   - **Label:** every displayed slot time gets a label, e.g. "7 AM PDT". It comes from one constant, `TZ_LABEL`, in
-     `tools/publish.py` and `assets/app.js` (keep the two the same). `"auto"` means PDT or PST by the old daylight rule for the date shown,
-     until B.C.'s permanent UTC-7 starts on `TZ_PERM_FROM` (2026-11-01); from then on it shows `TZ_PERMANENT` (`"PT"`; B.C. calls the zone "Pacific
-     time"). To show one fixed label everywhere, set `TZ_LABEL = "PST"` / `"PT"` in both files and run `publish.py`. The UTC offset used for
-     conversions always follows the real rule (UTC-7 from 2026-03-08 on), whatever the label. Browsers and Python with tzdata 2026b+ name the new
-     zone "MST", so the label is rule-based on purpose.
+   - **Label:** every displayed slot time gets a label, e.g. "7 AM PT". It comes from one constant, `TZ_LABEL`, in
+     `tools/publish.py` and `assets/app.js` (keep the two the same). It is `"PT"` (B.C. moved to permanent UTC-7 and calls the zone "Pacific
+     time"; tzdata names it "MST"), on every page and for every date, past ones included. `"auto"` brings back PDT/PST by the old daylight
+     rule for the date shown, until `TZ_PERM_FROM` (2026-11-01), then `TZ_PERMANENT`. The UTC offset used for conversions always follows the real
+     rule (UTC-7 from 2026-03-08 on), whatever the label, so changing the label never moves a time. The nav key doesn't include the label:
+     after changing it run `publish.py --rebuild` (or bump `NAV_VERSION`) so existing edition pages pick it up.
+   - **Browser names:** JS never prints a browser short name for a Pacific time. A visitor whose own zone is America/Vancouver sees "PT"
+     in the countdown (`countdown.js`) and no bracketed visitor time (`app.js` `locHint()`, `tzlocal.js`). Visitors elsewhere see their own zone name.
    - **Visitor time:** when the visitor's clock differs from Pacific, their own time is shown in brackets with their zone name, plus the weekday
-     if their date differs, e.g. "7 AM PDT (3 PM GMT+1)" or "8 PM PDT (Wed 12 PM GMT+9)". It's formatted with Intl and the browser's own
+     if their date differs, e.g. "7 AM PT (3 PM GMT+1)" or "8 PM PT (Wed 12 PM GMT+9)". It's formatted with Intl and the browser's own
      zone and locale. Pacific visitors see the Pacific label only.
    - **Where (index, app.js):**
      - results cards, Latest cells (visible) and archive cells (tooltip);
      - item meta;
      - the reader kicker;
-     - the "Edition · PDT" filter heading, with a tooltip on each slot chip;
-     - the hero line "(all in Pacific time (PDT))", via `[data-tz]`;
+     - the "Edition · PT" filter heading, with a tooltip on each slot chip;
+     - the hero line "(all in Pacific time (PT))", via `[data-tz]`;
      - the `#tznote` line under Latest.
    - **Where (static):** the edition nav label and the report kicker, through `tz_html()`: the Pacific label, plus a hidden `.dd-loc` span
      that `assets/tzlocal.js` fills in (no JS = Pacific only); also the static Latest fallback cards and the nav tooltips. The countdown already

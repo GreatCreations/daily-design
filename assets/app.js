@@ -194,11 +194,11 @@ function edCard(e,matches){
     '<div class="ft"><span><b>'+n(e.item_count)+'</b> items</span>'+(matches!=null?'<span><b>'+n(matches)+'</b> match'+(matches==1?'':'es')+'</span>':'')+'</div></div></a>';
 }
 /* ---- time zones. Editions are filed and timed in Pacific time (America/Vancouver).
-   TZ_LABEL: "auto", or one fixed label ("PST", "PT", ...) shown after every Pacific clock time. auto = PDT/PST by the old daylight rule for
-   the date shown until B.C.'s permanent UTC-7 starts on TZ_PERM_FROM (no fall-back on 2026-11-01; B.C. calls it "Pacific time"), then
-   TZ_PERMANENT. Rule-based on purpose (browsers with tzdata 2026b+ name that zone "MST"; older ones still apply UTC-8). The UTC offset
-   always follows the real rule, whatever the label. Mirrors TZ_LABEL in tools/publish.py and assets/tzlocal.js. */
-var TZ_LABEL="auto", TZ_PERMANENT="PT", TZ_PERM_FROM="2026-11-01";
+   TZ_LABEL: one fixed label ("PT": B.C. moved to permanent UTC-7 and calls it "Pacific time") shown after every Pacific clock time, or "auto" =
+   PDT/PST by the old daylight rule for the date shown until B.C.'s permanent UTC-7 starts on TZ_PERM_FROM, then TZ_PERMANENT. Rule-based on
+   purpose (browsers with tzdata 2026b+ name that zone "MST"; older ones still apply UTC-8). The UTC offset always follows the real rule,
+   whatever the label. Mirrors TZ_LABEL in tools/publish.py. Visitors whose own zone is America/Vancouver see Pacific only (never the browser's name). */
+var TZ_LABEL="PT", TZ_PERMANENT="PT", TZ_PERM_FROM="2026-11-01";
 function tzAuto(ds){if(!/^\d{4}-\d\d-\d\d$/.test(ds||""))return "PT";if(ds>=TZ_PERM_FROM)return TZ_PERMANENT;
   var y=+ds.slice(0,4),k=+ds.slice(5,7)*100+(+ds.slice(8,10));function sun(mo,n){var f=new Date(Date.UTC(y,mo-1,1)).getUTCDay();return 1+(7-f)%7+7*(n-1)}
   return k>=300+sun(3,2)&&k<1100+sun(11,1)?"PDT":"PST"}
@@ -208,11 +208,12 @@ function slotMs(ds,slot){return Date.UTC(+ds.slice(0,4),+ds.slice(5,7)-1,+ds.sli
 /* the visitor's own clock for a Pacific slot time; "" when it reads the same as Pacific (Vancouver visitors see Pacific only) */
 var LOCF=null,LOCD=null,LOC12=true;try{LOCF=new Intl.DateTimeFormat(undefined,{hour:"numeric",minute:"2-digit",timeZoneName:"short"});
   LOC12=/h1[12]/.test(LOCF.resolvedOptions().hourCycle||"h12");LOCD=new Intl.DateTimeFormat("en-CA",{year:"numeric",month:"2-digit",day:"2-digit"})}catch(e){}
-function locHint(ds,slot){if(!LOCF||!SLOTH[slot]||!/^\d{4}-\d\d-\d\d$/.test(ds||""))return "";var t=slotMs(ds,slot),d=new Date(t);
+var VPAC=false;try{VPAC=Intl.DateTimeFormat().resolvedOptions().timeZone==="America/Vancouver"}catch(e){}
+function locHint(ds,slot){if(VPAC||!LOCF||!SLOTH[slot]||!/^\d{4}-\d\d-\d\d$/.test(ds||""))return "";var t=slotMs(ds,slot),d=new Date(t);
   if(-d.getTimezoneOffset()===(tzAuto(ds)==="PST"?-480:-420))return "";
   var s=LOCF.format(d);if(LOC12)s=s.replace(/:00(?=\D)/,"");
   if(LOCD.format(d)!==ds)s=new Intl.DateTimeFormat(undefined,{weekday:"short"}).format(d)+" "+s;return s}
-/* " PDT" label (+ " (3 PM BST)" visitor time when loc) after a Pacific time */
+/* " PT" label (+ " (3 PM BST)" visitor time when loc) after a Pacific time */
 function tzs(ds,slot,loc){var h=loc&&locHint(ds,slot);return ' <span class="dd-tz">'+tzLabel(ds)+'</span>'+(h?' <span class="dd-loc" title="Your time">('+esc(h)+')</span>':'')}
 function tzTip(ds,slot){var s=(SINFO[slot]||{label:""}).label.split(" · ")[0],h=locHint(ds,slot);return s+" "+tzLabel(ds)+(h?" · "+h+" your time":"")}
 function slotLab(slot,ds){var s=(SINFO[slot]||{label:""}).label.split(" · ");return esc(s[0])+tzs(ds,slot,true)+(s[1]?' · '+esc(s[1]):'')}

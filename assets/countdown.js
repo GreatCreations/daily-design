@@ -36,6 +36,9 @@ function upcoming(now){
 }
 var loc=undefined;try{loc=navigator.language||undefined}catch(e){}
 var tFmt=new Intl.DateTimeFormat(loc,{hour:"numeric",minute:"2-digit",timeZoneName:"short"});
+/* a visitor whose own zone is America/Vancouver sees "PT", not the browser's short name (PDT / GMT-7 / MST depending on tzdata); other zones keep their own name */
+var VPAC=false;try{VPAC=Intl.DateTimeFormat().resolvedOptions().timeZone===TZ}catch(e){}
+function timeStr(d){return VPAC?tFmt.formatToParts(d).map(function(p){return p.type==="timeZoneName"?"PT":p.value}).join(""):tFmt.format(d)}
 var dFmt=new Intl.DateTimeFormat(loc,{weekday:"short"});
 var dayKey=new Intl.DateTimeFormat("en-CA",{year:"numeric",month:"2-digit",day:"2-digit"});
 var $=function(s){return el.querySelector(s)}, cur=null, mode="";
@@ -58,7 +61,7 @@ function tick(){
   var u=upcoming(now);if(!u)return;
   var key=u.t+"|"+u.slot.name;
   if(key!==cur){cur=key;
-    var when=tFmt.format(new Date(u.t));
+    var when=timeStr(new Date(u.t));
     if(dayKey.format(new Date(u.t))!==dayKey.format(new Date(now)))when=dFmt.format(new Date(u.t))+" "+when;
     el.style.setProperty("--c",u.slot.c);
     $(".cd-n").textContent=u.slot.name;$(".cd-t").textContent=when;
