@@ -240,7 +240,7 @@ function slotCell(date,slot,big){
 function ptNow(){try{var p={};new Intl.DateTimeFormat("en-CA",{timeZone:"America/Vancouver",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",hourCycle:"h23"})
   .formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return {date:p.year+"-"+p.month+"-"+p.day,h:(+p.hour)%24}}catch(e){return null}}
 function readyToday(){var t=ptNow();if(!t||!/^\d{4}-\d\d-\d\d$/.test(t.date)||t.h<5)return;
-  if(CAL.some(function(c){return c.date===t.date})||(CAL[0]&&t.date<CAL[0].date))return;
+  if(CAL.some(function(c){return c.date===t.date})||(CAL[0]&&t.date<CAL[0].date)||MAINT[t.date])return; // maintenance days get no archive row
   CAL.unshift({date:t.date,slots:[],ready:true})}
 function renderLatest(){fillTz();
   // the most recent day with at least one edition: the 5 AM empty day row is archive-only

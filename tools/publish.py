@@ -1480,6 +1480,27 @@ def load_special_days(days):
     return [dict(date=d, type=out[d]) for d in sorted(out, reverse=True)]
 
 
+def load_maintenance_windows():
+    """Maintenance windows from tools/special-days.json ('windows') -> [{start, end, label, text}] for index.json, oldest first.
+    start/end are America/Vancouver wall-clock 'YYYY-MM-DDTHH:MM' (end inclusive through that minute); assets/countdown.js swaps the
+    header countdown for a banner inside a window and skips scheduled slots that fall in it. Bad entries are skipped."""
+    p = os.path.join(REPO, "tools", "special-days.json")
+    try:
+        raw = json.load(open(p, encoding="utf-8")).get("windows", [])
+    except FileNotFoundError:
+        return []
+    out = []
+    for w in raw if isinstance(raw, list) else []:
+        if not isinstance(w, dict):
+            continue
+        s, e = w.get("start"), w.get("end")
+        if not all(isinstance(x, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}", x) for x in (s, e)) or s > e:
+            continue
+        out.append(dict(start=s, end=e, label=str(w.get("label") or "Scheduled maintenance"),
+                        text=str(w.get("text") or "Back soon")))
+    return sorted(out, key=lambda w: w["start"])
+
+
 def build_index_seo(editions):
     """Head tags, JSON-LD and crawlable static links in index.html (between markers)."""
     p = os.path.join(REPO, "index.html")
@@ -2239,6 +2260,7 @@ def main():
         editions=editions)
     data["special"] = load_special_days(days)
     data["maintenance"] = [x["date"] for x in data["special"] if x["type"] == "maintenance"]  # older app/gate builds
+    data["maintenance_windows"] = load_maintenance_windows()
     write_if_changed(os.path.join(REPO, "data", "index.json"), jdump(data))
     # 4a. members gate: full content of editions after FREE_FOREVER_THROUGH goes to KV and leaves the repo
     public_eds = gate_split.split(REPO, data, shards, recs, log, dry_run=args.no_push)

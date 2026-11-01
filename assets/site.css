@@ -240,6 +240,9 @@ background:rgba(255,255,255,.03);font:500 12px/1.2 var(--sans);letter-spacing:.0
 .cd-t{color:#d5d1c8}
 .cd-c{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 .cd.arriving{border-color:var(--c)}.cd.arriving .cd-c{color:var(--c)}
+/* maintenance window (countdown.js, data/index.json maintenance_windows): same pill, 8 PM red; label in red, text where the time sits */
+.cd.maint{--c:var(--flame);border-color:rgba(255,90,46,.5)}
+.cd.maint .cd-t{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .has-cd .slotbar{display:none}
 .has-cd .topline{padding:7.5px 0}
@@ -247,6 +250,8 @@ background:rgba(255,255,255,.03);font:500 12px/1.2 var(--sans);letter-spacing:.0
 @media (prefers-reduced-motion:reduce){.cd-dot{animation:none}}
 @media (max-width:640px){.has-cd .topline>span:first-child{display:none}.has-cd .topline{justify-content:center}.cd{font-size:11.5px;gap:6px;padding:6px 10px}}
 @media (max-width:380px){.cd-k{display:none}}
+/* the banner text is longer than the pill, so on phones it scales down to fit whole (line height stays at the pill's, so the bar doesn't change height) */
+@media (max-width:640px){.cd.maint{font-size:min(11.5px,calc((100vw - 60px)/29.6));line-height:13.8px}}
 /* ---------- footer: two columns (publish.py credit_html). Left: wordmark, description, studio credit. Right: labelled link groups ---------- */
 footer.site{padding:44px 0 64px}
 footer.site .dd-fcols{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:32px 72px;align-items:start}

@@ -1,5 +1,8 @@
 /* Daily Design: countdown to the next scheduled edition.
-   Schedule is wall-clock time in America/Vancouver (DST-aware via Intl), shown in the visitor's own zone. */
+   Schedule is wall-clock time in America/Vancouver (DST-aware via Intl), shown in the visitor's own zone.
+   Maintenance windows (index.json "maintenance_windows", from tools/special-days.json): while the Vancouver clock is inside one, the
+   pill shows its label + text instead of the countdown, and scheduled slots inside a window are skipped. Checked every tick, so the
+   banner switches on and off by itself. If the data can't be loaded the plain countdown runs. */
 (function(){
 "use strict";
 var el=document.getElementById("cd");
@@ -13,12 +16,20 @@ function wall(t){var o={};partsFmt.formatToParts(new Date(t)).forEach(function(p
 function offsetAt(t){var w=wall(t);return Date.UTC(w.year,w.month-1,w.day,w.hour,w.minute,w.second)-Math.floor(t/1000)*1000}
 /* UTC instant of a Vancouver wall-clock time */
 function instant(y,m,d,h){var g=Date.UTC(y,m-1,d,h,0,0),t=g-offsetAt(g);return g-offsetAt(t)}
+function two(n){return(n<10?"0":"")+n}
+/* Vancouver wall-clock minute as "YYYY-MM-DDTHH:MM" (same shape as the window start/end, so they compare as strings) */
+function wkey(y,m,d,h,mi){return y+"-"+two(m)+"-"+two(d)+"T"+two(h)+":"+two(mi)}
+var WINDOWS=[];
+function windowAt(k){for(var i=0;i<WINDOWS.length;i++)if(k>=WINDOWS[i].start&&k<=WINDOWS[i].end)return WINDOWS[i];return null}
+function maintenance(now){var w=wall(now);return windowAt(wkey(w.year,w.month,w.day,w.hour,w.minute))}
 function upcoming(now){
   var w=wall(now);
-  for(var k=-1;k<3;k++){
+  for(var k=-1;k<90;k++){
     var base=new Date(Date.UTC(w.year,w.month-1,w.day+k));
     for(var i=0;i<SLOTS.length;i++){
-      var t=instant(base.getUTCFullYear(),base.getUTCMonth()+1,base.getUTCDate(),SLOTS[i].h);
+      var y=base.getUTCFullYear(),m=base.getUTCMonth()+1,d=base.getUTCDate();
+      if(windowAt(wkey(y,m,d,SLOTS[i].h,0)))continue;
+      var t=instant(y,m,d,SLOTS[i].h);
       if(t+ARRIVING_MS>now)return {slot:SLOTS[i],t:t};
     }
   }
@@ -27,13 +38,24 @@ var loc=undefined;try{loc=navigator.language||undefined}catch(e){}
 var tFmt=new Intl.DateTimeFormat(loc,{hour:"numeric",minute:"2-digit",timeZoneName:"short"});
 var dFmt=new Intl.DateTimeFormat(loc,{weekday:"short"});
 var dayKey=new Intl.DateTimeFormat("en-CA",{year:"numeric",month:"2-digit",day:"2-digit"});
-function two(n){return(n<10?"0":"")+n}
-var $=function(s){return el.querySelector(s)}, cur=null;
-el.innerHTML='<span class="cd-dot" aria-hidden="true"></span><span class="cd-k" aria-hidden="true">Next</span>'+
+var $=function(s){return el.querySelector(s)}, cur=null, mode="";
+function build(m){
+  if(m===mode)return;mode=m;cur=null;
+  if(m==="maint"){el.className="cd maint";el.removeAttribute("title");el.style.removeProperty("--c");
+    el.innerHTML='<span class="cd-dot" aria-hidden="true"></span><span class="cd-n" aria-hidden="true"></span>'+
+      '<span class="cd-s" aria-hidden="true">·</span><span class="cd-t" aria-hidden="true"></span><span class="sr cd-sr"></span>';return}
+  el.className="cd";
+  el.innerHTML='<span class="cd-dot" aria-hidden="true"></span><span class="cd-k" aria-hidden="true">Next</span>'+
   '<span class="cd-n" aria-hidden="true"></span><span class="cd-s" aria-hidden="true">·</span><span class="cd-t" aria-hidden="true"></span>'+
   '<span class="cd-s" aria-hidden="true">·</span><span class="cd-c" role="timer" aria-live="off" aria-atomic="true"></span><span class="sr cd-sr"></span>';
+}
 function tick(){
-  var now=Date.now(),u=upcoming(now);if(!u)return;
+  var now=Date.now(),mw=maintenance(now);
+  if(mw){build("maint");var mk=mw.start+"|"+mw.label+"|"+mw.text;
+    if(mk!==cur){cur=mk;$(".cd-n").textContent=mw.label;$(".cd-t").textContent=mw.text;$(".cd-sr").textContent=mw.label+": "+mw.text+"."}
+    el.hidden=false;document.documentElement.classList.add("has-cd");return}
+  build("cd");
+  var u=upcoming(now);if(!u)return;
   var key=u.t+"|"+u.slot.name;
   if(key!==cur){cur=key;
     var when=tFmt.format(new Date(u.t));
@@ -49,10 +71,11 @@ function tick(){
     $(".cd-c").textContent="in "+two(Math.floor(s/3600))+":"+two(Math.floor(s%3600/60))+":"+two(s%60)}
   el.hidden=false;document.documentElement.classList.add("has-cd");
 }
-tick();
 var timer=null;
 function start(){clearTimeout(timer);(function loop(){tick();timer=setTimeout(loop,1000-(Date.now()%1000)+15)})()}
-start();
-document.addEventListener("visibilitychange",function(){if(!document.hidden)start()});
-window.DDCountdown={upcoming:upcoming,instant:instant};
+function go(){start();document.addEventListener("visibilitychange",function(){if(!document.hidden)start()})}
+/* the windows come with the index data; the pill waits for it (a failed load just means no windows) */
+function load(j){var a=j&&j.maintenance_windows;WINDOWS=Array.isArray(a)?a.filter(function(w){return w&&w.start&&w.end}):[]}
+if(window.fetch)fetch("data/index.json").then(function(r){if(!r.ok)throw 0;return r.json()}).then(load).catch(function(){}).then(go);else go();
+window.DDCountdown={upcoming:upcoming,instant:instant,maintenance:maintenance};
 })();
