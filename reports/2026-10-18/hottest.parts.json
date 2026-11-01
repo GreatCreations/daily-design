@@ -134,6 +134,7 @@
    "kind": "item",
    "parent": "s-hottest-this-week",
    "section": "s-hottest-this-week",
+   "type": "update",
    "title": "MOSS-Image, an open 5B image model with layout control (OpenMOSS, GitHub)",
    "url": "https://github.com/OpenMOSS/MOSS-Image",
    "text": "MOSS-Image, an open 5B image model with layout control (OpenMOSS, GitHub), image model. An Apache-licensed text-to-image model with layout control, strong…",

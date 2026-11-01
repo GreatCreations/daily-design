@@ -1,0 +1,331 @@
+{
+ "version": 1,
+ "report": "2026-10-31/hottest",
+ "date": "2026-10-31",
+ "slot": "hottest",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-31/hottest.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-31/hottest",
+ "link": "#report=2026-10-31/hottest&part=<id> (index reader) or reports/2026-10-31/hottest.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-design-skills-that-fight",
+   "kind": "section",
+   "heading": "Design skills that fight AI-looking output keep climbing on GitHub, an all-models API launch drew 7.7 million views on X, and Seedance 2.5 and Kling 4.0 videos lead YouTube",
+   "text": "Design skills that fight AI-looking output keep climbing on GitHub, an all-models API launch drew 7.7 million views on X, and Seedance 2.5 and Kling 4.0…",
+   "h": "63efed607b",
+   "medium": "video"
+  },
+  {
+   "id": "s-design-skills-that-fight-i1",
+   "kind": "paragraph",
+   "parent": "s-design-skills-that-fight",
+   "section": "s-design-skills-that-fight",
+   "medium": "video",
+   "text": "Today's one real breakout was karpathy's HackerTube, a YouTube-style site an AI model built in about two hours, which reached 623 points on Hacker News within…",
+   "h": "2d6f652054"
+  },
+  {
+   "id": "s-design-skills-that-fight-i2",
+   "kind": "paragraph",
+   "parent": "s-design-skills-that-fight",
+   "section": "s-design-skills-that-fight",
+   "medium": "video",
+   "text": "Engagement figures were read on the evening of Oct 31 (PT) from GitHub (trending pages and repo pages), Hugging Face (model listings, pages and cards)…",
+   "h": "4357ced266"
+  },
+  {
+   "id": "s-blew-up-today",
+   "kind": "section",
+   "heading": "🔥 Blew up today",
+   "text": "🔥 Blew up today",
+   "h": "855a8b0061"
+  },
+  {
+   "id": "s-blew-up-today-i1",
+   "kind": "item",
+   "parent": "s-blew-up-today",
+   "section": "s-blew-up-today",
+   "medium": "code",
+   "type": "showcase",
+   "title": "update: HackerTube, a YouTube-style site built from videos Hacker News recommended (karpathy)",
+   "url": "https://karpathy.bearblog.dev/hacker-tube/",
+   "text": "⏪ update: HackerTube, a YouTube-style site built from videos Hacker News recommended (karpathy), creation. The post, dated Oct 31, says the author asked Opus…",
+   "h": "13677903a6"
+  },
+  {
+   "id": "s-hottest-this-week",
+   "kind": "section",
+   "heading": "📈 Hottest this week",
+   "text": "📈 Hottest this week",
+   "h": "927e2ad085"
+  },
+  {
+   "id": "s-hottest-this-week-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Sunra API launch: every image, video, audio and 3D model through one key (@sunra_ai, X)",
+   "url": "https://x.com/sunra_ai/status/2115475466257596516",
+   "text": "Sunra API launch: every image, video, audio and 3D model through one key (@sunra_ai, X), tool news, promotional. The vendor's own post, Oct 28: \"every leading…",
+   "h": "4f80942aad"
+  },
+  {
+   "id": "s-hottest-this-week-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "title": "Introducing 3D Make in Kimi (Kimi AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=VtzELsWFXV4",
+   "text": "Introducing 3D Make in Kimi (Kimi AI, YouTube), update, vendor video. A 74-second launch video; per the description, Kimi connects to Blender and CAD tools to…",
+   "h": "798203242b"
+  },
+  {
+   "id": "s-hottest-this-week-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "update",
+   "title": "hallmark, a design skill that refuses to look AI-generated (Nutlope, GitHub)",
+   "url": "https://github.com/Nutlope/hallmark",
+   "text": "hallmark, a design skill that refuses to look AI-generated (Nutlope, GitHub), update. \"Anti-AI-slop design skill for Claude Code, Cursor, and Codex,\" per the…",
+   "h": "2c3792ed09"
+  },
+  {
+   "id": "s-hottest-this-week-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "code",
+   "type": "update",
+   "title": "unslop, a Claude skill that turns AI-looking UI into a designed one (Damir Sokolovsky, GitHub)",
+   "url": "https://github.com/heydamir/unslop",
+   "text": "unslop, a Claude skill that turns AI-looking UI into a designed one (Damir Sokolovsky, GitHub), update. Per the README, it finds the tells first (purple…",
+   "h": "1d9035ba4f"
+  },
+  {
+   "id": "s-hottest-this-week-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "showcase",
+   "title": "Promotional: a fantasy fairy clip \"generated with @AkoolInc\" (@BGKuaci, X)",
+   "url": "https://x.com/BGKuaci/status/2116030358835941482",
+   "text": "Promotional: a fantasy fairy clip \"generated with @AkoolInc\" (@BGKuaci, X), showcase. A cinematic fantasy-scene video posted Oct 30 with a pitch for the AKOOL…",
+   "h": "12c8928cd2"
+  },
+  {
+   "id": "s-hottest-this-week-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "showcase",
+   "title": "BOUNTY HUNTERS, the first film of a sci-fi western series (VORON PICTURES, YouTube)",
+   "url": "https://www.youtube.com/watch?v=xXUQ2SJ254c",
+   "text": "BOUNTY HUNTERS, the first film of a sci-fi western series (VORON PICTURES, YouTube), showcase. An 11-minute short about two alien bounty hunters in a saloon…",
+   "h": "83cf04ebdf"
+  },
+  {
+   "id": "s-hottest-this-week-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "showcase",
+   "title": "Mr. Bean vs a Sumo Wrestler, one of a mash-up series (@TechieBySA, X)",
+   "url": "https://x.com/TechieBySA/status/2115430062954537284",
+   "text": "Mr. Bean vs a Sumo Wrestler, one of a mash-up series (@TechieBySA, X), showcase. A short made, per the post, with Seedance 2.5 and GPT Image 2.5; it is one of…",
+   "h": "971a85fb10"
+  },
+  {
+   "id": "s-hottest-this-week-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "games",
+   "type": "update",
+   "title": "Genie 4, a world model that generates sound along with the world (Google DeepMind)",
+   "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+   "text": "Genie 4, a world model that generates sound along with the world (Google DeepMind), update. The page (Oct 27) calls it natively multimodal, with music…",
+   "h": "6e57adfa5f"
+  },
+  {
+   "id": "s-hottest-this-week-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "type": "tutorial",
+   "title": "Idol, one image to a 3D Gaussian splat (speridlabs, Hugging Face)",
+   "url": "https://huggingface.co/speridlabs/idol",
+   "text": "Idol, one image to a 3D Gaussian splat (speridlabs, Hugging Face), tool, 3D. Per the model card, one picture of an object becomes up to 1,048,576 Gaussians as…",
+   "h": "0a6b65514e"
+  },
+  {
+   "id": "s-hottest-this-week-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-week",
+   "section": "s-hottest-this-week",
+   "medium": "games",
+   "type": "update",
+   "title": "Claude Code Game Studios, a game-dev team of agents (Donchitos, GitHub)",
+   "url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
+   "text": "Claude Code Game Studios, a game-dev team of agents (Donchitos, GitHub), update. Per the repo description: \"49 AI agents, 72 workflow skills\" in a…",
+   "h": "aa0496d970"
+  },
+  {
+   "id": "s-hottest-this-month",
+   "kind": "section",
+   "heading": "🏆 Hottest this month",
+   "text": "🏆 Hottest this month",
+   "h": "4f4d3d858e"
+  },
+  {
+   "id": "s-hottest-this-month-i1",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "sound",
+   "type": "update",
+   "title": "VoiceStudio, a local voice studio (debpalash, GitHub)",
+   "url": "https://github.com/debpalash/VoiceStudio",
+   "text": "VoiceStudio, a local voice studio (debpalash, GitHub), update. \"The open-source, fully-local ElevenLabs alternative\": voice cloning, voice design, video…",
+   "h": "92812f02c8"
+  },
+  {
+   "id": "s-hottest-this-month-i2",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Claude Dashboards and Claude Motion (Claude, YouTube)",
+   "url": "https://www.youtube.com/watch?v=en0GuyhieQk",
+   "text": "Claude Dashboards and Claude Motion (Claude, YouTube), update, vendor video. Per the description, Dashboards builds live dashboards from your data (beta on…",
+   "h": "266d60ad45"
+  },
+  {
+   "id": "s-hottest-this-month-i3",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "code",
+   "type": "update",
+   "title": "impeccable, a design vocabulary for coding agents (Paul Bakaus, GitHub)",
+   "url": "https://github.com/pbakaus/impeccable",
+   "text": "impeccable, a design vocabulary for coding agents (Paul Bakaus, GitHub), update. Commands such as polish, bolder, critique and audit to steer an agent, plus a…",
+   "h": "17e0ecce74"
+  },
+  {
+   "id": "s-hottest-this-month-i4",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Is AI The New VFX? (ErikDoesVFX, YouTube)",
+   "url": "https://www.youtube.com/watch?v=jfGVMfle07g",
+   "text": "Is AI The New VFX? (ErikDoesVFX, YouTube), showcase, promotional tie. A VFX artist recreates explosion, laser-eye and chicken-explosion shots both with…",
+   "h": "b1c392e9ed"
+  },
+  {
+   "id": "s-hottest-this-month-i5",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "tutorial",
+   "title": "Kling AI 4.0 Tutorial: How to Make Cinematic AI Videos (FILM CRUX, YouTube)",
+   "url": "https://www.youtube.com/watch?v=PzOH1v5GaW0",
+   "text": "Kling AI 4.0 Tutorial: How to Make Cinematic AI Videos (FILM CRUX, YouTube), update, affiliate. A short Kling 4.0 walkthrough with examples; its description…",
+   "h": "8755249544"
+  },
+  {
+   "id": "s-hottest-this-month-i6",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "How I Make Realistic AI Videos with Seedance 2.5, Full Guide (Dan Kieft, YouTube)",
+   "url": "https://www.youtube.com/watch?v=2hJsvDSPWYM",
+   "text": "How I Make Realistic AI Videos with Seedance 2.5, Full Guide (Dan Kieft, YouTube), update, promotional. A 20-minute realism guide; the description points to…",
+   "h": "221d312ecd"
+  },
+  {
+   "id": "s-hottest-this-month-i7",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "title": "Nano Banana 2.1 vs GPT Image 2.5: Same Prompts, Big Difference (Kingy AI, YouTube)",
+   "url": "https://www.youtube.com/watch?v=L3saZLsifOo",
+   "text": "Nano Banana 2.1 vs GPT Image 2.5: Same Prompts, Big Difference (Kingy AI, YouTube), test, sponsored. The video says it is sponsored by Artlist; per the…",
+   "h": "d3ff3b6691"
+  },
+  {
+   "id": "s-hottest-this-month-i8",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "medium": "mashups",
+   "type": "update",
+   "title": "HyperFrames: write HTML, render video (HeyGen, GitHub)",
+   "url": "https://github.com/heygen-com/hyperframes",
+   "text": "HyperFrames: write HTML, render video (HeyGen, GitHub), update. \"Write HTML. Render video. Built for agents.\" The signal: 22,303 stars this month and 76,580…",
+   "h": "f075ad6d82"
+  },
+  {
+   "id": "s-hottest-this-month-i9",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "taste-skill, art direction for coding agents (Leonxlnx, GitHub)",
+   "url": "https://github.com/Leonxlnx/taste-skill",
+   "text": "taste-skill, art direction for coding agents (Leonxlnx, GitHub), update. \"Agent skills that give coding agents taste: art direction, reference images and a…",
+   "h": "4cdfee80e4"
+  },
+  {
+   "id": "s-hottest-this-month-i10",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "Qwen-Image 2.1 (Qwen, Hugging Face)",
+   "url": "https://huggingface.co/Qwen/Qwen-Image-2.1",
+   "text": "Qwen-Image 2.1 (Qwen, Hugging Face), update. A unified text-to-image and editing model; per the card, 7B parameters in the visual generation component…",
+   "h": "929074f056"
+  },
+  {
+   "id": "s-hottest-this-month-i11",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "MiniMax H3, an open audio-video model (MiniMaxAI, Hugging Face)",
+   "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+   "text": "MiniMax H3, an open audio-video model (MiniMaxAI, Hugging Face), update. Per the card, it makes video with native stereo audio at up to 2K and 4 to 15…",
+   "h": "b839617192"
+  },
+  {
+   "id": "s-hottest-this-month-i12",
+   "kind": "item",
+   "parent": "s-hottest-this-month",
+   "section": "s-hottest-this-month",
+   "type": "update",
+   "title": "MOSS-Image (OpenMOSS, GitHub and Hugging Face)",
+   "url": "https://github.com/OpenMOSS/MOSS-Image",
+   "text": "MOSS-Image (OpenMOSS, GitHub and Hugging Face), update. A 5B-parameter open base DiT image model with text and layout-guided workflows, packaged for ComfyUI.…",
+   "h": "0bf322b47c"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: a fresh evening sweep of GitHub trending (daily, weekly, monthly) plus GitHub repository search for new fast-rising repos, with each repo page opened…",
+   "h": "2508c74db1"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}

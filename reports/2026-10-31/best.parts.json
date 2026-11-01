@@ -1,0 +1,271 @@
+{
+ "version": 1,
+ "report": "2026-10-31/best",
+ "date": "2026-10-31",
+ "slot": "best",
+ "page": "https://studios.greatcreations.art/daily-design/reports/2026-10-31/best.html",
+ "reader": "https://studios.greatcreations.art/daily-design/#report=2026-10-31/best",
+ "link": "#report=2026-10-31/best&part=<id> (index reader) or reports/2026-10-31/best.html#<id> (static page)",
+ "parts": [
+  {
+   "id": "s-making-of-for-an",
+   "kind": "section",
+   "heading": "A making-of for an AI film series pulls 79,000 views in hours, a two-hour YouTube alternative built with Opus 5.5, and a skill that copies animations frame by frame",
+   "text": "A making-of for an AI film series pulls 79,000 views in hours, a two-hour YouTube alternative built with Opus 5.5, and a skill that copies animations frame by…",
+   "h": "74bf383fc2",
+   "medium": "video"
+  },
+  {
+   "id": "s-making-of-for-an-i1",
+   "kind": "paragraph",
+   "parent": "s-making-of-for-an",
+   "section": "s-making-of-for-an",
+   "medium": "video",
+   "text": "The pick of the day is \"The Making of CRAFT (1979),\" a behind-the-scenes film from the LatentDiffusion channel about its fan-made, Minecraft-inspired dark…",
+   "h": "3e347340a5"
+  },
+  {
+   "id": "s-making-of-for-an-i2",
+   "kind": "paragraph",
+   "parent": "s-making-of-for-an",
+   "section": "s-making-of-for-an",
+   "medium": "video",
+   "text": "Engagement figures were read from X, YouTube, GitHub and Hacker News on the afternoon of Oct 31 (PT) and will keep changing. Reddit and Product Hunt returned…",
+   "h": "8677557c37"
+  },
+  {
+   "id": "s-pick-of-the-day",
+   "kind": "section",
+   "heading": "⭐ Pick of the day",
+   "text": "⭐ Pick of the day",
+   "h": "9e8549931a"
+  },
+  {
+   "id": "s-pick-of-the-day-video",
+   "kind": "subsection",
+   "parent": "s-pick-of-the-day",
+   "section": "s-pick-of-the-day",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-pick-of-the-day-video-i1",
+   "kind": "item",
+   "parent": "s-pick-of-the-day-video",
+   "section": "s-pick-of-the-day",
+   "medium": "video",
+   "type": "tutorial",
+   "title": "The Making of CRAFT (1979) (LatentDiffusion, YouTube)",
+   "url": "https://www.youtube.com/watch?v=RlhGKn2739E",
+   "text": "The Making of CRAFT (1979) (LatentDiffusion, YouTube), tutorial. A behind-the-scenes film for the first season of CRAFT, ten episodes of a fan-made…",
+   "h": "ad3d549427"
+  },
+  {
+   "id": "s-ranked-picks",
+   "kind": "section",
+   "heading": "The ranked picks",
+   "text": "The ranked picks",
+   "h": "c43e5f4fc5"
+  },
+  {
+   "id": "s-ranked-picks-video",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎬 Video",
+   "medium": "video",
+   "text": "🎬 Video",
+   "h": "ffbaf58f12"
+  },
+  {
+   "id": "s-ranked-picks-video-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "Seedance 2.5 clips lead X again: \"This Ai video is truly a masterpiece\" (@xmliisu)",
+   "url": "https://x.com/xmliisu/status/2116576677983854904",
+   "text": "Seedance 2.5 clips lead X again: \"This Ai video is truly a masterpiece\" (@xmliisu), showcase. A new post from the account that led yesterday's edition (a…",
+   "h": "688979138b"
+  },
+  {
+   "id": "s-ranked-picks-video-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "showcase",
+   "title": "update: BOUNTY HUNTERS (VORON PICTURES) and Draconia & Harry: A Halloween Date (Space Cafe'), YouTube",
+   "url": "https://www.youtube.com/watch?v=-FbFhsy6DCQ",
+   "text": "⏪ update: BOUNTY HUNTERS (VORON PICTURES) and Draconia & Harry: A Halloween Date (Space Cafe'), YouTube, showcase. Both AI short films were in this noon's…",
+   "h": "fbcd331689"
+  },
+  {
+   "id": "s-ranked-picks-video-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-video",
+   "section": "s-ranked-picks",
+   "medium": "video",
+   "type": "result",
+   "title": "Wan 3.0 Prime against Seedance 2.5: \"you're wasting over $500\" (@simonecanciello)",
+   "url": "https://x.com/simonecanciello/status/2116597642323280009",
+   "text": "Wan 3.0 Prime against Seedance 2.5: \"you're wasting over $500\" (@simonecanciello), result. A side-by-side clip with the poster's own price claims, $0.30 for…",
+   "h": "0503da3392"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "💻 Code and UI",
+   "medium": "code",
+   "text": "💻 Code and UI",
+   "h": "f1f836cc9c"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "showcase",
+   "title": "HackerTube: a YouTube-style site built from videos Hacker News recommended (karpathy, blog and site)",
+   "url": "https://karpathy.bearblog.dev/hacker-tube/",
+   "text": "HackerTube: a YouTube-style site built from videos Hacker News recommended (karpathy, blog and site), showcase. The post says the author asked Opus 5.5 to…",
+   "h": "37bca00279"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i2",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "update: unslop, a Claude skill that turns AI-looking UI into a designed one (Damir Sokolovsky, GitHub)",
+   "url": "https://github.com/heydamir/unslop",
+   "text": "⏪ update: unslop, a Claude skill that turns AI-looking UI into a designed one (Damir Sokolovsky, GitHub), tool. Yesterday's edition listed it at 1,102 stars…",
+   "h": "b8594ba3c2"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i3",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "ai-design-check: an open-source checker for the tells of AI-built UI (Enmera, GitHub and npm)",
+   "url": "https://github.com/enmerasoftware/ai-design-check",
+   "text": "ai-design-check: an open-source checker for the tells of AI-built UI (Enmera, GitHub and npm), tool. Per the README it is a zero-dependency checker with no AI…",
+   "h": "3e5aba7af4"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i4",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "repo/tool",
+   "title": "reanimate: a Claude Code skill that reverse-engineers an animation and rebuilds it in your own code (NiazMorshed2007, GitHub)",
+   "url": "https://github.com/NiazMorshed2007/reanimate",
+   "text": "reanimate: a Claude Code skill that reverse-engineers an animation and rebuilds it in your own code (NiazMorshed2007, GitHub), tool. Per the README it records…",
+   "h": "b0c6805a2d"
+  },
+  {
+   "id": "s-ranked-picks-code-and-ui-i5",
+   "kind": "item",
+   "parent": "s-ranked-picks-code-and-ui",
+   "section": "s-ranked-picks",
+   "medium": "code",
+   "type": "tutorial",
+   "title": "Build & Animate My Figma Website using Claude (Full Course) (AyzZ, YouTube)",
+   "url": "https://www.youtube.com/watch?v=kau9QOV1G8E",
+   "text": "Build & Animate My Figma Website using Claude (Full Course) (AyzZ, YouTube), tutorial. An agency's workflow for avoiding \"vibe coded\" sites: design in Figma…",
+   "h": "e71e3a8976"
+  },
+  {
+   "id": "s-ranked-picks-games-and",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🎮 Games and interactive",
+   "medium": "games",
+   "text": "🎮 Games and interactive",
+   "h": "61afdd649a"
+  },
+  {
+   "id": "s-ranked-picks-games-and-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-games-and",
+   "section": "s-ranked-picks",
+   "medium": "games",
+   "type": "showcase",
+   "title": "ChatGPT vs Claude make Dont Splash (Zo, YouTube)",
+   "url": "https://www.youtube.com/watch?v=A4MKxxny3Do",
+   "text": "ChatGPT vs Claude make Dont Splash (Zo, YouTube), showcase. The maker gave GPT-6 Astra (in Codex) and Claude Opus 5.5 (in Claude Code) the same master prompt…",
+   "h": "6e980820f1"
+  },
+  {
+   "id": "s-ranked-picks-image-and-visual",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🖼️ Image and visual",
+   "medium": "image",
+   "text": "🖼️ Image and visual",
+   "h": "b9f6fb7c21"
+  },
+  {
+   "id": "s-ranked-picks-image-and-visual-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-image-and-visual",
+   "section": "s-ranked-picks",
+   "medium": "image",
+   "type": "showcase",
+   "title": "Storybook Halloween witches and black cats, Midjourney style code 6289118159 (@minuitIA)",
+   "url": "https://x.com/minuitIA/status/2116469859215441975",
+   "text": "Storybook Halloween witches and black cats, Midjourney style code 6289118159 (@minuitIA), showcase. A four-image set in a whimsical storybook style with dusky…",
+   "h": "cb79a7a29e"
+  },
+  {
+   "id": "s-ranked-picks-3d",
+   "kind": "subsection",
+   "parent": "s-ranked-picks",
+   "section": "s-ranked-picks",
+   "heading": "🧊 3D",
+   "medium": "3d",
+   "text": "🧊 3D",
+   "h": "34f9efccd4"
+  },
+  {
+   "id": "s-ranked-picks-3d-i1",
+   "kind": "item",
+   "parent": "s-ranked-picks-3d",
+   "section": "s-ranked-picks",
+   "medium": "3d",
+   "type": "repo/tool",
+   "title": "HairDeck: stylized hair cards and animation bones from a single image (hyz317, GitHub)",
+   "url": "https://github.com/hyz317/HairDeck",
+   "text": "HairDeck: stylized hair cards and animation bones from a single image (hyz317, GitHub), tool. Per the README, from one image it generates a set of hair cards…",
+   "h": "21f6320245"
+  },
+  {
+   "id": "s-notes-i1",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Method: the 28 X posts gathered for this edition were each opened by ID and their text and metrics re-read; none were taken on trust, and 8 are linked above.…",
+   "h": "b149bb5a5a"
+  },
+  {
+   "id": "s-notes-i2",
+   "kind": "paragraph",
+   "parent": "s-notes",
+   "section": "s-notes",
+   "text": "Say the word and I'll steer the next edition there.",
+   "h": "d9966ca763"
+  }
+ ]
+}
