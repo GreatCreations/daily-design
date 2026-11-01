@@ -1482,7 +1482,7 @@ def load_special_days(days):
 
 
 def load_maintenance_windows():
-    """Maintenance windows from tools/special-days.json ('windows') -> [{start, end, label, text}] for index.json, oldest first.
+    """Maintenance windows from tools/special-days.json ('windows') -> [{start, end, label, text[, about]}] for index.json, oldest first.
     start/end are America/Vancouver wall-clock 'YYYY-MM-DDTHH:MM' (end inclusive through that minute); assets/countdown.js swaps the
     header countdown for a banner inside a window and skips scheduled slots that fall in it. Bad entries are skipped."""
     p = os.path.join(REPO, "tools", "special-days.json")
@@ -1499,6 +1499,8 @@ def load_maintenance_windows():
             continue
         out.append(dict(start=s, end=e, label=str(w.get("label") or "Scheduled maintenance"),
                         text=str(w.get("text") or "Back soon")))
+        if w.get("about"):
+            out[-1]["about"] = str(w["about"])
     return sorted(out, key=lambda w: w["start"])
 
 
@@ -1745,6 +1747,8 @@ ABOUT_CSS = """<style>
 .ab-since{margin:-4px 0 0;font:600 13px/1.4 var(--sans);letter-spacing:.04em;color:var(--mut)}.ab-since b{color:var(--aqua);font-weight:800}
 .ab-sub{margin:16px 0 0;padding:12px 14px;border:1px solid var(--line);border-left:3px solid #ffcf5a;border-radius:12px;background:rgba(255,207,90,.05)}
 .ab-sub b.g{color:#ffcf5a}
+.ab-maint{margin:16px 0 0;padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:12px;background:rgba(245,165,36,.07);color:#d5d1c8;line-height:1.5}
+.ab-maint[hidden]{display:none}.ab-maint b{color:var(--amber)}
 .ab-map{columns:2 220px;column-gap:28px;margin:6px 0 0;padding-left:18px;color:#d5d1c8;line-height:1.7}
 .ab-map li{break-inside:avoid}
 .ab a{color:var(--ink);text-decoration-color:var(--amber);text-underline-offset:3px}.ab a:hover{color:#fff}
@@ -1869,6 +1873,7 @@ def build_about_page(editions):
 <section class="ct-card" aria-labelledby="ab-h">
 <div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · About">Daily Design · About</a></div>
 <h1 id="ab-h">About <em>Daily Design</em></h1>
+<div class="ab-maint" id="ab-maint" role="status" hidden></div>
 <p class="lede">Daily Design is a public archive of AI design research digests from <span class="nw"><a href="%s" rel="noopener">%s</a>:</span> four editions a day on how AI is changing creative work, across image, video, 3D, <span class="nw">code/UI,</span> sound, <span class="nw">games and mashups.</span></p>
 %s<h2>Four editions a day</h2>
 <ul class="ab-eds">%s</ul>
@@ -1895,6 +1900,7 @@ def build_about_page(editions):
 </main>
 <footer class="site"><div class="wrap">%s</div></footer>
 <script src="assets/tzlocal.js" defer></script>
+<script src="assets/maintenance.js" defer></script>
 </body>
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, since, eds, tz_label(today), sub, CONTACT_PATH, series,

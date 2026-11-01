@@ -240,8 +240,8 @@ background:rgba(255,255,255,.03);font:500 12px/1.2 var(--sans);letter-spacing:.0
 .cd-t{color:#d5d1c8}
 .cd-c{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 .cd.arriving{border-color:var(--c)}.cd.arriving .cd-c{color:var(--c)}
-/* maintenance window (countdown.js, data/index.json maintenance_windows): same pill, 8 PM red; label in red, text where the time sits */
-.cd.maint{--c:var(--flame);border-color:rgba(255,90,46,.5)}
+/* maintenance window (countdown.js, data/index.json maintenance_windows): same pill in the theme warning amber (--amber); label in amber, text where the time sits */
+.cd.maint{--c:var(--amber);border-color:rgba(245,165,36,.5)}
 .cd.maint .cd-t{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .has-cd .slotbar{display:none}
