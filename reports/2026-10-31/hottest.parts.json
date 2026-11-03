@@ -10,9 +10,9 @@
   {
    "id": "s-design-skills-that-fight",
    "kind": "section",
-   "heading": "Design skills that fight AI-looking output keep climbing on GitHub, an all-models API launch drew 7.7 million views on X, and Seedance 2.5 and Kling 4.0 videos lead YouTube",
+   "heading": "Design skills that fight AI-looking output keep climbing on GitHub, an all-models API launch drew 7.7 million views on X, and Seedance 2.5 and Kling 4.0 videos rack up the month's YouTube views",
    "text": "Design skills that fight AI-looking output keep climbing on GitHub, an all-models API launch drew 7.7 million views on X, and Seedance 2.5 and Kling 4.0…",
-   "h": "63efed607b",
+   "h": "211382c84b",
    "medium": "video"
   },
   {
@@ -21,8 +21,8 @@
    "parent": "s-design-skills-that-fight",
    "section": "s-design-skills-that-fight",
    "medium": "video",
-   "text": "Today's one real breakout was karpathy's HackerTube, a YouTube-style site an AI model built in about two hours, which reached 623 points on Hacker News within…",
-   "h": "2d6f652054"
+   "text": "Today's one real breakout was HackerTube, a YouTube-style site in a blog post signed karpathy that says an AI model built it in about two hours, which reached…",
+   "h": "e8a342833c"
   },
   {
    "id": "s-design-skills-that-fight-i2",
@@ -101,7 +101,7 @@
    "title": "unslop, a Claude skill that turns AI-looking UI into a designed one (Damir Sokolovsky, GitHub)",
    "url": "https://github.com/heydamir/unslop",
    "text": "unslop, a Claude skill that turns AI-looking UI into a designed one (Damir Sokolovsky, GitHub), update. Per the README, it finds the tells first (purple…",
-   "h": "1d9035ba4f"
+   "h": "2d323ebe5c"
   },
   {
    "id": "s-hottest-this-week-i5",
@@ -134,7 +134,7 @@
    "title": "Mr. Bean vs a Sumo Wrestler, one of a mash-up series (@TechieBySA, X)",
    "url": "https://x.com/TechieBySA/status/2115430062954537284",
    "text": "Mr. Bean vs a Sumo Wrestler, one of a mash-up series (@TechieBySA, X), showcase. A short made, per the post, with Seedance 2.5 and GPT Image 2.5; it is one of…",
-   "h": "971a85fb10"
+   "h": "571319241b"
   },
   {
    "id": "s-hottest-this-week-i8",
@@ -146,7 +146,7 @@
    "title": "Genie 4, a world model that generates sound along with the world (Google DeepMind)",
    "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
    "text": "Genie 4, a world model that generates sound along with the world (Google DeepMind), update. The page (Oct 27) calls it natively multimodal, with music…",
-   "h": "6e57adfa5f"
+   "h": "3e7ceaac12"
   },
   {
    "id": "s-hottest-this-week-i9",
@@ -157,7 +157,7 @@
    "title": "Idol, one image to a 3D Gaussian splat (speridlabs, Hugging Face)",
    "url": "https://huggingface.co/speridlabs/idol",
    "text": "Idol, one image to a 3D Gaussian splat (speridlabs, Hugging Face), tool, 3D. Per the model card, one picture of an object becomes up to 1,048,576 Gaussians as…",
-   "h": "0a6b65514e"
+   "h": "c7c2248e56"
   },
   {
    "id": "s-hottest-this-week-i10",
@@ -198,7 +198,7 @@
    "title": "Claude Dashboards and Claude Motion (Claude, YouTube)",
    "url": "https://www.youtube.com/watch?v=en0GuyhieQk",
    "text": "Claude Dashboards and Claude Motion (Claude, YouTube), update, vendor video. Per the description, Dashboards builds live dashboards from your data (beta on…",
-   "h": "266d60ad45"
+   "h": "4f0997b26c"
   },
   {
    "id": "s-hottest-this-month-i3",
@@ -207,10 +207,10 @@
    "section": "s-hottest-this-month",
    "medium": "code",
    "type": "update",
-   "title": "impeccable, a design vocabulary for coding agents (Paul Bakaus, GitHub)",
+   "title": "impeccable, a design vocabulary for coding agents (pbakaus, GitHub)",
    "url": "https://github.com/pbakaus/impeccable",
-   "text": "impeccable, a design vocabulary for coding agents (Paul Bakaus, GitHub), update. Commands such as polish, bolder, critique and audit to steer an agent, plus a…",
-   "h": "17e0ecce74"
+   "text": "impeccable, a design vocabulary for coding agents (pbakaus, GitHub), update. Commands such as polish, bolder, critique and audit to steer an agent, plus a…",
+   "h": "67ab696f12"
   },
   {
    "id": "s-hottest-this-month-i4",
@@ -219,8 +219,8 @@
    "section": "s-hottest-this-month",
    "title": "Is AI The New VFX? (ErikDoesVFX, YouTube)",
    "url": "https://www.youtube.com/watch?v=jfGVMfle07g",
-   "text": "Is AI The New VFX? (ErikDoesVFX, YouTube), showcase, promotional tie. A VFX artist recreates explosion, laser-eye and chicken-explosion shots both with…",
-   "h": "b1c392e9ed"
+   "text": "Is AI The New VFX? (ErikDoesVFX, YouTube), showcase, promotional tie. The chapters cover an explosion done with AI and again with compositing, laser eyes, a…",
+   "h": "79277bc2b2"
   },
   {
    "id": "s-hottest-this-month-i5",
@@ -298,7 +298,7 @@
    "title": "MiniMax H3, an open audio-video model (MiniMaxAI, Hugging Face)",
    "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
    "text": "MiniMax H3, an open audio-video model (MiniMaxAI, Hugging Face), update. Per the card, it makes video with native stereo audio at up to 2K and 4 to 15…",
-   "h": "b839617192"
+   "h": "c8894c9e32"
   },
   {
    "id": "s-hottest-this-month-i12",
