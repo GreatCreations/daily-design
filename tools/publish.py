@@ -2093,6 +2093,7 @@ SCHEDULE_CSS = r"""<style>
 .sc-dots i+i{margin-top:0}
 .sc-s{font:600 11.5px/1.3 var(--sans);color:var(--mut);display:flex;flex-direction:column;gap:2px}
 .sc-s b{color:var(--c);font-weight:800}
+.sc-m{display:none;font:800 10.5px/1 var(--sans);color:var(--amber);white-space:nowrap}
 .sc-det{margin:18px 0 0;padding:18px 18px 8px;border:1px solid var(--line2);border-radius:16px;background:#0d0d12}
 .sc-det h3{margin:0 0 12px!important;font:400 clamp(22px,3.4vw,28px)/1.1 var(--serif)!important;letter-spacing:0!important;text-transform:none!important;color:var(--ink)!important}
 .sc-g{margin:0 0 14px}.sc-g h4{margin:0 0 6px;font:700 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
@@ -2105,7 +2106,7 @@ SCHEDULE_CSS = r"""<style>
 .sc-st{margin:10px 0 0;color:var(--mut);font-size:13px}
 .sc-err{color:var(--flame)}
 @media (max-width:640px){.sc-cal{border-spacing:2px;margin:0 -2px}.sc-cal td{height:58px}.sc-d{min-height:58px;padding:5px;border-radius:9px;gap:4px}
-.sc-n{font-size:12px}.sc-s{display:none}.sc-cal th{font-size:9.5px;letter-spacing:.06em}.sc-dots i{height:5px}.ct.sc{padding:14px 10px 40px}.ct-card.sc-card{padding:22px 14px 22px}}
+.sc-n{font-size:12px}.sc-s{display:none}.sc-m{display:block}.sc-cal th{font-size:9.5px;letter-spacing:.06em}.sc-dots i{height:5px}.ct.sc{padding:14px 10px 40px}.ct-card.sc-card{padding:22px 14px 22px}}
 </style>"""
 SCHEDULE_JS = r"""<script>
 (function(){"use strict";
@@ -2147,7 +2148,7 @@ function render(){
     var dots=el("span","sc-dots");dots.setAttribute("aria-hidden","true");ks.forEach(function(k){var i_=el("i");i_.style.setProperty("--c",C[k]);dots.appendChild(i_)});b.appendChild(dots);
     var s=el("span","sc-s"),lab=[];
     if(d.p.length){var a=el("span");a.style.setProperty("--c",C.post);var bb=el("b",null,String(d.p.length));a.appendChild(bb);a.appendChild(document.createTextNode(" postings"));s.appendChild(a);lab.push(d.p.length+" postings")}
-    if(d.e&&d.e.length){var e2=el("span",null,"✓ "+d.e.length+" of 4 editions");e2.style.color="var(--amber)";s.appendChild(e2);lab.push(d.e.length+" of 4 editions published")}
+    if(d.e&&d.e.length){var e2=el("span",null,"✓ "+d.e.length+" of 4 editions");e2.style.color="var(--amber)";s.appendChild(e2);var em=el("span","sc-m","✓ "+d.e.length+"/4");b.appendChild(em);lab.push(d.e.length+" of 4 editions published")}
     ["maintenance","news","event"].forEach(function(k){var c=(d.x||[]).filter(function(x){return x.k===k}).length;if(c){var z=el("span");z.style.setProperty("--c",C[k]);z.appendChild(el("b",null,LBL[k]==="News and launches"?"News":LBL[k]));s.appendChild(z);lab.push(LBL[k])}});
     b.appendChild(s);
     b.setAttribute("aria-label",nice(ds,true)+(ds===today?", today":"")+": "+(lab.length?lab.join(", "):"nothing scheduled"));
