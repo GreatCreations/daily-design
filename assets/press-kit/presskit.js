@@ -1,19 +1,19 @@
 /* Daily Design press kit modal (about.html). Opens from [data-presskit] buttons and #press-kit. */
 (function(){
 if(window.__ddPK)return;window.__ddPK=1;
-var B="assets/press-kit/",ABS=new URL(B,location.href).href;
+var B="assets/press-kit/",PKU="https://studios.greatcreations.art/daily-design/pk/";
 var LOGOS=[
- ["Primary logo","DD icon + site wordmark, for dark backgrounds","dd-logo-primary-transparent.png",null,"d"],
- ["Primary logo, on light","Dark ink, for light backgrounds","dd-logo-primary-on-light-transparent.png",null,"l"],
- ["DD icon","Official standalone mark","dd-icon-2048-transparent.png","dd-icon.svg","d"],
- ["Original site wordmark","The header title, for dark backgrounds","dd-wordmark-original-site-transparent.png",null,"d"],
- ["Original site wordmark, on light","Dark ink, for light backgrounds","dd-wordmark-original-site-on-light-transparent.png",null,"l"],
- ["Title lockup","Secondary, for dark backgrounds","dd-title-lockup-transparent.png","dd-title-lockup.svg","d"],
- ["Title lockup, on light","Secondary, for light backgrounds","dd-title-lockup-on-light-transparent.png","dd-title-lockup-on-light.svg","l"]];
+ ["Primary logo","DD icon + wordmark, for dark backgrounds","dd-logo-primary-transparent.png","dd-logo-primary.svg","d","primary"],
+ ["Primary logo, on light","Dark ink, for light backgrounds","dd-logo-primary-on-light-transparent.png","dd-logo-primary-on-light.svg","l","primary-light"],
+ ["DD icon","Official standalone mark","dd-icon-2048-transparent.png","dd-icon.svg","d","icon"],
+ ["Original site wordmark","The header title, for dark backgrounds","dd-wordmark-original-site-transparent.png",null,"d","wordmark"],
+ ["Original site wordmark, on light","Dark ink, for light backgrounds","dd-wordmark-original-site-on-light-transparent.png",null,"l","wordmark-light"],
+ ["Title lockup","Secondary, for dark backgrounds","dd-title-lockup-transparent.png","dd-title-lockup.svg","d","title"],
+ ["Title lockup, on light","Secondary, for light backgrounds","dd-title-lockup-on-light-transparent.png","dd-title-lockup-on-light.svg","l","title-light"]];
 var DEE=[["plain","Plain"],["morning","AI Design Daily (7 AM)"],["noon","AI Design in Use (noon)"],["best","Best of the Day (6 PM)"],["hottest","Hottest Right Now (8 PM)"]];
-var COLS=[["Background","#09090c"],["Background 2","#111117"],["Card","#15151c"],["Ink","#f1efe9"],["Muted","#a7a39a"],["Dim","#76736c"],["Amber","#f5a524"],["Aqua","#22e0cf"],["Violet","#9b6bff"],["Flame","#ff5a2e"],["Gold","#ffcf5a"],["Pill","#0b0b0e"]];
+var COLS=[["Amber","#f5a524"],["Aqua","#22e0cf"],["Violet","#9b6bff"],["Flame","#ff5a2e"],["Gold","#ffcf5a"],["Pill","#0b0b0e"]];
 var GRADS=[["Title gradient","linear-gradient(90deg,#f5a524,#22e0cf 35%,#9b6bff 68%,#ff5a2e)"],["Icon gradient","linear-gradient(135deg,#f5a524,#ff5a2e 55%,#9b6bff)"],["Save badge gradient","linear-gradient(110deg,#f5a524 0%,#ffcf5a 30%,#fff3cf 45%,#ffcf5a 55%,#22e0cf 100%)"]];
-var FONTS=[["Display (headings, title)",'font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;',"serif"],["Body and UI (wordmark 700)",'font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;',"sans"],["Mono",'font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;',"mono"]];
+var FONTS=[["Display (headings, title)",'font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;',"serif"]];
 var BOIL="Daily Design is a public archive of AI design research digests: four editions a day on how AI is changing creative work, across image, video, 3D, code/UI, sound, games and mashups. Every edition links straight to the original creators and sources, and the whole archive is searchable by medium, type, edition and date.";
 var EMAIL="dailydesign@greatcreations.ca",SITE="https://studios.greatcreations.art/daily-design/",X="https://x.com/GreatCreations_";
 function e(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
@@ -32,8 +32,8 @@ var css='#pk-ov{position:fixed;inset:0;z-index:9999;background:rgba(5,5,8,.78);b
 var h='<div id="pk-dlg" role="dialog" aria-modal="true" aria-labelledby="pk-h" tabindex="-1"><button type="button" class="pk-x" aria-label="Close press kit">×</button>'
 +'<h2 id="pk-h">Press <em>kit</em></h2><p style="color:var(--mut);margin:0">Logos, Dee Dee, colours and fonts for press and sponsors. Everything is free to use when writing about Daily Design.</p>'
 +'<a class="pk-zip" href="'+B+'daily-design-press-kit.zip" download>Download the whole kit (.zip)</a>'
-+'<h3>Logos and marks</h3><div class="pk-g">'+LOGOS.map(function(x){return '<div class="pk-t"><div class="pk-pv '+x[4]+'"><img loading="lazy" src="'+B+'thumbs/'+x[2]+'" alt="'+e(x[0])+'"></div><b>'+e(x[0])+'</b><small>'+e(x[1])+'</small><div class="pk-bs">'+dl(x[2],"PNG")+(x[3]?dl(x[3],"SVG"):"")+cp(ABS+x[2])+'</div></div>'}).join("")+'</div>'
-+'<h3>Dee Dee, the mascot</h3><div class="pk-g">'+DEE.map(function(x){var p="deedee-"+x[0]+"-2048-transparent.png";return '<div class="pk-t"><div class="pk-pv"><img loading="lazy" src="'+B+'thumbs/'+p+'" alt="Dee Dee, '+e(x[1])+'"></div><b>Dee Dee · '+e(x[1])+'</b><div class="pk-bs">'+dl(p,"PNG")+dl("deedee-"+x[0]+".svg","SVG")+cp(ABS+p)+'</div></div>'}).join("")+'</div>'
++'<h3>Logos and marks</h3><div class="pk-g">'+LOGOS.map(function(x){return '<div class="pk-t"><div class="pk-pv '+x[4]+'"><img loading="lazy" src="'+B+'thumbs/'+x[2]+'" alt="'+e(x[0])+'"></div><b>'+e(x[0])+'</b><small>'+e(x[1])+'</small><div class="pk-bs">'+dl(x[2],"PNG")+(x[3]?dl(x[3],"SVG"):"")+cp(PKU+x[5]+".png","Copy PNG link")+(x[3]?cp(PKU+x[5]+".svg","Copy SVG link"):"")+'</div></div>'}).join("")+'</div>'
++'<h3>Dee Dee, the mascot</h3><div class="pk-g">'+DEE.map(function(x){var p="deedee-"+x[0]+"-2048-transparent.png";return '<div class="pk-t"><div class="pk-pv"><img loading="lazy" src="'+B+'thumbs/'+p+'" alt="Dee Dee, '+e(x[1])+'"></div><b>Dee Dee · '+e(x[1])+'</b><div class="pk-bs">'+dl(p,"PNG")+dl("deedee-"+x[0]+".svg","SVG")+cp(PKU+"deedee-"+x[0]+".png","Copy PNG link")+cp(PKU+"deedee-"+x[0]+".svg","Copy SVG link")+'</div></div>'}).join("")+'</div>'
 +'<h3>Colours</h3><div class="pk-g c">'+COLS.map(function(x){return '<div class="pk-t"><div class="pk-sw" style="background:'+x[1]+'"></div><b>'+x[0]+'</b><span class="pk-mono">'+x[1]+'</span><div class="pk-bs">'+cp(x[1],"Copy HEX")+'</div></div>'}).join("")+'</div>'
 +'<div class="pk-g" style="margin-top:14px">'+GRADS.map(function(x){return '<div class="pk-t"><div class="pk-sw" style="background:'+x[1]+'"></div><b>'+x[0]+'</b><span class="pk-mono">'+x[1]+'</span><div class="pk-bs">'+cp("background:"+x[1]+";","Copy CSS")+'</div></div>'}).join("")+'</div>'
 +'<h3>Fonts</h3><div class="pk-g">'+FONTS.map(function(x){return '<div class="pk-t"><div style="font:'+(x[2]=="serif"?'400 34px/1 var(--serif)':x[2]=="sans"?'700 30px/1 var(--sans)':'400 22px/1 var(--mono)')+'">Daily Design</div><b>'+x[0]+'</b><span class="pk-mono">'+e(x[1])+'</span><div class="pk-bs">'+cp(x[1],"Copy CSS")+'</div></div>'}).join("")+'</div>'
