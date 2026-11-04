@@ -14,6 +14,7 @@ var DEE=[["plain","Plain"],["morning","AI Design Daily (7 AM)"],["noon","AI Desi
 var COLS=[["Amber","#f5a524"],["Aqua","#22e0cf"],["Violet","#9b6bff"],["Flame","#ff5a2e"],["Gold","#ffcf5a"],["Pill","#0b0b0e"]];
 var GRADS=[["Title gradient","linear-gradient(90deg,#f5a524,#22e0cf 35%,#9b6bff 68%,#ff5a2e)"],["Icon gradient","linear-gradient(135deg,#f5a524,#ff5a2e 55%,#9b6bff)"],["Save badge gradient","linear-gradient(110deg,#f5a524 0%,#ffcf5a 30%,#fff3cf 45%,#ffcf5a 55%,#22e0cf 100%)"]];
 var FONTS=[["Display (headings, title)",'font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;',"serif"]];
+var FB="https://www.facebook.com/profile.php?id=61595851597605";
 var BOIL="Daily Design is a public archive of AI design research digests: four editions a day on how AI is changing creative work, across image, video, 3D, code/UI, sound, games and mashups. Every edition links straight to the original creators and sources, and the whole archive is searchable by medium, type, edition and date.";
 var EMAIL="dailydesign@greatcreations.ca",SITE="https://studios.greatcreations.art/daily-design/",X="https://x.com/GreatCreations_";
 function e(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
@@ -43,6 +44,7 @@ var h='<div id="pk-dlg" role="dialog" aria-modal="true" aria-labelledby="pk-h" t
 +'<div class="pk-t"><b>Press and sponsors</b><span class="pk-mono">'+EMAIL+'</span><div class="pk-bs">'+cp(EMAIL,"Copy email")+'<a class="btn" href="mailto:'+EMAIL+'?subject=Daily%20Design%20press">Email</a></div></div>'
 +'<div class="pk-t"><b>Website</b><span class="pk-mono">'+SITE+'</span><div class="pk-bs">'+cp(SITE)+'<a class="btn" href="'+SITE+'">Open</a></div></div>'
 +'<div class="pk-t"><b>X · @GreatCreations_</b><span class="pk-mono">'+X+'</span><div class="pk-bs">'+cp(X)+'<a class="btn" href="'+X+'" target="_blank" rel="noopener">Open ↗</a></div></div>'
++'<div class="pk-t"><b>Facebook · Daily Design</b><span class="pk-mono">'+FB+'</span><div class="pk-bs">'+cp(FB)+'<a class="btn" href="'+FB+'" target="_blank" rel="noopener">Open ↗</a></div></div>'
 +'</div></div>';
 var ov,dlg,last;
 function build(){if(ov)return;var st=document.createElement("style");st.textContent=css;document.head.appendChild(st);ov=document.createElement("div");ov.id="pk-ov";ov.hidden=true;ov.innerHTML=h;document.body.appendChild(ov);dlg=ov.firstChild;
