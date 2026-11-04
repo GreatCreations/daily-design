@@ -2039,12 +2039,13 @@ def build_about_page(editions):
 <p>The whole archive is searchable: search every edition and link, then filter by medium, type, edition and date, or browse the archive calendar day by day.</p>
 <p>Questions, tips, corrections or sponsorship: see <a href="%s">Contact</a>.</p>
 <p>Every creator, studio and lab we feature goes on our public X list, @@XLIST@@, with new ones added after every edition. Follow Daily Design itself on X at @@XACCT@@.</p>
+<p>Every posting slot, edition, announcement, maintenance day and event is on the public <a href="@@SCHED@@">Daily Design schedule</a>.</p>
 <p>We count visits with Cloudflare Web Analytics, which is cookie-free: no cookies, no personal data and no cross-site tracking.</p>
 </section>
 <section class="ct-card" style="margin-top:18px;border-top-color:var(--aqua)" aria-labelledby="sm-h">
 <h2 id="sm-h" style="margin-top:0">Site map</h2>
 <h3>Home</h3>
-<ul class="ab-map"><li><a href="index.html">Daily Design index</a></li><li><a href="index.html#latest-block">Latest editions</a></li><li><a href="index.html#search">Browse and search</a></li><li><a href="index.html#archive-block">Archive</a></li></ul>
+<ul class="ab-map"><li><a href="index.html">Daily Design index</a></li><li><a href="index.html#latest-block">Latest editions</a></li><li><a href="index.html#search">Browse and search</a></li><li><a href="index.html#archive-block">Archive</a></li><li><a href="@@SCHED@@">Schedule</a></li></ul>
 <h3>Edition series</h3>
 <ul class="ab-map">%s</ul>
 <h3>More</h3>
@@ -2060,7 +2061,7 @@ def build_about_page(editions):
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, since, eds, tz_label(today), sub, CONTACT_PATH, series,
        CONTACT_PATH, ABOUT_PATH, free_plaque(), month_html, credit_html("", page="about", blurb=FOOT_BLURB))
-    doc = (doc.replace("@@XLIST@@", xlist_link(XLIST_NAME)).replace("@@XLISTLI@@", "<li>%s</li>" % xlist_link())
+    doc = (doc.replace("@@SCHED@@", SCHEDULE_PATH).replace("@@XLIST@@", xlist_link(XLIST_NAME)).replace("@@XLISTLI@@", "<li>%s</li>" % xlist_link())
            .replace("@@XACCT@@", xacct_link(X_ACCOUNT_HANDLE)).replace("@@XACCTLI@@", "<li>%s</li>" % xacct_link()))
     if write_if_changed(os.path.join(REPO, ABOUT_PATH), doc):
         log("about page", ABOUT_PATH)
@@ -2246,7 +2247,8 @@ def xml_esc(s):
 def build_sitemap_feed(editions):
     last = max(e["date"] for e in editions)
     urls = [(SITE_URL, last, "daily", "1.0")]
-    urls += [(abs_url(ABOUT_PATH), last, "weekly", "0.6"), (abs_url(CONTACT_PATH), last, "yearly", "0.5")]
+    urls += [(abs_url(ABOUT_PATH), last, "weekly", "0.6"), (abs_url(CONTACT_PATH), last, "yearly", "0.5"),
+             (abs_url(SCHEDULE_PATH), last, "daily", "0.6")]
     urls += [(abs_url(public_path(e)), e["date"], "monthly", "0.8") for e in editions]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
