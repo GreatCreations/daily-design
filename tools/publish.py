@@ -2030,7 +2030,7 @@ def build_about_page(editions):
 <section class="ct-card" aria-labelledby="ab-h">
 <div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · About">Daily Design · About</a></div>
 <p class="ab-top"><a class="ab-pk-btn ab-acct" href="/daily-design/members/account">Account</a></p>
-<h1 id="ab-h">About <em>Daily Design</em></h1>
+<h1 id="ab-h">About Daily <em>Design</em></h1>
 <div class="ab-maint" id="ab-maint" role="status" hidden></div>
 <p class="lede">Daily Design is a public archive of AI design research digests from <span class="nw"><a href="%s" rel="noopener">%s</a>:</span> four editions a day on how AI is changing creative work, across image, video, 3D, <span class="nw">code/UI,</span> sound, <span class="nw">games and mashups.</span></p>
 %s<h2>Four editions a day</h2>
@@ -2061,7 +2061,7 @@ def build_about_page(editions):
 <footer class="site"><div class="wrap">%s</div></footer>
 <script src="assets/tzlocal.js" defer></script>
 <script src="assets/maintenance.js" defer></script>
-<script src="assets/press-kit/presskit.js" defer></script>
+<script src="assets/press-kit/presskit-v3.js" defer></script>
 </body>
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, since, eds, tz_label(today), sub, CONTACT_PATH, series,
