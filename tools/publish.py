@@ -2155,17 +2155,19 @@ function render(){
     td.appendChild(b);
   }
 }
+function ptT(ds,t){var sp=el("span","sc-t"),tm=document.createElement("time");tm.setAttribute("datetime",ds+"T"+t);tm.setAttribute("data-local","");tm.setAttribute("data-pt",ds+"T"+t);tm.textContent=t12(t)+" PT";sp.appendChild(tm);return sp}
 function group(k,title,rows){var g=el("section","sc-g");g.style.setProperty("--c",C[k]);g.appendChild(el("h4",null,title));var ul=el("ul");rows.forEach(function(r){ul.appendChild(r)});g.appendChild(ul);return g}
 function pick(ds,focus){
   sel=ds;var bs=grid.querySelectorAll(".sc-d");for(var i=0;i<bs.length;i++)bs[i].setAttribute("aria-pressed",bs[i].dataset.d===ds?"true":"false");
   var d=D.days[ds]||{p:[],x:[]};det.textContent="";
   det.appendChild(el("h3",null,nice(ds,true)+(ds===today?" · today":"")));
   ["maintenance","news","event"].forEach(function(k){var xs=(d.x||[]).filter(function(x){return x.k===k});if(!xs.length)return;
-    det.appendChild(group(k,LBL[k],xs.map(function(x){var li=el("li");li.appendChild(el("span","sc-t",x.cont?"Continues":(x.t?t12(x.t)+" PT":"All day")));li.appendChild(el("span",null,x.title));if(x.note)li.appendChild(el("span","sc-note",x.note));return li})))});
+    det.appendChild(group(k,LBL[k],xs.map(function(x){var li=el("li");li.appendChild(x.cont?el("span","sc-t","Continues"):(x.t?ptT(ds,x.t):el("span","sc-t","All day")));li.appendChild(el("span",null,x.title));if(x.note)li.appendChild(el("span","sc-note",x.note));return li})))});
   if(d.e&&d.e.length){det.appendChild(group("post","Editions published",d.e.map(function(e){var li=el("li");li.appendChild(el("span","sc-ok","✓"));
     if(e.href){var a=el("a",null,SLOT[e.s]||e.s);a.href=e.href;li.appendChild(a)}else li.appendChild(el("span",null,SLOT[e.s]||e.s));return li})))}
-  if(d.p.length){det.appendChild(group("post","Postings ("+d.p.length+")",d.p.map(function(i){var s=D.series[i],li=el("li");li.appendChild(el("span","sc-t",t12(s.t)+" PT"));li.appendChild(el("span",null,s.title));li.appendChild(el("span","sc-code",s.code));return li})))}
+  if(d.p.length){det.appendChild(group("post","Postings ("+d.p.length+")",d.p.map(function(i){var s=D.series[i],li=el("li");li.appendChild(ptT(ds,s.t));li.appendChild(el("span",null,s.title));li.appendChild(el("span","sc-code",s.code));return li})))}
   if(det.childNodes.length===1)det.appendChild(el("p","sc-st","Nothing on the schedule for this day."));
+  if(window.ddLocalTime)window.ddLocalTime(det);
   if(focus){det.setAttribute("tabindex","-1");det.focus({preventScroll:true});if(window.innerWidth<700)det.scrollIntoView({behavior:"smooth",block:"start"})}
 }
 function step(n){var y=+cur.slice(0,4),m=+cur.slice(5,7)+n;while(m<1){m+=12;y--}while(m>12){m-=12;y++}show(ym(y,m))}
@@ -2299,6 +2301,111 @@ def sha(path):
 
 
 ASSET_REF_RE = re.compile(r'((?:src|href)=")((?:\.\./)*assets/([A-Za-z0-9_-]+\.(?:js|css)))(?:\?v=[0-9a-f]{6,16})?"')
+
+
+# ---------- Visitor-local times (Nov 2026) ----------
+# Static pages say times in Pacific (PT). localize_html() wraps each "9 AM PT" / "6:30 PM PT" / "Noon PT" in the page text in
+# <time datetime="YYYY-MM-DDTHH:MM" data-local data-pt="..."> (PT wall time; the date is a date written right after the time,
+# else the page's own date), and assets/localtime.js rewrites it to the visitor's time and zone. The PT text stays as the no-JS
+# fallback and as the tooltip. Idempotent: text already inside <time> is left alone.
+LOCALTIME_JS_PATH = "assets/localtime.js"
+LOCALTIME_JS = r"""/* Daily Design: show marked Pacific times in the visitor's own time zone (PT text is the no-JS fallback and the tooltip).
+   <time datetime="2026-10-30T09:00" data-local data-pt="2026-10-30T09:00">9 AM PT</time> -> "10 AM MDT". Pacific offset follows the
+   site's rule (publish.py tz_auto/pt_iso: PDT/PST before 2026-11-01, permanent PT = UTC-7 from then), same as assets/tzlocal.js. */
+(function(){"use strict";
+function ptOff(ds){if(ds>="2026-11-01")return-7;var y=+ds.slice(0,4),m=+ds.slice(5,7),d=+ds.slice(8,10);
+ function sun(mo,n){var f=new Date(Date.UTC(y,mo-1,1)).getUTCDay();return 1+(7-f)%7+7*(n-1)}
+ var k=m*100+d;return(k>=300+sun(3,2)&&k<1100+sun(11,1))?-7:-8}
+function inst(w){var m=/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(w||"");if(!m)return null;
+ return Date.UTC(+m[1],+m[2]-1,+m[3],+m[4],+m[5])-ptOff(w.slice(0,10))*3600000}
+function run(root){try{
+ var me=Intl.DateTimeFormat().resolvedOptions().timeZone;if(me==="America/Vancouver")return;
+ var ts=(root||document).querySelectorAll("time[data-local]:not([data-done])"),dk=new Intl.DateTimeFormat("en-CA",{year:"numeric",month:"2-digit",day:"2-digit"});
+ for(var i=0;i<ts.length;i++){var t=ts[i],w=t.getAttribute("data-pt"),u=inst(w);if(u==null)continue;t.setAttribute("data-done","");
+  var dd=new Date(u);if(-dd.getTimezoneOffset()===ptOff(w.slice(0,10))*60)continue;
+  var s=dd.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",timeZoneName:"short"}).replace(":00 "," ");
+  if(dk.format(dd)!==w.slice(0,10))s+=" ("+dd.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})+")";
+  if(!t.title)t.title=t.textContent;t.setAttribute("datetime",dd.toISOString());t.textContent=s}
+}catch(e){}}
+window.ddLocalTime=run;
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",function(){run()});else run();
+})();
+"""
+_LT_MON = {m: i + 1 for i, m in enumerate(["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"])}
+_LT_RE = re.compile(r"\b(?:(1[0-2]|0?[1-9])(?::([0-5]\d))?\s?(AM|PM|a\.m\.|p\.m\.)|([Nn]oon|[Mm]idnight))\s?(?:PT|Pacific(?: time)?)\b")
+_LT_DATE = re.compile(r"^[^.;]{0,24}?\b(?:on\s+)?(?:(\d{1,2})\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*|(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+(\d{1,2}))\b")
+_LT_SKIP = re.compile(r"<(script|style|time|title|textarea|head)\b", re.I)
+
+
+def _lt_wrap_text(txt, page_date):
+    def rep(m):
+        if m.group(4):
+            hh, mm = (12 if m.group(4).lower() == "noon" else 0), 0
+        else:
+            hh = int(m.group(1)) % 12 + (12 if m.group(3).lower().startswith("p") else 0); mm = int(m.group(2) or 0)
+        d = page_date
+        n = _LT_DATE.match(txt[m.end():])
+        if n:
+            day = int(n.group(1) or n.group(4)); mon = _LT_MON[(n.group(2) or n.group(3)).lower()[:3]]
+            try:
+                d = dt.date(page_date.year, mon, day)
+                if (d - page_date).days < -200: d = dt.date(page_date.year + 1, mon, day)
+                elif (d - page_date).days > 200: d = dt.date(page_date.year - 1, mon, day)
+            except ValueError:
+                d = page_date
+        w = "%sT%02d:%02d" % (d.isoformat(), hh, mm)
+        return '<time datetime="%s" data-local data-pt="%s">%s</time>' % (w, w, m.group(0))
+    return _LT_RE.sub(rep, txt)
+
+
+def localize_html(doc, page_date, depth):
+    """Wrap PT times in text nodes only (never in tags, attributes, scripts, styles, head or existing <time>)."""
+    out, i, n, changed = [], 0, len(doc), False
+    body = doc.lower().find("<body")
+    if body < 0: return doc
+    out.append(doc[:body]); i = body
+    tag_re = re.compile(r"<[^>]*>")
+    skip = None
+    while i < n:
+        m = tag_re.search(doc, i)
+        seg = doc[i:m.start()] if m else doc[i:]
+        if seg:
+            if skip is None and _LT_RE.search(seg):
+                new = _lt_wrap_text(seg, page_date); changed = changed or new != seg; out.append(new)
+            else:
+                out.append(seg)
+        if not m: break
+        t = m.group(0); out.append(t)
+        if skip:
+            if re.match(r"</%s\s*>" % skip, t, re.I): skip = None
+        else:
+            k = _LT_SKIP.match(t)
+            if k and not t.endswith("/>"): skip = k.group(1).lower()
+        i = m.end()
+    doc = "".join(out)
+    if (changed or "data-local" in doc) and LOCALTIME_JS_PATH not in doc:
+        doc = doc.replace("</body>", '<script defer src="%s%s"></script>\n</body>' % ("../" * depth, LOCALTIME_JS_PATH), 1)
+    return doc
+
+
+def localize_pages(paths=None):
+    """Apply localize_html to every public static page (editions, reports, about, index, schedule, contact). Returns pages changed."""
+    import glob
+    from zoneinfo import ZoneInfo
+    write_if_changed(os.path.join(REPO, LOCALTIME_JS_PATH), LOCALTIME_JS)
+    if paths is None:
+        paths = sorted(glob.glob(os.path.join(REPO, "editions", "*", "*.html")) + glob.glob(os.path.join(REPO, "reports", "*", "*.html")))
+    today = dt.datetime.now(ZoneInfo("America/Vancouver")).date()
+    n = 0
+    for fp in paths:
+        if not os.path.exists(fp): continue
+        rel = os.path.relpath(fp, REPO).replace(os.sep, "/")
+        mdate = re.search(r"(\d{4}-\d{2}-\d{2})", rel)
+        pdate = dt.date.fromisoformat(mdate.group(1)) if mdate else today
+        doc = open(fp, encoding="utf-8").read()
+        new = localize_html(doc, pdate, rel.count("/"))
+        if new != doc and write_if_changed(fp, new): n += 1
+    return n
 
 
 def version_assets():
@@ -2603,6 +2710,8 @@ def main():
     # 3c/4-. social share pages + public card images for every edition (needs the gated headers, so before the split)
     build_share_pages(editions)
     # 4a. members gate: full content of editions after FREE_FOREVER_THROUGH goes to KV and leaves the repo
+    nlt = localize_pages()  # visitor-local times on editions/reports (before the gate split, so members copies get it too)
+    if nlt: log("local times marked on %d edition/report pages" % nlt)
     public_eds = gate_split.split(REPO, data, shards, recs, log, dry_run=args.no_push)
     # 4b. SEO: index head/static links, sitemap.xml, robots.txt, feed.xml (public editions only)
     build_index_seo(public_eds, card_ed=editions[0] if editions else None)
@@ -2610,6 +2719,8 @@ def main():
     build_about_page(public_eds)
     build_schedule_page()
     build_sitemap_feed(public_eds)
+    nlt = localize_pages([os.path.join(REPO, f) for f in ("index.html", "about.html", "schedule.html", "contact.html")])
+    if nlt: log("local times marked on %d site pages" % nlt)
     nv = version_assets()  # 4c. ?v=<hash> on first-party JS/CSS links, after every page is written
     if nv: log("asset versions updated on %d pages" % nv)
     for legacy in ("index.js",):

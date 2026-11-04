@@ -179,17 +179,19 @@ function render(){
     td.appendChild(b);
   }
 }
+function ptT(ds,t){var sp=el("span","sc-t"),tm=document.createElement("time");tm.setAttribute("datetime",ds+"T"+t);tm.setAttribute("data-local","");tm.setAttribute("data-pt",ds+"T"+t);tm.textContent=t12(t)+" PT";sp.appendChild(tm);return sp}
 function group(k,title,rows){var g=el("section","sc-g");g.style.setProperty("--c",C[k]);g.appendChild(el("h4",null,title));var ul=el("ul");rows.forEach(function(r){ul.appendChild(r)});g.appendChild(ul);return g}
 function pick(ds,focus){
   sel=ds;var bs=grid.querySelectorAll(".sc-d");for(var i=0;i<bs.length;i++)bs[i].setAttribute("aria-pressed",bs[i].dataset.d===ds?"true":"false");
   var d=D.days[ds]||{p:[],x:[]};det.textContent="";
   det.appendChild(el("h3",null,nice(ds,true)+(ds===today?" · today":"")));
   ["maintenance","news","event"].forEach(function(k){var xs=(d.x||[]).filter(function(x){return x.k===k});if(!xs.length)return;
-    det.appendChild(group(k,LBL[k],xs.map(function(x){var li=el("li");li.appendChild(el("span","sc-t",x.cont?"Continues":(x.t?t12(x.t)+" PT":"All day")));li.appendChild(el("span",null,x.title));if(x.note)li.appendChild(el("span","sc-note",x.note));return li})))});
+    det.appendChild(group(k,LBL[k],xs.map(function(x){var li=el("li");li.appendChild(x.cont?el("span","sc-t","Continues"):(x.t?ptT(ds,x.t):el("span","sc-t","All day")));li.appendChild(el("span",null,x.title));if(x.note)li.appendChild(el("span","sc-note",x.note));return li})))});
   if(d.e&&d.e.length){det.appendChild(group("post","Editions published",d.e.map(function(e){var li=el("li");li.appendChild(el("span","sc-ok","✓"));
     if(e.href){var a=el("a",null,SLOT[e.s]||e.s);a.href=e.href;li.appendChild(a)}else li.appendChild(el("span",null,SLOT[e.s]||e.s));return li})))}
-  if(d.p.length){det.appendChild(group("post","Postings ("+d.p.length+")",d.p.map(function(i){var s=D.series[i],li=el("li");li.appendChild(el("span","sc-t",t12(s.t)+" PT"));li.appendChild(el("span",null,s.title));li.appendChild(el("span","sc-code",s.code));return li})))}
+  if(d.p.length){det.appendChild(group("post","Postings ("+d.p.length+")",d.p.map(function(i){var s=D.series[i],li=el("li");li.appendChild(ptT(ds,s.t));li.appendChild(el("span",null,s.title));li.appendChild(el("span","sc-code",s.code));return li})))}
   if(det.childNodes.length===1)det.appendChild(el("p","sc-st","Nothing on the schedule for this day."));
+  if(window.ddLocalTime)window.ddLocalTime(det);
   if(focus){det.setAttribute("tabindex","-1");det.focus({preventScroll:true});if(window.innerWidth<700)det.scrollIntoView({behavior:"smooth",block:"start"})}
 }
 function step(n){var y=+cur.slice(0,4),m=+cur.slice(5,7)+n;while(m<1){m+=12;y--}while(m>12){m-=12;y++}show(ym(y,m))}
@@ -201,5 +203,6 @@ var f=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Vancouver",year:"numeri
 show(q?q[1]:f);
 })();
 </script>
+<script defer src="assets/localtime.js"></script>
 </body>
 </html>
