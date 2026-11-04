@@ -1899,6 +1899,7 @@ ABOUT_CSS = """<style>
 .ab-maint[hidden]{display:none}.ab-maint b{color:var(--amber)}
 .ab-map{columns:2 220px;column-gap:28px;margin:6px 0 0;padding-left:18px;color:#d5d1c8;line-height:1.7}
 .ab-map li{break-inside:avoid}
+.ab-pk{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px}.ab-pk-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border:0;border-radius:999px;font:700 14px/1 system-ui,sans-serif;letter-spacing:.01em;color:#120d05;cursor:pointer;background:linear-gradient(110deg,#f5a524,#ffcf5a 55%,#22e0cf);box-shadow:0 2px 14px rgba(245,165,36,.18);transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}.ab-pk-btn:hover{transform:translateY(-1px);filter:brightness(1.06);box-shadow:0 6px 22px rgba(34,224,207,.28)}.ab-pk-btn:active{transform:translateY(0)}.ab-pk-btn:focus-visible{outline:2px solid #22e0cf;outline-offset:3px}@media (prefers-reduced-motion:reduce){.ab-pk-btn{transition:none}.ab-pk-btn:hover{transform:none}}
 .ab a{color:var(--ink);text-decoration-color:var(--amber);text-underline-offset:3px}.ab a:hover{color:#fff}
 .ab-month{margin:0 0 6px}
 .ab-days{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:2px 16px;font-size:14px}
@@ -2040,7 +2041,7 @@ def build_about_page(editions):
 <p>Questions, tips, corrections or sponsorship: see <a href="%s">Contact</a>.</p>
 <p>Every creator, studio and lab we feature goes on our public X list, @@XLIST@@, with new ones added after every edition. Follow Daily Design itself on X at @@XACCT@@.</p>
 <p>Every posting slot, edition, announcement, maintenance day and event is on the public <a href="@@SCHED@@">Daily Design schedule</a>.</p>
-<p class="ab-pk"><button class="btn" type="button" data-presskit aria-haspopup="dialog">Press kit</button> Logos, Dee Dee, colours and fonts for press and sponsors.</p>
+<p class="ab-pk"><button class="ab-pk-btn" type="button" data-presskit aria-haspopup="dialog">Press kit</button> Logos, Dee Dee, colours and fonts for press and sponsors.</p>
 <p>We count visits with Cloudflare Web Analytics, which is cookie-free: no cookies, no personal data and no cross-site tracking.</p>
 </section>
 <section class="ct-card" style="margin-top:18px;border-top-color:var(--aqua)" aria-labelledby="sm-h">
@@ -2050,7 +2051,7 @@ def build_about_page(editions):
 <h3>Edition series</h3>
 <ul class="ab-map">%s</ul>
 <h3>More</h3>
-<ul class="ab-map"><li><a href="%s">Contact</a></li><li><a href="%s" aria-current="page">About</a></li><li><a href="about.html#press-kit">Press kit</a></li>@@XLISTLI@@@@XACCTLI@@<li><a href="feed.xml">Feed (Atom)</a></li><li><a href="sitemap.xml">sitemap.xml</a></li></ul>
+<ul class="ab-map"><li><a href="%s">Contact</a></li><li><a href="%s" aria-current="page">About</a></li><li><a href="about.html#press-kit">Press kit</a></li><li><a href="feed.xml">Feed (Atom)</a></li><li><a href="sitemap.xml">sitemap.xml</a></li></ul>
 <h2 id="free-forever">Free forever editions and reports</h2>
 %s%s
 </section>
