@@ -311,6 +311,8 @@ STUDIO_URL = "https://greatcreationstudios.greatcreations.art/"
 
 XLIST_URL = "https://x.com/i/lists/2115263443770937364"  # public X list of every creator Daily Design features (owned by @GreatCreations_)
 XLIST_NAME = "Daily Design Creators"
+X_ACCOUNT_URL = "https://x.com/GreatCreations_"  # main Great Creations X account (About page, next to the creators list)
+X_ACCOUNT_HANDLE = "@GreatCreations_"
 FB_PAGE_URL = "https://www.facebook.com/profile.php?id=61595851597605"  # Daily Design Facebook Page (footer Follow group)
 CONTACT_EMAIL = "dailydesign@greatcreations.ca"  # public Daily Design address (shown on contact.html)
 CONTACT_PATH = "contact.html"
@@ -342,6 +344,11 @@ def brand_html(prefix="", link=False):
 def xlist_link(label=None):
     return '<a class="dd-xlist-a" href="%s" target="_blank" rel="noopener">%s<span aria-hidden="true"> ↗</span></a>' % (
         XLIST_URL, label or XLIST_NAME + " on X")
+
+
+def xacct_link(label=None):
+    return '<a class="dd-xlist-a dd-xacct-a" href="%s" target="_blank" rel="noopener">%s<span aria-hidden="true"> ↗</span></a>' % (
+        X_ACCOUNT_URL, label or "Daily Design on X (%s)" % X_ACCOUNT_HANDLE)
 
 
 def xlist_html(cls="dd-xlist"):
@@ -1872,6 +1879,8 @@ def build_contact_page():
 
 
 ABOUT_CSS = """<style>
+.ab-plaque{margin:6px 0 16px;padding:12px 16px;border:1px solid var(--line2);border-left:3px solid var(--aqua);border-radius:12px;background:rgba(34,224,207,.05);color:#d5d1c8;font-size:14px;line-height:1.55;max-width:640px}
+.ab-plaque b{color:var(--aqua);font-weight:800;letter-spacing:.02em}
 .ab h2{font:400 clamp(26px,4vw,34px)/1.1 var(--serif);margin:30px 0 10px}
 .ab h3{font:700 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px}
 .ab p{color:#d5d1c8;line-height:1.55}
@@ -1915,6 +1924,13 @@ def sub_access_text(past):
                 "Everything dated through %s stays free forever.") % (lock, frm, free)
     return ("Starting %s, editions dated %s and later will become <b class=\"g\">sub access</b> (members only) 7 days after they publish. "
             "Everything dated through %s stays free forever.") % (lock, frm, free)
+
+
+def free_plaque():
+    """Timeless 'free forever' plaque above the About page's edition list (dates from FREE_THROUGH / SUB_FROM, dated wording only)."""
+    return ('<p class="ab-plaque" role="note"><b>Free forever:</b> every Daily Design edition and report published through '
+            '<time datetime="%s">%s</time> stays free to read. Members editions began <time datetime="%s">%s</time>: each one is free '
+            'for its first week, then joins the members archive.</p>\n') % (FREE_THROUGH, short_date(FREE_THROUGH), SUB_FROM, short_date(SUB_FROM))
 
 
 def launch_date():
@@ -2019,7 +2035,7 @@ def build_about_page(editions):
 <p>Every edition links straight to the original creators and sources. Engagement numbers were read when each edition was compiled and will have changed since. Sponsors never affect what we pick or how it ranks.</p>
 <p>The whole archive is searchable: search every edition and link, then filter by medium, type, edition and date, or browse the archive calendar day by day.</p>
 <p>Questions, tips, corrections or sponsorship: see <a href="%s">Contact</a>.</p>
-<p>Every creator, studio and lab we feature goes on our public X list, @@XLIST@@, with new ones added after every edition.</p>
+<p>Every creator, studio and lab we feature goes on our public X list, @@XLIST@@, with new ones added after every edition. Follow Daily Design itself on X at @@XACCT@@.</p>
 <p>We count visits with Cloudflare Web Analytics, which is cookie-free: no cookies, no personal data and no cross-site tracking.</p>
 </section>
 <section class="ct-card" style="margin-top:18px;border-top-color:var(--aqua)" aria-labelledby="sm-h">
@@ -2029,9 +2045,9 @@ def build_about_page(editions):
 <h3>Edition series</h3>
 <ul class="ab-map">%s</ul>
 <h3>More</h3>
-<ul class="ab-map"><li><a href="%s">Contact</a></li><li><a href="%s" aria-current="page">About</a></li>@@XLISTLI@@<li><a href="feed.xml">Feed (Atom)</a></li><li><a href="sitemap.xml">sitemap.xml</a></li></ul>
-<h2>All editions</h2>
-%s
+<ul class="ab-map"><li><a href="%s">Contact</a></li><li><a href="%s" aria-current="page">About</a></li>@@XLISTLI@@@@XACCTLI@@<li><a href="feed.xml">Feed (Atom)</a></li><li><a href="sitemap.xml">sitemap.xml</a></li></ul>
+<h2 id="free-forever">Free forever editions and reports</h2>
+%s%s
 </section>
 </main>
 <footer class="site"><div class="wrap">%s</div></footer>
@@ -2040,8 +2056,9 @@ def build_about_page(editions):
 </body>
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, since, eds, tz_label(today), sub, CONTACT_PATH, series,
-       CONTACT_PATH, ABOUT_PATH, month_html, credit_html("", page="about", blurb=FOOT_BLURB))
-    doc = doc.replace("@@XLIST@@", xlist_link(XLIST_NAME)).replace("@@XLISTLI@@", "<li>%s</li>" % xlist_link())
+       CONTACT_PATH, ABOUT_PATH, free_plaque(), month_html, credit_html("", page="about", blurb=FOOT_BLURB))
+    doc = (doc.replace("@@XLIST@@", xlist_link(XLIST_NAME)).replace("@@XLISTLI@@", "<li>%s</li>" % xlist_link())
+           .replace("@@XACCT@@", xacct_link(X_ACCOUNT_HANDLE)).replace("@@XACCTLI@@", "<li>%s</li>" % xacct_link()))
     if write_if_changed(os.path.join(REPO, ABOUT_PATH), doc):
         log("about page", ABOUT_PATH)
 
