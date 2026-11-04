@@ -12,7 +12,7 @@ var LOGOS=[
  ];
 var DEE=[["plain","Plain"],["morning","AI Design Daily (7 AM)"],["noon","AI Design in Use (noon)"],["best","Best of the Day (6 PM)"],["hottest","Hottest Right Now (8 PM)"]];
 var COLS=[["Amber","#f5a524"],["Aqua","#22e0cf"],["Violet","#9b6bff"],["Flame","#ff5a2e"],["Gold","#ffcf5a"],["Pill","#0b0b0e"]];
-var GRADS=[["Title gradient","linear-gradient(90deg,#f5a524,#22e0cf 35%,#9b6bff 68%,#ff5a2e)"],["Icon gradient","linear-gradient(135deg,#f5a524,#ff5a2e 55%,#9b6bff)"],["Save badge gradient","linear-gradient(110deg,#f5a524 0%,#ffcf5a 30%,#fff3cf 45%,#ffcf5a 55%,#22e0cf 100%)"]];
+var GRADS=[["Title gradient","linear-gradient(90deg,#f5a524,#22e0cf 35%,#9b6bff 68%,#ff5a2e)"],["Icon gradient","linear-gradient(135deg,#f5a524,#ff5a2e 55%,#9b6bff)"]];
 var FONTS=[["Display (headings, title)",'font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;',"serif"]];
 var FB="https://www.facebook.com/profile.php?id=61595851597605";
 var BOIL="Daily Design is a public archive of AI design research digests: four editions a day on how AI is changing creative work, across image, video, 3D, code/UI, sound, games and mashups. Every edition links straight to the original creators and sources, and the whole archive is searchable by medium, type, edition and date.";

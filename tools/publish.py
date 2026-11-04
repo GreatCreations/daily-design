@@ -2057,7 +2057,7 @@ def build_about_page(editions):
 <footer class="site"><div class="wrap">%s</div></footer>
 <script src="assets/tzlocal.js" defer></script>
 <script src="assets/maintenance.js" defer></script>
-<script src="assets/press-kit/presskit-v7.js" defer></script>
+<script src="assets/press-kit/presskit-v8.js" defer></script>
 </body>
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, since, eds, tz_label(today), sub, CONTACT_PATH, series,
