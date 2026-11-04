@@ -1504,12 +1504,148 @@ def load_maintenance_windows():
     return sorted(out, key=lambda w: w["start"])
 
 
-def build_index_seo(editions):
-    """Head tags, JSON-LD and crawlable static links in index.html (between markers)."""
+# ---------------------------------------------------------------- social share pages (one per edition)
+# X/Facebook ignore the #fragment, so a link to /daily-design/#report=<date>/<slot> gets the homepage card. Every edition
+# gets its own tiny static page whose og:/twitter: tags carry THAT edition's header, then redirects people to the edition.
+#   live now:  /daily-design/assets/share/<date>-<slot>/   (the members gate passes assets/* through; dated paths 404 there)
+#   later:     /daily-design/<date>/<slot>/                 (written too; needs a gate route before it serves; flip SHARE_PRETTY_LIVE)
+# The card image is a public 1200px JPEG copy of the header in assets/share/<date>-<slot>.jpg, so it stays 200 even after a
+# gated edition locks (gated header PNGs 404 for non-members after their first week). Built before gate_split moves files out.
+SHARE_DIR = "assets/share"
+SHARE_PRETTY_LIVE = False
+
+
+def share_slug(ed):
+    return "%s-%s" % (ed["date"], ed["slot"])
+
+
+def share_img_rel(ed):
+    return "%s/%s.jpg" % (SHARE_DIR, share_slug(ed))
+
+
+def share_rel(ed, pretty=None):
+    pretty = SHARE_PRETTY_LIVE if pretty is None else pretty
+    return "%s/%s/" % (ed["date"], ed["slot"]) if pretty else "%s/%s/" % (SHARE_DIR, share_slug(ed))
+
+
+def share_url(ed):
+    return abs_url(share_rel(ed))
+
+
+def share_image(ed):
+    """Absolute URL of the edition's public card image, or None if it has none yet."""
+    return abs_url(share_img_rel(ed)) if os.path.exists(os.path.join(REPO, share_img_rel(ed))) else None
+
+
+def _share_header_src(ed):
+    cands = [ed.get("header")] if ed.get("header") else []
+    base = "reports" if ed.get("kind") == "report" else "editions"
+    cands += ["%s/%s/%s-header.%s" % (base, ed["date"], ed["slot"], x) for x in ("png", "jpg", "jpeg", "webp")]
+    for c in cands:
+        if c and os.path.exists(os.path.join(REPO, c)):
+            return os.path.join(REPO, c)
+    return None
+
+
+def _share_card_image(ed):
+    dest = os.path.join(REPO, share_img_rel(ed))
+    src = _share_header_src(ed)
+    if not src:
+        return os.path.exists(dest)
+    if os.path.exists(dest) and os.path.getmtime(dest) >= os.path.getmtime(src):
+        return True
+    try:
+        import io
+        from PIL import Image
+        im = Image.open(src).convert("RGB")
+        if im.width > 1200:
+            im = im.resize((1200, round(im.height * 1200 / im.width)), Image.LANCZOS)
+        buf = io.BytesIO()
+        im.save(buf, "JPEG", quality=86, optimize=True, progressive=True)
+        b = buf.getvalue()
+    except Exception as e:  # PIL missing: copy the header as-is (still the right art)
+        log("share image resize skipped:", e)
+        b = open(src, "rb").read()
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    if not (os.path.exists(dest) and open(dest, "rb").read() == b):
+        open(dest, "wb").write(b)
+        log("share image", share_img_rel(ed))
+    else:
+        os.utime(dest)
+    return True
+
+
+def share_page(ed, image):
+    s = SLOTS[ed["slot"]]
+    day = dt.date.fromisoformat(ed["date"]).strftime("%b %-d, %Y")
+    title = "%s · %s · %s" % (s["name"], day, SITE_NAME)
+    f = seo_fields(ed) if ed.get("path") or ed["kind"] == "report" else {}
+    story = (f.get("title", "").rsplit(" · " + s["name"], 1)[0] if f.get("title", "").find(" · " + s["name"]) > 0 else "")
+    if gate_split.gated(ed["date"]):
+        blurb = gate_split._teaser(ed.get("summary")) if ed.get("summary") else (ed.get("teaser") or "")
+    else:
+        blurb = ed.get("summary") or ""
+    desc = clip(" ".join(x for x in (story + ("." if story and not story.endswith((".", "!", "?")) else ""), blurb) if x)
+                or ("%s %s for %s: %d linked items on how AI is changing creative work." % (s["time"], s["name"], day, ed.get("item_count", 0))), 200)
+    if ed["kind"] == "report":
+        target = "/daily-design/#report=%s/%s" % (ed["date"], ed["slot"])
+    else:
+        target = "/daily-design/" + (ed.get("path") or "editions/%s/%s.html" % (ed["date"], ed["slot"]))
+    url = share_url(ed)
+    img = image or abs_url("assets/favicon-512.png")
+    tags = [
+        '<meta charset="utf-8">', '<meta name="viewport" content="width=device-width,initial-scale=1">',
+        '<title>%s</title>' % esc(title),
+        '<meta name="description" content="%s">' % esc(desc),
+        '<link rel="canonical" href="%s">' % esc(url),
+        '<meta name="robots" content="noindex,follow,max-image-preview:large">',
+        '<meta property="og:type" content="article">',
+        '<meta property="og:site_name" content="%s">' % SITE_NAME,
+        '<meta property="og:title" content="%s">' % esc(title),
+        '<meta property="og:description" content="%s">' % esc(desc),
+        '<meta property="og:url" content="%s">' % esc(url),
+        '<meta property="og:image" content="%s">' % esc(img),
+        '<meta property="og:image:secure_url" content="%s">' % esc(img),
+        '<meta property="og:image:type" content="image/jpeg">' if image else '',
+        '<meta property="og:image:alt" content="%s header, %s">' % (esc(s["name"]), esc(day)),
+        '<meta property="article:published_time" content="%s">' % published_iso(ed),
+        '<meta name="twitter:card" content="%s">' % ("summary_large_image" if image else "summary"),
+        '<meta name="twitter:site" content="@GreatCreations_">',
+        '<meta name="twitter:title" content="%s">' % esc(title),
+        '<meta name="twitter:description" content="%s">' % esc(desc),
+        '<meta name="twitter:image" content="%s">' % esc(img),
+        '<meta name="twitter:image:alt" content="%s header, %s">' % (esc(s["name"]), esc(day)),
+        '<meta http-equiv="refresh" content="0; url=%s">' % esc(target),
+        '<script>location.replace(%s||"/daily-design/");</script>' % json.dumps(target)]
+    body = ('<body style="background:#0b0b10;color:#eee;font:16px/1.5 system-ui,sans-serif;text-align:center;padding:40px 16px">'
+            '<p><a style="color:#9b6bff" href="%s">Open %s, %s →</a></p>%s</body>') % (
+        esc(target), esc(s["name"]), esc(day),
+        ('<img src="%s" alt="" style="max-width:100%%;height:auto;border-radius:8px">' % esc(img)) if image else "")
+    return '<!doctype html>\n<html lang="en"><head>%s</head>%s</html>\n' % ("".join(t for t in tags if t), body)
+
+
+def build_share_pages(editions):
+    """One share page per edition (newest first list with full fields), plus its public card image."""
+    n = 0
+    for ed in editions:
+        if not _share_card_image(ed):
+            log("!!! share card: no header image for %s %s (page uses the site icon)" % (ed["date"], ed["slot"]))
+        img = share_image(ed)
+        for pretty in (False, True):
+            if write_if_changed(os.path.join(REPO, share_rel(ed, pretty), "index.html"), share_page(ed, img)):
+                n += 1
+    if n:
+        log("share pages written: %d" % n)
+
+
+def build_index_seo(editions, card_ed=None):
+    """Head tags, JSON-LD and crawlable static links in index.html (between markers).
+    og:image/twitter:image = the newest published edition's header (card_ed, gated or not) via its public share image."""
     p = os.path.join(REPO, "index.html")
     doc = open(p, encoding="utf-8").read()
     latest = editions[0] if editions else None
-    img = abs_url(latest["header"]) if latest and latest.get("header") else abs_url("assets/favicon-512.png")
+    img = (share_image(card_ed) if card_ed else None) or \
+          (abs_url(latest["header"]) if latest and latest.get("header") else abs_url("assets/favicon-512.png"))
     parts = []
     for n, e in enumerate(editions[:30], 1):
         f = seo_fields(e)
@@ -2269,10 +2405,12 @@ def main():
     data["maintenance"] = [x["date"] for x in data["special"] if x["type"] == "maintenance"]  # older app/gate builds
     data["maintenance_windows"] = load_maintenance_windows()
     write_if_changed(os.path.join(REPO, "data", "index.json"), jdump(data))
+    # 3c/4-. social share pages + public card images for every edition (needs the gated headers, so before the split)
+    build_share_pages(editions)
     # 4a. members gate: full content of editions after FREE_FOREVER_THROUGH goes to KV and leaves the repo
     public_eds = gate_split.split(REPO, data, shards, recs, log, dry_run=args.no_push)
     # 4b. SEO: index head/static links, sitemap.xml, robots.txt, feed.xml (public editions only)
-    build_index_seo(public_eds)
+    build_index_seo(public_eds, card_ed=editions[0] if editions else None)
     build_contact_page()
     build_about_page(public_eds)
     build_sitemap_feed(public_eds)
