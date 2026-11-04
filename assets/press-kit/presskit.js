@@ -51,7 +51,7 @@ function build(){if(ov)return;var st=document.createElement("style");st.textCont
 function copy(b){var t=b.getAttribute("data-copy"),l=b.textContent;function ok(){b.textContent="Copied";b.classList.add("ok");setTimeout(function(){b.textContent=l;b.classList.remove("ok")},1600)}
  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok()})}else{fb(t);ok()}}
 function fb(t){var a=document.createElement("textarea");a.value=t;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(_){}a.remove()}
-function open(){build();last=document.activeElement;ov.hidden=false;document.documentElement.style.overflow="hidden";dlg.focus();if(location.hash!=="#press-kit")history.replaceState(null,"","#press-kit")}
+function open(){build();last=document.activeElement;ov.hidden=false;document.documentElement.style.overflow="hidden";dlg.focus({preventScroll:true});ov.scrollTop=0;if(location.hash!=="#press-kit")history.replaceState(null,"","#press-kit")}
 function close(){if(!ov||ov.hidden)return;ov.hidden=true;document.documentElement.style.overflow="";if(location.hash==="#press-kit")history.replaceState(null,"",location.pathname+location.search);if(last&&last.focus)last.focus()}
 document.addEventListener("click",function(ev){var t=ev.target.closest("[data-presskit],a[href$='#press-kit']");if(t&&!(ov&&ov.contains(t))){ev.preventDefault();open()}});
 function chk(){if(location.hash==="#press-kit")open()}
