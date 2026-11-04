@@ -336,9 +336,8 @@ def brand_html(prefix="", link=False):
     (amber, aqua, violet, flame). Screen readers get one 'Daily Design' (role=img + aria-label); the logo and the letter spans
     are aria-hidden. link=True makes the logo + words a link to the About page."""
     design = "".join('<span class="c%d">%s</span>' % (i % 4, ch) for i, ch in enumerate("Design"))
-    b = ('<span class="dd-brand" role="img" aria-label="Daily Design"><img class="dd-brand-ic" src="%sassets/favicon.svg" alt="" '
-         'aria-hidden="true" width="16" height="16"><span class="dd-brand-t" aria-hidden="true"><span class="cw">Daily</span> %s</span></span>'
-         ) % (prefix, design)
+    b = ('<span class="dd-brand" role="img" aria-label="Daily Design"><img class="dd-flogo" src="%sassets/dd-logo-wordmark.png" alt="" '
+         'aria-hidden="true" width="%d" height="28" style="display:block;height:28px;width:auto;max-width:100%%"></span>') % (prefix, 179)
     return ('<a class="dd-brand-a" href="%s%s" title="About Daily Design">%s</a>' % (prefix, ABOUT_PATH, b)) if link else b
 
 
@@ -2039,7 +2038,7 @@ def build_about_page(editions):
 <p>The whole archive is searchable: search every edition and link, then filter by medium, type, edition and date, or browse the archive calendar day by day.</p>
 <p>Questions, tips, corrections or sponsorship: see <a href="%s">Contact</a>.</p>
 <p>Every creator, studio and lab we feature goes on our public X list, @@XLIST@@, with new ones added after every edition. Follow Daily Design itself on X at @@XACCT@@.</p>
-<p>Every posting slot, edition, announcement, maintenance day and event is on the public <a href="@@SCHED@@">Daily Design schedule</a>.</p>
+<p class="ab-pk"><a class="btn" href="@@SCHED@@">Daily Design schedule</a> Every posting slot, edition, announcement, maintenance day and event is on the public schedule.</p>
 <p class="ab-pk"><button class="btn" type="button" data-presskit aria-haspopup="dialog">Press kit</button> Logos, Dee Dee, colours and fonts for press and sponsors.</p>
 <p>We count visits with Cloudflare Web Analytics, which is cookie-free: no cookies, no personal data and no cross-site tracking.</p>
 </section>

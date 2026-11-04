@@ -3,13 +3,13 @@
 if(window.__ddPK)return;window.__ddPK=1;
 var B="assets/press-kit/",PKU="https://studios.greatcreations.art/daily-design/pk/";
 var LOGOS=[
- ["Primary logo","DD icon + wordmark, for dark backgrounds","dd-logo-primary-transparent.png","dd-logo-primary.svg","d","primary"],
- ["Primary logo, on light","Dark ink, for light backgrounds","dd-logo-primary-on-light-transparent.png","dd-logo-primary-on-light.svg","l","primary-light"],
+ ["Logo with wordmark","DD icon + the site header wordmark, for dark backgrounds","dd-logo-primary-transparent.png","dd-logo-primary.svg","d","primary"],
+ ["Logo with wordmark, on light","Dark ink, for light backgrounds","dd-logo-primary-on-light-transparent.png","dd-logo-primary-on-light.svg","l","primary-light"],
  ["DD icon","Official standalone mark","dd-icon-2048-transparent.png","dd-icon.svg","d","icon"],
- ["Original site wordmark","The header title, for dark backgrounds","dd-wordmark-original-site-transparent.png",null,"d","wordmark"],
- ["Original site wordmark, on light","Dark ink, for light backgrounds","dd-wordmark-original-site-on-light-transparent.png",null,"l","wordmark-light"],
- ["Title lockup","Secondary, for dark backgrounds","dd-title-lockup-transparent.png","dd-title-lockup.svg","d","title"],
- ["Title lockup, on light","Secondary, for light backgrounds","dd-title-lockup-on-light-transparent.png","dd-title-lockup-on-light.svg","l","title-light"]];
+ ["Wordmark","The header title, for dark backgrounds","dd-wordmark-original-site-transparent.png",null,"d","wordmark"],
+ ["Wordmark, on light","Dark ink, for light backgrounds","dd-wordmark-original-site-on-light-transparent.png",null,"l","wordmark-light"],
+ 
+ ];
 var DEE=[["plain","Plain"],["morning","AI Design Daily (7 AM)"],["noon","AI Design in Use (noon)"],["best","Best of the Day (6 PM)"],["hottest","Hottest Right Now (8 PM)"]];
 var COLS=[["Amber","#f5a524"],["Aqua","#22e0cf"],["Violet","#9b6bff"],["Flame","#ff5a2e"],["Gold","#ffcf5a"],["Pill","#0b0b0e"]];
 var GRADS=[["Title gradient","linear-gradient(90deg,#f5a524,#22e0cf 35%,#9b6bff 68%,#ff5a2e)"],["Icon gradient","linear-gradient(135deg,#f5a524,#ff5a2e 55%,#9b6bff)"],["Save badge gradient","linear-gradient(110deg,#f5a524 0%,#ffcf5a 30%,#fff3cf 45%,#ffcf5a 55%,#22e0cf 100%)"]];
