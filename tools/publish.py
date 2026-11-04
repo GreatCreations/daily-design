@@ -313,6 +313,7 @@ XLIST_URL = "https://x.com/i/lists/2115263443770937364"  # public X list of ever
 XLIST_NAME = "Daily Design Creators"
 X_ACCOUNT_URL = "https://x.com/GreatCreations_"  # main Great Creations X account (About page, next to the creators list)
 X_ACCOUNT_HANDLE = "@GreatCreations_"
+SCHEDULE_PATH = "schedule"  # public schedule page /daily-design/schedule (file schedule.html; served by the gate worker, data from /daily-design/schedule.json)
 FB_PAGE_URL = "https://www.facebook.com/profile.php?id=61595851597605"  # Daily Design Facebook Page (footer Follow group)
 CONTACT_EMAIL = "dailydesign@greatcreations.ca"  # public Daily Design address (shown on contact.html)
 CONTACT_PATH = "contact.html"
@@ -1519,7 +1520,7 @@ def load_maintenance_windows():
 # The card image is a public 1200px JPEG copy of the header in assets/share/<date>-<slot>.jpg, so it stays 200 even after a
 # gated edition locks (gated header PNGs 404 for non-members after their first week). Built before gate_split moves files out.
 SHARE_DIR = "assets/share"
-SHARE_PRETTY_LIVE = False
+SHARE_PRETTY_LIVE = True
 
 
 def share_slug(ed):
@@ -1599,12 +1600,14 @@ def share_page(ed, image):
     else:
         target = "/daily-design/" + (ed.get("path") or "editions/%s/%s.html" % (ed["date"], ed["slot"]))
     url = share_url(ed)
+    # canonical = the edition itself (share pages only forward; never indexed as duplicates, never in sitemap/About)
+    canon = abs_url("reports/%s/%s.html" % (ed["date"], ed["slot"])) if ed["kind"] == "report" else abs_url(ed.get("path") or "editions/%s/%s.html" % (ed["date"], ed["slot"]))
     img = image or abs_url("assets/favicon-512.png")
     tags = [
         '<meta charset="utf-8">', '<meta name="viewport" content="width=device-width,initial-scale=1">',
         '<title>%s</title>' % esc(title),
         '<meta name="description" content="%s">' % esc(desc),
-        '<link rel="canonical" href="%s">' % esc(url),
+        '<link rel="canonical" href="%s">' % esc(canon),
         '<meta name="robots" content="noindex,follow,max-image-preview:large">',
         '<meta property="og:type" content="article">',
         '<meta property="og:site_name" content="%s">' % SITE_NAME,
@@ -2063,6 +2066,179 @@ def build_about_page(editions):
         log("about page", ABOUT_PATH)
 
 
+SCHEDULE_ICS = ("https://calendar.google.com/calendar/ical/5dfb54764cde31cccb312d9bbc5ecfb2b6cf4959f3773ac73a58ce6a3c0486d0"
+                "%40group.calendar.google.com/public/basic.ics")
+SCHEDULE_GCAL = ("https://calendar.google.com/calendar/embed?src=5dfb54764cde31cccb312d9bbc5ecfb2b6cf4959f3773ac73a58ce6a3c0486d0"
+                 "%40group.calendar.google.com&ctz=America%2FVancouver")
+SCHEDULE_CSS = r"""<style>
+.sc{max-width:1060px}
+.sc-leg{list-style:none;margin:4px 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font:600 13px/1.3 var(--sans);color:#d5d1c8}
+.sc-leg li{display:flex;align-items:center;gap:7px}
+.sc-sw{display:inline-block;width:12px;height:12px;border-radius:4px;background:var(--c)}
+.sc-ok{color:var(--amber);font-weight:800}
+.sc-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 12px}
+.sc-bar h2{flex:1 1 auto;margin:0!important;font:400 clamp(24px,4vw,32px)/1.1 var(--serif)}
+.sc-bar .btn{padding:9px 13px;font-size:13px}
+.sc-cal{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed;margin:0 -4px}
+.sc-cal th{font:700 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);padding:4px 0 6px;text-align:left}
+.sc-cal td{vertical-align:top;padding:0;height:92px}
+.sc-cal td.o{opacity:.35}
+.sc-d{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:5px;width:100%;height:100%;min-height:92px;padding:7px 8px;border:1px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer;color:var(--ink)}
+.sc-d:hover{border-color:var(--line2)}.sc-d:focus-visible{outline:2px solid var(--aqua);outline-offset:2px}
+.sc-d[aria-pressed="true"]{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber) inset}
+.sc-n{font:800 14px/1 var(--sans)}.sc-today .sc-n{color:#0b0b0e;background:var(--aqua);border-radius:6px;padding:2px 5px;align-self:flex-start}
+.sc-dots{display:flex;flex-wrap:wrap;gap:3px}.sc-dots i{display:block;width:100%;height:4px;border-radius:3px;background:var(--c)}
+.sc-dots i+i{margin-top:0}
+.sc-s{font:600 11.5px/1.3 var(--sans);color:var(--mut);display:flex;flex-direction:column;gap:2px}
+.sc-s b{color:var(--c);font-weight:800}
+.sc-det{margin:18px 0 0;padding:18px 18px 8px;border:1px solid var(--line2);border-radius:16px;background:#0d0d12}
+.sc-det h3{margin:0 0 12px!important;font:400 clamp(22px,3.4vw,28px)/1.1 var(--serif)!important;letter-spacing:0!important;text-transform:none!important;color:var(--ink)!important}
+.sc-g{margin:0 0 14px}.sc-g h4{margin:0 0 6px;font:700 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
+.sc-g ul{list-style:none;margin:0;padding:0;border-left:3px solid var(--c);padding-left:12px}
+.sc-g li{padding:4px 0;border-bottom:1px solid var(--line);color:#d5d1c8;font-size:14px;line-height:1.45;display:flex;gap:10px;flex-wrap:wrap}
+.sc-g li:last-child{border-bottom:0}
+.sc-t{min-width:6.6em;color:var(--ink);font:700 13px/1.45 var(--mono)}
+.sc-code{color:var(--mut);font:600 12px/1.45 var(--mono)}
+.sc-note{flex-basis:100%;color:var(--mut);font-size:13px;white-space:pre-line}
+.sc-st{margin:10px 0 0;color:var(--mut);font-size:13px}
+.sc-err{color:var(--flame)}
+@media (max-width:640px){.sc-cal{border-spacing:2px;margin:0 -2px}.sc-cal td{height:58px}.sc-d{min-height:58px;padding:5px;border-radius:9px;gap:4px}
+.sc-n{font-size:12px}.sc-s{display:none}.sc-cal th{font-size:9.5px;letter-spacing:.06em}.sc-dots i{height:5px}.ct.sc{padding:14px 10px 40px}.ct-card.sc-card{padding:22px 14px 22px}}
+</style>"""
+SCHEDULE_JS = r"""<script>
+(function(){"use strict";
+var C={post:"var(--amber)",maintenance:"var(--flame)",news:"var(--aqua)",event:"var(--violet)"};
+var LBL={post:"Postings",maintenance:"Maintenance",news:"News and launches",event:"Events"};
+var SLOT={morning:"7 AM · AI Design Daily",noon:"Noon · AI Design in Use",best:"6 PM · Best of the Day",hottest:"8 PM · Hottest Right Now"};
+var grid=document.getElementById("sc-grid"),det=document.getElementById("sc-det"),ttl=document.getElementById("sc-month"),st=document.getElementById("sc-st");
+if(!grid||!window.fetch)return;
+var D=null,cur=null,sel=null,today=null,cache={};
+function ym(y,m){return y+"-"+(m<10?"0":"")+m}
+function t12(t){if(!t)return"All day";var h=+t.slice(0,2),m=t.slice(3);var s=h>=12?"PM":"AM";h=h%12||12;
+  if(m==="00"&&h===12&&s==="PM")return"Noon";return h+(m==="00"?"":":"+m)+" "+s}
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function nice(ds,long){var d=new Date(ds+"T12:00:00Z");return d.toLocaleDateString("en-US",{timeZone:"UTC",weekday:long?"long":"short",month:long?"long":"short",day:"numeric",year:long?"numeric":undefined})}
+function kinds(d){var k={};if(d.p&&d.p.length)k.post=1;if(d.e&&d.e.length)k.post=1;(d.x||[]).forEach(function(x){k[x.k]=1});return["post","maintenance","news","event"].filter(function(z){return k[z]})}
+function load(m){
+  if(cache[m])return Promise.resolve(cache[m]);
+  st.textContent="Loading the schedule…";st.className="sc-st";
+  return fetch("schedule.json?from="+m,{headers:{accept:"application/json"}}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){cache[m]=j;return j});
+}
+function show(m){
+  load(m).then(function(j){D=j;cur=m;today=j.today;render();
+    var t=new Date(j.generated);st.textContent="From the public Daily Design calendar · updated "+t.toLocaleTimeString("en-US",{timeZone:"America/Vancouver",hour:"numeric",minute:"2-digit"})+" PT · refreshes every 15 min";
+    if(!sel||sel.slice(0,7)!==m)pick(m===today.slice(0,7)?today:m+"-01",false)
+  }).catch(function(){st.textContent="The schedule could not load right now. Try again in a minute, or open the public calendar below.";st.className="sc-st sc-err"});
+}
+function render(){
+  var y=+cur.slice(0,4),mo=+cur.slice(5,7);
+  ttl.textContent=new Date(Date.UTC(y,mo-1,1)).toLocaleDateString("en-US",{timeZone:"UTC",month:"long",year:"numeric"});
+  var first=new Date(Date.UTC(y,mo-1,1)),lead=first.getUTCDay(),n=new Date(Date.UTC(y,mo,0)).getUTCDate();
+  var tb=grid.tBodies[0];tb.textContent="";var tr=null;
+  for(var i=0;i<42;i++){
+    if(i%7===0){if(i>=lead+n)break;tr=tb.insertRow()}
+    var td=tr.insertCell(),dn=i-lead+1;
+    if(dn<1||dn>n){td.className="o";continue}
+    var ds=ym(y,mo)+"-"+(dn<10?"0":"")+dn,d=D.days[ds]||{p:[],x:[]},ks=kinds(d);
+    var b=el("button","sc-d");b.type="button";b.dataset.d=ds;if(ds===today)td.className="sc-today";
+    b.appendChild(el("span","sc-n",String(dn)));
+    var dots=el("span","sc-dots");dots.setAttribute("aria-hidden","true");ks.forEach(function(k){var i_=el("i");i_.style.setProperty("--c",C[k]);dots.appendChild(i_)});b.appendChild(dots);
+    var s=el("span","sc-s"),lab=[];
+    if(d.p.length){var a=el("span");a.style.setProperty("--c",C.post);var bb=el("b",null,String(d.p.length));a.appendChild(bb);a.appendChild(document.createTextNode(" postings"));s.appendChild(a);lab.push(d.p.length+" postings")}
+    if(d.e&&d.e.length){var e2=el("span",null,"✓ "+d.e.length+" of 4 editions");e2.style.color="var(--amber)";s.appendChild(e2);lab.push(d.e.length+" of 4 editions published")}
+    ["maintenance","news","event"].forEach(function(k){var c=(d.x||[]).filter(function(x){return x.k===k}).length;if(c){var z=el("span");z.style.setProperty("--c",C[k]);z.appendChild(el("b",null,LBL[k]==="News and launches"?"News":LBL[k]));s.appendChild(z);lab.push(LBL[k])}});
+    b.appendChild(s);
+    b.setAttribute("aria-label",nice(ds,true)+(ds===today?", today":"")+": "+(lab.length?lab.join(", "):"nothing scheduled"));
+    b.setAttribute("aria-pressed",ds===sel?"true":"false");
+    b.addEventListener("click",function(){pick(this.dataset.d,true)});
+    td.appendChild(b);
+  }
+}
+function group(k,title,rows){var g=el("section","sc-g");g.style.setProperty("--c",C[k]);g.appendChild(el("h4",null,title));var ul=el("ul");rows.forEach(function(r){ul.appendChild(r)});g.appendChild(ul);return g}
+function pick(ds,focus){
+  sel=ds;var bs=grid.querySelectorAll(".sc-d");for(var i=0;i<bs.length;i++)bs[i].setAttribute("aria-pressed",bs[i].dataset.d===ds?"true":"false");
+  var d=D.days[ds]||{p:[],x:[]};det.textContent="";
+  det.appendChild(el("h3",null,nice(ds,true)+(ds===today?" · today":"")));
+  ["maintenance","news","event"].forEach(function(k){var xs=(d.x||[]).filter(function(x){return x.k===k});if(!xs.length)return;
+    det.appendChild(group(k,LBL[k],xs.map(function(x){var li=el("li");li.appendChild(el("span","sc-t",x.cont?"Continues":(x.t?t12(x.t)+" PT":"All day")));li.appendChild(el("span",null,x.title));if(x.note)li.appendChild(el("span","sc-note",x.note));return li})))});
+  if(d.e&&d.e.length){det.appendChild(group("post","Editions published",d.e.map(function(e){var li=el("li");li.appendChild(el("span","sc-ok","✓"));
+    if(e.href){var a=el("a",null,SLOT[e.s]||e.s);a.href=e.href;li.appendChild(a)}else li.appendChild(el("span",null,SLOT[e.s]||e.s));return li})))}
+  if(d.p.length){det.appendChild(group("post","Postings ("+d.p.length+")",d.p.map(function(i){var s=D.series[i],li=el("li");li.appendChild(el("span","sc-t",t12(s.t)+" PT"));li.appendChild(el("span",null,s.title));li.appendChild(el("span","sc-code",s.code));return li})))}
+  if(det.childNodes.length===1)det.appendChild(el("p","sc-st","Nothing on the schedule for this day."));
+  if(focus){det.setAttribute("tabindex","-1");det.focus({preventScroll:true});if(window.innerWidth<700)det.scrollIntoView({behavior:"smooth",block:"start"})}
+}
+function step(n){var y=+cur.slice(0,4),m=+cur.slice(5,7)+n;while(m<1){m+=12;y--}while(m>12){m-=12;y++}show(ym(y,m))}
+document.getElementById("sc-prev").addEventListener("click",function(){step(-1)});
+document.getElementById("sc-next").addEventListener("click",function(){step(1)});
+document.getElementById("sc-today").addEventListener("click",function(){sel=null;show(today?today.slice(0,7):"")});
+var q=/[?&]m=(\d{4}-\d{2})/.exec(location.search);
+var f=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Vancouver",year:"numeric",month:"2-digit"}).format(new Date()).slice(0,7);
+show(q?q[1]:f);
+})();
+</script>"""
+
+
+def build_schedule_page():
+    """Public schedule page (schedule.html, served at /daily-design/schedule by the daily-design-schedule Worker, which also
+    serves schedule.json from the public Google Calendar iCal + data/index.json). Colors: amber posts, flame maintenance,
+    aqua news/launches, violet events."""
+    url = abs_url(SCHEDULE_PATH)
+    title = "Schedule · %s" % SITE_NAME
+    desc = ("The Daily Design schedule: every posting slot, edition, announcement, launch, maintenance day and event, by day, "
+            "in Pacific time.")
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": url, "description": desc,
+          "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": SITE_URL}, "publisher": publisher_ld()}
+    head = SEO_START + "".join([
+        '<title>%s</title>' % esc(title), '<meta name="description" content="%s">' % esc(desc),
+        '<link rel="canonical" href="%s">' % url, '<meta name="robots" content="index,follow">',
+        '<meta property="og:type" content="website">', '<meta property="og:site_name" content="%s">' % SITE_NAME,
+        '<meta property="og:title" content="%s">' % esc(title), '<meta property="og:description" content="%s">' % esc(desc),
+        '<meta property="og:url" content="%s">' % url, '<meta property="og:image" content="%s">' % abs_url("assets/favicon-512.png"),
+        '<meta name="twitter:card" content="summary">', '<meta name="twitter:title" content="%s">' % esc(title),
+        '<meta name="twitter:description" content="%s">' % esc(desc), ld_json(ld)]) + SEO_END
+    legend = "".join('<li><span class="sc-sw" style="--c:var(%s)" aria-hidden="true"></span>%s</li>' % (v, t) for v, t in (
+        ("--amber", "Postings and editions"), ("--flame", "Maintenance"), ("--aqua", "News, announcements and launches"), ("--violet", "Events")))
+    legend += '<li><span class="sc-ok" aria-hidden="true">✓</span>Edition published</li>'
+    body = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+@@HEAD@@
+<meta name="theme-color" content="#09090c">
+@@ICONS@@
+<link rel="stylesheet" href="assets/site.css">
+@@CSS@@
+</head>
+<body>
+<main class="ct ab sc">
+<nav class="ct-top" aria-label="Daily Design"><a class="btn" href="index.html">← Daily Design index</a><a href="about.html">About</a></nav>
+<section class="ct-card sc-card" aria-labelledby="sc-h">
+<div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · Schedule">Daily Design · Schedule</a></div>
+<h1 id="sc-h">The <em>schedule</em></h1>
+<p class="lede">Every Daily Design posting slot, edition, announcement, maintenance day and event, day by day. Times are Pacific time (PT, Vancouver). Pick a day to see everything on it.</p>
+<ul class="sc-leg" aria-label="Legend">@@LEGEND@@</ul>
+<div class="sc-bar"><h2 id="sc-month" aria-live="polite">Schedule</h2>
+<button class="btn" type="button" id="sc-prev" aria-label="Previous month">‹ Prev</button><button class="btn" type="button" id="sc-today">Today</button><button class="btn" type="button" id="sc-next" aria-label="Next month">Next ›</button></div>
+<table class="sc-cal" id="sc-grid" aria-labelledby="sc-month"><thead><tr><th scope="col" abbr="Sunday">Sun</th><th scope="col" abbr="Monday">Mon</th><th scope="col" abbr="Tuesday">Tue</th><th scope="col" abbr="Wednesday">Wed</th><th scope="col" abbr="Thursday">Thu</th><th scope="col" abbr="Friday">Fri</th><th scope="col" abbr="Saturday">Sat</th></tr></thead><tbody></tbody></table>
+<p class="sc-st" id="sc-st" role="status">Loading the schedule…</p>
+<section class="sc-det" id="sc-det" aria-live="polite"></section>
+<noscript><p>The calendar needs JavaScript. See the <a href="@@GCAL@@" rel="noopener">public Daily Design calendar</a> instead.</p></noscript>
+<p class="sc-st">The schedule comes from our public calendar: <a href="@@GCAL@@" target="_blank" rel="noopener">open in Google Calendar<span aria-hidden="true"> ↗</span></a> · <a href="@@ICS@@">subscribe (iCal)</a>. Changes show up here within about 15 minutes.</p>
+</section>
+</main>
+<footer class="site"><div class="wrap">@@FOOT@@</div></footer>
+@@JS@@
+</body>
+</html>
+"""
+    doc = (body.replace("@@HEAD@@", head).replace("@@ICONS@@", icon_links("")).replace("@@CSS@@", CONTACT_CSS + ABOUT_CSS + SCHEDULE_CSS)
+           .replace("@@LEGEND@@", legend).replace("@@GCAL@@", esc(SCHEDULE_GCAL)).replace("@@ICS@@", esc(SCHEDULE_ICS))
+           .replace("@@FOOT@@", credit_html("", page="schedule", blurb=FOOT_BLURB)).replace("@@JS@@", SCHEDULE_JS))
+    if write_if_changed(os.path.join(REPO, SCHEDULE_PATH + ".html"), doc):
+        log("schedule page", SCHEDULE_PATH + ".html")
+
+
 def xml_esc(s):
     return html.escape(s or "", quote=True)
 
@@ -2430,6 +2606,7 @@ def main():
     build_index_seo(public_eds, card_ed=editions[0] if editions else None)
     build_contact_page()
     build_about_page(public_eds)
+    build_schedule_page()
     build_sitemap_feed(public_eds)
     nv = version_assets()  # 4c. ?v=<hash> on first-party JS/CSS links, after every page is written
     if nv: log("asset versions updated on %d pages" % nv)
