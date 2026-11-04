@@ -1532,12 +1532,6 @@ def share_url(ed):
     return abs_url(share_rel(ed))
 
 
-def site_link(ed):
-    """Relative link for listings (About, feed): the edition itself while it's public in this repo; for a gated (Nov 1+) edition its
-    share page, which never 404s or gets scrubbed by the gate and forwards readers to the edition (members see it after week one)."""
-    return share_rel(ed) if gate_split.gated(ed["date"]) else public_path(ed)
-
-
 def share_image(ed):
     """Absolute URL of the edition's public card image, or None if it has none yet."""
     return abs_url(share_img_rel(ed)) if os.path.exists(os.path.join(REPO, share_img_rel(ed))) else None
@@ -1972,8 +1966,6 @@ def build_about_page(editions):
     for e in eds_sorted:
         latest.setdefault(e["slot"], e)
     def series_href(e):
-        if gate_split.gated(e["date"]):
-            return share_rel(e)
         return "index.html#report=%s/%s" % (e["date"], e["slot"]) if e["kind"] == "report" else e["path"]
     series = "".join('<li><a href="%s">Latest %s</a> · %s (%s)</li>' % (
         esc(series_href(latest[k])), esc(SLOTS[k]["name"]), esc(SLOTS[k]["time"]), esc(nice_date(latest[k]["date"])))
@@ -1989,7 +1981,7 @@ def build_about_page(editions):
             cur = m
         day = dt.date.fromisoformat(d)
         links = "".join('<a style="--c:%s" href="%s" aria-label="%s, %s">%s</a>' % (
-            SLOTS[e["slot"]]["color"], esc(site_link(e)), esc(SLOTS[e["slot"]]["name"]), esc(nice_date(d)), esc(SLOTS[e["slot"]]["time"]))
+            SLOTS[e["slot"]]["color"], esc(public_path(e)), esc(SLOTS[e["slot"]]["name"]), esc(nice_date(d)), esc(SLOTS[e["slot"]]["time"]))
             for e in sorted(by_day[d], key=lambda e: SLOTS[e["slot"]]["order"]))
         months[-1][1].append('<li><span class="d">%s</span>%s</li>' % (day.strftime("%a %b ") + str(day.day), links))
     month_html = "".join('<h3 class="ab-month">%s</h3><ul class="ab-days">%s</ul>' % (
@@ -2058,11 +2050,8 @@ def xml_esc(s):
     return html.escape(s or "", quote=True)
 
 
-def build_sitemap_feed(editions, all_eds=None):
-    """sitemap.xml lists the public editions (gated ones lock after a week, and share pages are noindex), but its lastmod and the
-    Atom feed follow every published edition (all_eds): gated entries link their share page with the public teaser only."""
-    all_eds = all_eds or editions
-    last = max(e["date"] for e in all_eds)
+def build_sitemap_feed(editions):
+    last = max(e["date"] for e in editions)
     urls = [(SITE_URL, last, "daily", "1.0")]
     urls += [(abs_url(ABOUT_PATH), last, "weekly", "0.6"), (abs_url(CONTACT_PATH), last, "yearly", "0.5")]
     urls += [(abs_url(public_path(e)), e["date"], "monthly", "0.8") for e in editions]
@@ -2079,12 +2068,8 @@ def build_sitemap_feed(editions, all_eds=None):
     write_if_changed(os.path.join(REPO, "robots.txt"),
                      "User-agent: *\nAllow: /\n\nSitemap: %s\n" % abs_url("sitemap.xml"))
     entries = []
-    for e in all_eds[:60]:
-        if gate_split.gated(e["date"]):
-            f = seo_fields(dict(e, summary=gate_split._teaser(e.get("summary")) if e.get("summary") else e.get("teaser", "")))
-            f["url"] = share_url(e)
-        else:
-            f = seo_fields(e)
+    for e in editions[:60]:
+        f = seo_fields(e)
         entries.append("""<entry><title>%s</title><link rel="alternate" type="text/html" href="%s"/><id>%s</id>
 <published>%s</published><updated>%s</updated><summary>%s</summary><category term="%s"/></entry>""" % (
             xml_esc(f["title"].rsplit(" · ", 1)[0]), xml_esc(f["url"]), xml_esc(f["url"]),
@@ -2097,7 +2082,7 @@ def build_sitemap_feed(editions, all_eds=None):
 <icon>%s</icon>
 %s
 </feed>
-""" % (xml_esc(SITE_DESC), abs_url("feed.xml"), SITE_URL, SITE_URL, published_iso(all_eds[0]), STUDIO_NAME, STUDIO_URL,
+""" % (xml_esc(SITE_DESC), abs_url("feed.xml"), SITE_URL, SITE_URL, published_iso(editions[0]), STUDIO_NAME, STUDIO_URL,
        abs_url("assets/favicon-192.png"), "\n".join(entries))
     write_if_changed(os.path.join(REPO, "feed.xml"), feed)
 
@@ -2427,8 +2412,8 @@ def main():
     # 4b. SEO: index head/static links, sitemap.xml, robots.txt, feed.xml (public editions only)
     build_index_seo(public_eds, card_ed=editions[0] if editions else None)
     build_contact_page()
-    build_about_page(editions)  # every published edition; gated ones link their share page (site_link)
-    build_sitemap_feed(public_eds, all_eds=editions)
+    build_about_page(public_eds)
+    build_sitemap_feed(public_eds)
     nv = version_assets()  # 4c. ?v=<hash> on first-party JS/CSS links, after every page is written
     if nv: log("asset versions updated on %d pages" % nv)
     for legacy in ("index.js",):
