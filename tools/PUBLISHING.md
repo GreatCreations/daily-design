@@ -283,3 +283,17 @@ Set `DD_GATE=1` (plus `CF_ACCOUNT_ID`, `CF_KV_NAMESPACE_ID`, `CF_KV_TOKEN_FILE`)
 their full files plus the full index and item shards to the gate Worker's KV, moves the files to `DD_PRIVATE_ROOT`
 (outside git), writes header-only index entries, and blocks the commit if anything gated is left. Without `DD_GATE`
 publishing is unchanged. `.github/workflows/gate-guard.yml` is a backstop alert only, because by the time CI runs the push is already public.
+
+## Social share pages (Nov 4, 2026)
+Rule (owner, Nov 4 2026): a post linking an edition must always show that edition's own header in the X/social card, never old art.
+X and Facebook drop the `#fragment`, so `/daily-design/#report=<date>/<slot>` always got the homepage card. Every run, `build_share_pages()`
+(before the gate split, so gated headers are still in the tree) writes for every edition:
+- `assets/share/<date>-<slot>.jpg`: a public 1200px JPEG of the header. Public on purpose: gated header PNGs 404 for non-members once an
+  edition locks, and a card image must stay 200 forever.
+- `assets/share/<date>-<slot>/index.html`: og:/twitter: title, description, image (that JPEG), `summary_large_image`, canonical, then an
+  instant redirect (meta refresh + JS) to `/daily-design/#report=<date>/<slot>` (reports) or the edition page (7 AM/noon).
+  **This is the link posts use:** `https://studios.greatcreations.art/daily-design/assets/share/<date>-<slot>/`
+- `<date>/<slot>/index.html`: the same page at the pretty path. The live gate Worker 404s any undated-prefix date path, so it isn't
+  served yet; after a gate route allows `/daily-design/<date>/<slot>/`, set `SHARE_PRETTY_LIVE = True` (canonicals switch) and move posts over.
+The homepage og:image/twitter:image is the newest edition's share JPEG (gated or not), updated on every publish.
+An edition with no header (only 2026-10-20 morning) gets the site icon and a `summary` card, and the run logs a `!!!` line.
