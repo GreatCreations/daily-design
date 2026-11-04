@@ -3,8 +3,8 @@
 if(window.__ddPK)return;window.__ddPK=1;
 var B="assets/press-kit/",PKU="https://studios.greatcreations.art/daily-design/pk/";
 var LOGOS=[
- ["Logo with wordmark","DD icon + the site header wordmark, for dark backgrounds","dd-logo-wordmark-v5-transparent.png","dd-logo-wordmark-v5.svg","d","primary"],
- ["Logo with wordmark, on light","Dark ink, for light backgrounds","dd-logo-wordmark-v5-on-light-transparent.png","dd-logo-wordmark-v5-on-light.svg","l","primary-light"],
+ ["Logo with wordmark","DD icon + the site header wordmark, for dark backgrounds","dd-logo-wordmark-v5-transparent.png","dd-logo-wordmark-v5.svg","d","logo-wordmark"],
+ ["Logo with wordmark, on light","Dark ink, for light backgrounds","dd-logo-wordmark-v5-on-light-transparent.png","dd-logo-wordmark-v5-on-light.svg","l","logo-wordmark-light"],
  ["DD icon","Official standalone mark","dd-icon-2048-transparent.png","dd-icon.svg","d","icon"],
  ["Wordmark","The header title, for dark backgrounds","dd-wordmark-original-site-transparent.png",null,"d","wordmark"],
  ["Wordmark, on light","Dark ink, for light backgrounds","dd-wordmark-original-site-on-light-transparent.png",null,"l","wordmark-light"],
