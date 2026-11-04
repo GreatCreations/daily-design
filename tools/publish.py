@@ -2040,6 +2040,7 @@ def build_about_page(editions):
 <p>Questions, tips, corrections or sponsorship: see <a href="%s">Contact</a>.</p>
 <p>Every creator, studio and lab we feature goes on our public X list, @@XLIST@@, with new ones added after every edition. Follow Daily Design itself on X at @@XACCT@@.</p>
 <p>Every posting slot, edition, announcement, maintenance day and event is on the public <a href="@@SCHED@@">Daily Design schedule</a>.</p>
+<p class="ab-pk"><button class="btn" type="button" data-presskit aria-haspopup="dialog">Press kit</button> Logos, Dee Dee, colours and fonts for press and sponsors.</p>
 <p>We count visits with Cloudflare Web Analytics, which is cookie-free: no cookies, no personal data and no cross-site tracking.</p>
 </section>
 <section class="ct-card" style="margin-top:18px;border-top-color:var(--aqua)" aria-labelledby="sm-h">
@@ -2049,7 +2050,7 @@ def build_about_page(editions):
 <h3>Edition series</h3>
 <ul class="ab-map">%s</ul>
 <h3>More</h3>
-<ul class="ab-map"><li><a href="%s">Contact</a></li><li><a href="%s" aria-current="page">About</a></li>@@XLISTLI@@@@XACCTLI@@<li><a href="feed.xml">Feed (Atom)</a></li><li><a href="sitemap.xml">sitemap.xml</a></li></ul>
+<ul class="ab-map"><li><a href="%s">Contact</a></li><li><a href="%s" aria-current="page">About</a></li><li><a href="about.html#press-kit">Press kit</a></li>@@XLISTLI@@@@XACCTLI@@<li><a href="feed.xml">Feed (Atom)</a></li><li><a href="sitemap.xml">sitemap.xml</a></li></ul>
 <h2 id="free-forever">Free forever editions and reports</h2>
 %s%s
 </section>
@@ -2057,6 +2058,7 @@ def build_about_page(editions):
 <footer class="site"><div class="wrap">%s</div></footer>
 <script src="assets/tzlocal.js" defer></script>
 <script src="assets/maintenance.js" defer></script>
+<script src="assets/press-kit/presskit.js" defer></script>
 </body>
 </html>
 """ % (head, icon_links(""), CONTACT_CSS, ABOUT_CSS, STUDIO_URL, STUDIO_NAME, since, eds, tz_label(today), sub, CONTACT_PATH, series,
