@@ -1899,6 +1899,7 @@ ABOUT_CSS = """<style>
 .ab-maint[hidden]{display:none}.ab-maint b{color:var(--amber)}
 .ab-map{columns:2 220px;column-gap:28px;margin:6px 0 0;padding-left:18px;color:#d5d1c8;line-height:1.7}
 .ab-map li{break-inside:avoid}
+.ab-top{display:flex;justify-content:flex-end;margin:0 0 6px}.ab-acct{text-decoration:none}
 .ab-pk{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px}.ab-pk-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border:0;border-radius:999px;font:700 14px/1 system-ui,sans-serif;letter-spacing:.01em;color:#120d05;cursor:pointer;background:linear-gradient(110deg,#f5a524,#ffcf5a 55%,#22e0cf);box-shadow:0 2px 14px rgba(245,165,36,.18);transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}.ab-pk-btn:hover{transform:translateY(-1px);filter:brightness(1.06);box-shadow:0 6px 22px rgba(34,224,207,.28)}.ab-pk-btn:active{transform:translateY(0)}.ab-pk-btn:focus-visible{outline:2px solid #22e0cf;outline-offset:3px}@media (prefers-reduced-motion:reduce){.ab-pk-btn{transition:none}.ab-pk-btn:hover{transform:none}}
 .ab a{color:var(--ink);text-decoration-color:var(--amber);text-underline-offset:3px}.ab a:hover{color:#fff}
 .ab-month{margin:0 0 6px}
@@ -2028,6 +2029,7 @@ def build_about_page(editions):
 <nav class="ct-top" aria-label="Daily Design"><a class="btn" href="index.html">← Daily Design index</a></nav>
 <section class="ct-card" aria-labelledby="ab-h">
 <div class="eyebrow"><a class="dd-hlink" href="./" data-glow="Daily Design · About">Daily Design · About</a></div>
+<p class="ab-top"><a class="ab-pk-btn ab-acct" href="/daily-design/members/account">Account</a></p>
 <h1 id="ab-h">About <em>Daily Design</em></h1>
 <div class="ab-maint" id="ab-maint" role="status" hidden></div>
 <p class="lede">Daily Design is a public archive of AI design research digests from <span class="nw"><a href="%s" rel="noopener">%s</a>:</span> four editions a day on how AI is changing creative work, across image, video, 3D, <span class="nw">code/UI,</span> sound, <span class="nw">games and mashups.</span></p>
